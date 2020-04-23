@@ -1,0 +1,107 @@
+---
+title: Demo API Portal
+---
+
+import { LandingLayout } from '@redocly/ui';
+
+import {
+  Button,
+  Box,
+  FlexSection,
+  Flex,
+  Jumbotron,
+  ThinTile,
+  WideTile,
+  Emphasis,
+  H1,
+  H2,
+  SectionHeader,
+} from '@redocly/ui';
+
+import { NavBar } from '@redocly/ui';
+
+import icon1 from './images/icon1.png';
+import launchFastIcon from './images/launch-fast.svg';
+import icon3 from './images/icon3.png';
+import bookManagementIcon from './images/book-management.svg';
+import foundOrPrivate from './images/found-or-private.svg';
+
+export default LandingLayout;
+
+<Jumbotron>
+  <NavBar location={props.location} standalone={false} />
+  <H1>API Reference, Portal & Workflows</H1>
+  <H2>Demonstration built with Redocly Portal</H2>
+  <Flex p={20} justifyContent="center">
+    <Button inversed large to="using-redocly/introduction.md">
+      Redocly Portal
+    </Button>
+    <Button inversed transparent large to="reference.page.yaml">
+      API Reference
+    </Button>
+    <Button inversed transparent large>
+      Workflows
+    </Button>
+  </Flex>
+</Jumbotron>
+<Box my={25}>
+  <SectionHeader>
+    <Emphasis>Get Started now! </Emphasis> And get something!
+  </SectionHeader>
+  <FlexSection justifyContent="space-around" flexWrap="wrap">
+    <ThinTile to="using-redocly/introduction.md" icon={icon1} header="Menu: Getting started">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo
+        invenire aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril
+        labitur an usu.Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea
+        justo invenire aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing.
+    </ThinTile>
+    <ThinTile to="using-redocly/organizing-files.md" icon={launchFastIcon} header="Menu: Standards and compliance">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+    <ThinTile to="contact.mdx" icon={icon3} header="Custom React Page">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+    <ThinTile to="using-redocly/markdown.md" icon={bookManagementIcon} header="Simple markdown page">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+    <ThinTile to="https://www.google.com" icon={foundOrPrivate} header="External link">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+  </FlexSection>
+  <SectionHeader>
+    <Emphasis>Need help? </Emphasis>
+    Important things to keep in mind
+  </SectionHeader>
+  <FlexSection justifyContent="space-around" flexWrap="wrap">
+    <WideTile to="using-redocly/development-tips.mdx" header="Custom react page in menu section">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </WideTile>
+    <WideTile to="using-redocly/development-tips.mdx" header="Custom react page in menu section">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </WideTile>
+    <WideTile to="using-redocly/development-tips.mdx" header="Custom react page in menu section">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </WideTile>
+    <WideTile to="using-redocly/development-tips.mdx" header="Custom react page in menu section">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </WideTile>
+  </FlexSection>
+</Box>

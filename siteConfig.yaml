@@ -1,0 +1,49 @@
+meta:
+  title: Redocly Docs
+  description: The best API documentation generator ever.
+  siteUrl: https://portal-demo.redoc.ly
+headerIcon: ./images/logo.png
+oasDefinitions:
+  petstore: ./openapi/petstore.yaml
+stylesheets:
+  - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
+#ga:
+  # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
+  # note that GA doesn't work in DEV
+#  trackingId: UA-45997213-1
+#scripts:
+#  - ./static/intercom.js
+nav:
+
+  - label: Redocly Portal
+    page: using-redocly/introduction.md
+
+  - label: External docs
+    href: https://google.com
+
+  - search: true
+
+footer:
+  copyrightText: Copyright © Redocly 2019. All right reserved.
+  list:
+    - label: ReactJS
+      href: https://reactjs.org/
+    - label: GatsbyJS
+      href: https://www.gatsbyjs.org/
+    - label: Redocly
+      href: https://redoc.ly/
+  columns:
+    - group: Legal
+      items:
+        - label: Terms of Use
+          href: 'https://rebilly.github.io/RebillyAPI/'
+        - label: Privacy Notice
+          href: 'https://rebilly.github.io/RebillyUserAPI/'
+        - label: Cookie Notice
+          href: 'https://rebilly.github.io/RebillyReportsAPI/'
+    - group: Support
+      items:
+        - label: FAQ
+          page: faq.md
+        - label: Contact us
+          page: contact.mdx

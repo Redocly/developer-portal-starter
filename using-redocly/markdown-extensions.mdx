@@ -1,0 +1,160 @@
+import { RedocResponse } from '@redocly/ui';
+
+import {
+  Box,
+  Button,
+  FlexSection,
+  Flex,
+  Jumbotron,
+  H1,
+  H2,
+  Link,
+  ThinTile,
+  WideTile,
+  Emphasis,
+  SectionHeader,
+ } from '@redocly/ui';
+
+import icon3 from '../images/icon3.png';
+
+
+# Using Markdown Extensions
+
+Use Markdown Extensions by naming the file extension as `.mdx` and importing the extensions at the top of the file.
+
+You can import a single extension:
+```jsx
+import { RedocResponse } from '@redocly/ui';
+```
+Or multiple extensions at the same time:
+
+```jsx
+import {
+  Box,
+  Button,
+  FlexSection,
+  Flex,
+  Jumbotron,
+  H1,
+  H2,
+  Link,
+  ThinTile,
+  WideTile,
+  Emphasis,
+  SectionHeader,
+ } from '@redocly/ui';
+```
+
+We created a library (`@redocly/ui`) with components you can reference within any markdown extension file.
+
+A markdown extension file is a combination of markdown and components.
+
+Learn how to use some of our popular components below:
+
+## ReDoc Response
+
+With Samples Panel:
+```html
+<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" />
+```
+<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" />
+
+Without Samples Panel:
+
+```html
+<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" hideSamples={true} />
+```
+<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" hideSamples={true} />
+
+## Jumbotron
+
+```html
+<Jumbotron>
+  <H1>Might be good for a home page</H1>
+  <H2>or a landing page</H2>
+  <Flex p={20} justifyContent="center">
+    <Button inversed large to="https://github.com/Rebilly/ReDoc">
+      Get Redocly
+    </Button>
+    <Button inversed transparent large to="markdown.md">
+      Get Started
+    </Button>
+  </Flex>
+</Jumbotron>
+```
+
+<Jumbotron>
+  <H1>Might be good for a home page</H1>
+  <H2>or a landing page</H2>
+  <Flex p={20} justifyContent="center">
+    <Button inversed large to="https://github.com/Rebilly/ReDoc">
+      Get Redocly
+    </Button>
+    <Button inversed transparent large to="markdown.md">
+      Get Started
+    </Button>
+  </Flex>
+</Jumbotron>
+
+
+## Thin Tiles / Flex
+
+<Box my={25}>
+  <FlexSection justifyContent="space-around" flexWrap="wrap">
+    <ThinTile to="introduction.md" icon={icon3} header="Custom React Page">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+    <ThinTile to="markdown.md" icon={icon3} header="Simple markdown page">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+    <ThinTile to="https://www.google.com" icon={icon3} header="External link">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </ThinTile>
+  </FlexSection>
+</Box>
+
+## Wide Tiles / Flex
+
+<Box my={25}>
+  <FlexSection justifyContent="space-around" flexWrap="wrap">
+    <WideTile to="introduction.md" icon={icon3} header="My header here">
+        Lorem ipsum dolor sit amet, pri putent oportere quaerendum in, ea mea justo invenire
+        aliquando. Usu modo suavitate ea. Et sed labitur epicurei adipiscing. Nibh zril labitur
+        an usu.
+    </WideTile>
+  </FlexSection>
+</Box>
+
+## Boxes/Flex
+
+<FlexSection flexDirection="column" color="#000">
+  <Box bg={'#f2f2f2'} my={20} px={20} pb={20}>
+    <h3> Pet Store Chart </h3>
+    <Flex flexDirection="row" justifyContent="space-between" textAlign="center">
+      <Box bg="#fff" border="2px solid #555" width={'calc(50% - 10px)'} p={10} color="white">
+        <Link to={'../reference.page.yaml#operation/addPet'}>Pet</Link>
+      </Box>
+      <Box bg="#fff" border="2px solid #555" width={'calc(50% - 10px)'} p={10} color="white">
+        <Link to="../reference.page.yaml#operation/createUser">User</Link>
+      </Box>
+    </Flex>
+    <Box my={20} bg="#fff" border="3px solid #333" p={10} color="white" textAlign="center">
+      <Link to="../reference.page.yaml#operation/getInventory">Store</Link>
+    </Box>
+  </Box>
+</FlexSection>
+
+## Other components
+
+What other components would you like to see?  Let us know.  We're adding new components.
+
+## Developing new components
+
+A developer familiar with React can create new components.  Learn more
+about how to create a component here.

@@ -1,0 +1,33 @@
+usingRedocly:
+  - group: Redocly Portal user's guide
+    expanded: true
+    pages:
+      - label: Introduction
+        page: using-redocly/introduction.md
+      - label: Getting started
+        page: using-redocly/getting-started.md
+      - separator: Configuration
+      - label: Configuration
+        page: using-redocly/configuration.md
+      - label: Headers and footers
+        page: using-redocly/headers-footers.md
+      - label: Sidebar navigation
+        page: using-redocly/sidebar-nav.md
+      - label: Customizing Portal
+        page: using-redocly/custom-portal.md
+      - separator: Managing Content
+      - label: Organizing files
+        page: using-redocly/organizing-files.md
+      - label: Basic markdown
+        page: using-redocly/markdown.md
+      - label: Mermaid diagrams
+        page: using-redocly/mermaid.md
+      - page: using-redocly/redoc-integration.md
+      - label: Markdown extensions
+        page: using-redocly/markdown-extensions.mdx
+      - label: Creating React components
+        page: using-redocly/development-tips.mdx
+  - group: Petstore Reference
+    expanded: false
+    pages:
+      - page: reference.page.yaml/*
