@@ -1,0 +1,45 @@
+meta:
+  title: Redocly Training
+  description: The best API documentation generator ever.
+  siteUrl: https://portal-demo.redoc.ly
+headerIcon: ./images/logo.png
+enableToc: true
+oasDefinitions:
+  petstore: ./openapi/petstore.yaml
+  # add links to definitions in our API registry by using a fully qualified URL.
+stylesheets:
+  - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
+  - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+#ga:
+  # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
+  # note that GA doesn't work in DEV
+#  trackingId: UA-45997213-1
+#scripts:
+#  - ./static/intercom.js
+nav:
+
+  - label: Training exercises
+    page: developer-portal/index.md
+
+  - label: External docs
+    href: https://docs.redoc.ly/developer-portal/introduction/
+
+  - search: true
+
+footer:
+  copyrightText: Copyright © Redocly 2019-2020. All right reserved.
+  columns:
+    - group: Legal
+      items:
+        - label: Terms of Use
+          href: 'https://redoc.ly/subscription-agreement/'
+        - label: Privacy Notice
+          href: 'https://redoc.ly/privacy-policy/'
+        - label: Cookie Notice
+          href: 'https://redoc.ly/privacy-policy/'
+    - group: Support
+      items:
+        - label: FAQ
+          page: faq.md
+        - label: Contact us
+          page: contact.mdx

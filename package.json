@@ -1,0 +1,15 @@
+{
+  "name": "portal-template",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Redocly portal template repository",
+  "license": "MIT",
+  "scripts": {
+    "start": "redocly-portal develop -p 3000",
+    "build": "redocly-portal build",
+    "clean": "redocly-portal clean"
+  },
+  "dependencies": {
+    "@redocly/developer-portal": "^1.0.0-beta.51"
+  }
+}
