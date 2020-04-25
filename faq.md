@@ -2,11 +2,12 @@
 title: F.A.Q.
 ---
 
-# Frequently Asked Questions
+# Frequently asked questions
 
 ## How much does it cost?
 
-Please contact us for pricing.
+https://preview.redoc.ly/redocly/new-site/pricing
+
 
 ## Can I do ______?
 

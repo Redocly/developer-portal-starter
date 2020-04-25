@@ -1,12 +1,15 @@
 meta:
-  title: Redocly Docs
+  title: Redocly Training
   description: The best API documentation generator ever.
   siteUrl: https://portal-demo.redoc.ly
 headerIcon: ./images/logo.png
+enableToc: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
+  # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
+  - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
 #ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
   # note that GA doesn't work in DEV
@@ -15,32 +18,25 @@ stylesheets:
 #  - ./static/intercom.js
 nav:
 
-  - label: Redocly Portal
-    page: using-redocly/introduction.md
+  - label: Training exercises
+    page: developer-portal/index.md
 
   - label: External docs
-    href: https://google.com
+    href: https://docs.redoc.ly/developer-portal/introduction/
 
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019. All right reserved.
-  list:
-    - label: ReactJS
-      href: https://reactjs.org/
-    - label: GatsbyJS
-      href: https://www.gatsbyjs.org/
-    - label: Redocly
-      href: https://redoc.ly/
+  copyrightText: Copyright © Redocly 2019-2020. All right reserved.
   columns:
     - group: Legal
       items:
         - label: Terms of Use
-          href: 'https://rebilly.github.io/RebillyAPI/'
+          href: 'https://redoc.ly/subscription-agreement/'
         - label: Privacy Notice
-          href: 'https://rebilly.github.io/RebillyUserAPI/'
+          href: 'https://redoc.ly/privacy-policy/'
         - label: Cookie Notice
-          href: 'https://rebilly.github.io/RebillyReportsAPI/'
+          href: 'https://redoc.ly/privacy-policy/'
     - group: Support
       items:
         - label: FAQ

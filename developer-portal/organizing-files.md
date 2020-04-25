@@ -36,22 +36,22 @@ Your files should be organized into folders. The folder naming is reflected in t
 ├── ./sidebars.yaml
 ├── ./siteConfig.yaml
 ├── ./theme.ts
-├── ./using-redocly
-│   ├── ./using-redocly/creating-files.md
-│   ├── ./using-redocly/development-tips.md
-│   ├── ./using-redocly/footer-navigation.md
-│   ├── ./using-redocly/installation.md
-│   ├── ./using-redocly/introduction.md
-│   ├── ./using-redocly/markdown-extensions.mdx
-│   ├── ./using-redocly/markdown.md
-│   ├── ./using-redocly/quickstart.md
-│   ├── ./using-redocly/redoc-integration.md
-│   ├── ./using-redocly/sidebar-nav.md
-│   └── ./using-redocly/top-navigation.md
+├── ./developer-portal
+│   ├── ./developer-portal/creating-files.md
+│   ├── ./developer-portal/development-tips.md
+│   ├── ./developer-portal/footer-navigation.md
+│   ├── ./developer-portal/installation.md
+│   ├── ./developer-portal/introduction.md
+│   ├── ./developer-portal/markdown-extensions.mdx
+│   ├── ./developer-portal/markdown.md
+│   ├── ./developer-portal/quickstart.md
+│   ├── ./developer-portal/redoc-integration.md
+│   ├── ./developer-portal/sidebar-nav.md
+│   └── ./developer-portal/top-navigation.md
 └── ./yarn.lock
 ```
 
-In this example, most of my content is organized into the `using-redocly` folder.
+In this example, most of my content is organized into the `developer-portal` folder.
 
 The more content you create, the more you may want to organize it into more sub-folders.
 

@@ -41,7 +41,7 @@ A markdown extension file ends with a `.mdx` file extension. Learn more about [u
 
 **Special files**
 
-The following files must be kept at the top level of the project structure. 
+The following files must be kept at the top level of the project structure.
 If needed, you can change the contents of these files to configure look and feel of the **Portal**.
 
 
@@ -50,10 +50,10 @@ If needed, you can change the contents of these files to configure look and feel
 | `index.mdx`  | The home page of the **Portal**.  |
 | `siteConfig.yaml`  | In this file, you can do the following: <br> <ul><li>Set up persistent navigation and logo.</li><li>Declare API definitions and stylesheets.</li><li>Add custom scripts.</li><li>Set up google analytics.</li></ul>|
 | `theme.ts` | Controls the fonts and colors used throughout the **Portal**. |
-| `sidebars.yaml` | Controls the [sidebar navigation](/using-redocly/sidebar-nav) among contents. |
+| `sidebars.yaml` | Controls the [sidebar navigation](/developer-portal/sidebar-nav) among contents. |
 | `favicon.png` | Displays the favicon. |
 
-For more details, see [Customizing Portal](/using-redocly/custom-portal/).
+For more details, see [Customizing Portal](/developer-portal/custom-portal/).
 
 Also, you can include your OpenAPI .yaml or .json file directly in the **Portal** to be able to generate the API reference pages.
 

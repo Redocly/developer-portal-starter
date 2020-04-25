@@ -11,9 +11,9 @@ Learn how to setup basic transaction data exports.
 Reconciling transactions is a common business process, and is easy to do with Rebilly, requiring only
 these three steps to export source data:
 
-1. Request a [Data Export](/using-redocly/quickstart#step-1-request-a-data-export).
-2. Get the [`download` link of the Data Export](/using-redocly/quickstart#step-2-get-the-completed-data-exports-download-link).
-3. [Retrieve the file](/using-redocly/quickstart#step-3-download-the-file).
+1. Request a [Data Export](/developer-portal/quickstart#step-1-request-a-data-export).
+2. Get the [`download` link of the Data Export](/developer-portal/quickstart#step-2-get-the-completed-data-exports-download-link).
+3. [Retrieve the file](/developer-portal/quickstart#step-3-download-the-file).
 
 <div class="warning">Coming soon: If you create a data export request schedule, then you may only need to do step 1 once.</div>
 
@@ -101,5 +101,5 @@ Congrats!  You've exported your first file using Rebilly's API.
 
 You may want to learn about creating data exports in more details.
 
-* [Using `arguments` to filter data exports](/using-redocly/arguments)
-* [Using `dateRange` to filter by relative date for data exports](/using-redocly/date-range)
+* [Using `arguments` to filter data exports](/developer-portal/arguments)
+* [Using `dateRange` to filter by relative date for data exports](/developer-portal/date-range)
