@@ -6,7 +6,7 @@ import { Flex, Link } from '@redocly/ui';
 
 export default function Footer(props) {
     const { columns, copyrightText } = props.footer;
-    console.log(columns)
+
     return (
         <FooterWrapper>
             <Flex py="60px" px="60px">
