@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { Flex, Link, SearchBox } from '@redocly/ui';
 
-
 export default function NavBar(props) {
     const {items, logo, location} = props;
     const isMain = location.pathname !== '/'; // Change the color of the NavBar based on location
