@@ -1653,10 +1653,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@^1.0.0-beta.61":
-  version "1.0.0-beta.61"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.61.tgz#ad1ce60bdecfb7a7f22ca273c89688c9791b11d3"
-  integrity sha512-MI1j8jparsD7PMd6GlSq/RKoVKMF4Jh6yWwxu9KRtn2ky6RtQiFwa7nbOsCitpBsxdquUf3F9Ba6xWlY7vLzMg==
+"@redocly/developer-portal@^1.0.0-beta.63":
+  version "1.0.0-beta.63"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.63.tgz#43d76f4e60fce5fe1c7eafdfff2b18b6f37f51b8"
+  integrity sha512-vZeO+LUFjh5HiZiFJ8EwYbYKb1/WiQzLLdfBLBntR75yVa8yfyc/e7S+QFSGlDSNjfkur7iqL8/fcggjUN5r0Q==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
