@@ -134,6 +134,15 @@ export const theme = {
     //   lineHeight: ({ typography }) => typography.lineHeight,
     //   capitalize: false,
     // },
+    // heading4: {
+    // // ...
+    // },
+    // heading5: {
+    // // ...
+    // },
+    // heading6: {
+    // // ...
+    // },
     code: {
       fontSize: '14px',
       fontFamily: 'Courier, monospace',
