@@ -1,5 +1,5 @@
 meta:
-  title: Redocly Training
+  title: Redocly Training by {{process.env.ORGANIZATION_NAME}}
   description: The best API documentation generator ever.
   siteUrl: https://portal-demo.redoc.ly
 headerIcon: ./images/logo.png
