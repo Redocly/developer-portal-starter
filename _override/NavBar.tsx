@@ -27,7 +27,7 @@ export default function NavBar(props) {
         <img src={logo} alt="" height="50" />
         <NavItems>
           {navItems}
-          <SearchBox />
+          <SearchBox pathPrefix={props.pathPrefix} />
         </NavItems>
       </Flex>
       <NavControls>
