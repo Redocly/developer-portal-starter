@@ -83,6 +83,7 @@ export const theme = {
     },
     // navbar: {
     //   main: ({ colors }) => colors.primary.main,
+    //   gradient: ({ colors }) => darken(colors.tonalOffset / 2, colors.navbar.main),
     //   contrastText: 'white'
     // },
     // footer: {
