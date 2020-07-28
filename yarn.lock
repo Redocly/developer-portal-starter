@@ -1529,10 +1529,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@1.0.0-beta.65":
-  version "1.0.0-beta.65"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.65.tgz#53362cc2959781ced402c133a16e9a32bbbb43b4"
-  integrity sha512-AKpVYHcgU7hAtP3DG0TuFI9NY81ZhT+P4exDjS7Emtii5/3olJM+UpjXq6cH+1D6tNSCecnE6BCV29+sfP0q1g==
+"@redocly/developer-portal@1.0.0-beta.71":
+  version "1.0.0-beta.71"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.71.tgz#1c2d9049d437a4e8d10bd5667a1d37111e750213"
+  integrity sha512-az7bUiPxNPavjJBq8WQR4gK8X2TGm61LN6gh0n9cNO/gUIHh4Oynxp3S+TLnO92qtM0uRvEyQTgW5q9C14hNaw==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1577,7 +1577,7 @@
     is-url "^1.2.2"
     js-yaml "^3.13.0"
     lodash.throttle "^4.1.1"
-    mermaid "^8.5.0"
+    mermaid "^8.6.4"
     mobx "^4.15.4"
     node-fetch "^2.3.0"
     p-map "^4.0.0"
@@ -10359,10 +10359,10 @@ merge2@^1.2.3, merge2@^1.3.0:
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
 
-mermaid@^8.5.0:
-  version "8.5.2"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-8.5.2.tgz#0f1914cda53d4ea5377380e5ce07a38bef2ea7e8"
-  integrity sha512-I+s+8/RzlazF3dGOhDUfU/ERkUV4zfIlTWb3703jNx+2lfACs+4AdY9ULQaw6BPWzW3gB+XlXFOOX/m/vqujIA==
+mermaid@^8.6.4:
+  version "8.6.4"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-8.6.4.tgz#100e32a3e7ef59c659ad41f986ab1738da470bd6"
+  integrity sha512-Qewo/SNV6w16i3VishQ2U+yz3KprHwXMr17b/T0980eAEk5kl4ksMgMID3h68EqsT9GLQe/P6j2G8qwJHD929A==
   dependencies:
     "@braintree/sanitize-url" "^3.1.0"
     crypto-random-string "^3.0.1"
