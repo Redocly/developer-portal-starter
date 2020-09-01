@@ -1,5 +1,6 @@
 ---
 title: Control your left sidebar navigation
+private: "@admins"
 ---
 
 # Sidebar training exercises

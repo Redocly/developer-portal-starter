@@ -1,11 +1,15 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Flex, Link, SearchBox } from '@redocly/ui';
+import { Flex, Link, SearchBox, getUserClaims } from '@redocly/ui';
+
+import UserMenu from '../components/UserMenu';
 
 export default function NavBar(props) {
   const { items, logo, location } = props;
   const isMain = location.pathname !== '/'; // Change the color of the NavBar based on location
+
+  const user = getUserClaims()
 
   const [isMobileMenuOpened, setMobileMenuOpened] = React.useState(false);
   const toggleMobileMenu = () => setMobileMenuOpened(!isMobileMenuOpened);
@@ -23,13 +27,14 @@ export default function NavBar(props) {
 
   return (
     <NavWrapper hasBackground={isMain}>
-      <Flex p="20px">
+      <Flex p="20px" flex="1">
         <img src={logo} alt="" height="50" />
         <NavItems>
           {navItems}
-          <SearchBox pathPrefix={props.pathPrefix} />
+          <SearchBox style={{marginLeft: 'auto'}} pathPrefix={props.pathPrefix} />
         </NavItems>
       </Flex>
+      {user && <UserMenu user={user} />}
       <NavControls>
         <MobileMenuIcon onClick={toggleMobileMenu} />
       </NavControls>
@@ -57,6 +62,7 @@ const NavItems = styled.ul`
   display: flex;
   align-items: center;
   justify-content: start;
+  flex: 1;
   & li {
     list-style: none;
     margin-right: 20px;
@@ -112,7 +118,6 @@ export const NavControls = styled.div`
   padding: 10px;
   display: flex;
   align-items: center;
-  flex: 1;
   justify-content: flex-end;
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     display: none;
