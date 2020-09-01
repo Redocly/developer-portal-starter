@@ -8,8 +8,11 @@ import UserMenu from '../components/UserMenu';
 export default function NavBar(props) {
   const { items, logo, location } = props;
   const isMain = location.pathname !== '/'; // Change the color of the NavBar based on location
+  const [user, setUser] = React.useState(null);
 
-  const user = getUserClaims()
+  React.useEffect(() => {
+    setUser(getUserClaims());
+  }, []);
 
   const [isMobileMenuOpened, setMobileMenuOpened] = React.useState(false);
   const toggleMobileMenu = () => setMobileMenuOpened(!isMobileMenuOpened);
@@ -28,10 +31,12 @@ export default function NavBar(props) {
   return (
     <NavWrapper hasBackground={isMain}>
       <Flex p="20px" flex="1">
-        <img src={logo} alt="" height="50" />
+        <a href="/">
+          <img src={logo} alt="" height="50" />
+        </a>
         <NavItems>
           {navItems}
-          <SearchBox style={{marginLeft: 'auto'}} pathPrefix={props.pathPrefix} />
+          <SearchBox style={{ marginLeft: 'auto' }} pathPrefix={props.pathPrefix} />
         </NavItems>
       </Flex>
       {user && <UserMenu user={user} />}
