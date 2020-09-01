@@ -97,6 +97,7 @@ const UserPopover = styled.div<{ opened: boolean }>`
   background: #ffffff;
 
   display: ${({ opened }) => (opened ? 'block' : 'none')};
+  z-index: 1000;
 `;
 
 const UserInfoWrapper = styled.div`
