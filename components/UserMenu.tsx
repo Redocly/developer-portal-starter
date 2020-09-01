@@ -10,6 +10,7 @@ export default function UserMenu(props: {
     family_name?: string;
     name?: string;
     email?: string;
+    picture?: string;
   };
 }) {
   const { user } = props;
@@ -33,7 +34,7 @@ export default function UserMenu(props: {
     name = user.email;
   } else {
     letters = 'UU';
-    name = 'Unknown User'
+    name = 'Unknown User';
   }
 
   const popoverRef = React.useRef<HTMLDivElement>();
@@ -42,18 +43,20 @@ export default function UserMenu(props: {
   return (
     <>
       <UserLetterBox
-        style={{ cursor: 'pointer' }}
+        style={{
+          cursor: 'pointer',
+        }}
       >
-        <UserLetterBox onClick={toggleOpened}>{letters}</UserLetterBox>
+        <UserLetterBox onClick={toggleOpened} picture={user.picture}>
+          {letters}
+        </UserLetterBox>
       </UserLetterBox>
       <UserPopover ref={popoverRef} opened={opened}>
         <UserInfoWrapper>
-          <UserLetterBox>{letters}</UserLetterBox>
+          <UserLetterBox picture={user.picture}>{letters}</UserLetterBox>
           <UserInfo> {name} </UserInfo>
         </UserInfoWrapper>
-        <MenuItem onClick={logout}>
-          Log out
-        </MenuItem>
+        <MenuItem onClick={logout}>Log out</MenuItem>
       </UserPopover>
     </>
   );
@@ -70,6 +73,10 @@ const UserLetterBox = props => (
     justifyContent={'center'}
     marginLeft={'auto'}
     alignSelf={'center'}
+    style={{
+      backgroundSize: 'cover',
+      backgroundImage: props.picture ? `url('${props.picture}')` : 'none',
+    }}
     {...props}
   >
     <UserLetters>{props.children}</UserLetters>
@@ -114,7 +121,7 @@ const UserInfo = styled.div`
   font-size: 16px;
   line-height: 20px;
   color: #000;
-`
+`;
 
 const MenuItem = styled.div`
   height: 40px;
@@ -132,7 +139,7 @@ const MenuItem = styled.div`
   &:hover {
     background-color: #f2f2f2;
   }
-`
+`;
 
 function usePopoverState(ref) {
   const [opened, setOpened] = React.useState(false);
@@ -143,7 +150,7 @@ function usePopoverState(ref) {
   function handleClickOutside(event) {
     if (ref.current && !ref.current.contains(event.target)) {
       setTimeout(() => {
-        setOpened(false)
+        setOpened(false);
       }, 0);
     }
   }
