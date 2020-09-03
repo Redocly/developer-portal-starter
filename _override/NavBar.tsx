@@ -1,7 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Flex, Link, SearchBox, getUserClaims } from '@redocly/ui';
+import {
+  Flex, Link, SearchBox,
+  getUserClaims, getIdPJwt, getIdPAccessToken, parseClaims
+} from '@redocly/ui';
 
 import UserMenu from '../components/UserMenu';
 
@@ -11,7 +14,18 @@ export default function NavBar(props) {
   const [user, setUser] = React.useState(null);
 
   React.useEffect(() => {
-    setUser(getUserClaims());
+    const userClaims = getUserClaims();
+    const userIdPJwt = getIdPJwt(); // get user ID token from IdP, we don't use it, but it may be used to authorize requests
+    const userIdPAccessToken = getIdPAccessToken(); // get user ID Access Token from IdP, can be used to authorized requests
+
+    const accessTokenClaims = parseClaims(userIdPAccessToken); // id token CAN have claims too, Cognito one has
+
+    console.log('User Claims=', userClaims);
+    console.log('User Access Token Claims', accessTokenClaims);
+    console.log('User IdP Id Token=', userIdPJwt);
+    console.log('User IdP Access Token=', userIdPAccessToken);
+
+    setUser(userClaims);
   }, []);
 
   const [isMobileMenuOpened, setMobileMenuOpened] = React.useState(false);
