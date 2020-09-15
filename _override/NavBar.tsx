@@ -62,7 +62,7 @@ export default function NavBar(props) {
           <SearchBox style={{ marginLeft: 'auto' }} pathPrefix={props.pathPrefix} />
         </NavItems>
       </Flex>
-      {!isLoggedIn && user ? (
+      {isLoggedIn && user ? (
         <UserMenu user={user} />
       ) : (
         <LoginWrap>
