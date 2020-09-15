@@ -1,11 +1,41 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Flex, Link, SearchBox } from '@redocly/ui';
+import {
+  Flex,
+  Link,
+  SearchBox,
+  getUserClaims,
+  getIdPJwt,
+  getIdPAccessToken,
+  parseClaims,
+  useIsLoggedIn,
+  LoginPageLink,
+} from '@redocly/ui';
+
+import UserMenu from '../components/UserMenu';
 
 export default function NavBar(props) {
   const { items, logo, location } = props;
   const isMain = location.pathname !== '/'; // Change the color of the NavBar based on location
+  const [user, setUser] = React.useState(null);
+
+  React.useEffect(() => {
+    const userClaims = getUserClaims();
+    const userIdPJwt = getIdPJwt(); // get user ID token from IdP, we don't use it, but it may be used to authorize requests
+    const userIdPAccessToken = getIdPAccessToken(); // get user ID Access Token from IdP, can be used to authorized requests
+
+    const accessTokenClaims = parseClaims(userIdPAccessToken); // id token CAN have claims too, Cognito one has
+
+    console.log('User Claims=', userClaims);
+    console.log('User Access Token Claims', accessTokenClaims);
+    console.log('User IdP Id Token=', userIdPJwt);
+    console.log('User IdP Access Token=', userIdPAccessToken);
+
+    setUser(userClaims);
+  }, []);
+
+  const isLoggedIn = useIsLoggedIn();
 
   const [isMobileMenuOpened, setMobileMenuOpened] = React.useState(false);
   const toggleMobileMenu = () => setMobileMenuOpened(!isMobileMenuOpened);
@@ -23,13 +53,24 @@ export default function NavBar(props) {
 
   return (
     <NavWrapper hasBackground={isMain}>
-      <Flex p="20px">
-        <img src={logo} alt="" height="50" />
+      <Flex p="20px" flex="1">
+        <a href="/">
+          <img src={logo} alt="" height="50" />
+        </a>
         <NavItems>
           {navItems}
-          <SearchBox pathPrefix={props.pathPrefix} />
+          <SearchBox style={{ marginLeft: 'auto' }} pathPrefix={props.pathPrefix} />
         </NavItems>
       </Flex>
+      {isLoggedIn && user ? (
+        <UserMenu user={user} />
+      ) : (
+        <LoginWrap>
+          <LoginPageLink>
+            Login
+          </LoginPageLink>
+        </LoginWrap>
+      )}
       <NavControls>
         <MobileMenuIcon onClick={toggleMobileMenu} />
       </NavControls>
@@ -51,12 +92,27 @@ const NavWrapper = styled.div<{ hasBackground: boolean }>`
   background: ${({ hasBackground }) => (hasBackground ? '#227a88' : 'transparent')};
 `;
 
+const LoginWrap = styled.div`
+  align-self: center;
+  padding: 20px 10px;
+  margin-right: 10px;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #fff;
+  }
+`
+
 const NavItems = styled.ul`
   margin: 0 0 0 40px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: start;
+  flex: 1;
   & li {
     list-style: none;
     margin-right: 20px;
@@ -112,7 +168,6 @@ export const NavControls = styled.div`
   padding: 10px;
   display: flex;
   align-items: center;
-  flex: 1;
   justify-content: flex-end;
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     display: none;

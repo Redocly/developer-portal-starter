@@ -1,0 +1,11 @@
+---
+requestLogin: true
+---
+
+import { getUserClaims } from '@redocly/ui';
+
+# User Profile
+
+We can use user tokens here in custom components:
+
+<pre>{JSON.stringify(getUserClaims(), null, 2)}</pre>
