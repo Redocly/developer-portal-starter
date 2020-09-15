@@ -2,8 +2,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import {
-  Flex, Link, SearchBox,
-  getUserClaims, getIdPJwt, getIdPAccessToken, parseClaims
+  Flex,
+  Link,
+  SearchBox,
+  getUserClaims,
+  getIdPJwt,
+  getIdPAccessToken,
+  parseClaims,
+  useIsLoggedIn,
+  LoginPageLink,
 } from '@redocly/ui';
 
 import UserMenu from '../components/UserMenu';
@@ -27,6 +34,8 @@ export default function NavBar(props) {
 
     setUser(userClaims);
   }, []);
+
+  const isLoggedIn = useIsLoggedIn();
 
   const [isMobileMenuOpened, setMobileMenuOpened] = React.useState(false);
   const toggleMobileMenu = () => setMobileMenuOpened(!isMobileMenuOpened);
@@ -53,7 +62,15 @@ export default function NavBar(props) {
           <SearchBox style={{ marginLeft: 'auto' }} pathPrefix={props.pathPrefix} />
         </NavItems>
       </Flex>
-      {user && <UserMenu user={user} />}
+      {!isLoggedIn && user ? (
+        <UserMenu user={user} />
+      ) : (
+        <LoginWrap>
+          <LoginPageLink>
+            Login
+          </LoginPageLink>
+        </LoginWrap>
+      )}
       <NavControls>
         <MobileMenuIcon onClick={toggleMobileMenu} />
       </NavControls>
@@ -74,6 +91,20 @@ const NavWrapper = styled.div<{ hasBackground: boolean }>`
   display: flex;
   background: ${({ hasBackground }) => (hasBackground ? '#227a88' : 'transparent')};
 `;
+
+const LoginWrap = styled.div`
+  align-self: center;
+  padding: 20px 10px;
+  margin-right: 10px;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #fff;
+  }
+`
 
 const NavItems = styled.ul`
   margin: 0 0 0 40px;

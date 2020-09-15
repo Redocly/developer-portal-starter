@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Flex, logout } from '@redocly/ui';
+import { Flex, Link, logout } from '@redocly/ui';
 
 export default function UserMenu(props: {
   user: {
@@ -56,6 +56,7 @@ export default function UserMenu(props: {
           <UserLetterBox picture={user.picture}>{letters}</UserLetterBox>
           <UserInfo> {name} </UserInfo>
         </UserInfoWrapper>
+        <MenuItem><Link to="/profile">Profile</Link></MenuItem>
         <MenuItem onClick={logout}>Log out</MenuItem>
       </UserPopover>
     </>
@@ -105,6 +106,11 @@ const UserPopover = styled.div<{ opened: boolean }>`
 
   display: ${({ opened }) => (opened ? 'block' : 'none')};
   z-index: 1000;
+
+  a, a:hover, a:visited {
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 const UserInfoWrapper = styled.div`
