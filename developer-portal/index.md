@@ -13,7 +13,7 @@ Spend between an hour and a day playing with the most commonly utilized features
 - Basic Git and markdown knowledge
 - Node and yarn installed
 - A text editor or IDE (we like VS Code)
-- [Setup the developer portal](setup.md)
+- [Set up the developer portal](setup.md)
 
 ## Training exercises
 

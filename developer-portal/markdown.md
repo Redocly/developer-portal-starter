@@ -1,59 +1,55 @@
 ---
 title: Markdown example
-description: GitHub-flavored markdown example
+description: Using GitHub-flavored markdown example
 enableToc: true
 ---
-# GitHub-flavored markdown example
+# Using GitHub-flavored markdown example
 
 These exercises assume you have [basic markdown knowledge](https://docs.redoc.ly/developer-portal/markdown/).
 
 ## Create a new plain markdown page
 
-In the `developer-portal` folder, create a new file named `plain.md`.
+1. In the `developer-portal` folder, create a new file named `plain.md`.
+2. Copy/paste this content into the file (or write some of your own), and save the file.
 
-Copy/paste this content into the file (or write some of your own). And save the file.
+  ```markdown
+  # H1
 
-```markdown
-# H1
+  Body text.
 
-Body text.
+  ## H2
 
-## H2
+  Body text.
 
-Body text.
+  ### H3
 
-### H3
+  Body text.
+  ```
 
-Body text.
+**Tip**: The URL in the address bar is localhost:3000/developer-portal/plain. The file name maps to the URL path.
 
-Notice the URL in the address bar is localhost:3000/developer-portal/plain.
-The file name maps to the URL path.
+[Take me back to the markdown training exercise](markdown.md)
 
-[take me back to the markdown training exercise](markdown.md)
-```
-
-So now you've create a page, but how do you access it?
+Once you have created a page, you can add more functionality described below.
 
 ### Accessing your new content
 
 #### Link to it from other pages
 
-You can create a link to it.
+You can create a link to your `plain.md` page from other pages.
 
-To do that, you can edit this `markdown.md` file and remove the back ticks around this example.
+To do this, edit the `markdown.md` file and remove the back ticks around this example.
 
 ```markdown
 [My first plain markdown page!](plain.md)
 ```
+(Remember to save your file!)
 
-(And save your file.)
-
-You'll notice the terminal will output a message stating that the file changed.
-Also, you can watch your page in the browser and notice it will update automatically.
+You will notice the terminal will output a message stating that a file changed. Also, you can watch your page in the browser and notice it will update automatically.
 
 ![markdown file changed](./images/markdown-file-changed.png)
 
-Then you can click on your link.
+To access the page, click on your link.
 
 #### Link to it from navigation
 
@@ -64,45 +60,42 @@ You can also link to your page from various navigation elements:
 
 If you link to it from sidebar navigation, the sidebar will display on the page.
 
-Linking to it from navigation is the subject of other training exercises.
+You will learn about linking from navigation in another training exercise.
 
 ## Add an image to your markdown page
 
-You can copy/paste this into your page.
+To add an image manually, copy/paste this into your page.
 ```markdown
 ![markdown file changed](./images/markdown-file-changed.png)
 ```
 
-Or, you can add an image.
 You can add an image anywhere in the directory structure.
-We created this directory path `developer-portal/images/` to store the training exercise images.
-It's important to note that the relative path to the image file is from the markdown file you are referencing it from.
+We recommended using `developer-portal/images/` directory path to store the training exercise images.
+Note: The relative path to the image file is from the markdown file you are referencing it from.
 
-If the image looks blurry it is related to the development server.
-Refresh your browser page and the image should load.
-If the image is broken (does not load), it indicates the path to the image is incorrect.
+**Tips**
+- If the image looks blurry, it may be related to the development server. Refresh your browser page and the image should load.
+- If the image is broken (does not load), it indicates the path to the image is incorrect.
 The `./` start means starting from the current directory.
 The `../` moves up to the parent directory.
 And `../../` moves up two levels.
-And so on.
 
 
 Training exercise accomplished?
 
-## Let's add a video too
+## Add a video to your markdown page
 
-Find a video online and copy the "embed" code (or use this below).
+You can find a video online and copy the "embed" code (or use this below).
 ```
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NcEHOlnAY6A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
-Then paste it in the markdown and voila!
+Paste it in the markdown and voila!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NcEHOlnAY6A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Review
 
-You made a new file.
-It ended with the `.md` file extension.
-The name could be seen in the URL path in the browser bar (the full path includes any folders it is in).
-You included images and videos on your page.
+At the end of this topic, you would have:
+- Created a new file, ending with the `.md` file extension. You can view the name in the URL path in the browser bar (the full path includes any folders it is in).
+- Included images and videos on your page.

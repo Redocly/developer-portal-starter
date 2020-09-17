@@ -1,15 +1,15 @@
 training:
   - page: developer-portal/index.md
+  - label: Setting up the developer portal
+    page: developer-portal/setup.md
   - group: Training exercises
     expanded: true
     pages:
-      - label: Setup
-        page: developer-portal/setup.md
-      - label: Markdown
+      - label: Using Markdown for pages
         page: developer-portal/markdown.md
-      - label: Folder structure
+      - label: About Folder structure
         page: developer-portal/awesome/folders.md
-      - label: Mermaid diagrams
+      - label: Using Mermaid diagrams
         page: developer-portal/mermaid.md
       - label: Page table of contents
         page: developer-portal/page-table-of-contents.md
