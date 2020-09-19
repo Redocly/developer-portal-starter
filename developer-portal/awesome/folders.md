@@ -30,12 +30,12 @@ Rename the `folders.md` file to `index.md`.
 
 You will also need to change references to that file, which exist in the `sidebars.yaml` file located in the root directory.
 
-```Original
+```yaml Original
       - label: Folder structure
         page: developer-portal/awesome/folders.md
 ```
 
-```New
+```yaml New
       - label: Folder structure
         page: developer-portal/awesome/index.md
 ```
@@ -51,12 +51,12 @@ The root directory means it will site side-by-side with other files and folders 
 This file is referenced in `sidebars.yaml`.
 Adjust the relative path to the file from there again.
 
-```Original
+```yaml Original
       - label: Folder structure
         page: developer-portal/awesome/folders.md
 ```
 
-```New
+```yaml New
       - label: Folder structure
         page: folders.md
 ```

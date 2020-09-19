@@ -19,7 +19,7 @@ Notice it renders without any sidebar.
 
 ### Add the upgrade page to the sidebar
 
-```Before
+```yaml Before
 training:
   - group: Developer portal starter
     expanded: true
@@ -34,7 +34,7 @@ training:
 
 ```
 
-```After
+```yaml After
 training:
   - group: Developer portal starter
     expanded: true
