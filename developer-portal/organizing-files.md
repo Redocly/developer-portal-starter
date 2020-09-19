@@ -14,7 +14,7 @@ For details on file types used in **Redocly Portal**, see [Configuration](config
 
 Your files should be organized into folders. The folder naming is reflected in the URL path.
 
-```
+```bash
 ├── ./README.md
 ├── ./contact.mdx
 ├── ./faq.md
@@ -44,7 +44,6 @@ Your files should be organized into folders. The folder naming is reflected in t
 │   ├── ./developer-portal/introduction.md
 │   ├── ./developer-portal/markdown-extensions.mdx
 │   ├── ./developer-portal/markdown.md
-│   ├── ./developer-portal/quickstart.md
 │   ├── ./developer-portal/redoc-integration.md
 │   ├── ./developer-portal/sidebar-nav.md
 │   └── ./developer-portal/top-navigation.md

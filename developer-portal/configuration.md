@@ -24,7 +24,7 @@ The following special folders will be created automatically within your project:
 2. **node_modules**/ – do not remove or modify the contents of this folder. It contains the software library dependencies.
 
 We recommend creating folders based on your content, and then organizing the content within one root folder:
-```
+```bash
 [_folder_name_]/
 ```
 **Important**: The folder naming influences the URL paths of the published website.

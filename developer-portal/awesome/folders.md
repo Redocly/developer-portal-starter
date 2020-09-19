@@ -18,9 +18,7 @@ If the file is named `index.md` or `index.mdx` the filename does not appear in t
 
 If we renamed `folders.md` to `index.md` and left it in the same folder, what would the URL be?
 
-```
-http://localhost:3000/developer-portal/awesome/
-```
+- `http://localhost:3000/developer-portal/awesome/`
 
 Let's try it out...
 
@@ -30,12 +28,12 @@ Rename the `folders.md` file to `index.md`.
 
 You will also need to change references to that file, which exist in the `sidebars.yaml` file located in the root directory.
 
-```Original
+```yaml Original
       - label: Folder structure
         page: developer-portal/awesome/folders.md
 ```
 
-```New
+```yaml New
       - label: Folder structure
         page: developer-portal/awesome/index.md
 ```
@@ -51,12 +49,12 @@ The root directory means it will site side-by-side with other files and folders 
 This file is referenced in `sidebars.yaml`.
 Adjust the relative path to the file from there again.
 
-```Original
+```yaml Original
       - label: Folder structure
         page: developer-portal/awesome/folders.md
 ```
 
-```New
+```yaml New
       - label: Folder structure
         page: folders.md
 ```

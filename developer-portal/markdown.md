@@ -92,7 +92,7 @@ Training exercise accomplished?
 ## Let's add a video too
 
 Find a video online and copy the "embed" code (or use this below).
-```
+```html
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NcEHOlnAY6A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 

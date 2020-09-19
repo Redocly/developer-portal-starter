@@ -35,7 +35,7 @@ Open the `index.mdx` file and spend a few minutes reviewing the structure.
 
 If you do want the sidebar navigation with the MDX file, be sure you remove or comment this line, or you will see two top nav bars.
 
-```mdx
+```jsx mdx
   <NavBar location={props.location} standalone={false} />
 ```
 

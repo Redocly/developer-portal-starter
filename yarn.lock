@@ -1786,10 +1786,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.78":
-  version "1.0.0-beta.78"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.78.tgz#9df82dde01bde71f0f5414fc3474dbcdb72dcc3f"
-  integrity sha512-7hYOC1SGL45aYfHIrTbnI7ht1dH47ZREBdASOldjxtn/G8jotOh/2yPvZkO7CVUm/F/hEARN5jTApQc8WjWF4Q==
+"@redocly/developer-portal@1.0.0-beta.81":
+  version "1.0.0-beta.81"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.81.tgz#9f9c50ac68a81e3227cf404aba5854cc2283aa4f"
+  integrity sha512-mN1NVFux4bK0QyZtdRcALmCjWvWyiy1VzfgSmhJh1ZIFRd2QOZhQW2FKV0IF9rcrPmqtTqhDmgC8pGSU7CMJRQ==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1800,7 +1800,7 @@
     "@redocly/gatsby-plugin-sharp" "^2.6.11"
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
-    "@redocly/reference-docs-lib" "^1.2.1"
+    "@redocly/reference-docs-lib" "^1.2.2"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1940,10 +1940,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/reference-docs-lib@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.2.1.tgz#c9aa02575a6971d080a8f800df6b742aae15993d"
-  integrity sha512-RUl0xcgdYOv1PAeFNXCrSYwA0PM/12jH3xrn/s/gyrjGySfwQiMdD822gCgkPQ4LEjirBTMpWmMVa+OlmUTnsw==
+"@redocly/reference-docs-lib@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.2.2.tgz#68b5c688b332df53b11ff98f9fbfee46ecd5d764"
+  integrity sha512-4rblDmJLA6VXod5n3eP/BkZdsY8luQQraNucSHcBiSQb8uhZ+PgN1eoShhacWbQb9i87BjXu21VV9wzZHxa96w==
   dependencies:
     "@redocly/vscode-json-languageservice" "^3.4.7"
     codemirror "^5.52.2"
