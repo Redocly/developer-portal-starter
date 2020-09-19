@@ -18,9 +18,7 @@ If the file is named `index.md` or `index.mdx` the filename does not appear in t
 
 If we renamed `folders.md` to `index.md` and left it in the same folder, what would the URL be?
 
-```
-http://localhost:3000/developer-portal/awesome/
-```
+- `http://localhost:3000/developer-portal/awesome/`
 
 Let's try it out...
 

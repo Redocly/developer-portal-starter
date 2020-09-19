@@ -8,10 +8,10 @@ Also, the actual search index functionality does not work in the development ser
 
 Open the `siteConfig.yaml`.
 
-```before
+```yaml before
   - search: true
 ```
-```after
+```yaml after
 #  - search: true
 ```
 

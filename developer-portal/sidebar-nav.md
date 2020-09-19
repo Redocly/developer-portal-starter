@@ -136,7 +136,7 @@ Your developer portal may have more than one sidebar.
 
 See that demo in the `sidebars.yaml`.
 
-```
+```yaml
 alternative:
   - page: developer-portal/sidebar-alternative.md
     label: Alternative sidebar example

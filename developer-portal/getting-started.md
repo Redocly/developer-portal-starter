@@ -35,10 +35,10 @@ yarn install
 
 **NOTE**: If an error occurs during the installation, delete the `yarn.lock` file, and then try to install **Redocly Portal** again.
 
-```
+```bash Remove yarn.lock
 rm yarn.lock
 ```
-```bash
+```bash Yarn install
 yarn install
 ```
 If the installation problem persists, please contact the [Redocly support](contact@redoc.ly).
