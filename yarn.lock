@@ -14920,6 +14920,16 @@ swap-case@^1.1.0:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
 
+sweetalert2-react-content@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2-react-content/-/sweetalert2-react-content-3.2.0.tgz#fbbd219177901ef639b8b685c467e35ff8f28770"
+  integrity sha512-Zd75ZZZh7byFHIppsBl04NrIpqQUyjIazBrCb6NwZIDi7Uv7gbvTGO5+yJqgAzjrY29lXOUOyLmY2riKoc69Pg==
+
+sweetalert2@^10.3.7:
+  version "10.3.7"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.3.7.tgz#bd68352b980016f52ff0c1a8e96f406c44df731b"
+  integrity sha512-Zp9rolSdH8SnUPhTF31QgK0Vb7HtSjEJ1b4Mw+fbQtCU25I+/P61ahbGNxSAEwLWKVZFvPbOeCr3Yj7NyClh9g==
+
 symbol-observable@^1.0.4, symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
