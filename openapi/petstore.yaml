@@ -92,7 +92,10 @@ paths:
               default: available
       responses:
         '200':
-          description: successful operation
+          description: |
+            | One | Two | Three | Four  | Five  |
+            |-----|-----|-------|-------|-------|
+            | a   | b   | c     | d     | e     |
           content:
             application/xml:
               schema:
@@ -105,7 +108,19 @@ paths:
                 items:
                   $ref: '#/components/schemas/Pet'
         '400':
-          description: Invalid status value
+          description: |
+            <table>
+              <tr>
+                <td>One</td>
+                <td>Two</td>
+                <td>Three</td>
+              </tr>
+              <tr>
+                <td>a</td>
+                <td>b</td>
+                <td>c</td>
+              </tr>
+            </table> 
       security:
         - petstore_auth:
             - 'write:pets'
