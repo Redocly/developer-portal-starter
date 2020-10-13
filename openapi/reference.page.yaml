@@ -1,4 +1,6 @@
 type: redoc
 definitionId: petstore
 showInfo: true
-expand: true
+expand: false
+settings:
+  expandResponses: '200,201'
