@@ -23,7 +23,7 @@ We heavily rely on caching for performance issues so if some changes are not ref
 
 ## Docs
 
-Read the [online documentation](https://docs.redoc.ly/developer-portal/introduction/).
+Read the [online documentation](https://redoc.ly/docs/developer-portal/introduction/).
 
 ## Training program
 
