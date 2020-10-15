@@ -25,10 +25,12 @@ import launchFastIcon from './images/launch-fast.svg';
 import icon3 from './images/icon3.png';
 import bookManagementIcon from './images/book-management.svg';
 import foundOrPrivate from './images/found-or-private.svg';
+import { Modal } from './components/Modal.tsx';
 
 export default LandingLayout;
 
 <Jumbotron>
+  <Modal />
   <NavBar location={props.location} standalone={false} />
   <H1>Redocly training</H1>
   <H2>A starter developer portal with training exercises</H2>
