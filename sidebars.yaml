@@ -42,7 +42,7 @@ training:
     expanded: false
     pages:
       - page: openapi/reference.page.yaml/*
-
+  - page: openapi/example.page.yaml
   - group: Admin
     expanded: true
     pages:
