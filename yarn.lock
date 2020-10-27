@@ -1787,10 +1787,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.83":
-  version "1.0.0-beta.83"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.83.tgz#fd352914fbfe40775eb185214b99d3ca52d3e042"
-  integrity sha512-t+KUoNwf3lNKmEkWLouVGWcIOZRffSlp5lyM1wiv1MGM5oiQigwswSKqQixHtCbj3meO6f/el+ess5mbSgd+Mw==
+"@redocly/developer-portal@1.0.0-beta.84":
+  version "1.0.0-beta.84"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.84.tgz#782b72f54c32f733162c10a078aca0f7ee7215b6"
+  integrity sha512-1l1OpT7gSybdqOOSbS11hNiEldwRYvJSI1hWCri395CZtsLdnpBn0DKKznrwRle3gFd1eJFXoYYIS/3bYXUtTg==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
