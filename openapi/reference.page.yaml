@@ -1,4 +1,7 @@
 type: redoc
 definitionId: petstore
 showInfo: true
-expand: true
+expand: false
+title: Petstore reference
+settings:
+  expandResponses: '200,201'
