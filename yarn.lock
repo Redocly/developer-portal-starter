@@ -1787,10 +1787,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.83":
-  version "1.0.0-beta.83"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.83.tgz#fd352914fbfe40775eb185214b99d3ca52d3e042"
-  integrity sha512-t+KUoNwf3lNKmEkWLouVGWcIOZRffSlp5lyM1wiv1MGM5oiQigwswSKqQixHtCbj3meO6f/el+ess5mbSgd+Mw==
+"@redocly/developer-portal@1.0.0-beta.86":
+  version "1.0.0-beta.86"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.86.tgz#9129160cf6327a3861c920a3ffa07c31562f24b1"
+  integrity sha512-Af+Tq+GcP+2TJhaUfiJthxTd9/XO6qmwDSL/eN004a4TKq3NtLQsnBi/DfW1/tN593A90FdDGoyXNkvg2GOodw==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1801,7 +1801,8 @@
     "@redocly/gatsby-plugin-sharp" "^2.6.11"
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
-    "@redocly/reference-docs-lib" "1.2.5"
+    "@redocly/redoc-int" "2.0.0-rc.46"
+    "@redocly/reference-docs-lib" "^1.3.1"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1845,7 +1846,6 @@
     react-helmet "5.2.1"
     react-simple-dropdown "^3.2.3"
     react-string-replace "^0.4.2"
-    redoc "2.0.0-rc.44"
     shortid "^2.2.14"
     simple-git "^1.110.0"
     slash "3.0.0"
@@ -1941,11 +1941,72 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/reference-docs-lib@1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.2.5.tgz#eb64b62143c45840f37355d8b88add52f3c4cb06"
-  integrity sha512-CZddTWwCTI82LZROaG6oMu6hajwjCcKZD29SeXNn6lWGrA2nU2IO8MgPkyf9ClOu/gJNVzEW9dfOMiHgNJu5xg==
+"@redocly/redoc-int@2.0.0-rc.46":
+  version "2.0.0-rc.46"
+  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.46.tgz#7485457620ea40a0c40a8aef284cc2fc3fd0dfbd"
+  integrity sha512-UiA0EouOgDT5uuAF5/xbiAOjOYgJsMO+dPaoiPfdrY2qcTtxI7sPys00hEIiUw8rxuy7WXwis+QT7v9WCBNqRA==
   dependencies:
+    "@redocly/react-dropdown-aria" "^2.0.11"
+    "@types/node" "^13.11.1"
+    classnames "^2.2.6"
+    decko "^1.2.0"
+    dompurify "^2.0.12"
+    eventemitter3 "^4.0.4"
+    json-pointer "^0.6.0"
+    json-schema-ref-parser "^6.1.0"
+    lunr "2.3.8"
+    mark.js "^8.11.1"
+    marked "^0.7.0"
+    memoize-one "~5.1.1"
+    mobx-react "^6.2.2"
+    openapi-sampler "^1.0.0-beta.16"
+    perfect-scrollbar "^1.4.0"
+    polished "^3.6.5"
+    prismjs "^1.20.0"
+    prop-types "^15.7.2"
+    react-tabs "^3.1.1"
+    slugify "^1.4.4"
+    stickyfill "^1.1.1"
+    swagger2openapi "^6.2.1"
+    tslib "^2.0.0"
+    url-template "^2.0.8"
+
+"@redocly/redoc-int@^2.0.0-rc.48":
+  version "2.0.0-rc.48"
+  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.48.tgz#3ecdff900a04567da7b69941430f2b56fbd91b7f"
+  integrity sha512-+jgTNVU6KkNe8lm14tdOJZUWWiWJJ/BPRVOpNPDJCj7fu3Q0P7+OpW0PtZM6ZQ24b3Rv1P+MG9f3jhSW6YKPIA==
+  dependencies:
+    "@redocly/react-dropdown-aria" "^2.0.11"
+    "@types/node" "^13.11.1"
+    classnames "^2.2.6"
+    decko "^1.2.0"
+    dompurify "^2.0.12"
+    eventemitter3 "^4.0.4"
+    json-pointer "^0.6.0"
+    json-schema-ref-parser "^6.1.0"
+    lunr "2.3.8"
+    mark.js "^8.11.1"
+    marked "^0.7.0"
+    memoize-one "~5.1.1"
+    mobx-react "^6.2.2"
+    openapi-sampler "^1.0.0-beta.16"
+    perfect-scrollbar "^1.4.0"
+    polished "^3.6.5"
+    prismjs "^1.20.0"
+    prop-types "^15.7.2"
+    react-tabs "^3.1.1"
+    slugify "^1.4.4"
+    stickyfill "^1.1.1"
+    swagger2openapi "^6.2.1"
+    tslib "^2.0.0"
+    url-template "^2.0.8"
+
+"@redocly/reference-docs-lib@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.1.tgz#00a2d103a4574c91fdf784cfcde24fc926649a77"
+  integrity sha512-E1zQnB/TpFixqlDvi6ZU5K2zz/pm3eVfXXE0P7E2HHkYjtO5zHbRRSVAM7W9GwCdX1qMFBwu6oyAo3iqu7KtUA==
+  dependencies:
+    "@redocly/redoc-int" "^2.0.0-rc.48"
     "@redocly/vscode-json-languageservice" "^3.4.7"
     codemirror "^5.52.2"
     core-js "^3.5.0"
@@ -1958,8 +2019,9 @@
     marked "^0.7.0"
     mobx "^6.0.1"
     node-libs-browser "^2.2.0"
+    query-string "^6.13.6"
     react-codemirror2 "^7.1.0"
-    redoc "2.0.0-rc.44"
+    stringify-object "^3.3.0"
     styled-components "^4.1.1"
     swagger-client "3.10.12"
     tslib "^1.9.3"
@@ -7533,6 +7595,11 @@ get-nonce@^1.0.0:
   resolved "https://registry.yarnpkg.com/get-nonce/-/get-nonce-1.0.1.tgz#fdf3f0278073820d2ce9426c18f07481b1e0cdf3"
   integrity sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==
 
+get-own-enumerable-property-symbols@^3.0.0:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.2.tgz#b5fde77f22cbe35f390b4e089922c50bce6ef664"
+  integrity sha512-I0UBV/XOz1XkIJHEUDMZAbzCThU/H8DxmSfmdGcKPnVhu2VfFqr34jr9777IyaTYvxjedWhqVIilEDsCdP5G6g==
+
 get-port@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/get-port/-/get-port-3.2.0.tgz#dd7ce7de187c06c8bf353796ac71e099f0980ebc"
@@ -9175,6 +9242,11 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
+is-obj@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
+
 is-obj@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-2.0.0.tgz#473fb05d973705e3fd9620545018ca8e22ef4982"
@@ -9237,6 +9309,11 @@ is-regex@^1.0.4, is-regex@^1.1.1:
   integrity sha512-1+QkEcxiLlB7VEyFtyBg94e08OAsvq7FUBgApTq/w2ymCLyKJgDPsybBENVtA7XCQEgEXxKPonG+mvYRxh/LIg==
   dependencies:
     has-symbols "^1.0.1"
+
+is-regexp@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
+  integrity sha1-/S2INUXEa6xaYz57mgnof6LLUGk=
 
 is-relative-url@^3.0.0:
   version "3.0.0"
@@ -12644,7 +12721,7 @@ query-string@^5.0.1:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
-query-string@^6.12.1, query-string@^6.13.1:
+query-string@^6.12.1, query-string@^6.13.1, query-string@^6.13.6:
   version "6.13.6"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.6.tgz#e5ac7c74f2a5da43fbca0b883b4f0bafba439966"
   integrity sha512-/WWZ7d9na6s2wMEGdVCVgKWE9Rt7nYyNIf7k8xmHXcesPMlEzicWo3lbYwHyA4wBktI2KrXxxZeACLbE84hvSQ==
@@ -13096,36 +13173,6 @@ redent@^1.0.0:
   dependencies:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
-
-redoc@2.0.0-rc.44:
-  version "2.0.0-rc.44"
-  resolved "https://registry.yarnpkg.com/redoc/-/redoc-2.0.0-rc.44.tgz#071a94665c2bb66678da53406a0a55b982a55081"
-  integrity sha512-IK8T8jd4NKDdYmwrAQ2RYq3Q+YuTvj037v4D6+qdzh8CMQJViz4aZFHsbWGr1LuiliHzgH0WkDqi7tvlZXye5Q==
-  dependencies:
-    "@redocly/react-dropdown-aria" "^2.0.11"
-    "@types/node" "^13.11.1"
-    classnames "^2.2.6"
-    decko "^1.2.0"
-    dompurify "^2.0.12"
-    eventemitter3 "^4.0.4"
-    json-pointer "^0.6.0"
-    json-schema-ref-parser "^6.1.0"
-    lunr "2.3.8"
-    mark.js "^8.11.1"
-    marked "^0.7.0"
-    memoize-one "~5.1.1"
-    mobx-react "^6.2.2"
-    openapi-sampler "^1.0.0-beta.16"
-    perfect-scrollbar "^1.4.0"
-    polished "^3.6.5"
-    prismjs "^1.20.0"
-    prop-types "^15.7.2"
-    react-tabs "^3.1.1"
-    slugify "^1.4.4"
-    stickyfill "^1.1.1"
-    swagger2openapi "^6.2.1"
-    tslib "^2.0.0"
-    url-template "^2.0.8"
 
 redux-thunk@^2.3.0:
   version "2.3.0"
@@ -14692,6 +14739,15 @@ stringify-entities@^3.0.0, stringify-entities@^3.0.1:
     character-entities-html4 "^1.0.0"
     character-entities-legacy "^1.0.0"
     xtend "^4.0.0"
+
+stringify-object@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.3.0.tgz#703065aefca19300d3ce88af4f5b3956d7556629"
+  integrity sha512-rHqiFh1elqCQ9WPLIC8I0Q/g/wj5J1eMkyoiD6eoQApWHP0FtlK7rqnhmabL5VUY9JQCcqwwvlOaSuutekgyrw==
+  dependencies:
+    get-own-enumerable-property-symbols "^3.0.0"
+    is-obj "^1.0.1"
+    is-regexp "^1.0.0"
 
 strip-ansi@3.0.1, strip-ansi@^3, strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
