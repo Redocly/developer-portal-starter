@@ -1787,22 +1787,22 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.86":
-  version "1.0.0-beta.86"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.86.tgz#9129160cf6327a3861c920a3ffa07c31562f24b1"
-  integrity sha512-Af+Tq+GcP+2TJhaUfiJthxTd9/XO6qmwDSL/eN004a4TKq3NtLQsnBi/DfW1/tN593A90FdDGoyXNkvg2GOodw==
+"@redocly/developer-portal@1.0.0-beta.87":
+  version "1.0.0-beta.87"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.87.tgz#5db9610886e9be627f95a179e4a6f78dbf4d44cf"
+  integrity sha512-5zgvDyAvu7YQS0hlzVeq6V1JP9jge+/4ZhaoZFkCnf/cmvlLOLB4xTDdqXic4ztTZDt5Rc+CJyMTkdB1IdiDJg==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
     "@babel/preset-react" "^7.0.0"
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
-    "@redocly/gatsby-plugin-favicon" "^3.1.7"
+    "@redocly/gatsby-plugin-favicon" "^3.1.9"
     "@redocly/gatsby-plugin-sharp" "^2.6.11"
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
     "@redocly/redoc-int" "2.0.0-rc.46"
-    "@redocly/reference-docs-lib" "^1.3.1"
+    "@redocly/reference-docs-lib" "^1.3.2"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1860,22 +1860,22 @@
     uuid "^8.3.0"
     yargs "^15.3.1"
 
-"@redocly/favicons-webpack-plugin@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@redocly/favicons-webpack-plugin/-/favicons-webpack-plugin-0.0.9.tgz#2a954d1c96125b71cc2bbf9b8e33cb2e015d99ad"
-  integrity sha512-Sinr/Ljx+IqSXUkgw9oWoTZI1BHg7z41kU9u776IQD4mn4y+nCf4Jj5/2B74nQ8b/sb823saJY1lj7t4vbcXAQ==
+"@redocly/favicons-webpack-plugin@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@redocly/favicons-webpack-plugin/-/favicons-webpack-plugin-0.0.11.tgz#850e674566c9f9341791129e0a6e2aea4cc7e109"
+  integrity sha512-owMmIxf+BzYjq8ndVG49Y9NrNTgM77BnYUfGLhYujLjL/+dgbCTeu8iBZrOzjAi/dNuIMwA99wTGm7BB/wmrCQ==
   dependencies:
     core-js "^2.5.7"
-    favicons "^5.1.1"
+    favicons "^5.3.0"
     loader-utils "^1.1.0"
     lodash "^4.17.10"
 
-"@redocly/gatsby-plugin-favicon@^3.1.7":
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/@redocly/gatsby-plugin-favicon/-/gatsby-plugin-favicon-3.1.7.tgz#6f295a7bc5282ef37efc66da3e15787fbfc43a18"
-  integrity sha512-y5YPiDeqX9DjFIPyA8J13Y5U4J9QeYnlFCJaETnPWcyX27uTtUAFOQWfCd67NgZJmxJBwNAIUfkjZV9MTDRKeA==
+"@redocly/gatsby-plugin-favicon@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@redocly/gatsby-plugin-favicon/-/gatsby-plugin-favicon-3.1.9.tgz#41f2ac848bc6e27d07b502a630e0d107e1fa85f7"
+  integrity sha512-HfDRu+2VpJo+VMm6yDfaxjgSZRIRhUvBCWZ/0iJEyxC+lpGR/dPRK8l8DoINCjEb1aKbOPR3Qybs+tpRaZtoJw==
   dependencies:
-    "@redocly/favicons-webpack-plugin" "^0.0.9"
+    "@redocly/favicons-webpack-plugin" "^0.0.11"
     html-react-parser "^0.6.4"
     lodash "^4.17.11"
 
@@ -2001,10 +2001,10 @@
     tslib "^2.0.0"
     url-template "^2.0.8"
 
-"@redocly/reference-docs-lib@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.1.tgz#00a2d103a4574c91fdf784cfcde24fc926649a77"
-  integrity sha512-E1zQnB/TpFixqlDvi6ZU5K2zz/pm3eVfXXE0P7E2HHkYjtO5zHbRRSVAM7W9GwCdX1qMFBwu6oyAo3iqu7KtUA==
+"@redocly/reference-docs-lib@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.2.tgz#eff209154de08632c712092fb6b3fba622b57123"
+  integrity sha512-IeS6NJGGXo4mU6BjWiEy7mtD69evJ/41mdt4BFQvANoRcAhTMz7XMBcfI3wfAxt8QA1+k5g6TVd9T2YWQYIFFw==
   dependencies:
     "@redocly/redoc-int" "^2.0.0-rc.48"
     "@redocly/vscode-json-languageservice" "^3.4.7"
@@ -6498,7 +6498,7 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-favicons@^5.1.1:
+favicons@^5.3.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/favicons/-/favicons-5.5.0.tgz#4badbecac81ddf2793b8149d0823d97c2077445b"
   integrity sha512-xZ4B+fZDuq2y999iorrYq4KuBT3OIZHU+CVfjOWQbjOC1OiU0xbf6pp4Ju/yAfJn7W74RVrC3Cv0oqR5CLvviw==
