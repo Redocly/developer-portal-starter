@@ -29,7 +29,7 @@ const StyledCard = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: darkmagenta;
+    background-color: ${({ theme }) => theme.colors.primary.main};
     clip-path: polygon(0 0, 100% 0%, 100% 64%, 0 90%);
     z-index: -1;
   }
@@ -39,7 +39,7 @@ const StyledCard = styled.div`
   }
   li {
     color: #fff;
-    font-size: 14px;
+    font-size: ${({ theme }) => theme.typography.fontSize};
     list-style: none;
     margin-bottom: 8px;
     &::before {
@@ -51,8 +51,8 @@ const StyledCard = styled.div`
 
 const CardTitle = styled.h4`
   color: #fff;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.heading3.fontSize};
+  font-weight: ${({ theme }) => theme.typography.fontWeightBold};
   text-align: center;
   margin-top: 0;
 `;
