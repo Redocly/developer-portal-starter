@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@redocly/ui": ["node_modules/@redocly/developer-portal/dist/engine/src/ui"]
+    }
+  }
+}

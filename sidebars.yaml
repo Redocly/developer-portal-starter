@@ -1,3 +1,7 @@
+support:
+  - page: support/index.md
+  - page: support/about.md
+    label: Title 2
 training:
   - page: developer-portal/index.md
   - group: Training exercises
@@ -38,11 +42,6 @@ training:
         page: developer-portal/mdx.mdx
       - label: Creating React components
         page: developer-portal/custom-component.mdx
-  - group: Petstore reference
-    expanded: false
-    pages:
-      - page: openapi/reference.page.yaml/*
-
   - group: Admin
     expanded: true
     pages:
@@ -65,7 +64,25 @@ training:
                             expanded: true
                             pages:
                               - label: Upgrading
-                                # page: developer-portal/upgrade.md
+                                page: developer-portal/upgrade.md
+apis:
+  - page: api/index.md
+  - separator: Public
+  - page: api/public/petstore.page.yaml
+
+  - separator: Partner
+  - page: api/partner/partner-a.page.yaml
+  - page: api/partner/partner-b.page.yaml
+
+  - separator: Internal
+    permission: 'read:internal'
+  - page: api/internal/internal-a.page.yaml
+
+  - separator: Internal Restricted
+    permission: 'read:internal-restricted'
+  - page: api/internal-restricted/internal-b.page.yaml
+
+
 alternative:
   - page: developer-portal/sidebar-alternative.md
     label: Alternative sidebar example

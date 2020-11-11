@@ -1,0 +1,13 @@
+type: redoc
+definitionId: internal-b
+
+permission: 'read:internal-restricted'
+
+includeSections: true
+expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js

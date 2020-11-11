@@ -1,3 +1,7 @@
+---
+permission: 'read:internal'
+---
+
 # Upgrade to a different version
 
 Make sure you have committed any changes prior to attempting an upgrade.

@@ -1,6 +1,9 @@
 type: redoc
-definitionId: petstore
-showInfo: true
+definitionId: internal-a
+
+permission: 'read:internal'
+
+includeSections: true
 expand: true
 settings:
   generateCodeSamples:

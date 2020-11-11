@@ -5,26 +5,36 @@ meta:
 headerIcon: ./images/logo.png
 enableToc: true
 oasDefinitions:
-  petstore: ./openapi/petstore.yaml
-  # add links to definitions in our API registry by using a fully qualified URL.
+  petstore: ./api/public/petstore.oas.yaml
+  partner-a: ./api/partner/partner-a.oas.yaml
+  partner-b: ./api/partner/partner-b.oas.yaml
+  internal-a: ./api/internal/internal-a.oas.yaml
+  internal-b: ./api/internal-restricted/internal-b.oas.yaml
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+
+nav:
+  - label: APIs
+    page: api/index.md
+
+  - label: Training exercises
+    page: developer-portal/index.md
+
+  - label: Support
+    page: support/index.md
+
+  - label: External docs
+    href: https://docs.redoc.ly/developer-portal/introduction/
+
+  - search: true
+
 #ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
   # note that GA doesn't work in DEV
 #  trackingId: UA-45997213-1
 #scripts:
 #  - ./static/intercom.js
-nav:
-
-  - label: Training exercises
-    page: developer-portal/index.md
-
-  - label: External docs
-    href: https://docs.redoc.ly/developer-portal/introduction/
-
-  - search: true
 
 footer:
   copyrightText: Copyright © Redocly 2019-2020. All right reserved.
@@ -43,3 +53,33 @@ footer:
           page: faq.md
         - label: Contact us
           page: contact.mdx
+
+auth:
+  claimsPreprocessor: claims.js
+  idps:
+    main:
+      type: oidc
+      loginWith: OIDC
+      configurationUrl: https://redoc-ly.auth0.com/.well-known/openid-configuration
+      clientId: R9U3Ue62VhrGvtj2qYpVJQO91rdKkqF4
+      clientSecret: S-XcP0mMZmmwEEc8K8iDQo2K0RkFn_gdD-b96ATrMSJRC58or6YsjRbWZfFDyD7c
+      scopes:
+        - openid
+        - name
+        - family_name
+        - email
+        - email_verified
+        - identities
+        - picture
+        - phone
+        - nickname
+        - profile
+        - given_name
+        - created_at
+        - address
+        - offline_address
+        - roles
+        - scope
+  globalAuthRequirement: public
+  allowLoginWith: main
+  accessForbiddenBehavior: 404

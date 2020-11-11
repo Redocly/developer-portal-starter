@@ -1,0 +1,20 @@
+defaultPermission: "anonymous"
+roles:
+  anonymous:
+    permissions:
+      - read:public
+      - read:partner
+  Partner:
+    permissions:
+      - read:public
+      - read:partner
+  Employee:
+    permissions:
+      - read:public
+      - read:partner
+      - read:internal
+  Admin:
+    roles:
+      - Employee
+    permissions:
+      - read:internal-restricted

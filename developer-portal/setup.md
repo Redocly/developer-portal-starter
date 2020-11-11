@@ -1,3 +1,7 @@
+---
+permission: 'read:partner'
+---
+
 # Install the developer portal
 
 ## Clone

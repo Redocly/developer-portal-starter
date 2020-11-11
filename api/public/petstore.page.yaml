@@ -1,0 +1,13 @@
+type: redoc
+definitionId: petstore
+
+permission: 'anonymous'
+
+includeSections: true
+expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
