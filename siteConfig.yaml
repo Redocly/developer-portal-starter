@@ -62,7 +62,7 @@ auth:
       loginWith: OIDC
       configurationUrl: https://redoc-ly.auth0.com/.well-known/openid-configuration
       clientId: R9U3Ue62VhrGvtj2qYpVJQO91rdKkqF4
-      clientSecret: S-XcP0mMZmmwEEc8K8iDQo2K0RkFn_gdD-b96ATrMSJRC58or6YsjRbWZfFDyD7c
+      clientSecret: "{{process.env.AUTH0_CLIENT_SECRET}}"
       scopes:
         - openid
         - name
