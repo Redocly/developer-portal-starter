@@ -18,6 +18,7 @@ nav:
   - label: APIs
     page: api/index.md
   - label: Setup
+    permission: anonymous
     page: developer-portal/setup.md
 
   - label: Training exercises
@@ -98,4 +99,4 @@ auth:
         - scope
   globalAuthRequirement: public
   allowLoginWith: main
-  accessForbiddenBehavior: 404
+  accessForbiddenBehavior: redirectToIdp
