@@ -1,6 +1,7 @@
 const ROLES = {
   'roman@redoc.ly': 'Admin',
-  'gotsijroman@gmail.com': 'Partner'
+  'gotsijroman@gmail.com': 'Partner',
+  'serhii@redoc.ly': 'Admin',
 }
 
 exports.default = async (claims, { rolesClaimName }) => {

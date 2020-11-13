@@ -13,15 +13,18 @@ oasDefinitions:
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
-
+licenseKey: eyJ0Ijp0cnVlLCJpIjoxNjAyNzUxODEzLCJlIjoxNjA2Njk0NDAwLCJoIjp0cnVlLCJzIjoicG9ydGFsIn0=.IJYXW/7HyZwKGplBIyq1MNHXRTEBoRycqLGFzQpVwmMNWM56ErK5iRZiHcqvCCdnfKV231d9WEEZhwzsK5iKKA==
 nav:
   - label: APIs
     page: api/index.md
+  - label: Setup
+    page: developer-portal/setup.md
 
   - label: Training exercises
     page: developer-portal/index.md
 
   - label: Support
+    permission: 'read:partner'
     page: support/index.md
 
   - label: External docs
@@ -53,6 +56,19 @@ footer:
           page: faq.md
         - label: Contact us
           page: contact.mdx
+    - group: Useful
+      items:
+        - label: Setup
+          page: developer-portal/setup.md
+        - label: API Catalog
+          page: api/index.md
+    - group: clientSecret
+      permission: 'read:partner'
+      items:
+        - label: Setup
+          page: developer-portal/setup.md
+        - label: API Catalog
+          page: api/index.md
 
 auth:
   claimsPreprocessor: claims.js
