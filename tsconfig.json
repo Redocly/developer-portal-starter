@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "baseUrl": ".",
+    "noEmit": true,
+    "paths": {
+      "@redocly/ui": ["node_modules/@redocly/developer-portal/dist/engine/src/ui"]
+    }
+  }
+}
