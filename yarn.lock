@@ -1787,10 +1787,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.88":
-  version "1.0.0-beta.88"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.88.tgz#93150531092d688aec9bd0ec6cc63b0dcdc8507d"
-  integrity sha512-n5Dlgiu7wIa7PjZrdimc2Iodm8fwgzI3teOj9ocGx+2Qxhmi/Numh9ehcDz8nLN3POdMZMxhPWruLyotRVYpBQ==
+"@redocly/developer-portal@1.0.0-beta.89":
+  version "1.0.0-beta.89"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.89.tgz#5aafa0d1b193f98ce4aec699cdef93a43f77f978"
+  integrity sha512-FedUXaQBCOtAOhdD27F2AMOwUTMQeSTf39bgrG3NrngETemaxU42skkxlGx7D0JsnvadY5WjE+mQfwvDvPtOCA==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1854,7 +1854,7 @@
     styled-components "^4.4.0"
     styled-system "^5.1.1"
     timeago.js "^4.0.2"
-    typescript "3.8.3"
+    typescript "3.9.7"
     unfetch "^4.1.0"
     unist-util-visit "^2.0.0"
     uuid "^8.3.0"
@@ -15534,10 +15534,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.8.3:
-  version "3.8.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
-  integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
+typescript@3.9.7:
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
+  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 ua-parser-js@^0.7.18:
   version "0.7.22"
