@@ -4,10 +4,10 @@ const ROLES = {
   'serhii@redoc.ly': 'Admin',
 }
 
-exports.default = async (claims, { rolesClaimName }) => {
+exports.default = async (claims, { ROLES_CLAIM_NAME }) => {
   const role = ROLES[claims.email];
   return {
     ...claims,
-    [rolesClaimName]: [ role ],
+    [ROLES_CLAIM_NAME]: [ role ],
   };
 };

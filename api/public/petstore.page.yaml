@@ -1,7 +1,7 @@
 type: redoc
 definitionId: petstore
 
-permission: 'anonymous'
+# permission: 'read:public'
 
 includeSections: true
 expand: true

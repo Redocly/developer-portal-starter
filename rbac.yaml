@@ -1,6 +1,6 @@
-defaultPermission: "anonymous"
+defaultPermission: "guest"
 roles:
-  anonymous:
+  guest:
     permissions:
       - read:public
       - read:partner

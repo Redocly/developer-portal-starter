@@ -40,7 +40,6 @@ export default function UserMenu(props: {
     name = 'Unknown User';
   }
 
-  // console.log('>>', logout);
   return (
     <>
       <UserLetterBox

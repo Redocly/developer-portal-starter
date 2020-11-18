@@ -1,5 +1,6 @@
 ---
 title: F.A.Q.
+permission: 'read:internal'
 ---
 
 # Frequently asked questions

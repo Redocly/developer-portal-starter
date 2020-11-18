@@ -1,7 +1,7 @@
 type: redoc
 definitionId: partner-b
 
-permission: 'anonymous'
+# permission: 'read:partner'
 
 includeSections: true
 expand: true

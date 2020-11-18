@@ -1,5 +1,6 @@
 ---
 enabelToc: true
+permission: 'read:internal'
 ---
 # Support
 
