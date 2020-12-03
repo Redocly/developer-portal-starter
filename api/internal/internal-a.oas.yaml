@@ -1,6 +1,7 @@
 openapi: 3.0.3
 servers:
   - url: '//petstore.swagger.io/v2'
+x-categories: ["Infra", "Internal"]
 info:
   description: >-
     This is a sample server Petstore server.  You can find out more about

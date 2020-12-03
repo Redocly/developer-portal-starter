@@ -10,6 +10,7 @@ oasDefinitions:
   partner-b: ./api/partner/partner-b.oas.yaml
   internal-a: ./api/internal/internal-a.oas.yaml
   internal-b: ./api/internal-restricted/internal-b.oas.yaml
+  locations: ./api/public/locations.oas.yaml
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap

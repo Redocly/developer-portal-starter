@@ -1,0 +1,2287 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Use a postcode or global positioning coordinates to find Australia Post outlets and services. Filter your results to locate the most relevant post offices, street post boxes, parcel lockers, PO boxes, delivery centres and the services they provide, anywhere in Australia.\n",
+    "version": "2.1",
+    "title": "Locations API",
+    "x-short-desc": "Use a postcode or coordinates to find Australia Post outlets and services."
+  },
+  "basePath": "/locations/v2",
+  "tags": [
+    {
+      "name": "work-centre",
+      "description": "Work Centre"
+    },
+    {
+      "name": "postcode",
+      "description": "Postcode"
+    },
+    {
+      "name": "services",
+      "description": "Services"
+    },
+    {
+      "name": "points",
+      "description": "Points"
+    }
+  ],
+  "schemes": ["https"],
+  "security": [
+    {
+      "AUTH-KEY": []
+    }
+  ],
+  "paths": {
+    "/points/postcode/{postcode}": {
+      "get": {
+        "tags": ["postcode"],
+        "summary": "getGeoLocations",
+        "description": "This endpoint returns a list of all Australia Post points within a specific post code area, as an array of [point[SCROLL]](#/definitions/Point) objects. You can filter your results using the types parameter. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/points/postcode/3030`",
+        "operationId": "getGeoLocationsUsingGET_1",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "path",
+            "description": "A four-digit Australian postcode.",
+            "required": true,
+            "type": "integer",
+            "maxLength": 4,
+            "minLength": 4
+          },
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "description": "The types parameter is an optional string of comma-delimited values denoting which outlets and facilities you want to locate. There are six of these enumerated values, all of which are selected by default: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO: An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC: A delivery centre.",
+            "required": false,
+            "type": "string",
+            "enum": ["PO", "UPL", "R_SPB", "C_SPB", "OS", "DC"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "An array of point objects. A point object is a data structure returned from calls to Locations API endpoints, and represents the location of a specific Australia Post outlet or facility. The number of point objects returned depends on the endpoint used, and the parameters provided in the request.",
+                  "items": {
+                    "type": "object",
+                    "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data.",
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+                        "properties": {
+                          "address_line_1": {
+                            "type": "string",
+                            "description": "Address line one."
+                          },
+                          "address_line_2": {
+                            "type": "string",
+                            "description": "Address line two."
+                          },
+                          "address_line_3": {
+                            "type": "string",
+                            "description": "Address line three."
+                          },
+                          "country_code": {
+                            "type": "string",
+                            "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+                          },
+                          "country_name": {
+                            "type": "string",
+                            "description": "The name of the country (as written in English), represented by the country_code field."
+                          },
+                          "postcode": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "A four-digit Australian postcode."
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "An Australian state name."
+                          },
+                          "suburb": {
+                            "type": "string",
+                            "description": "An Australian suburb name."
+                          }
+                        }
+                      },
+                      "delivery_point_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+                      },
+                      "directions": {
+                        "type": "string",
+                        "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+                      },
+                      "fax_number": {
+                        "type": "string",
+                        "description": "An Australian fax number."
+                      },
+                      "geo_location": {
+                        "type": "object",
+                        "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+                        "properties": {
+                          "lat": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+                          },
+                          "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+                          }
+                        }
+                      },
+                      "hatch_description": {
+                        "type": "string",
+                        "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+                      },
+                      "hours": {
+                        "type": "array",
+                        "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+                        "items": {
+                          "type": "object",
+                          "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+                          "properties": {
+                            "end_date": {
+                              "type": "string",
+                              "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+                            },
+                            "end_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+                            },
+                            "start_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+                            },
+                            "weekday": {
+                              "type": "integer",
+                              "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+                            }
+                          }
+                        }
+                      },
+                      "location_code": {
+                        "type": "string",
+                        "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "phone_number": {
+                        "type": "string",
+                        "description": "An Australian telephone number."
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+                      },
+                      "service_codes": {
+                        "type": "array",
+                        "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+                      },
+                      "work_centre_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "points": [
+                  {
+                    "location_code": "350748_PO",
+                    "partner_code": "AP",
+                    "name": "MELBOURNE GPO POST SHOP",
+                    "type": "PO",
+                    "description": "Post Office",
+                    "phone_number": "13 13 18",
+                    "fax_number": "(03)9203 3040",
+                    "address": {
+                      "address_line_1": "The Strand",
+                      "address_line_2": "Shop 1 250 Elizabeth Street",
+                      "suburb": "Melbourne",
+                      "state": "VIC",
+                      "postcode": "3000",
+                      "country_name": "Australia",
+                      "country_code": "AUS"
+                    },
+                    "geo_location": {
+                      "lat": -37.812679,
+                      "lon": 144.962732
+                    },
+                    "delivery_point_id": 34038295,
+                    "work_centre_id": 350748,
+                    "hatch_description": "In the PO Box Suite",
+                    "service_codes": ["108", "9", "33", "17", "6"],
+                    "hours": [
+                      {
+                        "type": "HOURS",
+                        "weekday": "0",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "1",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "points by postcode"
+      }
+    },
+    "/points/workcentres/{work_centre_id}": {
+      "get": {
+        "tags": ["work-centre"],
+        "summary": "getGeoLocationsByWcid",
+        "description": "This endpoint returns a list of all points associated with a specific Australia Post work_centre_id, as an array of [point[SCROLL]](#/definitions/Point) objects. You can filter your results using the types parameter. \n \n A work_centre_id is a unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/points/workcentres/10`",
+        "operationId": "getGeoLocationsByWcidUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "work_centre_id",
+            "in": "path",
+            "description": "See the endpoint description above.",
+            "required": true,
+            "type": "integer",
+            "maxLength": 9
+          },
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "description": "The types parameter is an optional string of comma-delimited values denoting which outlets and facilities you want to locate. There are six of these enumerated values, all of which are selected by default: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO: An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC: A delivery centre.",
+            "required": false,
+            "type": "string",
+            "enum": ["PO", "UPL", "R_SPB", "C_SPB", "OS", "DC"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "An array of point objects. A point object is a data structure returned from calls to Locations API endpoints, and represents the location of a specific Australia Post outlet or facility. The number of point objects returned depends on the endpoint used, and the parameters provided in the request.",
+                  "items": {
+                    "type": "object",
+                    "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data.",
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+                        "properties": {
+                          "address_line_1": {
+                            "type": "string",
+                            "description": "Address line one."
+                          },
+                          "address_line_2": {
+                            "type": "string",
+                            "description": "Address line two."
+                          },
+                          "address_line_3": {
+                            "type": "string",
+                            "description": "Address line three."
+                          },
+                          "country_code": {
+                            "type": "string",
+                            "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+                          },
+                          "country_name": {
+                            "type": "string",
+                            "description": "The name of the country (as written in English), represented by the country_code field."
+                          },
+                          "postcode": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "A four-digit Australian postcode."
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "An Australian state name."
+                          },
+                          "suburb": {
+                            "type": "string",
+                            "description": "An Australian suburb name."
+                          }
+                        }
+                      },
+                      "delivery_point_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+                      },
+                      "directions": {
+                        "type": "string",
+                        "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+                      },
+                      "fax_number": {
+                        "type": "string",
+                        "description": "An Australian fax number."
+                      },
+                      "geo_location": {
+                        "type": "object",
+                        "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+                        "properties": {
+                          "lat": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+                          },
+                          "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+                          }
+                        }
+                      },
+                      "hatch_description": {
+                        "type": "string",
+                        "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+                      },
+                      "hours": {
+                        "type": "array",
+                        "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+                        "items": {
+                          "type": "object",
+                          "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+                          "properties": {
+                            "end_date": {
+                              "type": "string",
+                              "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+                            },
+                            "end_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+                            },
+                            "start_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+                            },
+                            "weekday": {
+                              "type": "integer",
+                              "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+                            }
+                          }
+                        }
+                      },
+                      "location_code": {
+                        "type": "string",
+                        "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "phone_number": {
+                        "type": "string",
+                        "description": "An Australian telephone number."
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+                      },
+                      "service_codes": {
+                        "type": "array",
+                        "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+                      },
+                      "work_centre_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "points": [
+                  {
+                    "location_code": "350748_PO",
+                    "partner_code": "AP",
+                    "name": "MELBOURNE GPO POST SHOP",
+                    "type": "PO",
+                    "description": "Post Office",
+                    "phone_number": "13 13 18",
+                    "fax_number": "(03)9203 3040",
+                    "address": {
+                      "address_line_1": "The Strand",
+                      "address_line_2": "Shop 1 250 Elizabeth Street",
+                      "suburb": "Melbourne",
+                      "state": "VIC",
+                      "postcode": "3000",
+                      "country_name": "Australia",
+                      "country_code": "AUS"
+                    },
+                    "geo_location": {
+                      "lat": -37.812679,
+                      "lon": 144.962732
+                    },
+                    "delivery_point_id": 34038295,
+                    "work_centre_id": 350748,
+                    "hatch_description": "In the PO Box Suite",
+                    "service_codes": ["108", "9", "33", "17", "6"],
+                    "hours": [
+                      {
+                        "type": "HOURS",
+                        "weekday": "0",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "1",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "points by workcentreid"
+      }
+    },
+    "/points/deliverypoints/{delivery_point_id}": {
+      "get": {
+        "tags": ["delivery-point-controller"],
+        "summary": "getGeoLocationsByDeliveryPointId",
+        "description": "This endpoint returns a list of all points associated with a specific Australia Post delivery_point_id, as an array of [point[SCROLL]](#/definitions/Point) objects. You can filter your results using the types parameter. A delivery_point_id is a unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/points/deliverypoints/34038295`",
+        "operationId": "getGeoLocationsByDeliveryPointIdUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "delivery_point_id",
+            "in": "path",
+            "description": "See the endpoint description above.",
+            "required": true,
+            "type": "string",
+            "maxLength": 9,
+            "x-hide": false
+          },
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "description": "The types parameter is an optional string of comma-delimited values denoting which outlets and facilities you want to locate. There are six of these enumerated values, all of which are selected by default: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO: An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC: A delivery centre.",
+            "required": false,
+            "type": "string",
+            "enum": ["PO", "UPL", "R_SPB", "C_SPB", "OS", "DC"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "An array of point objects. A point object is a data structure returned from calls to Locations API endpoints, and represents the location of a specific Australia Post outlet or facility. The number of point objects returned depends on the endpoint used, and the parameters provided in the request.",
+                  "items": {
+                    "type": "object",
+                    "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data.",
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+                        "properties": {
+                          "address_line_1": {
+                            "type": "string",
+                            "description": "Address line one."
+                          },
+                          "address_line_2": {
+                            "type": "string",
+                            "description": "Address line two."
+                          },
+                          "address_line_3": {
+                            "type": "string",
+                            "description": "Address line three."
+                          },
+                          "country_code": {
+                            "type": "string",
+                            "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+                          },
+                          "country_name": {
+                            "type": "string",
+                            "description": "The name of the country (as written in English), represented by the country_code field."
+                          },
+                          "postcode": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "A four-digit Australian postcode."
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "An Australian state name."
+                          },
+                          "suburb": {
+                            "type": "string",
+                            "description": "An Australian suburb name."
+                          }
+                        }
+                      },
+                      "delivery_point_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+                      },
+                      "directions": {
+                        "type": "string",
+                        "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+                      },
+                      "fax_number": {
+                        "type": "string",
+                        "description": "An Australian fax number."
+                      },
+                      "geo_location": {
+                        "type": "object",
+                        "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+                        "properties": {
+                          "lat": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+                          },
+                          "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+                          }
+                        }
+                      },
+                      "hatch_description": {
+                        "type": "string",
+                        "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+                      },
+                      "hours": {
+                        "type": "array",
+                        "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+                        "items": {
+                          "type": "object",
+                          "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+                          "properties": {
+                            "end_date": {
+                              "type": "string",
+                              "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+                            },
+                            "end_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+                            },
+                            "start_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+                            },
+                            "weekday": {
+                              "type": "integer",
+                              "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+                            }
+                          }
+                        }
+                      },
+                      "location_code": {
+                        "type": "string",
+                        "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "phone_number": {
+                        "type": "string",
+                        "description": "An Australian telephone number."
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+                      },
+                      "service_codes": {
+                        "type": "array",
+                        "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+                      },
+                      "work_centre_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "points": [
+                  {
+                    "location_code": "350748_PO",
+                    "partner_code": "AP",
+                    "name": "MELBOURNE GPO POST SHOP",
+                    "type": "PO",
+                    "description": "Post Office",
+                    "phone_number": "13 13 18",
+                    "fax_number": "(03)9203 3040",
+                    "address": {
+                      "address_line_1": "The Strand",
+                      "address_line_2": "Shop 1 250 Elizabeth Street",
+                      "suburb": "Melbourne",
+                      "state": "VIC",
+                      "postcode": "3000",
+                      "country_name": "Australia",
+                      "country_code": "AUS"
+                    },
+                    "geo_location": {
+                      "lat": -37.812679,
+                      "lon": 144.962732
+                    },
+                    "delivery_point_id": 34038295,
+                    "work_centre_id": 350748,
+                    "hatch_description": "In the PO Box Suite",
+                    "service_codes": ["108", "9", "33", "17", "6"],
+                    "hours": [
+                      {
+                        "type": "HOURS",
+                        "weekday": "0",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "1",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "points by deliverypointid"
+      }
+    },
+    "/points/{location_code}": {
+      "get": {
+        "tags": ["location_code"],
+        "summary": "getPointsByLocationCode",
+        "description": "This endpoint returns a list of all points associated with a specific Australia Post location_code, as an array of [point[SCROLL]](#/definitions/Point) objects. A location_code is a unique alphanumeric identification code that represents an Australia Post facility. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/points/200053_PO`",
+        "operationId": "getPointsByLocationCodeUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "location_code",
+            "in": "path",
+            "description": "See the endpoint description above.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "An array of point objects. A point object is a data structure returned from calls to Locations API endpoints, and represents the location of a specific Australia Post outlet or facility. The number of point objects returned depends on the endpoint used, and the parameters provided in the request.",
+                  "items": {
+                    "type": "object",
+                    "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data.",
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+                        "properties": {
+                          "address_line_1": {
+                            "type": "string",
+                            "description": "Address line one."
+                          },
+                          "address_line_2": {
+                            "type": "string",
+                            "description": "Address line two."
+                          },
+                          "address_line_3": {
+                            "type": "string",
+                            "description": "Address line three."
+                          },
+                          "country_code": {
+                            "type": "string",
+                            "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+                          },
+                          "country_name": {
+                            "type": "string",
+                            "description": "The name of the country (as written in English), represented by the country_code field."
+                          },
+                          "postcode": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "A four-digit Australian postcode."
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "An Australian state name."
+                          },
+                          "suburb": {
+                            "type": "string",
+                            "description": "An Australian suburb name."
+                          }
+                        }
+                      },
+                      "delivery_point_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+                      },
+                      "directions": {
+                        "type": "string",
+                        "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+                      },
+                      "fax_number": {
+                        "type": "string",
+                        "description": "An Australian fax number."
+                      },
+                      "geo_location": {
+                        "type": "object",
+                        "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+                        "properties": {
+                          "lat": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+                          },
+                          "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+                          }
+                        }
+                      },
+                      "hatch_description": {
+                        "type": "string",
+                        "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+                      },
+                      "hours": {
+                        "type": "array",
+                        "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+                        "items": {
+                          "type": "object",
+                          "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+                          "properties": {
+                            "end_date": {
+                              "type": "string",
+                              "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+                            },
+                            "end_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+                            },
+                            "start_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+                            },
+                            "weekday": {
+                              "type": "integer",
+                              "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+                            }
+                          }
+                        }
+                      },
+                      "location_code": {
+                        "type": "string",
+                        "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "phone_number": {
+                        "type": "string",
+                        "description": "An Australian telephone number."
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+                      },
+                      "service_codes": {
+                        "type": "array",
+                        "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+                      },
+                      "work_centre_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "points": [
+                  {
+                    "location_code": "200053_PO",
+                    "partner_code": "AP",
+                    "name": "CALWELL LPO",
+                    "type": "PO",
+                    "description": "Post Office",
+                    "phone_number": "(02) 6292 7877",
+                    "fax_number": "(02)6292 8757",
+                    "address": {
+                      "address_line_1": "Calwell Shopping Centre",
+                      "address_line_2": "Shop 22 7 Webber Crescent",
+                      "suburb": "Calwell",
+                      "state": "ACT",
+                      "postcode": "2905",
+                      "country_name": "Australia",
+                      "country_code": "AU"
+                    },
+                    "geo_location": {
+                      "lat": -35.43501,
+                      "lon": 149.11257
+                    },
+                    "delivery_point_id": 84328363,
+                    "work_centre_id": 200053,
+                    "hours": [
+                      {
+                        "type": "HOURS",
+                        "weekday": "0",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "1",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "2",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "3",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "4",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      }
+                    ],
+                    "service_codes": ["46", "54", "43", "41", "17", "35", "6", "24", "58", "60", "97", "88"]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "points by location code"
+      }
+    },
+    "/points/geo/{longitude}/{latitude}": {
+      "get": {
+        "tags": ["points"],
+        "summary": "getGeoLocations",
+        "description": "This endpoint returns a list of all Australia Post points within a given range of the coordinates provided, as an array of [point[SCROLL]](#/definitions/Point) objects. Results are ordered by the distance field, from closest to farthest away. You can filter your results using the various parameters shown below. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/points/geo/144.9629796/-37.8131869?radius=50&services=76,95&limit=5&types=PO`",
+        "operationId": "getGeoLocationsUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "longitude",
+            "in": "path",
+            "description": "A coordinate representing the angular distance in degrees, minutes and seconds, of a point east or west of the Greenwich Meridian, expressed as a double.",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "in": "path",
+            "description": "A coordinate representing the angular distance in degrees, minutes and seconds, of a point north or south of the equator, expressed as a double.",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "The radius in kilometres, to search around the provided latitude/longitude coordinate point. The default value is 50, and the hard limit is 1000Km.",
+            "required": false,
+            "type": "integer",
+            "maximum": 1000,
+            "minimum": 0
+          },
+          {
+            "name": "services",
+            "in": "query",
+            "description": "A comma-delimited string of service codes by which to filter the returned list of matching locations. **Note: ** A list of current services is available through the [services[SCROLL]](#/paths/services) endpoint.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of results to return. The default value is 5.",
+            "required": false,
+            "type": "integer",
+            "maximum": 10000,
+            "minimum": 0
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "description": "The types parameter is an optional string of comma-delimited values denoting which outlets and facilities you want to locate. There are six of these enumerated values, all of which are selected by default: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO: An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC: A delivery centre.",
+            "required": false,
+            "type": "string",
+            "enum": ["PO", "UPL", "R_SPB", "C_SPB", "OS", "DC"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "An array of point objects. A point object is a data structure returned from calls to Locations API endpoints, and represents the location of a specific Australia Post outlet or facility. The number of point objects returned depends on the endpoint used, and the parameters provided in the request.",
+                  "items": {
+                    "type": "object",
+                    "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data.",
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+                        "properties": {
+                          "address_line_1": {
+                            "type": "string",
+                            "description": "Address line one."
+                          },
+                          "address_line_2": {
+                            "type": "string",
+                            "description": "Address line two."
+                          },
+                          "address_line_3": {
+                            "type": "string",
+                            "description": "Address line three."
+                          },
+                          "country_code": {
+                            "type": "string",
+                            "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+                          },
+                          "country_name": {
+                            "type": "string",
+                            "description": "The name of the country (as written in English), represented by the country_code field."
+                          },
+                          "postcode": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "A four-digit Australian postcode."
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "An Australian state name."
+                          },
+                          "suburb": {
+                            "type": "string",
+                            "description": "An Australian suburb name."
+                          }
+                        }
+                      },
+                      "delivery_point_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+                      },
+                      "directions": {
+                        "type": "string",
+                        "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+                      },
+                      "fax_number": {
+                        "type": "string",
+                        "description": "An Australian fax number."
+                      },
+                      "geo_location": {
+                        "type": "object",
+                        "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+                        "properties": {
+                          "lat": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+                          },
+                          "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+                          }
+                        }
+                      },
+                      "hatch_description": {
+                        "type": "string",
+                        "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+                      },
+                      "hours": {
+                        "type": "array",
+                        "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+                        "items": {
+                          "type": "object",
+                          "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+                          "properties": {
+                            "end_date": {
+                              "type": "string",
+                              "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+                            },
+                            "end_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+                            },
+                            "start_date": {
+                              "type": "string",
+                              "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+                            },
+                            "start_time": {
+                              "type": "string",
+                              "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+                            },
+                            "weekday": {
+                              "type": "integer",
+                              "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+                            }
+                          }
+                        }
+                      },
+                      "location_code": {
+                        "type": "string",
+                        "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "phone_number": {
+                        "type": "string",
+                        "description": "An Australian telephone number."
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+                      },
+                      "service_codes": {
+                        "type": "array",
+                        "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+                      },
+                      "work_centre_id": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "points": [
+                  {
+                    "location_code": "350748_PO",
+                    "partner_code": "AP",
+                    "name": "MELBOURNE GPO POST SHOP",
+                    "type": "PO",
+                    "description": "Post Office",
+                    "phone_number": "13 13 18",
+                    "fax_number": "(03)9203 3040",
+                    "address": {
+                      "address_line_1": "The Strand",
+                      "address_line_2": "Shop 1 250 Elizabeth Street",
+                      "suburb": "Melbourne",
+                      "state": "VIC",
+                      "postcode": "3000",
+                      "country_name": "Australia",
+                      "country_code": "AUS"
+                    },
+                    "geo_location": {
+                      "lat": -37.812679,
+                      "lon": 144.962732
+                    },
+                    "delivery_point_id": 34038295,
+                    "work_centre_id": 350748,
+                    "hatch_description": "In the PO Box Suite",
+                    "service_codes": ["108", "9", "33", "17", "6"],
+                    "hours": [
+                      {
+                        "type": "HOURS",
+                        "weekday": "0",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      },
+                      {
+                        "type": "HOURS",
+                        "weekday": "1",
+                        "start_time": "09:00",
+                        "end_time": "17:00"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "points by long and lat"
+      }
+    },
+    "/services": {
+      "get": {
+        "tags": ["services"],
+        "summary": "getServices",
+        "description": "This endpoint returns a list of all available services, as an array of [service[SCROLL]](#/definitions/Service) objects. The service code in each returned service object can be passed as a parameter in the [longitude/latitude[SCROLL]](#/paths/points/geo/{longitude}/{latitude}) and [services/{service_codes}[SCROLL]](#/paths/services/{service_codes}) endpoints. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/services`",
+        "operationId": "getServicesUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "services": {
+                  "type": "array",
+                  "description": "An array of service objects. A service object is a data structure returned from calls to the /services endpoint, and represents an Australia Post service that might be available at one of its outlets or facilities. There are no parameters by which to filter the service objects returned from the /service endpoint. \n **Note:** Not all outlets and facilities offer all services, and the number of service objects returned may change if Australia Post increases or decreases the number of services it offers.",
+                  "items": {
+                    "type": "object",
+                    "description": "A Service object describes a specific service that might be available from an Australia Post outlet or facility.  **Note:** \n Not all outlets and facilities offer all of the services returned by the [services[SCROLL]](#/paths/services) endpoint.",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the service."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the service expressed as an enumerated value."
+                      },
+                      "appointment_required": {
+                        "type": "boolean",
+                        "description": "A value indicating if a customer must first make an appointment for the requested service."
+                      },
+                      "categories": {
+                        "type": "array",
+                        "description": "An array of [category[SCROLL]](#/definitions/Category) objects that describe the service category to which a specific service belongs.",
+                        "items": {
+                          "type": "object",
+                          "description": "This object contains the name of a service category used to group services of a similar type.",
+                          "properties": {
+                            "description": {
+                              "type": "string",
+                              "description": "The URL-encoded equivalent of the name field."
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "The name of the service category to which a service belongs."
+                            }
+                          }
+                        }
+                      },
+                      "searchable": {
+                        "type": "boolean",
+                        "description": "A value dictating whether or not a specific service will be presented in the response to a service query."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "service_code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique number identifying a specific service that is available at a location. For example, \"99\" that identifies the PostBillPay service."
+                      },
+                      "url_name": {
+                        "type": "string",
+                        "description": "The URL-encoded equivalent of the description field."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "services": [
+                  {
+                    "service_code": 1,
+                    "partner_code": "AP",
+                    "name": "parcel-pickup-outside-standard-hours",
+                    "description": "Parcel collection outside standard hours",
+                    "appointment_required": false,
+                    "searchable": false,
+                    "url_name": "parcel-pickup-outside-standard-hours",
+                    "categories": [
+                      {
+                        "name": "opening_hours",
+                        "description": "Opening hours"
+                      },
+                      {
+                        "name": "parcels_mail",
+                        "description": "Parcels & mail"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "services"
+      }
+    },
+    "/services/{service_codes}": {
+      "get": {
+        "tags": ["services"],
+        "summary": "getServicesByServiceCodes",
+        "description": "This endpoint returns an array of [service[SCROLL]](#/definitions/Service) objects, based on a comma-delimited list of service codes supplied in the request. **Note: ** A list of all current service codes is available from the [services[SCROLL]](#/paths/services) endpoint. \n \n To test this endpoint directly, use the following command with your actual API key. \n \n `curl -X GET --header \"Accept: application/json\" -H \"AUTH-KEY: {YOUR_AUTH_KEY}\" https://digitalapi.auspost.com.au/locations/v2/services/3,6`",
+        "operationId": "getServicesByServiceCodesUsingGET",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "service_codes",
+            "in": "path",
+            "description": "A comma-delimited list of service codes by which to filter the returned list of matching locations.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pc",
+            "in": "query",
+            "description": "A partner code identifies an entity that owns location data. Currently we offer access only to Australia Post outlet and services data. In future, we will expand this to include location data from partner providers. **Note:** If this field is left empty, the default value is \"AP\". Submitting any other value will return an empty data set.",
+            "required": false,
+            "type": "string",
+            "x-hide": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "services": {
+                  "type": "array",
+                  "description": "An array of service objects. A service object is a data structure returned from calls to the /services endpoint, and represents an Australia Post service that might be available at one of its outlets or facilities. There are no parameters by which to filter the service objects returned from the /service endpoint. \n **Note:** Not all outlets and facilities offer all services, and the number of service objects returned may change if Australia Post increases or decreases the number of services it offers.",
+                  "items": {
+                    "type": "object",
+                    "description": "A Service object describes a specific service that might be available from an Australia Post outlet or facility.  **Note:** \n Not all outlets and facilities offer all of the services returned by the [services[SCROLL]](#/paths/services) endpoint.",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "description": "The name of the service."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the service expressed as an enumerated value."
+                      },
+                      "appointment_required": {
+                        "type": "boolean",
+                        "description": "A value indicating if a customer must first make an appointment for the requested service."
+                      },
+                      "categories": {
+                        "type": "array",
+                        "description": "An array of [category[SCROLL]](#/definitions/Category) objects that describe the service category to which a specific service belongs.",
+                        "items": {
+                          "type": "object",
+                          "description": "This object contains the name of a service category used to group services of a similar type.",
+                          "properties": {
+                            "description": {
+                              "type": "string",
+                              "description": "The URL-encoded equivalent of the name field."
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "The name of the service category to which a service belongs."
+                            }
+                          }
+                        }
+                      },
+                      "searchable": {
+                        "type": "boolean",
+                        "description": "A value dictating whether or not a specific service will be presented in the response to a service query."
+                      },
+                      "partner_code": {
+                        "type": "string",
+                        "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+                      },
+                      "service_code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "A unique number identifying a specific service that is available at a location. For example, \"99\" that identifies the PostBillPay service."
+                      },
+                      "url_name": {
+                        "type": "string",
+                        "description": "The URL-encoded equivalent of the description field."
+                      }
+                    }
+                  }
+                }
+              },
+              "x-hide": true
+            },
+            "examples": {
+              "application/json": {
+                "services": [
+                  {
+                    "service_code": 3,
+                    "partner_code": "AP",
+                    "name": "Special",
+                    "description": "Open before 9.00am weekdays",
+                    "appointment_required": false,
+                    "searchable": false,
+                    "url_name": "open-before-900am-weekdays",
+                    "categories": [
+                      {
+                        "name": "opening_hours",
+                        "description": "Opening hours"
+                      }
+                    ]
+                  },
+                  {
+                    "service_code": 6,
+                    "partner_code": "AP",
+                    "name": "Boxes_Available",
+                    "description": "PO Boxes available",
+                    "appointment_required": false,
+                    "searchable": false,
+                    "url_name": "po-boxes-available",
+                    "categories": [
+                      {
+                        "name": "parcels_mail",
+                        "description": "Parcels & mail"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "x-info": {
+        "pathLabel": "services by service codes"
+      }
+    }
+  },
+  "securityDefinitions": {
+    "AUTH-KEY": {
+      "type": "apiKey",
+      "name": "AUTH-KEY",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Point": {
+      "properties": {
+        "address": {
+          "type": "object",
+          "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+          "properties": {
+            "address_line_1": {
+              "type": "string",
+              "description": "Address line one."
+            },
+            "address_line_2": {
+              "type": "string",
+              "description": "Address line two."
+            },
+            "address_line_3": {
+              "type": "string",
+              "description": "Address line three."
+            },
+            "country_code": {
+              "type": "string",
+              "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+            },
+            "country_name": {
+              "type": "string",
+              "description": "The name of the country (as written in English), represented by the country_code field."
+            },
+            "postcode": {
+              "type": "integer",
+              "format": "int32",
+              "description": "A four-digit Australian postcode."
+            },
+            "state": {
+              "type": "string",
+              "description": "An Australian state name."
+            },
+            "suburb": {
+              "type": "string",
+              "description": "An Australian suburb name."
+            }
+          }
+        },
+        "delivery_point_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+        },
+        "description": {
+          "type": "string",
+          "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+        },
+        "directions": {
+          "type": "string",
+          "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+        },
+        "fax_number": {
+          "type": "string",
+          "description": "An Australian fax number."
+        },
+        "geo_location": {
+          "type": "object",
+          "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+          "properties": {
+            "lat": {
+              "type": "number",
+              "format": "double",
+              "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+            },
+            "lon": {
+              "type": "number",
+              "format": "double",
+              "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+            },
+            "distance": {
+              "type": "number",
+              "format": "double",
+              "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+            }
+          }
+        },
+        "hatch_description": {
+          "type": "string",
+          "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+        },
+        "hours": {
+          "type": "array",
+          "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+          "items": {
+            "type": "object",
+            "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+            "properties": {
+              "end_date": {
+                "type": "string",
+                "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+              },
+              "end_time": {
+                "type": "string",
+                "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+              },
+              "start_date": {
+                "type": "string",
+                "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+              },
+              "start_time": {
+                "type": "string",
+                "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+              },
+              "type": {
+                "type": "string",
+                "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+              },
+              "weekday": {
+                "type": "integer",
+                "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+              }
+            }
+          }
+        },
+        "location_code": {
+          "type": "string",
+          "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+        },
+        "partner_code": {
+          "type": "string",
+          "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "An Australian telephone number."
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+        },
+        "service_codes": {
+          "type": "array",
+          "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+        },
+        "work_centre_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+        }
+      },
+      "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data."
+    },
+    "Address": {
+      "properties": {
+        "address_line_1": {
+          "type": "string",
+          "description": "Address line one."
+        },
+        "address_line_2": {
+          "type": "string",
+          "description": "Address line two."
+        },
+        "address_line_3": {
+          "type": "string",
+          "description": "Address line three."
+        },
+        "country_code": {
+          "type": "string",
+          "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+        },
+        "country_name": {
+          "type": "string",
+          "description": "The name of the country (as written in English), represented by the country_code field."
+        },
+        "postcode": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A four-digit Australian postcode."
+        },
+        "state": {
+          "type": "string",
+          "description": "An Australian state name."
+        },
+        "suburb": {
+          "type": "string",
+          "description": "An Australian suburb name."
+        }
+      },
+      "description": "An Address object contains full street address information for a specific Australia Post outlet or facility."
+    },
+    "Location": {
+      "properties": {
+        "lat": {
+          "type": "number",
+          "format": "double",
+          "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+        },
+        "lon": {
+          "type": "number",
+          "format": "double",
+          "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+        },
+        "distance": {
+          "type": "number",
+          "format": "double",
+          "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+        }
+      },
+      "description": "This object describes the precise location of an Australia Post outlet or facility. This object always returns latitude and longitude values for a point, although requests to the [longitude/latitude[SCROLL]](#/paths/points/geo/{longitude}/{latitude}) endpoint will also include a distance value."
+    },
+    "Hour": {
+      "properties": {
+        "end_date": {
+          "type": "string",
+          "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+        },
+        "end_time": {
+          "type": "string",
+          "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+        },
+        "start_date": {
+          "type": "string",
+          "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+        },
+        "start_time": {
+          "type": "string",
+          "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+        },
+        "type": {
+          "type": "string",
+          "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+        },
+        "weekday": {
+          "type": "integer",
+          "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+        }
+      },
+      "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility."
+    },
+    "Service": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The name of the service."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the service expressed as an enumerated value."
+        },
+        "appointment_required": {
+          "type": "boolean",
+          "description": "A value indicating if a customer must first make an appointment for the requested service."
+        },
+        "categories": {
+          "type": "array",
+          "description": "An array of [category[SCROLL]](#/definitions/Category) objects that describe the service category to which a specific service belongs.",
+          "items": {
+            "type": "object",
+            "description": "This object contains the name of a service category used to group services of a similar type.",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "The URL-encoded equivalent of the name field."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the service category to which a service belongs."
+              }
+            }
+          }
+        },
+        "searchable": {
+          "type": "boolean",
+          "description": "A value dictating whether or not a specific service will be presented in the response to a service query."
+        },
+        "partner_code": {
+          "type": "string",
+          "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+        },
+        "service_code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A unique number identifying a specific service that is available at a location. For example, \"99\" that identifies the PostBillPay service."
+        },
+        "url_name": {
+          "type": "string",
+          "description": "The URL-encoded equivalent of the description field."
+        }
+      },
+      "description": "A Service object describes a specific service that might be available from an Australia Post outlet or facility.  **Note:** \n Not all outlets and facilities offer all of the services returned by the [services[SCROLL]](#/paths/services) endpoint."
+    },
+    "Category": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The URL-encoded equivalent of the name field."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the service category to which a service belongs."
+        }
+      },
+      "description": "This object contains the name of a service category used to group services of a similar type."
+    },
+    "PointsResponse": {
+      "properties": {
+        "points": {
+          "type": "array",
+          "description": "An array of point objects. A point object is a data structure returned from calls to Locations API endpoints, and represents the location of a specific Australia Post outlet or facility. The number of point objects returned depends on the endpoint used, and the parameters provided in the request.",
+          "items": {
+            "type": "object",
+            "description": "A point object is a descriptive record of an individual Australia Post outlet or facility, that includes location, contact and service availability data.",
+            "properties": {
+              "address": {
+                "type": "object",
+                "description": "An [address[SCROLL]](#/definitions/Address) object contains full street address information for a specific Australia Post outlet or facility.",
+                "properties": {
+                  "address_line_1": {
+                    "type": "string",
+                    "description": "Address line one."
+                  },
+                  "address_line_2": {
+                    "type": "string",
+                    "description": "Address line two."
+                  },
+                  "address_line_3": {
+                    "type": "string",
+                    "description": "Address line three."
+                  },
+                  "country_code": {
+                    "type": "string",
+                    "description": "An alphabetical two-digit country identification code, as specified in the ISO 3166-2 standard."
+                  },
+                  "country_name": {
+                    "type": "string",
+                    "description": "The name of the country (as written in English), represented by the country_code field."
+                  },
+                  "postcode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "A four-digit Australian postcode."
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "An Australian state name."
+                  },
+                  "suburb": {
+                    "type": "string",
+                    "description": "An Australian suburb name."
+                  }
+                }
+              },
+              "delivery_point_id": {
+                "type": "integer",
+                "format": "int32",
+                "description": "A unique numeric identification code that represents a point to which Australia Post delivers or receives deliveries."
+              },
+              "description": {
+                "type": "string",
+                "description": "The name of the point, described as a generic type. For example, \"Post Office\"."
+              },
+              "directions": {
+                "type": "string",
+                "description": "A text description of where parcel lockers can be found at a location. For example, \"Parcel locker is in the 24/7 area of Melbourne Bourke Street shop.\". **Note:** This field is only displayed if the point object is of type UPL (Parcel locker)."
+              },
+              "fax_number": {
+                "type": "string",
+                "description": "An Australian fax number."
+              },
+              "geo_location": {
+                "type": "object",
+                "description": "A [location[SCROLL]](#/definitions/Location) object contains the precise coordinate location of an Australia Post outlet or facility.",
+                "properties": {
+                  "lat": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The global positioning latitude coordinate for a location. For example, 144.9696466."
+                  },
+                  "lon": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The global positioning longitude coordinate for a location. For example, -37.8126618."
+                  },
+                  "distance": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The distance in kilometres to a matching point from the coordinates provided in the endpoint request. **Note:** This field is displayed in the results for all endpoints that require you to provide longitude and latitude coordinates."
+                  }
+                }
+              },
+              "hatch_description": {
+                "type": "string",
+                "description": "A hatch is a customer service window in an Australia Post parcel pickup location. If a point has an associated hatch, this field may contain extra information specific to that hatch."
+              },
+              "hours": {
+                "type": "array",
+                "description": "An array of [hour[SCROLL]](#/definitions/Hour) objects that describe the hours of operation or availability of services at a location.",
+                "items": {
+                  "type": "object",
+                  "description": "An Hour object is an element in a [point[SCROLL]](#/definitions/Point) object, that describes a range of date and time-related information for a specific Australia Post outlet or facility.",
+                  "properties": {
+                    "end_date": {
+                      "type": "string",
+                      "description": "The end date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"30/06/2016\"."
+                    },
+                    "end_time": {
+                      "type": "string",
+                      "description": "The time when an outlet or facility closes on a particular day, in the format hh:mm. For example, 23:15."
+                    },
+                    "start_date": {
+                      "type": "string",
+                      "description": "The start date of an operating period, when non-standard hours are observed. The date is returned in the format DD/MM/YYYY. For example, \"29/06/2016\"."
+                    },
+                    "start_time": {
+                      "type": "string",
+                      "description": "The time when an outlet or facility opens on a particular day, in the format hh:mm. For example, 09:00."
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The hour type, representing the hours of operation at a location. There are six possible enumerated values: \n * HOURS: Standard operating hours when a location is open. \n * LUNCH: The lunchtime period when a location is closed. \n * HATCH: The hours when the parcel pickup customer service counter is open. \n * SPECIAL_HOURS   Non-standard operating hours at a location. \n * SPECIAL_CLOSED  Non-standard closing times at a location. \n * SPECIAL_LUNCH: A non-standard time when a location is closed for the lunchtime period. \n **Note: ** Times are specific to the location of the point, expressed as local time at that point."
+                    },
+                    "weekday": {
+                      "type": "integer",
+                      "description": "Day of the week, enumerated from Monday (0) to Sunday (6)."
+                    }
+                  }
+                }
+              },
+              "location_code": {
+                "type": "string",
+                "description": "A unique identification code for a specific Australia Post asset or facility (See the type field below.)."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the point in all uppercase characters. For example, \"MELBOURNE GPO POST SHOP\"."
+              },
+              "partner_code": {
+                "type": "string",
+                "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+              },
+              "phone_number": {
+                "type": "string",
+                "description": "An Australian telephone number."
+              },
+              "quantity": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The quantity of the item referred to in the type field. For example, if the type is UPL (parcel lockers), then this field would contain the number of parcel lockers available at that point."
+              },
+              "service_codes": {
+                "type": "array",
+                "description": "A comma-delimited string of service IDs that identify the services available at a point. For more information about services, see the [service[SCROLL]](#/definitions/Service) object.",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "type": {
+                "type": "string",
+                "description": "A single enumerated value denoting a service type available at a requested location. When multiple types are available at one location, a separate point object is returned for each one. There are six possible types: \n * UPL: Parcel lockers. \n * R_SPB: A red street post box. \n * C_SPB: Combined street post boxes (Both red and yellow boxes together). \n * PO:  An Australia Post outlet. \n * OS: Outstation (These are a part of a post office not in the same physical building. For example, a separate building dedicated to PO boxes.) \n * DC:  A delivery centre."
+              },
+              "work_centre_id": {
+                "type": "integer",
+                "format": "int32",
+                "description": "A unique numeric identification code that represents a parent Australia Post facility, and all of the child point objects (assets or facilities) associated with it. The facility and its point objects all share the same work_centre_id, but each point is unique."
+              }
+            }
+          }
+        }
+      },
+      "x-hide": true
+    },
+    "ServicesResponse": {
+      "properties": {
+        "services": {
+          "type": "array",
+          "description": "An array of service objects. A service object is a data structure returned from calls to the /services endpoint, and represents an Australia Post service that might be available at one of its outlets or facilities. There are no parameters by which to filter the service objects returned from the /service endpoint. \n **Note:** Not all outlets and facilities offer all services, and the number of service objects returned may change if Australia Post increases or decreases the number of services it offers.",
+          "items": {
+            "type": "object",
+            "description": "A Service object describes a specific service that might be available from an Australia Post outlet or facility.  **Note:** \n Not all outlets and facilities offer all of the services returned by the [services[SCROLL]](#/paths/services) endpoint.",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "The name of the service."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the service expressed as an enumerated value."
+              },
+              "appointment_required": {
+                "type": "boolean",
+                "description": "A value indicating if a customer must first make an appointment for the requested service."
+              },
+              "categories": {
+                "type": "array",
+                "description": "An array of [category[SCROLL]](#/definitions/Category) objects that describe the service category to which a specific service belongs.",
+                "items": {
+                  "type": "object",
+                  "description": "This object contains the name of a service category used to group services of a similar type.",
+                  "properties": {
+                    "description": {
+                      "type": "string",
+                      "description": "The URL-encoded equivalent of the name field."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the service category to which a service belongs."
+                    }
+                  }
+                }
+              },
+              "searchable": {
+                "type": "boolean",
+                "description": "A value dictating whether or not a specific service will be presented in the response to a service query."
+              },
+              "partner_code": {
+                "type": "string",
+                "description": "A code to identify the owner entity of the assets, facilities or services referred to by the location_code. This value is currently always \"AP\" (Australia Post), however, this may be expanded in future to include other entities."
+              },
+              "service_code": {
+                "type": "integer",
+                "format": "int32",
+                "description": "A unique number identifying a specific service that is available at a location. For example, \"99\" that identifies the PostBillPay service."
+              },
+              "url_name": {
+                "type": "string",
+                "description": "The URL-encoded equivalent of the description field."
+              }
+            }
+          }
+        }
+      },
+      "x-hide": true
+    }
+  },
+  "x-allow-origins": ["*"],
+  "x-allowed-headers": ["x-xhr-logon", "x-requested-with"],
+  "x-categories": ["Geo"],
+  "x-max-request-size": 128,
+  "x-common-responses": {
+    "responses": {
+      "400": {
+        "description": "Bad request",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "400",
+                "code": "CONSTRAINT_VIOLATION",
+                "detail": "The server could not understand the request due to invalid syntax.",
+                "source": {
+                  "parameter": "postcode"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorised",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "401",
+                "code": "UNAUTHORIZED",
+                "detail": "Requests to this resource are only granted if they include a valid username and API key."
+              }
+            ]
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "403",
+                "code": "FORBIDDEN",
+                "detail": "Requests to this resource are forbidden without sufficient permissions."
+              }
+            ]
+          }
+        }
+      },
+      "404": {
+        "description": "Not found",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "404",
+                "code": "METHOD_NOT_FOUND",
+                "detail": "The resource you requested is not available or does not exist."
+              }
+            ]
+          }
+        }
+      },
+      "405": {
+        "description": "Method not allowed",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "405",
+                "code": "METHOD_NOT_ALLOWED",
+                "detail": "The wrong method (PUT, GET, POST, etc.) was used to request an endpoint. Only the GET method is supported."
+              }
+            ]
+          }
+        }
+      },
+      "415": {
+        "description": "Unsupported media type",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "415",
+                "code": "UNSUPPORTED_MEDIA_TYPE",
+                "detail": "The uploaded object is in a format not supported by the API server or endpoint."
+              }
+            ]
+          }
+        }
+      },
+      "429": {
+        "description": "Too many requests",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "429",
+                "code": "TOO_MANY_REQUESTS",
+                "detail": "The number of requests per second has exceeded the rate limit and your responses will be throttled temporarily."
+              }
+            ]
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "examples": {
+          "application/json": {
+            "errors": [
+              {
+                "id": "500",
+                "code": "INTERNAL_SERVER_ERROR",
+                "detail": "The server could not complete the request due to an unexpected condition, and no more suitable message is available."
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
