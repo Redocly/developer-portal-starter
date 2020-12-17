@@ -22,6 +22,7 @@ nav:
     page: developer-portal/index.md
 
   - label: External docs
+    icon: ./images/redocly-icon-white.png
     href: https://docs.redoc.ly/developer-portal/introduction/
 
   - search: true
