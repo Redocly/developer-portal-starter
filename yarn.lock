@@ -1787,10 +1787,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.94":
-  version "1.0.0-beta.94"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.94.tgz#40980d36778addb3c8443472d81d7bfbaf37bfc2"
-  integrity sha512-57pWb2ddEx38qas/TVVGtGdHVeT2kwFSAKdulsEh3qBzCRfLtxgbmfbP5VVPSlmW94hEwc0/YEMRjVso2pbYpg==
+"@redocly/developer-portal@1.0.0-beta.96":
+  version "1.0.0-beta.96"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.96.tgz#03f3875f35af43047169a129ad20f9cb4d129f4b"
+  integrity sha512-EHnLRfXMOKDbk5kpkQZXuu1VANiU0Pa0DPuDCgwlByS1ckCgIN6Hd+F2u+4cRUYlp95uYHmRLU+6Uh7TWOZY8A==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1801,8 +1801,8 @@
     "@redocly/gatsby-plugin-sharp" "^2.6.11"
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
-    "@redocly/redoc-int" "^2.0.0-rc.55"
-    "@redocly/reference-docs-lib" "1.3.10"
+    "@redocly/redoc-int" "^2.0.0-rc.58"
+    "@redocly/reference-docs-lib" "1.3.16"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1941,10 +1941,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/redoc-int@^2.0.0-rc.55":
-  version "2.0.0-rc.55"
-  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.55.tgz#2217e02809160fc5fb0ac4d2c6d08a92f1fde9ef"
-  integrity sha512-D5JdPHgmtUS6yqJsPi1YxN3h5DpflfIUAR84YjL2AIjCXfWiFqh8FZ/bgoMvlNYfikqBijXZ7lFxZ4R5dWd2vQ==
+"@redocly/redoc-int@^2.0.0-rc.57", "@redocly/redoc-int@^2.0.0-rc.58":
+  version "2.0.0-rc.58"
+  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.58.tgz#221b1ffb089fca4a1fdbd79d0a5161a8a1c41b01"
+  integrity sha512-epApZ9XHAhxyYK3YvuvqFNnLNHSr3xC+59hnsXNQJYdcJfro6zr5qmqcNKBHH/fd2P9DyJTLanmFHagApXjfiQ==
   dependencies:
     "@redocly/react-dropdown-aria" "^2.0.11"
     "@types/node" "^13.11.1"
@@ -1971,12 +1971,12 @@
     tslib "^2.0.0"
     url-template "^2.0.8"
 
-"@redocly/reference-docs-lib@1.3.10":
-  version "1.3.10"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.10.tgz#fefd08b8733deec572b9d9fc3c28e7b9be24aaf9"
-  integrity sha512-f2Vyv8kC4EVHZchRICdgBcu8TVyf9FJwBFhJUuIx+b5QasaBv7UXP2MI5DD14Ltwq3Dmzz31L6i+yDZENLCZww==
+"@redocly/reference-docs-lib@1.3.16":
+  version "1.3.16"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.16.tgz#506cb3161105134cbe9182d4289207c02d2249ec"
+  integrity sha512-jJktf+n+5TBbbmDJeo8MQWohjUw13DjtWFdAPdMwUSQu0xTBlJ8/q6bA9avOq/YGVoqrlOeCw0o9a6+6y0DgZg==
   dependencies:
-    "@redocly/redoc-int" "^2.0.0-rc.55"
+    "@redocly/redoc-int" "^2.0.0-rc.57"
     "@redocly/vscode-json-languageservice" "^3.4.7"
     codemirror "^5.52.2"
     core-js "^3.5.0"
