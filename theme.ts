@@ -13,6 +13,7 @@ export const theme = {
   //   large: '1200px',
   // },
   colors: {
+    background: '#F3F4F5',
     // tonalOffset: 0.2,
     primary: {
       main: '#227a88',
