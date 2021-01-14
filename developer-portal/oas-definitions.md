@@ -14,7 +14,7 @@ Notice that the petstore is pointing to an API definition on the local filesyste
 For a great docs-like-code experience, we recommend pointing to our API registry links.
 That will cause any update to those API definitions to trigger an update to your developer portal.
 
-A private definition can be shared by using our login functionality.
+A private definition can be accessed locally by using the OpenAPI CLI [login](https://redoc.ly/docs/cli/commands/#login) command.
 
 This is outside of the scope of this training exercise.
 
