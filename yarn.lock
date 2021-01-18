@@ -1787,10 +1787,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.96":
-  version "1.0.0-beta.96"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.96.tgz#03f3875f35af43047169a129ad20f9cb4d129f4b"
-  integrity sha512-EHnLRfXMOKDbk5kpkQZXuu1VANiU0Pa0DPuDCgwlByS1ckCgIN6Hd+F2u+4cRUYlp95uYHmRLU+6Uh7TWOZY8A==
+"@redocly/developer-portal@1.0.0-beta.101":
+  version "1.0.0-beta.101"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.101.tgz#798bd51d9d2a387912952be9f74edae9ce9b8e65"
+  integrity sha512-q+YTS3QsxdL2uMoJdouxC69T+FVrfpN5B+2CDxhstNluJJOFgQUWWrEJlfGotUfppGI0oZl3cx4GtswjVRtcrA==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1802,7 +1802,7 @@
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
     "@redocly/redoc-int" "^2.0.0-rc.58"
-    "@redocly/reference-docs-lib" "1.3.16"
+    "@redocly/reference-docs-lib" "1.3.19"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1941,7 +1941,7 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/redoc-int@^2.0.0-rc.57", "@redocly/redoc-int@^2.0.0-rc.58":
+"@redocly/redoc-int@^2.0.0-rc.58":
   version "2.0.0-rc.58"
   resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.58.tgz#221b1ffb089fca4a1fdbd79d0a5161a8a1c41b01"
   integrity sha512-epApZ9XHAhxyYK3YvuvqFNnLNHSr3xC+59hnsXNQJYdcJfro6zr5qmqcNKBHH/fd2P9DyJTLanmFHagApXjfiQ==
@@ -1971,12 +1971,12 @@
     tslib "^2.0.0"
     url-template "^2.0.8"
 
-"@redocly/reference-docs-lib@1.3.16":
-  version "1.3.16"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.16.tgz#506cb3161105134cbe9182d4289207c02d2249ec"
-  integrity sha512-jJktf+n+5TBbbmDJeo8MQWohjUw13DjtWFdAPdMwUSQu0xTBlJ8/q6bA9avOq/YGVoqrlOeCw0o9a6+6y0DgZg==
+"@redocly/reference-docs-lib@1.3.19":
+  version "1.3.19"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.19.tgz#62e0a3bfc7da98e6a2ecbce985b8bdc2bc6b0cda"
+  integrity sha512-fs05JapcTtPk0Qc9hCf0OA3m0nulBCgSCd+9oYY3WxJQ3AszM7RWMEGHwvQmdGGf/z648ebkdLqh5piP5UoK/Q==
   dependencies:
-    "@redocly/redoc-int" "^2.0.0-rc.57"
+    "@redocly/redoc-int" "^2.0.0-rc.58"
     "@redocly/vscode-json-languageservice" "^3.4.7"
     codemirror "^5.52.2"
     core-js "^3.5.0"
