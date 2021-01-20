@@ -17,7 +17,7 @@ stylesheets:
 licenseKey: eyJ0Ijp0cnVlLCJpIjoxNjAyNzUxODEzLCJlIjoxNjA2Njk0NDAwLCJoIjp0cnVlLCJzIjoicG9ydGFsIn0=.IJYXW/7HyZwKGplBIyq1MNHXRTEBoRycqLGFzQpVwmMNWM56ErK5iRZiHcqvCCdnfKV231d9WEEZhwzsK5iKKA==
 nav:
   - label: APIs
-    page: api/index.md
+    page: api/index.mdx
   - label: Setup
     permission: anonymous
     page: developer-portal/setup.md
