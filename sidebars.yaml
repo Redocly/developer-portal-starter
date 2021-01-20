@@ -65,19 +65,52 @@ training:
                             pages:
                               - label: Upgrading
                                 page: developer-portal/upgrade.md
-apis:
-  - page: api/index.md
+public-api:
+  context:
+    type: api
+    id: petstore
+  pages:
   - separator: Public
   - page: api/public/petstore.page.yaml
-
-  - separator: Partner
-  - page: api/partner/partner-a.page.yaml
+partner-api-v1:
+  context:
+    type: api
+    id: partner-b
+    versions:
+      - partner-a
+      - partner-b
+  pages:
   - page: api/partner/partner-b.page.yaml
-
+partner-api-v2:
+  context:
+    type: api
+    id: partner-a
+    versions:
+      - partner-a
+      - partner-b
+  pages:
+  - page: api/partner/partner-a.page.yaml
+internal:
+  context:
+    type: api
+    id: internal-a
+  pages:
   - separator: Internal
     permission: 'read:internal'
   - page: api/internal/internal-a.page.yaml
 
+locations-api:
+  context:
+    type: api
+    id: locations
+  pages:
+    - page: api/public/locations.page.yaml
+
+internal-restricted:
+  context:
+    type: api
+    id: internal-b
+  pages:
   - separator: Internal Restricted
     permission: 'read:internal-restricted'
   - page: api/internal-restricted/internal-b.page.yaml

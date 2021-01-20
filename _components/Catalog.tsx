@@ -44,7 +44,7 @@ export function Catalog() {
       </Sidebar>
       <CatalogWrap>
         {filteredCategories.map(cat => (
-          <div>
+          <div key={cat.name}>
             <h2>{cat.name}</h2>
             <CategoryWrap>{cat.apis.map(api => (
               <ApiCard key={api.definitionId}>
