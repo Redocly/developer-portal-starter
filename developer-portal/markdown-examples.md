@@ -34,7 +34,6 @@ Blockquotes can contain multiple paragraphs. Add a > on the blank lines between 
 
 URLs can be made in a handful of ways:
 
-- A named link to [MarkItDown][3]. The easiest way to do these is to select what you want to make a link and hit `Ctrl+L`.
 - Another named link to [MarkItDown](http://www.markitdown.net/)
 - Sometimes you just want a URL or email address like <http://www.markitdown.net/>.
 
