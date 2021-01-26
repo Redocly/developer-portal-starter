@@ -1,7 +1,7 @@
 type: redoc
 definitionId: rock
 showInfo: true
-expand: false
+expand: true
 settings:
   generateCodeSamples:
     languages:
