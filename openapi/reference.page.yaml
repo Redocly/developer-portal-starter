@@ -1,7 +1,8 @@
+label: Petstore API reference
 type: redoc
 definitionId: petstore
 showInfo: true
-expand: true
+expand: false
 settings:
   generateCodeSamples:
     languages:
