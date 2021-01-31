@@ -69,3 +69,9 @@ training:
 alternative:
   - page: developer-portal/sidebar-alternative.md
     label: Alternative sidebar example
+demo:
+  - page: openapi/demo.page.yaml
+demo-parameters:
+  - page: openapi/demo-parameters.page.yaml
+starter:
+  - page: openapi/starter.page.yaml/*
