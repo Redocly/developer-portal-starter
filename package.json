@@ -8,8 +8,7 @@
     "start": "redocly-portal develop -p 3000",
     "build": "redocly-portal build",
     "clean": "redocly-portal clean"
-  },
-  "dependencies": {
-    "@redocly/developer-portal": "1.0.0-beta.105"
+  },  "dependencies": {
+    "@redocly/developer-portal": "1.0.0-beta.108"
   }
 }

@@ -1869,10 +1869,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@redocly/developer-portal@1.0.0-beta.105":
-  version "1.0.0-beta.105"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.105.tgz#bed3a43154693c6d0ed7d3c88cb9a890168d1e54"
-  integrity sha512-Q4KwgISqbz7/fSVofWgmXljGFvMc9HvncdFudsy1bR4NfheBUzAZejHHeyB6v2sYVpc1P8l7Dn/chhrz0QKB0Q==
+"@redocly/developer-portal@1.0.0-beta.108":
+  version "1.0.0-beta.108"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.108.tgz#2d5185aa34b16ad130f98eec345161488f448946"
+  integrity sha512-3KbCIe+MoNsSYDwTbnojofF3pzuznMNFe2zuPmVLVNSMt+QkMSrBILIGEyrmuNq6F+rSHYtCbhDjk/gzlxLzbQ==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1918,7 +1918,7 @@
     is-url "^1.2.2"
     js-yaml "^3.13.0"
     lodash.throttle "^4.1.1"
-    mobx "^6.0.1"
+    mobx "~6.0.1"
     node-fetch "^2.3.0"
     p-map "^4.0.0"
     polished "^3.4.0"
@@ -10805,6 +10805,11 @@ mobx@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.0.1.tgz#ec23520848527bf7834d7b4c0b54b2a8eb6e7c14"
   integrity sha512-Pk6uJXZ34yqd661yRmS6z/9avm4FOGXpFpVjnEfiYYOsZXnAxv1fpYjxTCEZ9tuwk0Xe1qnUUlgm+rJtGe0YJA==
+
+mobx@~6.0.1:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.0.5.tgz#617e716b7aa81d5b700598af3bb1643ff2144410"
+  integrity sha512-Q3/GiSj/QyazDn1n44PjdiMlokCE6gVs85BnFR0xCJmkF2d34k/ZnWAEG7wGbnJYEi+0f5CdvzDquBiKeo56bA==
 
 moment@^2.27.0:
   version "2.29.1"
