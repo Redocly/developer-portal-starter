@@ -78,21 +78,21 @@ alternative:
 # scissors:
 #   - page: openapi/scissors.page.yaml/*
 
-# unified-sidebar:
-#   - page: openapi/rock.page.yaml
-#   - page: openapi/paper.page.yaml
-#   - page: openapi/scissors.page.yaml
+unified-sidebar:
+  - page: openapi/rock.page.yaml
+  - page: openapi/paper.page.yaml
+  - page: openapi/scissors.page.yaml
 
-drilldown-style:
-  - group: Rock
-    menuStyle: drilldown
-    pages:
-      - page: openapi/rock.page.yaml/*
-  - group: Paper
-    menuStyle: drilldown
-    pages:
-      - page: openapi/paper.page.yaml/*
-  - group: Scissors
-    menuStyle: drilldown
-    pages:
-      - page: openapi/scissors.page.yaml/*
+# drilldown-style:
+#   - group: Rock
+#     menuStyle: drilldown
+#     pages:
+#       - page: openapi/rock.page.yaml/*
+#   - group: Paper
+#     menuStyle: drilldown
+#     pages:
+#       - page: openapi/paper.page.yaml/*
+#   - group: Scissors
+#     menuStyle: drilldown
+#     pages:
+#       - page: openapi/scissors.page.yaml/*
