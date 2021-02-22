@@ -3,12 +3,10 @@ roles:
   guest:
     permissions:
       - read:public
-      - read:partner
   Partner:
     permissions:
       - read:public
       - read:partner
-      - read:test_docs
   Employee:
     permissions:
       - read:public
