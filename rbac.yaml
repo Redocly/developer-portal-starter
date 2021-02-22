@@ -4,11 +4,6 @@ roles:
     permissions:
       - read:public
       - read:partner
-  Oles:
-    permissions:
-      - read:test_docs
-    roles:
-      - Partner
   Partner:
     permissions:
       - read:public
