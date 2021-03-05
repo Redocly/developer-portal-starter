@@ -101,53 +101,112 @@ export const theme = {
   // },
 
   typography: {
-    fontSize: '16px',
-    lineHeight: '1.5em',
-    fontWeightRegular: '400',
-    fontWeightBold: '600',
-    fontWeightLight: '300',
-    fontFamily: '"Source Sans Pro", sans-serif',
-    headings: {
-      fontFamily: '"Source Sans Pro", sans-serif',
-      fontWeight: '600',
+    // Defaults
+    fontSize: '1rem',
+    lineHeight: '1.5rem',
+    fontFamily: 'Inter',
+
+    fontWeight: {
+      bold: '600',
+      semibold: '500',
+      regular: '400',
+      light: '300',
     },
-    // heading1: {
-    //   fontSize: '1.85714em',
-    //   fontWeight: '600',
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   color: ({ colors }) => colors.primary.main,
-    //   capitalize: true,
-    // },
-    // heading2: {
-    //   fontSize: '1.57143em',
-    //   fontWeight: '600',
-    //   color: ({ colors }) => colors.text.primary,
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   capitalize: false,
-    // },
-    // heading3: {
-    //   fontSize: '1.27em',
-    //   fontWeight: '600',
-    //   color: ({ colors }) => colors.text.primary,
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   capitalize: false,
-    // },
-    // heading4: {
-    // // ...
-    // },
-    // heading5: {
-    // // ...
-    // },
-    // heading6: {
-    // // ...
-    // },
+
+
+    heading: {
+      fontFamily: ({ typography }) => typography.fontFamily,
+      lineHeight: '1.5rem',
+
+      large: {
+        fontSize: '1.75rem',
+        fontWeight: ({ typography }) => typography.fontWeight.bold,
+        fontFamily: ({ typography }) => typography.heading.fontFamily,
+        lineHeight: ({ typography }) => typography.heading.lineHeight,
+      },
+      medium: {
+        fontSize: '1.5rem',
+        fontWeight: ({ typography }) => typography.fontWeight.semibold,
+        fontFamily: ({ typography }) => typography.heading.fontFamily,
+        lineHeight: ({ typography }) => typography.heading.lineHeight,
+      },
+      small: {
+        fontSize: '1.3333rem',
+        fontWeight: ({ typography }) => typography.fontWeight.semibold,
+        fontFamily: ({ typography }) => typography.heading.fontFamily,
+        lineHeight: ({ typography }) => typography.heading.lineHeight,
+      },
+    },
+    body: {
+      fontFamily: ({ typography }) => typography.fontFamily,
+
+      large: {
+        fontSize: '1.5rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.body.fontFamily,
+        lineHeight: '1.75rem',
+      },
+      normal: {
+        fontSize: '1.3333rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.body.fontFamily,
+        lineHeight: '2rem',
+      },
+      normalBold: {
+        fontSize: '1.3333rem',
+        fontWeight: ({ typography }) => typography.fontWeight.bold,
+        fontFamily: ({ typography }) => typography.body.fontFamily,
+        lineHeight: '2rem',
+      },
+    },
+    label: {
+      fontFamily: ({ typography }) => typography.fontFamily,
+
+      regular: {
+        fontSize: '1.1667rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.label.fontFamily,
+        lineHeight: '1.6667rem',
+      },
+      semibold: {
+        fontSize: '1.1667rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.label.fontFamily,
+        lineHeight: '1.6667rem',
+      },
+      italics: {
+        fontSize: '1.1667rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.label.fontFamily,
+        lineHeight: '1.6667rem',
+        fontStyle: 'italic',
+      },
+      caption: {
+        fontSize: '1rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.label.fontFamily,
+        lineHeight: '1.3333rem',
+      },
+      captionBold: {
+        fontSize: '1rem',
+        fontWeight: ({ typography }) => typography.fontWeight.semibold,
+        fontFamily: ({ typography }) => typography.label.fontFamily,
+        lineHeight: '1.3333rem',
+      },
+      inputCaption: {
+        fontSize: '0.8333rem',
+        fontWeight: ({ typography }) => typography.fontWeight.regular,
+        fontFamily: ({ typography }) => typography.label.fontFamily,
+        lineHeight: '1rem',
+      },
+    },
+
+
+
     code: {
       fontSize: '14px',
       fontFamily: 'Courier, monospace',
-      fontWeight: ({ typography }) => typography.fontWeightRegular,
+      fontWeight: ({ typography }) => typography.fontWeight.regular,
       color: '#e53935',
       backgroundColor: 'rgba(38, 50, 56, 0.04)',
       wrap: false,
