@@ -141,8 +141,8 @@ export const theme = {
 
       large: {
         fontSize: '1.5rem',
-        fontWeight: ({ typography }) => typography.fontWeight.regular,
-        fontFamily: ({ typography }) => typography.body.fontFamily,
+        fontWeight: ({ typography }) => typography.body.normal.fontWeight,
+        fontFamily: ({ typography }) => typography.body.normal.fontFamily,
         lineHeight: '1.75rem',
       },
       normal: {
@@ -152,10 +152,10 @@ export const theme = {
         lineHeight: '2rem',
       },
       normalBold: {
-        fontSize: '1.3333rem',
-        fontWeight: ({ typography }) => typography.fontWeight.bold,
-        fontFamily: ({ typography }) => typography.body.fontFamily,
-        lineHeight: '2rem',
+        fontSize: ({ typography }) => typography.body.normal.fontSize,
+        fontWeight: ({ typography }) => typography.body.fontWeight.bold,
+        fontFamily: ({ typography }) => typography.body.normal.fontFamily,
+        lineHeight: ({ typography }) => typography.body.normal.lineHeight,
       },
     },
     label: {
@@ -168,16 +168,16 @@ export const theme = {
         lineHeight: '1.6667rem',
       },
       semibold: {
-        fontSize: '1.1667rem',
-        fontWeight: ({ typography }) => typography.fontWeight.regular,
-        fontFamily: ({ typography }) => typography.label.fontFamily,
-        lineHeight: '1.6667rem',
+        fontSize: ({ typography }) => typography.label.regular.fontSize,
+        fontWeight: ({ typography }) => typography.fontWeight.semibold,
+        fontFamily: ({ typography }) => typography.label.regular.fontFamily,
+        lineHeight: ({ typography }) => typography.label.regular.lineHeight,
       },
       italics: {
-        fontSize: '1.1667rem',
-        fontWeight: ({ typography }) => typography.fontWeight.regular,
-        fontFamily: ({ typography }) => typography.label.fontFamily,
-        lineHeight: '1.6667rem',
+        fontSize: ({ typography }) => typography.label.regular.fontSize,
+        fontWeight: ({ typography }) => typography.label.regular.fontWeight,
+        fontFamily: ({ typography }) => typography.label.regular.fontFamily,
+        lineHeight: ({ typography }) => typography.label.regular.lineHeight,
         fontStyle: 'italic',
       },
       caption: {
@@ -187,10 +187,10 @@ export const theme = {
         lineHeight: '1.3333rem',
       },
       captionBold: {
-        fontSize: '1rem',
+        fontSize: ({ typography }) => typography.label.caption.fontSize,
         fontWeight: ({ typography }) => typography.fontWeight.semibold,
-        fontFamily: ({ typography }) => typography.label.fontFamily,
-        lineHeight: '1.3333rem',
+        fontFamily: ({ typography }) => typography.label.caption.fontFamily,
+        lineHeight: ({ typography }) => typography.label.caption.lineHeight,
       },
       inputCaption: {
         fontSize: '0.8333rem',
