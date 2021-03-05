@@ -113,7 +113,6 @@ export const theme = {
       light: '300',
     },
 
-
     heading: {
       fontFamily: ({ typography }) => typography.fontFamily,
       lineHeight: '1.5rem',
