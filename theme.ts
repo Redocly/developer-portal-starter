@@ -201,8 +201,6 @@ export const theme = {
       },
     },
 
-
-
     code: {
       fontSize: '14px',
       fontFamily: 'Courier, monospace',
