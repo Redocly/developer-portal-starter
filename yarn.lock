@@ -1463,10 +1463,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@1.0.0-beta.108":
-  version "1.0.0-beta.108"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.108.tgz#2d5185aa34b16ad130f98eec345161488f448946"
-  integrity sha512-3KbCIe+MoNsSYDwTbnojofF3pzuznMNFe2zuPmVLVNSMt+QkMSrBILIGEyrmuNq6F+rSHYtCbhDjk/gzlxLzbQ==
+"@redocly/developer-portal@1.0.0-beta.113":
+  version "1.0.0-beta.113"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.113.tgz#f611d2479ce898a93ab6c08245c3bfdf7beb484e"
+  integrity sha512-rvoCqf5jIET81A240+BOwBPxVpSWA7vxuTXScoiI4pwQsu/tElp7VVvMd3NJYWhIa32Hd/Onrrkml4XlLm5ZPA==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1478,7 +1478,7 @@
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
     "@redocly/redoc-int" "^2.0.0-rc.58"
-    "@redocly/reference-docs-lib" "^1.3.20"
+    "@redocly/reference-docs-lib" "^1.3.24"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1487,6 +1487,7 @@
     gatsby "2.24.50"
     gatsby-cli "^2.11.4"
     gatsby-link "2.4.13"
+    gatsby-plugin-canonical-urls "^2.0.0"
     gatsby-plugin-google-analytics "2.3.13"
     gatsby-plugin-google-tagmanager "2.1.26"
     gatsby-plugin-heap "1.1.0"
@@ -1616,7 +1617,7 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/redoc-int@^2.0.0-rc.58", "@redocly/redoc-int@^2.0.0-rc.59":
+"@redocly/redoc-int@^2.0.0-rc.58":
   version "2.0.0-rc.59"
   resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.59.tgz#102b3c4231e7d468b92477815906375d082665d7"
   integrity sha512-B/zuRGTvr8Sx85xQ0MdP/LLozJ63U9He/+xyWEvf5uPeBngEI9cYipWWHb3fY5kQ/emE3B3yeh7ZLYAz2E2O2Q==
@@ -1646,12 +1647,42 @@
     tslib "^2.0.0"
     url-template "^2.0.8"
 
-"@redocly/reference-docs-lib@^1.3.20":
-  version "1.3.23"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.23.tgz#592e9053748480870c10da8027a5a7ac9ced5e57"
-  integrity sha512-CnW1Wa4UWK7O2m+sax15o/l8PdyCZIDNZcyEl7+WBDxG7auaAlJ14rEdnH/2P44RLRm26brDKxwPeQPinScCCA==
+"@redocly/redoc-int@^2.0.0-rc.60":
+  version "2.0.0-rc.60"
+  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.60.tgz#c0a6e0f3f8c7d27c10b5fed050cdbcd4a8f9c0da"
+  integrity sha512-vfuZZYUm/fiHLsP9hKUluJNYHAOhtK97nZGESoKWUohHVi2umvRU2vbiXjjg47J8+v8E2z0zCr7BOib6UU1KIQ==
   dependencies:
-    "@redocly/redoc-int" "^2.0.0-rc.59"
+    "@redocly/react-dropdown-aria" "^2.0.11"
+    "@types/node" "^13.11.1"
+    classnames "^2.2.6"
+    decko "^1.2.0"
+    dompurify "^2.0.12"
+    eventemitter3 "^4.0.4"
+    json-pointer "^0.6.0"
+    json-schema-ref-parser "^6.1.0"
+    lunr "2.3.8"
+    mark.js "^8.11.1"
+    marked "^0.7.0"
+    memoize-one "~5.1.1"
+    mobx-react "^7.0.5"
+    openapi-sampler "^1.0.0-beta.18"
+    perfect-scrollbar "^1.4.0"
+    polished "^3.6.5"
+    prismjs "^1.22.0"
+    prop-types "^15.7.2"
+    react-tabs "^3.1.1"
+    slugify "^1.4.4"
+    stickyfill "^1.1.1"
+    swagger2openapi "^6.2.1"
+    tslib "^2.0.0"
+    url-template "^2.0.8"
+
+"@redocly/reference-docs-lib@^1.3.24":
+  version "1.3.24"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.24.tgz#a5ae4b2a9d8f5456ffd3bb74d39293cfcae47f75"
+  integrity sha512-nMOoqm9O55ecttIjNVUg3bGMRr2nlfRzrC/PNcNQfQbRqzGq/7slyEVOecVZHZxNGBV7Cs759hG05bu13PpqBA==
+  dependencies:
+    "@redocly/redoc-int" "^2.0.0-rc.60"
     "@redocly/vscode-json-languageservice" "^3.4.7"
     codemirror "^5.52.2"
     core-js "^3.5.0"
@@ -6593,6 +6624,13 @@ gatsby-page-utils@^0.9.0:
     glob "^7.1.6"
     lodash "^4.17.20"
     micromatch "^4.0.2"
+
+gatsby-plugin-canonical-urls@^2.0.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-2.10.0.tgz#8719099898b2436e7f1365002d48ef4b89c6fe51"
+  integrity sha512-Je15uAX0WX4i7fnEO7Rybhnxd7r3paWhly22APcE+lk5lcy8XIsHWXRKl6BS+frBmcHCgQYfqofhKsaQITHSsg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
 
 gatsby-plugin-google-analytics@2.3.13:
   version "2.3.13"
