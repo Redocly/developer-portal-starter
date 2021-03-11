@@ -112,7 +112,7 @@ export const theme = {
       },
       normalBold: {
         fontSize: ({ typography }) => typography.body.normal.fontSize,
-        fontWeight: ({ typography }) => typography.body.fontWeight.bold,
+        fontWeight: ({ typography }) => typography.fontWeight.bold,
         fontFamily: ({ typography }) => typography.body.normal.fontFamily,
         lineHeight: ({ typography }) => typography.body.normal.lineHeight,
       },
