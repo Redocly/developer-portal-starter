@@ -1,6 +1,7 @@
 import { lighten, darken, readableColor } from 'polished';
 
 export const theme = {
+
   colors: {
     palette: {
       black: '#000000',
@@ -32,10 +33,12 @@ export const theme = {
       pink: ({ colors }) => colors.palette.pink,
     },
     text: {
-      primary: ({ colors }) => colors.palette.black,
-      base: ({ colors }) => colors.palette.grey1,
-      secondary: ({ colors }) => colors.palette.grey2,
-      inactive: ({ colors }) => colors.action.inactive,
+      primary: 'red',
+      secondary: 'purple',
+      // primary: ({ colors }) => colors.palette.black,
+      // base: ({ colors }) => colors.palette.grey1,
+      // secondary: ({ colors }) => colors.palette.grey2,
+      // inactive: ({ colors }) => colors.action.inactive,
     },
     icon: {
       background: ({ colors }) => colors.palette.grey5,
