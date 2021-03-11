@@ -33,12 +33,10 @@ export const theme = {
       pink: ({ colors }) => colors.palette.pink,
     },
     text: {
-      primary: 'red',
-      secondary: 'purple',
-      // primary: ({ colors }) => colors.palette.black,
-      // base: ({ colors }) => colors.palette.grey1,
-      // secondary: ({ colors }) => colors.palette.grey2,
-      // inactive: ({ colors }) => colors.action.inactive,
+      primary: ({ colors }) => colors.palette.black,
+      base: ({ colors }) => colors.palette.grey1,
+      secondary: ({ colors }) => colors.palette.grey2,
+      inactive: ({ colors }) => colors.action.inactive,
     },
     icon: {
       background: ({ colors }) => colors.palette.grey5,
