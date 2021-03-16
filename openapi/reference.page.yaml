@@ -1,8 +1,7 @@
-type: redoc
+type: reference-docs
 definitionId: petstore
-showInfo: true
-expand: true
 settings:
+  pagination: item
   generateCodeSamples:
     languages:
       - lang: curl
