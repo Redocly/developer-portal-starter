@@ -1,8 +1,8 @@
 meta:
-  title: Redocly Training
-  description: The best API documentation generator ever.
-  siteUrl: https://portal-demo.redoc.ly
-headerIcon: ./images/logo.png
+  title: Fast Checkout Documentation
+  description: One click. No passwords. The world's fastest checkout.
+  siteUrl: https://fastaf.redoc.ly
+headerIcon: ./images/logo.svg
 enableToc: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
