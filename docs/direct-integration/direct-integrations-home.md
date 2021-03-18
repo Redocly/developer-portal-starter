@@ -2,7 +2,7 @@
 
 Welcome to the [BETA] Fast Direct Integrations documentation home. Here you will find useful documentation regarding the design and specifications of Fast Direct Integrations.
 
-![%5BBETA%5D%20Direct%20Integrations%20Public%20Documentation%20Ho%2038f8e98999984ab5aef109804493ace3/Screen_Shot_2021-02-16_at_7.33.39_PM.png](%5BBETA%5D%20Direct%20Integrations%20Public%20Documentation%20Ho%2038f8e98999984ab5aef109804493ace3/Screen_Shot_2021-02-16_at_7.33.39_PM.png)
+[![Interacting with Fast Checkout](images/intro.png)](images/intro.png)
 
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
