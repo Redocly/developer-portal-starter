@@ -1,4 +1,4 @@
-# [BETA] Direct Integrations Public Documentation Home
+# [BETA] Direct Integrations
 
 Welcome to the [BETA] Fast Direct Integrations documentation home. Here you will find useful documentation regarding the design and specifications of Fast Direct Integrations.
 
