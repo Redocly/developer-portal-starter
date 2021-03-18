@@ -56,7 +56,7 @@ training:
         page: developer-portal/markdown.md
       - label: Folder structure
         page: developer-portal/awesome/folders.md
-  - group: API reference
+- group: API reference
     expanded: false
     pages:
       - page: openapi/reference.page.yaml/*
