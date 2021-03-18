@@ -8,8 +8,7 @@ oasDefinitions:
   petstore: ./openapi/petstore.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
-  - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
-  - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+  - https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
 #ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
   # note that GA doesn't work in DEV
@@ -18,17 +17,13 @@ stylesheets:
 #  - ./static/intercom.js
 nav:
 
-  - label: Training exercises
+  - label: Documentation
     page: developer-portal/index.md
-
-  - label: External docs
-    icon: ./images/redocly-icon-white.png
-    href: https://docs.redoc.ly/developer-portal/introduction/
 
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2020. All right reserved.
+  copyrightText: Copyright © Fast 2021. All right reserved.
   columns:
     - group: Legal
       items:
