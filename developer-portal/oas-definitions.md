@@ -39,10 +39,8 @@ There is a file at `openapi/reference.page.yaml`.
 The contents utilize the key `petstore` defined in the `siteConfig.yaml`.
 
 ```yaml
-type: redoc
+type: reference-docs
 definitionId: petstore
-showInfo: true
-expand: true
 ```
 
 That provides the additional metadata we need to render the API.
