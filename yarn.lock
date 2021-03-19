@@ -1532,10 +1532,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@1.0.0-beta.119":
-  version "1.0.0-beta.119"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.119.tgz#8b7d3fe829073005244eccca2f4c430e823f5678"
-  integrity sha512-szbHJZv8cxQ13o3OW80g8i+Z4NP2FuvgY2b1+T37iD3az4LnNYH4Kv93yQZf0VuOSk4XAz33/yU3CHM4ikt2Lw==
+"@redocly/developer-portal@1.0.0-beta.120":
+  version "1.0.0-beta.120"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.120.tgz#765344748d07e1391b94a087c8c3e32a327d83f4"
+  integrity sha512-OfCEQ4W3b/qL1Dgz8lkPlI7CBJvjjCP3JJVQ64LR5L+IzxzqiTJyVZW++42uAlHjcfLApmF3lVKiJhIgf5MLKg==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1543,7 +1543,6 @@
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-plugin-favicon" "^3.1.9"
-    "@redocly/gatsby-plugin-sharp" "^2.6.11"
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
     "@redocly/redoc-int" "^2.0.0-rc.61"
@@ -1609,6 +1608,8 @@
     unist-util-visit "^2.0.0"
     uuid "^8.3.0"
     yargs "^15.3.1"
+  optionalDependencies:
+    "@redocly/gatsby-plugin-sharp" "^2.6.11"
 
 "@redocly/favicons-webpack-plugin@^0.0.11":
   version "0.0.11"
