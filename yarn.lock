@@ -1532,10 +1532,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@1.0.0-beta.120":
-  version "1.0.0-beta.120"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.120.tgz#765344748d07e1391b94a087c8c3e32a327d83f4"
-  integrity sha512-OfCEQ4W3b/qL1Dgz8lkPlI7CBJvjjCP3JJVQ64LR5L+IzxzqiTJyVZW++42uAlHjcfLApmF3lVKiJhIgf5MLKg==
+"@redocly/developer-portal@1.0.0-beta.121":
+  version "1.0.0-beta.121"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.121.tgz#4f4efbe2229ebc396c3335166f904f88ecee8bd7"
+  integrity sha512-1OJclwskqMFTafMVXbUMXS20/UHPE6rFEvVVNtVjKmMlXAUK9FGSDAs2ZCWzz86P4ljIrSKRdnUU4BIor3sr4g==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1556,11 +1556,11 @@
     gatsby-cli "^2.11.4"
     gatsby-link "2.4.13"
     gatsby-plugin-canonical-urls "^2.0.0"
+    gatsby-plugin-catch-links "^2.10.0"
     gatsby-plugin-google-analytics "2.3.13"
     gatsby-plugin-google-tagmanager "2.1.26"
     gatsby-plugin-heap "1.1.0"
     gatsby-plugin-layout "1.3.10"
-    gatsby-plugin-meta-redirect "^1.1.1"
     gatsby-plugin-nprogress "2.3.10"
     gatsby-plugin-react-helmet "3.3.10"
     gatsby-plugin-segment-js "3.5.0"
@@ -6536,15 +6536,6 @@ fs-exists-cached@1.0.0, fs-exists-cached@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs-exists-cached/-/fs-exists-cached-1.0.0.tgz#cf25554ca050dc49ae6656b41de42258989dcbce"
   integrity sha1-zyVVTKBQ3EmuZla0HeQiWJidy84=
 
-fs-extra@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
-  integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
-
 fs-extra@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.1.0.tgz#49d43c45a88cd9677668cb7be1b46efdb8d2e1c0"
@@ -6721,6 +6712,14 @@ gatsby-plugin-canonical-urls@^2.0.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
+gatsby-plugin-catch-links@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.10.0.tgz#5ab86087367dc81be7a8c4b4db583be0b77e17ba"
+  integrity sha512-r+YBR6ChWOwb0VygrjtS6nrz0fv5KyZiyL0aa/6Na4st4D+PHqml2nuYtLx0+otxjscSjJXk+7eg04YDGEeFng==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    escape-string-regexp "^1.0.5"
+
 gatsby-plugin-google-analytics@2.3.13:
   version "2.3.13"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.3.13.tgz#46f78f4df11cc773d44e5909ea491c8f8c0e6774"
@@ -6749,13 +6748,6 @@ gatsby-plugin-layout@1.3.10:
   integrity sha512-iO+aDef4hzJVrIa+LrO3r2FzcM4OdMePb/sDKgmknAeN+sJKH735DdRbk/H/41UREM9rTdwdq+/oFxxlAo3Lmw==
   dependencies:
     "@babel/runtime" "^7.10.3"
-
-gatsby-plugin-meta-redirect@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-meta-redirect/-/gatsby-plugin-meta-redirect-1.1.1.tgz#058e8e53edff38dc44d3bb6153109d01c910f863"
-  integrity sha512-Oc4qgU3SlDUM9qoxIMKO+re2bdMs3/a2KXrfL65gb8XMLsHylBbveWtXZRhgjd2QDL/49RX4S9SEykuadRju2w==
-  dependencies:
-    fs-extra "^7.0.0"
 
 gatsby-plugin-nprogress@2.3.10:
   version "2.3.10"
