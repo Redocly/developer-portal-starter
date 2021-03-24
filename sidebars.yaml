@@ -12,13 +12,9 @@ training:
   - group: BigCommerce
     expanded: false
     pages:
-      - label: BigCommerce Overview
+      - label: Setup
         page: developer-portal/setup.md
-      - label: Seller Onboarding
-        page: developer-portal/markdown.md
-      - label: Installation Guide
-        page: developer-portal/markdown.md
-      - label: Tips & Tricks
+      - label: Markdown
         page: developer-portal/markdown.md
   - group: WooCommerce
     expanded: false
