@@ -38,7 +38,7 @@ training:
         page: developer-portal/mdx.mdx
       - label: Creating React components
         page: developer-portal/custom-component.mdx
-- group: WooCommerce
+  - group: WooCommerce
     expanded: true
     pages:
       - label: Setup
@@ -47,7 +47,7 @@ training:
         page: developer-portal/markdown.md
       - label: Folder structure
         page: developer-portal/awesome/folders.md
-- group: Other Platforms
+  - group: Other Platforms
     expanded: true
     pages:
       - label: Setup
