@@ -8,7 +8,7 @@ training:
       - label: How Fast Login Works
         page: developer-portal/markdown.md
       - label: Get Help
-        page: contact
+        page: developer-portal/markdown.md
   - group: BigCommerce
     expanded: false
     pages:
