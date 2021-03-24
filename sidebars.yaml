@@ -21,19 +21,11 @@ training:
     pages:
       - label: Setup
         page: developer-portal/setup.md
-      - label: Markdown
-        page: developer-portal/markdown.md
-      - label: Folder structure
-        page: developer-portal/awesome/folders.md
   - group: Other Platforms
     expanded: false
     pages:
       - label: Setup
         page: developer-portal/setup.md
-      - label: Markdown
-        page: developer-portal/markdown.md
-      - label: Folder structure
-        page: developer-portal/awesome/folders.md
 
   - group: Admin
     expanded: true
