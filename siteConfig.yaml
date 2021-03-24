@@ -8,6 +8,8 @@ oasDefinitions:
   petstore: ./openapi/petstore.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
+  - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
+  - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap
 #ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
