@@ -3,12 +3,12 @@ training:
   - group: Getting Started
     expanded: true
     pages:
-      - label: Setup
+      - label: How Fast Checkout Works
         page: developer-portal/setup.md
-      - label: Markdown
+      - label: How Fast Login Works
         page: developer-portal/markdown.md
-      - label: Folder structure
-        page: developer-portal/awesome/folders.md
+      - label: Get Help
+        page: contact
   - group: BigCommerce
     expanded: false
     pages:
