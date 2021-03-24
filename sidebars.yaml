@@ -10,7 +10,7 @@ training:
       - label: Folder structure
         page: developer-portal/awesome/folders.md
   - group: BigCommerce
-    expanded: true
+    expanded: false
     pages:
       - label: Setup
         page: developer-portal/setup.md
@@ -48,7 +48,7 @@ training:
       - label: Creating React components
         page: developer-portal/custom-component.mdx
   - group: WooCommerce
-    expanded: true
+    expanded: false
     pages:
       - label: Setup
         page: developer-portal/setup.md
@@ -57,7 +57,7 @@ training:
       - label: Folder structure
         page: developer-portal/awesome/folders.md
   - group: Other Platforms
-    expanded: true
+    expanded: false
     pages:
       - label: Setup
         page: developer-portal/setup.md
