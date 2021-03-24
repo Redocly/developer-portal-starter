@@ -1,6 +1,6 @@
 training:
   - page: developer-portal/index.md
-  - group: Training exercises
+  - group: BigCommerce
     expanded: true
     pages:
       - label: Setup
@@ -38,10 +38,24 @@ training:
         page: developer-portal/mdx.mdx
       - label: Creating React components
         page: developer-portal/custom-component.mdx
-  - group: Petstore reference
-    expanded: false
+- group: WooCommerce
+    expanded: true
     pages:
-      - page: openapi/reference.page.yaml/*
+      - label: Setup
+        page: developer-portal/setup.md
+      - label: Markdown
+        page: developer-portal/markdown.md
+      - label: Folder structure
+        page: developer-portal/awesome/folders.md
+- group: Other Platforms
+    expanded: true
+    pages:
+      - label: Setup
+        page: developer-portal/setup.md
+      - label: Markdown
+        page: developer-portal/markdown.md
+      - label: Folder structure
+        page: developer-portal/awesome/folders.md
 
   - group: Admin
     expanded: true

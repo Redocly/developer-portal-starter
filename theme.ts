@@ -68,7 +68,6 @@ export const theme = {
     fontSize: '1rem',
     lineHeight: '1.5rem',
     fontFamily: 'Inter',
-
     fontWeight: {
       bold: '600',
       semibold: '500',

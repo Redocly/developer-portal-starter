@@ -1,8 +1,8 @@
 meta:
-  title: Redocly Training
-  description: The best API documentation generator ever.
-  siteUrl: https://portal-demo.redoc.ly
-headerIcon: ./images/logo.png
+  title: Fast Checkout Documentation
+  description: One click. No passwords. The world's fastest checkout.
+  siteUrl: https://fastaf.redoc.ly
+headerIcon: ./images/logo.svg
 enableToc: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
@@ -10,6 +10,7 @@ oasDefinitions:
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+  - https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap
 #ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
   # note that GA doesn't work in DEV
@@ -18,7 +19,7 @@ stylesheets:
 #  - ./static/intercom.js
 nav:
 
-  - label: Training exercises
+  - label: Documentation
     page: developer-portal/index.md
 
   - label: External docs
@@ -28,7 +29,7 @@ nav:
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2020. All right reserved.
+  copyrightText: Copyright © Fast AF, Inc 2021. All right reserved.
   columns:
     - group: Legal
       items:
