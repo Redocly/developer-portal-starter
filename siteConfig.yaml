@@ -29,6 +29,7 @@ nav:
     page: support/index.md
 
   - label: External docs
+    icon: ./images/redocly-icon-white.png
     href: https://docs.redoc.ly/developer-portal/introduction/
 
   - search: true
@@ -41,7 +42,7 @@ nav:
 #  - ./static/intercom.js
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2020. All right reserved.
+  copyrightText: Copyright © Redocly 2019-2021. All right reserved.
   columns:
     - group: Legal
       items:

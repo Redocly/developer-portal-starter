@@ -1,10 +1,7 @@
-type: redoc
+type: reference-docs
 definitionId: petstore
-
 # permission: 'read:public'
 
-includeSections: true
-expand: true
 settings:
   generateCodeSamples:
     languages:
