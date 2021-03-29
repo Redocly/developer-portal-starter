@@ -10,7 +10,7 @@ You'll need a Fast account and sandbox credentials to start integrating.
 
 [Create a Fast Developer Account](https://sdash.fast.co)
 
-Note that your account will have separate credentials for testing and production use. The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions.
+<Alert variant="attention" content="The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions." header="Note: Your account will have separate credentials for testing and production use." />
 
 You can pick up onboarding anytime, if it's your first time doing this you'll likely need to pause at the "Install Fast Checkout" section of onboarding. We will pick up again in the later steps of this guide.
 
@@ -107,12 +107,11 @@ checkoutButton.addEventListener('click', (event) => {
   );
 });
 ```
-
-It is important that you call `fast.checkout` synchronously within the `click` event handler. Many browsers will block new windows like Fast Checkout unless they are clearly connected to a user action such as clicking a button. If you perform asynchronous logic that takes several seconds, or call `checkout` in code in a different frame or window, the browser will prevent Fast Checkout from opening.
+<Alert variant="attention" content="Many browsers will block new windows like Fast Checkout unless they are clearly connected to a user action such as clicking a button. If you perform asynchronous logic that takes several seconds, or call checkout in code in a different frame or window, the browser will prevent Fast Checkout from opening." header="It is important that you call `fast.checkout` synchronously within the `click` event handler" />
 
 ## Handle events from Fast Checkout
 
-Once the user has clicked the Fast Checkout button, the Fast popup window will have launched and the user can continue with their checkout. While this is going on, you can listen for [Fast.js `postMessage` events](https://www.notion.so/fast-js-Events-e34361040c214c29a5c1d5f9f86f81d6) if you want to keep up with the status of the order on your frontend.
+Once the user has clicked the Fast Checkout button, the Fast popup window will have launched and the user can continue with their checkout. While this is going on, you can listen for Fast.js `postMessage` events (link coming soon for Events list) if you want to keep up with the status of the order on your frontend.
 
 This is useful if you wish to forward data to your analytics provider, or if you want to do things like redirect to an order complete page after the user has finished their order and closed the Fast window.
 
