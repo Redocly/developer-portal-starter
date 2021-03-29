@@ -18,11 +18,11 @@ Got questions? Concerns? Contact Fast at devrel@fast.co.
 
 ## Documentation links
 
-🛒 [Integration Guide](#)
+🛒 [Integration Guide](/developer-portal/fast-api-integration-guide/)
 
 Quick start *step by step guide for integration.*
 
-📰 [Reference Documentation](#)
+📰 [Reference Documentation](/developer-portal/fast-api-reference-authentication/)
 
 *Complete Documentation and API specifications.*
 
