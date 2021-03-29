@@ -1,12 +1,14 @@
 # Fast API Integration Guide
 
-Let's add the Fast Checkout button to your product page to power higher conversion. This guide assumes you have an existing eCommerce system and want to write code to integrate Fast into your website. See our [other documentation](https://fast.co/docs) for more detailed information on integrating Fast with BigCommerce, WooCommerce, and other platforms without needing to write code.
+Let's add the Fast Checkout button to your product page to power higher conversion. This guide assumes you have an existing eCommerce system and want to write code to integrate Fast into your website. See our other documentation sections for more detailed information on integrating Fast with BigCommerce, WooCommerce, and other platforms without needing to write code.
 
-![Integration%20Guide%204a02df58d53348b6a9ab068b2a1eba35/Screen_Shot_2021-02-16_at_7.33.39_PM.png](Integration%20Guide%204a02df58d53348b6a9ab068b2a1eba35/Screen_Shot_2021-02-16_at_7.33.39_PM.png)
+[![Interacting with Fast Checkout](images/fast-api/overview.png)](images/fast-api-overview.png)
 
 # 1. Set up Fast
 
-You'll need a Fast account and sandbox credentials to start integrating. Get registered ****on our sandbox website. 
+You'll need a Fast account and sandbox credentials to start integrating. 
+
+[Create a Fast Developer Account](https://sdash.fast.co)
 
 Note that your account will have separate credentials for testing and production use. The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions.
 
