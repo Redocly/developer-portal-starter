@@ -6,7 +6,7 @@ Welcome! You will find useful information regarding the design and specification
 
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
-## Table of Contents
+** Table of Contents **
 * [Documentation Links](#documentation-links)
 * [High level flow diagrams](#high-level-flow-diagrams)
     * [New buyer clicks Fast Checkout](#new-buyer-clicks-fast-checkout)
