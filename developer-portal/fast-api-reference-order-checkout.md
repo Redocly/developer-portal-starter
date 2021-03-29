@@ -93,7 +93,7 @@ We convert our internal financial representation (with zero rounding) and send f
 
 ## Fast Order lifecycle
 
-![%5BBETA%5D%20Order%20&%20Checkout%20Reference%20Documentation%2026cc5ffeda9d4736a6e61cc207efe0b1/Screen_Shot_2021-02-16_at_5.20.55_PM.png](%5BBETA%5D%20Order%20&%20Checkout%20Reference%20Documentation%2026cc5ffeda9d4736a6e61cc207efe0b1/Screen_Shot_2021-02-16_at_5.20.55_PM.png)
+[![Interacting with Fast Checkout](images/fast-api/order-lifecycle.png)](images/fast-api/order-lifecycle.png)
 
 ## Configurable & Direct Capture [BETA]
 
