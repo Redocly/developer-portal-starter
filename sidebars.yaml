@@ -9,19 +9,19 @@ training:
         page: developer-portal/markdown.md
       - label: Get Help
         page: developer-portal/markdown.md
-  - group: BigCommerce
+  - group: Fast API
     expanded: false
     pages:
       - label: Setup
         page: developer-portal/setup.md
       - label: Markdown
         page: developer-portal/markdown.md
-  - group: WooCommerce
+  - group: BigCommerce
     expanded: false
     pages:
       - label: Setup
         page: developer-portal/setup.md
-  - group: Fast Direct API
+  - group: WooCommerce
     expanded: false
     pages:
       - label: Setup

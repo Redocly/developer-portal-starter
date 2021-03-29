@@ -8,9 +8,9 @@ We're so happy you're here. It's likely that you're looking for support integrat
 
 ## Getting Started
 
-## BigCommerce
-
-## WooCommerce
-
 ## Fast API
+
+## BigCommerce App
+
+## WooCommerce Plugin
 
