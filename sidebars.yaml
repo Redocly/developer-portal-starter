@@ -18,6 +18,15 @@ training:
         page: developer-portal/fast-api-integration-guide.md
       - label: Reference Documentation
         page: developer-portal/fast-api-reference.md
+          - group: Reference
+          expanded: false
+          pages: 
+          - label: Authenticate
+            page: developer-portal/fast-api-reference-authenticate.md
+          - label: Orders & Checkout
+            page: developer-portal/fast-api-reference-order-checkout.md
+          - label: fast.js
+            page: developer-portal/fast-api-reference-fast-js.md
   - group: BigCommerce
     expanded: false
     pages:
