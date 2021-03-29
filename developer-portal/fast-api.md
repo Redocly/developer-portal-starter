@@ -1,4 +1,4 @@
-# [BETA] Fast API
+# [BETA] Fast API Overview
 
 Welcome! You will find useful information regarding the design and specifications of Fast API.
 

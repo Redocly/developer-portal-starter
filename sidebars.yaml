@@ -12,7 +12,7 @@ training:
   - group: Fast API
     expanded: false
     pages:
-      - label: Getting Started
+      - label: Overview
         page: developer-portal/fast-api.md
       - label: Integration Guide
         page: developer-portal/fast-api-integration-guide.md
