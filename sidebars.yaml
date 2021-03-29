@@ -12,10 +12,12 @@ training:
   - group: Fast API
     expanded: false
     pages:
-      - label: Setup
-        page: developer-portal/setup.md
-      - label: Markdown
-        page: developer-portal/markdown.md
+      - label: Getting Started
+        page: developer-portal/fast-api.md
+      - label: Integration Guide
+        page: developer-portal/fast-api-integration-guide.md
+      - label: Reference Documentation
+        page: developer-portal/fast-api-reference-documentation.md
   - group: BigCommerce
     expanded: false
     pages:
