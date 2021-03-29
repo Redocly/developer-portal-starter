@@ -22,7 +22,7 @@ training:
         expanded: false
         pages:
         - label: Authenticate
-          page: developer-portal/fast-api-reference-authenticate.md
+          page: developer-portal/fast-api-reference-authentication.md
         - label: Orders & Checkout
           page: developer-portal/fast-api-reference-order-checkout.md
         - label: fast.js
