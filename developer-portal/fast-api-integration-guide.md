@@ -10,7 +10,7 @@ You'll need a Fast account and sandbox credentials to start integrating.
 
 [Create a Fast Developer Account](https://sdash.fast.co)
 
-<Alert variant="attention" content="The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions." header="Note: Your account will have separate credentials for testing and production use." />
+🚨 Note: Your account will have separate credentials for testing and production use. The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions.
 
 You can pick up onboarding anytime, if it's your first time doing this you'll likely need to pause at the "Install Fast Checkout" section of onboarding. We will pick up again in the later steps of this guide.
 
@@ -107,7 +107,7 @@ checkoutButton.addEventListener('click', (event) => {
   );
 });
 ```
-<Alert variant="attention" content="Many browsers will block new windows like Fast Checkout unless they are clearly connected to a user action such as clicking a button. If you perform asynchronous logic that takes several seconds, or call checkout in code in a different frame or window, the browser will prevent Fast Checkout from opening." header="It is important that you call `fast.checkout` synchronously within the `click` event handler" />
+🚨 It is important that you call `fast.checkout` synchronously within the `click` event handler. Many browsers will block new windows like Fast Checkout unless they are clearly connected to a user action such as clicking a button. If you perform asynchronous logic that takes several seconds, or call checkout in code in a different frame or window, the browser will prevent Fast Checkout from opening.
 
 ## Handle events from Fast Checkout
 
@@ -129,7 +129,7 @@ fast.addEventListener('user_event', (event) => {
 });
 ```
 
-In some environments, such as the embedded browsers inside of mobile apps, the Fast Checkout window will open in a separate browser and not be able to communicate these events back to your page. You should not rely on these events for mission-critical analytics and should always provide another way for buyers to see that their purchase is complete.
+🚨 In some environments, such as the embedded browsers inside of mobile apps, the Fast Checkout window will open in a separate browser and not be able to communicate these events back to your page. You should not rely on these events for mission-critical analytics and should always provide another way for buyers to see that their purchase is complete.
 
 # 4. Handle order creation in your backend
 
@@ -137,7 +137,7 @@ Now we will set up your server to communicate with Fast Checkout.
 
 While users interact with the Fast Checkout application, Fast will send requests to your server for processing.
 
-![Integration%20Guide%204a02df58d53348b6a9ab068b2a1eba35/Screen_Shot_2021-01-18_at_7.16.08_PM.png](Integration%20Guide%204a02df58d53348b6a9ab068b2a1eba35/Screen_Shot_2021-01-18_at_7.16.08_PM.png)
+[![Handle order creation in the backend](images/fast-api/handle-order-creation.png)](images/handle-order-creation.png)
 
 As users add items, apply coupons, and submit orders, Fast will send these events and changes in data to your server for further processing. See the full specification [here](https://www.notion.so/DRAFT-Public-BE-Reference-Checkout-Documentation-79f563ec12d04dbe807fe6f3f146e8ac).
 
