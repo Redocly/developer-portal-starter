@@ -7,14 +7,14 @@ Welcome! You will find useful information regarding the design and specification
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
 ## Table of Contents
-* Documentation Links
-* High level flow diagrams
-    * New buyer clicks Fast Checkout
-    * Buyer interacts with Fast Checkout
-    * Buyer canceled order
-    * Checkout timer ended & fraud check
-    * Payment capture
-    * Refund order
+* [Documentation Links](#documentation-links)
+* [High level flow diagrams](#high-level-flow-diagrams)
+    * [New buyer clicks Fast Checkout](#new-buyer-clicks-fast-checkout)
+    * [Buyer interacts with Fast Checkout](#buyer-interacts-with-fast-checkout)
+    * [Buyer canceled order](#buyer-canceled-order)
+    * [Checkout timer ended & fraud check](#checkout-timer-ended--fraud-check)
+    * [Process Payment](#process-payment)
+    * [Refund order](#refund-order)
 
 ## Documentation links
 
