@@ -20,7 +20,7 @@ training:
         page: developer-portal/fast-api-reference.md
           - group: Reference
           expanded: false
-          pages: 
+          pages:
           - label: Authenticate
             page: developer-portal/fast-api-reference-authenticate.md
           - label: Orders & Checkout
