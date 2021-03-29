@@ -16,8 +16,6 @@ training:
         page: developer-portal/fast-api.md
       - label: Integration Guide
         page: developer-portal/fast-api-integration-guide.md
-      - label: Reference Documentation
-        page: developer-portal/fast-api-reference.md
       - group: Reference
         expanded: false
         pages:
