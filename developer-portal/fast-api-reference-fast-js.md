@@ -12,7 +12,7 @@ Today, all events have a `name` field that denotes the type of event that fired 
 
 These are all of the events that are currently supported, when they are sent, and what extra properties they contain.
 
-[Fast.js Events](https://www.notion.so/1891db943a97457990e72b76d0d625c8)
+**Event list will soon be available in our API reference docs. Please [subscribe to our product updates mailing list](https://fastdevs.substack.com/) to be notified when this content becomes available.**
 
 ## Sample event watching code
 
