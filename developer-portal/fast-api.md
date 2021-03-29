@@ -1,6 +1,6 @@
 # [BETA] Fast API Overview
 
-Welcome! You will find useful information regarding the design and specifications of Fast API.
+Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
 [![Interacting with Fast Checkout](images/fast-api/overview.png)](images/fast-api-overview.png)
 
