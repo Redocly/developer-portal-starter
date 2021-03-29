@@ -1,10 +1,10 @@
 # [BETA] Order & Checkout Reference Documentation
 
-# Sample sequence diagram
+## Sample sequence diagram
 
 This sequence diagram illustrates the sequence of API calls for a new user PDP flow with a seller configured for direct capture. See the *Configurable & Direct Capture [BETA]* section for more information on direct capture.
 
-![%5BBETA%5D%20Order%20&%20Checkout%20Reference%20Documentation%2026cc5ffeda9d4736a6e61cc207efe0b1/Screen_Shot_2021-02-18_at_10.59.57_AM.png](%5BBETA%5D%20Order%20&%20Checkout%20Reference%20Documentation%2026cc5ffeda9d4736a6e61cc207efe0b1/Screen_Shot_2021-02-18_at_10.59.57_AM.png)
+[![Interacting with Fast Checkout](images/fast-api/sample-sequence-diagram.png)](images/fast-api/sample-sequence-diagram.png)
 
 # Key concepts for order processing
 
