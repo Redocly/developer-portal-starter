@@ -17,7 +17,7 @@ training:
       - label: Integration Guide
         page: developer-portal/fast-api-integration-guide.md
       - label: Reference Documentation
-        page: developer-portal/fast-api-reference-documentation.md
+        page: developer-portal/fast-api-reference.md
   - group: BigCommerce
     expanded: false
     pages:
