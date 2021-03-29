@@ -10,6 +10,11 @@ Got questions? Concerns? Contact Fast at devrel@fast.co.
 * Documentation Links
 * High level flow diagrams
 * * New buyer clicks Fast Checkout
+* * Buyer interacts with Fast Checkout
+* * Buyer canceled order
+* * Checkout timer ended & fraud check
+* * Payment capture
+* * Refund order
 
 ## Documentation links
 
