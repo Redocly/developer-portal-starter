@@ -7,6 +7,9 @@ Welcome to the [BETA] Fast API documentation home. Here you will find useful doc
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
 **Table of Contents**
+* Documentation Links
+* High level flow diagrams
+* * New buyer clicks Fast Checkout
 
 ## Documentation links
 
