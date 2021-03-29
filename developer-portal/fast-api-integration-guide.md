@@ -165,7 +165,7 @@ Finally, execute this command to request a test scenario.
 fast-sandbox test-suite simple-pdp-newuser '{"products": [{"product_id": "<YOUR_PRODUCT_ID>"}]}'
 ```
 
-**NOTE:** You'll need to replace variables in the initial payload to match actual products that are registered in your system. We expect the seller to recognize the payload we pass. For full documentation on the possible options and full schema, see the [full reference here.](https://www.notion.so/DRAFT-Public-BE-Reference-Checkout-Documentation-79f563ec12d04dbe807fe6f3f146e8ac)
+**NOTE:** You'll need to replace variables in the initial payload to match actual products that are registered in your system. We expect the seller to recognize the payload we pass. For full documentation on the possible options and full schema, see the reference documentation (coming soon).
 
 The `test-suite pdp-simple-newuser` command will emit a series of test requests from the Fast backend to yours, that has the same pattern of calls as it will in production. The `pdp-simple-newuser` test suite will run multiple operations.
 
@@ -178,7 +178,7 @@ The `test-suite pdp-simple-newuser` command will emit a series of test requests 
 5. Configurable timer wait time
 6. ConvertOrder
 
-Here we will be able to validate that the responses you said are valid, and you will be able to see the exact call chain for several scenarios. To see all possible test scenarios, see the [full reference here](https://www.notion.so/DRAFT-Public-BE-Reference-Checkout-Documentation-79f563ec12d04dbe807fe6f3f146e8ac).
+Here we will be able to validate that the responses you said are valid, and you will be able to see the exact call chain for several scenarios. To see all possible test scenarios, see the reference documentation (coming soon).
 
 The `test-suite pdp-simple-newuser` command will first emit a series of simulated creation, fetch, and update requests from our servers to yours. 
 
@@ -216,7 +216,7 @@ REPORT:
    > FAIL: order status not changed
 ```
 
-For more information on what gets validated on these requests and responses, see the [full reference documentation here](https://www.notion.so/DRAFT-Public-BE-Reference-Checkout-Documentation-79f563ec12d04dbe807fe6f3f146e8ac).
+For more information on what gets validated on these requests and responses, see the reference documentation (coming soon).
 
 Once your server can reply to these messages, Fast Checkout is able to construct a Checkout Session and collect all the information from the customer to complete the order.
 
@@ -236,7 +236,7 @@ Using the fast-cli execute the following command to run all various testing scen
 
 `fast --env=sandbox test-suite *`
 
-For full documentation on the list of test cases, see the full reference documentation [here](https://www.notion.so/DRAFT-Public-BE-Reference-Checkout-Documentation-79f563ec12d04dbe807fe6f3f146e8ac).
+For full documentation on the list of test cases, see the reference documentation (coming soon).
 
 # 6. Moving to production
 
