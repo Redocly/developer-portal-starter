@@ -21,7 +21,7 @@ training:
     pages:
       - label: Setup
         page: developer-portal/setup.md
-  - group: Other Platforms
+  - group: Fast Direct API
     expanded: false
     pages:
       - label: Setup
