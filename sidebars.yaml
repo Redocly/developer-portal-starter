@@ -3,8 +3,6 @@ training:
     page: developer-portal/index.md
   - label: Become a Seller
     page: developer-portal/seller-signup.md
-  - label: Account Support
-    href: 'https://help.fast.co/hc/'
   - group: Fast Checkout
     expanded: false
     pages:
@@ -63,3 +61,5 @@ training:
     pages:
       - label: Overview
         page: developer-portal/woocommerce.md
+  - label: Account Support
+    href: 'https://help.fast.co/hc/'
