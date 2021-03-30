@@ -55,7 +55,7 @@ training:
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
   - separator: Help from Fast
-  - group: Customer Sucess
+  - group: Customer Success
     expanded: false
     pages:
       - label: Help Docs
