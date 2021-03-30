@@ -7,7 +7,7 @@ The first step to integrating Fast Checkout with your store is to become a selle
 ## Seller Signup
 
 ### Create an account
-Start by completing the simple account form with your email and name. This will establish your authentication with your Fast account—make sure you enter your email correctly.
+Start by completing the account form with your email and name. This will establish your authentication with your Fast account—make sure you enter your email correctly.
 
 [![Get Started as a Seller](https://www.dropbox.com/s/wkgzvje5ox4lekb/01-get-started.png?raw=1)](https://www.fast.co/business)
 
