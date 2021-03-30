@@ -17,7 +17,7 @@ Complete your organization details. If a Partner sent you our way, we'd really l
 [![Organization Details](https://www.dropbox.com/s/phaw5ucc91n6lp4/02-org-details.png?raw=1)](https://www.fast.co/business/onboarding/fast-checkout/org-details)
 
 ### Complete your integation details
-Complete your integration details. Please be sure to add an active website domain or you will receive a verification error—even if you are working locally.
+Complete your integration details. Please be sure to add an active website domain or you will receive a verification error—]. You won't be able to work locally to test your integration, unfortunately, unless you use a live sandbox domain.
 
 [![Integration Details](https://www.dropbox.com/s/fvf3pztpvvbw0jt/03-integration-details.png?raw=1)](https://www.fast.co/business/onboarding/fast-checkout/checkout-app-details)
 
