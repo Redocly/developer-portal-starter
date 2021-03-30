@@ -73,5 +73,3 @@ training:
       - label: Receive Product Updates
         href: 'https://fastdevs.substack.com/'
         external: true
-      - label: Share Product Feedback
-        href: 'mailto:devrel@fast.co'
