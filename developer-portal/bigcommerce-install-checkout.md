@@ -32,3 +32,6 @@ Use this snippet in your code to install the Fast Checkout button.
 ## Complete your business details
 
 [**Return to Seller Signup documentation →**](/developer-portal/seller-signup/#return-to-fast-seller-account-dashboard) to complete your seller profile.
+
+#### Fast Tip
+BigCommerce offers variant ids and option ids to uniquely identify items in your store. We recommend you use variant ids whenever possible. If you provide both, the variant id will override any option id settings.
