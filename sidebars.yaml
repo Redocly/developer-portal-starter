@@ -1,28 +1,25 @@
 training:
   - page: developer-portal/index.md
-  - group: Getting Started
-    expanded: true
+  - group: Fast Checkout
+    expanded: false
     pages:
-      - group: Fast Checkout
-        expanded: false
-        pages:
-        - label: About Fast Checkout
-          page: developer-portal/fast-checkout.md
-        - label: How Fast Checkout work
-          page: developer-portal/fast-checkout-how-it-works.md
-        - label: Installing Fast Checkout
-          page: developer-portal/fast-checkout-install.md
-      - group: Fast Login
-        expanded: false
-        pages:
-        - label: About Fast Login
-          page: developer-portal/fast-login.md
-        - label: How Fast Login works
-          page: developer-portal/fast-login-how-it-works.md
-        - label: Installing Fast Login
-          page: developer-portal/fast-login-install.md
-      - label: Get Help
-        page: developer-portal/index.md
+    - label: About Fast Checkout
+      page: developer-portal/fast-checkout.md
+    - label: How Fast Checkout work
+      page: developer-portal/fast-checkout-how-it-works.md
+    - label: Installing Fast Checkout
+      page: developer-portal/fast-checkout-install.md
+  - group: Fast Login
+    expanded: false
+    pages:
+    - label: About Fast Login
+      page: developer-portal/fast-login.md
+    - label: How Fast Login works
+      page: developer-portal/fast-login-how-it-works.md
+    - label: Installing Fast Login
+      page: developer-portal/fast-login-install.md
+  - label: Get Help
+    page: developer-portal/index.md
   - group: Fast API
     expanded: false
     pages:
