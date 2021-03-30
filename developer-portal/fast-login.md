@@ -2,7 +2,7 @@
 
 It’s all in the name: Fast Login lets customers log into your site, fast. No passwords. No hassle. Just one click and they’re in.
 
-[![About Fast login](images/fast-login/about-login.gif)](images/fast-login/about-login.gif)
+[![About Fast Login](images/fast-login/about-login.gif)](images/fast-login/about-login.gif)
 
 ## Fast
 
