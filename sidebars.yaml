@@ -55,8 +55,8 @@ training:
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
   - separator: Help from Fast
-  - group: Customer Success
     expanded: false
+  - group: Customer Success
     pages:
       - label: Help Docs
         href: 'https://help.fast.co/hc/'
@@ -75,4 +75,3 @@ training:
         external: true
       - label: Share Product Feedback
         href: 'mailto:devrel@fast.co'
-        external: true
