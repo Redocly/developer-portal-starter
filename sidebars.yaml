@@ -12,15 +12,6 @@ training:
       page: developer-portal/fast-checkout.md
     - label: How Fast Checkout works
       page: developer-portal/fast-checkout-how-it-works.md
-    - group: Installing Fast Checkout
-      expanded: false
-      pages:
-        - label: BigCommerce
-          page: developer-portal/bigcommerce-install-checkout.md
-        - label: WooCommerce
-          page: developer-portal/woocommerce-install-checkout.md
-        - label: Other Platforms
-          href: 'https://fastaf.redoc.ly/developer-portal/fast-api/'
   - group: Fast Login
     expanded: false
     pages:
@@ -28,13 +19,6 @@ training:
       page: developer-portal/fast-login.md
     - label: How Fast Login works
       page: developer-portal/fast-login-how-it-works.md
-    - group: Installing Fast Login
-      expanded: false
-      pages:
-        - label: BigCommerce
-          page: developer-portal/bigcommerce-install-login.md
-        - label: Other Platforms
-          href: 'https://fastaf.redoc.ly/developer-portal/fast-api/'
   - separator: Integrating with Fast
   - group: Fast API
     expanded: false
