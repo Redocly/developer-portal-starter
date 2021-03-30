@@ -46,7 +46,7 @@ training:
       - label: Overview
         page: developer-portal/woocommerce.md
   - label: Get Help
-    page: /contact.mdx
+    page: https://fastaf.redoc.ly/contact/
 
   - group: Admin
     expanded: true
