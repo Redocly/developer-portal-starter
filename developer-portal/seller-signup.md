@@ -22,7 +22,7 @@ Complete your integration details. Please be sure to add an active website domai
 [![Integration Details](https://www.dropbox.com/s/fvf3pztpvvbw0jt/03-integration-details.png?raw=1)](https://www.fast.co/business/onboarding/fast-checkout/checkout-app-details)
 
 ### Follow technical integration steps
-If you're using BigCommerce or WooCommerce, you will need to complete the installation steps to verify your site with Fast.
+You will need to complete the installation steps to verify your site with Fast. Please visit one of the following installations guides: 
 
 * [BigCommerce →](developer-portal/bigcommerce/)
 * [WooCommerce →](/developer-portal/woocommerce/)
