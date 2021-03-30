@@ -24,7 +24,7 @@ Complete your integration details. Please be sure to add an active website domai
 ### Follow technical integration steps
 You will need to complete the installation steps to verify your site with Fast. Please visit one of the following installations guides: 
 
-* [BigCommerce →](developer-portal/bigcommerce/)
+* [BigCommerce →](/developer-portal/bigcommerce)
 * [WooCommerce →](/developer-portal/woocommerce/)
 * [Fast API →](/developer-portal/fast-api-integration-guide/)
 
