@@ -1,6 +1,10 @@
 training:
   - label: Getting Started
     page: developer-portal/index.md
+  - label: Become a Seller
+    page: developer-portal/seller-signup.md
+  - label: Account Support
+    href: 'https://help.fast.co/hc/'
   - group: Fast Checkout
     expanded: false
     pages:
