@@ -76,4 +76,3 @@ training:
       - label: Share Product Feedback
         href: 'mailto:devrel@fast.co'
         external: true
-  
