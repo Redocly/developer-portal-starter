@@ -12,11 +12,11 @@ training:
       expanded: false
       pages:
         - label: BigCommerce
-          page: developer-portal/bigcommerce.md
+          page: developer-portal/bigcommerce-install-checkout.md
         - label: WooCommerce
-          page: developer-portal/woocommerce.md
+          page: developer-portal/woocommerce-install-checkout.md
         - label: Other Platforms
-          page: developer-portal/fast-api.md
+          href: 'https://fastaf.redoc.ly/developer-portal/fast-api/'
   - group: Fast Login
     expanded: false
     pages:
@@ -28,11 +28,11 @@ training:
       expanded: false
       pages:
         - label: BigCommerce
-          page: developer-portal/bigcommerce.md
+          page: developer-portal/bigcommerce-install-login.md
         - label: WooCommerce
-          page: developer-portal/woocommerce.md
+          page: developer-portal/woocommerce-install-login.md
         - label: Other Platforms
-          page: developer-portal/fast-api.md
+          href: 'https://fastaf.redoc.ly/developer-portal/fast-api/'
   - group: Fast API
     expanded: false
     pages:
