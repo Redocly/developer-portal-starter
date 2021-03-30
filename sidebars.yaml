@@ -6,7 +6,7 @@ training:
     pages:
     - label: About Fast Checkout
       page: developer-portal/fast-checkout.md
-    - label: How Fast Checkout work
+    - label: How Fast Checkout works
       page: developer-portal/fast-checkout-how-it-works.md
     - group: Installing Fast Checkout
       expanded: false
