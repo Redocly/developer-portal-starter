@@ -3,12 +3,26 @@ training:
   - group: Getting Started
     expanded: true
     pages:
-      - label: How Fast Checkout Works
-        page: developer-portal/setup.md
-      - label: How Fast Login Works
-        page: developer-portal/markdown.md
+      - label: About Fast Checkout
+        page: developer-portal/fast-checkout.md
+      - group: Fast Checkout
+        expanded: false
+        pages:
+        - label: How Fast Checkout work
+          page: developer-portal/index.md
+        - label: Installing Fast Checkout
+          page: developer-portal/index.md
+      - label: About Fast Login
+        page: developer-portal/fast-login.md
+      - group: Fast Login
+        expanded: false
+        pages:
+        - label: How Fast Login works
+          page: developer-portal/index.md
+        - label: Installing Fast Login
+          page: developer-portal/index.md
       - label: Get Help
-        page: developer-portal/markdown.md
+        page: developer-portal/index.md
   - group: Fast API
     expanded: false
     pages:
