@@ -59,8 +59,8 @@ training:
   - label: Request Support
     href: 'https://help.fast.co/hc/en-us/requests/new'
     external: true
-  - label: Email DevRel
-    href: 'mailto:devrel@fast.co'
   - label: Join us on Discord
     href: 'https://discord.gg/pmDcSdRQ9x'
     external: true
+  - label: Email DevRel
+    href: 'mailto:devrel@fast.co'
