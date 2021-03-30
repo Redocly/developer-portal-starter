@@ -9,7 +9,7 @@ training:
         - label: About Fast Checkout
           page: developer-portal/fast-checkout.md
         - label: How Fast Checkout work
-          page: developer-portal/fast-checkout-how-works.md
+          page: developer-portal/fast-checkout-how-it-works.md
         - label: Installing Fast Checkout
           page: developer-portal/fast-checkout-install.md
       - group: Fast Login
@@ -18,7 +18,7 @@ training:
         - label: About Fast Login
           page: developer-portal/fast-login.md
         - label: How Fast Login works
-          page: developer-portal/fast-login-how-works.md
+          page: developer-portal/fast-login-how-it-works.md
         - label: Installing Fast Login
           page: developer-portal/fast-login-install.md
       - label: Get Help
