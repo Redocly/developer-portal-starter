@@ -1,5 +1,6 @@
 training:
-  - page: developer-portal/index.md
+  - label: Getting Started
+    page: developer-portal/index.md
   - group: Fast Checkout
     expanded: false
     pages:
