@@ -1,5 +1,5 @@
 meta:
-  title: Fast Checkout Documentation
+  title: Fast Documentation
   description: One click. No passwords. The world's fastest checkout.
   siteUrl: https://fastaf.redoc.ly
 headerIcon: ./images/logo.svg
@@ -31,7 +31,25 @@ nav:
 footer:
   copyrightText: Copyright © Fast AF, Inc 2021. All right reserved.
   columns:
-    - group: Legal
+    - group: Product
+      items:
+        - label: Checkout
+          href: 'https://www.fast.co/checkout'
+        - label: Sellers
+          href: 'https://www.fast.co/sellers'
+        - label: Partners
+          href: 'https://www.fast.co/partner-program'
+        - label: Pricing
+          href: 'https://www.fast.co/pricing'
+        - label: Seller Stories
+          href: 'https://www.fast.co/stories'
+        - label: Privacy & Security
+          href: 'https://www.fast.co/privacy-security'
+        - label: Customer Stories
+          href: 'https://www.fast.co/stories'
+        - label: Help
+          href: 'http://help.fast.co/'
+    - group: Company
       items:
         - label: Terms of Use
           href: 'https://redoc.ly/subscription-agreement/'
@@ -39,9 +57,3 @@ footer:
           href: 'https://redoc.ly/privacy-policy/'
         - label: Cookie Notice
           href: 'https://redoc.ly/privacy-policy/'
-    - group: Support
-      items:
-        - label: FAQ
-          page: faq.md
-        - label: Contact us
-          page: contact.mdx
