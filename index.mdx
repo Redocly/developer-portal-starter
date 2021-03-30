@@ -27,13 +27,14 @@ import bookManagementIcon from './images/book-management.svg';
 import foundOrPrivate from './images/found-or-private.svg';
 import bigcommerce from './images/bigcommerce.svg';
 import woocommerce from './images/woocommerce.svg';
+import fast from './images/logo.svg';
 
 export default LandingLayout;
 
 <Jumbotron>
   <NavBar location={props.location} standalone={false} />
   <H1>Fast Documentation</H1>
-  <H2>Documentation & support integrating Fast Checkout</H2>
+  <H2>Documentation & support integrating Fast Checkout & Login</H2>
   <Flex p={20} justifyContent="center">
     {/* <Button inversed large to="https://app.redoc.ly">
       Redocly app
@@ -51,14 +52,14 @@ export default LandingLayout;
     Dive into <Emphasis> Fast </Emphasis> resources.
   </SectionHeader>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <ThinTile to="developer-portal/index.md" icon={bigcommerce} header="BigCommerce">
+      <ThinTile to="developer-portal/fast-api.md" icon={fast} header="Fast API">
+        You can easily integrate Fast Checkout & Login into any solution or platform using our Fast API offering. 
+    </ThinTile>
+    <ThinTile to="developer-portal/bigcommerce.md" icon={bigcommerce} header="BigCommerce">
         Learn how to activate and add Fast Checkout to your BigCommerce store. 
     </ThinTile>
-    <ThinTile to="developer-portal/index.md" icon={woocommerce} header="WooCommerce">
+    <ThinTile to="developer-portal/woocommerce.md" icon={woocommerce} header="WooCommerce">
         Learn how to add Fast Checkout to your WooCommerce store using our WordPress plugin. 
-    </ThinTile>
-    <ThinTile to="contact.mdx" icon={icon3} header="Other Platforms">
-        You can easily integrate Fast Checkout into any solution or platform using our Direct Integrations offering. 
     </ThinTile>
   </FlexSection>
   {/* <Jumbotron parallaxEffect bgImage={icon1}>
