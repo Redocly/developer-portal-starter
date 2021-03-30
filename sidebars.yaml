@@ -62,5 +62,6 @@ training:
   - label: Join us on Discord
     href: 'https://discord.gg/pmDcSdRQ9x'
     external: true
-  - label: Email DevRel
-    href: 'mailto:devrel@fast.co'
+  - label: Receive Product Updates
+    href: 'https://fastdevs.substack.com/'
+    external: true
