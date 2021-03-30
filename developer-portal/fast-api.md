@@ -2,7 +2,7 @@
 
 Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
-[![Interacting with Fast Checkout](images/fast-api/overview.png)](images/fast-api-overview.png)
+[![Fast API Overview](images/fast-api/overview.png)](images/fast-api-overview.png)
 
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
