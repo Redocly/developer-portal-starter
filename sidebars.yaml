@@ -53,15 +53,25 @@ training:
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
   - separator: Help from Fast
-  - label: Help Docs
-    href: 'https://help.fast.co/hc/'
-    external: true
-  - label: Request Support
-    href: 'https://help.fast.co/hc/en-us/requests/new'
-    external: true
-  - label: Join us on Discord
-    href: 'https://discord.gg/pmDcSdRQ9x'
-    external: true
-  - label: Receive Product Updates
-    href: 'https://fastdevs.substack.com/'
-    external: true
+  - group: Customer Sucess
+    expanded: false
+    pages:
+      - label: Help Docs
+        href: 'https://help.fast.co/hc/'
+        external: true
+      - label: Request Support
+        href: 'https://help.fast.co/hc/en-us/requests/new'
+        external: true
+  - group: Developer Relations 
+    expanded: false
+    pages:
+      - label: Join us on Discord
+        href: 'https://discord.gg/pmDcSdRQ9x'
+        external: true
+      - label: Receive Product Updates
+        href: 'https://fastdevs.substack.com/'
+        external: true
+      - label: Share Product Feedback
+        href: 'mailto:devrel@fast.co'
+        external: true
+  
