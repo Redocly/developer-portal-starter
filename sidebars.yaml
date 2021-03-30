@@ -46,7 +46,7 @@ training:
       - label: Overview
         page: developer-portal/woocommerce.md
   - label: Get Help
-    page: /contact/
+    page: /contact.mdx
 
   - group: Admin
     expanded: true
