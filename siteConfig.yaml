@@ -51,9 +51,15 @@ footer:
           href: 'http://help.fast.co/'
     - group: Company
       items:
-        - label: Terms of Use
-          href: 'https://redoc.ly/subscription-agreement/'
-        - label: Privacy Notice
-          href: 'https://redoc.ly/privacy-policy/'
-        - label: Cookie Notice
-          href: 'https://redoc.ly/privacy-policy/'
+        - label: Careers
+          href: 'https://www.fast.co/careers'
+        - label: Newsroom
+          href: 'https://www.fast.co/newsroom/news'
+        - label: Privacy Policy
+          href: 'https://www.fast.co/privacy'
+        - label: Terms of Service
+          href: 'https://www.fast.co/terms/terms-home'
+        - label: Responsible Disclosure
+          href: 'https://www.fast.co/responsible-disclosure-policy'
+        - label: Do not sell my info (California)
+          href: 'https://privacyportal-eu.onetrust.com/webform/23451d40-43ea-48da-9b24-85cba54a4025/9c67b981-54d2-4787-843e-4e6288674195'
