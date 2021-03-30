@@ -23,10 +23,12 @@ Select BigCommerce as your platform. If your site is hosted elsewhere, follow th
 ### Copy the code
 Use this snippet in your code to install the Fast Checkout button.
 
-`<fast-checkout-button app_id="{{app_id}}" />`
+```html
+<fast-checkout-button app_id="{{app_id}}" />
+```
   
 [See Examples →](/developer-portal/bigcommerce-install-checkout-examples.md)
 
-## Complete your business profile
+## Complete your business details
 
-[Return to Seller Signup documentation to complete your business profile →](/developer-portal/seller-signup/#return-to-fast-seller-account-dashboard)
+[**Return to Seller Signup documentation →**](/developer-portal/seller-signup/#return-to-fast-seller-account-dashboard) to complete your seller profile.
