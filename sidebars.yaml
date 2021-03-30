@@ -8,8 +8,15 @@ training:
       page: developer-portal/fast-checkout.md
     - label: How Fast Checkout work
       page: developer-portal/fast-checkout-how-it-works.md
-    - label: Installing Fast Checkout
-      page: developer-portal/fast-checkout-install.md
+    - group: Installing Fast Checkout
+      expanded: false
+      pages:
+        - label: BigCommerce
+          page: developer-portal/bigcommerce.md
+        - label: WooCommerce
+          page: developer-portal/woocommerce.md
+        - label: Other Platforms
+          page: developer-portal/fast-login-install.md
   - group: Fast Login
     expanded: false
     pages:
