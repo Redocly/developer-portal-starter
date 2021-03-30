@@ -1,7 +1,8 @@
 training:
   - label: Getting Started
     page: developer-portal/index.md
-  - label: Become a Seller
+  - separator: Become a Seller
+  - label: Seller Sign-up
     page: developer-portal/seller-signup.md
   - separator: Fast Products
   - group: Fast Checkout
@@ -67,6 +68,7 @@ training:
         page: developer-portal/woocommerce.md
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
+  - separator: Need help?
   - label: Account Support
     href: 'https://help.fast.co/hc/'
     external: true
