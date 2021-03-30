@@ -1,7 +1,7 @@
 training:
   - label: Getting Started
     page: developer-portal/index.md
-  - separator: Become a Seller
+  - separator: Seller Resources
   - label: Seller Sign-up
     page: developer-portal/seller-signup.md
   - separator: Fast Products
@@ -53,11 +53,14 @@ training:
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
   - separator: Help from Fast
-  - label: Account Knowledgebase
+  - label: Help Docs
     href: 'https://help.fast.co/hc/'
     external: true
-  - label: Submit Support Request
+  - label: Request Support
     href: 'https://help.fast.co/hc/en-us/requests/new'
     external: true
-  - label: Email Fast's DevRel Team
+  - label: Email DevRel
     href: 'mailto:devrel@fast.co'
+  - label: Join us on Discord
+    href: 'https://discord.gg/pmDcSdRQ9x'
+    external: true
