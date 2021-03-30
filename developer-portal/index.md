@@ -6,11 +6,11 @@ title: Fast Checkout Documentation
 
 We're so happy you're here.
 
-## Getting Started
+## [Getting Started](/developer-portal/fast-checkout/)
 
-## Fast API
+## [Fast API](/developer-portal/fast-api/)
 
 ## BigCommerce App
 
-## WooCommerce Plugin
+## [WooCommerce Plugin](/developer-portal/woocommerce/)
 

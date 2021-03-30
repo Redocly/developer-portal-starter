@@ -47,7 +47,7 @@ training:
   - group: WooCommerce
     expanded: false
     pages:
-      - label: WooCommerce Overview
+      - label: Overview
         page: developer-portal/woocommerce.md
 
   - group: Admin
