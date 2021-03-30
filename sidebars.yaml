@@ -3,6 +3,7 @@ training:
     page: developer-portal/index.md
   - label: Become a Seller
     page: developer-portal/seller-signup.md
+  - separator: Fast Products
   - group: Fast Checkout
     expanded: false
     pages:
@@ -33,6 +34,7 @@ training:
           page: developer-portal/bigcommerce-install-login.md
         - label: Other Platforms
           href: 'https://fastaf.redoc.ly/developer-portal/fast-api/'
+  - separator: Integrating with Fast
   - group: Fast API
     expanded: false
     pages:
