@@ -16,7 +16,7 @@ training:
         - label: WooCommerce
           page: developer-portal/woocommerce.md
         - label: Other Platforms
-          page: developer-portal/fast-login-install.md
+          page: developer-portal/fast-api.md
   - group: Fast Login
     expanded: false
     pages:
@@ -32,7 +32,7 @@ training:
         - label: WooCommerce
           page: developer-portal/woocommerce.md
         - label: Other Platforms
-          page: developer-portal/fast-login-install.md
+          page: developer-portal/fast-api.md
   - group: Fast API
     expanded: false
     pages:
