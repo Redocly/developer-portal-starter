@@ -12,7 +12,7 @@ We're so happy you're here.
 
 ## [Fast API](/developer-portal/fast-api/)
 
-## BigCommerce App
+## [BigCommerce App](/developer-portal/bigcommerce)
 
 ## [WooCommerce Plugin](/developer-portal/woocommerce/)
 

@@ -17,8 +17,15 @@ training:
       page: developer-portal/fast-login.md
     - label: How Fast Login works
       page: developer-portal/fast-login-how-it-works.md
-    - label: Installing Fast Login
-      page: developer-portal/fast-login-install.md
+      - group: Installing Fast Login
+        expanded: false
+        pages:
+          - label: BigCommerce
+            page: developer-portal/bigcommerce.md
+          - label: WooCommerce
+            page: developer-portal/woocommerce.md
+          - label: Other Platforms
+            page: developer-portal/fast-login-install.md
   - group: Fast API
     expanded: false
     pages:
@@ -38,8 +45,8 @@ training:
   - group: BigCommerce
     expanded: false
     pages:
-      - label: Setup
-        page: developer-portal/setup.md
+      - label: Overview
+        page: developer-portal/bigcommerce.md
   - group: WooCommerce
     expanded: false
     pages:
