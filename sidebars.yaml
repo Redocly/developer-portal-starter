@@ -52,7 +52,12 @@ training:
         page: developer-portal/woocommerce.md
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
-  - separator: Need help?
-  - label: Account Support
+  - separator: Help from Fast
+  - label: Account Knowledgebase
     href: 'https://help.fast.co/hc/'
     external: true
+  - label: Submit Support Request
+    href: 'https://help.fast.co/hc/en-us/requests/new'
+    external: true
+  - label: Email Fast's DevRel Team
+    href: 'mailto:devrel@fast.co'
