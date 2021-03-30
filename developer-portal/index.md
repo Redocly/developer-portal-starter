@@ -6,7 +6,9 @@ title: Fast Checkout Documentation
 
 We're so happy you're here.
 
-## [Getting Started](/developer-portal/fast-checkout/)
+## [Fast Checkout](/developer-portal/fast-checkout/)
+
+## [Fast Login](/developer-portal/fast-login/)
 
 ## [Fast API](/developer-portal/fast-api/)
 

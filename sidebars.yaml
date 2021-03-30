@@ -18,8 +18,6 @@ training:
       page: developer-portal/fast-login-how-it-works.md
     - label: Installing Fast Login
       page: developer-portal/fast-login-install.md
-  - label: Get Help
-    page: developer-portal/index.md
   - group: Fast API
     expanded: false
     pages:
@@ -46,6 +44,8 @@ training:
     pages:
       - label: Overview
         page: developer-portal/woocommerce.md
+  - label: Get Help
+    page: /contact/
 
   - group: Admin
     expanded: true
