@@ -2,7 +2,7 @@
 
 The first step to integrating Fast Checkout with your store is to become a seller with Fast. We like to keep things fast around here, so the onboarding process is pretty straightforward. 
 
-[**Become a Seller on Fast.co**](https://www.fast.co/business)
+[**Become a Seller on Fast.co →**](https://www.fast.co/business)
 
 ## Seller Signup
 
@@ -24,9 +24,9 @@ Complete your integration details. Please be sure to add an active website domai
 ### Follow technical integration steps
 If you're using BigCommerce or WooCommerce, you will need to complete the installation steps to verify your site with Fast.
 
-* [BigCommerce](developer-portal/bigcommerce/)
-* [WooCommerce](/developer-portal/woocommerce/)
-* [Fast API](/developer-portal/fast-api-integration-guide/)
+* [BigCommerce →](developer-portal/bigcommerce/)
+* [WooCommerce →](/developer-portal/woocommerce/)
+* [Fast API →](/developer-portal/fast-api-integration-guide/)
 
 ### Return to Fast seller account dashboard
 Navigate back to the [Fast Seller Dashboard](https://www.fast.co/business/dash/home) to complete your business details, like business verification and banking information. We gotta make sure you get your money in the right place! 
