@@ -6,7 +6,7 @@ title: Fast Checkout Documentation
 
 We're so happy you're here.
 
-## Product Offerings
+## Fast Products
 
 ### [Fast Checkout](/developer-portal/fast-checkout/)
 
