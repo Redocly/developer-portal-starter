@@ -1,8 +1,14 @@
 import { lighten, darken, readableColor } from 'polished';
 
 export const theme = {
-
   colors: {
+    tonalOffset: 0.2,
+    primary: {
+      main: ({ colors }) => colors.palette.black,
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
+      contrastText: ({ colors }) => readableColor(colors.primary.main),
+    },
     palette: {
       black: '#000000',
       grey1: '#474747',
@@ -16,6 +22,38 @@ export const theme = {
       green: '#24B560',
       pink: '#F6C5CF'
     },
+    success: {
+      main: '#00aa13',
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.success.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.success.main),
+      contrastText: ({ colors }) => readableColor(colors.success.main),
+    },
+    error: {
+      main: '#e53935',
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.error.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.error.main),
+      contrastText: ({ colors }) => readableColor(colors.error.main),
+    },
+    warning: {
+      main: '#d4ad03',
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.warning.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.warning.main),
+      contrastText: '#ffffff',
+    },
+    brand: {
+      success: '#e6eef8',
+      warning: '#fcf9e9',
+      danger: '#fce9ed',
+      attention: '#ebfbe9',
+    },
+    fastBrandColorPallete: {
+      black: ({ colors }) => colors.palette.black,
+      white: ({ colors }) => colors.palette.white,
+      blue: ({ colors }) => colors.palette.blue,
+      red: ({ colors }) => colors.palette.red,
+      green: ({ colors }) => colors.palette.green,
+      pink: ({ colors }) => colors.palette.pink,
+    },
     action: {
       success: ({ colors }) => colors.palette.green,
       error: ({ colors }) => colors.palette.red,
@@ -23,14 +61,6 @@ export const theme = {
       inactive: ({ colors }) => colors.palette.grey3,
       hover: ({ colors }) => colors.palette.grey4,
       // warning: X
-    },
-    brand: {
-      black: ({ colors }) => colors.palette.black,
-      white: ({ colors }) => colors.palette.white,
-      blue: ({ colors }) => colors.palette.blue,
-      red: ({ colors }) => colors.palette.red,
-      green: ({ colors }) => colors.palette.green,
-      pink: ({ colors }) => colors.palette.pink,
     },
     text: {
       primary: ({ colors }) => colors.palette.black,
