@@ -22,9 +22,9 @@ nav:
   - label: Documentation
     page: developer-portal/index.md
 
-  - label: Fast Homepage
+  - label: Fast Help
     icon: ./images/fast-icon.png
-    href: https://fast.co
+    href: https://help.fast.co/hc/en-us
 
   - search: true
 
