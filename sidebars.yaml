@@ -1,9 +1,11 @@
 training:
   - label: Getting Started
     page: developer-portal/index.md
-  - separator: Seller Resources
-  - label: Seller Sign-up
-    page: developer-portal/seller-signup.md
+  - group: Seller Resources
+    expanded: false
+    pages:
+    - label: Seller Sign-up
+      page: developer-portal/seller-signup.md
   - separator: Fast Products
   - group: Fast Checkout
     expanded: false
