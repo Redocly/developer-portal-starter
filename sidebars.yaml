@@ -33,8 +33,8 @@ training:
   - group: WooCommerce
     expanded: false
     pages:
-      - label: Setup
-        page: developer-portal/setup.md
+      - label: WooCommerce Overview
+        page: developer-portal/woocommerce.md
 
   - group: Admin
     expanded: true
