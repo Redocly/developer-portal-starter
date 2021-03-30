@@ -17,7 +17,7 @@ Complete your organization details. If a Partner sent you our way, we'd really l
 [![Organization Details](https://www.dropbox.com/s/phaw5ucc91n6lp4/02-org-details.png?raw=1)](https://www.fast.co/business/onboarding/fast-checkout/org-details)
 
 ### Complete your integation details
-Complete your integration details. Please be sure to add an active website domain or you will receive a verification error—]. You won't be able to work locally to test your integration, unfortunately, unless you use a live sandbox domain.
+Complete your integration details. Please be sure to add an active website domain or you will receive a verification error. You won't be able to work locally to test your integration, unfortunately, unless you use a live sandbox domain.
 
 [![Integration Details](https://www.dropbox.com/s/fvf3pztpvvbw0jt/03-integration-details.png?raw=1)](https://www.fast.co/business/onboarding/fast-checkout/checkout-app-details)
 
@@ -29,7 +29,7 @@ If you're using BigCommerce or WooCommerce, you will need to complete the instal
 * [Fast API →](/developer-portal/fast-api-integration-guide/)
 
 ### Return to Fast seller account dashboard
-Navigate back to the [Fast Seller Dashboard](https://www.fast.co/business/dash/home) to complete your business details, like business verification and banking information. We gotta make sure you get your money in the right place! 
+Navigate back to the [Fast Seller Dashboard →](https://www.fast.co/business/dash/home) to complete your business details, like business verification and banking information. We gotta make sure you get your money in the right place! 
 
 [![Continue Fast seller account setup](https://www.dropbox.com/s/l0isxje5jz62j64/07-business-details.png?raw=1)](https://www.dropbox.com/s/l0isxje5jz62j64/07-business-details.png?raw=1)
 
