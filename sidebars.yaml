@@ -31,8 +31,6 @@ training:
       pages:
         - label: BigCommerce
           page: developer-portal/bigcommerce-install-login.md
-        - label: WooCommerce
-          page: developer-portal/woocommerce-install-login.md
         - label: Other Platforms
           href: 'https://fastaf.redoc.ly/developer-portal/fast-api/'
   - group: Fast API
@@ -56,10 +54,17 @@ training:
     pages:
       - label: Overview
         page: developer-portal/bigcommerce.md
+      - label: Install Fast Checkout
+        page: developer-portal/bigcommerce-install-checkout.md
+      - label: Install Fast Login
+        page: developer-portal/bigcommerce-install-login.md
   - group: WooCommerce
     expanded: false
     pages:
       - label: Overview
         page: developer-portal/woocommerce.md
+      - label: Install Fast Checkout
+        page: developer-portal/woocommerce-install-checkout.md
   - label: Account Support
     href: 'https://help.fast.co/hc/'
+    external: true

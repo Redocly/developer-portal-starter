@@ -19,8 +19,12 @@ Complete your integration details. Please be sure to add an active website domai
 
 [![Integration Details](https://www.dropbox.com/s/fvf3pztpvvbw0jt/03-integration-details.png?raw=1)](https://www.fast.co/business/onboarding/fast-checkout/checkout-app-details)
 
-### Follow integration steps
+### Follow technical integration steps
 If you're using BigCommerce or WooCommerce, you will need to complete the installation steps to verify your site with Fast.
+
+* [BigCommerce](developer-portal/bigcommerce/)
+* [WooCommerce](/developer-portal/woocommerce/)
+* [Fast API](/developer-portal/fast-api-integration-guide/)
 
 ### Return to Fast seller account setup
 Navigate back to the [Fast Seller Dashboard](https://www.fast.co/business/dash/home) to complete your business details, like business verification and banking information. We gotta make sure you get your money in the right place! 
