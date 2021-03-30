@@ -28,15 +28,17 @@ If you're using BigCommerce or WooCommerce, you will need to complete the instal
 * [WooCommerce](/developer-portal/woocommerce/)
 * [Fast API](/developer-portal/fast-api-integration-guide/)
 
-### Return to Fast seller account setup
+### Return to Fast seller account dashboard
 Navigate back to the [Fast Seller Dashboard](https://www.fast.co/business/dash/home) to complete your business details, like business verification and banking information. We gotta make sure you get your money in the right place! 
 
 [![Continue Fast seller account setup](https://www.dropbox.com/s/l0isxje5jz62j64/07-business-details.png?raw=1)](https://www.dropbox.com/s/l0isxje5jz62j64/07-business-details.png?raw=1)
 
+### Complete business verification
 Click Continue account setup so you can complete your business verification. You will need your Employer Indentification Number (EIN) or your Social Security Number (SSN) if you use that for tax purposes.
 
 [![Business verification](https://www.dropbox.com/s/4kepm4jxg7kvndh/business-verification-with-stripe.png?raw=1)](https://www.dropbox.com/s/4kepm4jxg7kvndh/business-verification-with-stripe.png?raw=1)
 
+### Complete all onboarding tasks
 Complete any other onboarding tasks you may have in your Fast seller dashboard.
 
 [![Open seller onboarding tasks](https://www.dropbox.com/s/0mh904le0tvwumi/seller-dashboard-open-onboarding-tasks.png?raw=1)](https://www.dropbox.com/s/0mh904le0tvwumi/seller-dashboard-open-onboarding-tasks.png?raw=1)
