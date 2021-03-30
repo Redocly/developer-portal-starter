@@ -2,9 +2,9 @@
 title: Fast Checkout Documentation
 ---
 
-# Welcome
+# Welcome Fast Developers
 
-We're so happy you're here.
+[![Fast Checkout](https://www.dropbox.com/s/ciz50ow8wl94rjw/fast-product-preview.jpeg?raw=1)](https://www.fast.co)
 
 ## Fast Products
 
