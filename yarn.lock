@@ -1532,10 +1532,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@1.0.0-beta.123":
-  version "1.0.0-beta.123"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.123.tgz#01b23d3a62cc0d8d989e42f7ef7e20302d1690fc"
-  integrity sha512-IdakPjRPzzAhoOiid5TOgKrNWgNGASifza2xTRdZ2hosac993sGro25H/owG+cHZPOgBZIFwEuzqQnSCgI6oGg==
+"@redocly/developer-portal@1.0.0-beta.130":
+  version "1.0.0-beta.130"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.130.tgz#40ad6a1c571b3db1b03eaa0acc57b5242512a1f4"
+  integrity sha512-rfOaHwK2g/oAdy+W7JwxKawuukCkqjTcELWuvV5beF+D4eHAo8g44LlZQ1rfDHQDI/7qHMdliwBPlBHfTkEHPw==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1545,8 +1545,8 @@
     "@redocly/gatsby-plugin-favicon" "^3.1.9"
     "@redocly/gatsby-remark-images" "^3.3.11"
     "@redocly/openapi-cli" "~0.12.1"
-    "@redocly/redoc-int" "2.0.0-rc.64"
-    "@redocly/reference-docs-lib" "1.3.30"
+    "@redocly/redoc-int" "2.0.0-rc.68"
+    "@redocly/reference-docs-lib" "1.3.32"
     babel-plugin-styled-components "^1.10.7"
     chalk "^3.0.0"
     core-js "^2.6.9"
@@ -1589,6 +1589,7 @@
     p-map "^4.0.0"
     polished "^3.4.0"
     prismjs "^1.16.0"
+    qs "^6.10.1"
     react "^16.8.6"
     react-dom "^16.8.6"
     react-helmet "5.2.1"
@@ -1692,10 +1693,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/redoc-int@2.0.0-rc.64":
-  version "2.0.0-rc.64"
-  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.64.tgz#464860be89fb7a192fb0de5d1891748c55e30a17"
-  integrity sha512-7kU1Pmc4V3SCOcsNbjkVbPnI0t/H9XBr2GHqzXbSh6jaGY16msBx7LEjoRbFt54HUPrOvj6NypebOQvRILkA+g==
+"@redocly/redoc-int@2.0.0-rc.68":
+  version "2.0.0-rc.68"
+  resolved "https://registry.yarnpkg.com/@redocly/redoc-int/-/redoc-int-2.0.0-rc.68.tgz#7afd2de251972a0c9e673f948a2bd60a2a482ac7"
+  integrity sha512-78me19J9ZHkpNFu7XtXvnDy7dlLobIBEgicy+s70yHpv9ZRrxAfeECuWuspgYMZ70YDGqb2E4W8h8QIvMU8LoQ==
   dependencies:
     "@redocly/react-dropdown-aria" "2.0.11"
     "@types/node" "^13.11.1"
@@ -1722,12 +1723,12 @@
     tslib "^2.0.0"
     url-template "^2.0.8"
 
-"@redocly/reference-docs-lib@1.3.30":
-  version "1.3.30"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.30.tgz#0f9291464f51c5c60577c0934eb231f90b529363"
-  integrity sha512-hRx+qHwF1H3ShnpVEbbjEAKvObI2yNaXNuhQuENSGmMjMOZgEOGSaSVrvZ7JyOd36AzSrmt/MRMdk6hrKORHvA==
+"@redocly/reference-docs-lib@1.3.32":
+  version "1.3.32"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs-lib/-/reference-docs-lib-1.3.32.tgz#11f0e95269ccfd481cd428d685f8737959f035c1"
+  integrity sha512-oxIIDhra9pK8ZTk3+2R1WzxvjK3xM6l7C0bDKkr4xLH2CpKdXnYe1A0Q2Y9cQ3LwTeHEevFKrYRDfgC2hdwkFw==
   dependencies:
-    "@redocly/redoc-int" "2.0.0-rc.64"
+    "@redocly/redoc-int" "2.0.0-rc.68"
     "@redocly/vscode-json-languageservice" "3.4.9"
     codemirror "^5.59.4"
     core-js "^3.5.0"
@@ -1735,7 +1736,7 @@
     fast-deep-equal "^3.1.3"
     handlebars "^4.7.6"
     hotkeys-js "^3.7.6"
-    informed "^3.6.1"
+    informed "3.30.1"
     lunr "^2.3.8"
     marked "^0.7.0"
     mobx "~6.0.1"
@@ -8304,10 +8305,10 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-informed@^3.6.1:
-  version "3.29.3"
-  resolved "https://registry.yarnpkg.com/informed/-/informed-3.29.3.tgz#e3b0931b3076a8a0287344ba1601b0ce75f95ba8"
-  integrity sha512-A/zec87hKvlyVxcks1SwUUzonT9vZdmfkRtknZ7F3TUqoCq+hzFiCz5QkMfRenk9jD0sLZ2aHVkTNVH0objjtQ==
+informed@3.30.1:
+  version "3.30.1"
+  resolved "https://registry.yarnpkg.com/informed/-/informed-3.30.1.tgz#904a5af58c4406a383e60bf7de9ca9e54eff07aa"
+  integrity sha512-x5UzcUBejWSCd24hB/HOfBk/FT0toctttQtr1mQtyhRQbF0grjtPu/0kiDff1UrEX9zzDve9j3/D3o7Bm+gWSw==
 
 inherits@2, inherits@2.0.4, inherits@^2.0.0, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.4"
@@ -12099,6 +12100,13 @@ qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
+
+qs@^6.10.1:
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.1.tgz#4931482fa8d647a5aab799c5271d2133b981fb6a"
+  integrity sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg==
+  dependencies:
+    side-channel "^1.0.4"
 
 qs@^6.9.4:
   version "6.9.6"
