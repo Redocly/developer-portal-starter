@@ -6,7 +6,7 @@ headerIcon: ./images/logo.png
 enableToc: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
-  acme-v2: https://api.redoc.ly/registry/redocly/acme/2.0.0/bundle/main/openapi.yaml
+  acme-v2: 'https://api.redoc.ly/registry/redocly/acme/2.0.0/bundle/main/openapi.yaml'
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
