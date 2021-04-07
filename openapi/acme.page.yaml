@@ -1,5 +1,5 @@
 type: reference-docs
-definitionId: acme
+definitionId: acme-v2
 settings:
   generateCodeSamples:
     languages:
