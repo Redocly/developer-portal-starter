@@ -1403,10 +1403,10 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@redocly/developer-portal@1.0.0-beta.131":
-  version "1.0.0-beta.131"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.131.tgz#731e38edc14f5336be73f89231857606d5ff4bb9"
-  integrity sha512-S/h8lgmhFEaRT90mChyJDcGIPK5e7+nyy++j5zO499ydxuNDorajrKtGjLHN26rpcGXqYffnqPryER5s4lbl/Q==
+"@redocly/developer-portal@1.0.0-beta.133":
+  version "1.0.0-beta.133"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.133.tgz#d02b4fdeb119e879f129cafd9307b614bc31944c"
+  integrity sha512-FBgzWXT54YEuPZarHXZuZ6W39ghn3hs6rUp5oy3PPc4pHEGMfBPPwratFLp4lWrdshleBDYEET0SngwNycVfyA==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
