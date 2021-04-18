@@ -1,0 +1,10 @@
+type: reference-docs
+definitionId: acme-v2
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
+      - lang: C#
+      - lang: Java
