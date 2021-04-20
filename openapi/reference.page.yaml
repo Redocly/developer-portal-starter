@@ -1,4 +1,8 @@
-type: redoc
+type: reference-docs
 definitionId: petstore
-showInfo: true
-expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js

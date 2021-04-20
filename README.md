@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [node.js >= 10.15.1](https://nodejs.org/en/)
+- [node.js >= 12.4.0](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com/en/)
 
 ## Install
@@ -23,7 +23,7 @@ We heavily rely on caching for performance issues so if some changes are not ref
 
 ## Docs
 
-Read the [online documentation](https://docs.redoc.ly/developer-portal/introduction/).
+Read the [online documentation](https://redoc.ly/docs/developer-portal/introduction/).
 
 ## Training program
 

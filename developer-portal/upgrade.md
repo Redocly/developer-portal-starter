@@ -26,7 +26,7 @@ Save the file.
 
 ## Run yarn install
 
-```
+```bash
 yarn install
 ```
 

@@ -13,4 +13,9 @@ meta:
 ```
 
 The title is used within the html title tag.
-Note: it may require a `yarn clean` for that to update in the development environment.
+
+:::attention Note:
+
+It may require a `yarn clean` for that to update in the development environment.
+
+:::

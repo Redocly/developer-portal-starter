@@ -83,6 +83,7 @@ export const theme = {
     },
     // navbar: {
     //   main: ({ colors }) => colors.primary.main,
+    //   gradient: ({ colors }) => darken(colors.tonalOffset / 2, colors.navbar.main),
     //   contrastText: 'white'
     // },
     // footer: {
@@ -133,6 +134,15 @@ export const theme = {
     //   fontFamily: ({ typography }) => typography.headings.fontFamily,
     //   lineHeight: ({ typography }) => typography.lineHeight,
     //   capitalize: false,
+    // },
+    // heading4: {
+    // // ...
+    // },
+    // heading5: {
+    // // ...
+    // },
+    // heading6: {
+    // // ...
     // },
     code: {
       fontSize: '14px',

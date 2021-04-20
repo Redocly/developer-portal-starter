@@ -6,7 +6,7 @@ The top nav and footers are defined in the `siteConfig.yaml` file.
 
 Let's rename the link from training exercises to training program.
 
-```Before
+```yaml Before
 nav:
 
   - label: Training exercises
@@ -18,7 +18,7 @@ nav:
   - search: true
 ```
 
-```After
+```yaml After
 nav:
 
   - label: Training program
