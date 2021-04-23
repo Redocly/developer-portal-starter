@@ -1,4 +1,6 @@
-# [BETA] fast.js Documentation
+# fast.js Documentation
+
+> This product is in Early Access
 
 # Events
 

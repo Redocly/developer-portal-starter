@@ -1,4 +1,6 @@
-# [BETA] Order & Checkout Reference Documentation
+# Order & Checkout Reference Documentation
+
+> This product is in Early Access
 
 ## Sample sequence diagram
 

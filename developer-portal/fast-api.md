@@ -1,4 +1,6 @@
-# [BETA] Fast API Overview
+# Fast API Overview
+
+> This product is in Early Access
 
 Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
