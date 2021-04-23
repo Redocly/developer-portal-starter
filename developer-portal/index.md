@@ -5,7 +5,7 @@ title: Fast Checkout Documentation
 # Welcome Fast Developers
 
 
-### Subscribe to Emailed Product Updates
+### Subscribe to Product Updates
 
 [**Subscribe to Fast Devs substack →**](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
 
