@@ -1,4 +1,6 @@
-# [BETA] Fast Direct Integration Authentication
+# Fast Direct Integration Authentication
+
+> This product is in Early Access
 
 Fast's Direct Integration is intended for merchants who have custom built their own eCommerce site and want to use Fast checkout to eliminate the friction around checkout for their users and reduce cart abandonment! 
 
