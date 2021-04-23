@@ -14,13 +14,13 @@ training:
       page: developer-portal/fast-checkout.md
     - label: How Fast Checkout works
       page: developer-portal/fast-checkout-how-it-works.md
-  - group: Fast Login
-    expanded: false
-    pages:
-    - label: About Fast Login
-      page: developer-portal/fast-login.md
-    - label: How Fast Login works
-      page: developer-portal/fast-login-how-it-works.md
+#  - group: Fast Login
+#    expanded: false
+#    pages:
+#    - label: About Fast Login
+#      page: developer-portal/fast-login.md
+#    - label: How Fast Login works
+#      page: developer-portal/fast-login-how-it-works.md
   - separator: Integrating with Fast
   - group: Fast API
     expanded: false
@@ -42,8 +42,8 @@ training:
         page: developer-portal/bigcommerce.md
       - label: Install Fast Checkout
         page: developer-portal/bigcommerce-install-checkout.md
-      - label: Install Fast Login
-        page: developer-portal/bigcommerce-install-login.md
+ #     - label: Install Fast Login
+ #       page: developer-portal/bigcommerce-install-login.md
   - group: WooCommerce
     expanded: false
     pages:
