@@ -1,5 +1,5 @@
 # Fast Checkout for WooCommerce
-Fast Checkout for WooCommerce adds Fast Checkout functionality (payment gateway) for your WooCommerce store.
+Fast Checkout for WooCommerce adds Fast Checkout functionality (payment gateway) to your WooCommerce store.
 
 [![Fast Checkout](https://www.dropbox.com/s/ciz50ow8wl94rjw/fast-product-preview.jpeg?raw=1)](https://www.fast.co)
 
@@ -20,7 +20,7 @@ In addition to skyrocketing conversion, Fast delights your customers by letting 
 You can also follow us on Twitter for updates, [@Fast_Devs](https://twitter.com/fast_devs).
 
 ### Share Your Feedback
-If you feel there is something missing from our documentation, please help us by [creating an issue](https://github.com/fast-af/devportal/issues/new) here in GitHub. We would love to hear how we can make our documentation and product better.
+If you feel there is something missing from our documentation, please help us by [creating an issue](https://github.com/fast-af/devportal/issues/new) on GitHub. We would love to hear how we can make our documentation and product better.
 
 ### Engage in Discussions
 Whether you want to share your feedback, suggest new features, obtain support, or discuss general ideas, you can find us in the [Discussions on GitHub](https://github.com/fast-af/fast-checkout-woocommerce/discussions). 
