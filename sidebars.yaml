@@ -51,3 +51,5 @@ training:
         page: developer-portal/woocommerce.md
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
+      - label: Migrate to plugin directory
+        page: developer-portal/woocommerce-migrate-plugin-directory.md
