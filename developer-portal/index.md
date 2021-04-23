@@ -13,10 +13,10 @@ title: Fast Checkout Documentation
 
 You can also follow us on Twitter for updates, [**@Fast_Devs →**](https://twitter.com/fast_devs)
 
-## Join our community
+### Join our community
 With our growing product suite, it's great to engage with us and other users & developers within our community. 
 
-### Leverage the community to
+#### Leverage the community to
 * Ask questions
 * Share feedback
 * Read product updates
