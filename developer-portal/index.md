@@ -4,10 +4,6 @@ title: Fast Checkout Documentation
 
 # Welcome Fast Developers
 
-## Product Status
-
-**BigCommerce** has been supported since our inception. We recently submitted our **WordPress** plugin to the plugin repository for approval. Our **Fast API** is a very new offering in Beta currently. Please be patient with us as we work through bugs and improvements. 
-
 ### Subscribe to Emailed Product Updates
 
 [**Subscribe to Fast Devs substack →**](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
