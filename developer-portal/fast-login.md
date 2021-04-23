@@ -14,4 +14,4 @@ Fast Login is easy to integrate for your business. It takes less than an hour to
 
 ## Secure
 
-We take your privacy and security seriously. We use best-in-class security and encryption technology to fight fraud and protect data, and we’ll never sell your information to anyone.
+We take your privacy and security seriously. We use best-in-class security and encryption technology to fight fraud and protect data, and we’ll never sell your information to anyone. 

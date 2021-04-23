@@ -14,4 +14,4 @@ Fast Checkout is easy to integrate for ecommerce platforms. We handle all the co
 
 ## Secure
 
-Fast Checkout is PCI compliant and highly secure. We use best-in-class security and encryption technology to fight fraud and protect data, and we’ll never sell your information to anyone.
+Fast Checkout is PCI compliant and highly secure. We use best-in-class security and encryption technology to fight fraud and protect data, and we’ll never sell your information to anyone. 

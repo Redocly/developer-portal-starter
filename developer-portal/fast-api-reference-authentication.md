@@ -126,7 +126,7 @@ PAYLOAD
 
 **Example Snippet**
 
-Depending on your tech stack, there are a variety of open source libraries available for both retrieving signing keys and verifying the JWT. Below is an example snippet for NodeJS, using the [`jwks-rsa` library](https://github.com/auth0/node-jwks-rsa) for retrieving the signing token, and the [`jsonwebtoken` library](https://www.npmjs.com/package/jsonwebtoken) for verifying the token. 
+Depending on your tech stack, there are a variety of open source libraries available for both retrieving signing keys and verifying the JWT. Below is an example snippet for NodeJS, using the [`jwks-rsa` library](https://github.com/auth0/node-jwks-rsa) for retrieving the signing token, and the [`jsonwebtoken` library](https://www.npmjs.com/package/jsonwebtoken) for verifying the token.
 
 ```jsx
 import jsonwebtoken from 'jsonwebtoken';

@@ -240,4 +240,4 @@ For full documentation on the list of test cases, see the reference documentatio
 
 # 6. Moving to production
 
-Now that your integration is working in your development environment against the Fast Sandbox, you will need to make several changes to enable it to work for real customers. Firstly, you'll need to repeat the onboarding steps in [production](https://sdash.fast.co). Once you have completed that, you're all set!
+Now that your integration is working in your development environment against the Fast Sandbox, you will need to make several changes to enable it to work for real customers. Firstly, you'll need to repeat the onboarding steps in [production](https://sdash.fast.co). Once you have completed that, you're all set! 

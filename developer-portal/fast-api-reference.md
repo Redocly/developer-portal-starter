@@ -6,4 +6,4 @@ Here you will find links to our complete reference documentation for Fast.
 
 [BETA] [Order & Checkout Reference Documentation](/developer-portal/fast-api-reference-order-checkout)
 
-[BETA] [fast.js Documentation](/developer-portal/fast-api-reference-fast-js)
+[BETA] [fast.js Documentation](/developer-portal/fast-api-reference-fast-js) 

@@ -8,7 +8,7 @@ Throughout the login/checkout flow, Fast.js dispatches events to the host page t
 
 Today, all events have a `name` field that denotes the type of event that fired (e.g. “Checkout - Order Created”), and some events have a `properties` field that contains special data relevant to the event that fired. For example, “Checkout - Order Created” events have the `order_id`, `order_items`, and `total` fields inside of their `properties` map.
 
-## Event list
+## Event list 
 
 These are all of the events that are currently supported, when they are sent, and what extra properties they contain.
 

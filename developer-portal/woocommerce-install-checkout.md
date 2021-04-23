@@ -78,4 +78,4 @@ Once you have tested the various sections where Fast is integrated, you're ready
 
 [![Turn off test mode](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)
 
-Once test mode is off, you're ready to enjoy your seller benefits. You can view some of them below, but our [Sellers page](https://www.fast.co/sellers) tells a far more compelling story.
+Once test mode is off, you're ready to enjoy your seller benefits. You can view some of them below, but our [Sellers page](https://www.fast.co/sellers) tells a far more compelling story. 

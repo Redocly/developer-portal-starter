@@ -62,4 +62,4 @@ This diagram covers the high level flows for payment capture. NOTE: there are 2 
 
 This diagram covers the high level flow for refunding an order.
 
-[![Refund order](images/fast-api/refund-order.png)](images/fast-api/refund-order.png)
+[![Refund order](images/fast-api/refund-order.png)](images/fast-api/refund-order.png) 

@@ -33,7 +33,7 @@ It’s all in the name: Fast Login lets customers log into your site, fast. No p
 
 ## Integration Methods
 
-### [Fast API](/developer-portal/fast-api/)
+### [Fast API + Direct Integrations](/developer-portal/fast-api/)
 
 ### [BigCommerce App](/developer-portal/bigcommerce)
 
