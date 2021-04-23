@@ -27,8 +27,8 @@ training:
     pages:
       - label: Overview
         page: developer-portal/fast-api.md
-      - label: Integration Guide
-        page: developer-portal/fast-api-integration-guide.md
+#      - label: Integration Guide
+#        page: developer-portal/fast-api-integration-guide.md
       - label: Authenticate
         page: developer-portal/fast-api-reference-authentication.md
       - label: Orders & Checkout
