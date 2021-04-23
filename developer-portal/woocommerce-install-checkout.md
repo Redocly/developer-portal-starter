@@ -41,7 +41,7 @@ If you find success with Fast Checkout for WooCommerce we'd love a review in the
 #### 🔛 Activate plugin
 Click Activate Plugin. Essentially this turns the plugin code functionality "on."
 
-[![Activate plugin](https://www.dropbox.com/s/7raxgoklit732vt/05-manual-activate-plugin.png?raw=1)](https://www.dropbox.com/s/7raxgoklit732vt/05-manual-activate-plugin.png?raw=1)
+![Activate plugin](images/woocommerce/activate-plugin.png)
 
 *Tip: You can deactivate plugins to troubleshoot website issues. Slowly deactivate them one-by-one, each time checking to see if the error persists. If you find one plugin is the problem, visit their changelog or website for latest news or updates. Also ensure all of your plugins are always up-to-date.*
 
