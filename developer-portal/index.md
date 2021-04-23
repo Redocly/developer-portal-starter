@@ -4,8 +4,6 @@ title: Fast Checkout Documentation
 
 # Welcome Fast Developers
 
-[![Fast Checkout](https://www.dropbox.com/s/ciz50ow8wl94rjw/fast-product-preview.jpeg?raw=1)](https://www.fast.co)
-
 ## Product Status
 
 **BigCommerce** has been supported since our inception. We recently submitted our **WordPress** plugin to the plugin repository for approval. Our **Fast API** is a very new offering in Beta currently. Please be patient with us as we work through bugs and improvements. 
@@ -13,6 +11,8 @@ title: Fast Checkout Documentation
 ### Subscribe to Emailed Product Updates
 
 [**Subscribe to Fast Devs substack →**](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
+
+<iframe src="https://fastdevs.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
 
 You can also follow us on Twitter for updates, [**@Fast_Devs →**](https://twitter.com/fast_devs)
 
@@ -38,4 +38,6 @@ It’s all in the name: Fast Login lets customers log into your site, fast. No p
 ### [BigCommerce App](/developer-portal/bigcommerce)
 
 ### [WooCommerce Plugin](/developer-portal/woocommerce/)
+
+[![Fast Checkout](https://www.dropbox.com/s/ciz50ow8wl94rjw/fast-product-preview.jpeg?raw=1)](https://www.fast.co)
 
