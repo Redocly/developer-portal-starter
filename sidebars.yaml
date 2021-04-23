@@ -38,8 +38,8 @@ training:
   - group: BigCommerce
     expanded: false
     pages:
-      - label: Overview
-        page: developer-portal/bigcommerce.md
+#      - label: Overview
+ #       page: developer-portal/bigcommerce.md
       - label: Install Fast Checkout
         page: developer-portal/bigcommerce-install-checkout.md
  #     - label: Install Fast Login
