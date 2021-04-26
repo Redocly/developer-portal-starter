@@ -1,6 +1,6 @@
 training:
   - label: Getting Started
-    page: developer-portal/index.md
+    page: ./docs/developer-portal/index.md
   - group: Seller Resources
     expanded: false
     pages:
