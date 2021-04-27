@@ -193,7 +193,8 @@ padding-bottom: 20px;
 
 ![Main checkout page](images/bigcommerce/main-checkout-page.png)
 
-<code><!------ FAST CHECKOUT BUTTON START ----------->
+```
+<!------ FAST CHECKOUT BUTTON START ----------->
 <div class="fast-wrapper"></div>
 <div class="fast-or">OR</div>
 <fast-checkout-cart-button cart_id="{{cart_id}}" app_id="REPLACE-WITH-YOUR-APP-ID"></fast-checkout-cart-button>
@@ -238,7 +239,8 @@ padding-bottom: 20px;
        width: 50%;
    }
 }
-<!------ FAST CHECKOUT BUTTON END -----------></code>
+<!------ FAST CHECKOUT BUTTON END ----------->
+```
 
 ### Main Checkout Page
 
