@@ -14,6 +14,8 @@ No passwords. No long forms. No hassle. With one click, Fast lets customers secu
 
 It’s all in the name: Fast Login lets customers log into your site, fast. No passwords. No hassle. Just one click and they’re in.
 
+## Engage deeper
+
 ### Subscribe to Product Updates
 
 [**Subscribe to Fast Devs substack →**](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
