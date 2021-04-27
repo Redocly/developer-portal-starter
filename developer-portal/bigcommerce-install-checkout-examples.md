@@ -2,7 +2,7 @@
 
 NOTE: For legacy theme templates (Blueprint). You must include the following script tag in the HTMLHead.html file
 
-**AND** remove cart_id="{{cart_id}}" from the Fast checkout button
+**AND** remove `cart_id="{{cart_id}}"` from the Fast checkout button
 
 `<script src="https://js.fast.co/fast-bigcommerce.js"></script>`
 
