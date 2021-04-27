@@ -9,8 +9,6 @@ title: Fast Checkout Documentation
 
 [**Subscribe to Fast Devs substack →**](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
 
-<iframe src="https://fastdevs.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-
 You can also follow us on Twitter for updates, [**@Fast_Devs →**](https://twitter.com/fast_devs)
 
 ### Join our community
