@@ -4,6 +4,15 @@ title: Fast Checkout Documentation
 
 # Welcome Fast Developers
 
+## Fast Products
+
+### [Fast Checkout](/developer-portal/fast-checkout/)
+
+No passwords. No long forms. No hassle. With one click, Fast lets customers securely log in, check out, and get on with their days.
+
+### [Fast Login](/developer-portal/fast-login/)
+
+It’s all in the name: Fast Login lets customers log into your site, fast. No passwords. No hassle. Just one click and they’re in.
 
 ### Subscribe to Product Updates
 
@@ -12,7 +21,7 @@ title: Fast Checkout Documentation
 You can also follow us on Twitter for updates, [**@Fast_Devs →**](https://twitter.com/fast_devs)
 
 ### Join our community
-With our growing product suite, it's great to engage with us and other users & developers within our community. 
+With our growing product suite, it's helpful to engage with our team and other users & developers within our community. 
 
 #### Leverage the community to
 * Ask questions
@@ -24,17 +33,7 @@ With our growing product suite, it's great to engage with us and other users & d
 
 [**Join our community →**](https://community.fastdevs.co)
 
-### Join Us on Discord
+#### Chat with us on Discord
 As we build we want to continually capture the feedback of our developers & other users. Whether you think we could improve our product in some way, or if you want to share critical feedback on a non-working document or tutorial, we want to hear about it. 
 
 [**Join us on Discord →**](https://discord.gg/pmDcSdRQ9x)
-
-## Fast Products
-
-### [Fast Checkout](/developer-portal/fast-checkout/)
-
-No passwords. No long forms. No hassle. With one click, Fast lets customers securely log in, check out, and get on with their days.
-
-### [Fast Login](/developer-portal/fast-login/)
-
-It’s all in the name: Fast Login lets customers log into your site, fast. No passwords. No hassle. Just one click and they’re in.
