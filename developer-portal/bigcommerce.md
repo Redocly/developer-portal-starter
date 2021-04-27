@@ -41,3 +41,7 @@ Fast's simplicity was instantly appealing to the Oklahoma-based agricultural equ
 Want to see Fast Checkout in action? Check out our Fast Swag Store; we've built a store on BigCommerce that uses Fast Checkout on our product pages.
 
 [**Read their story →**](https://www.fast.co/shop/?_ga=2.21031416.2141437564.1619537229-495285256.1616444149)
+
+## Engage in our community
+
+<iframe style="border: 0; box-shadow: none; width: 800px; height: 80vh;" src="https://community.fastdevs.co/c/bigcommerce-discuss?iframe=true"></iframe>
