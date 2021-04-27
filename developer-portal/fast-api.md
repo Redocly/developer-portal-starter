@@ -20,7 +20,7 @@ Got questions? Concerns? Contact Fast at devrel@fast.co.
 
 ## Documentation links
 
-🛒 [Integration Guide](/developer-portal/fast-api-integration-guide/)
+🛒 Integration Guide (currently unavailable)
 
 Quick start *step by step guide for integration.*
 

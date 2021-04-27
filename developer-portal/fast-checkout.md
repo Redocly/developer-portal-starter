@@ -2,7 +2,7 @@
 
 No passwords. No long forms. No hassle. With one click, Fast lets customers securely log in, check out, and get on with their days.
 
-[![About Fast Checkout](images/fast-checkout/about-checkout.gif)](images/fast-checkout/about-checkout.gif)
+![About Fast Checkout](images/fast-checkout/about-checkout.gif)
 
 ## Fast
 
