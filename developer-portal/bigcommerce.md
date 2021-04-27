@@ -29,7 +29,9 @@ Once you install the app, Fast will provide a guided installation of the Fast Ch
 
 ## Case Studies
 
-### BarnDoor Ag: Delivering a simple checkout solution for all customers, regardless of tech savviness
+### BarnDoor Ag
+
+**Delivering a simple checkout solution for all customers, regardless of tech savviness**
 
 Fast's simplicity was instantly appealing to the Oklahoma-based agricultural equipment seller BarnDoor Ag. Within a week of installing Fast Checkout, Barndoor Ag saw a 27% surge in checkout conversion, with 20% of all sales being processed through Fast, and an average order value of $200. Barndoor's product page checkouts also went from 0% to 80%, because Fast is the only checkout solution that lives right on the product page, helping drive incremental sales that might have not otherwise occurred.
 
