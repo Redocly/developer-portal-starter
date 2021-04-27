@@ -26,7 +26,7 @@ You will need to complete the installation steps to verify your site with Fast. 
 
 * [BigCommerce →](/developer-portal/bigcommerce)
 * [WooCommerce →](/developer-portal/woocommerce/)
-* [Fast API →](/developer-portal/fast-api-integration-guide/)
+* [Fast API →](/developer-portal/fast-api/)
 
 ### Return to Fast seller account dashboard
 Navigate back to the [Fast Seller Dashboard →](https://www.fast.co/business/dash/home) to complete your business details, like business verification and banking information. We gotta make sure you get your money in the right place! 
