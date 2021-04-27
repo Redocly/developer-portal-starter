@@ -14,13 +14,5 @@ Simply install & configure the Fast Checkout for WooCommerce WordPress plugin to
 
 In addition to skyrocketing conversion, Fast delights your customers by letting them skip the headache of creating accounts, remembering passwords and filling out long forms. After making a purchase, they'll get free access to a one-stop dashboard where they can view transactions, track deliveries, and re-order with one-click.
 
-### Subscribe to Email Updates
-[Subscribe to Fast Devs substack](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
-
-You can also follow us on Twitter for updates, [@Fast_Devs](https://twitter.com/fast_devs).
-
-### Share Your Feedback
-If you feel there is something missing from our documentation, please help us by [creating an issue](https://github.com/fast-af/devportal/issues/new) on GitHub. We would love to hear how we can make our documentation and product better.
-
-### Engage in Discussions
-Whether you want to share your feedback, suggest new features, obtain support, or discuss general ideas, you can find us in the [Discussions on GitHub](https://github.com/fast-af/fast-checkout-woocommerce/discussions). 
+## Ask for help in our community
+<iframe style="border: 0; box-shadow: none; width: 800px; height: 80vh;" src="https://community.fastdevs.co/c/woocommerce-discuss?iframe=true"></iframe>

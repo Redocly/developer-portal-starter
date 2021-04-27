@@ -42,6 +42,6 @@ Want to see Fast Checkout in action? Check out our Fast Swag Store; we've built 
 
 [**Read their story →**](https://www.fast.co/shop/?_ga=2.21031416.2141437564.1619537229-495285256.1616444149)
 
-## Engage in our community
+## Ask for help in our community
 
 <iframe style="border: 0; box-shadow: none; width: 800px; height: 80vh;" src="https://community.fastdevs.co/c/bigcommerce-discuss?iframe=true"></iframe>
