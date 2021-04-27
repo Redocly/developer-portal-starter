@@ -20,7 +20,7 @@ stylesheets:
 nav:
 
   - label: Documentation
-    page: developer-portal/index.md.
+    page: developer-portal/index.md
 
   - label: Fast Account Help
     icon: ./images/fast-icon.png
