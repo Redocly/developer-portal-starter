@@ -6,7 +6,7 @@
 
 This sequence diagram illustrates the sequence of API calls for a new user PDP flow with a seller configured for direct capture. See the *Configurable & Direct Capture [BETA]* section for more information on direct capture.
 
-[![Interacting with Fast Checkout](images/fast-api/sample-sequence-diagram.png)](images/fast-api/sample-sequence-diagram.png)
+![Interacting with Fast Checkout](images/fast-api/sample-sequence-diagram.png)
 
 # Key concepts for order processing
 
@@ -95,7 +95,7 @@ We convert our internal financial representation (with zero rounding) and send f
 
 ## Fast Order lifecycle
 
-[![Interacting with Fast Checkout](images/fast-api/order-lifecycle.png)](images/fast-api/order-lifecycle.png)
+![Interacting with Fast Checkout](images/fast-api/order-lifecycle.png)
 
 ## Configurable & Direct Capture [BETA]
 
