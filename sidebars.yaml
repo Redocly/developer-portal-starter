@@ -22,7 +22,7 @@ training:
 #    - label: How Fast Login works
 #      page: developer-portal/fast-login-how-it-works.md
   - separator: Integrating with Fast
-  - group: Fast API
+  - group: Direct Integrations
     expanded: false
     pages:
       - label: Overview
