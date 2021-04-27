@@ -42,6 +42,8 @@ training:
         page: developer-portal/bigcommerce.md
       - label: Install Fast Checkout
         page: developer-portal/bigcommerce-install-checkout.md
+      - label: Engage in our BigCommerce community
+        page: developer-portal/bigcommerce-community.md
  #     - label: Install Fast Login
  #       page: developer-portal/bigcommerce-install-login.md
   - group: WooCommerce
