@@ -14,11 +14,11 @@ training:
       page: developer-portal/fast-checkout.md
     - label: How Fast Checkout works
       page: developer-portal/fast-checkout-how-it-works.md
-#  - group: Fast Login
-#    expanded: false
-#    pages:
-#    - label: About Fast Login
-#      page: developer-portal/fast-login.md
+  - group: Fast Login
+    expanded: false
+    pages:
+    - label: About Fast Login
+      page: developer-portal/fast-login.md
 #    - label: How Fast Login works
 #      page: developer-portal/fast-login-how-it-works.md
   - separator: Integrating with Fast
