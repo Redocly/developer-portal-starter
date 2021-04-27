@@ -31,7 +31,6 @@ nav:
     external: true
 
   - label: Fast Account Help
-    icon: ./images/fast-icon.png
     href: https://help.fast.co/hc/en-us
     external: true
 
