@@ -22,6 +22,12 @@ nav:
   - label: Documentation
     page: developer-portal/index.md
 
+  - label: Community
+    href: https://community.fastdevs.co
+
+  - label: Product Updates
+    href: https://updates.fastdevs.co
+
   - label: Fast Account Help
     icon: ./images/fast-icon.png
     href: https://help.fast.co/hc/en-us
