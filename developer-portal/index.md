@@ -40,3 +40,6 @@ No passwords. No long forms. No hassle. With one click, Fast lets customers secu
 ### [Fast Login](/developer-portal/fast-login/)
 
 It’s all in the name: Fast Login lets customers log into your site, fast. No passwords. No hassle. Just one click and they’re in.
+
+<iframe src="https://fastdevs.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+
