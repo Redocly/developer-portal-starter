@@ -21,7 +21,7 @@ Blueprint location: Snippets/ProductAddToCart.html
 Insert just above:
 {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
 
-<code>
+```
 <!------ FAST CHECKOUT BUTTON START ----------->
 <div class="fast-wrapper"></div>
    <div class="fast-or">OR</div>
@@ -59,7 +59,7 @@ Insert just above:
        }
    }
 <!------ FAST CHECKOUT BUTTON END ----------->
-</code>
+```
 
 ## Cart checkout buttons
 
@@ -73,7 +73,8 @@ Blueprint location: Snippets/FastCartThickBoxContent.html
 
 Insert just below: `class="previewCartCheckout">{{#if cart.show_primary_checkout_button}}`
 
-<code><!------ FAST CHECKOUT BUTTON START ----------->
+```
+<!------ FAST CHECKOUT BUTTON START ----------->
 <div class="fast-overlay-wrapper"></div>
  <div class="fast-overlay-or">OR</div>
  <fast-checkout-cart-button cart_id="{{cart_id}}" app_id="REPLACE-WITH-YOUR-APP-ID"></fast-checkout-cart-button>
@@ -94,7 +95,8 @@ Insert just below: `class="previewCartCheckout">{{#if cart.show_primary_checkout
    margin-right: auto;
    color: #757575;
 }
-<!------ FAST CHECKOUT BUTTON END -----------></code>
+<!------ FAST CHECKOUT BUTTON END ----------->
+```
 
 ### Mini Cart Preview
 
@@ -104,7 +106,8 @@ Cornerstone location: `/templates/components/common/cart-preview.html`
 
 Insert just above: `<div class="previewCartAction"></div>`
 
-<code><!------ FAST CHECKOUT BUTTON START ----------->
+```
+<!------ FAST CHECKOUT BUTTON START ----------->
 <div class="fast-mini-cart-wrapper"></div>
  <div class="fast-mini-cart-or">OR</div>
  <fast-checkout-cart-button cart_id="{{cart_id}}" app_id="REPLACE-WITH-YOUR-APP-ID"></fast-checkout-cart-button>
@@ -127,7 +130,8 @@ Insert just above: `<div class="previewCartAction"></div>`
    margin-right: auto;
    color: #757575;
 }
-<!------ FAST CHECKOUT BUTTON END -----------></code>
+<!------ FAST CHECKOUT BUTTON END ----------->
+```
 
 ### Mini Cart Page
 
@@ -141,7 +145,8 @@ Blueprint location: Panels/CartContent.html below `<div class="ProceedToCheckout
 
 ## Checkout Page
 
-<code><!------ FAST CHECKOUT BUTTON START ----------->
+```
+<!------ FAST CHECKOUT BUTTON START ----------->
 <div class="fast-wrapper"></div>
 <div class="fast-or">OR</div>
 <fast-checkout-cart-button cart_id="{{cart_id}}" app_id="REPLACE-WITH-YOUR-APP-ID"></fast-checkout-cart-button>
@@ -187,7 +192,8 @@ padding-bottom: 20px;
    }
 }
 
-<!------ FAST CHECKOUT BUTTON END -----------></code>
+<!------ FAST CHECKOUT BUTTON END -----------><
+```
 
 ### Main Checkout Page
 
@@ -250,7 +256,8 @@ Blueprint location:
 ‍
 Insert just before: `{{{ checkout.checkout_content }}}`
 
-<code><!------ FAST CHECKOUT BUTTON START ----------->
+```
+<!------ FAST CHECKOUT BUTTON START ----------->
 <div class="fast-wrapper"></div>
  <div class="fast-or">OR</div>
  <fast-checkout-cart-button cart_id="{{cart_id}}" app_id="REPLACE-WITH-YOUR-APP-ID"></fast-checkout-cart-button>
@@ -295,7 +302,8 @@ Insert just before: `{{{ checkout.checkout_content }}}`
    margin-right: auto;
    color: #757575;
 }
-<!------ FAST CHECKOUT BUTTON END -----------></code>
+<!------ FAST CHECKOUT BUTTON END ----------->
+```
 
 Also need to add this script in script manager with settings:
 ‍
@@ -307,7 +315,8 @@ Also need to add this script in script manager with settings:
 ‍
 - Script type: **Script**
 
-<code><script type="text/javascript"></script>
+```
+<script type="text/javascript"></script>
    var oldOnload = window.onload;
    window.onload = function () {
      if (typeof oldOnload == 'function') {
@@ -316,4 +325,5 @@ Also need to add this script in script manager with settings:
    const fw = document.getElementsByClassName("fast-wrapper")[0];
 const lm = document.getElementsByClassName("layout-main")[0];
 lm.prepend(fw);
-   }</code>
+   }
+```
