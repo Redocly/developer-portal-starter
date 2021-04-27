@@ -42,7 +42,9 @@ training:
         page: developer-portal/bigcommerce.md
       - label: Install Fast Checkout
         page: developer-portal/bigcommerce-install-checkout.md
-      - label: Fast BigCommerce community
+      - label: Checkout Examples
+        page: developer-portal/bigcommerce-install-checkout-examples.md
+      - label: Community
         page: developer-portal/bigcommerce-community.md
  #     - label: Install Fast Login
  #       page: developer-portal/bigcommerce-install-login.md
@@ -55,5 +57,5 @@ training:
         page: developer-portal/woocommerce-install-checkout.md
       - label: Migrate to plugin directory
         page: developer-portal/woocommerce-migrate-plugin-directory.md
-      - label: Fast WooCommerce community
+      - label: Community
         page: developer-portal/woocommerce-community.md

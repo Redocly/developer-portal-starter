@@ -66,3 +66,34 @@ Insert just above:
 ### Cart Preview overlay
 
 ![Product detail page](images/bigcommerce/cart-preview.png)
+
+Cornerstone location: /templates/components/cart/preview.html
+
+Blueprint location: Snippets/FastCartThickBoxContent.html
+
+Insert just below:
+
+`class="previewCartCheckout">{{#if cart.show_primary_checkout_button}}`
+
+<code><!------ FAST CHECKOUT BUTTON START ----------->
+<div class="fast-overlay-wrapper"></div>
+ <div class="fast-overlay-or">OR</div>
+ <fast-checkout-cart-button cart_id="{{cart_id}}" app_id="REPLACE-WITH-YOUR-APP-ID"></fast-checkout-cart-button>
+
+<style></style>
+.fast-overlay-wrapper {
+   clear:both;
+   margin-bottom:20px;
+   border-bottom: 1px solid #c1c1c1;
+   padding-bottom: 20px;
+}.fast-overlay-or {
+   position: relative;
+   top: 80px;
+   background: #e5e5e5;
+   width: 40px;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   color: #757575;
+}
+<!------ FAST CHECKOUT BUTTON END -----------></code>
