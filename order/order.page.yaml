@@ -10,3 +10,4 @@ settings:
       - lang: Java
       - lang: C#
   pagination: none
+  showConsole: false

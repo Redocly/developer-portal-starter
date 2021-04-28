@@ -1,5 +1,5 @@
 type: reference-docs
-definitionId: order
+definitionId: merchant
 settings:
   generateCodeSamples:
     languages:
@@ -10,3 +10,4 @@ settings:
       - lang: Java
       - lang: C#
   pagination: none
+  showConsole: false
