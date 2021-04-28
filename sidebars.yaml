@@ -37,8 +37,10 @@ training:
         page: developer-portal/fast-api-reference-fast-js.md
       - label: Merchant API
         href: https://fastmerchant.redoc.ly
+        external: true
       - label: Transaction API
-        href: https://fasttransactions.redoc.ly/
+        href: https://fasttransactions.redoc.ly
+        external: true
   - group: BigCommerce
     expanded: false
     pages:
