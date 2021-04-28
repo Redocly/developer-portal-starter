@@ -1,5 +1,6 @@
 training:
-  - label: Getting Started
+  - separator: Getting Started
+  - label: About Fast
     page: developer-portal/index.md
   - group: Seller Resources
     expanded: false
