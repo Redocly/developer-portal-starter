@@ -1,0 +1,25 @@
+post:
+  summary: Create a specified type of an object/entity
+  description: Generic create interface
+  operationId: MerchantService_Create
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1CreateResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1CreateRequest.yaml
+    required: true
+  tags:
+    - Merchant Service

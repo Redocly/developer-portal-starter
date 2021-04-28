@@ -1,0 +1,32 @@
+post:
+  summary: Send a business event
+  description: Inform Fast regarding a order related business event that happened
+  operationId: ExternalOrderManagementService_BusinessEvent
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1BusinessEventResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  parameters:
+    - name: order_id.value
+      description: UUID value
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1BusinessEventRequest.yaml
+    required: true
+  tags:
+    - Order Management Service

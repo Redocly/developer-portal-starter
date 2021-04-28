@@ -1,0 +1,25 @@
+type: object
+properties:
+  order_id:
+    $ref: ./v1UUID.yaml
+  refund_id:
+    type: string
+  reason:
+    $ref: ./v1RefundReasonCode.yaml
+  note:
+    type: string
+  method:
+    $ref: ./v1RefundMethod.yaml
+  amount:
+    type: string
+    description: 'Should be a float value. Ex: "42.00"'
+  tax_amount:
+    type: string
+    description: 'Should be a float value. Ex: "42.00"'
+  shipping_amount:
+    type: string
+    description: 'Should be a float value. Ex: "42.00"'
+  order_lines:
+    type: array
+    items:
+      $ref: ./v1RefundOrderLineContext.yaml

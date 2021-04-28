@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  first_name:
+    type: string
+  last_name:
+    type: string
+  middle_name:
+    type: string
+  company:
+    type: string
+  email:
+    type: string
+  phone:
+    type: string
+  address_1:
+    type: string
+  address_2:
+    type: string
+  city_locality:
+    type: string
+  state_province:
+    type: string
+  state_province_code:
+    type: string
+  country:
+    type: string
+  country_code:
+    type: string
+  postal_code:
+    type: string

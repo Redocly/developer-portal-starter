@@ -1,0 +1,26 @@
+type: object
+properties:
+  order_id:
+    $ref: ./v1UUID.yaml
+  is_cart:
+    type: boolean
+  convert_mode:
+    $ref: ./v1CartToOrderConvert.yaml
+  convert_cart_to_order:
+    type: boolean
+  status:
+    $ref: ./v1OrderStatus.yaml
+  bill_to:
+    $ref: ./v1AddressUpdate.yaml
+  items:
+    type: array
+    items:
+      $ref: ./v1OrderItemUpdate.yaml
+  coupon:
+    $ref: ./v1CouponUpdate.yaml
+  shipping_option:
+    $ref: ./v1ShippingOptionUpdate.yaml
+  shipments:
+    type: array
+    items:
+      $ref: ./v1ShipmentPlanUpdate.yaml

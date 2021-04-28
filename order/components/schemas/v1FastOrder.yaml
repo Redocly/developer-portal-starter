@@ -1,0 +1,52 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  external_id:
+    type: string
+  user_id:
+    type: string
+  order_type:
+    $ref: ./v1OrderType.yaml
+  currency_code:
+    type: string
+  status:
+    $ref: ./v1OrderStatus.yaml
+  bill_to:
+    $ref: ./v1OrderAddress.yaml
+  lines:
+    type: array
+    items:
+      $ref: ./v1OrderLine.yaml
+  shipment_plans:
+    type: array
+    items:
+      $ref: ./v1OrderShipmentPlan.yaml
+  coupons:
+    type: array
+    items:
+      $ref: ./v1OrderDiscount.yaml
+  total_amount:
+    type: string
+  sub_total:
+    type: string
+  total_discounts:
+    type: string
+  total_tax:
+    type: string
+  total_shipping:
+    type: string
+  refunds:
+    type: array
+    items:
+      $ref: ./v1OrderRefund.yaml
+  custom_values:
+    type: array
+    items:
+      $ref: ./v1OrderCustomValue.yaml
+  user_note:
+    type: string
+  store_note:
+    type: string
+  fast_note:
+    type: string

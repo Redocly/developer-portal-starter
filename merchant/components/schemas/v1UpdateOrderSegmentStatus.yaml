@@ -1,0 +1,10 @@
+type: object
+properties:
+  updated:
+    $ref: ./v1UpdateOrderSegmentType.yaml
+  status:
+    type: boolean
+  reason_code:
+    type: string
+  message:
+    type: string

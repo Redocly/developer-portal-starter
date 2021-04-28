@@ -1,0 +1,6 @@
+type: object
+properties:
+  line:
+    $ref: ./v1OrderLineContext.yaml
+  reason:
+    $ref: ./v1RefundReasonCode.yaml

@@ -37,9 +37,9 @@ training:
       - label: fast.js
         page: developer-portal/fast-api-reference-fast-js.md
       - label: Merchant API
-        page: developer-portal/merchant-api-references.md
+        page: merchant/merchant.page.yaml
       - label: Transaction API
-        page: developer-portal/transaction-api-references.md
+        page: order/order.page.yaml
   - group: BigCommerce
     expanded: false
     pages:
