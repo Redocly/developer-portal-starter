@@ -33,7 +33,7 @@ Scroll to the very top of the list, or the bottom, and click the Bulk action sel
 ![Deactivate Fast Checkout plugin](images/woocommerce/deactivate-fast-checkout-plugin.png)
 
 ### Delete Fast Checkout
-Now that the plugin is deactivated, it's time to delete the plugin. Remember, your plugin settings will remain intact as those are stored in your database, not the plugin code itself. You can either click delete near the title, or follow the same checkbox method as previously, but choosing Delete this time.
+Now that the plugin is deactivated, it's time to delete the plugin. Remember, your plugin settings will remain intact as those are stored in your database, not the plugin code itself. You can either click delete near the title, or follow the same checkbox method as previously, choosing Delete.
 
 ![Delete Fast Checkout plugin](images/woocommerce/delete-fast-checkout-plugin.png)
 
