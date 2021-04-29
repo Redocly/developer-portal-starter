@@ -20,12 +20,15 @@ Click on Plugins in your admin dashboard menu and locate Fast checkout.
 
 `https://yourwebsite.com/wp-admin/plugins.php? `
 
-### Deactivate Fast Checkout
-Click the box near the Fast Checkout title. Scroll to the very top of the list, or the bottom, and click the Bulk action select box. Choose Deactivate. 
+### Deactivate Fast Checkout 
 
 **Fast Checkout will be temporarily unavailable while you are completing this step.** Have no fear, your plugin settings will remain intact as those are stored in your database, not the plugin code itself.
 
+Click the box near the Fast Checkout title. 
+
 ![Select Fast Checkout plugin](images/woocommerce/select-fast-checkout-plugin.png)
+
+Scroll to the very top of the list, or the bottom, and click the Bulk action select box. Choose Deactivate.
 
 ![Deactivate Fast Checkout plugin](images/woocommerce/deactivate-fast-checkout-plugin.png)
 
