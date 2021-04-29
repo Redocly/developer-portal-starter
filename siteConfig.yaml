@@ -2,6 +2,7 @@ meta:
   title: Redocly Training
   description: The best API documentation generator ever.
   siteUrl: https://portal-demo.redoc.ly
+  keywords: redocly developer portal, api portal starter, api reference docs
 headerIcon: ./images/logo.png
 enableToc: true
 oasDefinitions:
