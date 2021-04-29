@@ -71,11 +71,9 @@ If your site is still in test mode, you can place orders without risk. [See Stri
 ##### Edit the appearance of the Fast button
 You can also edit the default CSS of the Fast button in this area. See the [Customizations](#customizations) section to learn more about customizing these fields. 
 
-*Tip: If you've never written CSS before, there are a few resources that can help you out: [W3Schools Intro to CSS](https://www.w3schools.com/css/default.asp*), [View & Practice CSS in Chrome Dev Tools](https://developer.chrome.com/docs/devtools/css/), [CSS 101: The Box Model](https://dev.to/neshaz/css-101-the-box-model-jjp)*
-
 ### Turn off test mode
 Once you have tested the various sections where Fast is integrated, you're ready to turn off test mode! Navigate back to the Fast plugin settings page in your WordPress admin dashboard, scroll below the CSS boxes, then uncheck test mode, and scroll to the bottom and click Save Changes.
 
 [![Turn off test mode](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)
 
-Once test mode is off, you're ready to enjoy your seller benefits. You can view some of them below, but our [Sellers page](https://www.fast.co/sellers) tells a far more compelling story. 
+Once test mode is off, you're ready to enjoy your seller benefits. We're thrilled your a Fast seller. 
