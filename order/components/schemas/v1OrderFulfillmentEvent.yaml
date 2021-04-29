@@ -1,0 +1,8 @@
+type: object
+properties:
+  order_id:
+    $ref: ./v1UUID.yaml
+  shipment:
+    $ref: ./v1ShippingInfo.yaml
+  status:
+    $ref: ./v1OrderStatus.yaml

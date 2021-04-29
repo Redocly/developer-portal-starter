@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  external_id:
+    type: string
+  ship_to:
+    $ref: ./v1OrderAddress.yaml
+  lines:
+    type: array
+    items:
+      $ref: ./v1OrderLineReference.yaml
+  selected_option:
+    $ref: ./v1ShippingOption.yaml
+  available_options:
+    type: array
+    items:
+      $ref: ./v1ShippingOption.yaml
+  shipments:
+    type: array
+    items:
+      $ref: ./v1Shipment.yaml

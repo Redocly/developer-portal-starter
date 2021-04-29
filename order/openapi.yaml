@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Order API
+  version: V1
+  contact:
+    name: Fast
+    url: 'https://fast.co'
+    email: api@fast.co
+  description: |-
+    # Authentication
+
+    <!-- ReDoc-Inject: <security-definitions> -->
+tags:
+  - name: Order Management Service
+    description: Fast Order Management API
+paths:
+  '/v1/external/orders/{order_id.value}':
+    $ref: 'paths/v1@external@orders@{order_id.value}.yaml'
+  '/v1/external/orders/{order_id.value}/business_event':
+    $ref: 'paths/v1@external@orders@{order_id.value}@business_event.yaml'
+  '/v1/external/orders/{order_id.value}/refund':
+    $ref: 'paths/v1@external@orders@{order_id.value}@refund.yaml'
+servers:
+  - url: 'https://api.fast.co'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: FASTSESSION
+      in: header

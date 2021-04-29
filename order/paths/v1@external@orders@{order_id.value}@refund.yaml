@@ -1,0 +1,32 @@
+post:
+  summary: Refund by Order id
+  description: Refund by Order id
+  operationId: ExternalOrderManagementService_RefundOrder
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1RefundOrderResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  parameters:
+    - name: order_id.value
+      description: UUID value
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1RefundOrderRequest.yaml
+    required: true
+  tags:
+    - Order Management Service

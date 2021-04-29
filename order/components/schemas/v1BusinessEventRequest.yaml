@@ -1,0 +1,8 @@
+type: object
+properties:
+  order_id:
+    $ref: ./v1UUID.yaml
+  event_type:
+    $ref: ./v1BusinessEventType.yaml
+  fulfillment:
+    $ref: ./v1OrderFulfillmentEvent.yaml

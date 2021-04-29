@@ -1,0 +1,7 @@
+type: object
+properties:
+  is_cart:
+    type: boolean
+  order_id:
+    $ref: ./v1UUID.yaml
+title: Delete Section

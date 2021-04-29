@@ -1,0 +1,27 @@
+post:
+  summary: Get a specified type of an object/entity by provided id
+  description: >-
+    This is a generic interface to read a specific type of an entity such as
+    order, cart, ..)
+  operationId: MerchantService_Read
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1ReadResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1ReadRequest.yaml
+    required: true
+  tags:
+    - Merchant Service

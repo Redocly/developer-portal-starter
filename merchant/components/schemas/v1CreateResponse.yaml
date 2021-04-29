@@ -1,0 +1,8 @@
+type: object
+properties:
+  type:
+    $ref: ./v1EntityType.yaml
+  order:
+    $ref: ./v1CreateResponseSegment.yaml
+  request_id:
+    $ref: ./v1UUID.yaml

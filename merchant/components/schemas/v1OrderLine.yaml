@@ -1,0 +1,48 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  external_id:
+    type: string
+  external_product_id:
+    type: string
+  external_variant_id:
+    type: string
+  external_options:
+    type: array
+    items:
+      $ref: ./v1OrderCustomValue.yaml
+  customizations:
+    type: array
+    items:
+      $ref: ./v1OrderCustomValue.yaml
+  quantity:
+    type: integer
+    format: int64
+  quantity_fulfilled:
+    type: integer
+    format: int64
+  unit_price:
+    type: string
+  discounted_unit_price:
+    type: string
+  line_discount_amount:
+    type: string
+  subtotal_amount:
+    type: string
+  tax_amount:
+    type: string
+  total_amount:
+    type: string
+  discounts:
+    type: array
+    items:
+      $ref: ./v1OrderDiscount.yaml
+  name:
+    type: string
+  description:
+    type: string
+  image_url:
+    type: string
+  fulfillment_mode:
+    $ref: ./v1ItemFulfillmentModel.yaml

@@ -1,0 +1,13 @@
+type: object
+properties:
+  tracking_number:
+    type: string
+  carrier:
+    type: string
+  estimated_delivery_date:
+    type: string
+    description: Expected format in YYYY-MM-DD
+  order_lines:
+    type: array
+    items:
+      $ref: ./v1OrderLineContext.yaml

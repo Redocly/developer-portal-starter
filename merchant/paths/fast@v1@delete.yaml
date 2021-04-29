@@ -1,0 +1,25 @@
+post:
+  summary: Delete the specified object/entity
+  description: Generic delete interface
+  operationId: MerchantService_Delete
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1DeleteResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1DeleteRequest.yaml
+    required: true
+  tags:
+    - Merchant Service

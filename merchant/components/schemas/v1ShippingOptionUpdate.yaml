@@ -1,0 +1,8 @@
+type: object
+properties:
+  plan_id:
+    $ref: ./v1UUID.yaml
+  option_id:
+    $ref: ./v1UUID.yaml
+  external_option_id:
+    type: string

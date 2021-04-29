@@ -1,0 +1,12 @@
+type: object
+properties:
+  app_id:
+    type: string
+  request_id:
+    $ref: ./v1UUID.yaml
+  type:
+    $ref: ./v1EntityType.yaml
+  order:
+    $ref: ./v1ReadOrderRequestSegment.yaml
+  shipping_option:
+    $ref: ./v1ReadShippingOptionRequestSegment.yaml

@@ -1,0 +1,25 @@
+post:
+  summary: Update identified object/entity
+  description: Generic update interface
+  operationId: MerchantService_Update
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1UpdateResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1UpdateRequest.yaml
+    required: true
+  tags:
+    - Merchant Service
