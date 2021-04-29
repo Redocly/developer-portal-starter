@@ -4,7 +4,7 @@ title: Fast Checkout Documentation
 
 # Welcome Fast Developers
 
-## One smart move for your business
+## One smart move for your platform
 
 Get the Checkout button that increases conversion, boosts sales and delights customers.
 
