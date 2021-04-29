@@ -10,7 +10,7 @@ This will walk you through how to uninstall the version our team installed, and 
 
 ## Migrate to the plugin directory version
 
-#### Login to your WordPress admin dashboard
+### Login to your WordPress admin dashboard
 Login to the admin side of your WordPress site. The url for this is usually `https://yourwebsite.com/wp-admin` 
 
 *Tip: You must have WordPress admin access in order to install and remove plugins.*
