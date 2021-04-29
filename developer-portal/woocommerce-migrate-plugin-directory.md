@@ -30,7 +30,7 @@ Now that the plugin is deactivated, it's time to delete the plugin. Remember, yo
 
 ![Delete Fast Checkout plugin](images/woocommerce/delete-fast-checkout-plugin.png)
 
-#### Search & re-install Fast Checkout for WooCommerce
+### Search & re-install Fast Checkout for WooCommerce
 Search the plugin directory for "Fast Checkout" or "Fast Checkout for WooCommerce." We're really new, so you may need to scroll down a little bit to find us. 
 
 ![Search Fast Checkout for WooCommerce](images/woocommerce/add-plugin-from-directory.png)
