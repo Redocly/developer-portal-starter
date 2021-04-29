@@ -16,7 +16,9 @@ Login to the admin side of your WordPress site. The url for this is usually `htt
 *Tip: You must have WordPress admin access in order to install and remove plugins.*
 
 ### View all Plugins
-Click on Plugins in your admin dashboard menu and locate Fast checkout. 
+Click on Plugins in your admin dashboard menu and locate Fast checkout.
+
+`https://yourwebsite.com/wp-admin/plugins.php? `
 
 ### Deactivate Fast Checkout
 Click the box near the Fast Checkout title. Scroll to the very top of the list, or the bottom, and click the Bulk action select box. Choose Deactivate. 
