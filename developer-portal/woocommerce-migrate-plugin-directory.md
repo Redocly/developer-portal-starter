@@ -57,4 +57,4 @@ When you make plugin changes—updates, removals, etc—you may need to manually
 [![Ensure test mode is disabled](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)
 
 ### You're done!
-That's it. As always, we recommend that you test the pages that the Fast Checkout button exists as
+That's it. You're back in business. If you need help, you can find us [over here](https://help.fast.co/hc/en-us). 
