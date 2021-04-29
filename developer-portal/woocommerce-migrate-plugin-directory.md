@@ -1,4 +1,4 @@
-# Early Sellers: Migrate to plugin directory version
+# Early Sellers: Migrate to WordPress plugin directory version
 
 Fast Checkout for WooCommerce is officially live in the WordPress plugin directory. 
 
