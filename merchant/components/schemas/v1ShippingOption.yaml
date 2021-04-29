@@ -1,0 +1,20 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  external_id:
+    type: string
+  name:
+    type: string
+  shipment_type:
+    $ref: ./v1ShippingOptionType.yaml
+  cost:
+    type: string
+  tax:
+    type: string
+  total:
+    type: string
+  carrier:
+    type: string
+  service_level:
+    type: string

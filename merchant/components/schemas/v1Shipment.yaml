@@ -1,0 +1,13 @@
+type: object
+properties:
+  carrier:
+    type: string
+  tracking_number:
+    type: string
+  estimated_delivery_date:
+    type: string
+    format: uint64
+  lines:
+    type: array
+    items:
+      $ref: ./v1OrderLineReference.yaml

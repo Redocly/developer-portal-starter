@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: Merchant Bridge API
+  version: v1
+  contact:
+    name: Fast
+    url: 'https://fast.co'
+    email: api@fast.co
+  description: |-
+    # Authentication
+
+    <!-- ReDoc-Inject: <security-definitions> -->
+tags:
+  - name: Merchant Service
+    description: Fast Merchant Service
+paths:
+  /fast/v1/create:
+    $ref: paths/fast@v1@create.yaml
+  /fast/v1/delete:
+    $ref: paths/fast@v1@delete.yaml
+  /fast/v1/read:
+    $ref: paths/fast@v1@read.yaml
+  /fast/v1/update:
+    $ref: paths/fast@v1@update.yaml
+servers:
+  - url: 'https://private-api.fast.co'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: FASTSESSION
+      in: header

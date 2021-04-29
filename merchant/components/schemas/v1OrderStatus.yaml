@@ -1,0 +1,18 @@
+type: string
+enum:
+  - ORDER_STATUS_UNSPECIFIED
+  - ORDER_STATUS_CART
+  - ORDER_STATUS_PENDING
+  - ORDER_STATUS_HOLD
+  - ORDER_STATUS_BOOKED
+  - ORDER_STATUS_PENDING_FULFILLMENT
+  - ORDER_STATUS_FULFILLED
+  - ORDER_STATUS_COMPLETE
+  - ORDER_STATUS_CANCELED
+  - ORDER_STATUS_DELETED
+default: ORDER_STATUS_UNSPECIFIED
+title: >-
+  - ORDER_STATUS_UNSPECIFIED: Order and Cart share the same data model, this
+  status means that Order is in Cart status
+
+  this status will be populated on all Fast Carts

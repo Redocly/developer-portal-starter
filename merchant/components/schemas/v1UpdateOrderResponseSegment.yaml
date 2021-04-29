@@ -1,0 +1,8 @@
+type: object
+properties:
+  order:
+    $ref: ./v1FastOrder.yaml
+  status:
+    type: array
+    items:
+      $ref: ./v1UpdateOrderSegmentStatus.yaml

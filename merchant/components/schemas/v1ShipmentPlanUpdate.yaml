@@ -1,0 +1,10 @@
+type: object
+properties:
+  plan_id:
+    $ref: ./v1UUID.yaml
+  ship_to:
+    $ref: ./v1OrderAddress.yaml
+  line_refs:
+    type: array
+    items:
+      $ref: ./v1OrderLineReference.yaml

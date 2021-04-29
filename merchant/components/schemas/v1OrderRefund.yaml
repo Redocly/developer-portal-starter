@@ -1,0 +1,23 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  external_id:
+    type: string
+  reason:
+    type: string
+  use_original_method:
+    type: boolean
+  lines:
+    type: array
+    items:
+      $ref: ./v1OrderLineReference.yaml
+  refund_date:
+    type: string
+    format: uint64
+  amount:
+    type: string
+  tax:
+    type: string
+  shipping:
+    type: string

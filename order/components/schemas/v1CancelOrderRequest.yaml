@@ -1,0 +1,9 @@
+type: object
+properties:
+  order_id:
+    $ref: ./v1UUID.yaml
+  reason:
+    $ref: ./v1CancelReasonCode.yaml
+  notes:
+    type: string
+    description: Any additional notes associated with the cancellation.

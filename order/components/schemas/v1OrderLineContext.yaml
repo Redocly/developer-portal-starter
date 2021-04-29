@@ -1,0 +1,7 @@
+type: object
+properties:
+  id:
+    $ref: ./v1UUID.yaml
+  quantity:
+    type: string
+    format: int64

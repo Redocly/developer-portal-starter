@@ -1,0 +1,13 @@
+type: reference-docs
+definitionId: merchant
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
+      - lang: Python
+      - lang: Java
+      - lang: C#
+  pagination: none
+  showConsole: false

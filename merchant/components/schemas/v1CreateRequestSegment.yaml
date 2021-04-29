@@ -1,0 +1,6 @@
+type: object
+properties:
+  is_cart:
+    type: boolean
+  order:
+    $ref: ./v1FastOrder.yaml

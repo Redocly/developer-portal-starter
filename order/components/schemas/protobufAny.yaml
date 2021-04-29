@@ -1,0 +1,7 @@
+type: object
+properties:
+  type_url:
+    type: string
+  value:
+    type: string
+    format: byte

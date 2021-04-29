@@ -1,0 +1,4 @@
+type: object
+properties:
+  order:
+    $ref: ./v1FastOrder.yaml

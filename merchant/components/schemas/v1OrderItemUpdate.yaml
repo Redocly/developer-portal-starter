@@ -1,0 +1,19 @@
+type: object
+properties:
+  item_id:
+    $ref: ./v1UUID.yaml
+  quantity:
+    type: integer
+    format: int64
+  external_product_id:
+    type: string
+  external_variant_id:
+    type: string
+  external_options:
+    type: array
+    items:
+      $ref: ./v1OrderCustomValue.yaml
+  customizations:
+    type: array
+    items:
+      $ref: ./v1OrderCustomValue.yaml

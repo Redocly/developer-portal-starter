@@ -1,0 +1,58 @@
+get:
+  summary: Get Order by Fast id
+  description: Get Order by Fast id
+  operationId: ExternalOrderManagementService_GetOrder
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1GetOrderResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  parameters:
+    - name: order_id.value
+      description: UUID value
+      in: path
+      required: true
+      schema:
+        type: string
+  tags:
+    - Order Management Service
+post:
+  summary: Cancel Order by Fast id
+  description: Cancel Order by Fast id
+  operationId: ExternalOrderManagementService_CancelOrder
+  responses:
+    '200':
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/v1CancelOrderResponse.yaml
+    default:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rpcStatus.yaml
+  parameters:
+    - name: order_id.value
+      description: UUID value
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/v1CancelOrderRequest.yaml
+    required: true
+  tags:
+    - Order Management Service
