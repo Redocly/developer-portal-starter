@@ -43,7 +43,7 @@ Search the plugin directory for "Fast Checkout" or "Fast Checkout for WooCommerc
 ![Search Fast Checkout for WooCommerce](images/woocommerce/add-plugin-from-directory.png)
 
 ### Activate plugin
-Click Activate Plugin. Essentially this turns the plugin code functionality "on."
+Click Activate. Essentially this turns the plugin code functionality "on."
 
 ![Activate plugin](images/woocommerce/activate-plugin.png)
 
@@ -64,4 +64,4 @@ When you make plugin changes—updates, removals, etc—you may need to manually
 [![Ensure test mode is disabled](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)](https://www.dropbox.com/s/6683zaqc0u9xca7/turn-off-test-mode.png?raw=1)
 
 ### You're done!
-That's it. You're back in business. If you need help, you can find us [over here](https://help.fast.co/hc/en-us). 
+That's it. You're back in business. If you need help, you can find us [**over here →**](https://help.fast.co/hc/en-us). 
