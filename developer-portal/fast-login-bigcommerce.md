@@ -1,6 +1,6 @@
 # Fast Login for BigCommerce
 Ready to get Fast? Here’s how to quickly install Fast Login for your BigCommerce store. It’s easy, with no custom integration required.
-‍
+
 [Installing Fast Login on a different platform?](/developer-portal/fast-login-install)
 
 ## Start Onboarding
