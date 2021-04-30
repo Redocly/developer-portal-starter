@@ -1,6 +1,6 @@
 # Fast Checkout Install Examples
 
-####Legacy theme templates (Blueprint):
+#### Legacy theme templates (Blueprint):
 1. You must include the following script tag in the HTMLHead.html file
     ```
     <script src="https://js.fast.co/fast-bigcommerce.js"></script>
