@@ -24,8 +24,6 @@ training:
       page: developer-portal/fast-login-how-it-works.md
     - label: Install Fast Login
       page: developer-portal/fast-login-install.md
-    - label: Install Fast Login examples
-      page: developer-portal/fast-login-install-examples.md
   - separator: Integrating with Fast
   - group: Fast API
     expanded: false
