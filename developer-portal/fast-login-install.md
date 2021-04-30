@@ -164,8 +164,8 @@ export class JwtService {
 
 Finally, you can use the verified email in the decoded payload of the verified Token to authenticate the user. 
 
-    * If the user with the provided email address exists in your system, you can log them in and authorize them.
-    * If they don’t exist in your system, you can create a new user for that email address by using the email address in the response.
+* If the user with the provided email address exists in your system, you can log them in and authorize them.
+* If they don’t exist in your system, you can create a new user for that email address by using the email address in the response.
 
 ## Go Fast 🚀
 That’s it! You’re now all set up with the world’s fastest login.
