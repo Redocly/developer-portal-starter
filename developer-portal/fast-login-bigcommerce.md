@@ -9,28 +9,33 @@ First up: answer a few questions about your business in the seller dashboard. Yo
 [**Start onboarding in Fast's seller dashboard →**](http://fast.co/business)
 
 1. **Tell us about your website**
+
 We use this information to verify your account.
 
 ![Tell us about your website](images/fast-login/FastStep1.png)
 
 2. **Fill out app details**
+
 Next, tell us about the website where you’re installing Fast Login.
 
 ![Fill out app details](images/fast-login/FastStep2.png)
 
 3. **Choose BigCommerce**
-Select BigCommerce as your platform. If your site is hosted elsewhere, follow these instructions instead.
+
+Select BigCommerce as your platform.
 
 ![Choose BigCommerce](images/fast-login/FastStep3.png)
 
 4. **Get the Fast BigCommerce app**
+
 Install the Fast app from the BigCommerce Apps Marketplace for easier integration.
 
 ![Get the Fast BigCommerce app](images/fast-login/FastStep4.png)
 
 ## Copy the code
-Use this snippet in your code to install the Fast Login button
-Install Fast Login Examples ⭢
+Leverage the [examples](/developer-portal/fast-login-install-examples) to see how to install the Fast Login button in your store.
+
+[**View Fast Login Examples  →**](/developer-portal/fast-login-install-examples)
 
 ## Go Fast 🚀
 That’s it! You’re now all set up with the world’s fastest login.
@@ -41,7 +46,7 @@ That’s it! You’re now all set up with the world’s fastest login.
 When in the seller dashboard onboarding, select “Existing Org”. You should then be able to see your organization in the dropdown. You may now add an existing app to your organization.
 
 #### My store doesn’t use an ecommerce platform. Can I still use Fast?
-Yes, see the custom login integration information here **FAST LOGIN FOR OTHER PLATFORMS LINK**
+Yes, see the custom login integration information [here.](/developer-portal/fast-login-install)
 
 #### I am using a BigCommerce store. How can I make sure Fast uses my registered store email?
 When you log into a BigCommerce store, if you have a BigCommerce account associated with that email address, we will use the same account. Otherwise we will create a new BigCommerce account for you. No effort required on your part.
