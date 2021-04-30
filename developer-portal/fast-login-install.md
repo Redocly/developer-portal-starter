@@ -184,15 +184,15 @@ Your dos and don’ts for keeping things secure.
 
 Tl;dr: In general, don’t trust anything sent by the client in the login flow.
 
-* *Don’t* perform token verification in the client. 
-* *Do* perform token verification on the server.
-* *Don’t* use an email provided by an API call from the client. 
-* *Do* use the email stored in the token after the signature is verified.
-* *Don’t* accept an app ID sent by an API call from the client when verifying the token audience.
-* *Do* store your store’s app ID in the server configuration and use it to verify the token audience.
-* *Don’t* accept the email field as part of your Fast Login integration API call exposed to the client. 
-* *Do* accept the login token.
-* *Don’t* store the login token anywhere.
-* *Do* (securely) store the user’s email in your backend server to handle future logins.
+* **Don’t** perform token verification in the client. 
+* **Do** perform token verification on the server.
+* **Don’t** use an email provided by an API call from the client. 
+* **Do** use the email stored in the token after the signature is verified.
+* **Don’t** accept an app ID sent by an API call from the client when verifying the token audience.
+* **Do** store your store’s app ID in the server configuration and use it to verify the token audience.
+* **Don’t** accept the email field as part of your Fast Login integration API call exposed to the client. 
+* **Do** accept the login token.
+* **Don’t** store the login token anywhere.
+* **Do** (securely) store the user’s email in your backend server to handle future logins.
 
-> Fast cannot be queried for the user’s email and name except through the verify endpoint along with a valid token. The custom application must store this information itself in order to make persistent use of it in the web client. *Do not store or otherwise reuse the login token.*
+> Fast cannot be queried for the user’s email and name except through the verify endpoint along with a valid token. The custom application must store this information itself in order to make persistent use of it in the web client. **Do not store or otherwise reuse the login token.**
