@@ -22,7 +22,7 @@ Next, tell us about the website where you’re installing Fast Login.
 ![Fill out app details](images/fast-login/FastStep2.png)
 
 ### Choose Custom
-Select “Custom” as your platform. If your site is hosted on BigCommerce, follow these instructions instead.
+Select “Custom” as your platform. If your site is hosted on BigCommerce, follow [these instructions]((/developer-portal/fast-login-bigcommerce) instead.
 
 ![Choose custom](images/fast-login/choose-platform-other.png)
 

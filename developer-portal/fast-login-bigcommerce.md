@@ -22,7 +22,7 @@ Next, tell us about the website where you’re installing Fast Login.
 
 ### Choose BigCommerce
 
-Select BigCommerce as your platform.
+Select BigCommerce as your platform. If your site is hosted elsewhere, follow [these instructions](/developer-portal/fast-login-install) instead.
 
 ![Choose BigCommerce](images/fast-login/FastStep3.png)
 
