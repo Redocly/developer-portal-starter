@@ -5,7 +5,7 @@ training:
   - group: Seller Resources
     expanded: false
     pages:
-    - label: Seller Sign-up
+    - label: Seller Signup
       page: developer-portal/seller-signup.md
   - separator: Fast Products
   - group: Fast Checkout
