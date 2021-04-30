@@ -35,7 +35,7 @@ Install the Fast app from the BigCommerce Apps Marketplace for easier integratio
 ## Copy the code
 Leverage the [examples](/developer-portal/fast-login-install-examples) to see how to install the Fast Login button in your store.
 
-[**View Fast Login Examples  →**](/developer-portal/fast-login-install-examples)
+[**View Fast Login Examples  →**](/developer-portal/fast-login-bigcommerce-examples)
 
 ## Go Fast 🚀
 That’s it! You’re now all set up with the world’s fastest login.
