@@ -49,7 +49,7 @@ training:
         page: developer-portal/bigcommerce.md
       - label: Install Fast Checkout
         page: developer-portal/bigcommerce-install-checkout.md
-      - label: Checkout Examples
+      - label: Checkout examples
         page: developer-portal/bigcommerce-install-checkout-examples.md
       - label: Install Fast Login
         page: developer-portal/fast-login-bigcommerce.md
