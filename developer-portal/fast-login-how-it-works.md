@@ -6,4 +6,4 @@ If someone visiting your site already has a Fast account, we authenticate them a
 ‍
 Either way, the next time they visit your site, they’ll automatically be logged in — across devices, from anywhere in the world. Seamless, hassle-free, and yep, fast.
 
-[![How Fast Login works](images/fast-login/how-login-works.png)](images/fast-login/how-login-works.png) 
+![How Fast Login works](images/fast-login/how-login-works.png)
