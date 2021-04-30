@@ -2,7 +2,7 @@
 
 Ready to get Fast? Here’s how to easily install Fast Login with your e-commerce store.
 
-[**Looking to install Fast Login for your BigCommerce store? →**](/developer-portal/fast-login-for-bigcommerce)
+[**Looking to install Fast Login for your BigCommerce store? →**](/developer-portal/fast-login-bigcommerce)
 
 ## Start Onboarding
 First up: answer a few questions about your business in the seller dashboard. You’ll need a Fast account and a BigCommerce account to get started.
