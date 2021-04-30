@@ -13,14 +13,14 @@ training:
     pages:
     - label: About Fast Checkout
       page: developer-portal/fast-checkout.md
-    - label: How Fast Checkout works
+    - label: How Fast Checkout Works
       page: developer-portal/fast-checkout-how-it-works.md
   - group: Fast Login
     expanded: false
     pages:
     - label: About Fast Login
       page: developer-portal/fast-login.md
-    - label: How Fast Login works
+    - label: How Fast Login Works
       page: developer-portal/fast-login-how-it-works.md
     - label: Install Fast Login
       page: developer-portal/fast-login-install.md
@@ -49,11 +49,11 @@ training:
         page: developer-portal/bigcommerce.md
       - label: Install Fast Checkout
         page: developer-portal/bigcommerce-install-checkout.md
-      - label: Checkout examples
+      - label: Checkout Examples
         page: developer-portal/bigcommerce-install-checkout-examples.md
       - label: Install Fast Login
         page: developer-portal/fast-login-bigcommerce.md
-      - label: Login examples
+      - label: Login Examples
         page: developer-portal/fast-login-bigcommerce-examples.md
   - group: WooCommerce
     expanded: false
@@ -62,5 +62,5 @@ training:
         page: developer-portal/woocommerce.md
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
-      - label: Migrate to plugin directory
+      - label: Migrate to Plugin Directory
         page: developer-portal/woocommerce-migrate-plugin-directory.md
