@@ -1,4 +1,4 @@
- # Fast Login Install
+ # Install Fast Login
 
 Ready to get Fast? Here’s how to easily install Fast Login with your e-commerce store.
 
