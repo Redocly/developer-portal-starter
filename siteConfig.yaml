@@ -15,7 +15,7 @@ stylesheets:
 #ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
   # note that GA doesn't work in DEV
-  trackingId: G-RKYNE4TEVK
+trackingId: G-RKYNE4TEVK
 #scripts:
 #  - ./static/intercom.js
 nav:
