@@ -1,8 +1,8 @@
-# Install Fast Login Examples
+# BigCommerce Install Fast Login Examples
 
 ## Login for signin account page
 
-![Login for signin account page](images/login/signin-account-page.png)
+![Login for signin account page](images/fast-login/signin-account-page.png)
 
 Cornerstone location: /templates/pages/auth/login.html
 
@@ -52,7 +52,7 @@ Insert after: `<h1 class="page-heading">{{lang 'login.heading' }}</h1>`
 
 ## Login for create account page
 
-![Login for create account page](images/login/create-account-page.png)
+![Login for create account page](images/fast-login/create-account-page.png)
 
 Cornerstone location: /templates/pages/auth/create-account.html
 
@@ -100,7 +100,7 @@ Insert after: `<h1 class="page-heading">{{lang 'create_account.heading' }}</h1>`
 
 ## Login button in the website footer
 
-![Login button in the website footer](images/login/login-button-in-footer.png)
+![Login button in the website footer](images/fast-login/login-button-in-footer.png)
 
 Cornerstone location: /templates/components/common/footer.html
 
