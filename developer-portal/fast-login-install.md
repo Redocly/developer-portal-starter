@@ -41,6 +41,7 @@ The result you’ll need to save for the next step is the app id. In this screen
 ### Install fast.js in your header
 
 Copy the following script into your header
+
 `<script src="https://js.fast.co/fast.js"></script>`
 
 ### Add the Fast Login button
