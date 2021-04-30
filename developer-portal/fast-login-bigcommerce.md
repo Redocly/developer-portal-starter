@@ -8,25 +8,25 @@ First up: answer a few questions about your business in the seller dashboard. Yo
 
 [**Start onboarding in Fast's seller dashboard →**](http://fast.co/business)
 
-1. **Tell us about your website**
+### Tell us about your website
 
 We use this information to verify your account.
 
 ![Tell us about your website](images/fast-login/FastStep1.png)
 
-2. **Fill out app details**
+### Fill out app details
 
 Next, tell us about the website where you’re installing Fast Login.
 
 ![Fill out app details](images/fast-login/FastStep2.png)
 
-3. **Choose BigCommerce**
+### Choose BigCommerce
 
 Select BigCommerce as your platform.
 
 ![Choose BigCommerce](images/fast-login/FastStep3.png)
 
-4. **Get the Fast BigCommerce app**
+### Get the Fast BigCommerce app
 
 Install the Fast app from the BigCommerce Apps Marketplace for easier integration.
 
