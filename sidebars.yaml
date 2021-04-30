@@ -22,10 +22,10 @@ training:
       page: developer-portal/fast-login.md
     - label: How Fast Login works
       page: developer-portal/fast-login-how-it-works.md
-#    - label: Install Fast Login
-#      page: developer-portal/fast-login-install.md
-#    - label: Install Fast Login examples
-#      page: developer-portal/fast-login-install-examples.md
+    - label: Install Fast Login
+      page: developer-portal/fast-login-install.md
+    - label: Install Fast Login examples
+      page: developer-portal/fast-login-install-examples.md
   - separator: Integrating with Fast
   - group: Fast API
     expanded: false
@@ -60,11 +60,9 @@ training:
   - group: WooCommerce
     expanded: false
     pages:
-#      - label: Overview
-#        page: developer-portal/woocommerce.md
+      - label: Overview
+        page: developer-portal/woocommerce.md
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
       - label: Migrate to plugin directory
         page: developer-portal/woocommerce-migrate-plugin-directory.md
-#      - label: Community
-#        page: developer-portal/woocommerce-community.md
