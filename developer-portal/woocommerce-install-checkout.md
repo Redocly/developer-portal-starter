@@ -1,8 +1,6 @@
 # Fast Checkout for WooCommerce Installation Guide
 
-1. [Become a Seller](#become-a-seller)
-2. [Install WordPress Plugin](#install-wordpress-plugin)
-3. [Turn off Test Mode](#turn-off-test-mode)
+Ready to get Fast? Here’s how to quickly install Fast Checkout for your WooCommerce store. It’s easy, with no custom integration required.
 
 ## Become a Seller
 
