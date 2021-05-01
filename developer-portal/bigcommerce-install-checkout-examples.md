@@ -312,7 +312,7 @@ For Blueprint theme, add the code snippet below directly below the Fast Checkout
 </script>
 ```
 
-## Testing Fast Checkout Buttons
+## Testing Fast Checkout Buttons (Cornerstone Theme Only)
 If you would like to test the Fast Checkout buttons before making them publicly available for your customers, then you will
 need to wrap each Fast Checkout code snippet with the following:
 ```
