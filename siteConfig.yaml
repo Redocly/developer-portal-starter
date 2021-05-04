@@ -27,7 +27,10 @@ nav:
 
   - search: true
 
+siteVersion: def456
+
 footer:
+  siteVersion: abc123
   copyrightText: Copyright © Redocly 2019-2021. All right reserved.
   columns:
     - group: Legal
