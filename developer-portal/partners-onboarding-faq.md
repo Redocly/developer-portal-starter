@@ -15,7 +15,7 @@ Partners will need to collect the following information from sellers in order to
 *   Business Country of Registration
 *   Store **owner** or **admin** login credentials for the Seller’s 
 
-BigCommerce or WooCommerce account. Partner should ask the store owner to create an account with** owner or admin** permissions before starting onboarding on behalf of the seller.  This step is very important and has to be done within the same onboarding session.
+BigCommerce or WooCommerce account. Partner should ask the store owner to create an account with **owner or admin** permissions before starting onboarding on behalf of the seller.  This step is very important and has to be done within the same onboarding session.
 
 **What if the seller has multiple businesses/stores to onboard?**
 
