@@ -10,7 +10,7 @@ training:
   - group: Partner Resources
     expanded: false
     pages:
-    - label: Partners Onboarding FAQ
+    - label: Partner Onboarding FAQ
       page: developer-portal/partners-onboarding-faq.md
   - separator: Fast Products
   - group: Fast Checkout
