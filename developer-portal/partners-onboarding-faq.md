@@ -1,11 +1,10 @@
 # Fast Seller Onboarding FAQs for Partners
 
-
-## Required Seller info for Fast Partners doing onboarding on behalf of Sellers (BigCommerce and WooCommerce)
+## Required info to onboard a new seller
 
 Partners will need to collect the following information from sellers in order to complete or partially complete the onboarding flow at [fast.co/business](https://fast.co/business) for a given seller:
 
-### Required info to prepare for Partial Onboarding 
+### Required info to prepare for partial onboarding 
 
 *   Organization Name
 *   Organization Address
@@ -14,13 +13,15 @@ Partners will need to collect the following information from sellers in order to
     *   Also need to collect legal registered business name if it’s different than their customer facing “doing-business-as” name
 *   URL  (must use https://)
 *   Business Country of Registration
-*   Store **owner** or **admin** login credentials for the Seller’s BigCommerce or WooCommerce account. Partner should ask the store owner to create an account with** owner or admin** permissions before starting onboarding on behalf of the seller.  This step is very important and has to be done within the same onboarding session.
+*   Store **owner** or **admin** login credentials for the Seller’s 
+
+BigCommerce or WooCommerce account. Partner should ask the store owner to create an account with** owner or admin** permissions before starting onboarding on behalf of the seller.  This step is very important and has to be done within the same onboarding session.
 
 **What if the seller has multiple businesses/stores to onboard?**
 
 There can be multiple stores created under a single organization.  The first time you create a new Organization, it will ask you to also create a new store.  Each subsequent store can then be onboarded under the existing Organization by going to the top right drop-down of the Dashboard at [fast.co/business/dash/home](https://fast.co/business/dash/home) and selecting “Create New App/Store” and following the steps in the UI.
 
-## Required info to prepare for Full Onboarding 
+## Required info to prepare for full onboarding 
 
 *   All of the info listed above for Partial Onboarding, plus
 *   Tax ID for the seller’s registered business (EIN for US, CRN for UK, ABN for AUS, etc)
@@ -30,7 +31,7 @@ There can be multiple stores created under a single organization.  The first tim
     *   Bank Account Number
     *   The country of the Bank Account
 
-# How to assign and transfer ownership of an Organization
+## How to assign and transfer ownership of an organization
 
 Partners who have completed partial or full onboarding Partners can transfer ownership of the Organization to the Seller using our “Teams” functionality on  Here are the steps:
 
