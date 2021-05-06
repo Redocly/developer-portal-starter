@@ -152,6 +152,29 @@ Same code snippet, but without the comments:
     </script>
 {{/if}}
 ```
+Same code snippet, but without the optional fields:
+```
+{{#if settings.request.absolute_path '===' '/blog/di-test/'}}
+    <script>
+    	(function () {
+            var {INSERT-BUTTON-NAME} = document.getElementById("{INSERT-UNIQUE-ID}");
+            {INSERT-BUTTON-NAME}.addEventListener("click", (event) => {
+            	Fast.checkout(
+                {
+	    			appId: "{INSERT-APP-ID}",
+            	    buttonId: event.target.id,
+            	    products: [
+                        {
+                            id: "{INSERT-PRODUCT-ID}",
+                            quantity: 1,
+                        },
+         			],
+        		});
+        	});
+        })();
+    </script>
+{{/if}}
+```
 
 Make sure to update the `/blog/di-test/` within the script above with the blog url path found on blog post under SEO:
 ![Blog post sample](images/bigcommerce/blog_post_url.png)
