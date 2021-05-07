@@ -27,7 +27,7 @@ Note: If the Partner did not previously enter Tax and Bank Details, Sellers will
 
 There can be multiple stores created under a single organization. The first time you create a new Organization, it will ask you to also create a new store.  Each subsequent store can then be onboarded under the existing Organization by going to the top right drop-down of the Dashboard at [**fast.co/business/dash/home**](https://fast.co/business/dash/home) and selecting “Create New App/Store” and following the steps in the UI.
 
-# How to assign and transfer ownership of an Organization
+## How to assign and transfer ownership of an Organization
 
 Partners who have completed onboarding Partners can transfer ownership of the Organization to the Seller using the “Teams” functionality on  Here are the steps:
 
