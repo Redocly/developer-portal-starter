@@ -58,6 +58,8 @@ training:
         page: developer-portal/bigcommerce-install-checkout-examples.md
       - label: Install Fast Login
         page: developer-portal/fast-login-bigcommerce.md
+      - label: Checkout for Blog Posts
+        page: developer-portal/blog-posts-for-bc-direct-integration.md
 #      - label: Login examples
 #        page: developer-portal/fast-login-bigcommerce-examples.md
   - group: WooCommerce
