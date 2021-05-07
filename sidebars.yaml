@@ -7,11 +7,11 @@ training:
     pages:
     - label: Seller Signup
       page: developer-portal/seller-signup.md
-  - group: Partner Resources
-    expanded: false
-    pages:
-    - label: Partner Onboarding FAQ
-      page: developer-portal/partners-onboarding-faq.md
+#  - group: Partner Resources
+#    expanded: false
+#    pages:
+#    - label: Partner Onboarding FAQ
+#      page: developer-portal/partners-onboarding-faq.md
   - separator: Fast Products
   - group: Fast Checkout
     expanded: false
