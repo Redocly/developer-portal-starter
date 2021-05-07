@@ -2,7 +2,7 @@
 
 **Required Seller info for Fast Partners doing onboarding on behalf of Sellers (BigCommerce and WooCommerce)**
 
-Partners will need to collect the following information from sellers in order to complete or partially complete the onboarding flow at [**fast.co/business →**](https://fast.co/business) for a given seller:
+Partners will need to collect the following information from sellers in order to complete or partially complete the onboarding flow at [**fast.co/business →**](https://fast.co/business) for a given seller.
 
 ## Required information to prepare for onboarding
 
