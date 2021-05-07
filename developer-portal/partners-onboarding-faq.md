@@ -19,7 +19,7 @@ Partners will need to collect the following information from sellers in order to
     *   Routing Number or international equivalent
     *   Bank Account Number
     *   The country of the Bank Account
-*   Store **owner** or **admin** login credentials for the Seller’s BigCommerce or WooCommerce account. Partner should ask the store owner to create an account with** owner or admin** permissions before starting onboarding on behalf of the seller.  This step is very important and has to be done within the same onboarding session.
+*   Store **owner** or **admin** login credentials for the Seller’s BigCommerce or WooCommerce account. Partner should ask the store owner to create an account with **owner or admin** permissions before starting onboarding on behalf of the seller.  This step is very important and has to be done within the same onboarding session.
 
 Note: If the Partner did not previously enter Tax and Bank Details, Sellers will be able to do so via the “Finish Onboarding” CTA at the top of their Dashboard Home Page.
 
