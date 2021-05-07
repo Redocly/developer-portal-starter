@@ -61,7 +61,7 @@ training:
       - label: Login Examples
         page: developer-portal/fast-login-bigcommerce-examples.md
       - label: Checkout for Blog Posts
-        page: developer-portal/blog-posts-for-bc-direct-integration.md
+        page: developer-portal/bigcommere-checkout-blog-posts.md
 #      - label: Login examples
 #        page: developer-portal/fast-login-bigcommerce-examples.md
   - group: WooCommerce
