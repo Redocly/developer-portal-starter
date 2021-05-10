@@ -1,7 +1,7 @@
 # Fast Login for BigCommerce Installation Guide
 Ready to get Fast? Here’s how to quickly install Fast Login for your BigCommerce store. It’s easy, with no custom integration required.
 
-[Installing Fast Login on a different platform?](/developer-portal/fast-login-install)
+[**Installing Fast Login on a different platform? →**](/developer-portal/fast-login-install)
 
 ## Start Onboarding
 First up: answer a few questions about your business in the seller dashboard. You’ll need a Fast account and a BigCommerce account to get started.
@@ -22,7 +22,7 @@ Next, tell us about the website where you’re installing Fast Login.
 
 ### Choose BigCommerce
 
-Select BigCommerce as your platform.
+Select BigCommerce as your platform. If your site is hosted elsewhere, follow [these instructions](/developer-portal/fast-login-install) instead.
 
 ![Choose BigCommerce](images/fast-login/FastStep3.png)
 
@@ -35,7 +35,7 @@ Install the Fast app from the BigCommerce Apps Marketplace for easier integratio
 ## Copy the code
 Leverage the [examples](/developer-portal/fast-login-install-examples) to see how to install the Fast Login button in your store.
 
-[**View Fast Login Examples  →**](/developer-portal/fast-login-install-examples)
+[**View Fast Login Examples  →**](/developer-portal/fast-login-bigcommerce-examples)
 
 ## Go Fast 🚀
 That’s it! You’re now all set up with the world’s fastest login.

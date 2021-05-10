@@ -1,4 +1,4 @@
-# Fast Checkout Install Examples
+# Fast Checkout for BigCommerce Install Examples
 
 #### Legacy theme templates (Blueprint):
 1. You must include the following script tag in the HTMLHead.html file
@@ -22,7 +22,7 @@ your current theme's source code. To access your theme's source code, you will c
 6. This will open **Stencil Editor**, which is where you can edit your theme's source code and where you will add the Fast Checkout code snippets.
 
 **For all of the Fast Checkout code snippets below, you will need to replace the section *REPLACE-WITH-YOUR-APP-ID* with
-your own Fast App Id. Make sure it's wrapped in quotes. You can get this from your [**Seller Dashboard →**](https://www.fast.co/business/dash/profile)**
+your own Fast App Id. Make sure it's wrapped in quotes. You can get this from your [**Seller Dashboard →**](https://www.fast.co/business/dash/profile)
 
 ## Fast Checkout Buttons to Install
 
@@ -312,7 +312,7 @@ For Blueprint theme, add the code snippet below directly below the Fast Checkout
 </script>
 ```
 
-## Testing Fast Checkout Buttons
+## Testing Fast Checkout Buttons (Cornerstone Theme Only)
 If you would like to test the Fast Checkout buttons before making them publicly available for your customers, then you will
 need to wrap each Fast Checkout code snippet with the following:
 ```

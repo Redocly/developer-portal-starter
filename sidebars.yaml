@@ -7,25 +7,25 @@ training:
     pages:
     - label: Seller Signup
       page: developer-portal/seller-signup.md
-  - group: Partner Resources
-    expanded: false
-    pages:
-    - label: Partner Onboarding FAQ
-      page: developer-portal/partners-onboarding-faq.md
+#  - group: Partner Resources
+#    expanded: false
+#    pages:
+#    - label: Partner Onboarding FAQ
+#      page: developer-portal/partners-onboarding-faq.md
   - separator: Fast Products
   - group: Fast Checkout
     expanded: false
     pages:
     - label: About Fast Checkout
       page: developer-portal/fast-checkout.md
-    - label: How Fast Checkout works
+    - label: How Fast Checkout Works
       page: developer-portal/fast-checkout-how-it-works.md
   - group: Fast Login
     expanded: false
     pages:
     - label: About Fast Login
       page: developer-portal/fast-login.md
-    - label: How Fast Login works
+    - label: How Fast Login Works
       page: developer-portal/fast-login-how-it-works.md
     - label: Install Fast Login
       page: developer-portal/fast-login-install.md
@@ -58,8 +58,10 @@ training:
         page: developer-portal/bigcommerce-install-checkout-examples.md
       - label: Install Fast Login
         page: developer-portal/fast-login-bigcommerce.md
+      - label: Login Examples
+        page: developer-portal/fast-login-bigcommerce-examples.md
       - label: Checkout for Blog Posts
-        page: developer-portal/blog-posts-for-bc-direct-integration.md
+        page: developer-portal/bigcommere-checkout-blog-posts.md
 #      - label: Login examples
 #        page: developer-portal/fast-login-bigcommerce-examples.md
   - group: WooCommerce
@@ -69,5 +71,5 @@ training:
         page: developer-portal/woocommerce.md
       - label: Install Fast Checkout
         page: developer-portal/woocommerce-install-checkout.md
-      - label: Migrate to plugin directory
+      - label: Migrate to Plugin Directory
         page: developer-portal/woocommerce-migrate-plugin-directory.md
