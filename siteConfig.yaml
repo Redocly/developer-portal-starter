@@ -3,7 +3,7 @@ meta:
   description: The best API documentation generator ever.
   siteUrl: https://portal-demo.redoc.ly
   keywords: redocly developer portal, api portal starter, api reference docs
-headerIcon: ./images/logo.png
+logo: ./images/logo.png
 enableToc: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
@@ -11,10 +11,11 @@ oasDefinitions:
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
-#ga:
-  # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-  # note that GA doesn't work in DEV
-#  trackingId: UA-45997213-1
+# analytics:
+#   ga:
+#   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
+#   # note that GA doesn't work in DEV
+#     trackingId: UA-45997213-1
 #scripts:
 #  - ./static/intercom.js
 nav:
