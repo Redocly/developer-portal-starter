@@ -7,6 +7,10 @@ headerIcon: ./images/logo.png
 enableToc: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
+  rock: https://api.redoc.ly/registry/redocly/Demo%20Rock/1.0.0/bundle/rock-paper-scissors/openapi.yaml
+  paper: https://api.redoc.ly/registry/redocly/Demo%20Paper/1.0.0/bundle/rock-paper-scissors/openapi.yaml
+  scissors: https://api.redoc.ly/registry/redocly/Demo%20Scissors/1.0.0/bundle/rock-paper-scissors/openapi.yaml
+
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
