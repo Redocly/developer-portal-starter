@@ -139,7 +139,7 @@ While users interact with the Fast Checkout application, Fast will send requests
 
 [![Handle order creation in the backend](images/fast-api/handle-order-creation.png)](images/handle-order-creation.png)
 
-As users add items, apply coupons, and submit orders, Fast will send these events and changes in data to your server for further processing. See the full specification [here](https://www.notion.so/DRAFT-Public-BE-Reference-Checkout-Documentation-79f563ec12d04dbe807fe6f3f146e8ac).
+As users add items, apply coupons, and submit orders, Fast will send these events and changes in data to your server for further processing. See the full specification [here](https://www.fast.co/docs/order/order/).
 
 To start developing & testing your integration, you'll likely need to simulate some traffic to your machine. You can do this via our testing environment and developer tools.
 
@@ -162,7 +162,7 @@ The repository has detailed instructions on dependencies and usage, once you hav
 ./fast-test-suite pdp-simple-new-user --product-id=<product_id> --app-id=<app_id>
 ```
 
-**NOTE:** You'll need to replace variables in the initial payload to match actual products that are registered in your system. We expect the seller to recognize the payload we pass. For full documentation on the possible options and full schema, see the reference documentation (coming soon).
+**NOTE:** You'll need to replace variables in the initial payload to match actual products that are registered in your system. We expect the seller to recognize the payload we pass. For full documentation on the possible options and full schema, see the [reference documentation](https://www.fast.co/docs/order/order/).
 
 The `pdp-simple-new-user` command will emit a series of test requests from the Fast backend to yours, that has the same pattern of calls as it will in production. The `pdp-simple-new-user` test suite will run multiple operations.
 
