@@ -218,6 +218,7 @@ For more information on what gets validated on these requests and responses, see
 
 Once your server can reply to these messages, Fast Checkout is able to construct a Checkout Session and collect all the information from the customer to complete the order.
 
+
 ## Testing your integration
 
 Please visit [https://sdash.sandbox.fast.co](https://sdash.sandbox.fast.co) to resume your onboarding. If you have already done this in step #4, continue to r**un the full test suite.**
