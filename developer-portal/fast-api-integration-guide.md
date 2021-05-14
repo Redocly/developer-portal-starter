@@ -2,13 +2,13 @@
 
 Let's add the Fast Checkout button to your product page to power higher conversion. This guide assumes you have an existing eCommerce system and want to write code to integrate Fast into your website. See our other documentation sections for more detailed information on integrating Fast with BigCommerce, WooCommerce, and other platforms without needing to write code.
 
-[![Interacting with Fast Checkout](images/fast-api/overview.png)](images/fast-api-overview.png)
+![Interacting with Fast Checkout](images/fast-api/overview.png)
 
 ## Set up Fast
 
 You'll need a Fast account and sandbox credentials to start integrating. 
 
-[Create a Fast Developer Account](https://sdash.fast.co)
+[**Create a Fast Developer Account**](https://sdash.fast.co)
 
 🚨 Note: Your account will have separate credentials for testing and production use. The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions.
 
@@ -137,15 +137,15 @@ Now we will set up your server to communicate with Fast Checkout.
 
 While users interact with the Fast Checkout application, Fast will send requests to your server for processing.
 
-[![Handle order creation in the backend](images/fast-api/handle-order-creation.png)](images/handle-order-creation.png)
+![Handle order creation in the backend](images/fast-api/handle-order-creation.png)
 
-As users add items, apply coupons, and submit orders, Fast will send these events and changes in data to your server for further processing. See the full specification [here](https://www.fast.co/docs/order/order/).
+As users add items, apply coupons, and submit orders, Fast will send these events and changes in data to your server for further processing. See the full specification [**here**](https://www.fast.co/docs/order/order/).
 
 To start developing & testing your integration, you'll likely need to simulate some traffic to your machine. You can do this via our testing environment and developer tools.
 
 #### Connecting to Fast Sandbox
 
-If you haven't already, begin onboarding here [https://sandbox.sdash.fast.co](https://sandbox.sdash.fast.co). 
+If you haven't already, begin onboarding [**here**](https://sandbox.sdash.fast.co)
 
 Complete the forms to complete your sandbox store onboarding. You will need to provide your the URL that your API is hosted at in the "**Install Fast Checkout**" section. Once you have registered your API and have a Fast credentials associated with your sandbox store, continue on to the next section.
 
@@ -153,7 +153,7 @@ Complete the forms to complete your sandbox store onboarding. You will need to p
 
 To see what data our system will send you in production for a given payload, you'll need the fast developer tools.
 
-You can download the fast-cli developer tool here [https://github.com/fast-af/fast-test-suite-cli](https://github.com/fast-af/fast-test-suite-cli)
+You can download the fast-cli developer tool here [**https://github.com/fast-af/fast-test-suite-cli**](https://github.com/fast-af/fast-test-suite-cli)
 
 The repository has detailed instructions on dependencies and usage, once you have everything installed you can run this command to run through a test scenario:
 
@@ -162,7 +162,7 @@ The repository has detailed instructions on dependencies and usage, once you hav
 ./fast-test-suite pdp-simple-new-user --product-id=<product_id> --app-id=<app_id>
 ```
 
-**NOTE:** You'll need to replace variables in the initial payload to match actual products that are registered in your system. We expect the seller to recognize the payload we pass. For full documentation on the possible options and full schema, see the [reference documentation](https://www.fast.co/docs/order/order/).
+**NOTE:** You'll need to replace variables in the initial payload to match actual products that are registered in your system. We expect the seller to recognize the payload we pass. For full documentation on the possible options and full schema, see the [**reference documentation**](https://www.fast.co/docs/order/order/).
 
 The `pdp-simple-new-user` command will emit a series of test requests from the Fast backend to yours, that has the same pattern of calls as it will in production. The `pdp-simple-new-user` test suite will run multiple operations.
 
@@ -214,14 +214,14 @@ Status Code: 400 Bad Request
  Error Message: ...
 ```
 
-For more information on what gets validated on these requests and responses, see the reference documentation (coming soon).
+For more information on what gets validated on these requests and responses, see the [**reference documentation**](https://www.fast.co/docs/order/order/).
 
 Once your server can reply to these messages, Fast Checkout is able to construct a Checkout Session and collect all the information from the customer to complete the order.
 
 
 ## Testing your integration
 
-Please visit [https://sdash.sandbox.fast.co](https://sdash.sandbox.fast.co) to resume your onboarding. If you have already done this in step #4, continue to r**un the full test suite.**
+Please visit [**https://sdash.sandbox.fast.co**](https://sdash.sandbox.fast.co) to resume your onboarding. If you have already done this in step #4, continue to r**un the full test suite.**
 
 #### Run the full test suite
 
@@ -229,8 +229,8 @@ Using the fast-cli execute the following command to run all various testing scen
 
 `./fast-test-suite pdp-simple-full-suite --product-id=<product_id> --app-id=<app_id>`
 
-For full documentation on the list of test cases, see the reference documentation (coming soon).
+For full documentation on the list of test cases, see the [**reference documentation**](https://www.fast.co/docs/order/order/).
 
 ## Moving to production
 
-Now that your integration is working in your development environment against the Fast Sandbox, you will need to make several changes to enable it to work for real customers. Firstly, you'll need to repeat the onboarding steps in [production](https://sdash.fast.co). Once you have completed that, you're all set!
+Now that your integration is working in your development environment against the Fast Sandbox, you will need to make several changes to enable it to work for real customers. Firstly, you'll need to repeat the onboarding steps in [**production**](https://sdash.fast.co). Once you have completed that, you're all set!
