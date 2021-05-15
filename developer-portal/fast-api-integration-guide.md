@@ -8,7 +8,7 @@ Let's add the Fast Checkout button to your product page to power higher conversi
 
 You'll need a Fast account and sandbox credentials to start integrating. 
 
-[**Create a Fast Developer Account**](https://sdash.fast.co)
+[**Create a Fast Developer Account →**](https://sdash.fast.co)
 
 🚨 Note: Your account will have separate credentials for testing and production use. The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions.
 
@@ -175,7 +175,7 @@ The `pdp-simple-new-user` command will emit a series of test requests from the F
 5. Configurable timer wait time
 6. ConvertOrder
 
-Here we will be able to validate that the responses you said are valid, and you will be able to see the exact call chain for several scenarios. To see all possible test scenarios, see the reference documentation (coming soon).
+Here we will be able to validate that the responses you said are valid, and you will be able to see the exact call chain for several scenarios. To see all possible test scenarios, see the [**reference documentation**](https://www.fast.co/docs/order/order/)
 
 The `pdp-simple-new-user` command will first emit a series of simulated creation, fetch, and update requests from our servers to yours. 
 
@@ -221,7 +221,7 @@ Once your server can reply to these messages, Fast Checkout is able to construct
 
 ## Testing your integration
 
-Please visit [**https://sdash.sandbox.fast.co**](https://sdash.sandbox.fast.co) to resume your onboarding. If you have already done this in step #4, continue to r**un the full test suite.**
+Please visit [**https://sdash.sandbox.fast.co**](https://sdash.sandbox.fast.co) to resume your onboarding. If you have already done this in step #4, continue to run the full test suite.
 
 #### Run the full test suite
 
