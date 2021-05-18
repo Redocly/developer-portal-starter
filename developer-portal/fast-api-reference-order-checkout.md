@@ -56,7 +56,6 @@ You will need to see how this schema will map to your representation of items in
 1. Subscription products
 2. THC products
 3. Weapons
-4. More
 
 ### **Guidelines for item identification**
 
