@@ -185,23 +185,31 @@ The first request to create the order will hit the `/v1/create` endpoint on your
 
 ```json
 {
-    "id": "d65f265a-7a4f-4a7c-9bc6-a9e687d596b9",
-    "xref_order_id": "costco-123",
-    "total_amount":"10.11",
-    "total_tax": "0.12",
-    "is_cart": false,
-    "order_lines": [
-        {
-            "id": "e4e291d1-a040-4df4-bdb2-5a66893c84d2",
-            "name": "Fast Hoodie",
-            "xref_product_id": "<YOUR_PRODUCT_ID>",
+  "type": "ENTITY_TYPE_ORDER",
+  "order": 
+    {
+      "is_cart": true,
+      "order": {
+        "bill_to": {},
+        "id": {"value": "00ad78ec-3cd6-413d-a3f5-6aea9d0b38f7"},
+        "lines": [
+          {
+            "external_product_id": "113",
+            "id": {"value": "deb39416-9517-4445-bf3e-07b9b09daadf"},
             "quantity": 1,
-        }
-    ],
-    "custom_values": [],
-    "currency_code": "USD"
+            "subtotal_amount": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00"
+          }
+        ],
+        "order_type": "ORDER_TYPE_CART",
+        "status": "ORDER_STATUS_CART"
+      }
+    }
 }
 ```
+
+You can view a list of more example requests [here](https://github.com/fast-af/di-reference-implementation/blob/main/EXAMPLES.md)
 
 Against each request that `pdp-simple-new-user` sends, the fast dev tools will validate the responses and return you a list of failures and successes as seen below.
 
