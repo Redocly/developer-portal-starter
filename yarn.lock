@@ -1420,16 +1420,16 @@
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.0.0-beta.142":
-  version "1.0.0-beta.142"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.142.tgz#fc8a55404f95b27dba825d6ac302d21ff862b03f"
-  integrity sha512-z4//vuN+ACSma8uLOPlUWCkXxJZm91pcLa9U+dn/977uoCTB6iip73O+LH6Yd0EOTlKG9KiyWMZIIxBuJMd86w==
+"@redocly/developer-portal@1.0.0-beta.144":
+  version "1.0.0-beta.144"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.144.tgz#cc9c7c1dc21f21fae151d2d6de375e3569d67cdc"
+  integrity sha512-uRizN2BcRABDSxk9ccDgchVIme1vc1Awwo06jTFxg8M1hsynfgA6MbE/L1TKbzXVx7wLCP4uZ2RRbqt04Cm/og==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-cli" "~0.12.1"
-    "@redocly/reference-docs" "~1.5.1"
+    "@redocly/reference-docs" "~1.5.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1584,10 +1584,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/reference-docs@~1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-1.5.1.tgz#63c5a0a5ab53c4e8e0a45bd18ba1ee99eb3d50b9"
-  integrity sha512-UjowS0WnOsT66KFikdKRRpzrbhV8C5qkuM9FcK7kxsH7f1lt9PQX/fUthrH6SuqHSXd+CBKzQ4mhjD6v9uIH1A==
+"@redocly/reference-docs@~1.5.5":
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-1.5.5.tgz#938d69acc02e4c69ef3e7920c65776cd431d0055"
+  integrity sha512-TUdrx17aLSTm6TZLTFfgrz3mAFwWtX9qEL9eORDvVMSfrHoEDK9+2UZqmHUeKDonDVA5K0/q8mvSbk8YSDOzbQ==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.44"
     "@redocly/react-dropdown-aria" "2.0.11"
@@ -1625,7 +1625,7 @@
     stickyfill "^1.1.1"
     stringify-object "^3.3.0"
     styled-components "^5.1.1"
-    swagger-client "^3.13.1"
+    swagger-client "^3.13.3"
     swagger2openapi "^6.2.1"
     tslib "^1.9.3"
     url-template "^2.0.8"
@@ -13960,10 +13960,10 @@ svgo@1.3.2, svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swagger-client@^3.13.1:
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.13.2.tgz#df1a1fe92e6db87ab5f76cee6381dcb7da1ad117"
-  integrity sha512-kamtyXtmbZiA2C5YTVqJYgoPJgzqtM5RbeP23Rt/YPYjMArTKZ2fjx1UTsI0aSbws0GluU5pVHiGp8YMciSUfw==
+swagger-client@^3.13.3:
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.13.3.tgz#e9e54a0979419bd1cca67babf9f4c5a8a44ffcfd"
+  integrity sha512-8ZVm0NIhmAiHaBwDibkX76W3jvs3h1Okb41iyeSG8TPXwuZbeS5tEpOkqgUMdK48dKs0S8VMu5ldkak79MFVMw==
   dependencies:
     "@babel/runtime-corejs3" "^7.11.2"
     btoa "^1.2.1"
