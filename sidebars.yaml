@@ -69,3 +69,10 @@ training:
 alternative:
   - page: developer-portal/sidebar-alternative.md
     label: Alternative sidebar example
+onemore:
+  permission: read:partner
+  context:
+    test: 1
+  items:
+    - label: Setup
+      page: developer-portal/setup.md

@@ -1,0 +1,26 @@
+defaultPermission: "guest"
+roles:
+  guest:
+    permissions:
+      - read:public
+      - read:partner
+  Oles:
+    permissions:
+      - read:test_docs
+    roles:
+      - Partner
+  Partner:
+    permissions:
+      - read:public
+      - read:partner
+      - read:test_docs
+  Employee:
+    permissions:
+      - read:public
+      - read:partner
+      - read:internal
+  Admin:
+    roles:
+      - Employee
+    permissions:
+      - read:internal-restricted
