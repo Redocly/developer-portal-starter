@@ -72,6 +72,7 @@ alternative:
 onemore:
   permission: read:partner
   context:
+    title: test
     test: 1
   items:
     - label: Setup
