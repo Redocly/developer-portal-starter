@@ -1,47 +1,49 @@
 training:
   - page: developer-portal/index.md
-  - group: Training exercises
-    expanded: true
-    pages:
-      - label: Setup
-        page: developer-portal/setup.md
-      - label: Markdown
-        page: developer-portal/markdown.md
-      - label: Folder structure
-        page: developer-portal/awesome/folders.md
-      - label: Mermaid diagrams
-        page: developer-portal/mermaid.md
-      - label: Page table of contents
-        page: developer-portal/page-table-of-contents.md
-      - separator: This is a separator
-      - label: Sidebar navigation
-        page: developer-portal/sidebar-nav.md
-      - label: Search
-        page: developer-portal/search.md
-      - label: Top nav and footers
-        page: developer-portal/nav-footer.md
-      - label: Logo and favicon
-        page: developer-portal/logo.md
-      - label: Metadata
-        page: developer-portal/metadata.md
-      - label: Colors
-        page: developer-portal/colors.md
-      - label: Typography
-        page: developer-portal/typography.md
-      - label: Analytics
-        page: developer-portal/analytics.md
-      - label: Home page
-        page: developer-portal/home-page.md
-      - label: Adding API reference docs
-        page: developer-portal/oas-definitions.md
-      - label: Adding an API response to an MDX page
-        page: developer-portal/mdx.mdx
-      - label: Creating React components
-        page: developer-portal/custom-component.mdx
-  - group: Petstore reference
+  - group: Cash management
     expanded: false
     pages:
-      - page: openapi/reference.page.yaml/*
+      - page: openapi/cashmanagement.reference.page.yaml/*
+  - group: Configuration
+    expanded: false
+    pages:
+      - page: openapi/configuration.reference.page.yaml/*
+  - group: Credit cards
+    expanded: false
+    pages:
+      - page: openapi/creditcards.reference.page.yaml/*
+  - group: Labor
+    expanded: false
+    pages:
+      - page: openapi/labor.reference.page.yaml/*
+  - group: Menus
+    expanded: false
+    pages:
+      - page: openapi/menus.reference.page.yaml/*
+  - group: Orders
+    expanded: false
+    pages:
+      - page: openapi/orders.reference.page.yaml/*
+  - group: Partners
+    expanded: false
+    pages:
+      - page: openapi/partners.reference.page.yaml/*
+  - group: Restaurants
+    expanded: false
+    pages:
+      - page: openapi/restaurants.reference.page.yaml/*
+  - group: Stock
+    expanded: false
+    pages:
+      - page: openapi/stock.reference.page.yaml/*
+  - group: Gift cards integration specification
+    expanded: false
+    pages:
+      - page: openapi/giftcards.reference.page.yaml/*
+  - group: Loyalty integration specification
+    expanded: false
+    pages:
+      - page: openapi/loyalty.reference.page.yaml/*
 
   - group: Admin
     expanded: true

@@ -1,12 +1,22 @@
 meta:
-  title: Redocly Training
-  description: The best API documentation generator ever.
-  siteUrl: https://portal-demo.redoc.ly
-  keywords: redocly developer portal, api portal starter, api reference docs
-headerIcon: ./images/logo.png
+  title: Toast API developer portal
+  description: The best API documentation ever.
+  siteUrl: https://toasttest.redoc.ly/
+headerIcon: https://doc.toasttab.com/Ie5QH/assets/images/toast-restaurant-pos.png
 enableToc: true
 oasDefinitions:
-  petstore: ./openapi/petstore.yaml
+  # petstore: ./openapi/petstore.yaml
+  cashManagement: https://doc.toasttab.com/api-specifications/toast-cashmgmt-api.yaml
+  creditCards: https://doc.toasttab.com/api-specifications/toast-ccpartner-api.yaml
+  configuration: https://doc.toasttab.com/api-specifications/toast-config-api.yaml
+  labor: https://doc.toasttab.com/api-specifications/toast-labor-api.yaml
+  menus: https://doc.toasttab.com/api-specifications/toast-menus-api.yaml
+  orders: https://doc.toasttab.com/api-specifications/toast-orders-api.yaml
+  partners: https://doc.toasttab.com/api-specifications/toast-partners-api.yaml
+  restaurants: https://doc.toasttab.com/api-specifications/toast-restaurants-api.yaml
+  stock: https://doc.toasttab.com/api-specifications/toast-stock-api.yaml
+  giftCards: https://doc.toasttab.com/api-specifications/toast-integrations-giftcard-api.yaml
+  loyalty: https://doc.toasttab.com/api-specifications/toast-integrations-loyalty-api.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
