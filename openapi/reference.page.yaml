@@ -1,8 +1,0 @@
-type: reference-docs
-definitionId: petstore
-settings:
-  generateCodeSamples:
-    languages:
-      - lang: curl
-      - lang: JavaScript
-      - lang: Node.js
