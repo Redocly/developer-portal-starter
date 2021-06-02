@@ -1,5 +1,7 @@
-type: reference-docs
-definitionId: petstore
+type: redoc
+definitionId: cashManagement
+showInfo: true
+expand: true
 settings:
   generateCodeSamples:
     languages:

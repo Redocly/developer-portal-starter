@@ -1,0 +1,10 @@
+type: redoc
+definitionId: loyalty
+showInfo: true
+expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
