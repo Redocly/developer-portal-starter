@@ -1,35 +1,51 @@
 training:
-  - separator: Getting Started
+  - separator: Overview
   - label: About Fast
     page: developer-portal/index.md
-  - group: Seller Resources
+  - separator: Quick Start
+  - group: I am on a platform
+    expanded: true
+    pages:
+      - label: BigCommerce
+      - label: WooCommerce
+      - label: Magento
+      - label: Salesforce Commerce Cloud
+  - group: I am on a custom system
     expanded: false
     pages:
-    - label: Seller Signup
-      page: developer-portal/seller-signup.md
-  - group: Partner Resources
-    expanded: false
-    pages:
-    - label: Partner Onboarding FAQ
-      page: developer-portal/partners-onboarding-faq.md
-  - separator: Fast Products
-  - group: Fast Checkout
-    expanded: false
-    pages:
-    - label: About Fast Checkout
-      page: developer-portal/fast-checkout.md
-    - label: How Fast Checkout Works
-      page: developer-portal/fast-checkout-how-it-works.md
-  - group: Fast Login
-    expanded: false
-    pages:
-    - label: About Fast Login
-      page: developer-portal/fast-login.md
-    - label: How Fast Login Works
-      page: developer-portal/fast-login-how-it-works.md
-    - label: Install Fast Login
-      page: developer-portal/fast-login-install.md
-  - separator: Integrating with Fast
+      - label: Web Frontend
+      - group: Mobile Frontend
+      - label: Android Frontend
+      - label: 
+
+    # - group: Seller Resources
+    #   expanded: false
+    #   pages:
+    #   - label: Seller Signup
+    #     page: developer-portal/seller-signup.md
+    # - group: Partner Resources
+    #   expanded: false
+    #   pages:
+    #   - label: Partner Onboarding FAQ
+    #     page: developer-portal/partners-onboarding-faq.md
+    # - separator: Fast Products
+    # - group: Fast Checkout
+    #   expanded: false
+    #   pages:
+    #   - label: About Fast Checkout
+    #     page: developer-portal/fast-checkout.md
+    #   - label: How Fast Checkout Works
+    #     page: developer-portal/fast-checkout-how-it-works.md
+    # - group: Fast Login
+    #   expanded: false
+    #   pages:
+    #   - label: About Fast Login
+    #     page: developer-portal/fast-login.md
+    #   - label: How Fast Login Works
+    #     page: developer-portal/fast-login-how-it-works.md
+    #   - label: Install Fast Login
+    #     page: developer-portal/fast-login-install.md
+  - separator: API Specification
   - group: Fast API
     expanded: false
     pages:
