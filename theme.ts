@@ -17,7 +17,7 @@ export const theme = {
       grey4: '#E0E4EA',
       grey5: '#F0F2F5',
       white: '#FFFFFF',
-      blue: '#0286FF',
+      blue: '#005F69',
       red: '#EB5757',
       green: '#24B560',
       pink: '#F6C5CF'
@@ -65,6 +65,7 @@ export const theme = {
     text: {
       primary: ({ colors }) => colors.palette.black,
       base: ({ colors }) => colors.palette.grey1,
+      link: ({ colors }) => colors.palette.blue,
       secondary: ({ colors }) => colors.palette.grey2,
       inactive: ({ colors }) => colors.action.inactive,
     },
@@ -86,7 +87,7 @@ export const theme = {
       patch: '#e09d43',
       delete: '#e27a7a',
       basic: '#999',
-      link: '#31bbb6',
+      link: '#005f69',
       head: '#c167e4',
     },
   },
@@ -106,21 +107,21 @@ export const theme = {
     },
     heading: {
       fontFamily: ({ typography }) => typography.fontFamily,
-      lineHeight: '1.5rem',
+      lineHeight: '80px',
       large: {
-        fontSize: '1.75rem',
+        fontSize: '60',
         fontWeight: ({ typography }) => typography.fontWeight.bold,
         fontFamily: ({ typography }) => typography.heading.fontFamily,
         lineHeight: ({ typography }) => typography.heading.lineHeight,
       },
       medium: {
-        fontSize: '1.5rem',
+        fontSize: '60',
         fontWeight: ({ typography }) => typography.fontWeight.semibold,
         fontFamily: ({ typography }) => typography.heading.fontFamily,
         lineHeight: ({ typography }) => typography.heading.lineHeight,
       },
       small: {
-        fontSize: '1.3333rem',
+        fontSize: '60',
         fontWeight: ({ typography }) => typography.fontWeight.semibold,
         fontFamily: ({ typography }) => typography.heading.fontFamily,
         lineHeight: ({ typography }) => typography.heading.lineHeight,

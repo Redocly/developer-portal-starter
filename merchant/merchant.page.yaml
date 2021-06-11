@@ -1,5 +1,6 @@
 type: reference-docs
 definitionId: merchant
+label: Fast -> Seller API
 settings:
   generateCodeSamples:
     languages:

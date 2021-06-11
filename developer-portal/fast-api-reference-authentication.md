@@ -1,7 +1,5 @@
 # Fast Direct Integration Authentication
 
-> This product is in Early Access
-
 Fast's Direct Integration is intended for merchants who have custom built their own eCommerce site and want to use Fast checkout to eliminate the friction around checkout for their users and reduce cart abandonment! 
 
 Direct Integrations with Fast require some development work in order to properly ingest calls from Fast to your system for new orders or updates, as well as occasional calls to Fast for things like refunds. Our technical integration docs can be found below*.*

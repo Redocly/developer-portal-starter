@@ -1,4 +1,4 @@
-# How Fast Checkout Works
+# How Checkout Works
 One-click checkout for customers. One smart move for your business.
 
 Fast handles login, checkout, payment processing and communication with your ecommerce platform, so you can focus on what’s important: your store.

@@ -1,4 +1,4 @@
-# How Fast Login Works
+# How Login Works
 
 Fast makes it quick and painless for new and existing customers to log into your site.
 
