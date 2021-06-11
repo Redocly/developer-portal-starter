@@ -73,23 +73,28 @@ training:
             label: Refund Orders
           - page: developer-portal/fast-api-qs-backend-extended-oms-business-event.md
             label: Business Eventing
+  - separator: Custom Integration API Specifications
+  - page: merchant/merchant.page.yaml
+    label: Fast -> Seller API
+  - page: order/order.page.yaml
+    label: Seller -> Fast API
+  - separatorLine: true
   - separator: Custom Integration Resources
-  - group: API Reference
-    expanded: false
-    pages:
-     - page: developer-portal/fast-api-reference-error-codes.md
-       label: Error codes
-     - page: developer-portal/fast-api-reference-checkout-origin.md
-       label: Checkout origin
-     - page: developer-portal/fast-api-reference-fast-js.md
-       label: Fast.js
-     - page: developer-portal/fast-api-reference-order-checkout.md
-       label: Orders & Checkout
-  - group: API Specifications
-    separatorLine: true
-    expanded: false
-    pages:
-      - page: merchant/merchant.page.yaml
-        label: Fast -> Seller API
-      - page: order/order.page.yaml
-        label: Seller -> Fast API
+  - page: developer-portal/fast-api-reference-batching.md
+    label: Batching 
+  - page: developer-portal/fast-api-reference-configuration.md
+    label: Configuration
+  - page: developer-portal/fast-api-reference-error-codes.md
+    label: Error codes
+  - page: developer-portal/fast-api-reference-checkout-origin.md
+    label: Checkout origin
+  - page: developer-portal/fast-api-reference-fast-js.md
+    label: Fast.js
+  - page: developer-portal/fast-api-reference-financial-values.md
+    label: Financial Values
+  - page: developer-portal/fast-api-reference-order-lifecycle.md
+    label: Order Lifecycle
+  - page: developer-portal/fast-api-reference-order-checkout.md
+    label: Orders & Checkout
+  - page: developer-portal/fast-api-reference-products.md
+    label: Products
