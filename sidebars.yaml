@@ -87,7 +87,7 @@ training:
   - page: developer-portal/fast-api-reference-error-codes.md
     label: Error codes
   - page: developer-portal/fast-api-reference-checkout-origin.md
-    label: Checkout origin
+    label: Checkout Origin
   - page: developer-portal/fast-api-reference-fast-js.md
     label: Fast.js
   - page: developer-portal/fast-api-reference-financial-values.md
