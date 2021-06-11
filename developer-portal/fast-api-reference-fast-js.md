@@ -1,8 +1,4 @@
-# fast.js Documentation
-
-> This product is in Early Access
-
-# Intro
+# Fast.js Documentation
 
 Throughout the login/checkout flow, Fast.js dispatches events to the host page that can be used to watch for and perform certain actions with, such as sending relevant data to Google Analytics.
 
