@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Fast -> Seller API
+  title: Fast to Seller API
   version: v1
   contact:
     name: Fast
@@ -11,7 +11,7 @@ info:
 
     <!-- ReDoc-Inject: <security-definitions> -->
 tags:
-  - name: Fast -> Seller API
+  - name: Fast to Seller API
     description: Fast will communicate with your server application on these endpoints.
 paths:
   /fast/v1/create:
