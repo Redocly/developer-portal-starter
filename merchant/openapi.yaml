@@ -6,7 +6,7 @@ info:
     name: Fast
     url: 'https://fast.co'
     email: api@fast.co
-  description: "Fast will communicate with your onboarded server application on these endpoints."
+  description: |-
     # Authentication
 
     <!-- ReDoc-Inject: <security-definitions> -->
