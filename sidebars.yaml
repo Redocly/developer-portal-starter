@@ -7,7 +7,7 @@ training:
   - page: developer-portal/fast-login-how-it-works.md
     label: Login
   - page: developer-portal/partners-onboarding-faq.md
-    label: Partner Onboarding FAQ
+    label: Partner Onboarding FAQs
   - page: developer-portal/seller-signup.md
     label: Seller Signup
     separatorLine: true
@@ -23,7 +23,7 @@ training:
         - page: developer-portal/bigcommerce-install-checkout.md
           label: Install Checkout
         - page: developer-portal/bigcommerce-install-checkout-examples.md
-          label: Checkout Examples
+          label: Button Placement
         - page: developer-portal/fast-login-bigcommerce.md
           label: Install Login
         - page: developer-portal/fast-login-bigcommerce-examples.md
@@ -80,6 +80,8 @@ training:
     label: Seller -> Fast API
   - separatorLine: true
   - separator: Custom Integration Resources
+  - page: developer-portal/fast-api-reference-authentication.md
+    label: Authentication
   - page: developer-portal/fast-api-reference-batching.md
     label: Batching 
   - page: developer-portal/fast-api-reference-configuration.md
@@ -94,7 +96,8 @@ training:
     label: Financial Values
   - page: developer-portal/fast-api-reference-order-lifecycle.md
     label: Order Lifecycle
-  - page: developer-portal/fast-api-reference-order-checkout.md
-    label: Orders & Checkout
   - page: developer-portal/fast-api-reference-products.md
     label: Products
+  - page: developer-portal/fast-api-reference-sequences.md
+    label: Sequence Diagrams
+    separatorLine: true
