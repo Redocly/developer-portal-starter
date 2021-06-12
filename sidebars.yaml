@@ -1,75 +1,103 @@
 training:
-  - separator: Getting Started
-  - label: About Fast
-    page: developer-portal/index.md
-  - group: Seller Resources
+  - separator: Overview
+  - page: developer-portal/index.md
+    label: Introduction
+  - page: developer-portal/fast-checkout-how-it-works.md
+    label: Checkout
+  - page: developer-portal/fast-login-how-it-works.md
+    label: Login
+  - page: developer-portal/partners-onboarding-faq.md
+    label: Partner Onboarding FAQs
+  - page: developer-portal/seller-signup.md
+    label: Seller Signup
+    separatorLine: true
+  - separator: Quick Start
+  - group: I am on a platform
     expanded: false
     pages:
-    - label: Seller Signup
-      page: developer-portal/seller-signup.md
-  - group: Partner Resources
+      - group: BigCommerce
+        expanded: false
+        pages:
+        - page: developer-portal/bigcommerce.md
+          label: Overview
+        - page: developer-portal/bigcommerce-install-checkout.md
+          label: Install Checkout
+        - page: developer-portal/bigcommerce-install-checkout-examples.md
+          label: Checkout Button Placement
+        - page: developer-portal/fast-login-bigcommerce.md
+          label: Install Login
+        - page: developer-portal/fast-login-bigcommerce-examples.md
+          label: Login Button Placement
+        - page: developer-portal/bigcommere-checkout-blog-posts.md
+          label: Checkout for Blog Posts
+      - group: WooCommerce
+        expanded: false
+        pages:
+          - page: developer-portal/woocommerce.md
+            label: Overview
+          - page: developer-portal/woocommerce-install-checkout.md
+            label: Install Fast Checkout
+          - page: developer-portal/woocommerce-migrate-plugin-directory.md
+            label: Migrate to Plugin Directory
+  - group: I am on a custom system
     expanded: false
+    separatorLine: true
     pages:
-    - label: Partner Onboarding FAQ
-      page: developer-portal/partners-onboarding-faq.md
-  - separator: Fast Products
-  - group: Fast Checkout
-    expanded: false
-    pages:
-    - label: About Fast Checkout
-      page: developer-portal/fast-checkout.md
-    - label: How Fast Checkout Works
-      page: developer-portal/fast-checkout-how-it-works.md
-  - group: Fast Login
-    expanded: false
-    pages:
-    - label: About Fast Login
-      page: developer-portal/fast-login.md
-    - label: How Fast Login Works
-      page: developer-portal/fast-login-how-it-works.md
-    - label: Install Fast Login
-      page: developer-portal/fast-login-install.md
-  - separator: Integrating with Fast
-  - group: Fast API
-    expanded: false
-    pages:
-      - label: Overview
-        page: developer-portal/fast-api.md
-      - label: Integration Guide
-        page: developer-portal/fast-api-integration-guide.md
-      - label: Authenticate
-        page: developer-portal/fast-api-reference-authentication.md
-      - label: Orders & Checkout
-        page: developer-portal/fast-api-reference-order-checkout.md
-      - label: fast.js
-        page: developer-portal/fast-api-reference-fast-js.md
-      - label: Merchant API
-        page: merchant/merchant.page.yaml
-      - label: Transaction API
-        page: order/order.page.yaml
-  - group: BigCommerce
-    expanded: false
-    pages:
-      - label: Overview
-        page: developer-portal/bigcommerce.md
-      - label: Install Fast Checkout
-        page: developer-portal/bigcommerce-install-checkout.md
-      - label: Checkout Examples
-        page: developer-portal/bigcommerce-install-checkout-examples.md
-      - label: Install Fast Login
-        page: developer-portal/fast-login-bigcommerce.md
-      - label: Login Examples
-        page: developer-portal/fast-login-bigcommerce-examples.md
-      - label: Checkout for Blog Posts
-        page: developer-portal/bigcommere-checkout-blog-posts.md
-#      - label: Login examples
-#        page: developer-portal/fast-login-bigcommerce-examples.md
-  - group: WooCommerce
-    expanded: false
-    pages:
-      - label: Overview
-        page: developer-portal/woocommerce.md
-      - label: Install Fast Checkout
-        page: developer-portal/woocommerce-install-checkout.md
-      - label: Migrate to Plugin Directory
-        page: developer-portal/woocommerce-migrate-plugin-directory.md
+      - page: developer-portal/fast-api.md
+        label: Overview
+      - page: developer-portal/fast-api-reference-authentication.md
+        label: Authenticate
+      - page: developer-portal/fast-api-fastjs.md
+        label: Setup Fast.js
+      - page: developer-portal/fast-api-qs-backend.md
+        label: Connect your backend
+      - group: Handle requests
+        expanded: false
+        pages:
+        - page: developer-portal/fast-api-qs-backend-create.md
+          label: Create requests
+        - page: developer-portal/fast-api-qs-backend-read.md
+          label: Read requests
+        - page: developer-portal/fast-api-qs-backend-update.md
+          label: Update requests
+        - page: developer-portal/fast-api-qs-backend-delete.md
+          label: Delete requests
+      - group: Extended order management 
+        expanded: false
+        pages:
+          - page: developer-portal/fast-api-qs-backend-extended-oms-intro.md
+            label: Intro
+          - page: developer-portal/fast-api-qs-backend-extended-oms-cancel-order.md
+            label: Cancel Orders
+          - page: developer-portal/fast-api-qs-backend-extended-oms-refund-order.md
+            label: Refund Orders
+          - page: developer-portal/fast-api-qs-backend-extended-oms-business-event.md
+            label: Business Eventing
+  - separator: Custom Integration API Specifications
+  - page: merchant/merchant.page.yaml
+    label: Fast -> Seller API
+  - page: order/order.page.yaml
+    label: Seller -> Fast API
+  - separatorLine: true
+  - separator: Custom Integration Resources
+  - page: developer-portal/fast-api-reference-authentication.md
+    label: Authentication
+  - page: developer-portal/fast-api-reference-batching.md
+    label: Batching 
+  - page: developer-portal/fast-api-reference-configuration.md
+    label: Configuration
+  - page: developer-portal/fast-api-reference-error-codes.md
+    label: Error codes
+  - page: developer-portal/fast-api-reference-checkout-origin.md
+    label: Checkout Origin
+  - page: developer-portal/fast-api-reference-fast-js.md
+    label: Fast.js
+  - page: developer-portal/fast-api-reference-financial-values.md
+    label: Financial Values
+  - page: developer-portal/fast-api-reference-order-lifecycle.md
+    label: Order Lifecycle
+  - page: developer-portal/fast-api-reference-products.md
+    label: Products
+  - page: developer-portal/fast-api-reference-sequences.md
+    label: Sequence Diagrams
+    separatorLine: true

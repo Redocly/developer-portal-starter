@@ -12,19 +12,19 @@ In addition to skyrocketing conversion, Fast delights your customers by letting 
 
 ## App features
 
-### Fast Checkout Button
+## Fast Checkout Button
 The Fast Checkout button lets your customers check out in seconds, with just one click. No passwords, no hassle. If it's a customer's first time using Fast, they'll be guided through a simple one-page form that creates a Fast account for them and enables 1-click checkout for their next purchase.
 
-### Payments & Orders
+## Payments & Orders
 When a customer purchases a product from your store using Fast Checkout, Fast accepts and processes payments on your behalf and submits an order once the transaction has been approved by the card issuer.
 
-### Refunds
+## Refunds
 Need to refund a customer? Use your BigCommerce dashboard to start the refund and Fast will take care of the rest.
 
-### Order Tracking
+## Order Tracking
 After making a purchase with Fast, customers get free access to a one-stop dashboard where they can view transactions, track deliveries and re-order in one click.
 
-### Installation & Help Guides
+## Installation & Help Guides
 Once you install the app, Fast will provide a guided installation of the Fast Checkout button. The installation process takes only a few minutes. If you'd like to install the button manually, Fast also provides the code snippet so you can easily paste it into your store template.
 
 ## Case Studies
@@ -41,7 +41,3 @@ Fast's simplicity was instantly appealing to the Oklahoma-based agricultural equ
 Want to see Fast Checkout in action? Check out our Fast Swag Store; we've built a store on BigCommerce that uses Fast Checkout on our product pages.
 
 [**Read their story →**](https://www.fast.co/shop/?_ga=2.21031416.2141437564.1619537229-495285256.1616444149)
-
-## Ask for help in our community
-
-<iframe style="border: 0; box-shadow: none; width: 800px; height: 80vh;" src="https://community.fastdevs.co/c/bigcommerce-discuss?iframe=true"></iframe>

@@ -1,13 +1,4 @@
-# Fast Checkout for BigCommerce Install Examples
-
-#### Legacy theme templates (Blueprint):
-1. You must include the following script tag in the HTMLHead.html file
-    ```
-    <script src="https://js.fast.co/fast-bigcommerce.js"></script>
-    ```
-2. AND remove `cart_id="{{cart_id}}"` from the Fast Checkout button scripts
-
-*Do not to do these two steps if you have a Cornerstone themed template.*
+# Button placement on BigCommerce
 
 ## Getting Started
 To install the Fast Checkout buttons to your BigCommerce site, you will need to add each button's code snippet directly to
@@ -24,7 +15,7 @@ your current theme's source code. To access your theme's source code, you will c
 **For all of the Fast Checkout code snippets below, you will need to replace the section *REPLACE-WITH-YOUR-APP-ID* with
 your own Fast App Id. Make sure it's wrapped in quotes. You can get this from your [**Seller Dashboard →**](https://www.fast.co/business/dash/profile)
 
-## Fast Checkout Buttons to Install
+## Installation
 
 ### 1. Product Detail Page Button
 

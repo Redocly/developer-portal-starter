@@ -1,5 +1,6 @@
 type: reference-docs
 definitionId: order
+label: Seller -> Fast API
 settings:
   generateCodeSamples:
     languages:

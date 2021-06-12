@@ -1,10 +1,10 @@
-# Fast Seller Onboarding FAQs for Partners
+# Partner Onboarding FAQs
 
-## How to Onboard BigCommerce and WooCommerce Sellers as Fast Partners
+## How to Onboard
 
 Partners will need to collect the following information from Sellers in order to complete the onboarding flow at [**fast.co/business**](https://www.fast.co/business/dash/home) for a given Seller:
 
-### Required information to collect prior to onboarding
+## Required information
 
 *   Seller Organization Name
 *   Seller Organization Address

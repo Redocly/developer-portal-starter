@@ -2,50 +2,13 @@
 title: Fast Checkout Documentation
 ---
 
-# Welcome Fast Developers
+# Fast Technical Documentation
 
-## One smart move for your platform
+Fast powers headless commerce by inserting a thin Javascript layer into the client browser. Our platform offers advanced functionalities that enable a checkout application that reduces user friction to checkout. 
 
-Get the Checkout button that increases conversion, boosts sales and delights customers.
+Depending how your online store is currently powered, we have several offerings to integrate.
 
-Fast Checkout enables a hassle-free, secure one-click checkout experience for your customers. Install it in minutes so your customers can check out in seconds.
-
-Simply install the Fast Checkout button on your product detail pages and cart pages to start seeing fewer abandoned carts and more sales for your business. Our top sellers have seen a 20-35% uplift in conversion within one week of installing Fast Checkout.
-
-In addition to skyrocketing conversion, Fast delights your customers by letting them skip the headache of creating accounts, remembering passwords and filling out long forms. After making a purchase, they'll get free access to a one-stop dashboard where they can view transactions, track deliveries, and re-order with one-click.
-
-## Fast Products
-
-### [Fast Checkout](/developer-portal/fast-checkout/)
-
-No passwords. No long forms. No hassle. With one click, Fast lets customers securely log in, check out, and get on with their days.
-
-### [Fast Login](/developer-portal/fast-login/)
-
-It’s all in the name: Fast Login lets customers log into your site, fast. No passwords. No hassle. Just one click and they’re in.
-
-## Engage deeper
-
-### Subscribe to Product Updates
-
-[**Subscribe to Fast Devs substack →**](https://fastdevs.substack.com/) to be notified via email of updates to our plugin. No spam, just important product updates from Fast.
-
-You can also follow us on Twitter for updates, [**@Fast_Devs →**](https://twitter.com/fast_devs)
-
-### Join our community
-With our growing product suite, it's helpful to engage with our team and other users & developers within our community. 
-
-#### Leverage the community to
-* Ask questions
-* Share feedback
-* Read product updates
-* Review our roadmap
-* Find resources to leverage
-* Share your project
-
-[**Join our community →**](https://community.fastdevs.co)
-
-#### Chat with us on Discord
-As we build we want to continually capture the feedback of our developers & other users. Whether you think we could improve our product in some way, or if you want to share critical feedback on a non-working document or tutorial, we want to hear about it. 
-
-[**Join us on Discord →**](https://discord.gg/pmDcSdRQ9x)
+| Product | BigCommerce Support | WooCommerce Support | Custom Support |
+| ------- | ------------------- | ------------------- | ------ |
+| [Fast Checkout](/developer-portal/fast-checkout/) | YES | YES | YES |
+| [Fast Login](/developer-portal/fast-login/) | YES | YES | YES |

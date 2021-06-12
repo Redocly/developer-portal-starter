@@ -1,12 +1,10 @@
-# Fast Direct Integration Authentication
+# Fast Custom Integration Authentication
 
-> This product is in Early Access
+Fast's Custom Integration is intended for merchants who have custom built their own eCommerce site and want to use Fast checkout to eliminate the friction around checkout for their users and reduce cart abandonment! 
 
-Fast's Direct Integration is intended for merchants who have custom built their own eCommerce site and want to use Fast checkout to eliminate the friction around checkout for their users and reduce cart abandonment! 
+Custom Integrations with Fast require some development work in order to properly ingest calls from Fast to your system for new orders or updates, as well as occasional calls to Fast for things like refunds. Our technical integration docs can be found below*.*
 
-Direct Integrations with Fast require some development work in order to properly ingest calls from Fast to your system for new orders or updates, as well as occasional calls to Fast for things like refunds. Our technical integration docs can be found below*.*
-
-## Onboarding
+# Onboarding
 
 **Merchant API URL**
 
@@ -26,7 +24,7 @@ We will assign your app a unique identifier during onboarding. This ID will be i
 
 This secret is only required for programmatically revoking or rotating your API Access Token via our APIs. We also provide the option to perform those actions in the Fast UI. If you are planning on revoking or rotating via the APIs reach out to Fast customer support and they will be able to provide you with the App Secret to perform this action programmatically. 
 
-## Authenticating Calls to Fast
+# Authenticating Calls to Fast
 
 When sending an API request to Fast, you will need to include your API Access Token and your App ID in the Headers of your call
 
@@ -37,7 +35,7 @@ X-Fast-App-Auth: <access_token>
 
 For each API call you make to Fast, we will ask that you include the `app_id` in the headers as `X-Fast-App`. We will ensure that the `access_token` used in the headers (as `X-Fast-App-Auth`) matches the expected `access_token` for that app.
 
-### Access Token Revocation
+# Access Token Revocation
 
 The initial access token provided during onboarding does not have an expiration, and is valid to use unless it is explicitly revoked. We provide two different methods for updating your access token.
 
@@ -97,7 +95,7 @@ Response
 }
 ```
 
-## Validating Calls From Fast
+# Validating Calls From Fast
 
 In order to allow you to verify that calls to your server are in fact, from Fast, we will be including a signed JWT with our calls as the Authorization header of the call. The JWT will be signed via RSA256 with one of Fast's private keys. The key used for signing will be referenced by the key identified (`kid`) in the header of the JWT. We provide an API for fetching Fast's JWKs (`/v1/oauth2/jwks`) which provides a map of Key Identifiers to the public key needed to verify the signature.
 
