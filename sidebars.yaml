@@ -79,6 +79,12 @@ training:
   - page: order/order.page.yaml
     label: Seller -> Fast API
   - separatorLine: true
+  - separator: Custom Integration Developer Tools
+  - page: developer-portal/fast-api-reference-implementation.md
+    label: Reference Implementation
+  - page: developer-portal/fast-api-test-suite-cli.md
+    label: Test Suite CLI
+  - separatorLine: true  
   - separator: Custom Integration Resources
   - page: developer-portal/fast-api-reference-authentication.md
     label: Authentication
