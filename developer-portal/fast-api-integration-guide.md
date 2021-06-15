@@ -8,7 +8,7 @@ Let's add the Fast Checkout button to your product page to power higher conversi
 
 ## Set up Fast
 
-You'll need a Fast account and sandbox credentials to start integrating. 
+You'll need a Fast account and sandbox credentials to start integrating. ED DEMO.
 
 [**Create a Fast Developer Account →**](https://sdash.fast.co)
 
