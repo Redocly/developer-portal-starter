@@ -22,10 +22,10 @@ Fast uses a non-standard, polymorphic API. As our product grows and changes, man
 
 | REST VERB | API_URL | Link |
 | --------- | ------- | ------- |
-| POST | /fast/v1/create | [Create Guide](/developer-portal/fast-api-qs-backend-create.md) |
-| POST | /fast/v1/read | [Read Guide](/developer-portal/fast-api-qs-backend-read.md) | 
-| POST | /fast/v1/update | [Update Guide](/developer-portal/fast-api-qs-backend-update.md) | 
-| POST | /fast/v1/delete | [Delete Guide](/developer-portal/fast-api-qs-backend-delete.md) |
+| POST | /fast/v1/create | [Create Guide](/developer-portal/fast-api-qs-backend-create) |
+| POST | /fast/v1/read | [Read Guide](/developer-portal/fast-api-qs-backend-read) | 
+| POST | /fast/v1/update | [Update Guide](/developer-portal/fast-api-qs-backend-update) | 
+| POST | /fast/v1/delete | [Delete Guide](/developer-portal/fast-api-qs-backend-delete) |
 
 
 

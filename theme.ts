@@ -196,6 +196,11 @@ export const theme = {
       backgroundColor: 'rgba(38, 50, 56, 0.04)',
       wrap: false,
     },
+    links: {
+      color: "#4c86a8",
+      visited: ({ typography }) => typography.links.color,
+      hover: ({ typography }) => lighten(0.2, typography.links.color),
+    },
   },
   rightPanel: {
     backgroundColor: '#263238',
