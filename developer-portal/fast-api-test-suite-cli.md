@@ -1,13 +1,15 @@
 # Fast Test Suite CLI
 
+:::attention Note
 Fast Test Suite CLI only works with Sandbox environment.
+:::
 
 ## Prerequisites
 
 #### Redis
 You will need to install Redis which is in charge of storing your API Access Token securely
 
-macOS
+macOS:
 ```bash
 # Downloads and starts Redis server
 brew install redis
@@ -19,10 +21,23 @@ Other platforms can navigate to https://redis.io/download for download  instruct
 You will need to start the redis server in order for the CLI to work.
 :::
 
+## Setup
+
+You will need to clone the Test Suite CLI binary on your machine.  
+```
+git clone https://github.com/fast-af/fast-test-suite-cli.git
+cd fast-test-suite-cli
+```  
+Alternatively you can directly download the project as a zip file [here](https://github.com/fast-af/fast-test-suite-cli/archive/refs/heads/main.zip)  
+
 ## Usage
 
 :::attention Note
 If you are having SSL issues, you can use the flag --disable-ssl to disable ssl for that request.
+:::
+
+:::attention Note
+References to `product_id` below refer to a product id in your backend
 :::
 
 #### Login

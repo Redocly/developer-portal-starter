@@ -73,6 +73,8 @@ training:
             label: Refund Orders
           - page: developer-portal/fast-api-qs-backend-extended-oms-business-event.md
             label: Business Eventing
+      - page: developer-portal/fast-api-dev-tools.md 
+        label: Developer Tools
   - separator: Custom Integration API Specifications
   - page: merchant/merchant.page.yaml
     label: Fast -> Seller API
