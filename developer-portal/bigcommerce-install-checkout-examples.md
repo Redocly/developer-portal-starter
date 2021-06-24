@@ -13,7 +13,7 @@ your current theme's source code. To access your theme's source code, you will c
 6. This will open **Stencil Editor**, which is where you can edit your theme's source code and where you will add the Fast Checkout code snippets.
 
 **For all of the Fast Checkout code snippets below, you will need to replace the section *REPLACE-WITH-YOUR-APP-ID* with
-your own Fast App Id. Make sure it's wrapped in quotes. You can get this from your [**Seller Dashboard →**](https://www.fast.co/business/dash/profile)
+your own Fast App Id. Make sure it's wrapped in quotes. You can get this from your [**Seller Dashboard**](https://www.fast.co/business/dash/profile)
 
 ## Installation
 
