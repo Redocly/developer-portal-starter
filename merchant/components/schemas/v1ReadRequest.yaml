@@ -5,8 +5,8 @@ properties:
   request_id:
     $ref: ./v1UUID.yaml
   type:
-    $ref: ./v1EntityType.yaml
+    $ref: ./v1EntityTypeRead.yaml
   order:
     $ref: ./v1ReadOrderRequestSegment.yaml
-  shipping_option:
-    $ref: ./v1ReadShippingOptionRequestSegment.yaml
+  shipping_zones:
+    $ref: ./v1ReadShippingZonesRequestSegment.yaml

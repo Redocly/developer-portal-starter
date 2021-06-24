@@ -3,7 +3,7 @@
 `POST /fast/v1/read`
 
 1. *entity_type: the type of entity being read*
-    - possible values: `["ENTITY_ORDER", "ENTITY_SHIPPING_OPTION"]`
+    - possible values: `["ENTITY_TYPE_ORDER", "ENTITY_TYPE_SHIPPING_ZONES]`
 2. *order: FastOrder data entity*
     - *is_cart: boolean indicating if the order is in cart phase*
     - *order_id: uuid value string that is the fast unique identifier*

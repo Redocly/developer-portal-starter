@@ -1,0 +1,6 @@
+type: object
+properties:
+  country_iso2:
+    type: string
+  subdivision_iso2:
+    type: string
