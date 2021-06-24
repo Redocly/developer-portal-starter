@@ -20,6 +20,7 @@ When a customer purchases a product from your store using Fast Checkout, Fast ac
 
 ## Refunds
 Need to refund a customer? Use your BigCommerce dashboard to start the refund and Fast will take care of the rest.
+Please see [**How do I make refunds with Fast?**](https://help.fast.co/hc/en-us/articles/360055253814-How-do-I-refund-a-customer-)
 
 ## Order Tracking
 After making a purchase with Fast, customers get free access to a one-stop dashboard where they can view transactions, track deliveries and re-order in one click.
@@ -37,7 +38,7 @@ Fast's simplicity was instantly appealing to the Oklahoma-based agricultural equ
 
 [**Read their story →**](https://www.fast.co/stories/barndoor-ag?_ga=2.21031416.2141437564.1619537229-495285256.1616444149)
 
-### Fast Swag Store
-Want to see Fast Checkout in action? Check out our Fast Swag Store; we've built a store on BigCommerce that uses Fast Checkout on our product pages.
+### Fast Store
+Want to see Fast Checkout in action? Check out our Fast Store; we've built a store on BigCommerce that uses Fast Checkout on our product pages.
 
-[**Read their story →**](https://www.fast.co/shop/?_ga=2.21031416.2141437564.1619537229-495285256.1616444149)
+[**Fast Store**](https://www.fast.co/shop/?_ga=2.21031416.2141437564.1619537229-495285256.1616444149)

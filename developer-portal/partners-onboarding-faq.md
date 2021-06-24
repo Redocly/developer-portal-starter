@@ -11,7 +11,8 @@ Partners will need to collect the following information from Sellers in order to
 *   Seller Organization Phone Number
 *   Seller Business/Store Name
     *   Also need to collect legal registered business name if it’s different than their customer facing “doing-business-as” name
-*   Seller Store URL (must use https://)
+*   Seller Store URL (must use **https://**)
+    * NOTE: Authorizing Fast’s connection to the Seller’s store is an important step and must be completed within the same onboarding session in order to create valid Fast Seller credentials.
 *   Seller Business Country of Registration
 *   Tax ID for the Seller’s Registered Business (EIN for US, CRN for UK, ABN for AU, etc)
 *   Seller Bank Account Info
