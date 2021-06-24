@@ -12,3 +12,5 @@ Depending how your online store is currently powered, we have several offerings 
 | ------- | ------------------- | ------------------- | ------ |
 | [Fast Checkout](/developer-portal/fast-checkout/) | YES | YES | YES |
 | [Fast Login](/developer-portal/fast-login/) | YES | YES | YES |
+
+[**Developer Terms**](https://www.fast.co/terms/developer-terms)
