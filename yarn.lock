@@ -1420,16 +1420,16 @@
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.0.0-beta.142":
-  version "1.0.0-beta.142"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.142.tgz#fc8a55404f95b27dba825d6ac302d21ff862b03f"
-  integrity sha512-z4//vuN+ACSma8uLOPlUWCkXxJZm91pcLa9U+dn/977uoCTB6iip73O+LH6Yd0EOTlKG9KiyWMZIIxBuJMd86w==
+"@redocly/developer-portal@1.1.0-beta.2":
+  version "1.1.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.2.tgz#e912a5c324117c71e5b1f3cb3c53a4c69a20dc33"
+  integrity sha512-nl8RY2IaQsGNX9o50MTgSG+ZvByZpH4jy+Gxe+lVuqsxlRImJPgyXNIpqgrhOJrREpWJwfSc6BH0Co+kLfV4jw==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-cli" "~0.12.1"
-    "@redocly/reference-docs" "~1.5.1"
+    "@redocly/reference-docs" "2.0.0-rc.1"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1584,10 +1584,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.11.tgz#532b864b329237e646abe45d0f8edc923e77370a"
   integrity sha512-rmuSC2JFFl4DkPDdGVrmffT9KcbG2AB5jvhxPIrOc1dO9mHRMUUftQY35KZlvWqqSSqVn+AM+J9dhiTo1ZqR8A==
 
-"@redocly/reference-docs@~1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-1.5.1.tgz#63c5a0a5ab53c4e8e0a45bd18ba1ee99eb3d50b9"
-  integrity sha512-UjowS0WnOsT66KFikdKRRpzrbhV8C5qkuM9FcK7kxsH7f1lt9PQX/fUthrH6SuqHSXd+CBKzQ4mhjD6v9uIH1A==
+"@redocly/reference-docs@2.0.0-rc.1":
+  version "2.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.0.0-rc.1.tgz#9756804a4e89ddfb28e92f2c47a5ad7863f7ed14"
+  integrity sha512-vtii2bP+QqJFKKMt6nDh0hgNyrXZFvF3gago2+iZGYfsCTjLAFzs2PPpn4VEU0jqnv+lejb0BRwwajTaC6EYOg==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.44"
     "@redocly/react-dropdown-aria" "2.0.11"
@@ -1620,12 +1620,13 @@
     query-string "^6.13.6"
     react-codemirror2 "^7.1.0"
     react-tabs "^3.1.1"
+    react-tooltip "^4.2.19"
     serve-static "^1.14.1"
     slugify "^1.4.4"
     stickyfill "^1.1.1"
     stringify-object "^3.3.0"
     styled-components "^5.1.1"
-    swagger-client "^3.13.1"
+    swagger-client "^3.13.3"
     swagger2openapi "^6.2.1"
     tslib "^1.9.3"
     url-template "^2.0.8"
@@ -12163,6 +12164,14 @@ react-tabs@^3.1.1:
     clsx "^1.1.0"
     prop-types "^15.5.0"
 
+react-tooltip@^4.2.19:
+  version "4.2.19"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.19.tgz#a865fffdb62154c6079bcb273e238de6b3c57366"
+  integrity sha512-wF6h0a2nqX3UHw9aSoj77Tv/+/KIjRdb107otHtX+1wISad1QoLD+j5chrBDx7mjY1T4WKfrV2DN+iFCimdZOw==
+  dependencies:
+    prop-types "^15.7.2"
+    uuid "^7.0.3"
+
 react-transition-group@^4.3.0:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
@@ -13960,10 +13969,10 @@ svgo@1.3.2, svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swagger-client@^3.13.1:
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.13.2.tgz#df1a1fe92e6db87ab5f76cee6381dcb7da1ad117"
-  integrity sha512-kamtyXtmbZiA2C5YTVqJYgoPJgzqtM5RbeP23Rt/YPYjMArTKZ2fjx1UTsI0aSbws0GluU5pVHiGp8YMciSUfw==
+swagger-client@^3.13.3:
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.13.3.tgz#e9e54a0979419bd1cca67babf9f4c5a8a44ffcfd"
+  integrity sha512-8ZVm0NIhmAiHaBwDibkX76W3jvs3h1Okb41iyeSG8TPXwuZbeS5tEpOkqgUMdK48dKs0S8VMu5ldkak79MFVMw==
   dependencies:
     "@babel/runtime-corejs3" "^7.11.2"
     btoa "^1.2.1"
@@ -14957,6 +14966,11 @@ uuid@3.4.0, uuid@^3.0.0, uuid@^3.0.1, uuid@^3.3.2, uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 uuid@^8.3.2:
   version "8.3.2"
