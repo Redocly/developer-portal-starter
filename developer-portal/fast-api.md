@@ -53,4 +53,4 @@ This diagram covers the high level flow for refunding an order.
 
 ![Refund order](images/fast-api/refund-order.png)
 
-[**Developer Terms**](https://www.fast.co/terms/developer-terms)
+Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms)
