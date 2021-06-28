@@ -2,11 +2,15 @@
 
 > This product is in Early Access
 
+Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms)
+
+
 Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
 ![Fast API Overview](images/fast-api/overview.png)
 
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
+
 
 # **High Level Diagrams**
 * [New buyer clicks Fast Checkout](#new-buyer-clicks-fast-checkout)
@@ -53,4 +57,3 @@ This diagram covers the high level flow for refunding an order.
 
 ![Refund order](images/fast-api/refund-order.png)
 
-Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms)
