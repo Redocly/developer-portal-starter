@@ -1,16 +1,14 @@
 # Fast API Overview
 
-> This product is in Early Access
-
-Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms)
-
+> NOTE: This product is in Early Access
 
 Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
 ![Fast API Overview](images/fast-api/overview.png)
 
-Got questions? Concerns? Contact Fast at devrel@fast.co. 
+Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms).
 
+Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
 # **High Level Diagrams**
 * [New buyer clicks Fast Checkout](#new-buyer-clicks-fast-checkout)
