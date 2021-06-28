@@ -3,8 +3,10 @@ properties:
   request_id:
     $ref: ./v1UUID.yaml
   type:
-    $ref: ./v1EntityType.yaml
+    $ref: ./v1EntityTypeRead.yaml
   order:
     $ref: ./v1ReadOrderResponseSegment.yaml
-  shipping_option:
-    $ref: ./v1ReadShippingOptionResponseSegment.yaml
+  shipping_zones:
+    type: array
+    items:
+      $ref: ./v1ReadShippingZonesResponseSegment.yaml

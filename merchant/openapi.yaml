@@ -16,12 +16,12 @@ tags:
 paths:
   /fast/v1/create:
     $ref: paths/fast@v1@create.yaml
-  /fast/v1/delete:
-    $ref: paths/fast@v1@delete.yaml
   /fast/v1/read:
     $ref: paths/fast@v1@read.yaml
   /fast/v1/update:
     $ref: paths/fast@v1@update.yaml
+  /fast/v1/delete:
+    $ref: paths/fast@v1@delete.yaml
 servers:
   - url: 'https://private-api.fast.co'
 components:

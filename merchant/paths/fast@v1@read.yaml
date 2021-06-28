@@ -1,5 +1,5 @@
 post:
-  summary: Get a specified type of an object/entity by provided id
+  summary: Read a specified type of an object/entity by provided id
   description: >-
     This is a generic interface to read a specific type of an entity such as
     order, cart, ..)
