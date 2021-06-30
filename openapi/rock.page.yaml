@@ -1,0 +1,13 @@
+type: redoc
+definitionId: rock
+showInfo: true
+expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
+      - lang: Python
+      - lang: C#
+      - lang: Java
