@@ -4,9 +4,10 @@
 
 Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
+Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms).
+
 ![Fast API Overview](images/fast-api/overview.png)
 
-Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms).
 
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
