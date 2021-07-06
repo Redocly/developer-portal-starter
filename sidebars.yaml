@@ -1,71 +1,29 @@
 training:
-  - page: developer-portal/index.md
-  - group: Training exercises
-    expanded: true
+  - group: Test API
+    page: developer-portal/index.md
+    menuStyle: drilldown
+    icon: images/icon1.png
+    sublabel: Learn more 
     pages:
-      - label: Setup
-        page: developer-portal/setup.md
-      - label: Markdown
-        page: developer-portal/markdown.md
-      - label: Folder structure
-        page: developer-portal/awesome/folders.md
-      - label: Mermaid diagrams
-        page: developer-portal/mermaid.md
-      - label: Page table of contents
-        page: developer-portal/page-table-of-contents.md
-      - separator: This is a separator
-      - label: Sidebar navigation
-        page: developer-portal/sidebar-nav.md
-      - label: Search
-        page: developer-portal/search.md
-      - label: Top nav and footers
-        page: developer-portal/nav-footer.md
-      - label: Logo and favicon
-        page: developer-portal/logo.md
-      - label: Metadata
-        page: developer-portal/metadata.md
-      - label: Colors
-        page: developer-portal/colors.md
-      - label: Typography
-        page: developer-portal/typography.md
-      - label: Analytics
-        page: developer-portal/analytics.md
-      - label: Home page
-        page: developer-portal/home-page.md
-      - label: Adding API reference docs
-        page: developer-portal/oas-definitions.md
-      - label: Adding an API response to an MDX page
-        page: developer-portal/mdx.mdx
-      - label: Creating React components
-        page: developer-portal/custom-component.mdx
-  - group: Petstore reference
-    expanded: false
-    pages:
+    - group: Overview
+      page: developer-portal/setup.md
+      menuStyle: drilldown
+      icon: images/icon3.png
+      sublabel: Learn more about the process 
+      pages:
+        - page: developer-portal/markdown.md
+          label: Introduction
+        - page: developer-portal/awesome/folders.md
+          label: Process 
+        - page: developer-portal/mermaid.md
+          label: Mermaid
+        - page: developer-portal/page-table-of-contents.md
+          label: Sample flow
+          separatorLine: true
+    - group: Reference docs
+      page: developer-portal/oas-definitions.md
+      menuStyle: drilldown
+      icon: images/icon3.png
+      sublabel: 
+      pages:
       - page: openapi/reference.page.yaml/*
-
-  - group: Admin
-    expanded: true
-    pages:
-      - group: Routine
-        expanded: true
-        pages:
-          - group: Rock
-            expanded: true
-            pages:
-              - group: Paper
-                expanded: true
-                pages:
-                  - group: Scissors
-                    expanded: true
-                    pages:
-                      - group: 1-2-3
-                        expanded: true
-                        pages:
-                          - group: Go
-                            expanded: true
-                            pages:
-                              - label: Upgrading
-                                # page: developer-portal/upgrade.md
-alternative:
-  - page: developer-portal/sidebar-alternative.md
-    label: Alternative sidebar example
