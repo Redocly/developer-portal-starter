@@ -1,10 +1,13 @@
 # Fast API Overview
 
-> This product is in Early Access
+> NOTE: This product is in Early Access
 
 Welcome! You will find useful information regarding the design and specifications of the Fast API.
 
+Use of the Fast Developer Platform is subject to our [**Developer Terms of Use**](https://www.fast.co/terms/developer-terms).
+
 ![Fast API Overview](images/fast-api/overview.png)
+
 
 Got questions? Concerns? Contact Fast at devrel@fast.co. 
 
@@ -52,3 +55,4 @@ This diagram covers the high level flows for payment capture. NOTE: there are 2 
 This diagram covers the high level flow for refunding an order.
 
 ![Refund order](images/fast-api/refund-order.png)
+
