@@ -1,9 +1,15 @@
 ## Add Fast.js to your page
 
 On your product page, load the `fast.js` script:
-
+  
+Production:  
 ```jsx
 <script src="https://js.fast.co/fast.js"></script>
+```
+  
+Sandbox:  
+```jsx
+<script src="https://js.sandbox.fast.co/fast.js"></script>
 ```
 
 ## Use the Fast Checkout button

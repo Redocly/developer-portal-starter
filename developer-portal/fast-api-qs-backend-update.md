@@ -2,15 +2,15 @@
 
 `POST /fast/v1/update`
 
-1. *entity_type: the type of entity being updated*
-    - Possible values: `["ENTITY_ORDER"]`
+1. *type: the type of entity being updated*
+    - Possible values: `["ENTITY_TYPE_ORDER"]`
 2. order*: FastOrderUpdateRequest data entity*
 3. *request_id: idempotency key*
 4. *app_id: store identifier within fast*
 
 ```json
 {
-	"entity_type": string,	
+	"type": string,	
 	
 	"order": FastOrderUpdateRequest,
 	
@@ -22,17 +22,16 @@
 
 # Update Response
 
-The update API is able to update several different top level components of the order. In the request we send to your server we will supply *only* the incremental data. If we send you data you should check that the item being updated/added is not being duplicated accidentally. We provide unique ids on each item.
+The update API is able to update several different top level components of the order. In the request we send to your server we will supply *only* the incremental data. If we send you data you should check that the item being updated/added is not being duplicated accidentally. We provide unique ids on each item.  
+We also use the update endpoint to update the status of an order (i.e from a cart to an order, from pending to pending fulfillment, etc.)
 
 **Example 1: Update existing item quantity**
 
 request:
 
-response:
-
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"items": [
 			{
@@ -44,9 +43,11 @@ response:
 }
 ```
 
+response:
+
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"items": [
 			{
@@ -65,7 +66,7 @@ request:
 
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"bill_to": AddressUpdateEntity
 	}
@@ -76,7 +77,7 @@ response:
 
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"bill_to": Address,
 		"shipping_options": [ShippingOption],
@@ -88,11 +89,9 @@ response:
 
 request:
 
-response:
-
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"items": [
 			{
@@ -103,9 +102,11 @@ response:
 }
 ```
 
+response:
+
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"items": [
 			{
@@ -126,11 +127,9 @@ response:
 
 request:
 
-response:
-
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"items": [
 			{
@@ -142,9 +141,11 @@ response:
 }
 ```
 
+response:
+
 ```json
 {
-	"entity_type": "ENTITY_ORDER",
+	"type": "ENTITY_TYPE_ORDER",
 	"order": {
 		"items": [
 			{
@@ -157,6 +158,62 @@ response:
 			},
 		],
 		"coupon": "COUPONCODE"
+	}
+}
+
+```
+
+**Example 5: Convert Cart to Order**
+
+Once the checkout timer expires, you will receive an update to convert the cart object into an order.
+
+request:
+
+```json
+{
+	"type": "ENTITY_TYPE_ORDER",
+	"order": {
+		"convert_cart_to_order": true,
+		"convert_mode": "CART_TO_ORDER_CONVERT_UPDATE_AND_CONVERT",
+		"is_cart": true
+	},
+}
+```
+
+response:
+
+```json
+{
+	"type": "ENTITY_TYPE_ORDER",
+	"order": {
+		// ... full order object up to this point
+	}
+}
+
+```
+
+**Example 6: Update Order Status**
+
+Once the checkout timer expires, you will receive an update to convert the cart object into an order.
+
+request:
+
+```json
+{
+	"type": "ENTITY_TYPE_ORDER",
+	"order": {
+		"status": "ORDER_STATUS_BOOKED"
+	},
+}
+```
+
+response:
+
+```json
+{
+	"type": "ENTITY_TYPE_ORDER",
+	"order": {
+		// ... full order object up to this point
 	}
 }
 

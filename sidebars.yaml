@@ -104,6 +104,8 @@ training:
     label: Financial Values
   - page: developer-portal/fast-api-reference-order-lifecycle.md
     label: Order Lifecycle
+  - page: developer-portal/fast-api-reference-order-statuses.md
+    label: Order Statuses
   - page: developer-portal/fast-api-reference-products.md
     label: Products
   - page: developer-portal/fast-api-reference-sequences.md
