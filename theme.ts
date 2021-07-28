@@ -15,7 +15,7 @@ export const theme = {
   colors: {
     // tonalOffset: 0.2,
     primary: {
-      main: '#227a88',
+      main: '#ffffff',
       // light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
@@ -45,7 +45,7 @@ export const theme = {
     //   contrastText: ({ colors }) => readableColor(colors.info.main),
     // },
     text: {
-      primary: '#424242',
+      primary: '#000000',
       // secondary: '#4e566d',
     },
     // border: {
@@ -81,19 +81,19 @@ export const theme = {
       link: '#31bbb6',
       head: '#c167e4',
     },
-    // navbar: {
-    //   main: ({ colors }) => colors.primary.main,
-    //   gradient: ({ colors }) => darken(colors.tonalOffset / 2, colors.navbar.main),
-    //   contrastText: 'white'
-    // },
-    // footer: {
-      // main: ({ colors }) => colors.primary.main,
-      // contrastText: 'white'
-    // },
+    navbar: {
+      main: ({ colors }) => colors.primary.main,
+      // gradient: ({ colors }) => darken(colors.tonalOffset / 2, colors.navbar.main),
+      contrastText: 'black'
+    },
+    footer: {
+      main: ({ colors }) => colors.primary.main,
+      contrastText: 'white'
+    },
   },
 
   sidebar: {
-    backgroundColor: '#fafafa',
+    backgroundColor: '#ffffff',
     width: '260px',
   },
   // tocPanel: {
@@ -106,9 +106,9 @@ export const theme = {
     fontWeightRegular: '400',
     fontWeightBold: '600',
     fontWeightLight: '300',
-    fontFamily: '"Source Sans Pro", sans-serif',
+    fontFamily: 'Source-Sans-Pro, system-ui, -apple-system, "Helvetica Neue", Arial',
     headings: {
-      fontFamily: '"Source Sans Pro", sans-serif',
+      fontFamily: 'Source-Sans-Pro, system-ui, -apple-system, "Helvetica Neue", Arial',
       fontWeight: '600',
     },
     // heading1: {
@@ -153,7 +153,7 @@ export const theme = {
       wrap: false,
     },
     links: {
-      color: ({ colors }) => colors.primary.main,
+      color: ({ colors }) => colors.text.primary,
       visited: ({ typography }) => typography.links.color,
       hover: ({ typography }) => lighten(0.2, typography.links.color),
     },

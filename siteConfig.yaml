@@ -2,7 +2,7 @@ meta:
   title: Toast API developer portal
   description: The best API documentation ever.
   siteUrl: https://toastintegrations.redoc.ly/
-logo: https://doc.toasttab.com/Ie5QH/assets/images/toast-restaurant-pos.png
+logo: ./images/toast-circle-color.jpg
 enableToc: true
 oasDefinitions:
   # petstore: ./openapi/petstore.yaml
@@ -29,14 +29,22 @@ stylesheets:
 #  - ./static/intercom.js
 nav:
 
-  - label: Training exercises
-    page: developer-portal/index.md
+  - label: Cookbooks
+    href: https://doc.toasttab.com/internal/product-doc/devcookbook/index.html
 
-  - label: External docs
-    icon: ./images/redocly-icon-white.png
-    href: https://docs.redoc.ly/developer-portal/introduction/
+  - label: Developer guide
+    href: https://doc.toasttab.com/internal/product-doc/devguide/index.html
+
+  - label: API reference
+    href: https://toastintegrations.redoc.ly/developer-portal/
+
+  - label: Platform guide
+    href: https://doc.toasttab.com/internal/product-doc/devplatformguide/index.html
+
+  - label: Release notes
+    href: https://doc.toasttab.com/internal/product-doc/devrelnotes/index.html
 
   - search: true
-
+  
 footer:
   copyrightText: Copyright © Toast Inc. 2015-2021. All right reserved.

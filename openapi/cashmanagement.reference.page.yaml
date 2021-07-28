@@ -8,3 +8,6 @@ settings:
       - lang: curl
       - lang: JavaScript
       - lang: Node.js
+  showConsole: false
+  hideHostname: true
+

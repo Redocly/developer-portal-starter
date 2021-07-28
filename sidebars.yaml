@@ -45,29 +45,3 @@ training:
     pages:
       - page: openapi/loyalty.reference.page.yaml/*
 
-  - group: Admin
-    expanded: true
-    pages:
-      - group: Routine
-        expanded: true
-        pages:
-          - group: Rock
-            expanded: true
-            pages:
-              - group: Paper
-                expanded: true
-                pages:
-                  - group: Scissors
-                    expanded: true
-                    pages:
-                      - group: 1-2-3
-                        expanded: true
-                        pages:
-                          - group: Go
-                            expanded: true
-                            pages:
-                              - label: Upgrading
-                                # page: developer-portal/upgrade.md
-alternative:
-  - page: developer-portal/sidebar-alternative.md
-    label: Alternative sidebar example
