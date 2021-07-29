@@ -2,7 +2,7 @@
 title: Fast Documentation
 ---
 
-import { LandingLayout } from '@redocly/ui';
+import { LandingLayout } from "@redocly/ui";
 
 import {
   Button,
@@ -15,25 +15,25 @@ import {
   Emphasis,
   H1,
   H2,
-  SectionHeader,
-} from '@redocly/ui';
+  SectionHeader
+} from "@redocly/ui";
 
-import { NavBar } from '@redocly/ui';
+import { NavBar } from "@redocly/ui";
 
-import icon1 from './images/icon1.png';
-import launchFastIcon from './images/launch-fast.svg';
-import icon3 from './images/icon3.png';
-import bookManagementIcon from './images/book-management.svg';
-import foundOrPrivate from './images/found-or-private.svg';
-import bigcommerce from './images/bigcommerce.svg';
-import woocommerce from './images/woocommerce.svg';
-import fastblk from './images/logo-black.svg';
-import docs from './images/docs.svg';
-import community from './images/community.svg';
-import updates from './images/updates.svg';
-import twitter from './images/twitter.svg';
-import chat from './images/chat.svg';
-import help from './images/help.svg';
+import icon1 from "./images/icon1.png";
+import launchFastIcon from "./images/launch-fast.svg";
+import icon3 from "./images/icon3.png";
+import bookManagementIcon from "./images/book-management.svg";
+import foundOrPrivate from "./images/found-or-private.svg";
+import bigcommerce from "./images/bigcommerce.svg";
+import woocommerce from "./images/woocommerce.svg";
+import fastblk from "./images/logo-black.svg";
+import docs from "./images/docs.svg";
+import community from "./images/community.svg";
+import updates from "./images/updates.svg";
+import twitter from "./images/twitter.svg";
+import chat from "./images/chat.svg";
+import help from "./images/help.svg";
 
 export default LandingLayout;
 
@@ -42,15 +42,9 @@ export default LandingLayout;
   <H1>Developer Portal</H1>
   <H2>Documentation, resources & support integrating Fast products</H2>
   <Flex p={20} justifyContent="center">
-    {/* <Button inversed large to="https://app.redoc.ly">
-      Redocly app
-    </Button> */}
     <Button inversed transparent large to="developer-portal/index.md">
       Visit Our Docs
     </Button>
-    {/* <Button inversed transparent large>
-      Workflows
-    </Button> */}
   </Flex>
 </Jumbotron>
 <Box my={25}>
@@ -58,30 +52,16 @@ export default LandingLayout;
     Dive into <Emphasis> Fast </Emphasis> resources
   </SectionHeader>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-      <ThinTile to="developer-portal/index.md" icon={docs} header="Docs & Guides">
-        Dive into our documentation & guides for integrating Fast with your platform. 
+    <ThinTile to="developer-portal/index.md" icon={docs} header="Docs & Guides">
+      Dive into our documentation & guides for integrating Fast with your
+      platform.
     </ThinTile>
-    <ThinTile to="https://community.fastdevs.co" icon={community} header="Community">
-        Ask for help, share your feedback, or ask about special use-cases in our community.
-    </ThinTile>
-    <ThinTile to="https://updates.fastdevs.co/" icon={updates} header="Product Updates">
-        Stay in-the-know with Fast products and receive product updates in your inbox.
-    </ThinTile>
-  </FlexSection>
-  <FlexSection justifyContent="space-around" flexWrap="wrap">
-      <ThinTile to="https://twitter.com/Fast_Devs" icon={twitter} header="Fast Devs on Twitter">
-        Follow us on Twitter to see product updates, engage with our team & more. 
-    </ThinTile>
-    <ThinTile to="https://discord.gg/pmDcSdRQ9x" icon={chat} header="Chat on Discord">
-        Chat with our team and other developers in our Discord chat community.
-    </ThinTile>
-    <ThinTile to="https://help.fast.co/hc/en-us" icon={help} header="Account Help">
-        Obtain help from our customer success team with your seller account.
+    <ThinTile
+      to="https://help.fast.co/hc/en-us"
+      icon={help}
+      header="Account Help"
+    >
+      Obtain help from our customer success team with your seller account.
     </ThinTile>
   </FlexSection>
-  {/* <Jumbotron parallaxEffect bgImage={icon1}>
-    <H1>Tutorials</H1>
-    <H2>Get setup faster...</H2>
-  </Jumbotron> */}
 </Box>
-

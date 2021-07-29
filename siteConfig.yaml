@@ -17,17 +17,8 @@ ga:
 #scripts:
 #  - ./static/intercom.js
 nav:
-
   - label: Documentation
     page: developer-portal/index.md
-
-  - label: Community
-    href: https://community.fastdevs.co
-    external: true
-
-  - label: Product Updates
-    href: https://updates.fastdevs.co
-    external: true
 
   - label: Fast Account Help
     href: https://help.fast.co/hc/en-us
@@ -41,27 +32,27 @@ footer:
     - group: Product
       items:
         - label: Checkout
-          href: 'https://www.fast.co/checkout'
+          href: "https://www.fast.co/checkout"
         - label: Sellers
-          href: 'https://www.fast.co/sellers'
+          href: "https://www.fast.co/sellers"
         - label: Partners
-          href: 'https://www.fast.co/partner-program'
+          href: "https://www.fast.co/partner-program"
         - label: Pricing
-          href: 'https://www.fast.co/pricing'
+          href: "https://www.fast.co/pricing"
         - label: Seller Stories
-          href: 'https://www.fast.co/stories'
+          href: "https://www.fast.co/stories"
         - label: Privacy & Security
-          href: 'https://www.fast.co/privacy-security'
+          href: "https://www.fast.co/privacy-security"
         - label: Customer Stories
-          href: 'https://www.fast.co/stories'
+          href: "https://www.fast.co/stories"
         - label: Help
-          href: 'http://help.fast.co/'
+          href: "http://help.fast.co/"
     - group: Company
       items:
         - label: Careers
-          href: 'https://www.fast.co/careers'
+          href: "https://www.fast.co/careers"
         - label: Newsroom
-          href: 'https://www.fast.co/newsroom/news'
+          href: "https://www.fast.co/newsroom/news"
         - label: Privacy Policy
-          href: 'https://www.fast.co/privacy'
+          href: "https://www.fast.co/privacy"
         - label: Terms of Service
