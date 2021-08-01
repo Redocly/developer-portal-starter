@@ -1,0 +1,1253 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Toast Menus API
+  description: |
+    ## Overview
+
+      You send a GET request to the /menus endpoint of the menus API to retrieve fully resolved menus for the specified restaurant. The menus API returns all values for all objects in the JSON output, even if they are empty or null.
+
+      You send a GET request to the /metadata endpoint of the menus API to retrieve the most recent date and time that this menu's JSON was updated. Because menus API requests are resource intensive, you should call this endpoint before calling the /menus endpoint to determine if you need to refresh your menu JSON data.
+      
+      The menus API does not return data for menu entities that you have removed from your restaurant configuration or archived. For example, if you remove a menu item, the menus API will not return that menu item in the response data.
+
+      For more information about using this and other Toast APIs, see
+      the <a href="https://doc.toasttab.com/Ie5QH/index.html">Toast API Developer's Guide</a>.
+  contact:
+    name: Toast API Support
+    email: developer-support@toasttab.com
+schemes:
+  - https
+basePath: /menus/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  Metadata:
+    type: object
+    description: |
+      Information about the last date and time that this restaurant's menu data was updated.
+    properties:
+      restaurantGuid:
+        description: |
+          A unique identifier for this restaurant, assigned by the Toast POS system.
+        type: string
+        format: uuid
+      lastUpdated:
+        description: |
+          The most recent date and time that this menu's data was published. Use this value to determine if you need to refresh your menu data. The `lastUpdated` value uses the absolute timestamp format describe in the <a href="https://doc.toasttab.com/Ie5QH/api_dates_and_timestamps.html">Dates and Timestamps</a> section of the Toast API Developer’s Guide.
+        type: string
+  Restaurant:
+    type: object
+    description: |
+      Information about the restaurant whose menu data has been retrieved.
+    properties:
+      restaurantGuid:
+        description: |
+          A unique identifier for this restaurant, assigned by the Toast POS system.
+        type: string
+        format: uuid
+      lastUpdated:
+        description: |
+          The most recent date and time that this menu's data was published. Use this value to determine if you need to refresh your menu data. The `lastUpdated` value uses the absolute timestamp format describe in the <a href="https://doc.toasttab.com/Ie5QH/api_dates_and_timestamps.html">Dates and Timestamps</a> section of the Toast API Developer’s Guide.
+        type: string
+      restaurantTimeZone:
+        description: |
+          The name of the restaurant's time zone in the IANA time zone database https://www.iana.org/time-zones. For example, "America/New_York".
+        type: string
+      menus:
+        type: array
+        description: |
+          An array of <a href="#/definitions/Menu">`Menu`</a> objects that represent the published menus used by this restaurant.
+        items:
+          $ref: '#/definitions/Menu'
+  Menu:
+    type: object
+    description: |
+      Information about a menu configured for this restaurant.
+    properties:
+      name:
+        description: |
+          A descriptive name for this menu, for example, "Food" or "Drinks".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this menu, assigned by the Toast POS system.
+        type: string
+      masterId:
+        $ref: '#/definitions/MasterId'
+      description:
+        description: |
+          An optional short description for this menu.
+        type: string
+      highResImage:
+        type: string
+        description: |
+          The URL to a high resolution image that has been uploaded for this menu. The image file must be in JPG, PNG, or SVG format. The `highResImage` value is only available if the Toast Kiosk module has been enabled for this restaurant. This value is null if no high resolution image has been specified.
+      image:
+        $ref: '#/definitions/Image'
+      visibility:
+        $ref: '#/definitions/Visibility'
+      availability:
+        type: object
+        description: |
+          An <a href="#/definitions/Availability">`Availability`</a> object with information about the days and times this menu is available. If the menu is available 24 hours per day, 7 days per week, this `Availability` object contains a single value, `alwaysAvailable`, that is set to TRUE. If the menu is not available 24 hours per day, 7 days per week, the `alwaysAvailable` value is set to FALSE and the object will also contain a `schedule` value that provides detailed information about the specific days and times this menu is available.
+
+          **_Important_**
+          The orders API does not validate against the availability settings of a menu, meaning it is possible to submit an order for an item on a menu when it is not currently available (see <a href="https://doc.toasttab.com/Ie5QH/workingWithOrders.html">Working with Orders</a> in the Toast API Developer’s Guide for more information). For this reason, it is particularly important that you check a menu’s `availability` value before placing an order from it.
+        items:
+          $ref: '#/definitions/Availability'
+      menuGroups:
+        type: array
+        description: |
+          An array of the <a href="#/definitions/MenuGroup">`MenuGroup`</a> objects contained in this menu.
+        minItems: 0
+        items:
+          $ref: '#/definitions/MenuGroup'
+  MenuGroup:
+    type: object
+    description: |
+      Information about a menu group configured for this restaurant, including an array of menu items contained in the group.
+    properties:
+      name:
+        description: |
+          A descriptive name for this menu group, for example, "Appetizers" or "Sandwiches".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this menu group, assigned by the Toast POS system.
+        type: string
+      masterId:
+        $ref: '#/definitions/MasterId'
+      description:
+        description: |
+          An optional short description of this menu group.
+        type: string
+      image:
+        $ref: '#/definitions/Image'
+      visibility:
+        $ref: '#/definitions/Visibility'
+      itemTags:
+        type: array
+        description: |
+          An array of <a href="#/definitions/ItemTag">`ItemTag`</a> objects that are assigned to this menu group. Item tags are used to assign identifying characteristics, for example, vegetarian, gluten-free, or alcohol.
+        items:
+          $ref: '#/definitions/ItemTag'
+      menuGroups:
+        type: array
+        description: |
+          An array of the <a href="#/definitions/MenuGroup">`MenuGroup`</a> objects that are children of this menu group. The array is empty if the menu group has no child menu groups.
+        minItems: 0
+        items:
+          $ref: '#/definitions/MenuGroup'
+      menuItems:
+        type: array
+        description: |
+          An array of the <a href="#/definitions/MenuItem">`MenuItem`</a> objects contained in this menu group.
+        minItems: 0
+        items:
+          $ref: '#/definitions/MenuItem'
+  MenuItem:
+    type: object
+    description: |
+      Information about a menu item configured for this restaurant.
+    properties:
+      entityIdentifier:
+        $ref: '#/definitions/EntityIdentifier'
+      name:
+        description: |
+          A descriptive name for this menu item, for example, "Caesar Salad" or "Turkey Sandwich".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this menu item, assigned by the Toast POS system.
+        type: string
+      masterId:
+        $ref: '#/definitions/MasterId'
+      description:
+        description: |
+          An optional short description of this menu item.
+        type: string
+      image:
+        $ref: '#/definitions/Image'
+      visibility:
+        $ref: '#/definitions/Visibility'
+      price:
+        type: number
+        format: double
+        description: |
+          The price of this menu item.
+
+          In the Toast administration back-end, menu items may have prices assigned to them individually, or they may inherit them from a parent menu group. The `price` value reflects the menu item's fully resolved pricing configuration in the following ways:
+
+            * For base prices, the `price` value is populated with the specified base price.
+            
+            * For menu-specific prices, the `price` value is resolved based on the current menu. For example, consider a menu item that is included in both Lunch and Dinner menus and is priced at $10 for the Lunch menu and $12 for the Dinner menu. In the fully resolved JSON returned by the menus API, this menu item would appear twice, once as a child of the Lunch menu with a `price` value of $10, and again as a child of the Dinner menu with a `price` value of $12.
+            
+            If this same menu item is added to a Breakfast menu but a menu-specific price is not defined for the Breakfast menu, then the `price` value for the instance of the menu item that appears in the Breakfast menu JSON is populated with the base price from the menu-specific price configuration. Menu-specific price configurations include a base price that functions as a default price when a menu-specific price cannot be resolved.
+
+            * For location-specific prices, the `price` value is resolved based on the current location. For example, consider a menu item that costs $15 in the Boston location and $20 in the New York location. When you retrieve menu data for the Boston location, this menu item's `price` value is $15. When you retrieve menu data for the New York location, the menu item's `price` value is $20.
+            
+            * For time-specific prices, the `price` value is populated with the base price that is specified as part of the time-specific price configuration. This base price functions as a default price for the menu item during times of the day when a time-specific price has not been defined. For example, consider a menu item that costs $8 from noon to 2pm and $10 during the rest of the day. The `price` value for this item would be $10. You must use the `pricingStrategy` and `pricingRules` values for this menu item to calculate the price of the item during time periods for which a time-specific price has been defined.
+            
+            * For size prices, the `price` value is null. You must use this menu item's `pricingStrategy` and `pricingRules` values to calculate the price of the item for different sizes.
+            
+            * For open prices, the `price` value is null.
+
+            
+            If the menu item is priced using a price level, the `price` value reflects the pricing strategy used for that price level, using the same logic described above. For example, consider a price level that applies a size price to the menu items it is assigned to. In this scenario, the `price` value is null and you must use the menu item's `pricingStrategy` and `pricingRules` values to calculate the price of the item for different sizes.
+
+            For more information on menu item pricing and pricing strategies, see <a href="https://doc.toasttab.com/0IV1p/adminMenuPricing.html">Menu Pricing</a> in the Toast Administrator's Guide.
+      pricingStrategy:
+        type: string
+        enum:
+          - BASE_PRICE
+          - MENU_SPECIFIC_PRICE
+          - TIME_SPECIFIC_PRICE
+          - SIZE_PRICE
+          - OPEN_PRICE
+        description: |
+          A string that represents the pricing strategy used for this menu item.
+          
+          You use the `pricingStrategy` value, in conjunction with the `pricingRules` value, to calculate the price for a menu item that uses the Time Specific Price or Size Price pricing strategy.
+
+          In the Toast administration back-end, menu items may have pricing strategies assigned to them individually, or they may inherit them from a parent menu group. The `pricingStrategy` value indicates the menu item's fully resolved pricing strategy. If the menu item is priced using the:
+            * Base Price pricing strategy, then the `pricingStrategy` value is BASE_PRICE.
+            * Menu Specific Price pricing strategy, then the `pricingStrategy` value is MENU_SPECIFIC_PRICE.
+            * Time Specific Price pricing strategy, then the `pricingStrategy` value is TIME_SPECIFIC_PRICE.
+            * Size Price pricing strategy, then the `pricingStrategy` value is SIZE_PRICE.
+            * Open Price pricing strategy, then the `pricingStrategy` value is OPEN_PRICE.
+
+          If the menu item is priced using the Location Specific Price pricing strategy, then the `pricingStrategy` value indicates which pricing strategy is used at the current location. For example, consider a menu item that uses a menu-specific price at the Boston location and a base price at the New York location. When you retrieve the menu data for the Boston location, the `pricingStrategy` for the menu item is MENU_SPECIFIC_PRICE. When you retrieve menu data for the New York location, the `pricingStrategy` for the menu item is BASE_PRICE.
+
+          If the menu item is priced using a price level, then the `pricingStrategy` value indicates which pricing strategy is used for that price level. For example, if the "Draft Beer" pricing level uses a time-specific price, then the `pricingStrategy` value for a menu item that is assigned the "Draft Beer" pricing level is TIME_SPECIFIC_PRICE.
+
+          If the `pricingStrategy` value is BASE_PRICE or MENU_SPECIFIC_PRICE, you can retrieve the menu item's price from its `price` value.
+
+          If the `pricingStrategy` value is TIME_SPECIFIC_PRICE or SIZE_PRICE, you must use the rules provided in _this menu item's_ `pricingRules` value to calculate the price for it.
+      pricingRules:
+        type: array
+        description: |
+          A <a href="#/definitions/PricingRules">`PricingRules`</a> object with information about how to calculate the price for this menu item. You use a menu item's `pricingRules` value, in conjunction with its `pricingStrategy` value, to calculate a price for a menu item that uses a size-specific or time-specific price.
+
+          The `pricingRules` object takes different forms depending on the pricing strategy configured for the menu item. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. For the BASE_PRICE, and MENU_SPECIFIC_PRICE pricing strategies, the `pricingRules` object is null because you can retrieve the price from the `price` value without additional calculation. For the OPEN_PRICE pricing strategy, the `pricingRules` object is also null (the price of an open menu item is specified when it is ordered). For the TIME_SPECIFIC_PRICE and SIZE_PRICE pricing strategies, the <a href="#/definitions/PricingRules">`PricingRules`</a> object contains additional values that you use to calculate the menu item's price.
+        items:
+          $ref: '#/definitions/PricingRules'
+      isDiscountable:
+        type: boolean
+        description: |
+          Indicates whether this menu item can be discounted.
+
+          **_Important_** The orders API _does not validate_ against the `isDiscountable` value. If you submit an order that applies a discount to a menu item whose `isDiscountable` value is FALSE, the orders API will not fail the order but it will set the discount amount on the menu item to $0.00. If you are using the menus API to build an ordering application, be sure to inspect the `isDiscountable` value of the menu items to ensure that your ordering application does not allow an item to be discounted if its `isDiscountable` value is FALSE.
+      salesCategory:
+        $ref: '#/definitions/SalesCategory'
+      taxInfo:
+        type: array
+        description: |
+          An array of GUIDs for the tax rates that apply to this menu item. Any modifier options that apply to this menu item will also inherit these tax rates. To retrieve full configuration data for a <a href="https://doc.toasttab.com/Ie5QH/apiConfigApiReference.html#/definitions/TaxRate">tax rate</a>, use the <a href="https://doc.toasttab.com/Ie5QH/apiConfigApiReference.html#path--taxRates--guid-">/taxRates/{guid}</a> endpoint in the configuration API.
+
+          _Important:_ The taxInfo value is intended to help you display prices but the `/prices` endpoint of the orders API is the only supported way to determine the prices of orders that you submit to the orders API. See <a href="https://doc.toasttab.com/Ie5QH/apiGettingCheckPrices.html">Getting Check Prices</a> for more information.
+
+          _Note:_ The Toast POS system ignores any tax rates specified for a modifier option's item reference. For a detailed description of a modifier option's item reference, see <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">Understanding a Modifier Option’s Item Reference</a> in the Toast Administrator's Guide.
+        items:
+          type: string
+      itemTags:
+        type: array
+        description: |
+          An array of <a href="#/definitions/ItemTag">`ItemTag`</a> objects that are assigned to this menu item. Item tags are used to assign identifying characteristics to a menu item, for example, vegetarian, gluten-free, or alcohol.
+        items:
+          $ref: '#/definitions/ItemTag'
+      plu:
+        type: string
+        description: |
+          The price lookup (PLU) code for this menu item. The PLU code can include both numbers and letters. This value contains an empty string if a PLU code has not been defined.
+      sku:
+        type: string
+        description: |
+          The stock keeping unit (SKU) identifier for this menu item. The SKU identifier can include both numbers and letters. This value contains an empty string if a SKU has not been defined.
+      calories:
+        type: integer
+        description: |
+          The number of calories in this menu item. The calories value can be any positive or negative integer, or zero. This value is null if a calories amount has not been configured for the menu item.
+      unitOfMeasure:
+        type: string
+        enum:
+          - NONE
+          - LB
+          - OZ
+          - KG
+          - G
+        description: |
+          The unit of measure used to determine the price of the item. For example, $10.00 per gram.
+      portions:
+        type: array
+        description: |
+          An array of <a href="#/definitions/Portion">`Portion`</a> objects that define the portions that can be used with this menu item. For example, for a pizza menu item, you could define 1st Half and 2nd Half portions. See <a href="https://doc.toasttab.com/0IV1p/adminUsingPortions.html">Using Portions</a> in the Toast Administrator's Guide for more information on portions.
+        minItems: 0
+        items:
+          $ref: '#/definitions/Portion'
+      modifierGroups:
+        type: array
+        description: |
+          An array of <a href="#/definitions/ModifierGroup">`ModifierGroup`</a> objects that contain modifier options that apply to this menu item.
+        minItems: 0
+        items:
+          $ref: '#/definitions/ModifierGroup'
+  ModifierGroup:
+    type: object
+    description: |
+      Information about a modifier group configured for this restaurant, including an array of modifier options contained in the group.
+    properties:
+      name:
+        description: |
+          A descriptive name for this modifier group, for example, "Pizza Toppings" or "Salad Dressings".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this modifier group, assigned by the Toast POS system.
+        type: string
+      masterId:
+        $ref: '#/definitions/MasterId'
+      visibility:
+        $ref: '#/definitions/Visibility'
+      pricingStrategy:
+        type: 'string'
+        description: |
+          A string that represents the pricing strategy used for this modifier group.
+
+          If there is no additional charge for the modifier options in this group, or if the modifier options in the group are priced individually, then the `pricingStrategy` value is NONE.
+
+          If the modifier group is priced at the group level and is using the:
+            * Fixed Price pricing strategy, then the `pricingStrategy` value is NONE.
+            * Sequence Price pricing strategy, then the `pricingStrategy` value is SEQUENCE_PRICE.
+            * Size Price pricing strategy, then the `pricingStrategy` value is SIZE_PRICE.
+            * Size/Sequence Price pricing strategy, then the `pricingStrategy` value is SIZE_SEQUENCE_PRICE.
+
+            
+          If the `pricingStrategy` value is NONE,  then the prices for the modifier options in this group are resolved down to the modifier option level and you can retrieve them from the `price` value of the individual <a href="#/definitions/ModifierOption ">`ModifierOption`</a> objects.
+          
+          If the `pricingStrategy` value is SIZE_PRICE, SEQUENCE_PRICE, or SIZE_SEQUENCE_PRICE, then you must use the rules provided in _this modifier group's_ `pricingRules` value to calculate the prices for the modifier options in the group.
+      pricingRules:
+        type: array
+        description: |
+          A <a href="#/definitions/PricingRules">`PricingRules`</a> object with information for calculating the prices for the modifier options contained in this modifier group. You use a modifier group's `pricingRules` object, in conjunction with its `pricingStrategy` value, to calculate prices for the group's modifier options when the group uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.
+          
+          The `pricingRules` object takes different forms depending on the pricing strategy configured for the modifier group. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. If the `pricingStrategy` value is NONE, the `pricingRules` object is null because you can retrieve the price from a <a href="#/definitions/ModifierOption ">`ModifierOption `</a> object's `price` value without additional calculation. For the SIZE_PRICE, SEQUENCE_PRICE, and SIZE_SEQUENCE_PRICE pricing strategies, the `pricingRules` object contains additional values that you use to calculate the modifier option prices.
+
+        items:
+          $ref: '#/definitions/PricingRules'
+      defaultOptionsChargePrice:
+        description: |
+          Indicates whether the prices associated with any default modifiers in this group are added to the cost of the menu items they modify.
+
+          Values are:
+            * NO: The default modifier price is ignored. No change is made to the cost of the menu item.
+            * YES: The default modifier price is added to the menu item price. YES is the default setting for `defaultOptionsChargePrice`.
+
+          For example, consider a scenario where Cheese is a default modifier for a Burger menu item (this means that Cheese is always included as a modifier option when you order a Burger unless it is explicitly removed). The price of the Cheese modifier option is $1 while the price of the Burger is $8. When `defaultOptionsChargePrice` is set to NO, a Burger costs $8 (the Cheese default modifier price is not added to the Burger price). When `defaultOptionsChargePrice` is set to YES, a Burger costs $9 (the Cheese default modifier price is added to the Burger price). If the Cheese default modifier is removed from the Burger menu item, the price of the Burger remains $8. Removing a default modifier from a menu item does not change the menu item’s price, regardless of the `defaultOptionsChargePrice` setting.
+
+          The `defaultOptionsChargePrice` value must be set to NO in order to use substitution pricing. See `defaultOptionsSubstitutionPricing` for more information.
+        type: string
+        enum:
+          - NO
+          - YES
+      defaultOptionsSubstitutionPricing:
+        description: |
+          Indicates whether substitution pricing is enabled for the modifier group.
+
+          In the Toast administrator’s back-end, you must set the `defaultOptionsChargePrice` configuration for a modifier group to NO before you can enable substitution pricing for the group. This means that the costs of default modifiers in the group do not increase the price of the menu items they apply to. These default modifiers continue to have a monetary value, however. By enabling substitution pricing, you are configuring the modifier group so that if any of its default modifiers are removed from a menu item, the monetary value of those default modifiers can be applied to the purchase of other modifier options within the same modifier group (even though the cost of those default modifiers was not explicitly added to the cost of the menu item).
+
+          For example, a guest orders a salad that comes with chicken by default but asks to substitute salmon for the chicken. The price of the chicken option is $7. The price of the salmon option is $9. In this case, the Toast POS system calculates the difference and charges the substitution price of $2 for the salmon (not the regular price of $9).
+
+          Values for `defaultOptionsSubstitutionPricing` include:
+            * YES: Substitution pricing is enabled. Substitution pricing allows a guest to remove one or more default modifiers from a menu item and apply the value of those modifiers toward the purchase of one or more other modifier options in the same modifier group.
+            * NO: Substitution pricing is not enabled. Removing a default modifier from a menu item has no impact on the price of the menu item or on any other modifier options that get added. For example, a guest orders a burger that comes with cheese by default but asks to substitute bacon instead of cheese. The price of the burger is $8. The price of the default cheese modifier is $1 but it is not added to the cost of the burger because `defaultOptionsChargePrice` is set to NO. The price of the bacon modifier option is $3. In this scenario, the customer would pay $11, $8 for the burger and $3 for the bacon. No credit is given for removing the cheese modifier option. `NO` is the default setting for `defaultOptionsSubstitutionPricing`.
+
+          Removing default modifiers from a menu item never reduces the price of the menu item. If you remove the chicken from a $10 salad that includes chicken by default, the price of the salad remains $10. If you remove the chicken and substitute other modifier options that cost less than the chicken, the price of the salad remains $10. If you remove the chicken and replace it with modifier options that cost more than the chicken, the price increases by the difference in modifier option cost if you have substitution pricing enabled.
+        type: string
+        enum:
+          - NO
+          - YES
+      minSelections:
+        type: integer
+        description: |
+          The minimum number of modifier options that a customer can choose from this modifier group.
+
+          If a server is not required to select a modifier option from this modifier group, `minSelections` is set to 0.
+
+          If a server must select a modifier option from this modifier group, `minSelections` must be set to 1 or higher. For example, a Temperature modifier group could be set to 1 to require a server to choose a temperature (Rare, Medium Rare, Medium, or Well Done) when placing a steak order. The orders API rejects an order if it does not follow the `minSelections` requirement for a modifier group.
+
+          The `minSelections` and `maxSelections` values can be used in conjunction with one another. For example, consider the following modifier group configuration:
+
+          * Modifier Group: Cheese
+          * Modifier Options: ( Cheddar, American, Swiss )
+          * maxSelections: 2
+          * minSelections: 1
+
+          With this configuration:
+            * You can select AT MOST two different cheeses from this group to apply to the menu item (the `maxSelections` value).
+            * You must select AT LEAST one cheese from this group to apply to the menu item (the `minSelections` value).
+      maxSelections:
+        type: integer
+        description: |
+          The maximum number of modifier options that a customer can choose from this modifier group. `maxSelections` is null if a customer can choose an unlimited number of modifier options from this modifier group. It is 1 if the modifier group is not enabled for multiple selections. The orders API rejects an order if it does not follow the `maxSelections` requirement for a modifier group.
+
+          The `minSelections` and `maxSelections` values can be used in conjunction with one another. For example, consider the following modifier group configuration:
+
+          * Modifier Group: Cheese
+          * Modifier Options: ( Cheddar, American, Swiss )
+          * maxSelections: 2
+          * minSelections: 1
+
+          With this configuration:
+            * You can select AT MOST two different cheeses from this group to apply to the menu item (the `maxSelections` value).
+            * You must select AT LEAST one cheese from this group to apply to the menu item (the `minSelections` value).
+      requiredMode:
+        description: |
+          Specifies how the modifier group appears and behaves in the Toast POS app. Values include:
+            * REQUIRED: Forces a server to make a selection from the modifier group before continuing to the next screen in the Toast POS app. Note that the orders API rejects an order if a modifier option is not included for a modifier group whose `requiredMode` value is set to REQUIRED.
+            * OPTIONAL FORCE SHOW: Prompts the server to view the modifier group but does not force them to choose a modifier option from it before continuing to the next screen in the Toast POS app. This setting is typically used for upselling.
+            * OPTIONAL: The modifier group does not appear when an associated menu item is selected but the server can access it on the Toast POS app if necessary.
+        type: string
+        enum:
+          - REQUIRED
+          - OPTIONAL_FORCE_SHOW
+          - OPTIONAL
+      isMultiSelect:
+        type: boolean
+        description: |
+          Indicates whether you can select more than one modifier option from this modifier group.
+
+          The `isMultiSelect` value provides similar information to the `maxSelections` value in a different format. If `isMultiSelect` is TRUE, then by definition more than one modifier option can be selected from the modifier group, so `maxSelections` must be greater than 1 or null (a null value indicates that an unlimited number of selections can be made from the modifier group). If `isMultiSelect` is FALSE, then only one modifier option may be selected from the modifier group and the Toast POS system enforces a setting of 1 for `maxSelections`.
+
+          Also, if `isMultiSelect` is FALSE for a modifier group, the Toast POS system enforces a setting of FALSE for the `allowsDuplicates`  value of the group’s modifier options. This prevents more than one instance of a modifier option being selected for the group. Similarly, the orders API rejects any orders that specify more than one modifier option for a modifier group whose `isMultiSelect` value is FALSE.
+      preModifierGroup:
+        description: |
+          A <a href="#/definitions/PreModifierGroup">`PreModifierGroup`</a> object that contains the pre-modifiers that can be applied to this modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.
+        $ref: '#/definitions/PreModifierGroup'
+      modifierOptions:
+        type: array
+        description: |
+          An array of <a href="#/definitions/ModifierOption">`ModifierOption`</a> objects contained in this modifier group.
+        minItems: 0
+        items:
+          $ref: '#/definitions/ModifierOption'
+  ModifierOption:
+    type: object
+    description: |
+      Information about a modifier option configured for this restaurant.
+    properties:
+      entityIdentifier:
+        $ref: '#/definitions/EntityIdentifier'
+      name:
+        description: |
+          A descriptive name for this modifier option, for example, "Cheese" or "Pepperoni".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this modifier option's item reference, assigned by the Toast POS system. For a detailed description of a modifier option's item reference, see <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">Understanding a Modifier Option’s Item Reference</a> in the Toast Administrator's Guide.
+        type: string
+      masterId:
+        $ref: '#/definitions/MasterId'
+      description:
+        description: |
+          An optional short description of this modifier option.
+        type: string
+      image:
+        $ref: '#/definitions/Image'
+      visibility:
+        $ref: '#/definitions/Visibility'
+      price:
+        type: number
+        format: double
+        description: |
+          The price of this modifier option.
+          
+          In the Toast administration back-end, a modifier option may:
+            * Inherit its price from a parent modifier group.
+            * Use the price specified for its modifier option <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a>.
+            * Specify a price that overrides the price defined for its item reference.
+
+          The `price` value is populated differently depending on which of these pricing scenarios is used for the modifier option. The sections below describe how the `price` value is populated in these different scenarios.
+
+          _Note:_ To determine how a modifier option has been priced, you can inspect the modifier option's `pricingStrategy` value. If it is GROUP_PRICE, then the modifier option is inheriting its price from a parent modifier group. If it is any value other than GROUP_PRICE (for example, MENU_SPECIFIC_PRICE or TIME_SPECIFIC PRICE), then the modifier option is using either the price specified for its item reference or an override price (override prices always use the BASE_PRICE strategy).
+
+          _Modifier Option Inherits Its Price from a Parent Modifier Group_
+          
+          If the modifier option inherits its price from a parent modifier group and that group uses the:
+            * Fixed Price pricing strategy, then the modifier option's `price` value is populated with the fixed price specified for the parent modifier group. No additional calculations are required.
+            * Size Price, Sequence Price, or Size/Sequence pricing strategy, then the modifier option's `price` value is null. You must use the _parent modifier group's_ `pricingStrategy` and `pricingRules` values to calculate the modifier option's price.
+
+          _Modifier Option Specifies an Override Price_
+          
+          If the modifier option specifies an override price, the `price` value is set to that override price. No additional calculations are required.
+
+          _Modifier Option Uses the Price from Its Item Reference_
+          
+          If a modifier option uses the price from its underlying item reference, then the `price` value is populated using the same logic as the `price` value for a <a href="#/definitions/MenuItem">`MenuItem`</a> object:
+            * For base prices, the `price` value is populated with the specified base price.
+            * For menu-specific prices, the `price` value is resolved based on the current menu. For example, consider a modifier option that is included in both Lunch and Dinner menus and is priced at $1 for the Lunch menu and $2 for the Dinner menu. In the fully resolved JSON returned by the menus API, this modifier option would appear twice, once as a child of the Lunch menu with a `price` value of $1, and again as a child of the Dinner menu with a `price` value of $2.
+
+            If this same modifier option is added to a Breakfast menu but a menu-specific price is not defined for the Breakfast menu, then the `price` value for the instance of the modifier option that appears in the Breakfast menu JSON is populated with the base price from the menu-specific price configuration. Menu-specific price configurations include a base price that functions as a default price when a menu-specific price cannot be resolved.
+            
+            * For location-specific prices, the `price` value is resolved based on the current location. For example, consider a modifier option that costs $2 in the Boston location and $3 in the New York location. When you retrieve menu data for the Boston location, this modifier option's `price` value is $2. When you retrieve menu data for the New York location, the modifier option's `price` value is $3.
+            * For time-specific prices, the `price` value is populated with the base price that is specified as part of the time-specific price configuration. This base price functions as a default price for the modifier option during times of the day when a time-specific price has not been defined. For example, consider a modifier option that costs $1 from noon to 2pm and $2 during the rest of the day. The `price` value for this item would be $2. You must use _this modifier option's_ `pricingStrategy` and `pricingRules` values to calculate the price of the modifier option during time periods for which a time-specific price has been defined.
+            * For size prices, the `price` value is null. You must use _this modifier option's_ `pricingStrategy` and `pricingRules` values to calculate the price of the modifier option for different sizes.
+            * For open prices, the `price` value is null.
+
+          If the modifier option is priced using a price level, the `price` value reflects the pricing strategy used for the price level, using the same logic described above. For example, consider a price level that applies a size price to the modifier option it is assigned to. In this case, the `price` value for the modifier option is null and you must use this modifier option's `pricingStrategy` and `pricingRules` values to calculate the price of the modifier option for different sizes.
+          _Note:_ For detailed information on modifier option pricing and pricing strategies, see <a href="https://doc.toasttab.com/0IV1p/adminMenuPricing.html">Menu Pricing</a> in the Toast Administrator's Guide.
+      pricingStrategy:
+        type: string
+        description: |
+          A string that indicates how this modifier option has been priced. If `pricingStrategy` is:
+            * GROUP_PRICE, then the modifier option inherits its price from a parent modifier group.
+            * Any value other than GROUP_PRICE (for example, MENU_SPECIFIC_PRICE or TIME_SPECIFIC PRICE), then the modifier option is using either the price specified for its <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> or an override price (override prices always use the BASE_PRICE strategy).
+
+          If the modifier option is using the price of its underlying item reference, and that item reference is priced using the Location Specific Price pricing strategy, then the `pricingStrategy` value indicates which pricing strategy is used at the current location. For example, consider a modifier option that uses a menu-specific price at the Boston location and a base price at the New York location. When you retrieve the menu data for the Boston location, the `pricingStrategy` for the modifier option is MENU_SPECIFIC_PRICE. When you retrieve menu data for the New York location, the `pricingStrategy` for the modifier option is BASE_PRICE.
+
+          If the modifier option is using the price of its underlying item reference, and that item reference is priced using a price level, then the `pricingStrategy` value indicates which pricing strategy is used for that price level. For example, if the "Special Toppings" price level uses a time-specific price, then the `pricingStrategy` value for a modifier option that is assigned the "Special Toppings" price level is TIME_SPECIFIC_PRICE.
+
+          It is important to understand which `pricingRules` object to use when modifier option prices must be calculated. If the `pricingStrategy` value is:
+            * BASE_PRICE or MENU_SPECIFIC_PRICE,  then you can retrieve the modifier option's price from its `price` value. No additional calculations are required.
+            * GROUP_PRICE, then you must use the `pricingStrategy` and `pricingRules` values from _the modifier option's parent modifier group_ to calculate the modifier option's price.
+            * TIME_SPECIFIC_PRICE or SIZE_PRICE, then you must use the rules provided in _this modifier option's_ `pricingRules` value to calculate the price for the modifier option.
+      pricingRules:
+        type: array
+        description: |
+          A <a href="#/definitions/PricingRules">`PricingRules`</a> object with information about how to calculate the price for this modifier option. You use a modifier option's `pricingRules` object, in conjunction with its `pricingStrategy` value, to calculate a price for the modifier option when the modifier option is _individually priced_ and its `price` value is null.
+
+          _Note:_ If the modifier option is priced at the group level, you must use the `pricingRules` object of its parent modifier group to calculate its price. A modifier option is priced at the group level if its `pricingStrategy` value is GROUP_PRICE.
+
+          The `pricingRules` object takes different forms depending on the pricing strategy configured for the modifier option. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. For the BASE_PRICE, and MENU_SPECIFIC_PRICE pricing strategies, the `pricingRules` object is null because you can retrieve the price from the `price` value without additional calculation. For the OPEN_PRICE pricing strategy, the `pricingRules` object is also null (the price of a modifier option whose item reference uses the Open Price pricing strategy is specified at the time that the modifier option is ordered). For the TIME_SPECIFIC_PRICE and SIZE_PRICE pricing strategies, the `pricingRules` object contains additional values that you use to calculate the modifier option's price.
+        items:
+          $ref: '#/definitions/PricingRules'
+      salesCategory:
+        $ref: '#/definitions/SalesCategory'
+      taxInfo:
+        type: array
+        description: |
+          The GUIDs of the tax rates that apply to this modifier option. Note that, in the fully resolved JSON, modifier options inherit their tax rates from the menu items they have been applied to. In other words, the Toast POS system ignores any tax rates specified for a modifier option's <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> and uses the tax rates from the menu items the modifier options have been applied to instead. To retrieve full configuration data for a <a href="https://doc.toasttab.com/Ie5QH/apiConfigApiReference.html#/definitions/TaxRate">tax rate</a>, use the <a href="https://doc.toasttab.com/Ie5QH/apiConfigApiReference.html#path--taxRates--guid-">/taxRates/{guid}</a> endpoint in the configuration API.
+          
+          _Important:_ The taxInfo value is intended to help you display prices but the `/prices` endpoint of the orders API is the only supported way to determine the prices of orders that you submit to the orders API. See <a href="https://doc.toasttab.com/Ie5QH/apiGettingCheckPrices.html">Getting Check Prices</a> for more information.
+        items:
+          type: string
+      itemTags:
+        type: array
+        description: |
+          An array of <a
+          href="#/definitions/ItemTag">`ItemTag`</a> objects that are assigned to this modifier option. Item tags are used to assign identifying characteristics to a modifier option, for example, vegetarian, gluten-free, alcohol.
+        items:
+          $ref: '#/definitions/ItemTag'
+      plu:
+        type: string
+        description: |
+          The price lookup (PLU) code for this modifier option. The PLU code can contain both numbers and letters. This value contains an empty string if a PLU code has not been defined.
+      sku:
+        type: string
+        description: |
+          The stock keeping unit (SKU) identifier for this modifier option. The SKU identifier can contain both numbers and letters. This value contains an empty string if a SKU has not been defined.
+      calories:
+        type: integer
+        description: |
+          The number of calories in this modifier option. The calories value can be any positive or negative integer, or zero. This value is null if a calories amount has not been configured for the modifier option.
+      unitOfMeasure:
+         type: string
+         enum:
+           - NONE
+           - LB
+           - OZ
+           - KG
+           - G
+         description:
+           The unit of measure used to determine the price of the modifier option. For example, $10.00 per gram.
+      isDefault:
+        type: boolean
+        description: |
+          Indicates whether this modifier option is included on the menu item by default.
+
+          _Important:_ If a menu item is configured to use default modifiers and you submit an order to the orders API for that menu item but you omit those default modifiers, then the Toast POS system assumes you want to omit the default modifiers and they will not be included in the order. For example, consider a Burger menu item that has Lettuce and Tomato as default modifiers. If you submit an order to the orders API for the Burger menu item but omit the Lettuce and Tomato default modifiers in the request, the order ticket will include the Burger but not the Lettuce and Tomato modifier options.
+      allowsDuplicates:
+        type: boolean
+        description: |
+          Indicates whether the modifier option may be added to a menu item multiple times.
+          
+          If a modifier option belongs to a modifier group whose `isMultiSelect` value is FALSE, then the Toast POS system sets the modifier option’s `allowsDuplicates` value to FALSE to prevent more than one modifier option being selected for the group.
+      portions:
+        type: array
+        description: |
+          An array of <a href="#/definitions/Portion">`Portion`</a> objects that define the portions that this modifier option can be added to. For example, for a pizza menu item, you could define 1st Half and 2nd Half portions and this modifier option could be added to either portion. See <a href="https://doc.toasttab.com/0IV1p/adminUsingPortions.html">Using Portions</a> in the Toast Administrator's Guide for more information.
+        minItems: 0
+        items:
+          $ref: '#/definitions/Portion'
+      modifierGroups:
+        type: array
+        description: |
+          An array of the <a href="#/definitions/ModifierGroup">`ModifierGroup`</a> objects contained in this modifier option. This value is populated when a modifier option contains nested modifiers. For example, you can have an entree that has a Sides modifier group that contains a Salad modifier option. The Salad modifier option has its own modifier group, Salad Dressing, that includes Ranch, Vinaigrette, and Blue Cheese modifier options. The salad dressings are nested modifier options.
+        minItems: 0
+        items:
+          $ref: '#/definitions/ModifierGroup'
+  PreModifierGroup:
+    type: object
+    description: |
+      Information about a pre-modifier group configured for this restaurant, including an array of pre-modifiers contained in the group.
+    properties:
+      name:
+        type: string
+        description: |
+          A descriptive name for this pre-modifier group, for example, "Sandwich Pre-mods".
+      guid:
+        description: |
+          A unique identifier for this pre-modifier group, assigned by the Toast POS system.
+        type: string
+      preModifiers:
+        description: |
+          An array of <a href="#/definitions/PreModifier">`PreModifier`</a> objects that are contained in this pre-modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.
+        type: array
+        items:
+          $ref: '#/definitions/PreModifier'
+  PreModifier:
+    type: object
+    description: |
+      Information about a pre-modifier configured for this restaurant.
+    properties:
+      name:
+        type: string
+        description: |
+          A descriptive name for this pre-modifier, for example, "NO" or "EXTRA".
+      guid:
+        description: |
+          A unique identifier for this pre-modifier group, assigned by the Toast POS system.
+        type: string
+      fixedPrice:
+        description: |
+          An optional fixed price for this pre-modifier. The fixed price is added to the cost of the modifier option that the pre-modifier is applied to.
+          
+          A PreModifier object has two optional values, `fixedPrice` and `multiplicationFactor`, that both alter the price of a modifier option when the pre-modifier is applied to it. However, these values cannot be used at the same time. If you specify a `fixedPrice` value for a premodifier, then `multiplicationFactor` is null. If you specify a `multiplicationFactor` for a pre-modifier, then `fixedPrice` is null. If you choose not to assign either a fixed price or a multiplication factor to a pre-modifier, then the `fixedPrice` value is 0 and the `multiplicationFactor` is null.
+        type: number
+        format: double
+      multiplicationFactor:
+        description: |
+          An optional number that specifies how much the cost of a modifier option is multiplied by when this pre-modifier is applied to it. For example, an EXTRA pre-modifier option could specify a `multiplicationFactor` of 1.5 to indicate that adding extra cheese to a menu item costs one and a half times the regular price of the cheese modifier option.
+          
+          A PreModifier object has two optional values, `fixedPrice` and `multiplicationFactor`, that both alter the price of a modifier option when the pre-modifier is applied to it. However, these values cannot be used at the same time. If you specify a `fixedPrice` value for a premodifier, then `multiplicationFactor` is null. If you specify a `multiplicationFactor` for a premodifier, then `fixedPrice` is null. If you choose not to assign either a fixed price or a multiplication factor to a pre-modifier, then the `fixedPrice` value is 0 and the `multiplicationFactor` is null.
+        type: number
+        format: double
+      displayMode:
+        description: |
+          A string that indicates how the pre-modifier is displayed on tickets and receipts:
+            * PREFIX: The pre-modifier name is placed before the modifier option name, for example, "EXTRA Cheese".
+            * SUFFIX: The pre-modifier name is placed after the modifier option name, for example, "Cheese EXTRA".
+        type: string
+        enum:
+          - PREFIX
+          - SUFFIX
+  SalesCategory:
+    type: object
+    description: |
+      A descriptive category, for example, "Food" or "Liquor" that, when applied to the menu items and modifier options in your menu, allow you to view sales data by category. Null if no sales category has been defined.
+    properties:
+      name:
+        description: |
+          A descriptive name for this sales category, for example, "Food" or "Liquor".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this sales category, assigned by the Toast POS system.
+        type: string
+  ItemTag:
+    type: object
+    description: |
+      A descriptive term that identifies a characteristic of a menu item or menu group, for example, vegetarian, gluten-free, or alcohol.
+    properties:
+      name:
+        description: |
+          A descriptive name for this item tag, for example, "Vegetarian" or "Alcohol".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this item tag category, assigned by the Toast POS system.
+        type: string
+  Portion:
+    type: object
+    description: |
+      A container for the modifier groups that can be applied to a portion of a menu item.
+    properties:
+      name:
+        description: |
+          A descriptive name for this portion, for example, "1st Half" or "2nd Half".
+        type: string
+      guid:
+        description: |
+          A unique identifier for this portion, assigned by the Toast POS system.
+        type: string
+      modifierGroups:
+        type: array
+        description: |
+          An array of <a href="#/definitions/ModifierGroup">`ModifierGroup`</a> objects that represent the modifier groups that can be added to this portion. For example, if the modifiers in a Toppings modifier group can be added to this portion, then the Toppings modifier group would appear in this array.
+        minItems: 0
+        items:
+          $ref: '#/definitions/ModifierGroup'
+  Availability:
+    type: object
+    description: |
+      Information about when a menu is available for use.
+    properties:
+      alwaysAvailable:
+        type: boolean
+        description: |
+          Indicates whether this menu is available 24 hours per day, 7 days a week. If `alwaysAvailable` is FALSE, then a `schedule` value is included in the `Availability` object to define the specific times and days a menu is available. If `alwaysAvailable` is TRUE, then the `schedule` value is omitted. 
+      schedule:
+        type: array
+        description: |
+          An array of <a href="#/definitions/Schedule">`Schedule`</a> objects that indicate the specific days and times a menu is available. If `alwaysAvailable` is TRUE, then the menu is available 24 hours per day, 7 days per week, and this `schedule` value is omitted from the `Availabilty` object.
+        items:
+          $ref: '#/definitions/Schedule'
+  Schedule:
+    type: object
+    description: |
+      A multi-use object that is used to:
+
+      * Define when a menu is available.
+      * Define when a time-specific price is available for a menu item or modifier option.
+      
+      A `Schedule` object defines a set of days of the week and a set of time ranges for those days. Days that have identical time ranges are grouped into a single `Schedule` object, for example, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, and FRIDAY in the example below have identical time ranges and are in the same `Schedule` object while SATURDAY and SUNDAY are in a separate `Schedule` object because their time ranges differ from the weekday time ranges.
+      
+      ```
+      "availability": {
+        "alwaysAvailable": false,
+        "schedule": [
+          {
+            "days": [
+              "MONDAY", 
+              "TUESDAY", 
+              "WEDNESDAY", 
+              "THURSDAY"
+            ],
+            "timeRanges": [
+              {
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          {
+            "days": [
+              "FRIDAY", 
+              "SATURDAY"
+            ],
+            "timeRanges": [
+              {
+                "start": "09:00",
+                "end": "18:00"
+              },
+              {
+                "start": "20:00",
+                "end": "23:00"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      
+      Time ranges are in 24-hour HH:MM format.
+      
+      If a day is not represented in the `Schedule` objects, the menu or time-specific price is not available on that day.      
+    properties:
+      days:
+        type: array
+        description: |
+          An array of days of the week that are associated with identical time ranges. The time ranges are defined in a corresponding `timeRanges` value. Names of the days are in upper case, for example, MONDAY.
+        items:
+          type: string
+          description: A day of the week, for example, SUNDAY or THURSDAY.
+          enum:
+            - SUNDAY
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+      timeRanges:
+        type: array
+        description: |
+          An array of <a href="#/definitions/TimeRange">`TimeRange`</a> objects that define the time ranges that a menu or a time-specific price is available on the days defined by the corresponding `days` value. A `TimeRange` object contains a `start` time and an `end` time, expressed in the restaurant’s local time. If both the `start` and `end` times for a given day are 00:00, it indicates that the menu or the time-specific price is available 24 hours on the associated days. Time ranges may also run overnight, for example, a time range that starts at "07:00" and ends at "03:00" runs from 7am until 3am the next day. 
+        items:
+          $ref: '#/definitions/TimeRange'
+  TimeRange:
+    type: object
+    description: |
+      Represents a time range for when a menu or a time-specific price is available.
+    properties:
+      start:
+        type: string
+        description: |
+          The start time of the time range. Expressed in the restaurant’s local time.
+      end:
+        type: string
+        description: |
+          The end time of the time range. Expressed in the restaurant’s local time.
+  PricingRules:
+    type: object
+    description: |
+      The PricingRules object is a multi-use object that provides pricing rules for:
+        * A menu item or modifier option <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> that uses the Time Specific Price or Size Price pricing strategy.
+        * A modifier group that uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.
+    properties:
+      timeSpecificPricingRules:
+        description: |
+          An array of <a href="#/definitions/TimeSpecificPrice">`TimeSpecificPrice`</a> objects that define the time-specific prices for a menu item or modifier option <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> that uses the Time Specific Price pricing strategy. If the menu item or modifier option item reference does not use time-specific prices, this array is empty.
+        type: array
+        items:
+          $ref: '#/definitions/TimeSpecificPrice'
+      sizeSpecificPricingGuid:
+        description: |
+          The GUID of a Size modifier group that defines sizes and prices for a menu item or a modifier option <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> that uses the Size Price pricing strategy.
+
+          If the menu item or modifier option item reference does not use the Size Price pricing strategy, then `sizeSpecificPricingGuid` is null.
+
+          The Toast POS system automatically creates a Size modifier group when you choose the Size Price pricing strategy for a menu item or modifier option item reference and stores the sizes and prices you specify in it. You use the `sizeSpecificPricingGuid` value to locate the correct Size modifier group to use when pricing a menu item or modifier option item reference that uses size pricing. In the JSON fragment below, you can see that the Cheese Pizza menu item uses the SIZE_PRICE pricing strategy and the Size modifier group where the sizes and prices for Cheese Pizza are defined has a GUID that ends in `f7fd`.
+          
+          ```
+            "menuGroups": [
+              {
+                "name": "Pizza",
+                "guid": "96dad49f-f053-491b-9796-6a7f4cf3cfc6",
+                ...
+                "menuItems": [
+                  {
+                    ...
+                    "name": "Cheese Pizza",
+                    "guid": "d14a1b24-beab-4f99-a34a-ab6d56d99e6c",
+                    ...
+                    "price": null,
+                    "pricingStrategy": "SIZE_PRICE",
+                    "pricingRules": {
+                      "timeSpecificPricingRules": [],
+                      "sizeSpecificPricingGuid": "18e1f3d7-f303-4dcf-9b81-cc9e688df7fd",
+                      "sizeSequencePricingRules": []
+                    },
+                    ...
+                    "modifierGroups": [
+                      {
+                        "name": "Size",
+                        "guid": "18e1f3d7-f303-4dcf-9b81-cc9e688df7fd",
+                        ...
+                        "pricingStrategy": "NONE",
+                        "pricingRules": null,
+                        ...
+                        "modifierOptions": [
+                          {
+                            ...
+                            "name": "Small",
+                            "guid": "e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b",
+                            ...
+                            "price": 8,
+                            "pricingStrategy": "BASE_PRICE",
+                            "pricingRules": null,
+                            ...
+                          },
+                          {
+                            ...
+                            "name": "Large",
+                            "guid": "0e206b2d-72ab-46d1-b273-a5425cbef9a5",
+                            ...
+                            "price": 10,
+                            "pricingStrategy": "BASE_PRICE",
+                            "pricingRules": null,
+                            ...
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Toppings",
+                        "guid": "bedc755f-64d1-4aaf-96fb-66975f15a6a9",
+                        ...
+
+                      },
+                    ]
+                  }
+                ]
+              }
+            ]
+          ```
+
+            
+          When the `PricingRules` object appears in the context of a modifier group, the `sizeSpecificPricingGuid` value it contains is also used to find matching sizes between menu items and any modifier options that use the Size Price or Size/Sequence Pricing pricing strategies (for example, toppings on a small pizza cost $1 while toppings on a large pizza cost $2). In this scenario, the Toast POS system locates the modifier option size that matches the menu item size and uses the price defined for that size of the modifier option. The sizes for the menu item are defined in the Size modifier group specified by the `sizeSpecificPricingGuid` value. The sizes for the modifier options are defined in objects contained in the `sizeSequencePricingRules` array that is contained in the modifier group's `PricingRules` object. Sizes are considered matching when their names are identical. See “Pricing Strategies” in the Toast Administrator’s Guide (https://doc.toasttab.com/0IV1p/adminPricingStrategies.html) for detailed information on the Size Price and Size/Sequence Price pricing strategies.
+
+          In the example below, the Cheese Pizza menu item and the Toppings modifier group use the SIZE_PRICE pricing strategy. The menu item sizes and prices are defined in the Size modifier group with a GUID ending in `f7fd`. The sizes and prices for the modifier options are defined in the `sizeSequencePricingRules` value that is a child of the Toppings modifier group.
+          
+          ```
+          "menuGroups": [
+              {
+                "name": "Pizza",
+                "guid": "96dad49f-f053-491b-9796-6a7f4cf3cfc6",
+                ...
+                "menuItems": [
+                  {
+                    ...
+                    "name": "Cheese Pizza",
+                    "guid": "d14a1b24-beab-4f99-a34a-ab6d56d99e6c",
+                    ...
+                    "price": null,
+                    "pricingStrategy": "SIZE_PRICE",
+                    "pricingRules": {
+                      "timeSpecificPricingRules": [],
+                      "sizeSpecificPricingGuid": "18e1f3d7-f303-4dcf-9b81-cc9e688df7fd",
+                      "sizeSequencePricingRules": []
+                    },
+                    ...
+                    "modifierGroups": [
+                      {
+                        "name": "Size",
+                        "guid": "18e1f3d7-f303-4dcf-9b81-cc9e688df7fd",
+                        ...
+                        "pricingStrategy": "NONE",
+                        "pricingRules": null,
+                        ...
+                        "modifierOptions": [
+                          {
+                            ...
+                            "name": "Small",
+                            "guid": "e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b",
+                            ...
+                            "price": 8,
+                            "pricingStrategy": "BASE_PRICE",
+                            "pricingRules": null,
+                            ...
+                          },
+                          {
+                            ...
+                            "name": "Large",
+                            "guid": "0e206b2d-72ab-46d1-b273-a5425cbef9a5",
+                            ...
+                            "price": 10,
+                            "pricingStrategy": "BASE_PRICE",
+                            "pricingRules": null,
+                            ...
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Toppings",
+                        "guid": "75342891-1190-4331-b89c-da1b7c308bc8",
+                        ...
+                        "pricingStrategy": "SIZE_PRICE",
+                        "pricingRules": {
+                          "timeSpecificPricingRules": [],
+                          "sizeSpecificPricingGuid": "18e1f3d7-f303-4dcf-9b81-cc9e688df7fd",
+                          "sizeSequencePricingRules": [
+                            {
+                              "sizeName": "Small",
+                              "sizeGuid": "e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b",
+                              "sequencePrices": [
+                                {
+                                  "sequence": 1,
+                                  "price": 2
+                                }
+                              ]
+                            },
+                            {
+                              "sizeName": "Large",
+                              "sizeGuid": "0e206b2d-72ab-46d1-b273-a5425cbef9a5",
+                              "sequencePrices": [
+                                {
+                                  "sequence": 1,
+                                  "price": 4
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        ...
+                        "modifierOptions": [
+                          {
+                            ...
+                            "name": "Mushrooms",
+                            "guid": "0d8fb763-94e0-4d0e-a3da-aa74c9c9331f",
+                            ...
+                            "price": null,
+                            "pricingStrategy": "GROUP_PRICE",
+                            "pricingRules": null,
+                            ...
+                          },
+                          {
+                            ...
+                            "name": "Onions",
+                            "guid": "afee6be7-8280-4c69-a170-9fdf4c76bf7b",
+                            ...
+                            "price": null,
+                            "pricingStrategy": "GROUP_PRICE",
+                            "pricingRules": null,
+                            ...
+                          }
+                        ]
+                      },
+                    ]
+                  }
+                ]
+              }
+            ]
+          ```       
+        type: string
+      sizeSequencePricingRules:
+        type: array
+        description: |
+          An array of <a href="#/definitions/SizeSequencePricingRule">`SizeSequencePricingRule`</a> objects that define the prices for the modifier options in a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Pricing pricing strategy. If the modifier group does not use one of these pricing strategies, this array is empty.
+        items:
+          $ref: '#/definitions/SizeSequencePricingRule'
+  TimeSpecificPrice:
+    type: object
+    description: |
+      Represents the pricing rules for a menu item that uses a time-specific price.
+    properties:
+      timeSpecificPrice:
+        type: number
+        format: double
+        description: |
+          The price of the menu item during the periods of time defined by the associated `schedule` array.
+      basePrice:
+        type: number
+        format: double
+        description: |
+          The base price of the menu item, used for time periods when a time-specific price has not been defined.
+      schedule:
+        type: array
+        description: |
+            An array of <a href="#/definitions/Schedule">`Schedule`</a> objects that indicate the specific days and times that a time-specific price is available.
+        items:
+          $ref: '#/definitions/Schedule'
+  SizeSequencePricingRule:
+    type: object
+    description: |
+      A multi-use object that defines the pricing rules for modifier options that belong to a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy. The contents of this object depend on the pricing strategy that is in effect.
+    properties:
+      sizeName:
+        type: string
+        description: |
+          A string that represents the size of a modifier option in this modifier group, for example, Small, Medium, or Large.
+
+          With Size Price and the Size/Sequence Price pricing strategies, the price of a modifier option changes based on the size of the menu item it is applied to, for example, a topping costs $1 on a small pizza and $2 on a large pizza. To determine which size and size-based price to use for a modifier option, the Toast POS system matches the size name of the modifier option to the size name of the menu item. For example, the Small size of a modifier option would match the Small size of a menu item. The `sizeName` value of the `SizeSequencePricingRule` object represents the modifier option size while the `sizeGuid` value represents the matching menu item size.
+
+          The Toast POS system does allow a configuration where the size of the modifier option is specified independently from the size of the menu item it applies to. In this scenario, you could order a Large menu item and apply a Small size of the modifier option to it. This configuration is unusual but the menus API supports it. When this configuration is in use, the `sizeName` value is populated with the modifier option size but the `sizeGuid` value that represents the menu item size will be null because there is no matching menu item size.
+
+          The `sizeName` value is null if the modifier group uses the Sequence Price pricing strategy because this strategy does not use sizes.
+
+          See <a href="https://doc.toasttab.com/0IV1p/adminPricingStrategies.html">Pricing Strategies</a> in the Toast Administrator’s Guide for detailed information on the Size Price, Sequence Price, and Size/Sequence Price pricing strategies.
+      sizeGuid:
+        type: string
+        description: |
+          The GUID of the modifier option where a menu item size has been defined that matches the `sizeName` value. For example, if a menu item has Small and Large sizes, those sizes are represented in a Size modifier group with a Small modifier option and a Large modifier option. It is the GUID of one of those size modifier options that appears in this value. If the `sizeName` value is Small, then the `sizeGuid` value would contain the Small modifier option’s GUID.
+
+          With Size Price and the Size/Sequence Price pricing strategies, the price of a modifier option changes based on the size of the menu item it is applied to, for example, a topping costs $1 on a small pizza and $2 on a large pizza. To determine which size and size-based price to use for a modifier option, the Toast POS system matches the size name of the modifier option to the size name of the menu item. For example, the Small size of a modifier option would match the Small size of a menu item. The `sizeName` value represents the modifier option size while the `sizeGuid` value represents the matching menu item size.
+
+          The Toast POS system does allow a configuration where the size of the modifier option is specified independently from the size of the menu item it applies to. In this scenario, you could order a Large menu item and apply a Small size of the modifier option to it. This configuration is unusual but the menus API supports it. When this configuration is in use, the `sizeName` value is populated with the modifier option size but there is no corresponding `sizeGuid` for the menu item size.
+
+          The `sizeGuid` value is null if the modifier group uses the Sequence Price pricing strategy because this strategy does not use sizes.
+          
+          See <a href="https://doc.toasttab.com/0IV1p/adminPricingStrategies.html">Pricing Strategies</a> in the Toast Administrator’s Guide for detailed information on the Size Price, Sequence Price, and Size/Sequence Price pricing strategies. 
+      sequencePrices:
+        type: array
+        description: |
+          An array of <a href="#/definitions/SequencePrices">`SequencePrices`</a> objects that define the size, sequence, or size/sequence prices for the modifier options in this modifier group.
+
+          Because they are multi use objects, the `SequencePrices` objects always contain `sequence` and `price` values for all three pricing strategies. However, the `sequence` is always 1 for the Size Price pricing strategy because only one price is defined per size for that strategy. For example, the `sequencePrices` value for a modifier group priced using the Size Price pricing strategy looks similar to the following:
+          ```
+          "sizeSequencePricingRules": [
+                {
+                  "sizeName": "Small",
+                  "sizeGuid": "e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b",
+                  "sequencePrices": [
+                    {
+                      "sequence": 1,
+                      "price": 2
+                    }
+                  ]
+                },
+                {
+                  "sizeName": "Large",
+                  "sizeGuid": "0e206b2d-72ab-46d1-b273-a5425cbef9a5",
+                  "sequencePrices": [
+                    {
+                      "sequence": 1,
+                      "price": 4
+                    }
+                  ]
+                }
+              ]
+          ```             
+
+          The modifier options in this group cost $2.00 for the Small size and $4.00 for the Large size.
+
+          The `sequencePrices` value for a modifier group priced using the Sequence Price pricing strategy looks like this:
+          ```
+          "sizeSequencePricingRules": [
+                {
+                  "sizeName": null,
+                  "sizeGuid": null,
+                  "sequencePrices": [
+                    {
+                      "sequence": 1,
+                      "price": 1
+                    },
+                    {
+                      "sequence": 2,
+                      "price": 2
+                    },
+                    {
+                      "sequence": 3,
+                      "price": 2.5
+                    }
+                  ]
+                }
+              ]
+          ```
+
+          The first modifier option in this group costs $1.00, the second modifier option costs $2.00, and any additional modifier options from this group costs $2.50.
+
+          The `sequencePrices` value for a modifier group using the Size/Sequence Price pricing strategy looks like this:
+          ```
+          "sizeSequencePricingRules": [
+                {
+                  "sizeName": "Small",
+                  "sizeGuid": "e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b",
+                  "sequencePrices": [
+                    {
+                      "sequence": 1,
+                      "price": 1
+                    },
+                    {
+                      "sequence": 2,
+                      "price": 2
+                    }
+                  ]
+                },
+                {
+                  "sizeName": "Large",
+                  "sizeGuid": "0e206b2d-72ab-46d1-b273-a5425cbef9a5",
+                  "sequencePrices": [
+                    {
+                      "sequence": 1,
+                      "price": 3
+                    },
+                    {
+                      "sequence": 2,
+                      "price": 4
+                    }
+                  ]
+                }
+              ]
+          ```
+
+          The first modifier option on a Small menu item costs $1.00 and additional modifier options on a Small cost $2.00, while the first modifier option on a Large menu item costs $3.00 and additional modifier options on a Large cost $4.00.
+        items:
+          $ref: '#/definitions/SequencePrice'
+  SequencePrice:
+    type: object
+    description: |
+      Defines the size, sequence, or size/sequence prices for modifier options contained in a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.
+    properties:
+      sequence:
+        type: integer
+        format: int32
+        description: |
+          Specifies the order of the prices.
+
+          For modifier groups that use the Size Price pricing strategy, the `sequence` is always 1 because only one price is defined per size for that strategy.
+
+          For modifier groups that use the Sequence Price or Size/Sequence Price pricing strategy, this value starts at 1 and increases with each successive price in the sequence. For example, in the JSON snippet below, `"sequence":1` defines the first price in the sequence and `"sequence":2` defines the second price in the sequence.
+          ```
+          "sequencePrices": [
+                    {
+                      "sequence": 1,
+                      "price": 3
+                    },
+                    {
+                      "sequence": 2,
+                      "price": 4
+                    }
+                  ]
+          ```
+      price:
+        type: number
+        format: double
+        description: |
+          The price for a modifier option when it is ordered at the specified point in the sequence.
+  Image:
+    type: string
+    description: |
+          The URL to an image that has been uploaded for this menu entity. This value is null if no image has been specified.
+  Visibility:
+    type: array
+    description: |
+      An array of strings that indicate where this menu entity is visible:
+        * POS: The menu entity is visible in the Toast POS app.
+        * KIOSK: The menu entity is visible on a Toast kiosk.
+        * GRUBHUB: The menu entity is included during a menu sync to Grubhub and will be visible on the Grubhub online ordering service after a menu sync has completed. Note that if, during the menu sync process, the Toast POS system determines that this menu entity is invalid for any reason, the menu entity will not sync to Grubhub even if the `visibility` array includes the GRUBHUB string. For detailed information on the Grubhub integration, see <a href="https://doc.toasttab.com/0IV1p/adminGrubhub.html">Grubhub</a> in the Toast Administrator’s Guide.
+        * TOAST_ONLINE_ORDERING: The menu entity is visible in the Toast online ordering site for this restaurant.
+      The `visibility` array is empty if the menu entity is hidden.
+    items:
+      type: string
+      enum:
+        - POS
+        - KIOSK
+        - GRUBHUB
+        - TOAST ONLINE ORDERING
+  MasterId:
+    type: integer
+    format: int64
+    description: |
+      An identifier that is used to identify and consolidate menu entities that are versions of each other. This identifier is not unique. In restaurants that use the enterprise module, menu entities that have the same `masterId` are versions of the same menu entity. Versioned menu entities share the majority of, but not all of, their data. For example, you could have two versions of a Breakfast menu, one for the Boston location and another for the New York City location. You use the `masterId` to find related menu entity versions.
+
+      The Toast POS system ensures that, once a `masterId` value has been assigned to a set of versions within a management group, that `masterId` is not used for any other version sets in the same management group. It does not guarantee, however, that the `masterId` will not be used by another management group, to identify a set of versions within it.
+
+      While the `masterId` value is always populated, it is only useful for restaurants that have the enterprise module enabled and that share menu data across multiple locations. You can ignore this value for restaurants that do not use the enterprise module.
+
+      For detailed information on the enterprise module and versioning, see <a href="https://doc.toasttab.com/0IV1p/sharingMenusAndOtherInformationAmongRestaurants.html">Enterprise Restaurant Chains</a> in the Toast Administrator’s Guide.
+  EntityIdentifier:
+    type: string
+    description: |
+      The `entityIdentifier` value is a unique identifier for a specific instance of a menu item, modifier group, or modifier option in the fully resolved menu JSON. It is possible for a menu item, modifier group, or modifier option to appear multiple times in the same menu JSON, for example, if the menu item, modifier group, or modifier option exists in more than one menu. Each instance has the same `guid` value, so the `entityIdentifier` is used to distinguish between the multiple instances in the returned JSON. For detailed information about this value, see <a href="https://doc.toasttab.com/Ie5QH/apiUnderstandingGuidsEntityIdentifiersAndMasterIds.html">Understanding GUIDs, entityIdentifiers, and masterIds</a> in the Toast API Developer's Guide.
+paths:
+  /menus:
+    get:
+      summary: Returns menu information for the specified restaurant.
+      description: |
+        Returns all menus for the specified restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier for the restaurant.
+          in: header
+          required: true
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Restaurant'
+  /metadata:
+    get:
+      summary: Gets metadata for the menu of the specified restaurant, including the last time the menu's JSON was updated.
+      description: |
+        A lightweight endpoint that allows you to determine if a restaurant's menu data has been updated. Toast support strongly recommends that you do not make a call to the `/menus` endpoint unless the date and time returned by the `/metadata` endpoint is more recent than the `lastUpdated` date and time. While this recommendation applies to all clients of the menus API, it is particularly important for clients that have limited bandwidth.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier for the restaurant.
+          in: header
+          required: true
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Metadata'

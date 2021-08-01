@@ -1,0 +1,248 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Toast Partners API
+  contact:
+    name: Toast API Support
+    email: developer-support@toasttab.com
+schemes:
+  - https
+basePath: /partners/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  PartnerAccessExternalRep:
+    type: object
+    description: |
+      Information about a Toast POS system restaurant.
+    properties:
+      restaurantGuid:
+        type: string
+        format: uuid
+        description: |
+          The unique Toast POS identifier for the restaurant.
+      managementGroupGuid:
+        type: string
+        format: uuid
+        description: |
+          The guid of the management group containing the restaurant.
+      restaurantName:
+        type: string
+        description: |
+          The human-readable name of the restaurant location.
+      locationName:
+        type: string
+        description: |
+          The identifier of a specific restaurant location, set on the 
+          *Restaurant Info* page of the Toast administration back-end. 
+          For example, a restaurant group might assign a location code 
+          such as #1234 to a specific location.
+      createdByEmailAddress:
+        type: string
+        description: |
+          The email address of the restaurant employee who connected 
+          the restaurant to the partner that made the request to the 
+          `/restaurants` endpoint, or who edited the connection 
+          details.
+      externalGroupRef:
+        type: string
+        description: |
+          An identifier for the restaurant group that is recognized by 
+          the the partner that made the request to the `/restaurants` 
+          endpoint. This information is entered by the restaurant 
+          administrator. If you need information about the restaurant 
+          group in this data string, you instruct the restaurant 
+          administrator to enter it in the Toast POS system 
+          configuration for the integration partner connection.
+      externalRestaurantRef:
+        type: string
+        description: |
+          An identifier for the restaurant location that is recognized 
+          by the partner that made the request to the `/restaurants` 
+          endpoint. This information is entered by the restaurant 
+          administrator. If you need information about the restaurant 
+          location in this data string, you instruct the restaurant 
+          administrator to enter it in the Toast POS system 
+          configuration for the integration partner connection.
+      modifiedDate:
+        type: string
+        format: date-time
+        description: |
+          The most recent date and time that the partner connection
+          was edited in epoch time (milliseconds since 1970-01-01 00:00:00).
+      createdDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time that the partner connection was created in epoch time (milliseconds since 1970-01-01 00:00:00).
+      isoModifiedDate:
+        type: string
+        description: |
+          The most recent date and time that the partner connection
+          was edited in ISO8601 format.
+      isoCreatedDate:
+        type: string
+        description: |
+          The date and time that the partner connection was created in ISO8601 format.
+
+  PartnerAccessExternalWebhookRep:
+    type: object
+    description: |
+      Information about a Toast POS system restaurant.
+    properties:
+      restaurantGuid:
+        type: string
+        format: uuid
+        description: |
+          The unique Toast POS identifier for the restaurant.
+      managementGroupGuid:
+        type: string
+        format: uuid
+        description: |
+          The guid of the management group containing the restaurant.
+      restaurantName:
+        type: string
+        description: |
+          The human-readable name of the restaurant location.
+      locationName:
+        type: string
+        description: |
+          The identifier of a specific restaurant location, set on the
+          *Restaurant Info* page of the Toast administration back-end.
+          For example, a restaurant group might assign a location code
+          such as #1234 to a specific location.
+      externalGroupRef:
+        type: string
+        description: |
+          An identifier for the restaurant group that is recognized by
+          the the partner that made the request to the `/restaurants`
+          endpoint. This information is entered by the restaurant
+          administrator. If you need information about the restaurant
+          group in this data string, you instruct the restaurant
+          administrator to enter it in the Toast POS system
+          configuration for the integration partner connection.
+      externalRestaurantRef:
+        type: string
+        description: |
+          An identifier for the restaurant location that is recognized
+          by the partner that made the request to the `/restaurants`
+          endpoint. This information is entered by the restaurant
+          administrator. If you need information about the restaurant
+          location in this data string, you instruct the restaurant
+          administrator to enter it in the Toast POS system
+          configuration for the integration partner connection.
+      modifiedDate:
+        type: string
+        format: date-time
+        description: |
+          The most recent date and time that the partner connection
+          was edited in epoch time (milliseconds since 1970-01-01 00:00:00).
+      createdDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time that the partner connection was created in epoch time (milliseconds since 1970-01-01 00:00:00).
+      isoModifiedDate:
+        type: string
+        description: |
+          The most recent date and time that the partner connection
+          was edited in ISO8601 format.
+      isoCreatedDate:
+        type: string
+        description: |
+          The date and time that the partner connection was created in ISO8601 format.
+      createdByFirstName:
+        type: string
+        description: |
+          The first name of the user who initiated the event.
+      createdByLastName:
+        type: string
+        description: |
+          The last name of the user who initiated the event.
+      createdByEmailAddress:
+        type: string
+        description: |
+          The email address of the restaurant employee who connected
+          the restaurant to the partner that made the request to the
+          `/restaurants` endpoint, or who edited the connection
+          details.
+      createdByPhoneNumber:
+        type: string
+        description: |
+          The phone number of the user who initiated the event.
+      restaurantPhoneNumber:
+        type: string
+        description: |
+          The phone number of the restaurant.
+      restaurantAddressLine1:
+        type: string
+        description: |
+          The physical address of the restaurant location.
+      restaurantAddressLine2:
+        type: string
+        description: |
+          Optional additional physical address of the restaurant location.
+      restaurantCity:
+        type: string
+        description: |
+          The city in which the restautant is located.
+      restaurantState:
+        type: string
+        description: |
+          The state in which the restaurant is located.
+      restaurantZipCode:
+        type: string
+        description: |
+          The zip code of the restaurant location.
+
+
+
+paths:
+  /restaurants:
+    get:
+      summary: Returns information about restaurants a partner API client has access to.
+      description: |
+        Returns an array of <a 
+        href="#/definitions/PartnerAccessExternalRep">`PartnerAccessExternalRep`</a> 
+        objects that contain information about the Toast POS system 
+        restaurants that a partner API client can access. If a
+        `lastModified` date is specified, the API returns all objects that were
+        created or modified after that date.
+      produces:
+      parameters:
+        - name: lastModified
+          description: |
+            Limits the return data to restaurants that changed their 
+            access configuration for a partner API client after a 
+            specific date and time.
+            
+            Restaurants returned either:
+            
+            * Gave access to a partner API client for a partner 
+              integration service after a specific date and time.
+            
+            * Modified the configuration for a partner integration 
+              after a specific date and time. 
+            
+            You must specify the date and time as a UTC timestamp in 
+            ISO 8601 format, for example: 
+            `2020-03-01T00:00:00.000-0000`. URL encode the timestamp. 
+            For example, `2020-03-01T00%3A00%3A00.000-0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns the list of external parner accesses
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PartnerAccessExternalRep'
+        '403':
+          description: |
+            Your Toast API client does not have permission to use the 
+            `/restaurants` endpoint.

@@ -1,0 +1,412 @@
+---
+swagger: '2.0'
+info:
+  version: 1.1.0
+  title: Toast Cash Management API
+  description: |
+
+    ## Overview
+
+      The Toast cash management API provides information about cash
+      operations that add cash to or remove cash from a restaurant cash
+      drawer, separately from cash transaction payments (customer
+      payments for individual checks). Cash entries affect the overall
+      amount of cash that the Toast POS accounts for in a restaurant.
+
+      Cash entries are different than cash transactions. In a cash
+      transaction, a server adds a customer's cash payment to a cash
+      drawer when the order is paid in the POS. Cash transactions
+      change the amount of cash in a cash drawer but they are not
+      tracked as individual cash entries and they are not available
+      from the cash management API.
+
+      You can use the Toast cash management API to:
+
+      * Get information about cash added to or removed from cash
+      drawers in a restaurant.
+
+      * Get information about cash removed from a restaurant to be
+      deposited in a bank or other financial institution.
+
+      * Compare cash entries to the total cash transactions (customer
+      cash payments) from the orders API to calculate the expected cash
+      deposit for a restaurant.
+
+    For more information about using this and other Toast APIs, see the
+    <cite>Toast API Developer's Guide.</cite>
+
+  contact:
+    name: Toast API Support
+    email: developer-support@toasttab.com
+
+schemes:
+  - https
+basePath: /cashmgmt/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  ToastReference:
+      type: object
+      description: |
+        Identifying information about a Toast POS entity.
+      discriminator: entityType
+      required:
+        - guid
+        - entityType
+      properties:
+        guid:
+          description: The GUID assigned to the entity by the Toast POS.
+          type: string
+        entityType:
+          description: The category of the Toast POS object.
+          type: string
+  ExternalReference:
+      type: object
+      description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID or a partner's identifier.
+      discriminator: entityType
+      allOf:
+        - $ref: '#/definitions/ToastReference'
+        - type: object
+          properties:
+            externalId:
+              description: External identifier string that is prefixed by the naming authority.
+              type: string
+  CashEntry:
+    type: object
+    description: |
+      Information about an event in which a restaurant employee puts
+      cash into a cash drawer or removes cash from a cash drawer.
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        required:
+          - amount
+          - reason
+          - date
+          - type
+        properties:
+          amount:
+            type: number
+            format: double
+            description: |
+              The currency amount of the cash that an employee adds to
+              or removes from a cash drawer. This value is positive
+              when an employee adds cash and negative when an employee
+              removes cash.
+          reason:
+            type: string
+            description: |
+              A short description of why this cash entry was created,
+              written by the restaurant employee.
+          date:
+            type: string
+            format: date-time
+            description: |
+              The date and time that the cash entry occurred.
+          type:
+            type: string
+            description: |
+              The type of the cash entry.
+              <ul>
+                <li><code>CASH_IN</code> - cash added to a cash
+                drawer.</li>
+
+                <li><code>CASH_COLLECTED</code> - cash added to a cash
+                drawer at the end of an employee shift.</li>
+
+                <li><code>CASH_OUT</code> - cash removed from a cash
+                drawer and stored in a different restaurant location.
+                The Toast POS does track cash after it is removed by a
+                <code>CASH_OUT</code> entry.</li>
+
+                <li><code>NO_SALE</code> - cash drawer opened with no
+                change to the cash balance. For example, a restaurant
+                employee might perform a no sale transaction to make
+                change for a customer.</li>
+
+                <li><code>PAY_OUT</code> - cash removed from a cash
+                drawer to pay for a pre-configured restaurant
+                expense.</li>
+
+                <li><code>TIP_OUT</code> - cash removed from a cash
+                drawer to distribute tips or gratuities to restaurant
+                employees.</li>
+
+                <li><code>UNDO_PAY_OUT</code> - cash added to a cash
+                drawer to undo a previous <code>PAY_OUT</code> cash
+                entry.</li>
+
+                <li><code>DRIVER_REIMBURSEMENT</code> - cash removed
+                from a cash drawer to repay delivery drivers for
+                delivery driving expenses.</li>
+
+                <li><code>CLOSE_OUT_EXACT</code> - an employee closes
+                a cash drawer and the closing balance is equal to the
+                expected balance.</li>
+
+                <li><code>CLOSE_OUT_OVERAGE</code> - an employee
+                closes a cash drawer and the closing balance is greater
+                than the expected balance.</li>
+
+                <li><code>CLOSE_OUT_SHORTAGE</code> - an employee
+                closes a cash drawer and the closing balance is less
+                than the expected balance.</li>
+              </ul>
+            enum:
+              - CASH_IN
+              - CASH_COLLECTED
+              - CASH_OUT
+              - PAY_OUT
+              - UNDO_PAY_OUT
+              - TIP_OUT
+              - NO_SALE
+              - DRIVER_REIMBURSEMENT
+              - CLOSE_OUT_EXACT
+              - CLOSE_OUT_OVERAGE
+              - CLOSE_OUT_SHORTAGE
+          cashDrawer:
+            description: |
+              The Toast GUID or external reference of the cash drawer
+              for the cash entry.
+            type: object
+            $ref: '#/definitions/ToastReference'
+          payoutReason:
+            description: |
+              The Toast GUID or external reference of the
+              pre-configured restaurant expense that the cash removed
+              from the cash drawer is used for. This value only applies
+              to PAY_OUT  cash entries. For other cash entry types
+              this value is `null`.
+            $ref: '#/definitions/ToastReference'
+          noSaleReason:
+            description: |
+              The Toast GUID or external reference of the
+              pre-configured reason of a no sale operation done on a
+              cash drawer. This value only applies to NO_SALE cash
+              entries. For other cash entry types this value is `null`.
+            $ref: '#/definitions/ToastReference'
+          undoes:
+            description: |
+              The Toast GUID of the cash entry that is being undone.
+              This value is null if the cash entry does not undo a
+              previous entry.
+            type: string
+          employee1:
+            type: object
+            $ref: '#/definitions/ExternalReference'
+            description: |
+              The Toast GUID or external reference of the employee who
+              initiated the cash entry transaction or performed a shift 
+              review that created the cash entry.
+              
+              For the following cash entry types, the `employee1` value 
+              indicates the employee who initiated the cash entry transaction:
+              
+              * `CASH_IN`
+              * `CASH_OUT`
+              * `CLOSE_OUT_EXACT`
+              * `CLOSE_OUT_OVERAGE`
+              * `CLOSE_OUT_SHORTAGE`
+              * `NO_SALE`
+              * `PAY_OUT`
+              * `UNDO_PAY_OUT`
+              
+              For the following cash entry types, the `employee1` value 
+              indicates the employee who performed the shift review 
+              that created the cash entry:
+              
+              * `CASH_COLLECTED`
+              * `DRIVER_REIMBURSEMENT`
+              * `TIP_OUT`
+          employee2:
+            type: object
+            $ref: '#/definitions/ExternalReference'
+            description: |
+              The Toast GUID or external reference of the employee who
+              approved the cash entry transaction or who is the subject 
+              of the shift review that created the cash entry.
+              
+              For the following cash entry types, the `employee2` value 
+              indicates the employee who approved the cash entry transaction:
+              
+              * `CASH_IN`
+              * `CASH_OUT`
+              * `PAY_OUT`
+              * `UNDO_PAY_OUT`
+              
+              For the following cash entry types, the `employee2` value 
+              indicates the employee who is the subject of the shift review 
+              that created the cash entry:
+              
+              * `CASH_COLLECTED`
+              * `DRIVER_REIMBURSEMENT`
+              * `TIP_OUT`
+              
+              For the following cash entry types, the `employee2` value 
+              is always `null`:
+              
+              * `CLOSE_OUT_EXACT`
+              * `CLOSE_OUT_OVERAGE`
+              * `CLOSE_OUT_SHORTAGE`
+              * `NO_SALE`
+          creatorOrShiftReviewSubject:
+            type: object
+            $ref: '#/definitions/ToastReference'
+            description: |
+              An alternative identifier for the employee represented by `employee1`. This value is reserved for future use.
+          approverOrShiftReviewSubject:
+            type: object
+            $ref: '#/definitions/ToastReference'
+            description: |
+              An alternative identifier for the employee represented by `employee2`. This value is reserved for future use.
+  Deposit:
+    type: object
+    description: |
+      Information about an event in which a restaurant employee removes
+      cash from a restaurant and deposits it in a bank or other
+      financial institution.
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        required:
+          - amount
+          - date
+        properties:
+          amount:
+            type: number
+            format: double
+            description: |
+              The currency amount of the deposit. Because a deposit
+              must have some amount of cash, this is always a positive
+              value.
+          date:
+            type: string
+            format: date-time
+            description: |
+              The date that the deposit was registered in the POS and
+              the deposit slip was printed.
+          undoes:
+            type: string
+            format: string
+            description: |
+              The Toast GUID of the deposit entry that is being undone. This value is null if the deposit entry does not undo a previous entry.
+          employee:
+            type: object
+            $ref: '#/definitions/ExternalReference'
+            description: |
+              The identifier of the employee who created the deposit.
+          creator:
+            type: object
+            $ref: '#/definitions/ToastReference'
+            description: |
+              An alternative identifier of the employee who created the deposit.
+  Error:
+    required:
+      - status
+      - message
+    properties:
+      status:
+        type: integer
+        format: int32
+        description: An HTTP status code.
+      message:
+        type: string
+        description: A message that describes the error.
+paths:
+  /entries:
+    get:
+      summary: |
+        Get cash entries
+      description: |
+        Returns information about cash added to or removed from a cash
+        drawer or other cash storage device. Returns an array of <a
+        href="#/definitions/CashEntry">CashEntry</a> objects.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The GUID of the restaurant that is the context of the
+            request.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: yyyymmdd
+          description: |
+            Deprecated. Use the `businessDate` parameter. The business
+            date the cash entries were created, in the format
+            `yyyymmdd`. For example, `20180228`.
+          in: query
+          type: string
+          format: calendar-date
+          required: false
+          deprecated: true
+        - name: businessDate
+          description: |
+            The business date the cash entries were created, in the
+            format `yyyymmdd`. For example, `20180228`.
+          in: query
+          type: string
+          format: calendar-date
+          required: true
+      responses:
+        '200':
+          description: |
+            Returns an array of <a
+            href="#/definitions/CashEntry">CashEntry</a> objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            items:
+              $ref: '#/definitions/CashEntry'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /deposits:
+    get:
+      summary: |
+        Get deposits
+      description: |
+        Returns an array of <a href="#/definitions/Deposit">Deposit</a>
+        objects containing information about cash removed from a
+        restaurant to be deposited in a bank or other financial
+        institution during one business day.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The GUID of the restaurant that is the context of the
+            request.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: businessDate
+          description: |
+            The business date the deposits were created, in the
+            format `yyyymmdd`. For example, `20180228`.
+          in: query
+          type: string
+          format: calendar-date
+          required: true
+      responses:
+        '200':
+          description: |
+            Returns an array of <a
+            href="#/definitions/Deposit">Deposit</a> objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            items:
+              $ref: '#/definitions/Deposit'
+        default:
+          description: An unexpected error.
+          schema:
+            $ref: '#/definitions/Error'

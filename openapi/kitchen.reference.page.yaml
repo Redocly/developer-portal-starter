@@ -1,5 +1,5 @@
 type: redoc
-definitionId: stock
+definitionId: kitchen
 showInfo: true
 expand: true
 settings:
@@ -11,4 +11,4 @@ settings:
   showConsole: false
   hideHostname: true
   hideDownloadButton: true
-  # downloadDefinitionUrl: https://doc.toasttab.com/api-specifications/toast-stock-api.yaml
+  # downloadDefinitionUrl: https://doc.toasttab.com/api-specifications/toast-kitchen-api-docs.yaml

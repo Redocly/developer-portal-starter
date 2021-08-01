@@ -1,0 +1,2870 @@
+---
+swagger: '2.0'
+info:
+  version: 2.2.0
+  title: Toast Configuration API
+  description: |
+    ## Overview
+
+      You can use the Toast configuration API to retrieve information about
+      the configuration of a restaurant and its menus. This includes
+      menu items, menu groups, and alternate payment types, as well as
+      physical configuration such as cash drawers and restaurant
+      tables.
+
+      The configuration API does not return information about entities
+      that you have removed from your restaurant configuration or
+      archived. For example, if you remove a menu item or archive a
+      discount, the configuration API will not return the menu item or
+      discount in response data.
+
+      For more information about using this and other Toast APIs, see
+      the <cite>Toast API Developer's Guide.</cite>
+
+  contact:
+    name: Toast API Support
+    email: developer-support@toasttab.com
+schemes:
+  - https
+basePath: /config/v2
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  AlternatePaymentType:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the alternate payment type.
+  BreakType:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: |
+              The name of the work break type, as recognized by
+              restaurant employees.
+          active:
+            type: boolean
+            description: |
+              Indicates whether the break is available and can be taken
+              by restaurant employees.
+          paid:
+            type: boolean
+            description: Indicates whether the break is paid.
+          duration:
+            type: integer
+            description: The duration of the break in minutes.
+          enforceMinimumTime:
+            type: boolean
+            description: |
+              Indicates whether the duration is enforced as the minimum
+              time for the break.
+          trackMissedBreaks:
+            type: boolean
+            description: |
+              True if breaks that are not taken within the specified break
+              interval should be generated in Toast.
+          breakIntervalHrs:
+            type: integer
+            description: |
+              The number of hours between break intervals. Break intervals
+              are specified in hours and minutes. If missed breaks are not
+              tracked, this value may be null.
+          breakIntervalMins:
+            type: integer
+            description: |
+              The number of minutes between break intervals. Break intervals
+              are specified in hours and minutes. If missed breaks are not
+              tracked, this value may be null.
+          trackBreakAcknowledgement:
+            type: boolean
+            description: |
+              Indicates whether break acknowledgements are collected for
+              this type of break. Break acknowledgements will not be
+              collected if `trackMissedBreaks` is false.
+  CashDrawer:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          printer:
+            type: object
+            description: The Toast GUID or external identifier of a
+              printer device.
+            $ref: '#/definitions/ToastReference'
+  DiningOption:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the dining option.
+          behavior:
+            type: string
+            description: |
+              The behavior of the dining option. `TAKE_OUT` and
+              `DELIVERY` require a `customer` to be specified on the
+              order, and `DELIVERY` requires a `deliveryInfo` value.
+            enum:
+              - DINE_IN
+              - TAKE_OUT
+              - DELIVERY
+          curbside:
+            type: boolean
+            description: |
+              Indicates whether the dining option has curbside behavior, and allows the guest to
+              provide identifying information such as a description of their vehicle.
+  Discount:
+      type: object
+      allOf:
+        - $ref: '#/definitions/ToastReference'
+        - type: object
+          description: |
+            A discount configured in the Toast administration back-end.
+            Discounts are always applied before taxes, but after
+            service charges are calculated.
+          properties:
+            name:
+              type: string
+              description: The human-readable name of the discount.
+            active:
+              type: boolean
+              description: |
+                Indicates whether the discount is available and can be
+                applied by restaurant employees.
+            type:
+              type: string
+              description: |
+                * `PERCENT` - the discount reduces the price by a
+                preconfigured percent.
+                * `FIXED` - the discount reduces the price by a
+                preconfigured currency amount.
+                * `OPEN_PERCENT` - the discount reduces the price by a
+                percent entered by a restaurant employee.
+                * `OPEN_FIXED` - the discount reduces the price by a
+                currency amount entered by a restaurant employee.
+                * `BOGO` - a buy one get one (BOGO) discount.
+                * `FIXED_TOTAL` - a combo discount that reduces the
+                price of all eligible items to a preconfigured currency
+                amount.
+              enum:
+                - PERCENT
+                - FIXED
+                - OPEN_PERCENT
+                - OPEN_FIXED
+                - BOGO
+                - FIXED_TOTAL
+            percentage:
+              type: number
+              format: double
+              description: |
+                Percent discount applied when the `amountType` is
+                `PERCENT`. This value will be greater than 0 and at
+                most 100.
+            amount:
+              type: number
+              format: double
+              description: |
+                The currency amount of the discount when the
+                `amountType` is `FIXED`. This value will be greater
+                than 0.
+            selectionType:
+              type: string
+              description: |
+                * `CHECK` - the discount can be applied to a check.
+                * `BOGO` - a buy one get one (BOGO) discount.
+                * `ITEM` - the discount can be applied to an item
+                selection in a check.
+              enum:
+                - CHECK
+                - ITEM
+                - BOGO
+            nonExclusive:
+              type: boolean
+              description: |
+                Indicates whether you can apply the discount with other
+                discounts. This value is always `false` for item and
+                combo discounts. Set this value for check and BOGO
+                discounts by selecting **Allow with other discounts** in
+                the **Discounts Rules** section of the discounts
+                configuration page of the Toast administration
+                back-end.
+            itemPickingPriority:
+              type: string
+              description: |
+                Indicates which menu item selections are discounted
+                when you apply a BOGO discount. An item that is
+                discounted by a BOGO discount is a "get" item.
+
+                * `FIRST` - the BOGO discount applies to the first
+                matching item selection in the check or the discount is
+                not a BOGO discount. The `itemPickingPriority` is
+                always `FIRST` for discounts that are not BOGO
+                discounts.
+
+                * `LEAST_EXPENSIVE` - the BOGO discount applies
+                to the least expensive matching item selection in the check.
+
+                * `MOST_EXPENSIVE` - the BOGO discount applies to the most
+                expensive matching item selection in the check.
+              enum:
+                - FIRST
+                - LEAST_EXPENSIVE
+                - MOST_EXPENSIVE
+            fixedTotal:
+              type: number
+              format: double
+              description: |
+                The total price of items discounted by a combo
+                discount. This value is `null` for discounts that are
+                not combo discounts.
+  Menu:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: |
+              The name of the menu as it appears in the Toast POS.
+          orderableOnline:
+            type: string
+            description: |
+              Deprecated. Indicates whether restaurant guests can order from the menu online.
+
+              Toast is streamlining and improving the set of configuration options that restaurants use for configuring whether a menu entity can be ordered online. As part of this change, the `orderableOnline` value has been deprecated. Before 2020-05-25, you should transition to using the `visibility` array that the menus API returns for each menu entity, instead of this `orderableOnline` value, to determine if the entity should be available for online ordering.
+              See <a href="https://doc.toasttab.com/Ie5QH/apiMenuItemVisibilityAndApiChanges.html">Menu Entity Visibility and API Changes</a> for more information.
+            enum:
+              - YES
+              - NO
+          visibility:
+            type: string
+            description: |
+              Deprecated. Indicates where the menu is displayed and who can see it.
+              * ALL: Visible to everyone (servers and customers)
+              * POS_ONLY: Only visible to servers
+              * NONE: Hidden from everyone
+
+              Toast is streamlining and improving the set of configuration options that restaurants use for configuring where a menu entity is visible (for example, on a Toast POS device or on a restaurant's Toast online ordering website). As part of this change, the `visibility` value in the configuration API has been deprecated. Before 2020-05-25, you should transition to using the `visibility` array that the menus API returns for each menu entity, instead of this `visibility` value, to determine where the entity should be visible.
+              See <a href="https://doc.toasttab.com/Ie5QH/apiMenuItemVisibilityAndApiChanges.html">Menu Entity Visibility and API Changes</a> for more information.
+            enum:
+              - ALL
+              - POS_ONLY
+              - NONE
+          groups:
+            type: array
+            description: |
+              An array of the <a
+              href="#/definitions/MenuGroup">`MenuGroup`</a> objects
+              that are part of this menu.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          images:
+            type: array
+            description: A collection of images associated with the menu.
+            items:
+              $ref: '#/definitions/Image'
+          unitOfMeasure:
+            type: string
+            description: |
+              The unit of measure used to determine the price of items in this menu. For example, $10.00 per gram.
+            enum:
+              - NONE
+              - LB
+              - OZ
+              - KG
+              - G
+
+  MenuItem:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: |
+              The name of the menu item as it appears in the Toast POS.
+          calories:
+            type: integer
+            description: |
+              The amount of food energy in the item, expressed in
+              Calorie units. Values can be positive, negative, or zero.
+          sku:
+            type: string
+            description: The stock keeping unit (SKU) code for the item.
+          plu:
+            type: string
+            description: The price look up (PLU) code for the item.
+          orderableOnline:
+            type: string
+            description: |
+              Deprecated. Indicates whether restaurant guests can order from the menu online.
+
+              Toast is streamlining and improving the set of configuration options that restaurants use for configuring whether a menu entity can be ordered online. As part of this change, the `orderableOnline` value has been deprecated. Before 2020-05-25, you should transition to using the `visibility` array that the menus API returns for each menu entity, instead of this `orderableOnline` value, to determine if the entity should be available for online ordering.
+              See <a href="https://doc.toasttab.com/Ie5QH/apiMenuItemVisibilityAndApiChanges.html">Menu Entity Visibility and API Changes</a> for more information.
+            enum:
+              - YES
+              - NO
+          visibility:
+            type: string
+            description: |
+              Deprecated. Indicates where the menu is displayed and who can see it.
+              * ALL: Visible to everyone (servers and customers)
+              * POS_ONLY: Only visible to servers
+              * NONE: Hidden from everyone
+
+              Toast is streamlining and improving the set of configuration options that restaurants use for configuring where a menu entity is visible (for example, on a Toast POS device or on a restaurant's Toast online ordering website). As part of this change, the `visibility` value in the configuration API has been deprecated. Before 2020-05-25, you should transition to using the `visibility` array that the menus API returns for each menu entity, instead of this `visibility` value, to determine where the entity should be visible.
+              See <a href="https://doc.toasttab.com/Ie5QH/apiMenuItemVisibilityAndApiChanges.html">Menu Entity Visibility and API Changes</a> for more information.
+            enum:
+              - ALL
+              - POS_ONLY
+              - NONE
+          type:
+            type: string
+            description: |
+              Specifies whether this item is a special request or other
+              off-menu transaction.
+              * `NONE` - a normal menu item or modifier.
+              * `OPEN_ITEM` - an item that is not on a menu.
+              * `SPECIAL_REQUEST` - a selection that is not an item.
+              * `PORTION` - a division of a menu item used to apply modifiers separately to separate parts of an item. For example, one half of a pizza.
+            enum:
+              - NONE
+              - OPEN_ITEM
+              - SPECIAL_REQUEST
+              - PORTION
+          optionGroups:
+            type: array
+            description: |
+              An array of `ExternalReference` objects containing the
+              identifiers of the <a
+              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              that contain modifiers applicable to this item. Does not
+              include those inherited from the parent `MenuGroup`.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          inheritOptionGroups:
+            type: boolean
+            description: |
+              True if this menu item inherits <a
+              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              from its parent <a
+              href="#/definitions/MenuGroup">`MenuGroup`</a>.
+          images:
+            type: array
+            description: |
+              An array of <a href="#/definitions/Image">`Image`</a>
+              objects that are associated with the `MenuItem`.
+            items:
+              $ref: '#/definitions/Image'
+          unitOfMeasure:
+            type: string
+            description: |
+              The unit of measure used to determine the price of the item.
+              The default is NONE.
+              This value is not relevant if `inheritUnitOfMeasure` is true.
+            enum:
+              - NONE
+              - LB
+              - OZ
+              - KG
+              - G
+          inheritUnitOfMeasure:
+            type: boolean
+            description: |
+              True if this menu item inherits its unit of measure
+              from its parent <a
+              href="#/definitions/MenuGroup">`MenuGroup`</a>.
+
+  MenuGroup:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the menu group as it appears in the
+              Toast POS.
+          menu:
+            type: object
+            description: |
+              The Toast GUID or external identifier of the menu that
+              this group belongs to.
+            $ref: '#/definitions/ExternalReference'
+          orderableOnline:
+            type: string
+            description: |
+              Deprecated. Indicates whether restaurant guests can order from the menu online.
+
+              Toast is streamlining and improving the set of configuration options that restaurants use for configuring whether a menu entity can be ordered online. As part of this change, the `orderableOnline` value has been deprecated. Before 2020-05-25, you should transition to using the `visibility` array that the menus API returns for each menu entity, instead of this `orderableOnline` value, to determine if the entity should be available for online ordering.
+              See <a href="https://doc.toasttab.com/Ie5QH/apiMenuItemVisibilityAndApiChanges.html">Menu Entity Visibility and API Changes</a> for more information.
+            enum:
+              - YES
+              - NO
+          visibility:
+            type: string
+            description: |
+              Deprecated. Indicates where the menu is displayed and who can see it.
+              * ALL: Visible to everyone (servers and customers)
+              * POS_ONLY: Only visible to servers
+              * NONE: Hidden from everyone
+
+              Toast is streamlining and improving the set of configuration options that restaurants use for configuring where a menu entity is visible (for example, on a Toast POS device or on a restaurant's Toast online ordering website). As part of this change, the `visibility` value in the configuration API has been deprecated. Before 2020-05-25, you should transition to using the `visibility` array that the menus API returns for each menu entity, instead of this `visibility` value, to determine where the entity should be visible.
+              See <a href="https://doc.toasttab.com/Ie5QH/apiMenuItemVisibilityAndApiChanges.html">Menu Entity Visibility and API Changes</a> for more information.
+            enum:
+              - ALL
+              - POS_ONLY
+              - NONE
+          parent:
+            type: object
+            description: |
+                The Toast GUID or external identifier of the menu group
+                that is the direct parent of the current menu group.
+                This value is `null` if direct parent of the menu group
+                is a menu.
+            $ref: '#/definitions/ExternalReference'
+          items:
+            type: array
+            description: |
+              An array of `ExternalReference` objects containing the
+              identifiers of the <a
+              href="#/definitions/MenuItem">`MenuItem`s</a> in the menu
+              group.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          subgroups:
+            type: array
+            description: |
+              An array of `ExternalReference` objects containing the
+              identifiers of the child <a
+              href="#/definitions/MenuGroup">`MenuGroup`s</a> in
+              the menu group. Empty if the menu group does not include any child
+              menu groups.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          optionGroups:
+            type: array
+            description: |
+              An array of `ExternalReference` objects containing the
+              identifiers of the child <a
+              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              that contain modifiers applicable to the group, its
+              subgroups and its items. Does not include
+              `MenuOptionGroup`s inherited from its parent `MenuGroup`.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          inheritOptionGroups:
+            type: boolean
+            description: |
+              True if this `MenuGroup` inherits <a
+              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              from its parent `MenuGroup`.
+          images:
+            type: array
+            description: |
+              An array of <a href="#/definitions/Image">`Image`</a>
+              objects associated with with the `MenuGroup`.
+            items:
+              $ref: '#/definitions/Image'
+          unitOfMeasure:
+            type: string
+            description: |
+              The unit of measure used to determine the price of items in this group.
+              This value is not relevant if `inheritUnitOfMeasure` is true.
+            enum:
+              - NONE
+              - LB
+              - OZ
+              - KG
+              - G
+          inheritUnitOfMeasure:
+            type: boolean
+            description: |
+              True if this `MenuGroup` inherits its unit of measure
+              from its parent <a
+              href="#/definitions/MenuGroup">`MenuGroup`</a> or (if its parent is null)
+              its parent <a
+              href="#/definitions/Menu">`Menu`</a>.
+
+  MenuOptionGroup:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the `MenuOptionGroup` as it appears
+              in the Toast POS.
+          options:
+            type: array
+            description: |
+              An array of `ExternalReference` objects containing the
+              identifiers of the <a
+              href="#/definitions/MenuItem">`MenuItem`s</a> in
+              the menu group.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          minSelections:
+            type: number
+            format: integer
+            description: The minimum number of selections that must be made from this option group.
+          maxSelections:
+            type: number
+            format: integer
+            description: The maximum number of selections that can be made from this option group.
+  PreModifier:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the pre modifier that appears in the Toast POS.
+          scalePrice:
+            type: boolean
+            description: True if this multiplies the modifier price, false if it adds to the modifier price.
+          basePrice:
+            type: number
+            format: double
+            description: Amount to add to the modifier price, if scalePrice is false. Otherwise not used.
+          scaleFactor:
+            type: number
+            format: float
+            description: Amount to multiply the modifier price, if scalePrice is true. Otherwise not used.
+          displayMode:
+            type: string
+            description: |
+              Where this premodifier should be displayed relative to the modifier name.
+              PREFIX - before the modifier name
+              SUFFIX - after the modifier name
+            enum:
+              - PREFIX
+              - SUFFIX
+          parent:
+            type: object
+            description: The pre modifier group the premodifier belongs to.
+            $ref: '#/definitions/ToastReference'
+  PreModifierGroup:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the pre modifier that appears in the Toast POS.
+          isDefault:
+            type: boolean
+            description: |
+              True if this PreModifierGroup is set as the default Group.
+              Only a single PreModifierGroup can be set as default at one time.
+  NoSaleReason:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the no sale reason that appears in the Toast POS.
+  PayoutReason:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The short name of this payout reason.
+  PriceGroup:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of this price group.
+  Printer:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of this printer.
+  RestaurantService:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: |
+              The name of this meal service (for example, `Lunch` or
+              `Dinner`).
+  RevenueCenter:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        description: A set of ServiceAreas and POS devices for which separate revenue reports can be generated. For instance, a restaurant with a bar might choose to define two RevenueCenters, one for the bar and one for the dining area.
+        properties:
+          name:
+            type: string
+            description: The name of this revenue center.
+          description:
+            type: string
+            description: The description of this revenue center.
+  SalesCategory:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        description: A set of items that will be grouped together in sales reports. SalesCategories can be applied at any level, from entire menus to individual menu items.
+        properties:
+          name:
+            type: string
+            description: The name of this sales category.
+  ServiceArea:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        description: A representation of a physical service area, a group of tables, in a restaurant.
+        properties:
+          name:
+            type: string
+            description: The name of this service area.
+          revenueCenter:
+            type: object
+            description: The revenue center the service area belongs to.
+            $ref: '#/definitions/ExternalReference'
+  ServiceCharge:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        description: Any charge applied to a check for something other than menu item. Typical examples include gratuity and delivery fees.
+        properties:
+          name:
+            type: string
+            description: The name of this service charge.
+          amountType:
+            type: string
+            description: The type of service charge.
+            enum:
+              - FIXED
+              - PERCENT
+              - OPEN
+          amount:
+            type: number
+            format: double
+            description: Amount in USD to be applied for `FIXED` type service charges.
+          percent:
+            type: number
+            format: double
+            description: |
+              Percent fee to be applied for `PERCENT` type service
+              charges, based on pre-discount check amount. Must be a
+              number between 0 and 100.
+          criteria:
+            type: object
+            description: A reference to the ServiceChargeCriteria to determine if this service charge is applicable to a given check. See each ServiceChargeCriteria for details.
+            $ref: '#/definitions/ServiceChargeCriteria'
+          gratuity:
+            type: boolean
+            description: True if the service charge is a gratuity and is assigned to the owner of the check.
+          taxable:
+            type: boolean
+            description: True if tax should be applied to the service charge.
+          applicableTaxes:
+            type: array
+            description: A reference to the taxes applied to the service charge, if the service charge is taxable.
+            items:
+              $ref: '#/definitions/TaxRate'
+          serviceChargeCalculation:
+            type: string
+            description: Defines whether or not the service charge is applied before (PRE) or after (POST) discounts. This field is null for non-percent service charges.
+            enum:
+              - PRE_DISCOUNT
+              - POST_DISCOUNT
+
+  ServiceChargeCriteria:
+    description: Describes thresholds for when a service charge should be applied to a check.
+    properties:
+      minCheckAmount:
+        type: number
+        format: double
+        description: The service charge is only applicable if the pre-discount check is at least this amount.
+      delivery:
+        type: boolean
+        description: True if the service charge is only applicable for deliveries.
+      maxCheckAmount:
+        type: number
+        format: double
+        description: The service charge is waived if the pre-discount check amount is more than this amount. A `null` value means this criteria is inapplicable.
+      minDeliveryDistance:
+        type: number
+        format: double
+        description: The service charge is only applicable to deliveries that are at least this distance. A `null` value means this criteria is inapplicable.
+      takeout:
+        type: boolean
+        description: Indicates whether the service charge is automatically applied to orders that have the takeout dining option behavior.
+
+  Table:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        description: Represents a dining table in a restaurant.
+        properties:
+          name:
+            type: string
+            description: The human-readable name of this table as it appears in the POS.
+          serviceArea:
+            type: object
+            description: The service area the table belongs to.
+            $ref: '#/definitions/ToastReference'
+          revenueCenter:
+            type: object
+            description: The revenue center the table belongs to.
+            $ref: '#/definitions/ExternalReference'
+
+  TaxRate:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of this tax rate.
+          isDefault:
+            type: boolean
+            description: True if this tax rate is the default tax rate.
+          rate:
+            type: number
+            format: double
+            description: The tax rate, which could be a fixed amount, a percentage, or null if the tax rate type is `NONE`.
+          type:
+            type: string
+            description: The type of the tax rate.
+            enum:
+             - PERCENT
+             - FIXED
+             - TABLE
+             - NONE
+             - EXTERNAL
+          roundingType:
+            type: string
+            description: The method used to round fractional currency amounts to non-fractional currency amounts. If a tax rate is not a `PERCENT` type, this value is null.
+            enum:
+              - HALF_UP
+              - HALF_EVEN
+              - ALWAYS_UP
+              - ALWAYS_DOWN
+          taxTable:
+            type: array
+            description: An array of `TaxTableRow` objects that define a set of tax amounts that apply to specific sale amount ranges.
+            items:
+              $ref: '#/definitions/TaxTableRow'
+          conditionalTaxRates:
+            type: array
+            description: |
+              An array of <a
+              href="#/definitions/ConditionalTaxRate">`ConditionalTaxRate`</a>
+              objects that indicate the conditional rates that override
+              the default `rate` for this `TaxRate` in specific
+              situations. For example, a conditional rate might
+              override the default rate when a `TaxRate` is applied for
+              a specific dining option, such as takeout.
+            items:
+              $ref: '#/definitions/ConditionalTaxRate'
+
+  ConditionalTaxRate:
+    type: object
+    description: |
+                   A conditional tax rate that overrides the default `rate`
+                   for a <a
+                   href="#/definitions/TaxRate">`TaxRate`</a> in
+                   specific situations. For example, a conditional rate
+                   might override the default rate when a `TaxRate` is
+                   applied for a specific dining option, such as takeout.
+    properties:
+      condition:
+        description: A string describing the condition for the tax rate
+        type: string
+      rate:
+        description: The percentage rate of the conditonal tax rate
+        type: number
+        format: double
+
+  TaxTableRow:
+    type: object
+    description: A closed sale amount range that corresponds to a specific tax amount in a tax table.
+    properties:
+      start:
+        description: The start of a sale amount range that corresponds to a specific tax amount in a tax table.
+        type: number
+        format: currency
+      end:
+        description: The end of a sale amount range that corresponds to a specific tax amount in a tax table.
+        type: number
+        format: currency
+      tax:
+        description: The tax amount for the tax table row.
+        type: number
+        format: currency
+      pattern:
+        description: Specifies whether the price range is part of an incomplete set of ranges that establish an algorithm that you can use to calculate tax amounts.
+        type: boolean
+  TipWithholding:
+    type: object
+    description: |
+      Information about the way tip withholding is configured for
+      a restaurant. Tip withholding is a percentage of employees'
+      credit card tips and service charges that are paid to
+      employees as a gratuity that is kept by a restaurant to
+      cover credit card processing fees.
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
+            description: |
+              Indicates whether a restaurant location withholds a percent of
+              employees' credit card tips.
+
+              * `true` - the location keeps a percent of employees' credit card
+              tips.
+
+              * `false` - the location does not keep a percent of employees'
+              credit card tips.
+          percentage:
+            type: number
+            description: |
+              The decimal percentage of credit card tips withheld. If tip
+              withholding is not `enabled`, tips will not be withheld in the
+              Toast POS system regardless of this value.
+
+  VoidReason:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        description: When voiding something through the POS, the user must choose a preconfigured void reason.
+        properties:
+          name:
+            type: string
+            description: The name of this void reason.
+  Image:
+    type: object
+    description: Information about an image associated with a menu or
+      menu item.
+    properties:
+      url:
+        description: The web address of the image.
+        type: string
+  ExternalReference:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          externalId:
+            description: External identifier string, prefixed by the naming authority.
+            type: string
+        description: A wrapper object with fields that allow reference
+          to a Toast entity by Toast GUID or a partner's identifier.
+        discriminator: entityType
+  ToastReference:
+    type: object
+    description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID.
+    discriminator: entityType
+    required:
+      - guid
+      - entityType
+    properties:
+      guid:
+        description: The GUID maintained by the Toast POS.
+        type: string
+      entityType:
+        description: The type of object this is.
+        type: string
+paths:
+  /alternatePaymentTypes/{guid}:
+    get:
+      summary: |
+        Returns information about an alternative form of payment
+        configured for a restaurant.
+      description: |
+        Returns an <a
+        href="#/definitions/AlternatePaymentType">`AlternatePaymentType`</a>
+        object containing information about an alternative form of payment
+        configured for a restaurant. Alternate payment types are forms
+        of payment that are not standard in the Toast POS and that are
+        configured for a particular restaurant. For example, a
+        third-party service that processes payments might be configured
+        as an alternate payment type.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the alternate payment
+            type is configured for.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the alternative form of payment.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns an `AlternatePaymentType` object.
+          schema:
+            $ref: '#/definitions/AlternatePaymentType'
+  /alternatePaymentTypes:
+    get:
+      summary: |
+        Returns an array of alternative forms of payment configured for
+        a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/AlternatePaymentType">`AlternatePaymentType`</a>
+        objects containing information about alternative forms of
+        payment that are configured for a restaurant. Alternate
+        payment types are forms of payment that are not standard in the
+        Toast POS and that are configured for a particular restaurant.
+        For example, a third-party service that processes payments
+        might be configured as an alternate payment type. If a
+        `lastModified` date is specified, returns all objects that were
+        created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `AlternatePaymentType` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/AlternatePaymentType'
+  /breakTypes/{guid}:
+      get:
+        summary: |
+          Returns information about a break configured for a restaurant.
+        description: |
+          Returns a <a href="#/definitions/BreakType">`BreakType`</a>
+          object containing information about a break configured for a
+          restaurant.
+        produces:
+          - application/json
+        parameters:
+          - name: Toast-Restaurant-External-ID
+            description: |
+              The Toast POS GUID of the restaurant that the break is configured for.
+            in: header
+            type: string
+            required: true
+          - name: guid
+            description: The Toast POS GUID of the break config.
+            in: path
+            type: string
+            required: true
+        responses:
+          '200':
+            description: Returns a `BreakType` object.
+            schema:
+              $ref: '#/definitions/BreakType'
+  /breakTypes:
+      get:
+        summary: |
+          Returns an array of breaks configured for a restaurant.
+        description: |
+          Returns an array of <a
+          href="#/definitions/BreakType">`BreakType`</a>
+          objects containing information about breaks configured for a
+          restaurant. If a `lastModified` date is specified, returns
+          all objects that were created or modified after that date.
+        produces:
+          - application/json
+        parameters:
+          - name: Toast-Restaurant-External-ID
+            description: |
+              The Toast POS GUID of the restaurant that the configuration
+              applies to.
+            in: header
+            type: string
+            required: true
+          - name: pageSize
+            description: |
+              The number of objects to return in the array.
+            in: query
+            type: integer
+            required: true
+          - name: page
+            description: |
+              The sequence number of the first object to return in the
+              array.
+            in: query
+            type: integer
+            required: false
+          - name: lastModified
+            description: |
+              Limits the return data to objects created or modified after
+              a specific date and time. For example:
+              `2015-12-01T00:00:00.000+0000`.
+            in: query
+            type: string
+            format: date
+            required: false
+        responses:
+          '200':
+            description: Returns an array of `BreakType` objects.
+            schema:
+              title: Response
+              type: array
+              minItems: 0
+              maxItems: 300
+              items:
+                $ref: '#/definitions/BreakType'
+  /cashDrawers/{guid}:
+    get:
+      summary: |
+        Returns information about a specific cash drawer device.
+      description: |
+        Returns a <a href="#/definitions/CashDrawer">`CashDrawer`</a>
+        object containing information about a specific cash drawer
+        device.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the cash drawer.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `CashDrawer` object.
+          schema:
+            $ref: '#/definitions/CashDrawer'
+  /cashDrawers:
+    get:
+      summary: |
+        Returns an array of information about cash drawers configured
+        for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/CashDrawer">`CashDrawer`</a> objects
+        containing information about the cash drawer devices for the
+        restaurant. If a `lastModified` date is specified, returns all
+        objects that were created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `CashDrawer` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/CashDrawer'
+  /diningOptions/{guid}:
+    get:
+      summary: |
+        Returns information about a specific type of service offered by
+        a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/DiningOption">`DiningOption`</a> object
+        containing information about a type of service offered by a
+        restaurant. For example, dine in, take out, and delivery might
+        be dining options for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the dining option.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `DiningOption` object.
+          schema:
+            $ref: '#/definitions/DiningOption'
+  /diningOptions:
+    get:
+      summary: |
+        Returns an array of information about types of service offered
+        by a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/DiningOption">`DiningOption`</a> objects
+        containing information about types of service offered by a
+        restaurant. For example, dine in, take out, and delivery might
+        be dining options for a restaurant. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `DiningOption` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/DiningOption'
+  /discounts/{guid}:
+    get:
+      summary: |
+        Returns information about a price deduction configured for a
+        restaurant.
+      description: |
+        Returns a <a href="#/definitions/Discount">`Discount`</a>
+        object containing information about a price deduction
+        configured for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the discount.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `Discount` object.
+          schema:
+            $ref: '#/definitions/Discount'
+  /discounts:
+    get:
+      summary: |
+        Returns an array of information about price deductions
+        configured for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/Discount">`Discount`</a> objects containing
+        information about the price deductions configured for a
+        restaurant. If a `lastModified` date is specified, returns all
+        objects that were created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `Discount` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/Discount'
+  /menuGroups/{guid}:
+    get:
+      summary: |
+        Returns information about a section within a menu.
+      description: |
+        Returns a <a href="#/definitions/MenuGroup">`MenuGroup`</a>
+        object containing information about a section within a menu.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the menu group.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `MenuGroup` object.
+          schema:
+            $ref: '#/definitions/MenuGroup'
+  /menuGroups:
+    get:
+      summary: |
+        Returns an array of information about the sections of menus
+        configured for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/MenuGroup">`MenuGroup`</a> objects
+        containing information about the subsections of the menus
+        configured for a restaurant. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `MenuGroup` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/MenuGroup'
+  /menuItems/{guid}:
+    get:
+      summary: |
+        Returns information about an item or modifier available from a
+        restaurant.
+      description: |
+        Returns a <a href="#/definitions/MenuItem">`MenuItem`</a>
+        object containing information about an item or modifier available from a
+        restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID for the menu item.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `MenuItem` object.
+          schema:
+            $ref: '#/definitions/MenuItem'
+  /menuItems:
+    get:
+      summary: |
+        Returns information about the items and modifiers available
+        from a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/MenuItem">`MenuItem`</a> objects containing
+        information about the items and modifiers available from a
+        restaurant. If a `lastModified` date is specified, returns all
+        objects that were created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `MenuItem` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/MenuItem'
+  /menuOptionGroups/{guid}:
+    get:
+      summary: |
+        Returns information about a group of modifier menu items.
+      description: |
+        Returns a <a
+        href="#/definitions/MenuOptionGroup">`MenuOptionGroup`</a>
+        object containing information about a group of modifier menu items. For
+        example, salad dressings might be a menu option group for a
+        salad menu item.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the menu option group.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `MenuOptionGroup` object.
+          schema:
+            $ref: '#/definitions/MenuOptionGroup'
+  /menuOptionGroups:
+    get:
+      summary: |
+        Returns information about the groups of modifier menu items
+        configured for a restaurant.
+      description: |
+        Returns an array <a
+        href="#/definitions/MenuOptionGroup">`MenuOptionGroup`</a>
+        objects containing information about groups of modifier menu
+        items. For example, salad dressings might be a menu option
+        group for a salad menu item. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `MenuOptionGroup` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/MenuOptionGroup'
+  /menus/{guid}:
+    get:
+      summary: |
+        Returns information about a menu configured for a restaurant.
+      description: |
+        Returns a <a href="#/definitions/Menu">`Menu`</a> object
+        containing information about a menu configured for a
+        restaurant. For example, a restaurant might have drinks,
+        dinner, and dessert menus.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the menu.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `Menu` object.
+          schema:
+            $ref: '#/definitions/Menu'
+  /menus:
+    get:
+      summary: |
+        Returns information about the menus configured for a
+        restaurant.
+      description: |
+        Returns an array of <a href="#/definitions/Menu">`Menu`</a>
+        objects containing information about menus configured for a
+        restaurant. For example, a restaurant might have drinks,
+        dinner, and dessert menus. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `Menu` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/Menu'
+  /preModifiers/{guid}:
+    get:
+      summary: |
+        Returns information about a pre modifier configured
+        for a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/PreModifier">`PreModifier`</a> object
+        containing information about a pre modifier.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the pre modifier.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `PreModifier` object.
+          schema:
+            $ref: '#/definitions/PreModifier'
+  /preModifiers:
+    get:
+      summary: |
+        Returns information about pre modifiers configured
+        for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/PreModifier">`PreModifier`</a> objects
+        containing information about PreModifiers configured
+        for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `PreModifier` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/PreModifier'
+  /preModifierGroups/{guid}:
+    get:
+      summary: |
+        Returns information about a pre modifier group configured
+        for a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/PreModifierGroup">`PreModifierGroup`</a> object
+        containing information about a pre modifier group.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the pre modifier.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `PreModifierGroup` object.
+          schema:
+            $ref: '#/definitions/PreModifierGroup'
+  /preModifierGroups:
+    get:
+      summary: |
+        Returns information about pre modifier groups configured
+        for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/PreModifierGroup">`PreModifierGroup`</a> objects
+        containing information about PreModifierGroup configured
+        for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `PreModifierGroup` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/PreModifierGroup'
+  /noSaleReasons/{guid}:
+    get:
+      summary: |
+        Returns information about a no sale reason configured
+        for a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/NoSaleReason">`NoSaleReason`</a> object
+        containing information about a no sale reason.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the no sale reason.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `NoSaleReason` object.
+          schema:
+            $ref: '#/definitions/NoSaleReason'
+  /noSaleReasons:
+    get:
+      summary: |
+        Returns information about no sale reasons configured
+        for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/NoSaleReason">`NoSaleReason`</a> objects
+        containing information about no sale reasons configured
+        for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `NoSaleReason` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/NoSaleReason'
+  /payoutReasons/{guid}:
+    get:
+      summary: |
+        Returns information about a recurring cash expense configured
+        for a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/PayoutReason">`PayoutReason`</a> object
+        containing information about a recurring restaurant expense
+        that is paid in cash. Payout reasons are pre-configured for a
+        restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the payout reason.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `PayoutReason` object.
+          schema:
+            $ref: '#/definitions/PayoutReason'
+  /payoutReasons:
+    get:
+      summary: |
+        Returns information about recurring cash expenses configured
+        for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/PayoutReason">`PayoutReason`</a> objects
+        containing information about recurring cash expenses configured
+        for a restaurant. For example, payment for services such as
+        window washing might be payout reasons. If a `lastModified`
+        date is specified, returns all objects that were created or
+        modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `PayoutReason` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/PayoutReason'
+  /priceGroups/{guid}:
+    get:
+      summary: |
+        Returns information about a variable price level configured for
+        items at a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/PriceGroup">`PriceGroup`</a> object
+        containing information about variable price levels configured for
+        items at a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the price level.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `PriceGroup` object.
+          schema:
+            $ref: '#/definitions/PriceGroup'
+  /priceGroups:
+    get:
+      summary: |
+        Returns information about the variable price levels configured
+        for items at a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/PriceGroup">`PriceGroup`</a> objects
+        containing information about the variable price levels
+        configured for items at a restaurant. If a `lastModified` date
+        is specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `PriceGroup` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/PriceGroup'
+  /printers/{guid}:
+    get:
+      summary: |
+        Returns information about a printer device configured for a
+        restaurant.
+      description: |
+        Returns a <a href="#/definitions/Printer">`Printer`</a> object
+        containing information about a printer device configured for a
+        restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the printer.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `Printer` object.
+          schema:
+            $ref: '#/definitions/Printer'
+  /printers:
+    get:
+      summary: |
+        Returns information about the printer devices configured for a
+        restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/Printer">`Printer`</a> objects containing
+        information about the printer devices configured for a
+        restaurant. If a `lastModified` date is specified, returns all
+        objects that were created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `Printer` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/Printer'
+  /salesCategories/{guid}:
+    get:
+      summary: |
+        Returns information about a type of menu item used to analyze
+        purchases at a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/SalesCategory">`SalesCategory`</a> object
+        containing information about a type of menu item used to
+        analyze purchases at a restaurant. For example, food and
+        alcohol might be sales categories for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the sales category.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `SalesCategory` object.
+          schema:
+            $ref: '#/definitions/SalesCategory'
+
+  /salesCategories:
+    get:
+      summary: |
+        Returns information about types of menu item used to analyze
+        purchases at a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/SalesCategory">`SalesCategory`</a> objects
+        containing information about the types of menu item used to
+        analyze purchases at a restaurant. For example, food and
+        alcohol might be sales categories for a restaurant. If a
+        `lastModified` date is specified, returns all objects that were
+        created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `SalesCategory` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/SalesCategory'
+  /serviceAreas/{guid}:
+    get:
+      summary: |
+        Returns information about a physical setting that a
+        restaurant serves customers in.
+      description: |
+        Returns a <a href="#/definitions/ServiceArea">`ServiceArea`</a>
+        object containing information about a physical setting that a
+        restaurant serves customers in. For example, a restaurant might
+        serve customers in dining room and patio service areas.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the service area.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `ServiceArea` object.
+          schema:
+            $ref: '#/definitions/ServiceArea'
+  /serviceAreas:
+    get:
+      summary: |
+        Returns information about the physical settings that a
+        restaurant serves customers in.
+      description: |
+        Returns an array of <a
+        href="#/definitions/ServiceArea">`ServiceArea`</a> objects
+        containing information about the physical settings that a
+        restaurant serves customers in. For example, a restaurant might
+        serve customers in dining room and patio service areas. If a
+        `lastModified` date is specified, returns all objects that were
+        created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `ServiceArea` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/ServiceArea'
+  /serviceCharges/{guid}:
+    get:
+      summary: |
+        Returns information about a type of fee applied to restaurant
+        sales.
+      description: |
+        Returns a <a
+        href="#/definitions/ServiceCharge">`ServiceCharge`</a> object
+        containing information about a type of fee applied to
+        restaurant sales. For example, an automatic gratuity applied to
+        the check for a large dining party might be a type of service
+        charge for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the service charge.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `ServiceCharge` object.
+          schema:
+            $ref: '#/definitions/ServiceCharge'
+  /serviceCharges:
+    get:
+      summary: |
+        Returns information about the types of fees applied to
+        restaurant sales.
+      description: |
+        Returns an array of <a
+        href="#/definitions/ServiceCharge">`ServiceCharge`</a> objects
+        containing information about the types of fee applied to
+        restaurant sales. For example, an automatic gratuity applied to
+        the check for a large dining party might be a type of service
+        charge for a restaurant. If a `lastModified` date is specified,
+        returns all objects that were created or modified after that
+        date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `ServiceCharge` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/ServiceCharge'
+  /revenueCenters/{guid}:
+    get:
+      summary: |
+        Returns information about a segment of restaurant income, for
+        reporting.
+      description: |
+        Returns a <a
+        href="#/definitions/RevenueCenter">`RevenueCenter`</a> object
+        containing information about a segment of restaurant income,
+        for reporting.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the revenue center.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `RevenueCenter` object.
+          schema:
+            $ref: '#/definitions/RevenueCenter'
+  /revenueCenters:
+    get:
+      summary: |
+        Returns information about segments of restaurant income, for
+        reporting.
+      description: |
+        Returns an array of <a
+        href="#/definitions/RevenueCenter">`RevenueCenter`</a> objects
+        containing information about segments of restaurant income, for
+        reporting. If a `lastModified` date is specified, returns all
+        objects that were created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `RevenueCenter` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/RevenueCenter'
+  /restaurantServices/{guid}:
+    get:
+      summary: |
+        Returns information about a type of menu and dining offered by
+        a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/RestaurantService">`RestaurantService`</a>
+        object containing information about a type of menu and dining
+        offered by a restaurant. For example, a restaurant might offer
+        a lunch service at some hours of the day and a dinner service
+        at other hours of the day.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the service.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `RestaurantService` object.
+          schema:
+            $ref: '#/definitions/RestaurantService'
+  /restaurantServices:
+    get:
+      summary: |
+        Returns information about the types of menu and dining offered by
+        a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/RestaurantService">`RestaurantService`</a>
+        objects containing information about the types of menu and dining
+        offered by a restaurant. For example, a restaurant might offer
+        a lunch service at some hours of the day and a dinner service
+        at other hours of the day. If a `lastModified` date is specified, returns all
+        objects that were created or modified after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `RestaurantService` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/RestaurantService'
+  /tables/{guid}:
+    get:
+      summary: |
+        Returns information about a dining table configured for a
+        restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/Table">`Table`</a>
+        object containing information about a dining table configured for a
+        restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the table.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `Table` object.
+          schema:
+            $ref: '#/definitions/Table'
+  /tables:
+    get:
+      summary: |
+        Returns information about the dining tables configured for a
+        restaurant.
+      description: |
+        Returns an array of <a href="#/definitions/Table">`Table`</a>
+        objects containing information about the dining tables
+        configured for a restaurant. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `Table` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/Table'
+  /taxRates/{guid}:
+    get:
+      summary: |
+        Returns information about a form of taxation applied to sales
+        at a restaurant.
+      description: |
+        Returns a <a href="#/definitions/TaxRate">`TaxRate`</a> object
+        containing information about a form of taxation applied to
+        sales at a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the tax rate.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `TaxRate` object.
+          schema:
+            $ref: '#/definitions/TaxRate'
+  /taxRates:
+    get:
+      summary: |
+        Returns information about the forms of taxation applied to sales
+        at a restaurant.
+      description: |
+        Returns an array of <a href="#/definitions/TaxRate">`TaxRate`</a> objects
+        containing information about the forms of taxation applied to
+        sales at a restaurant. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `TaxRate` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/TaxRate'
+  /tipWithholding:
+      get:
+        summary: |
+          Returns information about the percent of employee credit card
+          tips that are kept by a restaurant.
+        description: |
+          Returns a <a href="#/definitions/TipWithholding">`TipWithholding`
+          </a> object containing information about the way tip withholding
+          is configured for a restaurant. Tip withholding is a percentage
+          of employees' credit card tips that is kept by a restaurant to
+          cover credit card processing fees.
+        produces:
+          - application/json
+        parameters:
+          - name: Toast-Restaurant-External-ID
+            description: |
+              The Toast POS GUID of the restaurant that the configuration applies to.
+            in: header
+            type: string
+            required: true
+        responses:
+          '200':
+            description: Returns a `TipWithholding` object.
+            schema:
+              $ref: '#/definitions/TipWithholding'
+  /voidReasons/{guid}:
+    get:
+      summary: |
+        Returns information about a cause for making a sale invalid
+        configured for a restaurant.
+      description: |
+        Returns a <a href="#/definitions/VoidReason">`VoidReason`</a> object
+        containing information about a cause for making a sale invalid
+        configured for a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: guid
+          description: The Toast POS GUID of the void reason.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a `VoidReason` object.
+          schema:
+            $ref: '#/definitions/VoidReason'
+  /voidReasons:
+    get:
+      summary: |
+        Returns information about the causes for making a sale invalid
+        configured for a restaurant.
+      description: |
+        Returns an array of <a
+        href="#/definitions/VoidReason">`VoidReason`</a> objects
+        containing information about causes for making a sale invalid
+        configured for a restaurant. If a `lastModified` date is
+        specified, returns all objects that were created or modified
+        after that date.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast POS GUID of the restaurant that the configuration
+            applies to.
+          in: header
+          type: string
+          required: true
+        - name: pageSize
+          description: |
+            The number of objects to return in the array.
+          in: query
+          type: integer
+          required: true
+        - name: page
+          description: |
+            The sequence number of the first object to return in the
+            array.
+          in: query
+          type: integer
+          required: false
+        - name: lastModified
+          description: |
+            Limits the return data to objects created or modified after
+            a specific date and time. For example:
+            `2015-12-01T00:00:00.000+0000`.
+          in: query
+          type: string
+          format: date
+          required: false
+      responses:
+        '200':
+          description: Returns an array of `VoidReason` objects.
+          schema:
+            title: Response
+            type: array
+            minItems: 0
+            maxItems: 300
+            items:
+              $ref: '#/definitions/VoidReason'

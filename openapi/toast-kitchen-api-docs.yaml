@@ -1,0 +1,174 @@
+swagger: '2.0'
+info:
+  title: Kitchen API
+  version: 1.0.0
+  description: |
+    ## Overview
+    You can use the Toast Kitchen API to retrieve information about kitchen operations.
+        
+    For more information about using this and other Toast APIs, see the <a href="https://doc.toasttab.com/Ie5QH/index.html">Toast API Developer's Guide</a>.
+  contact:
+    name: Toast API Support
+basePath: /kitchen/v1/published
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+tags:
+  - name: Prep Stations
+paths:
+  /prepStations:
+    get:
+      tags:
+        - Prep Stations
+      summary: Get all prep stations
+      description: |
+        Returns the configuration for every prep station that has been created for the specified restaurant. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment. You can use optional query parameters to paginate the results. If a `lastModified` date is specified, returns all objects that were created or modified after that date.<br>
+        <br>
+        *Related topics:*<br>
+        <a href="https://doc.toasttab.com/0IV1p/adminRoutingToPrepStations.html">Routing to Prep Stations</a>
+      parameters:
+        - name: page
+          type: integer
+          in: query
+          description: |
+            Defines the sequence number of the page of objects to return, for example, page 1, page 2, or page 3. Defaults to 1.<br>                       
+            *Note:* For more information on pagination, see <a href="https://doc.toasttab.com/Ie5QH/apiResponseDataPagination.html">Response Data Pagination</a> in the Toast API Developer's Guide.
+          format: int32
+          default: 1
+        - name: pageSize
+          type: integer
+          in: query
+          description: |
+            Defines the maximum number of objects to return in the response data for a single request. Defaults to 100.<br>            
+            *Note:* For more information on pagination, see <a href="https://doc.toasttab.com/Ie5QH/apiResponseDataPagination.html">Response Data Pagination</a> in the Toast API Developer's Guide.
+          format: int32
+          default: 100
+        - name: lastModified
+          type: string
+          in: query
+          description: |
+            Limits the return data to objects created or modified after a specific date and time. For example: `2021-12-01T00:00:00.000+0000`.
+          format: date
+        - name: Toast-Restaurant-External-ID
+          type: string
+          in: header
+          description: |
+            The Toast platform identifier for the restaurant.
+          required: true
+      responses:
+        '200':
+          description: |
+            Returns an array of <a href="#/definitions/PrepStations">`PrepStation`</a> objects. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment.<br>
+            *Related topics:*<br>
+            <a href="https://doc.toasttab.com/0IV1p/adminRoutingToPrepStations.html">Routing to Prep Stations</a>
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 1000
+            items:
+              $ref: '#/definitions/PrepStation'
+          headers:
+            Toast-Total-Result-Count:
+              type: integer
+              description: |
+                The total number of objects the endpoint will return.
+      operationId: get-prepStations
+  '/prepStations/{guid}':
+    parameters:
+      - name: guid
+        type: string
+        in: path
+        required: true
+    get:
+      tags:
+        - Prep Stations
+      summary: Get a prep station
+      description: |
+        Returns the configuration for a single prep station that has been defined for the specified restaurant. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment.<br>
+        <br>
+        *Related topics:*<br>
+        <a href="https://doc.toasttab.com/0IV1p/adminRoutingToPrepStations.html">Routing to Prep Stations</a>
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          type: string
+          in: header
+          description: |
+            The Toast platform identifier for the restaurant.
+          required: true
+      responses:
+        '200':
+          description: |
+            Returns a <a href="#/definitions/PrepStations">`PrepStation`</a> object.
+          schema:
+            $ref: '#/definitions/PrepStation'
+      operationId: get-prepStations-guid
+definitions:
+  PrepStation:
+    title: PrepStation
+    type: object
+    description: |
+      The configuration for a single prep station. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment.<br>
+      <br>
+      *Related topics:*<br>
+      <a href="https://doc.toasttab.com/0IV1p/adminAddPrepStation.html">Add a Prep Station</a>
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          connectedPrepStations:
+            type: array
+            description: |
+              An array of <a href="#/definitions/ToastReference">`ToastReference`</a> objects containing the identifiers of the other prep stations that this prep station monitors.<br>
+              <br>
+              Allowing a prep station to monitor other prep stations makes it easier for restaurant employees to coordinate when an order includes items that are fulfilled at more than one prep station.<br>
+              <br>
+              *Related topics:*<br>
+              <a href="https://doc.toasttab.com/0IV1p/adminMonitoringTicketsOtherPrepStations.html">Monitoring Items at Other Prep Stations</a><br>
+              <a href="https://doc.toasttab.com/0IV1p/adminConfigurePrintOtherStationsItems.html">Configure Printing of Other Stations' Items</a>
+            items:
+              $ref: '#/definitions/ToastReference'
+          printingMode:
+            type: string
+            description: |
+              Determines whether tickets sent to this prep station are printed at the prep station's assigned printer. Values include:
+              * ON: Every ticket sent to this prep station prints at the prep station's assigned printer.
+              * OFFLINE_ONLY: Tickets sent to this prep station only print at the assigned printer if the prep station normally uses a KDS device for ticket display but that device is offline.          
+            enum:
+              - ON
+              - OFFLINE_ONLY
+          includeWithExpediter:
+            type: boolean
+            description: |
+              True if tickets sent to this prep station should also be sent to the printer or KDS device that has been set up for the restaurant's expediter.<br>
+              <br>
+              *Related topics:*<br>
+              <a href="https://doc.toasttab.com/0IV1p/adminUsingExpo.html">Using an Expediter KDS</a><br>
+          name:
+            type: string
+            description: The name of this prep station.
+          kitchenPrinter:
+            type: object
+            description: |
+              A <a href="#/definitions/ToastReference">`ToastReference`</a> object containing the identifier of the kitchen printer assigned to this prep station.
+            $ref: '#/definitions/ToastReference'
+  ToastReference:
+    type: object
+    title: ToastReference
+    description: |
+      A wrapper object containing a Toast platform GUID.
+    discriminator: entityType
+    properties:
+      guid:
+        type: string
+        description: |
+          A Toast platform identifier for an entity.
+      entityType:
+        type: string
+        description: |
+          The type of object this is. For prep stations, `entityType` is set to `PrepStation`.
+    required:
+      - guid
+      - entityType

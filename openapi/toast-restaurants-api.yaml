@@ -1,0 +1,603 @@
+swagger: '2.0'
+info:
+  title: Restaurant Info API
+  description: Returns information about configuration of a restaurant.
+  version: 1.0.0
+  contact:
+    name: Toast API Support
+    email: developer-support@toasttab.com
+schemes:
+  - https
+basePath: /restaurants/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /restaurants/{restaurantGUID}:
+    get:
+      summary: Returns information about the configuration of a restaurant.
+      description: |
+        Returns a <a
+        href="#/definitions/RestaurantInfo">`RestaurantInfo`</a> object
+        that contains detailed information about the configuration of a
+        restaurant.
+      parameters:
+        - name: restaurantGUID
+          description: |
+            The Toast GUID of the restaurant that you want to get information about.
+          in: path
+          type: string
+          required: true
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast GUID of the restaurant that you want to get information about.
+          in: header
+          type: string
+          format: string
+          required: true
+      responses:
+        '200':
+          description: |
+            A <a 
+            href="#/definitions/RestaurantInfo">`RestaurantInfo`</a> 
+            object that contains detailed information about the 
+            configuration of a restaurant.
+          schema:
+            $ref: '#/definitions/RestaurantInfo'
+  /groups/{managementGroupGUID}/restaurants:
+    get:
+      summary: Lists all restaurants in a management group.
+      description: |
+        Returns an array of <a
+        href="#/definitions/Restaurant">`Restaurant`</a> objects that
+        are a part of the restaurant management group you specify in
+        the `managementGroupGUID` path parameter. Each `Restaurant`
+        object contains the unique Toast POS identifier for the
+        restaurant in its `guid` value.
+      parameters:
+        - name: managementGroupGUID
+          in: path
+          type: string
+          description: 'The GUID of the restaurant management group.'
+          required: true
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast GUID of one restaurant location in the management 
+            group.
+          in: header
+          type: string
+          format: string
+          required: true
+      responses:
+        '200':
+          description: |
+            An array of <a 
+            href="#/definitions/Restaurant">`Restaurant`</a> objects.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Restaurant'
+definitions:
+  General:
+    type: object
+    description: general information
+    properties:
+      name:
+        type: string
+        description: |
+          The guest-facing name of the restaurant. For example, the
+          `name` of a restaurant might be `Tommy's Burgers`.
+      locationName:
+        type: string
+        description: A name used externally to differentiate multiple locations, like Neighborhood, Square, City, or Hotel.
+      locationCode:
+        type: string
+        description: A code used internally to differentiate multiple locations, typically a 3 or 4 letter code.
+      description:
+        type: string
+        description: A description of the restaurant, such as information about the atmosphere and food.
+      timeZone:
+        type: string
+        description: |
+          The name of the restaurant's time zone in the <a 
+          href="https://www.iana.org/time-zones">IANA time zone 
+          database</a>. For example, `America/New_York`.
+      closeoutHour:
+        type: integer
+        description: |
+          The hour of the day that separates one business day from the
+          next, also known as the "business day cutoff time". This is 
+          in the time zone of the restaurant. The `closeoutHour` is set 
+          to a value from 0-12 (midnight to noon) in the Business Day 
+          Cutoff field in the Toast administration back-end.
+      managementGroupGuid:
+        type: string
+        description: The unique identifier of the restaurant group for
+          the restaurant.
+  Location:
+    type: object
+    description: Information about the physical location of a restaurant.
+    properties:
+      address1:
+        type: string
+        description: The first line of the street address of the
+          restaurant.
+      address2:
+        type: string
+        description: The second line of the street address of the
+          restaurant.
+      city:
+        type: string
+        description: The city or town of the restaurant.
+          restaurant.
+      stateCode:
+        type: string
+        description: The abbreviation of the state or province of the
+          restaurant.
+      zipCode:
+        type: string
+        description: The ZIP or postal code of the restaurant.
+      country:
+        type: string
+        description: The nation of the restaurant.
+      phone:
+        type: string
+      latitude:
+        type: number
+        format: double
+        description: The north/south geographic coordinate of the
+          restaurant, in decimal degrees.
+      longitude:
+        type: number
+        format: double
+        description: The east/west geographic coordinate of the
+          restaurant, in decimal degrees.
+  URLs:
+    type: object
+    description: Web addresses for the restaurant.
+    properties:
+      website:
+        type: string
+        description: The primary website for the restaurant.
+      facebook:
+        type: string
+        description: A Facebook™ page for the restaurant.
+      twitter:
+        type: string
+        description: A Twitter™ handle for the restaurant.
+      orderOnline:
+        type: string
+        description: A URL for the online ordering site for the
+          restaurant.
+      purchaseGiftCard:
+        type: string
+        description: A URL for the gift card purchasing site for the
+          restaurant.
+      checkGiftCard:
+        type: string
+        description: A URL for a site at which guests can find balances
+          and other information about gift cards.
+# TODO Images
+#  Images:
+#    type: object
+#    description: various images for display
+#    properties:
+#      thumbnailLarge:
+#        $ref: '#/definitions/Image'
+#      thumbnailMedium:
+#        $ref: '#/definitions/Image'
+#      thumbnailSmall:
+#        $ref: '#/definitions/Image'
+#      thumbnailTiny:
+#        $ref: '#/definitions/Image'
+#      banner:
+#        $ref: '#/definitions/Image'
+#      background:
+#        $ref: '#/definitions/Image'
+#      eGiftCard:
+#        $ref: '#/definitions/Image'
+#      receiptLogo:
+#        $ref: '#/definitions/Image'
+  Image:
+    type: object
+    description: Information about an image.
+    properties:
+      width:
+        type: integer
+        format: int32
+        description: The width of the image, in pixels.
+        # Confirm that these are pixel dimensions.
+      height:
+        type: integer
+        format: int32
+        description: The height of the image, in pixels.
+        # Confirm that these are pixel dimensions.
+      url:
+        type: string
+      heightWidthRatio:
+        type: number
+        format: float
+        description: The ratio of height to width
+        # Most aspect ratios include the width first, no? Should we
+        # reverse these?
+  Hours:
+    type: object
+    description: |
+      The period of time that the restaurant offers a service. For
+      example, a service might be named "lunch" and it might be offered
+      between `10:00:00.000` and `16:00:00.000`.
+    properties:
+      startTime:
+        type: string
+        description: The time of day that the service begins.
+      endTime:
+        type: string
+        description: The time of day that the service ends.
+  Service:
+    type: object
+    description: |
+      A time-based division of the operation of the restaurant. For
+      example, a service might be named `lunch` and it might be
+      available between specific hours during the day.
+    properties:
+      name:
+        type: string
+      hours:
+        $ref: '#/definitions/Hours'
+      overnight:
+        type: boolean
+        description: |
+          Indicates whether any portion of the period of time that a
+          service is available occurs after 00:00 (midnight) and before
+          the business day cutoff time for the restaurant which is 
+          available in the `closeoutHour` property. An
+          overnight shift spans two calendar dates but occurs during
+          one business day.
+  DaySchedule:
+    type: object
+    description: |
+      Information about the services and hours that are scheduled for a
+      restaurant during a type of day. For example, a restaurant might
+      have different services available on a type of day named
+      `weekday` than it does on a type of day named `weekend`.
+    properties:
+      scheduleName:
+        type: string
+        description: The name of the type of day. For example, `weekday`.
+      services:
+        type: array
+        items:
+          $ref: '#/definitions/Service'
+        description: |
+          An array of `Service` objects that are available during the
+          type of day.
+      openTime:
+        type: string
+        description: |
+          The time of day that the first service for the type of day
+          begins. For example, the first service might begin at
+          `06:00:00.000`.
+      closeTime:
+        type: string
+        description: |
+          The time of day that the last service for the type of day
+          ends. For example, the last service might end at
+          `02:00:00.000`.
+  WeekSchedule:
+    type: object
+    description: |
+      The day schedule used for for each day of the week. A day
+      schedule is the set of services (for example, "lunch") that a
+      restaurant offers and the hours that it offers each one. If a day
+      of the week value in this object is `null`, the restaurant is
+      closed on that day. the restaurant is closed that day. Values for
+      each day of the week are identifiers for day schedules in the map
+      of <a href="#/definitions/DaySchedule">`DaySchedule`</a> objects
+      in the `daySchedules` value of the <a
+      href="#/definitions/Schedules">`Schedules`</a> object.
+    properties:
+      monday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+      tuesday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+      wednesday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+      thursday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+      friday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+      saturday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+      sunday:
+        type: string
+        description: |
+          A key identifier for the <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          that represents the services and hours for the restaurant on
+          this day of the week.
+  Schedules:
+    type: object
+    description: |
+      Describes the types of service and hours of operation for the
+      restaurant over a one week period. The schedules object contains
+      service and hour schedules for types of days and the types of
+      days for each day of the calendar week.
+    properties:
+      daySchedules:
+        type: object
+        description: |
+          A map of <a
+          href="#/definitions/DaySchedule">`DaySchedule`</a> objects.
+          The value names in this object are key identifiers that are
+          used to associate a day schedule with a day of the week in
+          the `weekSchedule` value.
+        properties:
+          identifier:
+            type: string
+        additionalProperties:
+          $ref: '#/definitions/DaySchedule'
+      weekSchedule:
+        $ref: '#/definitions/WeekSchedule'
+  Delivery:
+    type: object
+    description: Information about delivery service provided by the
+      restaurant.
+    properties:
+      enabled:
+        type: boolean
+        description: |
+          Indicates whether the restaurant provides delivery service
+          and has enabled the delivery configuration in the Toast
+          administration back-end.
+      minimum:
+        type: number
+        format: double
+        description: |
+          The minimum order price that is qualified for delivery. For
+          example, a restaurant might not deliver orders that cost less
+          than $25.00.
+      area:
+        type: string
+        description: |
+          The geographic area in which the restaurant provides delivery
+          service. The delivery area is represented by an encoded set
+          of latitude and longitude coordinates that describe a polygon
+          area on a map. The coordinates are encoded using the Google
+          maps encoded polyline algorithm format. For more information
+          about the way that the encoded polyline algorithm format
+          encodes location coordinates, see
+          https://developers.google.com/maps/documentation/utilities/polylinealgorithm.
+          You can decode the coordinates of the delivery area using any
+          software that supports the encoded polyline algorithm format.
+          For example, you can decode the coordinates using the Mapline
+          Polyline decoding program
+          (https://github.com/mapbox/polyline). The delivery area
+          coordinates are a JSON array of decimal degree latitude and
+          longitude pairs. For example,
+          `[[42.36083,-71.14798],[42.34028,-71.15673],[42.3272,-71.14386]]`.
+  OnlineOrdering:
+    type: object
+    description: |
+      Information about the web-based ordering configuration for the
+      restaurant.
+    properties:
+      enabled:
+        type: boolean
+        description: |
+          Indicates whether the restaurant has enabled the Toast online 
+          ordering module. This value is `true` if the module has ever 
+          been enabled. The value _does not_ indicate that a restaurant 
+          is accepting online orders or that the restaurant is using 
+          the Toast online ordering feature.
+      scheduling:
+        type: boolean
+        description: |
+          Indicates whether the online ordering function for the
+          restaurant allows guests to place orders that will be
+          fulfilled in the future. If this value is `false`, orders
+          will be fulfilled as soon as possible.
+# TODO Are these needed?
+#      takeoutOption:
+#        type: string
+#        description: GUID of takeout option selected
+#      deliveryOption:
+#        type: string
+#        description: GUID of delivery option selected
+      specialRequests:
+        type: boolean
+        description: |
+          Indicates whether the online ordering function for the
+          restaurant allows guests to include written notes with
+          additional instructions for their orders.
+      specialRequestsMessage:
+        type: string
+        description: |
+          A written message that is shown to guests when they
+          include additional instructions with an order. For example,
+          the message might be "no substitutions."
+      paymentOptions:
+        $ref: '#/definitions/PaymentOptions'
+        description: |
+          Information about the forms of payment that the restaurant
+          accepts for online orders.
+  PaymentOptions:
+    type: object
+    description: |
+      Information about the forms of payment that the restaurant will
+      accept for orders.
+    properties:
+      delivery:
+        $ref: '#/definitions/DeliveryPaymentOptions'
+      takeout:
+        $ref: '#/definitions/TakeoutPaymentOptions'
+      ccTip:
+        type: boolean
+        description: enables credit card tips
+  DeliveryPaymentOptions:
+    type: object
+    description: |
+      Information about the forms of payment that the restaurant will
+      accept for delivery orders.
+    properties:
+      cash:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts cash payment for
+          delivery orders that are placed online.
+      ccSameDay:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts online credit card
+          payment for delivery orders that are delivered on the same
+          day.
+      ccFuture:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts online credit card
+          payment for delivery orders that are to be delivered on a day
+          after the guest places the order.
+  TakeoutPaymentOptions:
+    type: object
+    description: |
+      Information about the forms of payment that the restaurant will
+      accept for orders that a guest picks up in person.
+    properties:
+      cash:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts cash payment for
+          takeout orders that are placed online.
+      ccSameDay:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts online credit card
+          payment for takeout orders that the guest will pick up on
+          the same day.
+      ccFuture:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts online credit card
+          payment for takeout orders that the guest will pick up on
+          a day after the guest places the order.
+      ccInStore:
+        type: boolean
+        description: |
+          Indicates whether the restaurant accepts credit card payment
+          at the time the guest picks up a takeout order.
+  PrepTimes:
+    type: object
+    description: |
+      Information about the scheduled availability of the dining
+      options that are provided by the restaurant.
+    properties:
+      deliveryPrepTime:
+        type: integer
+        format: int32
+        description: |
+          The amount of time, in minutes, that it takes to prepare an
+          online delivery order.
+      deliveryTimeAfterOpen:
+        type: integer
+        format: int32
+        description: |
+          The amount of time, in minutes, that it takes for delivery
+          service to become available after the restaurant opens.
+      deliveryTimeBeforeClose:
+        type: integer
+        format: int32
+        description: |
+          The amount of time, in minutes, before the restaurant closing
+          time that delivery service becomes unavailable.
+      takeoutPrepTime:
+        type: integer
+        format: int32
+        description: |
+          The amount of time, in minutes, that it takes to prepare an
+          online takeout order.
+      takeoutTimeAfterOpen:
+        type: integer
+        format: int32
+        description: |
+          The amount of time, in minutes, that it takes for takeout
+          service to become available after the restaurant opens.
+      takeoutTimeBeforeClose:
+        type: integer
+        format: int32
+        description: |
+          The amount of time, in minutes, before the restaurant closing
+          time that takeout service becomes unavailable.
+      takeoutThrottlingTime:
+        type: integer
+        description: |
+          The amount of time, in minutes, that an online takeout order
+          is delayed before the Toast POS fires it in the kitchen.
+      deliveryThrottlingTime:
+        type: integer
+        description: |
+          The amount of time, in minutes, that an online delivery order
+          is delayed before the Toast POS fires it in the kitchen.
+  RestaurantInfo:
+    type: object
+    description: |
+      Information about the configuration of a restaurant in the Toast
+      POS.
+    properties:
+      guid:
+        type: string
+      general:
+        $ref: '#/definitions/General'
+      urls:
+        $ref: '#/definitions/URLs'
+      location:
+        $ref: '#/definitions/Location'
+#      images:
+#        $ref: '#/definitions/Images'
+      schedules:
+        $ref: '#/definitions/Schedules'
+      delivery:
+        $ref: '#/definitions/Delivery'
+      onlineOrdering:
+        $ref: '#/definitions/OnlineOrdering'
+      prepTimes:
+        $ref: '#/definitions/PrepTimes'
+  Restaurant:
+    type: object
+    description: |
+      The Toast POS GUID for a restaurant
+    properties:
+      guid:
+        type: string
+        description: |
+          The unique identifier that the Toast POS assigns to a
+          restaurant.

@@ -1,0 +1,2241 @@
+---
+swagger: '2.0'
+info:
+  version: 2.2.0
+  title: Toast Orders API
+  description: |
+    Operations that create and retrieve information about restaurant 
+    guest orders. Including checks, items ordered, prices, and 
+    discounts.
+  contact:
+    email: developer-support@toasttab.com
+schemes:
+  - https
+host: toast-api-server
+basePath: /orders/v2
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  Order:
+    type: object
+    description: A Toast order is composed of multiple Checks. Each check has multiple item selections.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        required:
+          - diningOption
+          - checks
+        properties:
+          openedDate:
+            description: |
+              The business date of the order. If you do not include an
+              `openedDate` value when you `POST` a new order, the
+              business date of the order is set to the restaurant
+              business day that corresponds to the current date and
+              time. The business date of an order is affected by the
+              business date cutoff time for a restaurant, which is
+              available from the restaurants API in the `closeoutHour` property.
+            type: string
+            format: date-time
+          modifiedDate:
+            type: string
+            format: date-time
+            description: The most recent date that the Order or one of the nested entities (check/selection) was modified.
+          promisedDate:
+            description: The date this order needs to be fulfilled by. Set to null for ASAP orders.
+            type: string
+            format: date-time
+          diningOption:
+            description: One of the restaurant-configured dining options.
+            type: object
+            $ref: '#/definitions/ExternalReference'
+          checks:
+            type: array
+            description: Checks for this order. Usually there will be one. If splitting the check, there will be multiple.
+            minItems: 1
+            items:
+              $ref: '#/definitions/Check'
+          table:
+            type: object
+            description: |
+              The restaurant table at which this order was placed.
+            $ref: '#/definitions/ExternalReference'
+          serviceArea:
+            type: object
+            description: The service area. Response only.
+            $ref: '#/definitions/ExternalReference'
+          restaurantService:
+            type: object
+            description: The applicable meal service - e.g. lunch or dinner. Response only.
+            $ref: '#/definitions/ExternalReference'
+          revenueCenter:
+            type: object
+            description: |
+              The division or section of a restaurant that the order is
+              fulfilled in. You can analyze financial reporting information
+              using revenue centers.
+            $ref: '#/definitions/ExternalReference'
+          source:
+            type: string
+            description: |
+              Indicates the way that the order was placed. One of:
+
+              * `In Store`
+              * `Online`
+              * `OPT`
+              * `API`
+              * `Kiosk`
+              * `Caller Id`
+              * `Google`
+
+              Response only.
+          duration:
+            type: integer
+            description: The number of seconds between creation and payment. Response only.
+          deliveryInfo:
+            $ref: '#/definitions/DeliveryInfo'
+          requiredPrepTime:
+            type: string
+            format: ISO-8601
+            description: Sets the amount of time that it will take to prepare the order. The value that you set overrides the default deliveryPrepTime or takeoutPrepTime that normally control auto-firing for future orders. You can use requiredPrepTime to handle atypical orders that will take more time than usual for a restaurant to prepare. Express the required preparation time in ISO-8601 duration format. Must be greater than zero and be an increment of five minutes. For example, the value "PT15M" sets the required preparation time for the order to 15 minutes.
+          estimatedFulfillmentDate:
+            type: string
+            format: date-time
+            description: The date and time that the order is expected to be ready for pickup or to be delivered. This value is only set when the dining option for the order is `DELIVERY` or `TAKE_OUT`. For other dining options, the value is `null`. Response only.
+          numberOfGuests:
+            type: integer
+            description: |
+              The number of restaurant customers associated with the
+              order. For example, for a dine-in order this might be the
+              number of guests at a table.
+          voided:
+            type: boolean
+            description: True if this order has been voided. Response only.
+          voidDate:
+            type: string
+            format: date-time
+            description: The date at which this order was voided. Response only.
+          voidBusinessDate:
+            type: integer
+            description: The business date (yyyymmdd) on which this order was voided. Response only.
+          paidDate:
+            type: string
+            format: date-time
+            description: The most recent date at which this order received payment. If not specified when POSTing, it will be set to the current system time.
+          closedDate:
+            type: string
+            format: date-time
+            description: The most recent date at which this order's payment status was set to CLOSED. This status is not returned, because it is simply CLOSED when all checks on the order are CLOSED.
+          deletedDate:
+            type: string
+            format: date-time
+            description: The date and time that the order was deleted. The `deletedDate` value only
+              applies when the `deleted` value is `true`. If `deleted` is `false`, the value
+              of `deletedDate` is the UNIX epoch, `1970-01-01T00:00:00.000+0000`.
+          deleted:
+            type: boolean
+            description: Set to `true` if this order has been deleted. Response only.<br><br>For example, if you combine a
+              check into another order, the original order for the check is deleted.
+          businessDate:
+            type: integer
+            description: The business date (yyyymmdd) on which the order is fulfilled. Response only.
+          server:
+            description: The restaurant employee, or server, who is assigned to the order.
+            type: object
+            $ref: '#/definitions/ExternalReference'
+          pricingFeatures:
+            type: array
+            description: Pricing Features which are being used by this order
+            items:
+              type: string
+              description: A specific pricing feature used to price out the Order
+              enum:
+                  - TAXESV2
+                  - TAXESV3
+          approvalStatus:
+            type: string
+            description: |
+              The current state of the order in the restaurant order
+              fulfillment process. For example, the `approvalStatus`
+              can indicate that an order is waiting for a restaurant
+              employee to approve it or that the order is in a
+              restaurant kitchen being fulfilled. Response only. The
+              `approvalStatus` value can be:
+
+              * `NEEDS_APPROVAL` - the order has been created but will
+              not be fulfilled by the restaurant until an employee
+              approves it.
+
+              * `APPROVED` - the order is being fulfilled by the
+              restaurant or it has been fulfilled in the past. Orders
+              remain in this state indefinitely after they are
+              fulfilled.
+
+              * `FUTURE` - the order is expected to be fulfilled by the
+              restaurant at a future date and time. Restaurant
+              employees will receive information about the order at the
+              date and time that it is ready to be fulfilled.
+
+              * `NOT_APPROVED` - restaurant employees received
+              information about the order and did not approve it for
+              fulfillment. An order enters this state after a period of
+              time passes without a restaurant employee approving it.
+            enum:
+              - NEEDS_APPROVAL
+              - APPROVED
+              - FUTURE
+              - NOT_APPROVED
+          createdDevice:
+            description: The Toast POS device that created the order. This value is null if the order was not created using a Toast POS device.
+            type: object
+            $ref: '#/definitions/Device'
+          createdDate:
+            description: The date and time that the Toast platform received the order
+            type: string
+            format: date-time
+          initialDate:
+            description: Reserved for future use. Do not use the `initialDate` value for integration development.
+            type: integer
+            format: int64
+          lastModifiedDevice:
+             description: The Toast POS device that modified the order most recently. This value is null if the order has not been modified using a Toast POS device. If the order is modified but the modificiation is not made using a Toast POS device, this value does not change.
+             type: object
+             $ref: '#/definitions/Device'
+          curbsidePickupInfo:
+            description: |
+              Information that the restaurant can use to identify a guest when they arrive outside the restaurant to pick up their order.
+            type: object
+            $ref: '#/definitions/CurbsidePickupInfo'
+          deliveryServiceInfo:
+            description: |
+              Reserved for future use.
+            type: object
+            $ref: '#/definitions/DeliveryServiceInfo'
+          marketplaceFacilitatorTaxInfo:
+            description: |
+              Information about the taxes that a marketplace
+              facilitator organization remits on behalf of a Toast
+              platform restaurant. `POST` only. The orders API does not
+              include the `marketplaceFacilitatorTaxInfo` value in
+              response data.
+
+              **Note**: you can only include this information if your
+              Toast API client is associated with a designated
+              marketplace facilitator organization. Most Toast API
+              clients do not create marketplace facilitator orders.
+            type: object
+            $ref: '#/definitions/MarketplaceFacilitatorTaxInfo'
+  Check:
+    type: object
+    description: Represents a single check within an order.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        required:
+          - selections
+        properties:
+          createdDate:
+            description: The date and time that the Toast platform received the check
+            type: string
+            format: date-time
+          openedDate:
+            description: The date at which this check was opened. If not specified, it will be set to the current system time.
+            type: string
+            format: date-time
+          closedDate:
+            type: string
+            format: date-time
+            description: The most recent date at which this check's payment status was set to CLOSED.
+          modifiedDate:
+            type: string
+            format: date-time
+            description: The most recent date at which this check was modified.
+          deletedDate:
+            type: string
+            format: date-time
+            description: The date at which this check was deleted. deletedDate is only applicable when deleted is true (by default the value will be set to 1970-01-01T00:00:00.000+0000).
+          deleted:
+            type: boolean
+            description: True if this check has been deleted.
+          selections:
+            type: array
+            items:
+              $ref: '#/definitions/Selection'
+          customer:
+            description: |
+              A <a href="#/definitions/Customer">`Customer`</a> object
+              that holds information about a restaurant guest
+              associated with the check.
+
+              * Required for `POST` requests for orders that use the
+                take-out or delivery dining options.
+
+              * For checks that apply or accrue Toast loyalty points, a
+                `GET` request returns a <a
+                href="#/definitions/Customer">`Customer`</a> object
+                even when restaurant employees do not enter guest
+                information for a check. In this situation, the <a
+                href="#/definitions/Customer">`Customer`</a> object
+                contains only the Toast POS system GUID of the guest.
+                All other values are `null`.
+            $ref: '#/definitions/Customer'
+          appliedLoyaltyInfo:
+            description: Information about the customer loyalty program
+              account associated with the check. Used to accrue loyalty
+              program benefits and to redeem loyalty program discounts.
+            $ref: '#/definitions/AppliedLoyaltyInfo'
+          taxExempt:
+            type: boolean
+            default: false
+            description: True if this check is tax exempt. Tax exempt number is not yet supported.
+          displayNumber:
+            type: string
+            description: Generally starts at one each day and counts up. Toast will fill this in if it is not specified when POSTing. Not guaranteed to be unique.
+          appliedServiceCharges:
+            type: array
+            description: Any restaurant-configured service charges that applied to this check.
+            items:
+              $ref: '#/definitions/AppliedServiceCharge'
+          amount:
+            type: number
+            format: double
+            description: The dollar amount due on this check in USD, after discounts but before tax. Response only.
+          taxAmount:
+            type: number
+            format: double
+            description: The computed tax amount in USD. Includes service charge and item level taxes. Response only.
+          totalAmount:
+            type: number
+            format: double
+            description: The total amount due on this check in USD, including discounts and taxes. Response only.
+          payments:
+            type: array
+            description: Payments made on this check
+            minItems: 0
+            items:
+              $ref: '#/definitions/Payment'
+          tabName:
+            type: string
+            description: The name of the tab on this check. This will show up on the KDS (Kitchen Display System) for pending orders. The tabName's length can be up to 255 characters.
+          paymentStatus:
+            type: string
+            description: The payment status of this check. OPEN means there is outstanding balance. PAID means a credit card payment has been applied but the tip has not been adjusted. CLOSED means there is no remaining amount due on this check. Toast does not prevent a CLOSED check from transitioning back to OPEN or PAID. Response only.
+
+            enum:
+              - OPEN
+              - PAID
+              - CLOSED
+          appliedDiscounts:
+            type: array
+            description: The discounts applied to this check. In a `POST` request, only one `appliedDiscount` is allowed per check.
+            minItems: 0
+            items:
+              $ref: '#/definitions/AppliedDiscount'
+          voided:
+            type: boolean
+            description: True if this check has been voided. Response only.
+          voidDate:
+            type: string
+            format: date-time
+            description: The date at which this check was voided. Response only.
+          voidBusinessDate:
+            type: integer
+            description: The business date (yyyymmdd) on which this check was voided. Response only.
+          paidDate:
+            type: string
+            format: date-time
+            description: The most recent date at which this check received payment. If not specified when POSTing, it will be set to the current system time.
+          createdDevice:
+            description: The Toast POS device that created the check. This value is null if the check was not created using a Toast POS device.
+            type: object
+            $ref: '#/definitions/Device'
+          lastModifiedDevice:
+             description: The Toast POS device that modified the check most recently. This value is null if the check has not been modified using a Toast POS device. If the check is modified but the modificiation is not made using a Toast POS device, this value does not change.
+             type: object
+             $ref: '#/definitions/Device'
+          appliedPreauthInfo:
+             type: object
+             description: For internal use only.
+             $ref: '#/definitions/AppliedPreauthInfo'
+  AppliedLoyaltyInfo:
+    type: object
+    description: Information about the customer loyalty program account
+      associated with a check.
+    required:
+      - loyaltyIdentifier
+      - vendor
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          loyaltyIdentifier:
+            type: string
+            description: An identifier for the loyalty program account. For
+              `POST` orders, this identifier is transmitted to the loyalty
+              program service provider to associate the check with the
+              loyalty account.
+          maskedLoyaltyIdentifier:
+            type: string
+            description: |
+              A representation of the identifier of the loyalty program
+              account that can be displayed securely. For example:
+              `************1234`. The Toast POS displays this string to
+              restaurant employees and guests. You can include this
+              optional value when you `POST` an order and it will be
+              available in response data when you `GET` the order. If
+              you do not provide a `maskedLoyaltyIdentifier` when you
+              `POST` an order, this value is `null` in response data
+              and the Toast POS displays a masked representation of the
+              `loyaltyIdentifier` (all characters except the last four
+              are hidden).
+          vendor:
+            type: string
+            description: The specific loyalty program service provider that
+              supports the loyalty account.
+            enum:
+              - TOAST
+              - PUNCHH
+              - PUNCHH2
+              - PAYTRONIX
+              - APPFRONT
+              - INTEGRATION
+          accrualFamilyGuid:
+            type: string
+            description: Response only. An internal Toast POS identifier for
+              loyalty program transactions. This will not be returned from the initial POST order request and will be available at a later time.
+          accrualText:
+            type: string
+            description: Response only. A description of the loyalty program transaction
+              that will be printed on the customer's reciept. For example,
+              "Earned 27 points." The maximum length of the description
+              string is 255 characters. This will not be returned from the initial POST order request and will be available at a later time.
+  Selection:
+    type: object
+    description: "A Selection object can represent either a primary item (i.e. Check.selections) or a modifier (Selection.modifiers) selection. Quantity defaults to 1.
+      <br><br>
+      For a POST operation, all selections must have valid item and itemGroup fields. The item and itemGroup values can be null for GET requests. For example, they are null for gift cards and on special requests.
+      <br><br>
+      Specify a modifier selection by adding it to the `modifiers` list of another selection. For each modifier selection, its optionGroup field must be set correctly, because a MenuItem can be included in multiple MenuOptionGroups, potentially with different prices or sizing.
+      "
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        required:
+          - item
+          - quantity
+        properties:
+          item:
+            type: object
+            description: A reference to the selected MenuItem.
+            $ref: '#/definitions/ExternalReference'
+          itemGroup:
+            type: object
+            description: A reference to the MenuGroup from which the item was selected.
+            $ref: '#/definitions/ExternalReference'
+          optionGroup:
+            type: object
+            description: A reference to the modifier group from which the menu item was selected. Only applies if this is a modifier selection.
+            $ref: '#/definitions/ExternalReference'
+          preModifier:
+            type: object
+            description: A reference to the selected pre-modifier.
+            $ref: '#/definitions/ExternalReference'
+          quantity:
+            type: number
+            format: double
+            description: Quantity ordered. A decimal number for items sold by weight; a counting number for discrete items.
+          seatNumber:
+            type: integer
+            description: |
+              Indicates which guest seat at a restaurant table ordered
+              a menu item selection. Restaurant employees can choose the
+              seat number when they add a menu item to a guest check.
+
+              * A positive integer value indicates the seat number for
+                the menu item.
+
+              * `0` - indicates that the menu item is being shared by
+                multiple guests.
+
+              * `-1` - indicates that the restaurant employee did not
+                select a seat for the menu item.
+
+              Response only.
+          unitOfMeasure:
+            type: string
+            description: The unit of measure required for weighing the item. Default is NONE, which means the item is not meant to be weighed.
+            enum:
+              - NONE
+              - LB
+              - OZ
+              - KG
+              - G
+          selectionType:
+            type: string
+            description: Specifies whether this selection is a special request or other off-menu sale. If left null or NONE, describes a normal modifier or item selection.
+            enum:
+              - NONE
+              - OPEN_ITEM
+              - SPECIAL_REQUEST
+              - PORTION
+          salesCategory:
+            type: object
+            description: A reference to the salesCategory of the item. Response only.
+            $ref: '#/definitions/ExternalReference'
+          appliedDiscounts:
+            type: array
+            description: The itemized discounts applied to this item. Response only.
+            minItems: 0
+            items:
+              $ref: '#/definitions/AppliedDiscount'
+          deferred:
+            type: boolean
+            description: Whether this selection is a deferred revenue transaction, e.g. gift card sales.
+          preDiscountPrice:
+            type: number
+            description: Gross sale price for this selection. Excludes tax. Response only.
+            format: double
+          price:
+            type: number
+            format: double
+            description: Net price for this selection. The final price of the item after considering discounts
+              (including discounts at the check level), quantity adjustments, and modifier prices at the time
+              the item was selected for purchase. Response only.
+          tax:
+            type: number
+            format: double
+            description: The total tax amount for this selection. Response only.
+          voided:
+            type: boolean
+            description: True if this selection has been voided. Response only.
+          voidDate:
+            type: string
+            format: date-time
+            description: The date at which this selection was voided. Response only.
+          voidBusinessDate:
+            type: integer
+            description: The business date (yyyymmdd) on which this selection was voided. Response only.
+          voidReason:
+            type: object
+            description: If voided is true, a reference to the voidReason. Response only.
+            $ref: '#/definitions/ExternalReference'
+          refundDetails:
+            description: |
+              A <a href="#/definitions/RefundDetails">`RefundDetails`</a> object that
+              contains information about refunded payment amounts for the item.
+            type: object
+            $ref: '#/definitions/RefundDetails'
+          displayName:
+            type: string
+            description: The display name of the selection. This field can be used to set a special request value, otherwise it will be generated from this Selection's item property.
+          createdDate:
+            type: string
+            format: date-time
+            description: The date at which this selection was created. Defaults to current time if not specified.
+          modifiedDate:
+            type: string
+            format: date-time
+            description: The date at which this selection was last modified. Defaults to current time if not specified.
+          modifiers:
+            type: array
+            description: A list of modifiers applying to this selection.
+            items:
+              $ref: '#/definitions/Selection'
+          fulfillmentStatus:
+            type: string
+            default: NEW
+            description: |
+              Indicates the stage of the preparation workflow that the
+              menu item selection is in. The `fulfillmentStatus` of a
+              menu item selection changes as restaurant employees move
+              the item through the functions of the Toast POS, for
+              example order entry and the kitchen display system (KDS).
+              Response only.
+              <ul>
+                <li>`NEW` - the menu item selection has been added to a
+                  check but has not been sent to the KDS for
+                  preparation.</li>
+                <li>`HOLD` - a restaurant employee has paused the menu
+                  item selection so that it does not appear in the
+                  KDS for preparation.</li>
+                <li>`SENT` - the menu item selection has been fired and
+                  appears in the KDS for preparation.</li>
+                <li>`READY` - preparation is complete, the menu item
+                  selection has been fulfilled and no longer appears in
+                  the KDS. If your restaurant does not use the Toast POS
+                  KDS, items in an order will not reach the `READY`
+                  status.</li>
+              </ul>
+            enum:
+              - NEW
+              - HOLD
+              - SENT
+              - READY
+          taxInclusion:
+            type: string
+            description: |
+              Indicates whether the menu item price includes one or more tax
+              amounts. If the menu item is a modifier for another menu item
+              selection, it always inherits the tax inclusion behavior of the menu
+              item it applies to. Values are:
+              * `INCLUDED` - the menu item price includes one or more tax amounts.
+              * `NOT_INCLUDED` - the menu item price does not include any tax
+                amounts.
+              * `INHERITED` - the menu item is a modifier for another menu item
+                selection in the check. The `taxInclusion` value of the parent menu
+                item selection applies to the modifier. If a menu item selection
+                *that is not a modifier* inherits tax inclusion behavior from a
+                menu or menu group, the `taxInclusion` value will be either
+                `INCLUDED` or `NOT_INCLUDED`.
+            enum:
+              - INCLUDED
+              - NOT_INCLUDED
+              - INHERITED
+          appliedTaxes:
+            type: array
+            description: An array of AppliedTaxRate objects that contain information about tax payments made for the selection. Response only.
+            items:
+              $ref: '#/definitions/AppliedTaxRate'
+          diningOption:
+            description: A reference to the setting or method that a restaurant uses to fulfill orders. For example, dine-in, takeout or delivery might be dining options. Restaurants configure dining options that they fulfill orders in. Response only.
+            type: object
+            $ref: '#/definitions/ExternalReference'
+          openPriceAmount:
+            description: |
+              A non-negative currency amount that sets the price of a
+              menu item that is configured to use the *Open Price*
+              pricing strategy. If you do not supply an
+              `openPriceAmount` value for an open price menu item, the
+              orders API will set the price to 0.00.
+
+              If a menu item is configured to use tax-inclusive
+              pricing, the orders API calculates the base price and tax
+              amount based on the open price that you specify. _The
+              open-price amount includes both the base-price and
+              inclusive tax amount._
+
+              This value is write-only. The `openPriceAmount` is not
+              present in orders API return data.
+            type: number
+            format: double
+          receiptLinePrice:
+            type: number
+            format: double
+            description: The price of the menu item selection before any taxes, discounts, and modifier option
+              adjustments are applied.
+          optionGroupPricingMode:
+            type: string
+            description: Information about how the modifier group affects the pricing of its parent item.
+            enum:
+              - INCLUDED
+              - FIXED_PRICE
+              - ADJUSTS_PRICE
+              - REPLACES_PRICE
+              - LOCATION_SPECIFIC_PRICE
+          externalPriceAmount:
+            description: |
+              The menu item price that was calculated by the
+              marketplace facilitator organization that created the
+              order. `POST` only. The orders API does not include the
+              `externalPriceAmount` value in return data.
+
+              **Note**: you can only include this information if your
+              Toast API client is associated with a designated
+              marketplace facilitator organization. Most Toast API
+              clients do not create marketplace facilitator orders.
+            type: number
+            format: double
+  Payment:
+    type: object
+    description: Defines a payment.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        required:
+          - type
+          - amount
+          - tipAmount
+        properties:
+          paidDate:
+            description: The date at which the payment was made.
+            type: string
+            format: date-time
+          paidBusinessDate:
+            description: The business date (yyyyMMdd) on which this payment was first applied. Response only.
+            type: integer
+          type:
+            type: string
+            description: The payment method. When POSTing, only `OTHER` and `CREDIT` are supported. All other types are response only. For cash payments, please create an external cash payment type in Other Payment Options.
+            enum:
+              - CASH
+              - CREDIT
+              - GIFTCARD
+              - HOUSE_ACCOUNT
+              - REWARDCARD
+              - LEVELUP
+              - OTHER
+              - UNDETERMINED
+          cardEntryMode:
+            type: string
+            description: Indicates how credit card data was obtained. Response only.
+            enum:
+              - SWIPED
+              - KEYED
+              - ONLINE
+              - EMV_CHIP_SIGN
+              - TOKENIZED
+              - PRE_AUTHED
+              - SAVED_CARD
+              - FUTURE_ORDER
+              - CONTACTLESS
+              - APPLE_PAY_CNP
+              - GOOGLE_PAY_CNP
+              - INCREMENTAL_PRE_AUTHED
+              - PARTNER_ECOM_COF
+          amount:
+            type: number
+            format: double
+            description: The amount of this payment, excluding tips.
+          tipAmount:
+            type: number
+            format: double
+            description: The amount tipped on this payment.
+          amountTendered:
+            type: number
+            format: double
+            description: The amount tendered for this payment.
+          cardType:
+            type: string
+            description: The type of card used. Response only.
+            enum:
+              - VISA
+              - MASTERCARD
+              - AMEX
+              - DISCOVER
+              - JCB
+              - DINERS
+              - CIT
+              - MAESTRO
+              - LASER
+              - SOLO
+              - UNKNOWN
+          last4Digits:
+            type: string
+            description: The last 4 digits of the card used. Response only.
+          originalProcessingFee:
+            type: number
+            format: double
+            description: The original processing fee for this payment. The original processing fee value is populated after the payment has been captured. Response only.
+          server:
+            description: The restaurant employee, or server, who is associated with the payment. Response only.
+            type: object
+            $ref: '#/definitions/ExternalReference'
+          referenceCode:
+            type: string
+            description: For internal use only.
+          cashDrawer:
+            type: object
+            description: A reference to the cashDrawer used to receive this payment. Response only.
+            $ref: '#/definitions/ExternalReference'
+          refundStatus:
+            type: string
+            description: Response only.
+            enum:
+              - NONE
+              - PARTIAL
+              - FULL
+          refund:
+            type: object
+            description: Response only.
+            $ref: '#/definitions/Refund'
+          paymentStatus:
+            type: string
+            description: The status of this payment when the type is CREDIT. Response only.
+            enum:
+              - OPEN
+              - PROCESSING
+              - AUTHORIZED_AT_RISK
+              - AUTHORIZED
+              - ERROR
+              - ERROR_NETWORK
+              - DENIED
+              - PROCESSING_VOID
+              - VOIDED_AT_RISK
+              - CANCELLED
+              - CAPTURE_IN_PROGRESS
+              - CAPTURED
+              - VOIDED
+          voidInfo:
+            type: object
+            description: If the payment was voided, this will contain information on who did it and when. Response only.
+            $ref: '#/definitions/VoidInformation'
+          houseAccount:
+            type: object
+            description: A reference to the houseAccount associated with this payment, if any. Response only.
+            $ref: '#/definitions/ExternalReference'
+          otherPayment:
+            description: Required when the payment type is `OTHER`. A reference to an alternative payment method configured by the restaurant.
+            $ref: '#/definitions/ExternalReference'
+          createdDevice:
+            description: The Toast POS device that created the payment. This value is null if the payment was not created using a Toast POS device.
+            type: object
+            $ref: '#/definitions/Device'
+          lastModifiedDevice:
+            description: The Toast POS device that modified the payment most recently. This value is null if the payment has not been modified using a Toast POS device.  If the payment is modified but the modificiation is not made using a Toast POS device, this value does not change.
+            type: object
+            $ref: '#/definitions/Device'
+          mcaRepaymentAmount:
+            description: |
+              The total currency amount withheld as repayment for a
+              Toast Capital merchant cash advance (MCA). The MCA
+              repayment amount is set at the time the payment is
+              captured, which is typically hours after the actual
+              restaurant guest payment. Until the `mcaRepaymentAmount`
+              is set, this value is `null`. The `mcaRepaymentAmount`
+              _might_ be updated when the payment is settled, which is
+              typically one or more days after the actual guest
+              payment. Response only.
+            type: number
+            format: double
+          cardPaymentId:
+            type: string
+            description: |
+              Note: this value is in limited release. Your orders API
+              integration might not include the `cardPaymentId` value.
+
+              A unique identifier for the credit card used for a
+              `CREDIT` type payment. The identifier string is generated
+              by the Toast POS system and _does not include any
+              information related to or associated with the actual
+              credit card account._ The identifier is unique within
+              your restaurant management group.
+              The value is `null` for the following payment types:
+
+              * Payment types other than `CREDIT`
+              * Credit card payments entered using EMV (chip cards)
+              * Credit card payments entered by keying in card numbers
+
+              Response only.
+          giftCard:
+            type: object
+            description: Reserved for future use.
+            $ref: '#/definitions/ExternalReference'
+          giftCardInfo:
+            type: object
+            description: Reserved for future use.
+            $ref: '#/definitions/GiftCardInfo'
+          orderGuid:
+            type: string
+            description: The Toast POS system identifier for the order that contains the payment. Response only.
+          checkGuid:
+            type: string
+            description: The Toast POS system identifier for the check that contains the payment. Response only.
+  GiftCardInfo:
+    type: object
+    description: Reserved for future use.
+    required:
+      - cardNumberIdentifier
+      - last4CardDigits
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          storedValueBalance:
+            description: Reserved for future use.
+            type: number
+            format: double
+          rewardsBalance:
+            description: Reserved for future use.
+            type: number
+            format: double
+          authRequestId:
+            description: Reserved for future use.
+            type: string
+          authorizationState:
+            description: Reserved for future use.
+            type: string
+            enum:
+              - VALIDATED
+              - NONE
+              - PAID
+              - REVERSED
+              - DENIED
+              - ERROR
+              - ADJUSTING
+          cardNumberIdentifier:
+              type: string
+              description: Reserved for future use.
+  AppliedPreauthInfo:
+    type: object
+    description: For internal use only.
+    required:
+      - token
+      - preAuthAmount
+      - cardType
+      - last4CardDigits
+    properties:
+      guid:
+        description: For internal use only.
+        type: string
+      token:
+        description: For internal use only.
+        type: string
+      oneTimeUse:
+        description: For internal use only.
+        type: boolean
+      preAuthAmount:
+        description: For internal use only.
+        type: number
+        format: double
+      cardType:
+        description: For internal use only.
+        type: string
+        enum:
+          - VISA
+          - MASTERCARD
+          - AMEX
+          - DISCOVER
+          - JCB
+          - DINERS
+          - CITI
+          - MAESTRO
+          - LASER
+          - SOLO
+          - UNKNOWN
+      readerType:
+        description: For internal use only.
+        type: string
+        enum:
+          - ACS_ACR31
+          - BBPOS
+          - BBPOS_MSR
+          - IDTECH_SHUTTLE
+          - INGENICO_ICM122
+          - MAGTEK_BULLET
+          - MAGTEK_DYNAMAG
+          - MAGTEK_EDYNAMO
+          - MAGTEK_UDYNAMO
+      last4CardDigits:
+        description: For internal use only.
+        type: string
+      cardHolderFirstName:
+        description: For internal use only.
+        type: string
+      cardHolderLastName:
+        description: For internal use only.
+        type: string
+      cardHolderhash4:
+        description: For internal use only.
+        type: string
+      cardHolderhash6:
+        description: For internal use only.
+        type: string
+      magStripeName:
+        description: For internal use only.
+        type: string
+      cardHolderExpirationMonth:
+        description: For internal use only.
+        type: string
+      cardHolderExpirationYear:
+        description: For internal use only.
+        type: string
+      useCount:
+        description: For internal use only.
+        default: 0
+        type: integer
+  Customer:
+    type: object
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        required:
+          - firstName
+          - lastName
+          - email
+          - phone
+        properties:
+          firstName:
+            type: string
+          lastName:
+            type: string
+          phone:
+            type: string
+          phoneToken:
+            type: string
+            description: |
+              For internal use only.
+          email:
+            type: string
+            description: |
+              The email address corresponding to the guest who placed the order. The email address is the key that identifies a unique restaurant guest, and all distinct guests should have distinct email addresses.
+          emailToken:
+            type: string
+            description: |
+              For internal use only.
+  DeliveryInfo:
+    type: object
+    description: Required if the dining option behavior is DELIVERY
+    required:
+      - address1
+      - city
+      - state
+      - zipCode
+    properties:
+      address1:
+        type: string
+        description: |
+          The first line of the street address of the delivery destination.
+      address2:
+        type: string
+        description: |
+          The second line of the street address of the delivery destination.
+      city:
+        type: string
+        description: |
+          The name of the city or town of the delivery destination.
+      state:
+        type: string
+        format: ISO 3166-2
+        description: |
+          The postal abbreviation of the state or province of the
+          delivery destination. The abbreviation must be in ISO 3166-2
+          format (two capital letters).
+      zipCode:
+        type: string
+        description: |
+          The postal or zip code of the delivery destination.
+      latitude:
+        type: number
+        format: double
+        description: |
+          The north/south geographic coordinate of the delivery
+          destination, in decimal format.
+      longitude:
+        type: number
+        format: double
+        description: |
+          The east/west geographic coordinate of the delivery
+          destination, in decimal format.
+      notes:
+        description: |
+          Additional instructions or information about the delivery.
+        type: string
+      deliveredDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time that the delivery employee indicated that
+          the order was delivered in the Toast POS. Response only. This
+          value is only set when the dining option for the order is
+          `DELIVERY`. For other dining options, the value is `null`.
+      dispatchedDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time that the restaurant indicated that the
+          order was available for delivery and assigned to a delivery
+          employee in the Toast POS. This value is only set when the
+          dining option for the order is `DELIVERY`. For other dining
+          options, the value is `null`.
+      deliveryEmployee:
+        description: |
+          The Toast GUID or external identifier of the delivery
+          employee. Response only.
+        type: object
+        $ref: '#/definitions/ExternalReference'
+      deliveryState:
+        description: |
+          An internal representation of the state of a delivery order.
+        type: string
+        enum:
+          - PENDING
+          - IN_PROGRESS
+          - DELIVERED
+          - PICKED_UP
+  AppliedServiceCharge:
+    type: object
+    description: A percentage/open/fixed service charge added to a check which could represent in general an upcharge like a gratuity or delivery fee. Whether the upcharge is taxable is defined in the restaurant-configured serviceCharge. The fields on the AppliedServiceCharge are computed based on the referenced ServiceCharge configuration.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        required:
+          - serviceCharge
+        properties:
+          chargeAmount:
+              type: number
+              format: double
+              description: The final applied amount excluding tax. This is required if the amountType is OPEN.
+          serviceCharge:
+            description: A reference to the restaurant-configured service charge. If a service charge is taxable, the tax amount will be applied to the check.
+            type: object
+            $ref: '#/definitions/ExternalReference'
+          chargeType:
+            description: An OPEN service charge can either be a dollar amount or a percentage. Response only
+            type: string
+            enum:
+              - FIXED
+              - PERCENT
+              - OPEN
+          name:
+            description: The configured human readable label for the service charge. Response only
+            type: string
+          delivery:
+            description: Whether this service charge is a delivery charge. Response only.
+            type: boolean
+          takeout:
+            description: Whether this service charge is a takeout charge. Response only.
+            type: boolean
+          dineIn:
+            description: Whether this service charge is a dine-in charge. Response only.
+            type: boolean
+          gratuity:
+            description: Whether this service charge is a gratuity. Can be used to derive required tip amount on the check. Response only.
+            type: boolean
+          taxable:
+            description: Whether this service charge is taxable. Response only.
+            type: boolean
+          appliedTaxes:
+            type: array
+            description: Taxes applied to the service charge.
+            items:
+              $ref: '#/definitions/AppliedTaxRate'
+          serviceChargeCalculation:
+            type: string
+            description: Defines whether or not the service charge is applied before (PRE) or after (POST) discounts. This field is null for non-percent service charges.
+            enum:
+              - PRE_DISCOUNT
+              - POST_DISCOUNT
+          refundDetails:
+            description: |
+              A <a href="#/definitions/RefundDetails">`RefundDetails`</a> object that
+              contains information about refunded payment amounts for the item.
+            type: object
+            $ref: '#/definitions/RefundDetails'
+  AppliedTaxRate:
+    type: object
+    description: A tax rate applied to an Item or ServiceCharge.
+    discriminator: entityType
+    required:
+      - taxRate
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          entityType:
+            description: The type of object this is.
+            type: string
+          taxRate:
+            type: object
+            $ref: '#/definitions/ToastReference'
+          name:
+            type: string
+            description: The name of the tax rate.
+          rate:
+            type: number
+            format: double
+            description: The tax rate, which can be a fixed amount, a percentage, or null.
+          taxAmount:
+            type: number
+            format: double
+            description: The tax amount that was actually applied.
+          type:
+            type: string
+            description: |
+              The type of the tax rate. Default is `PERCENT`. The value
+              `EXTERNAL` indicates that the tax is for a marketplace
+              facilitator order and that the marketplace facilitator
+              organization calculated the tax amount.
+            enum:
+               - PERCENT
+               - FIXED
+               - NONE
+               - TABLE
+               - EXTERNAL
+          facilitatorCollectAndRemitTax:
+            type: boolean
+            description: |
+              Indicates whether the marketplace facilitator that
+              received a guest order remitted the tax amount on behalf
+              of the Toast platform restaurant.
+
+              You can use this information to identify tax amounts that
+              have already been paid by an ordering service provider
+              and do not need to be paid again.
+
+              * `true` - the marketplace facilitator paid the tax
+              amount on behalf of the Toast platform restaurant
+              location.
+
+              * `false` - the marketplace facilitator has not paid the
+              tax amount. The Toast platform restaurant location may be
+              required to pay the tax amount.
+
+              **Note**: Toast API response data is not guidance or
+              advice for tax compliance.
+  AppliedDiscountTrigger:
+    type: object
+    description: "The Selection which triggered the application of this discount"
+    properties:
+      selection:
+        $ref: '#/definitions/ExternalReference'
+      quantity:
+        type: number
+        format: double
+        description: The amount of the selection used to trigger the applied discount.
+  AppliedDiscount:
+    type: object
+    description: |
+      A discount applied to a check or item. The Toast POS system calculates service
+      charges before applying discounts. The system calculates tax after applying
+      discounts. In a `POST` request, the type of the discount must be fixed amount
+      or fixed percentage, and the discount must be applied to a check. See
+      [Applying Discounts to a Check in an Order](https://doc.toasttab.com/Ie5QH/apiApplyingDiscountsToACheck.html).
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          name:
+            type: string
+            description: The name of the applied discount. Response only.
+          discountAmount:
+            type: number
+            format: double
+            description: The discount amount in USD. This amount will be subtracted from the check or item.
+          nonTaxDiscountAmount:
+            type: number
+            format: double
+            description: |
+              The amount that a discount reduces a menu item price,
+              excluding any discount amount applied to taxes. In most
+              cases, a discount only applies to the menu item price and
+              the `nonTaxDiscountAmount` is the same as the `discountAmount`.
+              If you apply a discount to a menu item that includes tax in
+              its price, the `nonTaxDiscountAmount` is less than the full
+              discount amount.
+          discount:
+            type: object
+            description: A GUID reference to the discount configured for the restaurant.
+            $ref: '#/definitions/ToastReference'
+          triggers:
+            type: array
+            description: Optional items which triggered this discount. Response only.
+            items:
+              $ref: '#/definitions/AppliedDiscountTrigger'
+          approver:
+            type: object
+            description: The user who approved the discount. Response only.
+            $ref: '#/definitions/ExternalReference'
+          processingState:
+            type: string
+            description: |
+              Applies to loyalty program discounts only. Loyalty
+              program reward discounts are validated and then applied,
+              or redeemed, by the third-party loyalty program service
+              provider depending on the state of the Toast POS order.
+              This value indicates the state of the discount in that
+              validation and application process. Response only. The
+              `processingState` may be one of the following enumerated
+              values.
+              <ul>
+                <li><code>PENDING_APPLIED</code> - The loyalty program
+                service provider has confirmed that the reward discount
+                is valid for the order and customer. The reward has not
+                been redeemed, or applied to the customer's loyalty
+                account.</li>
+                <li><code>APPLIED</code> - The reward discount has been
+                redeemed. The reward is no longer available from the
+                customer's loyalty program account.</li>
+                <li><code>PENDING_VOID</code> - The reward discount has been
+                removed from the Toast POS order. The reward is not
+                available from the customer's loyalty program account
+                until the loyalty program service provider processes
+                the void operation.</li>
+                <li><code>VOID</code> - The reward discount has been removed
+                from the Toast POS order and the reward is available from
+                the customer's loyalty program account again.</li>
+              </ul>
+            enum:
+              - PENDING_APPLIED
+              - APPLIED
+              - PENDING_VOID
+              - VOID
+          loyaltyDetails:
+            type: object
+            description: Information about the customer loyalty program
+              discount being applied to the check.
+            $ref: '#/definitions/LoyaltyDetails'
+          comboItems:
+            type: array
+            description: A List of Menu Item Selections that this discount is applied to (empty for NonCombo Discounts). Response only.
+            items:
+              $ref: '#/definitions/ExternalReference'
+          appliedPromoCode:
+            type: string
+            description: The promo code that was applied for this discount.
+          discountType:
+            type: string
+            description: The behavior of this discount.
+            enum:
+              - BOGO
+              - PERCENT
+              - FIXED
+              - OPEN_PERCENT
+              - OPEN_FIXED
+              - FIXED_TOTAL
+          discountPercent:
+            type: number
+            format: double
+            description: The percent value (0-100) of the discount applied when the `amountType` is `PERCENT`
+              or `OPEN_PERCENT`. For other discount types, this value is `null`.
+  LoyaltyDetails:
+    type: object
+    description: Information about the loyalty program discount applied
+      to a check. The loyalty program account is identified in the
+      <a href="#/definitions/AppliedLoyaltyInfo">AppliedLoyaltyInfo</a> value
+      for the check.
+    required:
+      - vendor
+      - referenceId
+    properties:
+      vendor:
+        type: string
+        description: The specific loyalty program service provider that
+          supports the loyalty account.
+        enum:
+          - TOAST
+          - PUNCHH
+          - PUNCHH2
+          - PAYTRONIX
+          - APPFRONT
+          - INTEGRATION
+      referenceId:
+        type: string
+        description: The identifier of the loyalty program discount that
+          is recognized by the loyalty program service provider. The
+          Toast POS transmits the discount identifier to the service
+          provider to determine the validity and amount of the discount.
+  Refund:
+    type: object
+    description: A currency amount removed from a guest payment.
+    properties:
+      refundAmount:
+        type: number
+        format: double
+        description: The amount of the refund excluding the tip.
+      tipRefundAmount:
+        type: number
+        format: double
+        description: The amount of the tip refund.
+      refundDate:
+        description: the date time the refund was made
+        type: string
+        format: date-time
+      refundBusinessDate:
+        description: The business date (yyyyMMdd) on which this refund was created. Response only.
+        type: integer
+      refundTransaction:
+        description: |
+          An identifier for the refund transaction. You can use the identifier to associate items and service charges that were refunded in the same transaction.
+        type: object
+        $ref: '#/definitions/ToastReference'
+  Device:
+    type: object
+    description: The *Device ID* value that the Toast POS system assigns to a specific Toast POS device. The `id` value is a unique identifier for a device. To find the ID for a Toast POS device, do the following. From the overflow  menu (⋮) select *Device Status* and then select the *Device* tab.
+    properties:
+      id:
+        type: string
+        description: The physical id of the device
+  VoidInformation:
+    type: object
+    description: Information about a void applied to a check or item.
+    properties:
+      voidUser:
+        type: object
+        description: The user who voided the order.
+        $ref: '#/definitions/ExternalReference'
+      voidApprover:
+        type: object
+        description: The user who approved the void.
+        $ref: '#/definitions/ExternalReference'
+      voidDate:
+        description: The date at which the refund was made.
+        type: string
+        format: date-time
+      voidBusinessDate:
+        description: The business date (yyyyMMdd) on which this void was made. Response only.
+        type: integer
+      voidReason:
+        type: object
+        description: A reference to the configured voidReason that this void corresponds to.
+        $ref: '#/definitions/ExternalReference'
+  ExternalReference:
+    type: object
+    description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID or a partner's identifier.
+    discriminator: entityType
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          externalId:
+            description: External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.
+            type: string
+  ToastReference:
+      type: object
+      description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID.
+      discriminator: entityType
+      required:
+        - guid
+        - entityType
+      properties:
+        guid:
+          description: The GUID maintained by Toast. Response only.
+          type: string
+        entityType:
+          description: The type of object this is. Response only.
+          type: string
+  OrderResponse:
+    type: object
+    properties:
+      orders:
+        type: array
+        minItems: 0
+        maxItems: 1
+        items:
+          $ref: '#/definitions/Order'
+
+  ApplicableDiscountsRequest:
+    type: object
+    description: |
+      A wrapper object containing an <a
+      href="#/definitions/Order">`Order`</a> object, and an optional
+      promotional code. You include an `ApplicableDiscountsRequest`
+      object in the message body of a `POST` request to the
+      `applicableDiscounts` endpoint.
+    required:
+      - order
+    properties:
+      order:
+        type: object
+        $ref: '#/definitions/Order'
+        description: |
+         An <a href="#/definitions/Order">`Order`</a> object that
+         contains information about the order you want to get discounts
+         for.
+      promoCode:
+        description: |
+          An optional promotional code. If you include a promotional
+          code, the `applicableDiscounts` endpoint returns only
+          discounts that are associated with that promotional code.
+        type: string
+
+  ApplicableDiscount:
+    type: object
+    description: |
+      A wrapper object containing information about a discount that you
+      can apply to an order, and which checks or menu item selections
+      you can apply it to.
+    discriminator: entityType
+    required:
+      - discount
+    properties:
+      discount:
+        description: |
+          A <a href="#/definitions/ToastReference">`ToastReference`</a>
+          object containing the identifiers of the discount. Response only.
+        type: object
+        $ref: '#/definitions/ToastReference'
+      applicableChecks:
+        description: |
+          If the discount is applicable to a check, this value holds an
+          array of <a
+          href="#/definitions/ExternalReference">`ExternalReference`</a>
+          object containing the identifiers of the checks.
+        type: array
+        items:
+          $ref: '#/definitions/ExternalReference'
+      applicableSelections:
+        description: |
+          If the discount is applicable to a menu item selection, this
+          value holds an array of <a
+          href="#/definitions/ExternalReference">`ExternalReference`</a>
+          object containing the identifiers of the menu items.
+        type: array
+        items:
+          $ref: '#/definitions/ExternalReference'
+
+  UpdatePaymentRequest:
+    type: object
+    description: |
+      A wrapper object containing payment fields that you can update. Currently
+      you are only allowed to update a payment's tipAmount.
+    properties:
+      tipAmount:
+        description: |
+          The amount tipped on a payment.
+        type: number
+        format: double
+
+  CurbsidePickupInfo:
+    type: object
+    description: |
+      Information that the restaurant can use to identify a guest when they arrive
+      outside the restaurant to pick up their order. transportDescription is a required field.
+    discriminator: entityType
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          transportColor:
+            description: |
+              The color of the guest's vehicle if they will arrive at the restaurant in a vehicle to pick up their order.
+            type: string
+            maxLength: 20
+          transportDescription:
+            description: |
+              Information about how the guest will arrive at the restaurant to pick up their order.
+              For example, the make and model of the vehicle the guest will arrive in.
+            type: string
+            maxLength: 100
+          notes:
+            description: |
+              Extra notes.
+            type: string
+            maxLength: 100
+
+  DeliveryServiceInfo:
+    type: object
+    description: |
+      Reserved for future use.
+    discriminator: entityType
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          providerId:
+            description: |
+              Reserved for future use.
+            type: string
+            maxLength: 255
+          providerName:
+            description: |
+              Reserved for future use.
+            type: string
+            maxLength: 36
+          driverName:
+            description: |
+              Reserved for future use.
+            type: string
+            maxLength: 255
+          driverPhoneNumber:
+            description: |
+              Reserved for future use.
+            type: string
+            maxLength: 30
+          providerInfo:
+            description: |
+              Reserved for future use.
+            type: string
+            format: byte
+  RefundDetails:
+    type: object
+    description: |
+      Information about refunded currency amounts for an item
+      selection, modifier option, or service charge. The refund
+      information includes separate values for the pre-tax value
+      being refunded and the tax amount being refunded.
+    discriminator: entityType
+    properties:
+      refundAmount:
+        description: |
+          The value of the menu item or service charge (excluding taxes) being
+          refunded. Includes the value of any nested modifier options that
+          increased the price of the item or modifier option (an upcharge for
+          the modifier option).
+        type: number
+        format: double
+      taxRefundAmount:
+        description: |
+          The tax amount being refunded.
+        type: number
+        format: double
+      refundTransaction:
+        description: |
+          An identifier for the refund transaction. You can use the identifier to associate items and service charges that were refunded in the same transaction.
+        type: object
+        $ref: '#/definitions/ToastReference'
+  MarketplaceFacilitatorTaxInfo:
+    type: object
+    description: |
+      Information about the taxes that a marketplace facilitator
+      organization remits on behalf of a Toast platform restaurant.
+      `POST` only. The orders API does not include the
+      `MarketplaceFacilitatorTaxInfo` object in response data.
+
+      **Note**: you can only include this information if your
+      Toast API client is associated with a designated
+      marketplace facilitator organization. Most Toast API
+      clients do not create marketplace facilitator orders.
+    properties:
+      facilitatorCollectAndRemitTaxOrder:
+        description: |
+          Indicates whether a marketplace facilitator organization has
+          paid the tax amounts for an order on behalf of the restaurant
+          that fulfills the order.
+
+          If you include this value, you indicate that the marketplace
+          facilitator order uses the prices and tax amounts calculated
+          by the Toast platform.
+
+          If you include this value, you *must not* include the `taxes`
+          value and you *must not* include the `externalPriceAmount`
+          for menu item selections in the order.
+        type: boolean
+      taxes:
+        description: |
+          An array of `AppliedTaxRate` objects that describe the tax
+          amounts that apply to a marketplace facilitator order.
+
+          If you include this value, you must include an `externalPriceAmount`
+          for each menu item selection in the order.
+        type: array
+        items:
+          $ref: '#/definitions/AppliedTaxRate'
+
+paths:
+  /payments:
+    get:
+      summary: Get identifiers of payments processed
+      description: Returns a list of the GUIDs for each payment made during
+        one restaurant business day. The specific hours that make up a business
+        day depend on the business day cutoff in the restaurant configuration,
+        which is available from the restaurants API in the `closeoutHour`
+        property.
+        The business day for a restaurant is based on its local time (not UTC
+        or local time for an API client). You must include one of the
+        `paidBusinessDate`, `refundBusinessDate`, or `voidBusinessDate` query
+        parameters.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The GUID of the restaurant used as the context of the request.
+          in: header
+          required: true
+          type: string
+        - name: paidBusinessDate
+          description: Returns a list of the payments that were made during
+            one business day. Specify the business day in the format YYYYMMDD,
+            for example, `20170101`.
+          in: query
+          required: false
+          type: string
+        - name: refundBusinessDate
+          description: Returns a list of the payments that were refunded
+            during one business day. Specify the business day in the format
+            YYYYMMDD, for example, `20170101`.
+          in: query
+          required: false
+          type: string
+        - name: voidBusinessDate
+          description: Returns a list of the payments that were voided during
+            one business day. Specify the business day in the format YYYYMMDD,
+            for example, `20170101`.
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: A JSON array of the GUID identifiers for the payments
+          schema:
+            title: Response
+            type: array
+            items:
+              type: string
+  /payments/{guid}:
+    get:
+      summary: Get information about a payment
+      description: Returns a JSON
+        <a href="#/definitions/Payment">Payment</a> object containing
+        detailed information about a  single payment, specified by its
+        GUID.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The GUID of the restaurant used as the context of the request.
+          in: header
+          required: true
+          type: string
+        - name: guid
+          description: The GUID for the payment you want to return.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a JSON
+            <a href="#/definitions/Payment">Payment</a> object.
+          schema:
+            $ref: '#/definitions/Payment'
+        '400':
+          description: The GUID was malformed.
+        '404':
+          description: The specified payment was not found.
+
+  /prices:
+    post:
+      summary: Get prices for an order
+      description: |
+        Calculates the check price amounts, tax amounts, and service
+        charges for an <a href="#/definitions/Order">`Order`</a> object
+        you supply as a _required message body parameter_. The `prices`
+        endpoint validates the order you submit to ensure all
+        referenced data exists and that you include item selections in
+        the expected structure with all required modifier options. Some
+        values that would be present in the response data when creating
+        an order are not present in the response data for the `prices`
+        endpoint. For example, the order GUID is not set because the
+        Toast platform does not create persistent data for the order.
+
+        The calculated price can change between requests to the
+        `prices` endpoint with the same <a
+        href="#/definitions/Order">`Order`</a> object if enough time
+        passes between the requests. The difference in price is
+        possible because the restaurant configuration can change and
+        because some pricing configuration is based on time and date
+        schedules.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The identifier of the restaurant to be used for this price
+            calculation.
+          in: header
+          required: true
+          type: string
+        - name: body
+          description: |
+            A _required_ JSON <a href="#/definitions/Order">`Order`</a>
+            object containing information about the checks, item
+            selections, modifier options, and other parts of the order.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            Success. The response body contains a JSON <a
+            href="#/definitions/Order">`Order`</a> object with values
+            for check amounts, taxes, service charges, and other parts
+            of the order. Because this endpoint only calculates prices,
+            no parts of the order persist in the Toast platform and do
+            not have GUIDs in the response object.
+          schema:
+            $ref: '#/definitions/OrderResponse'
+        '400':
+          description: |
+            Either the request contains data that is not supported by
+            the current version of the API as described or the order
+            contains an item that is negatively priced.
+        '403':
+          description: |
+            The API client does not have access to the restaurant, the
+            API client does not have the `orders:read` scope, or both.
+        '404':
+          description: |
+            An entity referenced in the order does not exist, or
+            belongs to a restaurant the API client is not
+            authorized to access.
+        '413':
+          description: |
+            The number of checks in the submitted order exceeds the limit.
+        '415':
+          description: |
+            The request did not have `application/json` in the
+            `Content-Type` HTTP header field.
+        '500':
+          description: |
+            An unexpected internal error occurred. There is a
+            `requestId` attached to the error that can be referenced by
+            the Toast support team.
+  /orders/{guid}:
+    get:
+      summary: Get information about an order
+      description: Retrieves detailed information about a single order, specified by its GUID.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier of the restaurant where this order was placed.
+          in: header
+          required: true
+          type: string
+        - name: guid
+          description: The GUID for the order to be returned.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: A JSON Order object.
+          schema:
+            $ref: '#/definitions/Order'
+        '400':
+          description: The GUID was malformed.
+        '404':
+          description: The specified Order was not found.
+        '500':
+          description: There was a problem serializing the Order entity.
+  /ordersBulk:
+    get:
+      summary: Get information about multiple orders
+      description: |
+        Returns an array of `Order` objects containing detailed
+        information about all orders opened during a period of time.
+        You can return the orders for either a specific period of time
+        or for one business day.
+
+        * Specify both `startDate` and `endDate` to return the orders
+          modified during that period of time.
+
+        * Specify the `businessDate` to return the orders promised
+          during that business day.
+      produces:
+      - application/json
+      parameters:
+      - name: Toast-Restaurant-External-ID
+        description: |
+          The identifier for the restaurant that processed the orders.
+        in: header
+        required: true
+        type: string
+      - name: startDate
+        description: |
+          The inclusive start date and time. Orders with a modified
+          date and time that are equal to or later than the `startDate`,
+          but not greater than the `endDate`, are included. Use ISO-8601
+          format for the date and time, including a decimal fraction of
+          a second, as described in the orders API overview. For
+          example, `2016-01-01T14:13:12.000+0400`. URL encode the date
+          and time value. The date must be after
+          2015-12-01T00:00:00.000+0000.
+        in: query
+        type: string
+        format: ISO-8601
+        required: false
+      - name: endDate
+        description: |
+          The exclusive end date and time. Any orders with an equal
+          or later modified date and time will be excluded. Use
+          ISO-8601 format for the date and time, including a decimal
+          fraction of a second, as described in the orders API
+          overview. For example, `2016-01-01T14:13:12.000+0400`. URL
+          encode the date and time value. The `endDate` date and time
+          must be later than the `startDate` parameter value.
+        in: query
+        type: string
+        format: ISO-8601
+        required: false
+      - name: businessDate
+        description: |
+          The business date that same-day orders opened or that
+          future orders are promised, in the format `yyyymmdd`. The
+          business day of an order is determined by the time the
+          order is opened or promised in the local time zone and the
+          restaurant's business day cutoff time, which is available
+          from  the `General` object of the restaurants API in the
+          `closeoutHour` property.
+        in: query
+        type: string
+        required: false
+      - name: pageSize
+        description: |
+          The maximum number of objects to return in the array. If the
+          number of objects selected by your request is greater than
+          the `pageSize`, the API uses response pagination for the
+          remaining objects. The maximum `pageSize` is `100`. For more
+          information, see [Response Data
+          Pagination](https://doc.toasttab.com/Ie5QH/apiResponseDataPagination.html).
+        in: query
+        type: integer
+        required: false
+      - name: page
+        description: |
+          The sequence number of the set of objects to return in
+          paginated response data. For example, if you set the
+          `pageSize` parameter to `10` and you set `page` to `2`, the
+          API will return a set of objects starting with the eleventh
+          object. For more information, see [Response Data
+          Pagination](https://doc.toasttab.com/Ie5QH/apiResponseDataPagination.html).
+        in: query
+        type: integer
+        required: false
+      responses:
+       '200':
+         description: |
+           A JSON array of `Order` objects for each order processed
+           during the period of time you specify in your request.
+         schema:
+           title: Response
+           type: array
+           items:
+             $ref: '#/definitions/Order'
+       '400':
+         description: |
+           The request contains data that is not supported by the API.
+       '500':
+         description: |
+           An unexpected internal error occurred. There is a
+           `requestId` attached to this error that can be referenced by
+           the Toast support team.
+  /orders/{orderGuid}/checks/{checkGuid}/payments:
+    post:
+      summary: Add payments to a check
+      description: |
+        Adds one or more payments to a check in an existing order. Include
+        information about the payments in an array of `Payment` objects in the
+        message body. Specify the Toast POS system GUID of the order
+        and check in REST path parameters.
+
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiAddingPaymentsToACheck.html">Adding
+        Payments to a Check</a> in the _Toast API Developer's Guide_.
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            adding payments to.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            adding payments to.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            An array of JSON <a href="#/definitions/Payment">`Payment`</a> objects
+            containing information about the payments you are adding.
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Payment'
+      responses:
+        '200':
+          description: |
+            A JSON <a href="#/definitions/Order">`Order`</a> object
+            that includes the payments that you added.
+          schema:
+            $ref: '#/definitions/Order'
+  /orders/{orderGuid}/checks/{checkGuid}/payments/{paymentGuid}:
+    patch:
+      summary: Update tip amount in a payment
+      description: |
+        Updates the tip amount in an existing payment for a check in an
+        order. Include the new `tipAmount` value in a `Payment` object
+        in the message body. This endpoint does not allow any other
+        `Payment` object value for a `PATCH` request. Specify the Toast
+        POS system GUID of the order, check, and payment in REST path
+        parameters.
+
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiUpdatingTipsInAPayment.html">Updating
+        Tips in a Payment</a> in the _Toast API Developer's Guide_.
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            updating a tip in.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            updating a tip in.
+          in: path
+          required: true
+          type: string
+        - name: paymentGuid
+          description: |
+            The Toast POS system identifier of the payment that you are
+            updating a tip in.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON <a href="#/definitions/Payment">`Payment`</a> object
+            containing the `tipAmount` value that will replace any
+            existing tip amount for the payment. Do not include any
+            value other than `tipAmount`.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A JSON <a href="#/definitions/Order">`Order`</a> object
+            that includes the tip amount that you updated.
+          schema:
+            $ref: '#/definitions/Order'
+  /orders/{orderGuid}/checks/{checkGuid}/appliedDiscounts:
+    post:
+      summary: Add check-level discounts
+      description: |
+        Adds one or more check-level discounts to a check in an
+        existing order. Include an array of <a
+        href="#/definitions/Discount">`Discount`</a> objects in the
+        message body.
+
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
+        Discounts to Checks</a> in the _Toast API Developer's Guide_.
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON array of <a
+            href="#/definitions/Discount">`Discount`</a> objects that
+            identify the discounts you are adding.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A JSON <a href="#/definitions/Order">`Order`</a> object
+            that includes the discount you added.
+          schema:
+            $ref: '#/definitions/Order'
+  /orders/{orderGuid}/checks/{checkGuid}/selections/{selectionGuid}/appliedDiscounts:
+    post:
+      summary: Add item-level discounts
+      description: |
+        Adds one or more item-level discounts to menu item selections
+        in a check in an existing order. Include an array of <a
+        href="#/definitions/Discount">`Discount`</a> objects in the
+        message body.
+
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
+        Discounts to Checks</a> in the _Toast API Developer's Guide_.
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: selectionGuid
+          description: |
+            The Toast POS system identifier of the menu item selection
+            that you are adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON array of <a
+            href="#/definitions/Discount">`Discount`</a> objects that
+            identify the discounts you are adding.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A JSON <a href="#/definitions/Order">`Order`</a> object
+            that includes the discount you added.
+          schema:
+            $ref: '#/definitions/Order'
+  /orders:
+    post:
+      summary: Add an order
+      description: Submits an order to the server. Returns a JSON <a href="#/definitions/Order">Order</a> object if successful.
+      operationId: postOrders
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier for the restaurant where this order was placed.
+          in: header
+          required: true
+          type: string
+        - name: body
+          description: A JSON object containing information about an order.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+            example: {"entityType": "Order",  "diningOption": { "guid": "18855a26-40d4-4a8f-b484-c6af211dd597",    "entityType": "DiningOption"  },  "marketplaceFacilitatorTaxInfo": {    "facilitatorCollectAndRemitTaxOrder": true   },   "checks": [    {      "entityType": "Check",      "displayNumber": "pdesjardins-api-1627646263",      "selections": [        {          "entityType": "MenuItemSelection",          "itemGroup": {             "guid": "881472e6-dd94-48c6-b5c6-25e51a864208",            "entityType": "MenuGroup"          },          "item": {            "entityType": "MenuItem",            "guid": "9c59d4ab-8242-450f-8f36-b16e1b3ab802"           },           "quantity": 1,          "modifiers": []        }      ],      "customer": {          "entityType": "Customer",          "firstName": "Severe",          "lastName": "Thibault",           "phone": "555-555-5555",          "email": "severe@example.com"      },      "payments" :[        {          "otherPayment": {            "guid": "0dc19214-d29e-4ab9-a773-27e5812999c7"           },          "type": "OTHER",          "amount": 8.50,          "tipAmount": "0"        }      ]    }  ],   "deliveryInfo": {     "address1": "401 Park Drive",     "address2": "Suite 801",     "city": "Boston",     "state": "MA",     "zipCode": "02215",     "latitude": 42.3446671,     "longitude": -71.1023575,     "notes": "Please ring the doorbell."   } }
+      responses:
+        '200':
+          description: A JSON <a href="#/definitions/Order">Order</a> object that has been persisted in Toast. The returned Order contains generated property values for the check amounts, taxes, service charges, and GUIDs for persisted entities.
+          schema:
+            $ref: '#/definitions/OrderResponse'
+          examples: {"application/json":{"guid":"89488287-f259-435b-a654-0bc391596af0","entityType":"Order","externalId":null,"revenueCenter":null,"server":{"guid":"c89d1e72-1888-469f-a24b-506c66eafab7","entityType":"RestaurantUser","externalId":null},"lastModifiedDevice":{"id":null},"source":"API","voidDate":null,"duration":null,"businessDate":20210730,"paidDate":null,"restaurantService":null,"voided":false,"estimatedFulfillmentDate":"2021-07-30T12:12:46.235+0000","table":null,"requiredPrepTime":"PT15M","approvalStatus":"NEEDS_APPROVAL","deliveryInfo":{"address1":"401 Park Drive","address2":"Suite 801","city":"Boston","state":"MA","zipCode":"02215","latitude":42.3446671,"longitude":-71.1023575,"notes":"Please ring the doorbell.","deliveredDate":null,"dispatchedDate":null,"deliveryEmployee":null,"deliveryState":null},"serviceArea":null,"curbsidePickupInfo":null,"numberOfGuests":1,"diningOption":{"guid":"18855a26-40d4-4a8f-b484-c6af211dd597","entityType":"DiningOption","externalId":null},"openedDate":"2021-07-30T11:57:46.235+0000","voidBusinessDate":null,"checks":[{"guid":"cbcb6fd5-d973-4e44-9b91-2abcee5ea6cd","entityType":"Check","externalId":null,"displayNumber":"pdesjardins-api-1627646263","payments":[{"guid":"88642b2d-c359-4b96-bb8e-9cb3f5c2ac6a","entityType":"OrderPayment","externalId":null,"originalProcessingFee":null,"server":null,"cashDrawer":null,"lastModifiedDevice":{"id":null},"refundStatus":"NONE","type":"OTHER","voidInfo":null,"checkGuid":"cbcb6fd5-d973-4e44-9b91-2abcee5ea6cd","otherPayment":{"guid":"0dc19214-d29e-4ab9-a773-27e5812999c7","entityType":"AlternatePaymentType","externalId":null},"paidDate":"2021-07-30T11:57:46.237+0000","orderGuid":"89488287-f259-435b-a654-0bc391596af0","cardEntryMode":null,"paymentStatus":"CAPTURED","amount":8.5,"tipAmount":0.0,"amountTendered":null,"cardType":null,"houseAccount":null,"mcaRepaymentAmount":null,"createdDevice":{"id":null},"paidBusinessDate":20210730,"last4Digits":null,"refund":null}],"appliedDiscounts":[],"lastModifiedDevice":{"id":null},"voidDate":null,"paidDate":null,"appliedLoyaltyInfo":null,"voided":false,"paymentStatus":"OPEN","amount":5.0,"tabName":null,"taxExempt":false,"openedDate":"2021-07-30T11:57:46.235+0000","totalAmount":5.0,"selections":[{"guid":"2c8b6ece-c503-4f85-aed7-6a8c6526ba0d","entityType":"MenuItemSelection","externalId":null,"deferred":false,"preDiscountPrice":5.0,"voidReason":null,"optionGroup":null,"displayName":"蟹餅  CRAB CAKES","appliedDiscounts":[],"modifiers":[],"seatNumber":-1,"voidDate":null,"fulfillmentStatus":"NEW","optionGroupPricingMode":null,"salesCategory":{"guid":"c0915e46-341e-4ec0-b46e-cb87fab729fd","entityType":"SalesCategory","externalId":null},"selectionType":"NONE","price":5.0,"voided":false,"appliedTaxes":[],"itemGroup":{"guid":"881472e6-dd94-48c6-b5c6-25e51a864208","entityType":"MenuGroup","externalId":null},"item":{"guid":"9c59d4ab-8242-450f-8f36-b16e1b3ab802","entityType":"MenuItem","externalId":null},"taxInclusion":"NOT_INCLUDED","quantity":1.0,"receiptLinePrice":5.0,"unitOfMeasure":"NONE","refundDetails":null,"tax":0.0,"diningOption":{"guid":"18855a26-40d4-4a8f-b484-c6af211dd597","entityType":"DiningOption","externalId":null},"voidBusinessDate":null,"createdDate":"2021-07-30T11:57:46.269+0000","preModifier":null,"modifiedDate":"2021-07-30T11:57:46.269+0000"}],"voidBusinessDate":null,"createdDate":"2021-07-30T11:57:46.282+0000","deleted":false,"createdDevice":{"id":null},"closedDate":null,"deletedDate":null,"modifiedDate":"2021-07-30T11:57:46.282+0000","taxAmount":0.0,"appliedServiceCharges":[],"customer":{"guid":"970e92e6-33b3-4caa-876b-2c6ef528ef4e","entityType":"Customer","firstName":"Severe","lastName":"Thibault","phone":"5555555555","email":"severe@example.com"}}],"deleted":false,"createdDevice":{"id":null},"createdDate":"2021-07-30T11:57:46.286+0000","closedDate":null,"deletedDate":null,"modifiedDate":"2021-07-30T11:57:46.286+0000","promisedDate":null,"pricingFeatures":["TAXESV2"]}}
+        '400':
+          description: Either the request contains data that is not supported by the current version of the API as described (e.g. specifying credit card as the payment type.), or the order contains an item that is negatively priced.
+        '404':
+          description: An entity referenced in the order does not exist, or belongs to a restaurant the authenticated client is not authorized to access.
+        '413':
+          description: The number of checks in the submitted order exceeds the limit.
+        '415':
+          description: The request did not have "application/json" in the Content-Type header.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+
+    get:
+       summary: Get identifiers of orders processed
+       description: |
+          Gets a list of the GUIDs of all orders opened during a period of
+          time. You can return the list of orders for either a period of up to
+          one hour or for one business day.
+
+          * Specify both `startDate` and `endDate` to return the list of orders
+            modified during a period of up to one hour.
+
+          * Specify the `businessDate` to return the list of orders promised
+            for delivery during a business day.
+
+       produces:
+        - application/json
+       parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier for the restaurant whose orders are to be
+            retrieved.
+          in: header
+          required: true
+          type: string
+        - name: startDate
+          description: The inclusive start date and time. Any orders with an
+            earlier modified date and time will be excluded. Use ISO-8601
+            format for the date and time, including a decimal fraction of a
+            second, as described in the orders API overview. For example,
+            `2016-01-01T14:13:12.000+0400`. URL encode the date and time value.
+            The date must be after 2015-12-01T00:00:00.000+0000.
+          in: query
+          type: string
+          format: ISO-8601
+          required: false
+        - name: endDate
+          description: The exclusive end date and time. Any orders with an equal
+            or later modified date and time will be excluded. Use ISO-8601
+            format for the date and time, including a decimal fraction of a
+            second, as described in the orders API overview. For example,
+            `2016-01-01T14:13:12.000+0400`. URL encode the date and time value.
+            The `endDate` date and time must be later than the `startDate`
+            parameter value.
+          in: query
+          type: string
+          format: ISO-8601
+          required: false
+        - name: businessDate
+          description: The business date that same-day orders opened or that
+            future orders are promised, in the format `yyyymmdd`. The business
+            day of an order is determined by the time the order is opened or
+            promised in the local time zone and the restaurant's business day
+            cutoff time, which is available from  the `General` object of the
+            restaurants API in the `closeoutHour` property.
+          in: query
+          type: string
+          required: false
+       responses:
+         '200':
+           description: A JSON array of the GUID identifiers for orders.
+           schema:
+             title: Response
+             type: array
+             items:
+               type: string
+         '400':
+           description: The request contains data that is not supported by the current version of the API as described. e.g. specifying credit card as the payment type.
+         '500':
+           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+
+  /applicableDiscounts:
+    post:
+      summary: Get the discounts that apply to an order
+      description: |
+        Returns an array of <a
+        href="#/definitions/ApplicableDiscount">`ApplicableDiscount`</a>
+        objects that contain information about the discounts that apply
+        to the checks and menu item selections in an order. Each
+        `ApplicableDiscount` object contains information that you can
+        use to determine which items and checks are eligible for the
+        discount. If you include a `promoCode` value in the
+        `ApplicableDiscount` object, the `applicableDiscounts` endpoint
+        returns the only the discounts that are associated with the
+        promotional code that you supply.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier of the restaurant.
+          in: header
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON <a
+            href="#/definitions/ApplicableDiscountsRequest">ApplicableDiscountsRequest</a>
+            object containing information about an order, and an
+            optional promoCode.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ApplicableDiscountsRequest'
+      responses:
+        '200':
+          description: A JSON array of <a href="#/definitions/ApplicableDiscount">`ApplicableDiscount`</a> objects.
+          schema:
+            title: ApplicableDiscounts
+            type: array
+            items:
+              $ref: '#/definitions/ApplicableDiscount'
+        '400':
+          description: Invalid arguments
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.

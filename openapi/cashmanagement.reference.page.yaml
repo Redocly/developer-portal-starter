@@ -10,4 +10,6 @@ settings:
       - lang: Node.js
   showConsole: false
   hideHostname: true
+  hideDownloadButton: true
+  # downloadDefinitionUrl: https://doc.toasttab.com/api-specifications/toast-cashmgmt-api.yaml
 

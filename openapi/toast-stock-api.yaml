@@ -1,0 +1,160 @@
+---
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Toast Stock API
+  description: |
+    ## Overview
+
+      The Toast Stock API retrieves inventory information for
+      menu items and modifier options from a restaurant.
+
+      You can use the Toast Stock API to:
+
+      * Get all inventory information for a restaurant.
+      * Get the inventory for a list of menu items.
+      * Get the inventory of a restaurant given a specific status 
+        of the menu items (such as all menu items that are out
+        of stock).
+schemes:
+  - https
+basePath: /stock/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /inventory:
+    get:
+      summary: Returns all menu item inventory for a restaurant.
+      description: |
+        All item inventory for a restaurant will be returned. Inventory 
+        information is not returned for menu items with an 
+        `IN_STOCK` status. You can restrict the menu items in the
+        response data to either `OUT_OF_STOCK` or `QUANTITY` inventory 
+        status using the `status` query parameter.
+      operationId: getAllRestaurantInventory
+      produces:
+      - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast GUID of the restaurant queried for inventory information.
+          in: header
+          required: true
+          type: string
+        - name: status
+          description: |
+            Selects the inventory status of the menu items in the response data.
+            Values are:
+            
+            * `OUT_OF_STOCK`- Returns all menu items that have the 
+              `OUT_OF_STOCK` inventory status. 
+            
+            * `QUANTITY` - Returns all menu items that have the 
+              `QUANTITY` inventory status.
+          in: query
+          type: string
+          required: false
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuItemInventory'
+        404:
+          description: Restaurant did not have any inventory information.
+  /inventory/search:
+    post:
+      summary: Returns inventory information for a list of menu items.
+      description: |
+        The inventory status of each menu item in the provided list will
+        be returned.
+      operationId: searchInventoryByItemGuids
+      produces:
+      - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The Toast GUID of the restaurant queried for inventory information.
+          in: header
+          required: true
+          type: string
+        - name: body
+          description: |
+            An <a
+            href="#/definitions/InventorySearchRequest">`InventorySearchRequest`</a>
+            object containing information used to search for menu items.
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/InventorySearchRequest'
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuItemInventory'
+        404:
+          description: The specified menu item does not have inventory information.
+definitions:
+  InventorySearchRequest:
+    type: object
+    properties:
+      guids:
+        type: array
+        description: A list of menu item GUIDs. Inventory for menu items with matching GUIDs will be searched.
+        items:
+          type: string
+          format: uuid
+    description: Contains search parameters for retrieving menu item inventory information.
+  MenuItemInventory:
+    type: object
+    properties:
+      guid:
+        type: string
+        format: uuid
+        description: |
+          The GUID of the Toast menu item.
+      itemGuidValidity:
+        type: string
+        description: |
+          This value, which is only included in the `MenuItemInventory` object 
+          when the `/inventory/search` endpoint is queried, indicates whether the 
+          menu item GUID is valid or not. A menu item GUID is not valid if the 
+          menu item does not exist at the restaurant being queried or it has 
+          been archived. The `itemGuidValidity` value can be:
+              
+          * `VALID` - The menu item exists at the restaurant being queried and
+          it has not been archived.
+          
+          * `INVALID` - The menu item either does not exist at the restaurant
+          being queried or it has been archived.
+        enum:
+        - "VALID"
+        - "INVALID"
+      status:
+        type: string
+        description: |
+          The inventory status of the menu item. The `status` value can be:
+              
+          * `IN_STOCK` - the menu item is in stock in the restaurant.
+          
+          * `QUANTITY` - the menu item is in limited supply. The amount 
+          of remaining items is indicated by the `quantity` value.
+              
+          * `OUT_OF_STOCK` - the menu item is no longer in stock and cannot 
+          be selected for an order.
+        enum:
+        - "IN_STOCK"
+        - "QUANTITY"
+        - "OUT_OF_STOCK"
+      quantity:
+        type: number
+        format: double
+        description: |
+          Contains the amount of stock remaining when the menu item 
+          `status` is `QUANTITY`, null otherwise.
+    description: Contains the inventory status and quantity information for a menu item.

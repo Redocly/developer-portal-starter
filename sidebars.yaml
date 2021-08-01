@@ -12,6 +12,10 @@ training:
     expanded: false
     pages:
       - page: openapi/creditcards.reference.page.yaml/*
+  - group: Kitchen
+    expanded: false
+    pages:
+      - page: openapi/kitchen.reference.page.yaml/*
   - group: Labor
     expanded: false
     pages:

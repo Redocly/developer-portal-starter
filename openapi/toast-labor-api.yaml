@@ -1,0 +1,1323 @@
+---
+swagger: '2.0'
+info:
+  version: 1.9.0
+  title: Toast Labor API
+  description: |
+    ## Overview
+
+    This document provides information about the Toast labor API. The labor API
+    is a set of REST web services that you can use to manage the employees,
+    jobs, and shifts for your restaurant. The labor API is intended for software
+    engineers, managers, and technical staff who are responsible for integrating
+    third-party systems with the Toast POS system.
+
+    See general information about using Toast REST APIs in the <cite>Toast API
+    Developer's Guide</cite>.
+
+    contact:
+    name: Toast API Support
+    email: developer-support@toasttab.com
+schemes:
+  - https
+basePath: /labor/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  Employee:
+    type: object
+    description: A restaurant employee
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          createdDate:
+            type: string
+            format: date-time
+            description: Date created, in UTC format (read-only).
+          modifiedDate:
+            type: string
+            format: date-time
+            description: Date modified, in UTC format (read-only).
+          deletedDate:
+            type: string
+            format: date-time
+            description: Date deleted, in UTC format (read-only).
+          firstName:
+            type: string
+            description: Optional, first name of the employee.
+          lastName:
+            type: string
+            description: Optional, last name of the employee.
+          email:
+            type: string
+            description: Employee's email address.
+          passcode:
+            type: string
+            description: An optional numeric security code that a new employee
+              can use to begin a session in a Toast POS device. The passcode
+              value can only occur in `POST` requests. The value must be numeric
+              and it must contain at least one and no more than eight digits.
+              The employee can only use the passcode at the restaurant specified
+              in the `POST` request.   The response to a successful `POST`
+              request will include the passcode value in clear text. A `GET`
+              request for the employee will not return the passcode.
+          externalEmployeeId:
+            type: string
+            description: Optional, employee’s external ID in Toast.
+          deleted:
+            type: boolean
+            description: If the employee is deleted in Toast.
+          disabled:
+            type: boolean
+            description: An employee's Toast account may be disabled if he/she is suspected of fraud or other behavior against the terms of service. If true, no shifts should be scheduled for this employee.
+          jobReferences:
+            type: array
+            description: An array of external references to jobs assigned to this employee.
+            minItems: 0
+            items:
+              $ref: '#/definitions/ExternalReference'
+          wageOverrides:
+            type: array
+            description: An optional array of per job wage overrides, where each element defines a job reference and the wage override for this employee when performing that job.
+            minItems: 0
+            items:
+              $ref: '#/definitions/JobWageOverride'
+          v2EmployeeGuid:
+            type: string
+            description: This value is included for future use. An alternate Toast platform GUID for the employee that will be used in upcoming labor API functionality.
+  Job:
+    type: object
+    description: A restaurant job.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          createdDate:
+            type: string
+            format: date-time
+            description: Date created, in UTC format (read-only).
+          modifiedDate:
+            type: string
+            format: date-time
+            description: Date modified, in UTC format (read-only).
+          deletedDate:
+            type: string
+            format: date-time
+            description: Date deleted, in UTC format (read-only).
+          title:
+            type: string
+            description: Title of the job.
+          deleted:
+            type: boolean
+            description: If the job is deleted in Toast.
+          wageFrequency:
+            type: string
+            description: An enumerated type specifying how to interpret the default wage for this job.
+            enum:
+              - HOURLY
+              - SALARY
+          defaultWage:
+            type: number
+            format: double
+            description: The default wage of the job.
+          tipped:
+            type: boolean
+            description: If the job is tipped.
+          code:
+            type: string
+            description: A reference identifier for the job. This is an optional
+              field entered when the job is created. For example, it can be used
+              to match Toast POS jobs to jobs configured in external labor
+              management systems.
+  JobWageOverride:
+    type: object
+    description: The overriding job wage, for an employee that has a wage that differs from the job's default wage.
+    required:
+      - wage
+      - jobReference
+    properties:
+      wage:
+        type: number
+        format: double
+        description: Required currency value of the employee's overriding job wage.
+      jobReference:
+        type: object
+        description: Required external reference to the job to which this wage applies
+          overridden
+        $ref: '#/definitions/ExternalReference'
+  Shift:
+    type: object
+    description: A scheduled shift in the Toast platform used to enforce employee clock-in and clock outs. Shifts are often created in a partner scheduling system and pushed to Toast.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          createdDate:
+            type: string
+            format: date-time
+            description: Date created, in UTC format (read-only).
+          modifiedDate:
+            type: string
+            format: date-time
+            description: Date modified, in UTC format (read-only).
+          deletedDate:
+            type: string
+            format: date-time
+            description: Date deleted, in UTC format (read-only).
+          deleted:
+            type: boolean
+            description: If the shift is deleted in Toast.
+          jobReference:
+            type: object
+            description: External reference to the job assigned to this shift.
+            $ref: '#/definitions/ExternalReference'
+          employeeReference:
+            type: object
+            description: External reference to the employee assigned to this shift.
+            $ref: '#/definitions/ExternalReference'
+          inDate:
+            type: string
+            format: date-time
+            description: Timestamp of when the shift starts; that is, when the employee can clock in (UTC).
+          outDate:
+            type: string
+            format: date-time
+            description: Timestamp of when the shift ends; that is, when the employee can clock out (UTC).
+  TimeEntry:
+    type: object
+    description: A `TimeEntry` captures the actual time an employee worked or took a break. Typically, a time entry is one-to-one with a scheduled shift, but it’s possible in Toast for an employee to clock-in and -out without a shift.
+    allOf:
+      - $ref: '#/definitions/ExternalReference'
+      - type: object
+        properties:
+          createdDate:
+            type: string
+            format: date-time
+            description: Date created, in UTC format (read-only).
+          modifiedDate:
+            type: string
+            format: date-time
+            description: Date modified, in UTC format (read-only).
+          deletedDate:
+            type: string
+            format: date-time
+            description: Date deleted, in UTC format (read-only).
+          deleted:
+            type: boolean
+            description: If the time entry is deleted in Toast.
+          jobReference:
+            type: object
+            description: Optional, external reference to the job the employee assumed when clocking into the Toast POS.
+            $ref: '#/definitions/ExternalReference'
+          employeeReference:
+            type: object
+            description: External reference to the employee that created this time entry.
+            $ref: '#/definitions/ExternalReference'
+          shiftReference:
+            type: object
+            description: Optional, external reference to the scheduled shift associated with this time entry.
+            $ref: '#/definitions/ExternalReference'
+          inDate:
+            type: string
+            format: date-time
+            description: |
+              The date and time that an employee clocked in to a work
+              shift.
+          outDate:
+            type: string
+            format: date-time
+            description: |
+              The date and time that an employee closed a work shift.
+              If the employee has not closed the shift this field is
+              null.
+          businessDate:
+            type: string
+            description: The business date of `inDate`, in the format of "yyyymmdd".
+          regularHours:
+            type: number
+            format: double
+            description: Regular hours worked by the employee for this time entry, excluding breaks.
+          overtimeHours:
+            type: number
+            format: double
+            description: Any overtime hours taken by this employee during this time entry.
+          hourlyWage:
+            type: number
+            format: double
+            description: Optional, historical `hourlyWage`; that is, the wage in force when the time entry was made. The current `hourlyWage` for the employee (or job) may be different. This will be null if the job is SALARY.
+          breaks:
+            type: array
+            description: An optional array of time entry breaks, each break defining a clock-in date, -out date, and whether or not the break was paid.
+            minItems: 0
+            items:
+              $ref: '#/definitions/TimeEntryBreak'
+          declaredCashTips:
+            type: number
+            format: double
+            description: |
+              The currency amount of tips paid in cash during the time
+              entry. This does not include service charges applied as
+              automatic gratuities. If the employee has not closed the
+              shift, this value is not final and may change. If the
+              `outDate` value is set, the `declaredCashTips` value is
+              final.
+          nonCashTips:
+            type: number
+            format: double
+            description: |
+              The currency amount of tips paid using non-cash tender
+              during the time entry. For example, this includes credit
+              card tips. This does not include service charges applied
+              as automatic gratuities. If the employee has not closed
+              the shift, this value is not final and may change. If the
+              `outDate` value is set, the `nonCashTips` value is final.
+          cashGratuityServiceCharges:
+            type: number
+            format: double
+            description: |
+              The currency amount of service charges applied as
+              automatic gratuities that were paid in cash during the
+              time entry. If the employee has not closed the shift,
+              this value is not final and may change. If the `outDate`
+              value is set, the `cashGratuityServiceCharges` value is
+              final.
+          nonCashGratuityServiceCharges:
+            type: number
+            format: double
+            description: |
+              The currency amount of service charges applied as
+              automatic gratuities that were paid using non-cash tender
+              during the time entry. If the employee has not closed the
+              shift, this value is not final and may change. If the
+              `outDate` value is set, the
+              `nonCashGratuityServiceCharges` value is final.
+          tipsWithheld:
+            type: number
+            format: double
+            description: |
+              The currency amount withheld from the employee's credit card tips
+              during the time entry. The amount withheld is calculated as a
+              percentage of tips added to credit card payments. If the employee has
+              not closed the shift (the `outDate` value is null), the `tipsWithheld`
+              value is not final and may change. If the employee has closed the shift
+              (the `outDate` value is set), the `tipsWithheld` value is final.
+          nonCashSales:
+            type: number
+            format: double
+            description: |
+              The currency amount of non-cash sales during the time entry.
+              If the employee has not closed the shift, this value
+              will be 0. If the `outDate` value is set,
+              the `nonCashSales` value is final.
+          cashSales:
+            type: number
+            format: double
+            description: |
+              The currency amount of sales paid for in cash during the
+              time entry. If the employee has not closed the shift, this value
+              will be 0. If the `outDate` value is set,
+              the `cashSales` value is final.
+  TimeEntryBreak:
+    type: object
+    description: |
+      Information about a period of time that an employee is not
+      working during a shift. For example, an employee might take a
+      break to eat at some time during a shift. An employee can be paid
+      or unpaid for the break period.
+    properties:
+      breakType:
+        type: object
+        description: Optional, Toast reference to the break type associated with this time entry
+        $ref: '#/definitions/ToastReference'
+      paid:
+        type: boolean
+        description: |
+          Indicates whether the employee was paid for the break.
+          * `true` - The break was a paid break.
+          * `false` - The break was an unpaid break.
+      inDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time that the employee started the break period,
+          in UTC.
+      outDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time that the employee ended the break period
+          and returned to work, in UTC.
+      missed:
+        type: boolean
+        description: |
+          Indicates whether the break was a missed break.
+          * `true` - The break was missed.
+          * `false` - The break was taken.
+      auditResponse:
+        type: boolean
+        description: |
+          Indicates whether the employee was asked to take the break.
+          * `true` - The employee was asked to take the break.
+          * `false` - The employee was not asked to take the break.
+          Null for break types that do not use break acknowledgement tracking
+          or when the employee did not complete the audit response prompt.
+  ExternalReference:
+    type: object
+    description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID or a partner's identifier.
+    discriminator: entityType
+    allOf:
+      - $ref: '#/definitions/ToastReference'
+      - type: object
+        properties:
+          externalId:
+            description: External identifier string that is prefixed by the naming authority. You can, for example, use the labor API to POST an `externalId` for an employee and then GET the employee with that `externalId`.
+            type: string
+  ToastReference:
+      type: object
+      description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID.
+      discriminator: entityType
+      required:
+        - guid
+        - entityType
+      properties:
+        guid:
+          description: The GUID maintained by Toast.
+          type: string
+        entityType:
+          description: The type of object this is.
+          type: string
+  EmployeeResponse:
+    type: object
+    properties:
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/Employee'
+  JobReference:
+    type: object
+    properties:
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/Job'
+  ShiftResponse:
+    type: object
+    properties:
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/Shift'
+  TimeEntryResponse:
+    type: object
+    properties:
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/TimeEntry'
+paths:
+  /employees:
+    get:
+      summary: Returns information about restaurant employees.
+      description: Returns an array of
+        <a href="#/definitions/Employee">Employee</a> objects containing
+        information about restaurant employees.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: employeeIds
+          description:
+            An optional identifier that filters return values for a
+            specific employee. The identifier can be a Toast POS GUID
+            or an external identifier. If present, the `employees`
+            resource will only return the employees you specify. You
+            can include multiple `employeeIds` query parameters
+            (maximum 100). If not present, the resource returns each
+            employee for the restaurant.
+          in: query
+          type: string
+          format: string
+      responses:
+        '200':
+          description: JSON objects for all employees in the restaurant
+          schema:
+            $ref: '#/definitions/EmployeeResponse'
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+    post:
+      summary: Creates a restaurant employee record.
+      description: Creates a restaurant employee record.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: An <a href="#/definitions/Employee">Employee</a> object
+            containing information about the employee, including the employee's
+            name and email address. 
+          in: body
+          required: true
+          schema:
+            type: string
+            example: {"entityType": "RestaurantUser","email": "email","firstName": "first name","lastName": "last name","externalId": "optional external ID","externalEmployeeId": "optional external employee ID",jobReferences": [{"guid": "f290a951-2042-4f3d-b861-d89e9e583876","entityType": "RestaurantJob"}],"wageOverrides": [{"jobReference": {"guid": "f290a951-2042-4f3d-b861-d89e9e583876","entityType": "RestaurantJob"},"wage": 10}]}
+      responses:
+        '200':
+          description: Returns the created employee.
+          schema:
+            $ref: '#/definitions/Employee'
+        '400':
+          description: The request contains data that is not supported by the current version of the API as described.
+        '415':
+          description: The request did not have "application/json" in the Content-Type header.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /employees/{employeeId}:
+    get:
+      summary: Returns information about a restaurant employee.
+      description: Returns an <a href="#/definitions/Employee">Employee</a> object containing information about one restaurant employee.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: employeeId
+          description: Toast GUID or external identifier for the employee to be returned.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns the employee information.
+          schema:
+            $ref: '#/definitions/Employee'
+        '400':
+          description: The GUID or external identifier was malformed.
+        '404':
+          description: The GUID or external identifier does not match any
+            employees at the current restaurant.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+    delete:
+      summary: Deletes a restaurant employee record.
+      description: Deletes a restaurant employee record by marking it as
+        deleted. A deleted employee cannot log in at the restaurant or open new
+        time entries.<br><br>If you `GET` an employee record that has been deleted, its
+        `deleted` value is `true` and its `deletedDate` value contains the date
+        and time the record was deleted. If you `GET` all employees for a
+        restaurant, the GUIDs for deleted employees are not included in the
+        return data.<br><br>If you delete an employee that has already been deleted then
+        the result is successful (200) and no change is made.
+        <br><br>The deleted record appears in the list of deleted
+        employees for the restaurant in the Toast administration back-end. From
+        the list of deleted employees, you can enable a deleted record so that
+        the employee can use it again. You cannot enable a deleted employee
+        using the labor API. Information about deleted employees remains
+        available in reports.<br><br>You cannot delete employees who have open
+        time entries (time entries that do not have an out date value).
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant that is the context for
+            this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: employeeId
+          description: Toast GUID or external identifier for the employee to be deleted.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: The employee has been deleted. Returns an
+            <a href="#/definitions/Employee">Employee</a> object containing
+            information about the deleted restaurant employee.
+          schema:
+            $ref: '#/definitions/Employee'
+        '400':
+          description: The GUID or external identifier was malformed.
+        '404':
+          description: The GUID or external identifier does not match any
+            employees at the current restaurant.
+        '500':
+          description: An unexpected server error occurred. Toast support staff
+            can use the `requestId` in the error message to help troubleshoot the
+            problem.
+    patch:
+      summary: Updates information about a restaurant employee.
+      description: |
+        Updates the first name, last name, external employee ID, and/or 
+        passcode of a restaurant employee. The `PATCH` operation cannot 
+        update any other employee information.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: employeeId
+          description: Toast GUID or external identifier for the employee to be returned.
+          in: path
+          type: string
+          required: true
+        - name: body
+          description: |
+            A JSON object containing the employee information that you are
+            updating. You can update an employee's:
+            
+            * `firstName` - First name.
+            
+            * `lastName` - Last name.
+            
+            * `externalEmployeeId` - External employee identifier.
+            
+            * `passcode` - The passcode for access to Toast POS devices.
+            
+            All values are optional. You must include at least one value. Each
+            value that you include must contain information (not null). If you
+            include the `passcode` value to update an employee's passcode you
+            must include the employee's current passcode in the `currentPasscode`
+            value.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: {
+    "firstName": "Mynewfirstname",
+    "lastName": "Mynewlastname",
+    "externalEmployeeId": "1234567890",
+    "passcode": "1234",
+    "currentPasscode": "1111"
+}
+      responses:
+        '200':
+          description: Returns the updated Toast employee.
+          schema:
+            $ref: '#/definitions/Employee'
+        '400':
+          description: The GUID or external identifier was malformed, or
+            the body of the request was malformed.
+        '404':
+          description: The GUID or external identifier does not match any
+            employees at the current restaurant.
+        '500':
+          description: An unexpected internal error occurred. There is a
+            requestId attached to this error that can be referenced by Toast.
+  /employees/{employeeId}/externalId:
+    parameters:
+      - name: employeeId
+        description: |
+          The Toast platform GUID of the employee record.
+        in: path
+        type: string
+        required: true
+    post:
+      summary: Adds an external identifier for an existing employee.
+      description: Adds an external identifier for an existing employee.
+        Include the string value of the new external identifier in the
+        message body.<br><br>You cannot change an existing external
+        identifier with another `POST` request; use `PUT` instead. The Toast POS uses this
+        external identifier as one of the unique, persistent
+        identifiers for an employee record.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: The JSON string value of the `externalId` for the employee
+            record. Wrap the value in double quotation marks to make it valid
+            JSON syntax.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: "MyToastNamingAuthority:9876543210"
+      responses:
+        '200':
+          description: Returns the updated employee record.
+          schema:
+            $ref: '#/definitions/Employee'
+    put:
+      summary: Adds or replaces the external identifier for an existing
+        employee.
+      description: Adds or replaces the external identifier for an
+        existing employee. Include the string value of the new external
+        identifier in the message body.<br><br>The Toast POS uses this
+        external identifier as one of the unique, persistent
+        identifiers for an employee record. <em>Changing the external
+        identifier for an existing employee might affect reporting and
+        other Toast POS functions that select employees using the
+        `externalId` value.</em>
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: The JSON string value of the `externalId` for the employee
+            record. Wrap the value in double quotation marks to make it valid
+            JSON syntax.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: "MyToastNamingAuthority:9876543210"
+      responses:
+        '200':
+          description: Returns the updated employee record.
+          schema:
+            $ref: '#/definitions/Employee'
+  /employees/{employeeId}/jobs:
+    parameters:
+      - name: employeeId
+        description: |
+          The Toast platform GUID of the employee record.
+        in: path
+        type: string
+        required: true
+    put:
+      summary: Replaces the list of jobs for an employee.
+      description:
+        Replaces the list of jobs for an employee. Include a JSON  array of job
+        identifiers in the message body. <br/><br/>If a job is defined at the restaurant
+        group or subgroup level, this operation adds or removes that job for the
+        the employee at <em>all restaurant locations</em> in the group or
+        subgroup.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: An array of JSON objects containing identifiers for jobs.
+            The identifiers can be either Toast GUIDs or external
+            identifiers.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: [
+   {
+     "guid": "dd8cea7a-add5-4508-b8fe-ffd0b584e4da"
+   },
+   {
+     "externalId": "MyToastNamingAuthority:9876543210"
+   }
+
+ ]
+      responses:
+        '200':
+          description: Returns the updated employee record.
+          schema:
+            $ref: '#/definitions/Employee'
+  /employees/{employeeId}/wageOverrides:
+    parameters:
+      - name: employeeId
+        description: |
+          The Toast platform GUID of the employee record.
+        in: path
+        type: string
+        required: true
+    put:
+      summary: Replaces the list of wage overrides for the jobs assigned to an
+        employee.
+      description: Replaces the list of wage overrides for the jobs that are
+        assigned to an employee. Include a JSON  array of <a
+        href="#/definitions/JobWageOverride">JobWageOverride</a> objects in the
+        message body. Include the new wage for the employee in the `wage` value.
+        Specify the wage in U.S. dollars.<br/><br/>You must include all existing
+        wage overrides in the message body. Any wage overrides that are not
+        present in the array are removed from the employee record.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: An array of JSON <a
+            href="#/definitions/JobWageOverride">JobWageOverride</a> objects.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: [
+  {
+    "jobReference": {
+      "guid": "8d3bba92-10e4-4345-9ae6-ed94c09dc332"
+    },
+    "wage": 15.75
+  }
+]
+      responses:
+        '200':
+          description: The wage overrides for the employee are replaced.
+            Returns the updated employee record.
+          schema:
+            $ref: '#/definitions/Employee'
+  /shifts:
+    get:
+      summary: Returns information about schedule shifts for restaurant employees.
+      description: Returns an array of <a href="#/definitions/Shift">Shift</a>
+        objects that contain information about schedule shifts for restaurant
+        employees.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: shiftIds
+          description: |
+            An optional identifier that filters return values for a
+            specific shift. The identifier can be a Toast POS GUID
+            or an external identifier. If present, the shifts
+            resource will only return the shifts you specify. You
+            can include multiple `shiftIds` query parameters (maximum
+            100).
+          in: query
+          type: string
+          format: string
+          required: false
+        - name: startDate
+          description: Optional start date and time of time period to match shifts. A shift matches the time period if the shift inDate is after (inclusive) the specified startDate and the shift outDate is before the endDate (exclusive). These parameters are required if the shiftIds parameter is not defined. The specified period cannot be longer than 1 month
+          in: query
+          type: string
+          format: ISO-8601
+        - name: endDate
+          description: Optional end date and time of time period to match shifts. A shift matches the time period if the shift inDate is after (inclusive) the specified startDate and the shift outDate is before the endDate (exclusive). These parameters are required if the shiftIds parameter is not defined. The specified period cannot be longer than 1 month
+          in: query
+          type: string
+          format: ISO-8601
+      responses:
+        '200':
+          description: Returns the specified shifts in an unordered list.
+          schema:
+            title: Response
+            type: array
+            items:
+              $ref: '#/definitions/Shift'
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+    post:
+      summary: Creates a schedule shift record for a restaurant employee.
+      description: Creates a schedule shift record for a restaurant employee.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: A <a href="#/definitions/Shift">Shift</a> object
+            containing information about the shift, including the job
+            identifier, the employee identifier, and the start and end times.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: {
+                         "externalId":"MyToastNamingAuthority:1234",
+                         "entityType":"Shift",
+                         "jobReference":{
+                            "guid":"678758d1-6aa8-494c-be55-0614f761d160",
+                            "externalId":"",
+                            "entityType":"RestaurantJob"
+                         },
+                         "employeeReference":{
+                            "guid":"7030407f-761c-4d92-86d9-4e84bc700d0f",
+                            "externalId":"",
+                            "entityType":"RestaurantUser"
+                         },
+                         "inDate":"2015-10-10T06:00:00.000+0000",
+                         "outDate":"2015-10-10T12:00:00.000+0000"
+                      }
+      responses:
+        '200':
+          description: Creates a shift record and returns information about it.
+          schema:
+            $ref: '#/definitions/Shift'
+        '400':
+          description: The request contains data that is not supported by the current version of the API as described.
+        '415':
+          description: The request did not have "application/json" in the Content-Type header.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /shifts/{shiftId}:
+    get:
+      summary: Returns information about one schedule shift for a restaurant employee.
+      description: Returns a <a href="#/definitions/Shift">Shift</a> object
+        containing of information about one schedule shift for a restaurant
+        employee.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: shiftId
+          description: Toast-assigned GUID (preferred) or an client-assigned
+            externalId of the shift.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns the specified shifts in an unordered list.
+          schema:
+            $ref: '#/definitions/Shift'
+        '400':
+          description: The GUID or external identifier was malformed.
+        '404':
+          description: The GUID or external identifier does not match any shifts
+            at the current restaurant.
+        '500':
+          description: An unexpected internal error occurred. There is a
+            `requestId` attached to this error that can be referenced by Toast
+            support.
+    put:
+      summary: Updates an existing schedule shift record for a
+        restaurant employee.
+      description: Updates an existing schedule shift record for a
+        restaurant employee. A `PUT` request completely replaces the information
+        in the existing record.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: shiftId
+          description: The shift identifier, either the GUID assigned by the
+            Toast system or client-assigned `externalId`.
+          in: path
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: The shift information. ExternalId is not allowed on PUT
+          in: body
+          required: true
+          schema:
+            type: string
+            example: {"entityType": "Shift","jobReference":{"guid":"678758d1-6aa8-494c-be55-0614f761d160","externalId":"","entityType": "RestaurantJob"},"employeeReference":{"guid":"7030407f-761c-4d92-86d9-4e84bc700d0f","externalId":"","entityType": "RestaurantUser"},"inDate":"2015-10-10T06:00:00.000+0000","outDate":"2015-10-10T12:00:00.000+0000"}
+      responses:
+        '200':
+          description: Returns the updated Shift
+          schema:
+            $ref: '#/definitions/Shift'
+        '400':
+          description: The request contains data that is not supported by the current version of the API as described.
+        '404':
+          description: The GUID or external identifier does not match any shifts
+            at the current restaurant.
+        '415':
+          description: The request did not have "application/json" in the Content-Type header.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+    delete:
+      summary: Deletes an existing schedule shift record for a
+        restaurant employee.
+      description: Marks an existing schedule shift record for a
+        restaurant employee as deleted. If the shift record was already deleted, then the operation will succeed (200)
+        and no change will be made.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: shiftId
+          description: The shift identifier, either Toast-assigned GUID or client-assigned `externalId`.
+          in: path
+          type: string
+          format: string
+          required: true
+      responses:
+        '200':
+          description: Returns the specified shift, with the deleted flag set to be true
+          schema:
+            $ref: '#/definitions/Shift'
+        '400':
+          description: The GUID or external identifier was malformed.
+        '404':
+          description: The GUID or external identifier does not match any shifts
+            at the current restaurant.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /jobs:
+    get:
+      summary: Returns information about the employee jobs configured at a restaurant.
+      description: Returns an array of <a href="#/definitions/Job">Job</a>
+        objects containing information about the employee jobs configured at a restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: jobIds
+          description: |
+            An optional array of one or more job external identifiers, 
+            either the Toast-assigned GUID (preferred) or an external 
+            identifier assigned by the client. 100 max. If not 
+            provided, all jobs known to Toast for this restaurant will 
+            be returned.
+          in: query
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Returns the specified jobs
+          schema:
+            $ref: '#/definitions/JobReference'
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /jobs/{jobId}:
+    get:
+      summary: Returns information about one employee job
+        at a restaurant.
+      description: Returns a <a href="#/definitions/Job">Job</a> object
+        containing information about one employee job at a
+        restaurant.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: jobId
+          description: Toast-assigned GUID (preferred) or an identifier assigned by the client of the job.
+          in: path
+          type: string
+          format: string
+          required: true
+      responses:
+        '200':
+          description: Returns the specified job.
+          schema:
+            $ref: '#/definitions/Job'
+        '400':
+          description: The GUID or external identifier was malformed.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /jobs/{jobId}/externalId:
+    parameters:
+      - name: jobId
+        description: |
+          The Toast platform GUID or external identifier of the job 
+          record.
+        in: path
+        type: string
+        required: true
+    post:
+      summary: Adds an external identifier for an existing job.
+      description: Adds an external identifier for an existing job.
+        Include the string value of the new external identifier in the
+        message body.<br><br>You cannot change an existing external
+        identifier with another `POST` request. The Toast POS uses this
+        external identifier as one of the unique, persistent
+        identifiers for a job record.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: The JSON string value of the `externalId` for the job
+            record. Wrap the value in double quotation marks to make it valid
+            JSON syntax.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: "MyToastNamingAuthority:9876543210"
+      responses:
+        '200':
+          description: Returns the updated job record.
+          schema:
+            $ref: '#/definitions/Job'
+    put:
+      summary: Adds or replaces the external identifier for an existing
+        job.
+      description: Adds or replaces the external identifier for an
+        existing job. Include the string value of the new external
+        identifier in the message body. <br><br>The Toast POS uses this
+        external identifier as one of the unique, persistent
+        identifiers for a job record. <em>Changing the external
+        identifier for an existing job might affect reporting and other
+        Toast POS functions that select jobs using the `externalId`
+        value.</em>
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: Content-Type
+          description: The Internet Assigned Numbers Authority (IANA) media type
+            of the message body data. The value must be `application/json`.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: body
+          description: The JSON string value of the `externalId` for the job
+            record. Wrap the value in double quotation marks to make it valid
+            JSON syntax.
+          in: body
+          required: true
+          schema:
+            type: string
+            example: "MyToastNamingAuthority:9876543210"
+      responses:
+        '200':
+          description: Returns the updated job record.
+          schema:
+            $ref: '#/definitions/Job'
+  /timeEntries:
+    get:
+      summary: Returns information about employee shift events.
+      description: |
+        Returns an array of
+        <a href="#/definitions/TimeEntry">TimeEntry</a> objects that contain
+        information about employee shift events. The information includes shift
+        start times, end times, and the start and end times of break periods.
+
+        *  Include one or more `timeEntryId` query parameters set to the GUIDs for specific time entries.
+
+        *  Include both a `startDate` and an `endDate` query parameter to get time entries for a specific time period.
+
+        *  Include both a `modifiedStartDate` and a `modifiedEndDate` query parameter to get the time entries that were modified during a specific time period.
+
+        *  Includes a `businessDate` query parameter to get the time entries with an `inDate` during a specific business date.
+
+        Valid requests include one or more `timeEntryId` parameters, both a `startDate` and an `endDate`, both a `modifiedStartDate` and a `modifiedEndDate`, or a `businessDate`.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: timeEntryIds
+          description: Optional array of one or more time entry identifiers, either the Toast-assigned GUID (preferred) or an identifier assigned by the client. 100 max. 
+          in: query
+          type: array
+          items:
+            type: string
+        - name: startDate
+          description: Optional start date and time of time period to match time entries. A time entry matches the time period if its clock-in inDate is after (inclusive) the specified startDate and before (exclusive) the endDate. The specified period cannot be longer than 1 month. 
+          in: query
+          type: string
+          format: ISO-8601
+        - name: endDate
+          description: Optional end date and time of time period to match time entries. A time entry matches the time period if its clock-in inDate is after (inclusive) the specified startDate and before (exclusive) the endDate. The specified period cannot be longer than 1 month. 
+          in: query
+          type: string
+          format: ISO-8601
+        - name: modifiedStartDate
+          description: Start date and time of the time period to match modified time entries. A time entry matches the time period if that entry was modified after (inclusive) the modifiedStartDate. If you include this parameter, you must also include the modifiedEndDate parameter.  The specified period cannot be longer than 1 month.
+          in: query
+          type: string
+          format: ISO-8601
+        - name: modifiedEndDate
+          description: End date and time of the time period to match modified time entries. A time entry matches the time period if that entry was modified before (exclusive) the modifiedEndDate. If you include this parameter, you must also include the modifiedStartDate parameter.  The specified period cannot be longer than 1 month.
+          in: query
+          type: string
+          format: ISO-8601
+        - name: businessDate
+          description: Optional date to match time entries. A time entry matches the business date if its clock-in inDate is during the business date. The cutoff from one businessDate to the next is the closeoutHour returned by the restaurants API.
+          in: query
+          type: string
+          format: yyyymmdd
+        - name: includeMissedBreaks
+          description: Optional flag to indicate whether missed breaks should be returned in the breaks array for the time entries.
+          in: query
+          type: boolean
+      responses:
+        '200':
+          description: Returns the specified time entries
+          schema:
+            $ref: '#/definitions/TimeEntry'
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /timeEntries/{timeEntryId}:
+    get:
+      summary: Returns information about one employee shift event.
+      description: Returns an <a href="#/definitions/TimeEntry">TimeEntry</a>
+        object containing information about one employee shift.
+        The information includes the shift start time, end time, and the start
+        and end times of break periods.
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The Toast GUID of the restaurant
+            that is the context for this operation.
+          in: header
+          type: string
+          format: string
+          required: true
+        - name: timeEntryId
+          description: Toast-assigned GUID (preferred) or an identifier assigned by the client of the time entry.
+          in: path
+          type: string
+          format: string
+          required: true
+        - name: includeMissedBreaks
+          description: Optional flag to indicate whether missed breaks should be returned in the breaks array for the time entries.
+          in: query
+          type: boolean
+      responses:
+        '200':
+          description: Returns the specified time entry.
+          schema:
+            $ref: '#/definitions/TimeEntry'
+        '400':
+          description: The GUID or external identifier was malformed.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
