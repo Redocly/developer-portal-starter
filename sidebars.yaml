@@ -87,6 +87,9 @@ training:
   - page: developer-portal/fast-api-test-suite-cli.md
     label: Test Suite CLI
   - separatorLine: true  
+  - separator: Custom Integration Guides
+  - page: developer-portal/fast-api-guides-batching.md
+    label: How batching works
   - separator: Custom Integration Resources
   - page: developer-portal/fast-api-reference-authentication.md
     label: Authentication
