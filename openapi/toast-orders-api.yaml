@@ -5,10 +5,8 @@ info:
   title: Toast Orders API
   description: |
     Operations that create and retrieve information about restaurant 
-    guest orders. Including checks, items ordered, prices, and 
-    discounts.
-  contact:
-    email: developer-support@toasttab.com
+    guest orders. Information on orders includes checks, items ordered,
+    prices, and discounts.
 schemes:
   - https
 host: toast-api-server
@@ -1606,7 +1604,7 @@ definitions:
 paths:
   /payments:
     get:
-      summary: Get identifiers of payments processed
+      summary: Get payment identifiers
       description: Returns a list of the GUIDs for each payment made during
         one restaurant business day. The specific hours that make up a business
         day depend on the business day cutoff in the restaurant configuration,
@@ -1616,6 +1614,7 @@ paths:
         or local time for an API client). You must include one of the
         `paidBusinessDate`, `refundBusinessDate`, or `voidBusinessDate` query
         parameters.
+      operationId: getPayments
       produces:
         - application/json
       parameters:
@@ -1655,11 +1654,12 @@ paths:
               type: string
   /payments/{guid}:
     get:
-      summary: Get information about a payment
+      summary: Get single payment
       description: Returns a JSON
         <a href="#/definitions/Payment">Payment</a> object containing
         detailed information about a  single payment, specified by its
         GUID.
+      operationId: getPaymentsGuid
       produces:
         - application/json
       parameters:
@@ -1686,7 +1686,7 @@ paths:
 
   /prices:
     post:
-      summary: Get prices for an order
+      summary: Get order prices
       description: |
         Calculates the check price amounts, tax amounts, and service
         charges for an <a href="#/definitions/Order">`Order`</a> object
@@ -1706,6 +1706,7 @@ paths:
         possible because the restaurant configuration can change and
         because some pricing configuration is based on time and date
         schedules.
+      operationId: postPrices
       produces:
         - application/json
       parameters:
@@ -1764,8 +1765,9 @@ paths:
             the Toast support team.
   /orders/{guid}:
     get:
-      summary: Get information about an order
+      summary: Get single order
       description: Retrieves detailed information about a single order, specified by its GUID.
+      operationId: getOrders
       produces:
         - application/json
       parameters:
@@ -1792,7 +1794,7 @@ paths:
           description: There was a problem serializing the Order entity.
   /ordersBulk:
     get:
-      summary: Get information about multiple orders
+      summary: Get multiple orders
       description: |
         Returns an array of `Order` objects containing detailed
         information about all orders opened during a period of time.
@@ -1804,6 +1806,7 @@ paths:
 
         * Specify the `businessDate` to return the orders promised
           during that business day.
+      operationId: getOrdersBulk
       produces:
       - application/json
       parameters:
@@ -1894,7 +1897,7 @@ paths:
            the Toast support team.
   /orders/{orderGuid}/checks/{checkGuid}/payments:
     post:
-      summary: Add payments to a check
+      summary: Post payments
       description: |
         Adds one or more payments to a check in an existing order. Include
         information about the payments in an array of `Payment` objects in the
@@ -1904,6 +1907,7 @@ paths:
         For more information, see <a
         href="http://dev.toasttab.com/Ie5QH/apiAddingPaymentsToACheck.html">Adding
         Payments to a Check</a> in the _Toast API Developer's Guide_.
+      operationId: postPayments
       produces:
         - application/json
       parameters:
@@ -1940,7 +1944,7 @@ paths:
             $ref: '#/definitions/Order'
   /orders/{orderGuid}/checks/{checkGuid}/payments/{paymentGuid}:
     patch:
-      summary: Update tip amount in a payment
+      summary: Update tip
       description: |
         Updates the tip amount in an existing payment for a check in an
         order. Include the new `tipAmount` value in a `Payment` object
@@ -1952,6 +1956,7 @@ paths:
         For more information, see <a
         href="http://dev.toasttab.com/Ie5QH/apiUpdatingTipsInAPayment.html">Updating
         Tips in a Payment</a> in the _Toast API Developer's Guide_.
+      operationId: patchTips
       produces:
         - application/json
       parameters:
@@ -2005,6 +2010,7 @@ paths:
         For more information, see <a
         href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
         Discounts to Checks</a> in the _Toast API Developer's Guide_.
+      operationId: addCheckDiscounts
       produces:
         - application/json
       parameters:
@@ -2050,6 +2056,7 @@ paths:
         For more information, see <a
         href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
         Discounts to Checks</a> in the _Toast API Developer's Guide_.
+      operationId: addItemDiscounts
       produces:
         - application/json
       parameters:
@@ -2092,7 +2099,7 @@ paths:
             $ref: '#/definitions/Order'
   /orders:
     post:
-      summary: Add an order
+      summary: Post order
       description: Submits an order to the server. Returns a JSON <a href="#/definitions/Order">Order</a> object if successful.
       operationId: postOrders
       produces:
@@ -2128,7 +2135,7 @@ paths:
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
 
     get:
-       summary: Get identifiers of orders processed
+       summary: Get order identifiers
        description: |
           Gets a list of the GUIDs of all orders opened during a period of
           time. You can return the list of orders for either a period of up to
@@ -2139,7 +2146,7 @@ paths:
 
           * Specify the `businessDate` to return the list of orders promised
             for delivery during a business day.
-
+       operationId: getOrderGuids
        produces:
         - application/json
        parameters:
@@ -2197,7 +2204,7 @@ paths:
 
   /applicableDiscounts:
     post:
-      summary: Get the discounts that apply to an order
+      summary: Get applicable discounts
       description: |
         Returns an array of <a
         href="#/definitions/ApplicableDiscount">`ApplicableDiscount`</a>
@@ -2209,6 +2216,7 @@ paths:
         `ApplicableDiscount` object, the `applicableDiscounts` endpoint
         returns the only the discounts that are associated with the
         promotional code that you supply.
+      operationId: postApplicableDiscounts
       produces:
         - application/json
       parameters:
