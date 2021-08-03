@@ -10,7 +10,8 @@ Let's add the Fast Checkout button to your product page to power higher conversi
 
 You'll need a Fast account and sandbox credentials to start integrating.
 
-[**Create a Fast Developer Account →**](https://http://sdash.sandbox.fast.co/)
+[**Create a Fast Developer Account →**](https://sdash.sandbox.fast.co/)
+
 
 🚨 Note: Your account will have separate credentials for testing and production use. The sandbox credentials are for your development and test environments and will allow you to try Fast using fake credit cards without any money moving. The separate production credentials should be used for real customers performing real transactions.
 
