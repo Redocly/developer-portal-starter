@@ -204,7 +204,7 @@ paths:
   /restaurants:
     get:
       operationId: restaurantsGet
-      summary: Returns accessible restaurants' details.
+      summary: Get accessible restaurants' details.
       description: |
         Returns an array of <a 
         href="#/definitions/PartnerAccessExternalRep">`PartnerAccessExternalRep`</a> 
