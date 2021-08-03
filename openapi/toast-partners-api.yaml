@@ -188,7 +188,7 @@ definitions:
       restaurantCity:
         type: string
         description: |
-          The city in which the restautant is located.
+          The city in which the restaurant is located.
       restaurantState:
         type: string
         description: |
@@ -203,7 +203,8 @@ definitions:
 paths:
   /restaurants:
     get:
-      summary: Returns information about restaurants a partner API client has access to.
+      operationId: restaurantsGet
+      summary: Returns accessible restaurants' details.
       description: |
         Returns an array of <a 
         href="#/definitions/PartnerAccessExternalRep">`PartnerAccessExternalRep`</a> 
