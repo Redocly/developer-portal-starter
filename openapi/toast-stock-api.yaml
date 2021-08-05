@@ -8,8 +8,7 @@ info:
       The Toast Stock API retrieves inventory information for
       menu items and modifier options from a restaurant.
            
-    contact:
-    email: developer-support@toasttab.com
+    contact: Toast developer support
 schemes:
   - https
 host: toast-api-server
@@ -66,7 +65,7 @@ paths:
       description: |
         The inventory status of each menu item in the provided list will
         be returned.
-      operationId: inventoryByItemGuidsPost
+      operationId: inventorySearchPost
       produces:
       - application/json
       parameters:
@@ -78,7 +77,7 @@ paths:
           type: string
         - name: body
           description: |
-            An InventorySearchRequest
+            An `InventorySearchRequest`
             object containing information used to search for menu items.
           in: body
           required: false
