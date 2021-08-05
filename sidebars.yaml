@@ -13,7 +13,7 @@ training:
     separatorLine: true
   - separator: Quick Start
   - group: I am on a platform
-    expanded: false
+    expanded: true
     pages:
       - group: BigCommerce
         expanded: false
@@ -90,6 +90,7 @@ training:
   - separator: Custom Integration Guides
   - page: developer-portal/fast-api-guides-batching.md
     label: How batching works
+  - separatorLine: true
   - separator: Custom Integration Resources
   - page: developer-portal/fast-api-reference-authentication.md
     label: Authentication
