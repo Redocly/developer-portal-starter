@@ -4,20 +4,15 @@ info:
   version: 1.0.0
   title: Toast Stock API
   description: |
-    ## Overview
-
+  
       The Toast Stock API retrieves inventory information for
       menu items and modifier options from a restaurant.
-
-      You can use the Toast Stock API to:
-
-      * Get all inventory information for a restaurant.
-      * Get the inventory for a list of menu items.
-      * Get the inventory of a restaurant given a specific status 
-        of the menu items (such as all menu items that are out
-        of stock).
+           
+    contact:
+    email: developer-support@toasttab.com
 schemes:
   - https
+host: toast-api-server
 basePath: /stock/v1
 consumes:
   - application/json
@@ -33,7 +28,7 @@ paths:
         `IN_STOCK` status. You can restrict the menu items in the
         response data to either `OUT_OF_STOCK` or `QUANTITY` inventory 
         status using the `status` query parameter.
-      operationId: getAllRestaurantInventory
+      operationId: allRestaurantInventoryGet
       produces:
       - application/json
       parameters:
@@ -71,7 +66,7 @@ paths:
       description: |
         The inventory status of each menu item in the provided list will
         be returned.
-      operationId: searchInventoryByItemGuids
+      operationId: inventoryByItemGuidsPost
       produces:
       - application/json
       parameters:
@@ -83,8 +78,7 @@ paths:
           type: string
         - name: body
           description: |
-            An <a
-            href="#/definitions/InventorySearchRequest">`InventorySearchRequest`</a>
+            An InventorySearchRequest
             object containing information used to search for menu items.
           in: body
           required: false
