@@ -26,7 +26,7 @@ produces:
 paths:
   /inventory:
     get:
-      summary: Returns all menu item inventory for a restaurant.
+      summary: Get menu item inventory for a restaurant
       description: |
         All item inventory for a restaurant will be returned. Inventory 
         information is not returned for menu items with an 
@@ -67,7 +67,7 @@ paths:
           description: Restaurant did not have any inventory information.
   /inventory/search:
     post:
-      summary: Returns inventory information for a list of menu items.
+      summary: Create inventory status for menu items
       description: |
         The inventory status of each menu item in the provided list will
         be returned.
