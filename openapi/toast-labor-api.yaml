@@ -4,22 +4,19 @@ info:
   version: 1.9.0
   title: Toast Labor API
   description: |
-    ## Overview
 
-    This document provides information about the Toast labor API. The labor API
-    is a set of REST web services that you can use to manage the employees,
-    jobs, and shifts for your restaurant. The labor API is intended for software
-    engineers, managers, and technical staff who are responsible for integrating
-    third-party systems with the Toast POS system.
+    Toast labor API is a set of REST web services that you can use to manage the employees, jobs, and shifts 
+    for your restaurant. The labor API is intended for software engineers, managers, and technical staff who 
+    are responsible for integrating third-party systems with the Toast POS system.
 
-    See general information about using Toast REST APIs in the <cite>Toast API
-    Developer's Guide</cite>.
+    See <cite>Toast API
+    Developer's Guide</cite> for more information.
 
-    contact:
-    name: Toast API Support
+    contact: 
     email: developer-support@toasttab.com
 schemes:
   - https
+host: toast-api-server
 basePath: /labor/v1
 consumes:
   - application/json
@@ -420,11 +417,11 @@ definitions:
 paths:
   /employees:
     get:
-      summary: Get details on restaurant employees.
+      summary: Get details on restaurant employees
       description: Returns an array of
-        <a href="#/definitions/Employee">Employee</a> objects containing
+        Employee objects containing
         information about restaurant employees.
-      operationId: employeesGetInformation
+      operationId: employeesInformationGet
       produces:
         - application/json
       parameters:
@@ -476,7 +473,7 @@ paths:
           format: string
           required: true
         - name: body
-          description: An <a href="#/definitions/Employee">Employee</a> object
+          description: An Employee object
             containing information about the employee, including the employee's
             name and email address. 
           in: body
@@ -497,9 +494,9 @@ paths:
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
   /employees/{employeeId}:
     get:
-      summary: Get details on a restaurant employee.
-      description: Returns an <a href="#/definitions/Employee">Employee</a> object containing information about one restaurant employee.
-      operationId: employeeGetInformation
+      summary: Get details on a restaurant employee
+      description: Returns an Employee object containing information about one restaurant employee.
+      operationId: employeeInformationGet
       produces:
         - application/json
       parameters:
@@ -528,7 +525,7 @@ paths:
         '500':
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
     delete:
-      summary: Deletes a restaurant employee record.
+      summary: Delete a restaurant employee record
       description: Deletes a restaurant employee record by marking it as
         deleted. A deleted employee cannot log in at the restaurant or open new
         time entries.<br><br>If you `GET` an employee record that has been deleted, its
@@ -563,7 +560,7 @@ paths:
       responses:
         '200':
           description: The employee has been deleted. Returns an
-            <a href="#/definitions/Employee">Employee</a> object containing
+            Employee object containing
             information about the deleted restaurant employee.
           schema:
             $ref: '#/definitions/Employee'
@@ -577,7 +574,7 @@ paths:
             can use the `requestId` in the error message to help troubleshoot the
             problem.
     patch:
-      summary: Updates restaurant employee information.
+      summary: Update restaurant employee information
       description: |
         Updates the first name, last name, external employee ID, and/or 
         passcode of a restaurant employee. The `PATCH` operation cannot 
@@ -657,7 +654,7 @@ paths:
         type: string
         required: true
     post:
-      summary: Adds identifier for active employee.
+      summary: Add identifier for active employee
       description: Adds an external identifier for an existing employee.
         Include the string value of the new external identifier in the
         message body.<br><br>You cannot change an existing external
@@ -697,7 +694,7 @@ paths:
           schema:
             $ref: '#/definitions/Employee'
     put:
-      summary: Adds/replaces identifier for employee.
+      summary: Add or replace identifier for employee
       description: Adds or replaces the external identifier for an
         existing employee. Include the string value of the new external
         identifier in the message body.<br><br>The Toast POS uses this
@@ -747,7 +744,7 @@ paths:
         type: string
         required: true
     put:
-      summary: Replaces the jobs list for an employee.
+      summary: Replace the jobs list for an employee
       description:
         Replaces the list of jobs for an employee. Include a JSON  array of job
         identifiers in the message body. <br/><br/>If a job is defined at the restaurant
@@ -803,7 +800,7 @@ paths:
         type: string
         required: true
     put:
-      summary: Replaces the list of wage overrides.
+      summary: Replace the list of wage overrides
       description: Replaces the list of wage overrides for the jobs that are
         assigned to an employee. Include a JSON  array of <a
         href="#/definitions/JobWageOverride">JobWageOverride</a> objects in the
@@ -852,8 +849,8 @@ paths:
             $ref: '#/definitions/Employee'
   /shifts:
     get:
-      summary: Get schedule shifts for employees.
-      description: Returns an array of <a href="#/definitions/Shift">Shift</a>
+      summary: Get schedule shifts for employees
+      description: Returns an array of Shift
         objects that contain information about schedule shifts for restaurant
         employees.
       operationId: scheduleShiftInformationGet
@@ -900,7 +897,7 @@ paths:
         '500':
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
     post:
-      summary: Creates a schedule shift record.
+      summary: Create a schedule shift record
       description: Creates a schedule shift record for a restaurant employee.
       operationId: scheduleShiftRecordPost
       produces:
@@ -921,7 +918,7 @@ paths:
           format: string
           required: true
         - name: body
-          description: A <a href="#/definitions/Shift">Shift</a> object
+          description: A Shift object
             containing information about the shift, including the job
             identifier, the employee identifier, and the start and end times.
           in: body
@@ -957,8 +954,8 @@ paths:
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
   /shifts/{shiftId}:
     get:
-      summary: Get information on a schedule shift.
-      description: Returns a <a href="#/definitions/Shift">Shift</a> object
+      summary: Get information on a schedule shift
+      description: Returns a Shift object
         containing of information about one schedule shift for a restaurant
         employee.
       operationId: scheduleShiftInformationGet
@@ -993,7 +990,7 @@ paths:
             `requestId` attached to this error that can be referenced by Toast
             support.
     put:
-      summary: Updates existing schedule shift record.
+      summary: Update existing schedule shift record
       description: Updates an existing schedule shift record for a
         restaurant employee. A `PUT` request completely replaces the information
         in the existing record.
@@ -1037,7 +1034,7 @@ paths:
         '500':
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
     delete:
-      summary: Deletes existing schedule shift record.
+      summary: Delete existing schedule shift record
       description: Marks an existing schedule shift record for a
         restaurant employee as deleted. If the shift record was already deleted, then the operation will succeed (200)
         and no change will be made.
@@ -1072,8 +1069,8 @@ paths:
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
   /jobs:
     get:
-      summary: Get information about employee jobs.
-      description: Returns an array of <a href="#/definitions/Job">Job</a>
+      summary: Get information about employee jobs
+      description: Returns an array of Job
         objects containing information about the employee jobs configured at a restaurant.
       operationId: employeeJobsConfiguredGet
       produces:
@@ -1106,8 +1103,8 @@ paths:
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
   /jobs/{jobId}:
     get:
-      summary: Get information about one employee job.
-      description: Returns a <a href="#/definitions/Job">Job</a> object
+      summary: Get information about one employee job
+      description: Returns a Job object
         containing information about one employee job at a
         restaurant.
       operationId: employeeJobInformationGet
@@ -1146,7 +1143,7 @@ paths:
         type: string
         required: true
     post:
-      summary: Adds external identifier to existing job.
+      summary: Add external identifier to existing job
       description: Adds an external identifier for an existing job.
         Include the string value of the new external identifier in the
         message body.<br><br>You cannot change an existing external
@@ -1186,7 +1183,7 @@ paths:
           schema:
             $ref: '#/definitions/Job'
     put:
-      summary: Adds/replaces a job's external identifier.
+      summary: Add/replace a job's external identifier
       description: Adds or replaces the external identifier for an
         existing job. Include the string value of the new external
         identifier in the message body. <br><br>The Toast POS uses this
@@ -1229,10 +1226,10 @@ paths:
             $ref: '#/definitions/Job'
   /timeEntries:
     get:
-      summary: Get information about shift events.
+      summary: Get information about shift events
       description: |
         Returns an array of
-        <a href="#/definitions/TimeEntry">TimeEntry</a> objects that contain
+        TimeEntry objects that contain
         information about employee shift events. The information includes shift
         start times, end times, and the start and end times of break periods.
 
@@ -1300,8 +1297,8 @@ paths:
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
   /timeEntries/{timeEntryId}:
     get:
-      summary: Get information about one shift's events.
-      description: Returns an <a href="#/definitions/TimeEntry">TimeEntry</a>
+      summary: Get information about one shift's events
+      description: Returns an TimeEntry
         object containing information about one employee shift.
         The information includes the shift start time, end time, and the start
         and end times of break periods.
