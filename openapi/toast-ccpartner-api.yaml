@@ -5,19 +5,20 @@ info:
   description: |
     A simple, single request, synchronous API to allow partners to
     authorize credit card transactions associated with an orders API
-    order. The API will automatically reverse transactions if the orders
-    API does not submit a corresponding order within five minutes.
+    order.
   version: 1.0.0
 schemes:
   - http
+host: toast-api-server
 produces:
   - application/json
 basePath: /ccpartner/v1
-
+contact: Toast developer support
 paths:
   /merchants/{merchantUuid}/payments/{paymentUuid}:
     put:
-      summary: Authorize a credit card payment.
+      operationId: merchantsMerchantUuidpaymentsPaymentUuidPut
+      summary: Authorize a credit card
       description: |
         Authorize a credit card payment. Funds will be held until the
         payment is voided or captured.
