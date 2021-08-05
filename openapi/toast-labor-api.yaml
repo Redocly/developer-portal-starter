@@ -12,8 +12,7 @@ info:
     See <cite>Toast API
     Developer's Guide</cite> for more information.
 
-    contact: 
-    email: developer-support@toasttab.com
+    contact: Toast developer support
 schemes:
   - https
 host: toast-api-server
