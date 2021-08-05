@@ -1,13 +1,13 @@
 swagger: '2.0'
 info:
-  title: Restaurant Info API
-  description: Returns information about configuration of a restaurant.
+  title: Restaurants API
+  description: |
+    Returns information about the configuration of restaurant 
+    configuration.
   version: 1.0.0
-  contact:
-    name: Toast API Support
-    email: developer-support@toasttab.com
 schemes:
   - https
+host: toast-api-server
 basePath: /restaurants/v1
 consumes:
   - application/json
@@ -16,22 +16,24 @@ produces:
 paths:
   /restaurants/{restaurantGUID}:
     get:
-      summary: Returns information about the configuration of a restaurant.
+      operationId: restaurantsRestaurantGuidGet
+      summary: Get configuration information for a restaurant
       description: |
-        Returns a <a
-        href="#/definitions/RestaurantInfo">`RestaurantInfo`</a> object
+        Returns a `RestaurantInfo` object
         that contains detailed information about the configuration of a
         restaurant.
       parameters:
         - name: restaurantGUID
           description: |
-            The Toast GUID of the restaurant that you want to get information about.
+            The Toast GUID of the restaurant that you want to get 
+            information about.
           in: path
           type: string
           required: true
         - name: Toast-Restaurant-External-ID
           description: |
-            The Toast GUID of the restaurant that you want to get information about.
+            The Toast GUID of the restaurant that you want to get 
+            information about.
           in: header
           type: string
           format: string
@@ -39,27 +41,26 @@ paths:
       responses:
         '200':
           description: |
-            A <a 
-            href="#/definitions/RestaurantInfo">`RestaurantInfo`</a> 
-            object that contains detailed information about the 
-            configuration of a restaurant.
+            A `RestaurantInfo` object that contains detailed 
+            information about the configuration of a restaurant.
           schema:
             $ref: '#/definitions/RestaurantInfo'
   /groups/{managementGroupGUID}/restaurants:
     get:
-      summary: Lists all restaurants in a management group.
+      operationId: groupsManagementGroupGuidRestaurantsGet
+      summary: Get a list of restaurants in a management group
       description: |
-        Returns an array of <a
-        href="#/definitions/Restaurant">`Restaurant`</a> objects that
-        are a part of the restaurant management group you specify in
-        the `managementGroupGUID` path parameter. Each `Restaurant`
-        object contains the unique Toast POS identifier for the
-        restaurant in its `guid` value.
+        Returns an array of `Restaurant` objects that are a part of the 
+        restaurant management group you specify in the 
+        `managementGroupGUID` path parameter. Each `Restaurant` object 
+        contains the unique Toast POS identifier for the restaurant in 
+        its `guid` value.
       parameters:
         - name: managementGroupGUID
           in: path
           type: string
-          description: 'The GUID of the restaurant management group.'
+          description: |
+            The GUID of the restaurant management group.
           required: true
         - name: Toast-Restaurant-External-ID
           description: |
@@ -72,8 +73,7 @@ paths:
       responses:
         '200':
           description: |
-            An array of <a 
-            href="#/definitions/Restaurant">`Restaurant`</a> objects.
+            An array of `Restaurant` objects.
           schema:
             type: array
             items:
@@ -81,7 +81,8 @@ paths:
 definitions:
   General:
     type: object
-    description: general information
+    description: |
+      General information about a restaurant location.
     properties:
       name:
         type: string
@@ -287,63 +288,55 @@ definitions:
   WeekSchedule:
     type: object
     description: |
-      The day schedule used for for each day of the week. A day
-      schedule is the set of services (for example, "lunch") that a
-      restaurant offers and the hours that it offers each one. If a day
-      of the week value in this object is `null`, the restaurant is
-      closed on that day. the restaurant is closed that day. Values for
-      each day of the week are identifiers for day schedules in the map
-      of <a href="#/definitions/DaySchedule">`DaySchedule`</a> objects
-      in the `daySchedules` value of the <a
-      href="#/definitions/Schedules">`Schedules`</a> object.
+      The day schedule used for for each day of the week. A day 
+      schedule is the set of services (for example, "lunch") that a 
+      restaurant offers and the hours that it offers each one. If a day 
+      of the week value in this object is `null`, the restaurant is 
+      closed on that day. the restaurant is closed that day. Values for 
+      each day of the week are identifiers for day schedules in the map 
+      of `DaySchedule` objects in the `daySchedules` value of the 
+      `Schedules` object.
     properties:
       monday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
       tuesday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
       wednesday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
       thursday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
       friday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
       saturday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
       sunday:
         type: string
         description: |
-          A key identifier for the <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> object
+          A key identifier for the `DaySchedule` object
           that represents the services and hours for the restaurant on
           this day of the week.
   Schedules:
@@ -357,8 +350,7 @@ definitions:
       daySchedules:
         type: object
         description: |
-          A map of <a
-          href="#/definitions/DaySchedule">`DaySchedule`</a> objects.
+          A map of `DaySchedule` objects.
           The value names in this object are key identifiers that are
           used to associate a day schedule with a day of the week in
           the `weekSchedule` value.
