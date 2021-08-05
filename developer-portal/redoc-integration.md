@@ -246,7 +246,7 @@ To display API reference docs in an `.mdx` file, first import the React componen
 
 
 ```jsx
-import { OpenApiResponse } from '@redocly/ui';
+import { OpenApiResponse } from '@redocly/developer-portal/ui';
 ```
 
 Then you can use it as follows:
