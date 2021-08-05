@@ -145,9 +145,9 @@ export const theme = {
     // // ...
     // },
     code: {
-      fontSize: '14px',
-      fontFamily: 'Courier, monospace',
-      fontWeight: ({ typography }) => typography.fontWeightRegular,
+      fontSize: '13px',
+      fontFamily: '"Source Code Pro", sans-serif',
+      // fontWeight: ({ typography }) => typography.fontWeightRegular,
       color: '#e53935',
       backgroundColor: 'rgba(38, 50, 56, 0.04)',
       wrap: false,
