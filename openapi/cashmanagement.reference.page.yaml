@@ -1,7 +1,5 @@
-type: redoc
+type: reference-docs
 definitionId: cashManagement
-showInfo: true
-expand: true
 settings:
   generateCodeSamples:
     languages:

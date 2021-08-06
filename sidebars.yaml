@@ -1,5 +1,5 @@
-training:
-  - page: developer-portal/index.md
+api-reference:
+  - page: openapi/index.md
   - group: Cash management
     expanded: false
     pages:
