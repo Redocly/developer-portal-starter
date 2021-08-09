@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: labor
-showInfo: true
-expand: true
+label: Labor
 settings:
   generateCodeSamples:
     languages:

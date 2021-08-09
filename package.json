@@ -1,8 +1,8 @@
 {
-  "name": "portal-template",
+  "name": "toast-api-reference",
   "private": true,
-  "version": "0.0.1",
-  "description": "Redocly portal template repository",
+  "version": "1.0.0",
+  "description": "Toast API reference docs",
   "license": "MIT",
   "scripts": {
     "start": "redocly-portal develop -p 3000",
@@ -10,6 +10,6 @@
     "clean": "redocly-portal clean"
   },
   "dependencies": {
-    "@redocly/developer-portal": "1.0.0-beta.162"
+    "@redocly/developer-portal": "1.1.0-beta.28"
   }
 }

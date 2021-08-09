@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: restaurants
-showInfo: true
-expand: true
+label: Restaurants
 settings:
   generateCodeSamples:
     languages:

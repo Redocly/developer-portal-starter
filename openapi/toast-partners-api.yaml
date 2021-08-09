@@ -213,6 +213,7 @@ paths:
         `lastModified` date is specified, the API returns all objects that were
         created or modified after that date.
       produces:
+        - application/json
       parameters:
         - name: lastModified
           description: |

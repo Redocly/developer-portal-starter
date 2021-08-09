@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: giftCards
-showInfo: true
-expand: true
+label: Gift cards integration specification
 settings:
   generateCodeSamples:
     languages:

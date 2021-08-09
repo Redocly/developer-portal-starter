@@ -457,7 +457,7 @@ paths:
     post:
       summary: Creates a restaurant employee record.
       description: Creates a restaurant employee record.
-      operation Id: employeeRecordPost
+      operationId: employeesGet
       produces:
         - application/json
       parameters:
@@ -856,7 +856,7 @@ paths:
       description: Returns an array of <a href="#/definitions/Shift">Shift</a>
         objects that contain information about schedule shifts for restaurant
         employees.
-      operationId: scheduleShiftInformationGet
+      operationId: shiftsGet
       produces:
         - application/json
       parameters:
@@ -961,7 +961,7 @@ paths:
       description: Returns a <a href="#/definitions/Shift">Shift</a> object
         containing of information about one schedule shift for a restaurant
         employee.
-      operationId: scheduleShiftInformationGet
+      operationId: shiftsShiftIdGet
       produces:
         - application/json
       parameters:

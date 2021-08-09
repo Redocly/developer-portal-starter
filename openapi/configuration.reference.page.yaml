@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: configuration
-showInfo: true
-expand: true
+label: Configuration
 settings:
   generateCodeSamples:
     languages:

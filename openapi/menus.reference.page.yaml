@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: menus
-showInfo: true
-expand: true
+label: Menus
 settings:
   generateCodeSamples:
     languages:

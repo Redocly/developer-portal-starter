@@ -1,5 +1,6 @@
 type: reference-docs
 definitionId: cashManagement
+label: Cash Management
 settings:
   generateCodeSamples:
     languages:
@@ -10,4 +11,3 @@ settings:
   hideHostname: true
   hideDownloadButton: true
   # downloadDefinitionUrl: https://doc.toasttab.com/api-specifications/toast-cashmgmt-api.yaml
-

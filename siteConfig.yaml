@@ -42,7 +42,7 @@ nav:
     href: https://doc.toasttab.com/internal/product-doc/devguide/index.html
 
   - label: API reference
-    href: https://toastintegrations.redoc.ly/developer-portal/
+    page: openapi/index.md
 
   - label: Platform guide
     href: https://doc.toasttab.com/internal/product-doc/devplatformguide/index.html

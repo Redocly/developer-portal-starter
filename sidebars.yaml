@@ -1,51 +1,14 @@
 api-reference:
   - page: openapi/index.md
-  - group: Cash management
-    expanded: false
-    pages:
-      - page: openapi/cashmanagement.reference.page.yaml/*
-  - group: Configuration
-    expanded: false
-    pages:
-      - page: openapi/configuration.reference.page.yaml/*
-  - group: Credit cards
-    expanded: false
-    pages:
-      - page: openapi/creditcards.reference.page.yaml/*
-  - group: Kitchen
-    expanded: false
-    pages:
-      - page: openapi/kitchen.reference.page.yaml/*
-  - group: Labor
-    expanded: false
-    pages:
-      - page: openapi/labor.reference.page.yaml/*
-  - group: Menus
-    expanded: false
-    pages:
-      - page: openapi/menus.reference.page.yaml/*
-  - group: Orders
-    expanded: false
-    pages:
-      - page: openapi/orders.reference.page.yaml/*
-  - group: Partners
-    expanded: false
-    pages:
-      - page: openapi/partners.reference.page.yaml/*
-  - group: Restaurants
-    expanded: false
-    pages:
-      - page: openapi/restaurants.reference.page.yaml/*
-  - group: Stock
-    expanded: false
-    pages:
-      - page: openapi/stock.reference.page.yaml/*
-  - group: Gift cards integration specification
-    expanded: false
-    pages:
-      - page: openapi/giftcards.reference.page.yaml/*
-  - group: Loyalty integration specification
-    expanded: false
-    pages:
-      - page: openapi/loyalty.reference.page.yaml/*
-
+  - page: openapi/cashmanagement.reference.page.yaml
+  - page: openapi/configuration.reference.page.yaml
+  - page: openapi/creditcards.reference.page.yaml
+  - page: openapi/kitchen.reference.page.yaml
+  - page: openapi/labor.reference.page.yaml
+  - page: openapi/menus.reference.page.yaml
+  - page: openapi/orders.reference.page.yaml
+  - page: openapi/partners.reference.page.yaml
+  - page: openapi/restaurants.reference.page.yaml
+  - page: openapi/stock.reference.page.yaml
+  - page: openapi/giftcards.reference.page.yaml
+  - page: openapi/loyalty.reference.page.yaml

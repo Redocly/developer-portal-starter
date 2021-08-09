@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: loyalty
-showInfo: true
-expand: true
+label: Loyalty integration specification
 settings:
   generateCodeSamples:
     languages:

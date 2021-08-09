@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Flex, Link, SearchBox } from '@redocly/ui';
+import { Flex, Link, SearchBox } from '@redocly/developer-portal/ui';
 
 export default function NavBar(props) {
   const { items, logo, location } = props;

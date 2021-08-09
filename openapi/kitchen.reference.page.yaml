@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: kitchen
-showInfo: true
-expand: true
+label: Kitchen
 settings:
   generateCodeSamples:
     languages:

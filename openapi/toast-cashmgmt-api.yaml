@@ -343,7 +343,6 @@ paths:
           type: string
           format: calendar-date
           required: false
-          deprecated: true
         - name: businessDate
           description: |
             The business date the cash entries were created, in the

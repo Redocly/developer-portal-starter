@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: stock
-showInfo: true
-expand: true
+label: Stock
 settings:
   generateCodeSamples:
     languages:

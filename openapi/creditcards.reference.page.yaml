@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: creditCards
-showInfo: true
-expand: true
+label: Credit cards
 settings:
   generateCodeSamples:
     languages:

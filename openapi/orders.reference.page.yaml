@@ -1,7 +1,6 @@
 type: reference-docs
 definitionId: orders
-showInfo: true
-expand: true
+label: Orders
 settings:
   generateCodeSamples:
     languages:
