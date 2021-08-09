@@ -7,14 +7,14 @@ info:
     authorize credit card transactions associated with an orders API
     order.
   version: 1.0.0
+  contact:
+    name: Toast developer support
 schemes:
   - http
 host: toast-api-server
 produces:
   - application/json
 basePath: /ccpartner/v1
-contact: Toast developer support
-
 paths:
   /merchants/{merchantUuid}/payments/{paymentUuid}:
     put:
