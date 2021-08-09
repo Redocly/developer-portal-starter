@@ -18,7 +18,7 @@ contact: Toast developer support
 paths:
   /merchants/{merchantUuid}/payments/{paymentUuid}:
     put:
-      operationId: merchantsMerchantUuidpaymentsPaymentUuidPut
+      operationId: merchantsMerchantUuidPaymentsPaymentUuidPut
       summary: Authorize a credit card
       description: |
         Authorize a credit card payment. Funds will be held until the
