@@ -10,37 +10,15 @@ info:
       The Toast cash management API provides information about cash
       operations that add cash to or remove cash from a restaurant cash
       drawer, separately from cash transaction payments (customer
-      payments for individual checks). Cash entries affect the overall
-      amount of cash that the Toast POS accounts for in a restaurant.
-
-      Cash entries are different than cash transactions. In a cash
-      transaction, a server adds a customer's cash payment to a cash
-      drawer when the order is paid in the POS. Cash transactions
-      change the amount of cash in a cash drawer but they are not
-      tracked as individual cash entries and they are not available
-      from the cash management API.
-
-      You can use the Toast cash management API to:
-
-      * Get information about cash added to or removed from cash
-      drawers in a restaurant.
-
-      * Get information about cash removed from a restaurant to be
-      deposited in a bank or other financial institution.
-
-      * Compare cash entries to the total cash transactions (customer
-      cash payments) from the orders API to calculate the expected cash
-      deposit for a restaurant.
-
-    For more information about using this and other Toast APIs, see the
-    <cite>Toast API Developer's Guide.</cite>
+      payments for individual checks). Cash entries are different than 
+      cash transactions, and affect the overall amount of cash that the 
+      Toast POS accounts for in a restaurant.
 
   contact:
     name: Toast API Support
-    email: developer-support@toasttab.com
-
 schemes:
   - https
+host: toast-api-server
 basePath: /cashmgmt/v1
 consumes:
   - application/json
@@ -321,8 +299,9 @@ paths:
         Get cash entries
       description: |
         Returns information about cash added to or removed from a cash
-        drawer or other cash storage device. Returns an array of <a
-        href="#/definitions/CashEntry">CashEntry</a> objects.
+        drawer or other cash storage device. Returns an array of 
+        CashEntry objects.
+      operationId: entriesGet
       produces:
         - application/json
       parameters:
@@ -354,8 +333,7 @@ paths:
       responses:
         '200':
           description: |
-            Returns an array of <a
-            href="#/definitions/CashEntry">CashEntry</a> objects.
+            Returns an array of CashEntry objects.
           schema:
             title: Response
             type: array
@@ -371,10 +349,10 @@ paths:
       summary: |
         Get deposits
       description: |
-        Returns an array of <a href="#/definitions/Deposit">Deposit</a>
-        objects containing information about cash removed from a
-        restaurant to be deposited in a bank or other financial
-        institution during one business day.
+        Returns an array of Deposit objects containing information about
+        cash removed from a restaurant to be deposited in a bank or 
+        other financial institution during one business day.
+      operationId: depositsGet
       produces:
         - application/json
       parameters:
@@ -397,8 +375,7 @@ paths:
       responses:
         '200':
           description: |
-            Returns an array of <a
-            href="#/definitions/Deposit">Deposit</a> objects.
+            Returns an array of Deposit objects.
           schema:
             title: Response
             type: array
