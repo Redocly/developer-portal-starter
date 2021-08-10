@@ -27,7 +27,7 @@ paths:
         `IN_STOCK` status. You can restrict the menu items in the
         response data to either `OUT_OF_STOCK` or `QUANTITY` inventory 
         status using the `status` query parameter.
-      operationId: allRestaurantInventoryGet
+      operationId: inventoryGet
       produces:
       - application/json
       parameters:
