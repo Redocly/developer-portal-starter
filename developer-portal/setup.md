@@ -11,16 +11,16 @@ cd developer-portal-starter
 ## Install dependencies
 
 Before you start... you'll need node and yarn installed.
-- [node.js >= 10.15.1](https://nodejs.org/en/)
+- [node.js >= 12](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com/en/)
 
 ```bash
 yarn install
 ```
 
-<div class="attention">
+:::attention
 Depending on your operating system, you may see warnings when installing dependencies.
-</div>
+:::
 
 ## Start the development environment
 
@@ -42,9 +42,9 @@ Press control and c.
 
 ## Clearing cache
 
-<div class="warning">
+:::warning
 Troubleshooting? Try this out.
-</div>
+:::
 
 A few changes (such as changing the key of a sidebar definition) require clearing cache to reflect in the local server.
 We actively reduce these to make the best development environment experience possible.

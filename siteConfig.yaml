@@ -3,6 +3,10 @@ meta:
   description: The best API documentation generator ever.
   siteUrl: https://portal-demo.redoc.ly
   keywords: redocly developer portal, api portal starter, api reference docs
+linkChecker:
+  severity: warning
+  options: 
+    CheckExternal: false
 logo: ./images/logo.png
 enableToc: true
 oasDefinitions:
@@ -11,10 +15,10 @@ oasDefinitions:
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
-#ga:
-  # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-  # note that GA doesn't work in DEV
-#  trackingId: UA-45997213-1
+#analytics:
+  # ga:
+  # note that GA doesn't work in the development environment
+  #  trackingId: UA-45997213-1
 #scripts:
 #  - ./static/intercom.js
 nav:
@@ -24,7 +28,7 @@ nav:
 
   - label: External docs
     icon: ./images/redocly-icon-white.png
-    href: https://docs.redoc.ly/developer-portal/introduction/
+    href: https://redoc.ly/docs/developer-portal/introduction/
 
   - search: true
 
@@ -36,9 +40,9 @@ footer:
         - label: Terms of Use
           href: 'https://redoc.ly/subscription-agreement/'
         - label: Privacy Notice
-          href: 'https://redoc.ly/privacy-policy/'
+          href: 'https://redoc.ly/privacy-notice/'
         - label: Cookie Notice
-          href: 'https://redoc.ly/privacy-policy/'
+          href: 'https://redoc.ly/cookie-notice/'
     - group: Support
       items:
         - label: FAQ
