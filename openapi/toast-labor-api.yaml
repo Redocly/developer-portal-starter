@@ -9,7 +9,8 @@ info:
     for your restaurant. The labor API is intended for software engineers, managers, and technical staff who 
     are responsible for integrating third-party systems with the Toast POS system.
 
-    contact: Toast developer support
+    contact: 
+      name: Toast developer support
 schemes:
   - https
 host: toast-api-server
