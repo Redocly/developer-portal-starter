@@ -651,7 +651,7 @@ paths:
         type: string
         required: true
     post:
-      summary: Add identifier for active employee
+      summary: Add an identifier for an active employee
       description: Adds an external identifier for an existing employee.
         Include the string value of the new external identifier in the
         message body.<br><br>You cannot change an existing external
