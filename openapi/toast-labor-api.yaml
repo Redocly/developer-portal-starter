@@ -9,9 +9,6 @@ info:
     for your restaurant. The labor API is intended for software engineers, managers, and technical staff who 
     are responsible for integrating third-party systems with the Toast POS system.
 
-    See <cite>Toast API
-    Developer's Guide</cite> for more information.
-
     contact: Toast developer support
 schemes:
   - https
@@ -420,7 +417,7 @@ paths:
       description: Returns an array of
         Employee objects containing
         information about restaurant employees.
-      operationId: employeesInformationGet
+      operationId: employeesGet
       produces:
         - application/json
       parameters:
@@ -495,7 +492,7 @@ paths:
     get:
       summary: Get details on a restaurant employee
       description: Returns an Employee object containing information about one restaurant employee.
-      operationId: employeeInformationGet
+      operationId: employeesEmployeeIdGet
       produces:
         - application/json
       parameters:
@@ -540,7 +537,7 @@ paths:
         using the labor API. Information about deleted employees remains
         available in reports.<br><br>You cannot delete employees who have open
         time entries (time entries that do not have an out date value).
-      operationId: restaurantEmployeeRecordDelete
+      operationId: employeesEmployeeIdDelete
       produces:
         - application/json
       parameters:
@@ -578,7 +575,7 @@ paths:
         Updates the first name, last name, external employee ID, and/or 
         passcode of a restaurant employee. The `PATCH` operation cannot 
         update any other employee information.
-      operationId: restaurantEmployeeInformationPatch
+      operationId: employeesEmployeeIdPatch
       produces:
         - application/json
       parameters:
@@ -660,7 +657,7 @@ paths:
         identifier with another `POST` request; use `PUT` instead. The Toast POS uses this
         external identifier as one of the unique, persistent
         identifiers for an employee record.
-      operationId: externalIdentifierPost
+      operationId: employeesEmployeeIdExternalIdPost
       produces:
         - application/json
       parameters:
@@ -702,7 +699,7 @@ paths:
         identifier for an existing employee might affect reporting and
         other Toast POS functions that select employees using the
         `externalId` value.</em>
-      operationId: externalIdentifierPut
+      operationId: employeesEmployeeIdExternalIdPut
       produces:
         - application/json
       parameters:
@@ -750,7 +747,7 @@ paths:
         group or subgroup level, this operation adds or removes that job for the
         the employee at <em>all restaurant locations</em> in the group or
         subgroup.
-      operationId: jobsListEmployeePut
+      operationId: employeesEmployeeIdJobsPut
       produces:
         - application/json
       parameters:
@@ -807,7 +804,7 @@ paths:
         Specify the wage in U.S. dollars.<br/><br/>You must include all existing
         wage overrides in the message body. Any wage overrides that are not
         present in the array are removed from the employee record.
-      operationId: wageListOverridesForJobsAssignedPut
+      operationId: employeesEmployeeIdWageOverridesPut
       produces:
         - application/json
       parameters:
@@ -852,7 +849,7 @@ paths:
       description: Returns an array of Shift
         objects that contain information about schedule shifts for restaurant
         employees.
-      operationId: scheduleShiftInformationGet
+      operationId: shiftsGet
       produces:
         - application/json
       parameters:
@@ -898,7 +895,7 @@ paths:
     post:
       summary: Create a schedule shift record
       description: Creates a schedule shift record for a restaurant employee.
-      operationId: scheduleShiftRecordPost
+      operationId: shiftsPost
       produces:
         - application/json
       parameters:
@@ -957,7 +954,7 @@ paths:
       description: Returns a Shift object
         containing of information about one schedule shift for a restaurant
         employee.
-      operationId: scheduleShiftInformationGet
+      operationId: shiftsShiftIdGet
       produces:
         - application/json
       parameters:
@@ -989,11 +986,11 @@ paths:
             `requestId` attached to this error that can be referenced by Toast
             support.
     put:
-      summary: Update existing schedule shift record
+      summary: Update an existing schedule shift record
       description: Updates an existing schedule shift record for a
         restaurant employee. A `PUT` request completely replaces the information
         in the existing record.
-      operationId: scheduleShiftRecordPut
+      operationId: shiftsShiftIdPut
       produces:
         - application/json
       parameters:
@@ -1033,11 +1030,11 @@ paths:
         '500':
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
     delete:
-      summary: Delete existing schedule shift record
+      summary: Delete an existing schedule shift record
       description: Marks an existing schedule shift record for a
         restaurant employee as deleted. If the shift record was already deleted, then the operation will succeed (200)
         and no change will be made.
-      operationId: scheduleShiftRecordDelete
+      operationId: shiftsShiftIdDelete
       produces:
         - application/json
       parameters:
@@ -1071,7 +1068,7 @@ paths:
       summary: Get information about employee jobs
       description: Returns an array of Job
         objects containing information about the employee jobs configured at a restaurant.
-      operationId: employeeJobsConfiguredGet
+      operationId: jobsGet
       produces:
         - application/json
       parameters:
@@ -1106,7 +1103,7 @@ paths:
       description: Returns a Job object
         containing information about one employee job at a
         restaurant.
-      operationId: employeeJobInformationGet
+      operationId: jobsJobIdGet
       produces:
         - application/json
       parameters:
@@ -1142,14 +1139,14 @@ paths:
         type: string
         required: true
     post:
-      summary: Add external identifier to existing job
+      summary: Add an external identifier to an existing job
       description: Adds an external identifier for an existing job.
         Include the string value of the new external identifier in the
         message body.<br><br>You cannot change an existing external
         identifier with another `POST` request. The Toast POS uses this
         external identifier as one of the unique, persistent
         identifiers for a job record.
-      operationId: jobExternalIdentifierPost
+      operationId: jobsJobIdExternalIdPost
       produces:
         - application/json
       parameters:
@@ -1191,7 +1188,7 @@ paths:
         identifier for an existing job might affect reporting and other
         Toast POS functions that select jobs using the `externalId`
         value.</em>
-      operationId: jobExternalIdentifierPut
+      operationId: jobsJobIdExternalIdPut
       produces:
         - application/json
       parameters:
@@ -1241,7 +1238,7 @@ paths:
         *  Includes a `businessDate` query parameter to get the time entries with an `inDate` during a specific business date.
 
         Valid requests include one or more `timeEntryId` parameters, both a `startDate` and an `endDate`, both a `modifiedStartDate` and a `modifiedEndDate`, or a `businessDate`.
-      operationId: shiftEventsInformationGet
+      operationId: timeEntriesGet
       produces:
         - application/json
       parameters:
@@ -1301,7 +1298,7 @@ paths:
         object containing information about one employee shift.
         The information includes the shift start time, end time, and the start
         and end times of break periods.
-      operationId: singleShiftEventInformationGet
+      operationId: timeEntriesTimeEntryIdGet
       produces:
         - application/json
       parameters:
