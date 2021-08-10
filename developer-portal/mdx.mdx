@@ -1,5 +1,3 @@
-import { RedocResponse } from '@redocly/ui';
-
 import {
   Box,
   Button,
@@ -13,7 +11,8 @@ import {
   WideTile,
   Emphasis,
   SectionHeader,
- } from '@redocly/ui';
+  RedocResponse
+ } from '@redocly/developer-portal/ui';
 
 import icon3 from '../images/icon3.png';
 
@@ -24,7 +23,7 @@ Use MDX by naming the file extension as `.mdx` and importing the components at t
 
 You can import a single extension:
 ```jsx
-import { RedocResponse } from '@redocly/ui';
+import { RedocResponse } from '@redocly/developer-portal/ui';
 ```
 Or multiple extensions at the same time:
 
@@ -42,10 +41,10 @@ import {
   WideTile,
   Emphasis,
   SectionHeader,
- } from '@redocly/ui';
+ } from '@redocly/developer-portal/ui';
 ```
 
-We created a library (`@redocly/ui`) with components you can reference.
+We created a library (`@redocly/developer-portal/ui`) with components you can reference.
 
 Try and create an MDX file which renders one of your API's response objects.
 
