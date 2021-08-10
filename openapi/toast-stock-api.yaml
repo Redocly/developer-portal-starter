@@ -7,8 +7,9 @@ info:
   
       The Toast Stock API retrieves inventory information for
       menu items and modifier options from a restaurant.
-           
-    contact: Toast developer support
+      
+  contact: 
+    name: Toast developer support
 schemes:
   - https
 host: toast-api-server
