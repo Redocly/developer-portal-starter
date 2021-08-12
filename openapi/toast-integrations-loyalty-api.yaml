@@ -9,8 +9,12 @@ info:
     Implement this REST API to allow the Toast POS system to process 
     loyalty transactions using a loyalty provider that it does not 
     currently support.
+    
+  contact:
+    name: Toast API Support
 schemes:
   - https
+host: toast-api-server
 basePath: /yourapiname/v1
 consumes:
   - application/json
@@ -20,7 +24,7 @@ paths:
   /yourendpointname:
     post:
       summary: |
-        Provides information about a loyalty transaction to a loyalty provider.
+        Provide information on a loyalty transaction
       description: |
         Provides information about a loyalty transaction processed by 
         the Toast POS system. The transaction information in the 
@@ -44,8 +48,7 @@ paths:
         * Accrue rewards based on a given check.
         * Reverse a previous redeem or accrue transaction.
         
-        The <a 
-        href="#/definitions/LoyaltyTransaction">`LoyaltyTransaction`</a> 
+        The `LoyaltyTransaction` 
         object in the message body includes a set of information that 
         is specific for each transaction type.
         
@@ -58,6 +61,7 @@ paths:
         All loyalty transactions must be considered idempotent. The 
         implementation must handle multiple requests with the same 
         `Toast-Transaction-GUID` *and* the same `loyaltyIdentifier`.
+      operationId: yourEndpointNamePost
       produces:
         - application/json
       parameters:
@@ -102,8 +106,7 @@ paths:
         - name: loyaltyTransaction
           in: body
           description: |
-            A <a 
-            href="#/definitions/LoyaltyTransaction">`LoyaltyTransaction`</a> 
+            A `LoyaltyTransaction` 
             object containing information about the loyalty 
             transaction that the Toast POS system processed.
           schema:
@@ -203,7 +206,7 @@ definitions:
           first time this particular Redemption has been present in a request (as part of
           this customer interaction), it will be present in this list but not on the Check.
           If a Redemption has been previously validated, it will be present both in this list
-          and on the Check as an <a href="#/definitions/AppliedDiscount">`AppliedDiscount`</a>.
+          and on the Check as an `AppliedDiscount`.
         type: array
         items: 
           $ref: '#/definitions/Redemption'
@@ -267,7 +270,7 @@ definitions:
     properties: 
       identifier: 
         description: |
-          Identifier of the <a href="#/definitions/Offer">`Offer`</a> to be redeemed. The 
+          Identifier of the `Offer` to be redeemed. The 
           Offer must be one that was returned by the provider in response to an inquiry
           request.
         type: string
@@ -351,8 +354,8 @@ definitions:
     type: object
     description: |
       Information about a potential discount or other benefit available to the holder of 
-      a loyalty account. Contrast with a <a href="#/definitions/Redemption">`Redemption`</a>,
-      which is an Offer that is applied to a <a href="#/definitions/Check">`Check`</a>.
+      a loyalty account. Contrast with a `Redemption`,
+      which is an Offer that is applied to a `Check`.
     properties:
       identifier:
         description: |
@@ -1187,7 +1190,7 @@ definitions:
     type: object
     description: Information about the loyalty program discount applied 
       to a check. The loyalty program account is identified in the
-      <a href="#/definitions/AppliedLoyaltyInfo">AppliedLoyaltyInfo</a> value
+      AppliedLoyaltyInfo value
       for the check.
     required:
       - vendor
