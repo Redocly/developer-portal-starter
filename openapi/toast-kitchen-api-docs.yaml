@@ -3,26 +3,21 @@ info:
   title: Kitchen API
   version: 1.0.0
   description: |
-    ## Overview
-    You can use the Toast Kitchen API to retrieve information about kitchen operations.
-        
-    For more information about using this and other Toast APIs, see the <a href="https://doc.toasttab.com/Ie5QH/index.html">Toast API Developer's Guide</a>.
+    Returns information about kitchen operations.
   contact:
-    name: Toast API Support
+    name: Toast developer support
 basePath: /kitchen/v1/published
+host: toast-api-server
 schemes:
   - https
 produces:
   - application/json
 consumes:
   - application/json
-tags:
-  - name: Prep Stations
 paths:
   /prepStations:
     get:
-      tags:
-        - Prep Stations
+      operationId: prepStationsGet
       summary: Get all prep stations
       description: |
         Returns the configuration for every prep station that has been created for the specified restaurant. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment. You can use optional query parameters to paginate the results. If a `lastModified` date is specified, returns all objects that were created or modified after that date.<br>
@@ -61,7 +56,7 @@ paths:
       responses:
         '200':
           description: |
-            Returns an array of <a href="#/definitions/PrepStations">`PrepStation`</a> objects. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment.<br>
+            Returns an array of `PrepStation` objects. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment.<br>
             *Related topics:*<br>
             <a href="https://doc.toasttab.com/0IV1p/adminRoutingToPrepStations.html">Routing to Prep Stations</a>
           schema:
@@ -83,8 +78,7 @@ paths:
         in: path
         required: true
     get:
-      tags:
-        - Prep Stations
+      operationId: prepStationsGuidGet
       summary: Get a prep station
       description: |
         Returns the configuration for a single prep station that has been defined for the specified restaurant. A prep station represents the location of a kitchen printer or KDS device that receives orders for fulfillment.<br>
@@ -101,7 +95,7 @@ paths:
       responses:
         '200':
           description: |
-            Returns a <a href="#/definitions/PrepStations">`PrepStation`</a> object.
+            Returns a `PrepStation` object.
           schema:
             $ref: '#/definitions/PrepStation'
       operationId: get-prepStations-guid
@@ -121,7 +115,7 @@ definitions:
           connectedPrepStations:
             type: array
             description: |
-              An array of <a href="#/definitions/ToastReference">`ToastReference`</a> objects containing the identifiers of the other prep stations that this prep station monitors.<br>
+              An array of `ToastReference` objects containing the identifiers of the other prep stations that this prep station monitors.<br>
               <br>
               Allowing a prep station to monitor other prep stations makes it easier for restaurant employees to coordinate when an order includes items that are fulfilled at more than one prep station.<br>
               <br>
@@ -152,7 +146,7 @@ definitions:
           kitchenPrinter:
             type: object
             description: |
-              A <a href="#/definitions/ToastReference">`ToastReference`</a> object containing the identifier of the kitchen printer assigned to this prep station.
+              A `ToastReference` object containing the identifier of the kitchen printer assigned to this prep station.
             $ref: '#/definitions/ToastReference'
   ToastReference:
     type: object
