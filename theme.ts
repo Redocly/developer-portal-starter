@@ -99,7 +99,11 @@ export const theme = {
   // tocPanel: {
   //   width: '240px',
   // },
-
+  components: {
+    layoutControls: {
+      top: '110px',
+    },
+  },
   typography: {
     fontSize: '16px',
     lineHeight: '1.5em',
