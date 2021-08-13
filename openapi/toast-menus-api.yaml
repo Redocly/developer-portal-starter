@@ -2,23 +2,14 @@
 swagger: '2.0'
 info:
   version: 1.0.0
-  title: Toast Menus API
+  title: Menus API
   description: |
-    ## Overview
-
-      You send a GET request to the /menus endpoint of the menus API to retrieve fully resolved menus for the specified restaurant. The menus API returns all values for all objects in the JSON output, even if they are empty or null.
-
-      You send a GET request to the /metadata endpoint of the menus API to retrieve the most recent date and time that this menu's JSON was updated. Because menus API requests are resource intensive, you should call this endpoint before calling the /menus endpoint to determine if you need to refresh your menu JSON data.
-      
-      The menus API does not return data for menu entities that you have removed from your restaurant configuration or archived. For example, if you remove a menu item, the menus API will not return that menu item in the response data.
-
-      For more information about using this and other Toast APIs, see
-      the <a href="https://doc.toasttab.com/Ie5QH/index.html">Toast API Developer's Guide</a>.
+    Returns information about a restaurant's menus.
   contact:
-    name: Toast API Support
-    email: developer-support@toasttab.com
+    name: Toast developer support
 schemes:
   - https
+host: toast-api-server
 basePath: /menus/v1
 consumes:
   - application/json
@@ -60,7 +51,7 @@ definitions:
       menus:
         type: array
         description: |
-          An array of <a href="#/definitions/Menu">`Menu`</a> objects that represent the published menus used by this restaurant.
+          An array of `Menu` objects that represent the published menus used by this restaurant.
         items:
           $ref: '#/definitions/Menu'
   Menu:
@@ -93,7 +84,7 @@ definitions:
       availability:
         type: object
         description: |
-          An <a href="#/definitions/Availability">`Availability`</a> object with information about the days and times this menu is available. If the menu is available 24 hours per day, 7 days per week, this `Availability` object contains a single value, `alwaysAvailable`, that is set to TRUE. If the menu is not available 24 hours per day, 7 days per week, the `alwaysAvailable` value is set to FALSE and the object will also contain a `schedule` value that provides detailed information about the specific days and times this menu is available.
+          An `Availability` object with information about the days and times this menu is available. If the menu is available 24 hours per day, 7 days per week, this `Availability` object contains a single value, `alwaysAvailable`, that is set to TRUE. If the menu is not available 24 hours per day, 7 days per week, the `alwaysAvailable` value is set to FALSE and the object will also contain a `schedule` value that provides detailed information about the specific days and times this menu is available.
 
           **_Important_**
           The orders API does not validate against the availability settings of a menu, meaning it is possible to submit an order for an item on a menu when it is not currently available (see <a href="https://doc.toasttab.com/Ie5QH/workingWithOrders.html">Working with Orders</a> in the Toast API Developer’s Guide for more information). For this reason, it is particularly important that you check a menu’s `availability` value before placing an order from it.
@@ -102,7 +93,7 @@ definitions:
       menuGroups:
         type: array
         description: |
-          An array of the <a href="#/definitions/MenuGroup">`MenuGroup`</a> objects contained in this menu.
+          An array of the `MenuGroup` objects contained in this menu.
         minItems: 0
         items:
           $ref: '#/definitions/MenuGroup'
@@ -132,20 +123,20 @@ definitions:
       itemTags:
         type: array
         description: |
-          An array of <a href="#/definitions/ItemTag">`ItemTag`</a> objects that are assigned to this menu group. Item tags are used to assign identifying characteristics, for example, vegetarian, gluten-free, or alcohol.
+          An array of `ItemTag` objects that are assigned to this menu group. Item tags are used to assign identifying characteristics, for example, vegetarian, gluten-free, or alcohol.
         items:
           $ref: '#/definitions/ItemTag'
       menuGroups:
         type: array
         description: |
-          An array of the <a href="#/definitions/MenuGroup">`MenuGroup`</a> objects that are children of this menu group. The array is empty if the menu group has no child menu groups.
+          An array of the `MenuGroup` objects that are children of this menu group. The array is empty if the menu group has no child menu groups.
         minItems: 0
         items:
           $ref: '#/definitions/MenuGroup'
       menuItems:
         type: array
         description: |
-          An array of the <a href="#/definitions/MenuItem">`MenuItem`</a> objects contained in this menu group.
+          An array of the `MenuItem` objects contained in this menu group.
         minItems: 0
         items:
           $ref: '#/definitions/MenuItem'
@@ -230,9 +221,9 @@ definitions:
       pricingRules:
         type: array
         description: |
-          A <a href="#/definitions/PricingRules">`PricingRules`</a> object with information about how to calculate the price for this menu item. You use a menu item's `pricingRules` value, in conjunction with its `pricingStrategy` value, to calculate a price for a menu item that uses a size-specific or time-specific price.
+          A `PricingRules` object with information about how to calculate the price for this menu item. You use a menu item's `pricingRules` value, in conjunction with its `pricingStrategy` value, to calculate a price for a menu item that uses a size-specific or time-specific price.
 
-          The `pricingRules` object takes different forms depending on the pricing strategy configured for the menu item. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. For the BASE_PRICE, and MENU_SPECIFIC_PRICE pricing strategies, the `pricingRules` object is null because you can retrieve the price from the `price` value without additional calculation. For the OPEN_PRICE pricing strategy, the `pricingRules` object is also null (the price of an open menu item is specified when it is ordered). For the TIME_SPECIFIC_PRICE and SIZE_PRICE pricing strategies, the <a href="#/definitions/PricingRules">`PricingRules`</a> object contains additional values that you use to calculate the menu item's price.
+          The `pricingRules` object takes different forms depending on the pricing strategy configured for the menu item. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. For the BASE_PRICE, and MENU_SPECIFIC_PRICE pricing strategies, the `pricingRules` object is null because you can retrieve the price from the `price` value without additional calculation. For the OPEN_PRICE pricing strategy, the `pricingRules` object is also null (the price of an open menu item is specified when it is ordered). For the TIME_SPECIFIC_PRICE and SIZE_PRICE pricing strategies, the `PricingRules` object contains additional values that you use to calculate the menu item's price.
         items:
           $ref: '#/definitions/PricingRules'
       isDiscountable:
@@ -256,7 +247,7 @@ definitions:
       itemTags:
         type: array
         description: |
-          An array of <a href="#/definitions/ItemTag">`ItemTag`</a> objects that are assigned to this menu item. Item tags are used to assign identifying characteristics to a menu item, for example, vegetarian, gluten-free, or alcohol.
+          An array of `ItemTag` objects that are assigned to this menu item. Item tags are used to assign identifying characteristics to a menu item, for example, vegetarian, gluten-free, or alcohol.
         items:
           $ref: '#/definitions/ItemTag'
       plu:
@@ -284,14 +275,14 @@ definitions:
       portions:
         type: array
         description: |
-          An array of <a href="#/definitions/Portion">`Portion`</a> objects that define the portions that can be used with this menu item. For example, for a pizza menu item, you could define 1st Half and 2nd Half portions. See <a href="https://doc.toasttab.com/0IV1p/adminUsingPortions.html">Using Portions</a> in the Toast Administrator's Guide for more information on portions.
+          An array of `Portion` objects that define the portions that can be used with this menu item. For example, for a pizza menu item, you could define 1st Half and 2nd Half portions. See <a href="https://doc.toasttab.com/0IV1p/adminUsingPortions.html">Using Portions</a> in the Toast Administrator's Guide for more information on portions.
         minItems: 0
         items:
           $ref: '#/definitions/Portion'
       modifierGroups:
         type: array
         description: |
-          An array of <a href="#/definitions/ModifierGroup">`ModifierGroup`</a> objects that contain modifier options that apply to this menu item.
+          An array of `ModifierGroup` objects that contain modifier options that apply to this menu item.
         minItems: 0
         items:
           $ref: '#/definitions/ModifierGroup'
@@ -326,15 +317,15 @@ definitions:
             * Size/Sequence Price pricing strategy, then the `pricingStrategy` value is SIZE_SEQUENCE_PRICE.
 
             
-          If the `pricingStrategy` value is NONE,  then the prices for the modifier options in this group are resolved down to the modifier option level and you can retrieve them from the `price` value of the individual <a href="#/definitions/ModifierOption ">`ModifierOption`</a> objects.
+          If the `pricingStrategy` value is NONE,  then the prices for the modifier options in this group are resolved down to the modifier option level and you can retrieve them from the `price` value of the individual `ModifierOption` objects.
           
           If the `pricingStrategy` value is SIZE_PRICE, SEQUENCE_PRICE, or SIZE_SEQUENCE_PRICE, then you must use the rules provided in _this modifier group's_ `pricingRules` value to calculate the prices for the modifier options in the group.
       pricingRules:
         type: array
         description: |
-          A <a href="#/definitions/PricingRules">`PricingRules`</a> object with information for calculating the prices for the modifier options contained in this modifier group. You use a modifier group's `pricingRules` object, in conjunction with its `pricingStrategy` value, to calculate prices for the group's modifier options when the group uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.
+          A `PricingRules` object with information for calculating the prices for the modifier options contained in this modifier group. You use a modifier group's `pricingRules` object, in conjunction with its `pricingStrategy` value, to calculate prices for the group's modifier options when the group uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.
           
-          The `pricingRules` object takes different forms depending on the pricing strategy configured for the modifier group. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. If the `pricingStrategy` value is NONE, the `pricingRules` object is null because you can retrieve the price from a <a href="#/definitions/ModifierOption ">`ModifierOption `</a> object's `price` value without additional calculation. For the SIZE_PRICE, SEQUENCE_PRICE, and SIZE_SEQUENCE_PRICE pricing strategies, the `pricingRules` object contains additional values that you use to calculate the modifier option prices.
+          The `pricingRules` object takes different forms depending on the pricing strategy configured for the modifier group. Use the `pricingStrategy` value to determine which pricing strategy has been used so that you can properly interpret the data in the `pricingRules` object. If the `pricingStrategy` value is NONE, the `pricingRules` object is null because you can retrieve the price from a `ModifierOption` object's `price` value without additional calculation. For the SIZE_PRICE, SEQUENCE_PRICE, and SIZE_SEQUENCE_PRICE pricing strategies, the `pricingRules` object contains additional values that you use to calculate the modifier option prices.
 
         items:
           $ref: '#/definitions/PricingRules'
@@ -425,12 +416,12 @@ definitions:
           Also, if `isMultiSelect` is FALSE for a modifier group, the Toast POS system enforces a setting of FALSE for the `allowsDuplicates`  value of the group’s modifier options. This prevents more than one instance of a modifier option being selected for the group. Similarly, the orders API rejects any orders that specify more than one modifier option for a modifier group whose `isMultiSelect` value is FALSE.
       preModifierGroup:
         description: |
-          A <a href="#/definitions/PreModifierGroup">`PreModifierGroup`</a> object that contains the pre-modifiers that can be applied to this modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.
+          A `PreModifierGroup` object that contains the pre-modifiers that can be applied to this modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.
         $ref: '#/definitions/PreModifierGroup'
       modifierOptions:
         type: array
         description: |
-          An array of <a href="#/definitions/ModifierOption">`ModifierOption`</a> objects contained in this modifier group.
+          An array of `ModifierOption` objects contained in this modifier group.
         minItems: 0
         items:
           $ref: '#/definitions/ModifierOption'
@@ -486,7 +477,7 @@ definitions:
 
           _Modifier Option Uses the Price from Its Item Reference_
           
-          If a modifier option uses the price from its underlying item reference, then the `price` value is populated using the same logic as the `price` value for a <a href="#/definitions/MenuItem">`MenuItem`</a> object:
+          If a modifier option uses the price from its underlying item reference, then the `price` value is populated using the same logic as the `price` value for a `MenuItem` object:
             * For base prices, the `price` value is populated with the specified base price.
             * For menu-specific prices, the `price` value is resolved based on the current menu. For example, consider a modifier option that is included in both Lunch and Dinner menus and is priced at $1 for the Lunch menu and $2 for the Dinner menu. In the fully resolved JSON returned by the menus API, this modifier option would appear twice, once as a child of the Lunch menu with a `price` value of $1, and again as a child of the Dinner menu with a `price` value of $2.
 
@@ -517,7 +508,7 @@ definitions:
       pricingRules:
         type: array
         description: |
-          A <a href="#/definitions/PricingRules">`PricingRules`</a> object with information about how to calculate the price for this modifier option. You use a modifier option's `pricingRules` object, in conjunction with its `pricingStrategy` value, to calculate a price for the modifier option when the modifier option is _individually priced_ and its `price` value is null.
+          A `PricingRules` object with information about how to calculate the price for this modifier option. You use a modifier option's `pricingRules` object, in conjunction with its `pricingStrategy` value, to calculate a price for the modifier option when the modifier option is _individually priced_ and its `price` value is null.
 
           _Note:_ If the modifier option is priced at the group level, you must use the `pricingRules` object of its parent modifier group to calculate its price. A modifier option is priced at the group level if its `pricingStrategy` value is GROUP_PRICE.
 
@@ -537,8 +528,7 @@ definitions:
       itemTags:
         type: array
         description: |
-          An array of <a
-          href="#/definitions/ItemTag">`ItemTag`</a> objects that are assigned to this modifier option. Item tags are used to assign identifying characteristics to a modifier option, for example, vegetarian, gluten-free, alcohol.
+          An array of `ItemTag` objects that are assigned to this modifier option. Item tags are used to assign identifying characteristics to a modifier option, for example, vegetarian, gluten-free, alcohol.
         items:
           $ref: '#/definitions/ItemTag'
       plu:
@@ -578,14 +568,14 @@ definitions:
       portions:
         type: array
         description: |
-          An array of <a href="#/definitions/Portion">`Portion`</a> objects that define the portions that this modifier option can be added to. For example, for a pizza menu item, you could define 1st Half and 2nd Half portions and this modifier option could be added to either portion. See <a href="https://doc.toasttab.com/0IV1p/adminUsingPortions.html">Using Portions</a> in the Toast Administrator's Guide for more information.
+          An array of `Portion` objects that define the portions that this modifier option can be added to. For example, for a pizza menu item, you could define 1st Half and 2nd Half portions and this modifier option could be added to either portion. See <a href="https://doc.toasttab.com/0IV1p/adminUsingPortions.html">Using Portions</a> in the Toast Administrator's Guide for more information.
         minItems: 0
         items:
           $ref: '#/definitions/Portion'
       modifierGroups:
         type: array
         description: |
-          An array of the <a href="#/definitions/ModifierGroup">`ModifierGroup`</a> objects contained in this modifier option. This value is populated when a modifier option contains nested modifiers. For example, you can have an entree that has a Sides modifier group that contains a Salad modifier option. The Salad modifier option has its own modifier group, Salad Dressing, that includes Ranch, Vinaigrette, and Blue Cheese modifier options. The salad dressings are nested modifier options.
+          An array of the `ModifierGroup` objects contained in this modifier option. This value is populated when a modifier option contains nested modifiers. For example, you can have an entree that has a Sides modifier group that contains a Salad modifier option. The Salad modifier option has its own modifier group, Salad Dressing, that includes Ranch, Vinaigrette, and Blue Cheese modifier options. The salad dressings are nested modifier options.
         minItems: 0
         items:
           $ref: '#/definitions/ModifierGroup'
@@ -604,7 +594,7 @@ definitions:
         type: string
       preModifiers:
         description: |
-          An array of <a href="#/definitions/PreModifier">`PreModifier`</a> objects that are contained in this pre-modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.
+          An array of `PreModifier` objects that are contained in this pre-modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.
         type: array
         items:
           $ref: '#/definitions/PreModifier'
@@ -686,7 +676,7 @@ definitions:
       modifierGroups:
         type: array
         description: |
-          An array of <a href="#/definitions/ModifierGroup">`ModifierGroup`</a> objects that represent the modifier groups that can be added to this portion. For example, if the modifiers in a Toppings modifier group can be added to this portion, then the Toppings modifier group would appear in this array.
+          An array of `ModifierGroup` objects that represent the modifier groups that can be added to this portion. For example, if the modifiers in a Toppings modifier group can be added to this portion, then the Toppings modifier group would appear in this array.
         minItems: 0
         items:
           $ref: '#/definitions/ModifierGroup'
@@ -702,7 +692,7 @@ definitions:
       schedule:
         type: array
         description: |
-          An array of <a href="#/definitions/Schedule">`Schedule`</a> objects that indicate the specific days and times a menu is available. If `alwaysAvailable` is TRUE, then the menu is available 24 hours per day, 7 days per week, and this `schedule` value is omitted from the `Availabilty` object.
+          An array of `Schedule` objects that indicate the specific days and times a menu is available. If `alwaysAvailable` is TRUE, then the menu is available 24 hours per day, 7 days per week, and this `schedule` value is omitted from the `Availabilty` object.
         items:
           $ref: '#/definitions/Schedule'
   Schedule:
@@ -775,7 +765,7 @@ definitions:
       timeRanges:
         type: array
         description: |
-          An array of <a href="#/definitions/TimeRange">`TimeRange`</a> objects that define the time ranges that a menu or a time-specific price is available on the days defined by the corresponding `days` value. A `TimeRange` object contains a `start` time and an `end` time, expressed in the restaurant’s local time. If both the `start` and `end` times for a given day are 00:00, it indicates that the menu or the time-specific price is available 24 hours on the associated days. Time ranges may also run overnight, for example, a time range that starts at "07:00" and ends at "03:00" runs from 7am until 3am the next day. 
+          An array of `TimeRange` objects that define the time ranges that a menu or a time-specific price is available on the days defined by the corresponding `days` value. A `TimeRange` object contains a `start` time and an `end` time, expressed in the restaurant’s local time. If both the `start` and `end` times for a given day are 00:00, it indicates that the menu or the time-specific price is available 24 hours on the associated days. Time ranges may also run overnight, for example, a time range that starts at "07:00" and ends at "03:00" runs from 7am until 3am the next day. 
         items:
           $ref: '#/definitions/TimeRange'
   TimeRange:
@@ -800,7 +790,7 @@ definitions:
     properties:
       timeSpecificPricingRules:
         description: |
-          An array of <a href="#/definitions/TimeSpecificPrice">`TimeSpecificPrice`</a> objects that define the time-specific prices for a menu item or modifier option <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> that uses the Time Specific Price pricing strategy. If the menu item or modifier option item reference does not use time-specific prices, this array is empty.
+          An array of `TimeSpecificPrice` objects that define the time-specific prices for a menu item or modifier option <a href="https://doc.toasttab.com/0IV1p/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference">item reference</a> that uses the Time Specific Price pricing strategy. If the menu item or modifier option item reference does not use time-specific prices, this array is empty.
         type: array
         items:
           $ref: '#/definitions/TimeSpecificPrice'
@@ -997,7 +987,7 @@ definitions:
       sizeSequencePricingRules:
         type: array
         description: |
-          An array of <a href="#/definitions/SizeSequencePricingRule">`SizeSequencePricingRule`</a> objects that define the prices for the modifier options in a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Pricing pricing strategy. If the modifier group does not use one of these pricing strategies, this array is empty.
+          An array of `SizeSequencePricingRule` objects that define the prices for the modifier options in a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Pricing pricing strategy. If the modifier group does not use one of these pricing strategies, this array is empty.
         items:
           $ref: '#/definitions/SizeSequencePricingRule'
   TimeSpecificPrice:
@@ -1018,7 +1008,7 @@ definitions:
       schedule:
         type: array
         description: |
-            An array of <a href="#/definitions/Schedule">`Schedule`</a> objects that indicate the specific days and times that a time-specific price is available.
+            An array of `Schedule` objects that indicate the specific days and times that a time-specific price is available.
         items:
           $ref: '#/definitions/Schedule'
   SizeSequencePricingRule:
@@ -1053,7 +1043,7 @@ definitions:
       sequencePrices:
         type: array
         description: |
-          An array of <a href="#/definitions/SequencePrices">`SequencePrices`</a> objects that define the size, sequence, or size/sequence prices for the modifier options in this modifier group.
+          An array of `SequencePrices` objects that define the size, sequence, or size/sequence prices for the modifier options in this modifier group.
 
           Because they are multi use objects, the `SequencePrices` objects always contain `sequence` and `price` values for all three pricing strategies. However, the `sequence` is always 1 for the Size Price pricing strategy because only one price is defined per size for that strategy. For example, the `sequencePrices` value for a modifier group priced using the Size Price pricing strategy looks similar to the following:
           ```
@@ -1215,7 +1205,9 @@ definitions:
 paths:
   /menus:
     get:
-      summary: Returns menu information for the specified restaurant.
+      operationId: menusGet
+      summary: |
+        Get menus
       description: |
         Returns all menus for the specified restaurant.
       produces:
@@ -1234,7 +1226,9 @@ paths:
             $ref: '#/definitions/Restaurant'
   /metadata:
     get:
-      summary: Gets metadata for the menu of the specified restaurant, including the last time the menu's JSON was updated.
+      operationId: metadataGet
+      summary: |
+        Get menu last modified timestamp
       description: |
         A lightweight endpoint that allows you to determine if a restaurant's menu data has been updated. Toast support strongly recommends that you do not make a call to the `/menus` endpoint unless the date and time returned by the `/metadata` endpoint is more recent than the `lastUpdated` date and time. While this recommendation applies to all clients of the menus API, it is particularly important for clients that have limited bandwidth.
       produces:

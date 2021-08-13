@@ -2,12 +2,16 @@
 swagger: '2.0'
 info:
   version: 1.0.0
-  title: Toast Partners API
+  title: Partners API
+  description: |
+    Returns information about the Toast restaurants that a partner 
+    API client can access.
   contact:
-    name: Toast API Support
-    email: developer-support@toasttab.com
+    name: Toast developer support
 schemes:
   - https
+
+host: toast-api-server
 basePath: /partners/v1
 consumes:
   - application/json
@@ -204,14 +208,12 @@ paths:
   /restaurants:
     get:
       operationId: restaurantsGet
-      summary: Get accessible restaurant information.
+      summary: Get accessible restaurants
       description: |
-        Returns an array of <a 
-        href="#/definitions/PartnerAccessExternalRep">`PartnerAccessExternalRep`</a> 
-        objects that contain information about the Toast POS system 
-        restaurants that a partner API client can access. If a
-        `lastModified` date is specified, the API returns all objects that were
-        created or modified after that date.
+        Returns an array of `PartnerAccessExternalRep` 
+        objects that contain information about the Toast restaurants that a partner 
+        API client can access. If a `lastModified` date is specified, the API returns 
+        all objects that were created or modified after that date.
       produces:
         - application/json
       parameters:

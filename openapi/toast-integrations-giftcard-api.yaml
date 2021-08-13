@@ -1,16 +1,16 @@
 swagger: '2.0'
 info:
   version: 1.0.0
-  title: Toast Gift Card Integration API
+  title: Gift Card Integration API
   description: |
-    This API specification describes the interface that the Toast POS 
-    system will call when it processes gift card transactions.
-    
-    Implement this REST API to allow the Toast POS system to process 
+    A REST API that allows the Toast platform to process 
     gift card transactions using a gift card provider that it does not 
     currently support.
+  contact:
+    name: Toast developer support
 schemes:
   - https
+host: toast-api-server
 basePath: /yourapiname/v1
 consumes:
   - application/json
@@ -19,17 +19,18 @@ produces:
 paths:
   /yourendpointname:
     post:
+      operationId: yourendpointnamePost
       summary: |
-        Provides information about a gift card transaction to a gift card provider.
+        Returns gift card transaction information
       description: |
         Provides information about a gift card transaction processed by 
-        the Toast POS system. The transaction information in the 
+        the Toast platform. The transaction information in the 
         message body is intended to allow a gift card provider to 
         perform corresponding operations on the gift card account, 
         maintained by that provider.
         
         You define the endpoint name for this implementation. The Toast 
-        POS system makes requests to the REST path that you supply 
+        platform makes requests to the REST path that you supply 
         during integration setup.
         
         Each `POST` request to the endpoint includes a 
@@ -44,8 +45,7 @@ paths:
         * Reverse a previous transaction, for example to void a purchase 
           made with the gift card.
         
-        The <a 
-        href="#/definitions/GiftCardTransaction">`GiftCardTransaction`</a> 
+        The `GiftCardTransaction` 
         object in the message body includes a set of information that 
         is specific for each transaction type.
         
@@ -61,13 +61,13 @@ paths:
         - name: Toast-Transaction-GUID
           description: |
             A unique identifier of the gift card transaction, defined 
-            by the Toast POS system.
+            by the Toast platform.
           in: header
           type: string
         - name: Toast-Restaurant-External-ID
           description: |
             The unique identifier of the restaurant, defined by the 
-            Toast POS system.
+            Toast platform.
           in: header
           type: string
         - name: Toast-Transaction-Type
@@ -95,10 +95,9 @@ paths:
         - name: giftCardTransaction
           in: body
           description: |
-            A <a 
-            href="#/definitions/GiftCardTransaction">`GiftCardTransaction`</a> 
+            A `GiftCardTransaction` 
             object containing information about the gift card 
-            transaction that the Toast POS system processed.
+            transaction that the Toast platform processed.
           schema:
             $ref: '#/definitions/GiftCardTransaction'
       responses:
@@ -130,8 +129,8 @@ definitions:
   GiftCardTransaction:
     type: object
     description: |
-      Information about a gift card transaction in the Toast POS 
-      system. Gift card providers are expected to handle that 
+      Information about a gift card transaction in the Toast  
+      platform. Gift card providers are expected to handle that 
       transaction.
       
       The set of information in this object depends on the gift card 
@@ -160,8 +159,8 @@ definitions:
   TransactionInformationActivate:
     type: object
     description: |
-      Information about a gift card transaction in the Toast POS 
-      system that activates a new card. Gift card providers are 
+      Information about a gift card transaction in the Toast  
+      platform that activates a new card. Gift card providers are 
       expected to handle the transaction.
     properties:
       giftCardIdentifier:
@@ -170,7 +169,7 @@ definitions:
         type: string
       identifierSource:
         description: |
-          Indicates how the Toast POS system received the gift card 
+          Indicates how the Toast platform received the gift card 
           identifier string. Values are:
           
           * `KEYED` - A restaurant employee or guest manually entered 
@@ -183,7 +182,7 @@ definitions:
           * `SWIPED` - A restaurant employee or guest used a magnetic 
           card strip reader to enter the identifier string.
           
-          * `UNKNOWN` - The Toast POS system received the identifier 
+          * `UNKNOWN` - The Toast platform received the identifier 
           string using a method other than `KEYED`, `SCANNED`, or 
           `SWIPED`, or the method is not known.
           
@@ -217,7 +216,7 @@ definitions:
         type: string
       identifierSource:
         description: |
-          Indicates how the Toast POS system received the gift card 
+          Indicates how the Toast platform received the gift card 
           identifier string. Values are:
           
           * `KEYED` - A restaurant employee or guest manually entered 
@@ -230,7 +229,7 @@ definitions:
           * `SWIPED` - A restaurant employee or guest used a magnetic 
           card strip reader to enter the identifier string.
           
-          * `UNKNOWN` - The Toast POS system received the identifier 
+          * `UNKNOWN` - The Toast platform received the identifier 
           string using a method other than `KEYED`, `SCANNED`, or 
           `SWIPED`, or the method is not known.
           
@@ -254,8 +253,8 @@ definitions:
   TransactionInformationGetBalance:
     type: object
     description: |
-      Information about a gift card transaction in the Toast POS 
-      system that requests the currency value of the funds available 
+      Information about a gift card transaction in the Toast  
+      platform that requests the currency value of the funds available 
       from the gift card. Gift card providers are expected to handle 
       the transaction.
     properties:
@@ -265,7 +264,7 @@ definitions:
         type: string
       identifierSource:
         description: |
-          Indicates how the Toast POS system received the gift card 
+          Indicates how the Toast platform received the gift card 
           identifier string. Values are:
           
           * `KEYED` - A restaurant employee or guest manually entered 
@@ -278,7 +277,7 @@ definitions:
           * `SWIPED` - A restaurant employee or guest used a magnetic 
           card strip reader to enter the identifier string.
           
-          * `UNKNOWN` - The Toast POS system received the identifier 
+          * `UNKNOWN` - The Toast platform received the identifier 
           string using a method other than `KEYED`, `SCANNED`, or 
           `SWIPED`, or the method is not known.
           
@@ -291,8 +290,8 @@ definitions:
   TransactionInformationRedeem:
     type: object
     description: |
-      Information about a gift card transaction in the Toast POS 
-      system that reduces the balance of funds available from the card. 
+      Information about a gift card transaction in the Toast  
+      platform that reduces the balance of funds available from the card. 
       For example, when the gift card is used for a purchase. Gift card 
       providers are expected to handle the transaction.
     properties:
@@ -302,7 +301,7 @@ definitions:
         type: string
       identifierSource:
         description: |
-          Indicates how the Toast POS system received the gift card 
+          Indicates how the Toast platform received the gift card 
           identifier string. Values are:
           
           * `KEYED` - A restaurant employee or guest manually entered 
@@ -315,7 +314,7 @@ definitions:
           * `SWIPED` - A restaurant employee or guest used a magnetic 
           card strip reader to enter the identifier string.
           
-          * `UNKNOWN` - The Toast POS system received the identifier 
+          * `UNKNOWN` - The Toast platform received the identifier 
           string using a method other than `KEYED`, `SCANNED`, or 
           `SWIPED`, or the method is not known.
           
@@ -345,8 +344,8 @@ definitions:
   TransactionInformationReverse:
     type: object
     description: |
-      Information about a gift card transaction in the Toast POS 
-      system that undoes a previous transaction. Gift card providers 
+      Information about a gift card transaction in the Toast  
+      platform that undoes a previous transaction. Gift card providers 
       are expected to handle the transaction. The only types of
       transactions that can be reversed are `GIFTCARD_ADD_VALUE`,
       `GIFTCARD_REDEEM`, and `GIFTCARD_ACTIVATE`.
@@ -364,7 +363,7 @@ definitions:
         type: string
       identifierSource:
         description: |
-          Indicates how the Toast POS system received the gift card 
+          Indicates how the Toast platform received the gift card 
           identifier string. Values are:
           
           * `KEYED` - A restaurant employee or guest manually entered 
@@ -377,7 +376,7 @@ definitions:
           * `SWIPED` - A restaurant employee or guest used a magnetic 
           card strip reader to enter the identifier string.
           
-          * `UNKNOWN` - The Toast POS system received the identifier 
+          * `UNKNOWN` - The Toast platform received the identifier 
           string using a method other than `KEYED`, `SCANNED`, or 
           `SWIPED`, or the method is not known.
           
@@ -404,7 +403,7 @@ definitions:
     type: object
     description: |
       Information about a gift card transaction from the gift 
-      card provider. The Toast POS system uses this information to 
+      card provider. The Toast platform uses this information to 
       complete guests' gift card transactions.
       
       The set of information in this object depends on the gift card 
@@ -485,7 +484,7 @@ definitions:
     type: object
     description: |
       Information about a gift card transaction from the gift card 
-      service provider for add value transactions. The Toast POS system 
+      service provider for add value transactions. The Toast platform 
       uses this information to complete guests' gift card transactions.
     properties:
       currentBalance:
@@ -512,7 +511,7 @@ definitions:
       Information about a gift card transaction from the gift card 
       service provider that reduces the balance of funds available from 
       the card. For example, when the gift card is used for a purchase. 
-      The Toast POS system uses this information to complete guests' 
+      The Toast platform uses this information to complete guests' 
       gift card transactions.
     properties:
       currentBalance:
@@ -528,14 +527,14 @@ definitions:
           gift card. This value may be different than the 
           `redeemedValue` in a gift card transaction request. For 
           example, if the card balance is less than the redeem value 
-          requested by the Toast POS system, the `redeemedValue` in the 
+          requested by the Toast platform, the `redeemedValue` in the 
           response will be less than the `redeemedValue in the request.
   TransactionResponseReverse:
     type: object
     description: |
       Information about a gift card transaction from the gift card 
       service provider that undoes a previous gift card transaction. 
-      The Toast POS system uses this information to complete guests' 
+      The Toast platform uses this information to complete guests' 
       gift card transactions.
     properties:
       currentBalance:
