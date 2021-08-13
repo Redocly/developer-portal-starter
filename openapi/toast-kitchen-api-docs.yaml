@@ -70,7 +70,6 @@ paths:
               type: integer
               description: |
                 The total number of objects the endpoint will return.
-      operationId: get-prepStations
   '/prepStations/{guid}':
     parameters:
       - name: guid
@@ -98,7 +97,6 @@ paths:
             Returns a `PrepStation` object.
           schema:
             $ref: '#/definitions/PrepStation'
-      operationId: get-prepStations-guid
 definitions:
   PrepStation:
     title: PrepStation
