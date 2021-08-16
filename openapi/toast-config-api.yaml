@@ -1675,7 +1675,7 @@ paths:
             $ref: '#/definitions/PreModifier'
   /preModifiers:
     get:
-      operationsId: preModifiersGet
+      operationId: preModifiersGet
       summary: |
         Get details on all pre modifiers
       description: |
