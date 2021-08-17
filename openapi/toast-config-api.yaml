@@ -19,6 +19,31 @@ host: toast-api-server
 basePath: /config/v2
 consumes:
   - application/json
+tags: 
+  - name: Alternate Payment Types
+  - name: Break Types
+  - name: Cash Drawers
+  - name: Dining Options
+  - name: Discounts
+  - name: Menu Groups
+  - name: Menu Items
+  - name: Menu Option Groups
+  - name: Menus
+  - name: No Sale Reasons
+  - name: Payout Reasons
+  - name: Pre Modifier Groups
+  - name: Pre Modifiers
+  - name: Price Groups
+  - name: Printers
+  - name: Restaurant Services
+  - name: Revenue Centers
+  - name: Sales Categories
+  - name: Service Areas
+  - name: Service Charges
+  - name: Tables
+  - name: Tax Rates
+  - name: Tip Withholding
+  - name: Void Reasons
 produces:
   - application/json
 definitions:
@@ -897,9 +922,11 @@ definitions:
 paths:
   /alternatePaymentTypes/{guid}:
     get:
+      tags: 
+        - Alternate Payment Types
       operationId: alternatePaymentTypesGuidGet
       summary: |
-        Get details on an alternative payment type
+        Get an alternative payment type
       description: |
         Returns an `AlternatePaymentType`
         object containing information about an alternative form of payment
@@ -930,9 +957,11 @@ paths:
             $ref: '#/definitions/AlternatePaymentType'
   /alternatePaymentTypes:
     get:
+      tags: 
+        - Alternate Payment Types
       operationId: alternatePaymentTypesGet
       summary: |
-        Get details on alternative payment types
+        Get alternative payment types
       description: |
         Returns an array of `AlternatePaymentType`
         objects containing information about alternative forms of
@@ -987,13 +1016,15 @@ paths:
               $ref: '#/definitions/AlternatePaymentType'
   /breakTypes/{guid}:
       get:
+        tags: 
+          - Break Types
         operationId: breakTypesGuidGet
         summary: |
-          Get details on a break
+          Get a break type
         description: |
           Returns a `BreakType`
-          object containing information about a break configured for a
-          restaurant.
+          object containing information about a break type configured for 
+          a restaurant.
         produces:
           - application/json
         parameters:
@@ -1015,9 +1046,11 @@ paths:
               $ref: '#/definitions/BreakType'
   /breakTypes:
       get:
+        tags: 
+          - Break Types
         operationId: breakTypesGet
         summary: |
-          Get details on all breaks
+          Get break types
         description: |
           Returns an array of `BreakType`
           objects containing information about breaks configured for a
@@ -1067,9 +1100,11 @@ paths:
                 $ref: '#/definitions/BreakType'
   /cashDrawers/{guid}:
     get:
+      tags: 
+        - Cash Drawers
       operationId: cashDrawersGuidGet
       summary: |
-        Get details on a cash drawer
+        Get a cash drawer
       description: |
         Returns a `CashDrawer`
         object containing information about a specific cash drawer
@@ -1096,9 +1131,11 @@ paths:
             $ref: '#/definitions/CashDrawer'
   /cashDrawers:
     get:
+      tags: 
+        - Cash Drawers
       operationId: cashDrawersGet
       summary: |
-        Get details on all cash drawers
+        Get cash drawers
       description: |
         Returns an array of `CashDrawer` objects
         containing information about the cash drawer devices for the
@@ -1148,9 +1185,11 @@ paths:
               $ref: '#/definitions/CashDrawer'
   /diningOptions/{guid}:
     get:
+      tags: 
+        - Dining Options
       operationId: diningOptionsGuidGet
       summary: |
-        Get details on a dining option
+        Get a dining option
       description: |
         Returns a `DiningOption` object
         containing information about a type of service offered by a
@@ -1178,9 +1217,11 @@ paths:
             $ref: '#/definitions/DiningOption'
   /diningOptions:
     get:
+      tags: 
+        - Dining Options
       operationId: diningOptionsGet
       summary: |
-        Get details on all dining options
+        Get dining options
       description: |
         Returns an array of `DiningOption` objects
         containing information about types of service offered by a
@@ -1232,9 +1273,11 @@ paths:
               $ref: '#/definitions/DiningOption'
   /discounts/{guid}:
     get:
+      tags: 
+        - Discounts
       operationId: discountsGuidGet
       summary: |
-        Get details on a discount
+        Get a discount
       description: |
         Returns a `Discount`
         object containing information about a price deduction
@@ -1261,9 +1304,11 @@ paths:
             $ref: '#/definitions/Discount'
   /discounts:
     get:
+      tags: 
+        - Discounts
       operationId: discountsGet
       summary: |
-        Get details on all discounts
+        Get discounts
       description: |
         Returns an array of `Discount` objects containing
         information about the price deductions configured for a
@@ -1313,10 +1358,11 @@ paths:
               $ref: '#/definitions/Discount'
   /menuGroups/{guid}:
     get:
+      tags: 
+        - Menu Groups
       operationId: menuGroupsGuidGet
       summary: |
-        Returns information about a section within a menu.
-        # Get details on a menu group
+        Get a menu group
       description: |
         Returns a `MenuGroup`
         object containing information about a section within a menu.
@@ -1342,10 +1388,11 @@ paths:
             $ref: '#/definitions/MenuGroup'
   /menuGroups:
     get:
+      tags: 
+        - Menu Groups
       operationId: menuGroupsGet
       summary: |
-        Returns an array of information about the sections of menus configured for a restaurant.
-        # Get details on all menu groups
+        Get menu groups
       description: |
         Returns an array of `MenuGroup` objects
         containing information about the subsections of the menus
@@ -1396,9 +1443,11 @@ paths:
               $ref: '#/definitions/MenuGroup'
   /menuItems/{guid}:
     get:
+      tags: 
+        - Menu Items
       operationId: menuItemsGuidGet
       summary: |
-        Get details on a menu item or modifier
+        Get a menu item or modifier
       description: |
         Returns a `MenuItem`
         object containing information about an item or modifier available from a
@@ -1425,9 +1474,11 @@ paths:
             $ref: '#/definitions/MenuItem'
   /menuItems:
     get:
+      tags: 
+        - Menu Items
       operationId: menuItemsGet
       summary: |
-        Get details on all menu items and modifiers
+        Get menu items and modifiers
       description: |
         Returns an array of `MenuItem` objects containing
         information about the items and modifiers available from a
@@ -1477,14 +1528,15 @@ paths:
               $ref: '#/definitions/MenuItem'
   /menuOptionGroups/{guid}:
     get:
+      tags: 
+        - Menu Option Groups
       operationId: menuOptionGroupsGuidGet
       summary: |
-        Returns information about a group of modifier menu items.
-        # Get details on a group of modifier menu items | Get details on a modifier group's modifiers
+        Get a modifier group's
       description: |
         Returns a `MenuOptionGroup`
-        object containing information about a group of modifier menu items. For
-        example, salad dressings might be a menu option group for a
+        object containing information about a modifier group. For
+        example, salad dressings might be a modifier group for a
         salad menu item.
       produces:
         - application/json
@@ -1508,15 +1560,16 @@ paths:
             $ref: '#/definitions/MenuOptionGroup'
   /menuOptionGroups:
     get:
+      tags: 
+        - Menu Option Groups
       operationId: menuOptionGroupsGet
       summary: |
-        Returns information about the groups of modifier menu items configured for a restaurant.
-        # Get details on the groups of modifier menu items | Get details on all modifier group modifiers
+        Get modifier groups
       description: |
-        Returns an array `MenuOptionGroup`
-        objects containing information about groups of modifier menu
-        items. For example, salad dressings might be a menu option
-        group for a salad menu item. If a `lastModified` date is
+        Returns an array of `MenuOptionGroup`
+        objects containing information about modifier groups. 
+        For example, salad dressings might be a modifier group
+        for a salad menu item. If a `lastModified` date is
         specified, returns all objects that were created or modified
         after that date.
       produces:
@@ -1563,9 +1616,11 @@ paths:
               $ref: '#/definitions/MenuOptionGroup'
   /menus/{guid}:
     get:
+      tags: 
+        - Menus
       operationId: menusGuidGet
       summary: |
-        Get details on a menu
+        Get a menu
       description: |
         Returns a `Menu` object
         containing information about a menu configured for a
@@ -1593,9 +1648,11 @@ paths:
             $ref: '#/definitions/Menu'
   /menus:
     get:
+      tags: 
+        - Menus
       operationId: menusGet
       summary: |
-        Get details on all menus
+        Get menus
       description: |
         Returns an array of `Menu`
         objects containing information about menus configured for a
@@ -1647,9 +1704,11 @@ paths:
               $ref: '#/definitions/Menu'
   /preModifiers/{guid}:
     get:
+      tags: 
+        - Pre Modifiers
       operationId: preModifiersGuidGet
       summary: |
-        Get details on a pre modifier
+        Get a pre modifier
       description: |
         Returns a `PreModifier` object
         containing information about a pre modifier.
@@ -1675,9 +1734,11 @@ paths:
             $ref: '#/definitions/PreModifier'
   /preModifiers:
     get:
+      tags: 
+        - Pre Modifiers
       operationId: preModifiersGet
       summary: |
-        Get details on all pre modifiers
+        Get pre modifiers
       description: |
         Returns an array of `PreModifier` objects
         containing information about PreModifiers configured
@@ -1726,9 +1787,11 @@ paths:
               $ref: '#/definitions/PreModifier'
   /preModifierGroups/{guid}:
     get:
+      tags: 
+        - Pre Modifier Groups
       operationId: preModifierGroupsGuidGet
       summary: |
-        Get details on a pre modifier group
+        Get a pre modifier group
       description: |
         Returns a `PreModifierGroup` object
         containing information about a pre modifier group.
@@ -1754,9 +1817,11 @@ paths:
             $ref: '#/definitions/PreModifierGroup'
   /preModifierGroups:
     get:
+      tags: 
+        - Pre Modifier Groups
       operationId: preModifierGroupsGet
       summary: |
-        Get details on all pre modifier groups
+        Get pre modifier groups
       description: |
         Returns an array of `PreModifierGroup` objects
         containing information about PreModifierGroup configured
@@ -1805,9 +1870,11 @@ paths:
               $ref: '#/definitions/PreModifierGroup'
   /noSaleReasons/{guid}:
     get:
+      tags: 
+        - No Sale Reasons
       operationId: noSaleReasonsGuidGet
       summary: |
-        Get details on a no sale reason
+        Get a no sale reason
       description: |
         Returns a `NoSaleReason` object
         containing information about a no sale reason.
@@ -1833,9 +1900,11 @@ paths:
             $ref: '#/definitions/NoSaleReason'
   /noSaleReasons:
     get:
+      tags: 
+        - No Sale Reasons
       operationId: noSaleReasonsGet
       summary: |
-        Get details on all no sale reasons
+        Get no sale reasons
       description: |
         Returns an array of `NoSaleReason` objects
         containing information about no sale reasons configured
@@ -1884,9 +1953,11 @@ paths:
               $ref: '#/definitions/NoSaleReason'
   /payoutReasons/{guid}:
     get:
+      tags: 
+        - Payout Reasons
       operationId: payoutReasonsGuidGet
       summary: |
-        Get details on a payout reason
+        Get a payout reason
       description: |
         Returns a `PayoutReason` object
         containing information about a recurring restaurant expense
@@ -1914,9 +1985,11 @@ paths:
             $ref: '#/definitions/PayoutReason'
   /payoutReasons:
     get:
+      tags: 
+        - Payout Reasons
       operationId: payoutReasonsGet
       summary: |
-        Get details on all payout reasons
+        Get payout reasons
       description: |
         Returns an array of `PayoutReason` objects
         containing information about recurring cash expenses configured
@@ -1968,9 +2041,11 @@ paths:
               $ref: '#/definitions/PayoutReason'
   /priceGroups/{guid}:
     get:
+      tags: 
+        - Price Groups
       operationId: priceGroupsGuidGet
       summary: |
-        Get details on a price level for menu items
+        Get a price level for menu items
       description: |
         Returns a `PriceGroup` object
         containing information about a variable price level configured for
@@ -1997,9 +2072,11 @@ paths:
             $ref: '#/definitions/PriceGroup'
   /priceGroups:
     get:
+      tags: 
+        - Price Groups
       operationId: priceGroupsGet
       summary: |
-        Get details on all price levels for menu items
+        Get price levels for menu items
       description: |
         Returns an array of `PriceGroup` objects
         containing information about the variable price levels
@@ -2050,9 +2127,11 @@ paths:
               $ref: '#/definitions/PriceGroup'
   /printers/{guid}:
     get:
+      tags: 
+        - Printers
       operationId: printersGuidGet
       summary: |
-        Get details on a printer
+        Get a printer
       description: |
         Returns a `Printer` object
         containing information about a printer device configured for a
@@ -2079,9 +2158,11 @@ paths:
             $ref: '#/definitions/Printer'
   /printers:
     get:
+      tags: 
+        - Printers
       operationId: printersGet
       summary: |
-        Get details on all printers
+        Get printers
       description: |
         Returns an array of `Printer` objects containing
         information about the printer devices configured for a
@@ -2131,9 +2212,11 @@ paths:
               $ref: '#/definitions/Printer'
   /salesCategories/{guid}:
     get:
+      tags: 
+        - Sales Categories
       operationId: salesCategoriesGuidGet
       summary: |
-        Get details on a menu item sales category
+        Get a menu item sales category
       description: |
         Returns a `SalesCategory` object
         containing information about a type of menu item used to
@@ -2161,9 +2244,11 @@ paths:
             $ref: '#/definitions/SalesCategory'
   /salesCategories:
     get:
+      tags: 
+        - Sales Categories
       operationId: salesCategoriesGet
       summary: |
-        Get details on all menu item sales categories
+        Get menu item sales categories
       description: |
         Returns an array of `SalesCategory` objects
         containing information about the types of menu item used to
@@ -2215,9 +2300,11 @@ paths:
               $ref: '#/definitions/SalesCategory'
   /serviceAreas/{guid}:
     get:
+      tags: 
+        - Service Areas
       operationId: serviceAreasGuidGet
       summary: |
-        Get details on a service area
+        Get a service area
       description: |
         Returns a `ServiceArea`
         object containing information about a physical setting that a
@@ -2245,9 +2332,11 @@ paths:
             $ref: '#/definitions/ServiceArea'
   /serviceAreas:
     get:
+      tags: 
+        - Service Areas
       operationId: serviceAreasGet
       summary: |
-        Get details on all service areas
+        Get service areas
       description: |
         Returns an array of `ServiceArea` objects
         containing information about the physical settings that a
@@ -2299,9 +2388,11 @@ paths:
               $ref: '#/definitions/ServiceArea'
   /serviceCharges/{guid}:
     get:
+      tags: 
+        - Service Charges
       operationId: serviceChargesGuidGet
       summary: |
-        Get details on a service charge type
+        Get a service charge type
       description: |
         Returns a `ServiceCharge` object
         containing information about a type of fee applied to
@@ -2330,9 +2421,11 @@ paths:
             $ref: '#/definitions/ServiceCharge'
   /serviceCharges:
     get:
+      tags: 
+        - Service Charges
       operationId: serviceChargesGet
       summary: |
-        Get details on all service charges
+        Get service charges
       description: |
         Returns an array of `ServiceCharge` objects
         containing information about the types of fee applied to
@@ -2385,9 +2478,11 @@ paths:
               $ref: '#/definitions/ServiceCharge'
   /revenueCenters/{guid}:
     get:
+      tags: 
+        - Revenue Centers
       operationId: revenueCentersGuidGet
       summary: |
-        Get details on a revenue center
+        Get a revenue center
       description: |
         Returns a `RevenueCenter` object
         containing information about a segment of restaurant income,
@@ -2414,9 +2509,11 @@ paths:
             $ref: '#/definitions/RevenueCenter'
   /revenueCenters:
     get:
+      tags: 
+        - Revenue Centers
       operationId: revenueCentersGet
       summary: |
-        Get details on all revenue centers
+        Get revenue centers
       description: |
         Returns an array of `RevenueCenter` objects
         containing information about segments of restaurant income, for
@@ -2466,9 +2563,11 @@ paths:
               $ref: '#/definitions/RevenueCenter'
   /restaurantServices/{guid}:
     get:
+      tags: 
+        - Restaurant Services
       operationId: restaurantServicesGuidGet
       summary: |
-        Get details on a restaurant service period
+        Get a restaurant service period
       description: |
         Returns a `RestaurantService`
         object containing information about a type of menu and dining
@@ -2497,9 +2596,11 @@ paths:
             $ref: '#/definitions/RestaurantService'
   /restaurantServices:
     get:
+      tags: 
+        - Restaurant Services
       operationId: restaurantServicesGet
       summary: |
-        Get details on all restuarant service periods
+        Get restuarant service periods
       description: |
         Returns an array of `RestaurantService`
         objects containing information about the types of menu and dining
@@ -2551,9 +2652,11 @@ paths:
               $ref: '#/definitions/RestaurantService'
   /tables/{guid}:
     get:
+      tags: 
+        - Tables
       operationId: tablesGuidGet
       summary: |
-        Get details on a table
+        Get a table
       description: |
         Returns a `Table`
         object containing information about a dining table configured for a
@@ -2580,9 +2683,11 @@ paths:
             $ref: '#/definitions/Table'
   /tables:
     get:
+      tags: 
+        - Tables
       operationId: tablesGet
       summary: |
-        Get details on all tables
+        Get tables
       description: |
         Returns an array of `Table`
         objects containing information about the dining tables
@@ -2633,9 +2738,11 @@ paths:
               $ref: '#/definitions/Table'
   /taxRates/{guid}:
     get:
+      tags: 
+        - Tax Rates
       operationId: taxRatesGuidGet
       summary: |
-        Get details on a tax rate
+        Get a tax rate
       description: |
         Returns a `TaxRate` object
         containing information about a form of taxation applied to
@@ -2662,9 +2769,11 @@ paths:
             $ref: '#/definitions/TaxRate'
   /taxRates:
     get:
+      tags: 
+        - Tax Rates
       operationId: taxRatesGet
       summary: |
-        Get details on all tax rates
+        Get tax rates
       description: |
         Returns an array of `TaxRate` objects
         containing information about the forms of taxation applied to
@@ -2715,9 +2824,11 @@ paths:
               $ref: '#/definitions/TaxRate'
   /tipWithholding:
       get:
+        tags: 
+        - Tip Withholding
         operationId: tipWithholdingGet
         summary: |
-          Get details on the percentage withheld for credit card tips
+          Get the percentage withheld for credit card tips
         description: |
           Returns a `TipWithholding`
           object containing information about the way tip withholding
@@ -2740,9 +2851,11 @@ paths:
               $ref: '#/definitions/TipWithholding'
   /voidReasons/{guid}:
     get:
+      tags: 
+        - Void Reasons
       operationId: voidReasonsGuidGet
       summary: |
-        Get details on a void sale reason
+        Get a void sale reason
       description: |
         Returns a `VoidReason` object
         containing information about a cause for making a sale invalid
@@ -2769,9 +2882,11 @@ paths:
             $ref: '#/definitions/VoidReason'
   /voidReasons:
     get:
+      tags: 
+        - Void Reasons
       operationId: voidReasonsGet
       summary: |
-        Get details on all void sale reasons
+        Get void sale reasons
       description: |
         Returns an array of `VoidReason` objects
         containing information about causes for making a sale invalid
