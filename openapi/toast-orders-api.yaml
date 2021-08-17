@@ -4,17 +4,21 @@ info:
   version: 2.2.0
   title: Toast Orders API
   description: |
-    Operations that create and retrieve information about restaurant 
-    guest orders. Including checks, items ordered, prices, and 
-    discounts.
+    Operations that create and retrieve information about restaurant
+    guest orders. Information on orders includes checks, items ordered,
+    prices, and discounts.
   contact:
-    email: developer-support@toasttab.com
+    name: Toast developer support
 schemes:
   - https
 host: toast-api-server
 basePath: /orders/v2
 consumes:
   - application/json
+tags:
+  - name: Orders
+  - name: Payments
+  - name: Discounts
 produces:
   - application/json
 definitions:
@@ -81,7 +85,6 @@ definitions:
             type: string
             description: |
               Indicates the way that the order was placed. One of:
-
               * `In Store`
               * `Online`
               * `OPT`
@@ -89,7 +92,6 @@ definitions:
               * `Kiosk`
               * `Caller Id`
               * `Google`
-
               Response only.
           duration:
             type: integer
@@ -163,21 +165,17 @@ definitions:
               employee to approve it or that the order is in a
               restaurant kitchen being fulfilled. Response only. The
               `approvalStatus` value can be:
-
               * `NEEDS_APPROVAL` - the order has been created but will
               not be fulfilled by the restaurant until an employee
               approves it.
-
               * `APPROVED` - the order is being fulfilled by the
               restaurant or it has been fulfilled in the past. Orders
               remain in this state indefinitely after they are
               fulfilled.
-
               * `FUTURE` - the order is expected to be fulfilled by the
               restaurant at a future date and time. Restaurant
               employees will receive information about the order at the
               date and time that it is ready to be fulfilled.
-
               * `NOT_APPROVED` - restaurant employees received
               information about the order and did not approve it for
               fulfillment. An order enters this state after a period of
@@ -220,7 +218,6 @@ definitions:
               platform restaurant. `POST` only. The orders API does not
               include the `marketplaceFacilitatorTaxInfo` value in
               response data.
-
               **Note**: you can only include this information if your
               Toast API client is associated with a designated
               marketplace facilitator organization. Most Toast API
@@ -265,19 +262,15 @@ definitions:
               $ref: '#/definitions/Selection'
           customer:
             description: |
-              A <a href="#/definitions/Customer">`Customer`</a> object
+              A `Customer` object
               that holds information about a restaurant guest
               associated with the check.
-
               * Required for `POST` requests for orders that use the
                 take-out or delivery dining options.
-
               * For checks that apply or accrue Toast loyalty points, a
-                `GET` request returns a <a
-                href="#/definitions/Customer">`Customer`</a> object
+                `GET` request returns a `Customer` object
                 even when restaurant employees do not enter guest
-                information for a check. In this situation, the <a
-                href="#/definitions/Customer">`Customer`</a> object
+                information for a check. In this situation, the `Customer` object
                 contains only the Toast POS system GUID of the guest.
                 All other values are `null`.
             $ref: '#/definitions/Customer'
@@ -452,16 +445,12 @@ definitions:
               Indicates which guest seat at a restaurant table ordered
               a menu item selection. Restaurant employees can choose the
               seat number when they add a menu item to a guest check.
-
               * A positive integer value indicates the seat number for
                 the menu item.
-
               * `0` - indicates that the menu item is being shared by
                 multiple guests.
-
               * `-1` - indicates that the restaurant employee did not
                 select a seat for the menu item.
-
               Response only.
           unitOfMeasure:
             type: string
@@ -523,7 +512,7 @@ definitions:
             $ref: '#/definitions/ExternalReference'
           refundDetails:
             description: |
-              A <a href="#/definitions/RefundDetails">`RefundDetails`</a> object that
+              A `RefundDetails` object that
               contains information about refunded payment amounts for the item.
             type: object
             $ref: '#/definitions/RefundDetails'
@@ -609,13 +598,11 @@ definitions:
               pricing strategy. If you do not supply an
               `openPriceAmount` value for an open price menu item, the
               orders API will set the price to 0.00.
-
               If a menu item is configured to use tax-inclusive
               pricing, the orders API calculates the base price and tax
               amount based on the open price that you specify. _The
               open-price amount includes both the base-price and
               inclusive tax amount._
-
               This value is write-only. The `openPriceAmount` is not
               present in orders API return data.
             type: number
@@ -640,7 +627,6 @@ definitions:
               marketplace facilitator organization that created the
               order. `POST` only. The orders API does not include the
               `externalPriceAmount` value in return data.
-
               **Note**: you can only include this information if your
               Toast API client is associated with a designated
               marketplace facilitator organization. Most Toast API
@@ -804,7 +790,6 @@ definitions:
             description: |
               Note: this value is in limited release. Your orders API
               integration might not include the `cardPaymentId` value.
-
               A unique identifier for the credit card used for a
               `CREDIT` type payment. The identifier string is generated
               by the Toast POS system and _does not include any
@@ -812,11 +797,9 @@ definitions:
               credit card account._ The identifier is unique within
               your restaurant management group.
               The value is `null` for the following payment types:
-
               * Payment types other than `CREDIT`
               * Credit card payments entered using EMV (chip cards)
               * Credit card payments entered by keying in card numbers
-
               Response only.
           giftCard:
             type: object
@@ -1109,7 +1092,7 @@ definitions:
               - POST_DISCOUNT
           refundDetails:
             description: |
-              A <a href="#/definitions/RefundDetails">`RefundDetails`</a> object that
+              A `RefundDetails` object that
               contains information about refunded payment amounts for the item.
             type: object
             $ref: '#/definitions/RefundDetails'
@@ -1159,19 +1142,15 @@ definitions:
               Indicates whether the marketplace facilitator that
               received a guest order remitted the tax amount on behalf
               of the Toast platform restaurant.
-
               You can use this information to identify tax amounts that
               have already been paid by an ordering service provider
               and do not need to be paid again.
-
               * `true` - the marketplace facilitator paid the tax
               amount on behalf of the Toast platform restaurant
               location.
-
               * `false` - the marketplace facilitator has not paid the
               tax amount. The Toast platform restaurant location may be
               required to pay the tax amount.
-
               **Note**: Toast API response data is not guidance or
               advice for tax compliance.
   AppliedDiscountTrigger:
@@ -1408,8 +1387,7 @@ definitions:
   ApplicableDiscountsRequest:
     type: object
     description: |
-      A wrapper object containing an <a
-      href="#/definitions/Order">`Order`</a> object, and an optional
+      A wrapper object containing an `Order` object, and an optional
       promotional code. You include an `ApplicableDiscountsRequest`
       object in the message body of a `POST` request to the
       `applicableDiscounts` endpoint.
@@ -1420,7 +1398,7 @@ definitions:
         type: object
         $ref: '#/definitions/Order'
         description: |
-         An <a href="#/definitions/Order">`Order`</a> object that
+         An `Order` object that
          contains information about the order you want to get discounts
          for.
       promoCode:
@@ -1442,25 +1420,22 @@ definitions:
     properties:
       discount:
         description: |
-          A <a href="#/definitions/ToastReference">`ToastReference`</a>
-          object containing the identifiers of the discount. Response only.
+          A `ToastReference` object containing the identifiers of the discount.
+          Response only.
         type: object
         $ref: '#/definitions/ToastReference'
       applicableChecks:
         description: |
           If the discount is applicable to a check, this value holds an
-          array of <a
-          href="#/definitions/ExternalReference">`ExternalReference`</a>
-          object containing the identifiers of the checks.
+          array of `ExternalReference` objects containing the identifiers of the checks.
         type: array
         items:
           $ref: '#/definitions/ExternalReference'
       applicableSelections:
         description: |
           If the discount is applicable to a menu item selection, this
-          value holds an array of <a
-          href="#/definitions/ExternalReference">`ExternalReference`</a>
-          object containing the identifiers of the menu items.
+          value holds an array of `ExternalReference` objects containing
+          the identifiers of the menu items.
         type: array
         items:
           $ref: '#/definitions/ExternalReference'
@@ -1572,7 +1547,6 @@ definitions:
       organization remits on behalf of a Toast platform restaurant.
       `POST` only. The orders API does not include the
       `MarketplaceFacilitatorTaxInfo` object in response data.
-
       **Note**: you can only include this information if your
       Toast API client is associated with a designated
       marketplace facilitator organization. Most Toast API
@@ -1583,11 +1557,9 @@ definitions:
           Indicates whether a marketplace facilitator organization has
           paid the tax amounts for an order on behalf of the restaurant
           that fulfills the order.
-
           If you include this value, you indicate that the marketplace
           facilitator order uses the prices and tax amounts calculated
           by the Toast platform.
-
           If you include this value, you *must not* include the `taxes`
           value and you *must not* include the `externalPriceAmount`
           for menu item selections in the order.
@@ -1596,7 +1568,6 @@ definitions:
         description: |
           An array of `AppliedTaxRate` objects that describe the tax
           amounts that apply to a marketplace facilitator order.
-
           If you include this value, you must include an `externalPriceAmount`
           for each menu item selection in the order.
         type: array
@@ -1604,168 +1575,13 @@ definitions:
           $ref: '#/definitions/AppliedTaxRate'
 
 paths:
-  /payments:
-    get:
-      summary: Get identifiers of payments processed
-      description: Returns a list of the GUIDs for each payment made during
-        one restaurant business day. The specific hours that make up a business
-        day depend on the business day cutoff in the restaurant configuration,
-        which is available from the restaurants API in the `closeoutHour`
-        property.
-        The business day for a restaurant is based on its local time (not UTC
-        or local time for an API client). You must include one of the
-        `paidBusinessDate`, `refundBusinessDate`, or `voidBusinessDate` query
-        parameters.
-      produces:
-        - application/json
-      parameters:
-        - name: Toast-Restaurant-External-ID
-          description: The GUID of the restaurant used as the context of the request.
-          in: header
-          required: true
-          type: string
-        - name: paidBusinessDate
-          description: Returns a list of the payments that were made during
-            one business day. Specify the business day in the format YYYYMMDD,
-            for example, `20170101`.
-          in: query
-          required: false
-          type: string
-        - name: refundBusinessDate
-          description: Returns a list of the payments that were refunded
-            during one business day. Specify the business day in the format
-            YYYYMMDD, for example, `20170101`.
-          in: query
-          required: false
-          type: string
-        - name: voidBusinessDate
-          description: Returns a list of the payments that were voided during
-            one business day. Specify the business day in the format YYYYMMDD,
-            for example, `20170101`.
-          in: query
-          required: false
-          type: string
-      responses:
-        '200':
-          description: A JSON array of the GUID identifiers for the payments
-          schema:
-            title: Response
-            type: array
-            items:
-              type: string
-  /payments/{guid}:
-    get:
-      summary: Get information about a payment
-      description: Returns a JSON
-        <a href="#/definitions/Payment">Payment</a> object containing
-        detailed information about a  single payment, specified by its
-        GUID.
-      produces:
-        - application/json
-      parameters:
-        - name: Toast-Restaurant-External-ID
-          description: The GUID of the restaurant used as the context of the request.
-          in: header
-          required: true
-          type: string
-        - name: guid
-          description: The GUID for the payment you want to return.
-          in: path
-          type: string
-          required: true
-      responses:
-        '200':
-          description: Returns a JSON
-            <a href="#/definitions/Payment">Payment</a> object.
-          schema:
-            $ref: '#/definitions/Payment'
-        '400':
-          description: The GUID was malformed.
-        '404':
-          description: The specified payment was not found.
-
-  /prices:
-    post:
-      summary: Get prices for an order
-      description: |
-        Calculates the check price amounts, tax amounts, and service
-        charges for an <a href="#/definitions/Order">`Order`</a> object
-        you supply as a _required message body parameter_. The `prices`
-        endpoint validates the order you submit to ensure all
-        referenced data exists and that you include item selections in
-        the expected structure with all required modifier options. Some
-        values that would be present in the response data when creating
-        an order are not present in the response data for the `prices`
-        endpoint. For example, the order GUID is not set because the
-        Toast platform does not create persistent data for the order.
-
-        The calculated price can change between requests to the
-        `prices` endpoint with the same <a
-        href="#/definitions/Order">`Order`</a> object if enough time
-        passes between the requests. The difference in price is
-        possible because the restaurant configuration can change and
-        because some pricing configuration is based on time and date
-        schedules.
-      produces:
-        - application/json
-      parameters:
-        - name: Toast-Restaurant-External-ID
-          description: |
-            The identifier of the restaurant to be used for this price
-            calculation.
-          in: header
-          required: true
-          type: string
-        - name: body
-          description: |
-            A _required_ JSON <a href="#/definitions/Order">`Order`</a>
-            object containing information about the checks, item
-            selections, modifier options, and other parts of the order.
-          in: body
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: |
-            Success. The response body contains a JSON <a
-            href="#/definitions/Order">`Order`</a> object with values
-            for check amounts, taxes, service charges, and other parts
-            of the order. Because this endpoint only calculates prices,
-            no parts of the order persist in the Toast platform and do
-            not have GUIDs in the response object.
-          schema:
-            $ref: '#/definitions/OrderResponse'
-        '400':
-          description: |
-            Either the request contains data that is not supported by
-            the current version of the API as described or the order
-            contains an item that is negatively priced.
-        '403':
-          description: |
-            The API client does not have access to the restaurant, the
-            API client does not have the `orders:read` scope, or both.
-        '404':
-          description: |
-            An entity referenced in the order does not exist, or
-            belongs to a restaurant the API client is not
-            authorized to access.
-        '413':
-          description: |
-            The number of checks in the submitted order exceeds the limit.
-        '415':
-          description: |
-            The request did not have `application/json` in the
-            `Content-Type` HTTP header field.
-        '500':
-          description: |
-            An unexpected internal error occurred. There is a
-            `requestId` attached to the error that can be referenced by
-            the Toast support team.
   /orders/{guid}:
     get:
-      summary: Get information about an order
+      tags:
+        - Orders
+      summary: Get an order
       description: Retrieves detailed information about a single order, specified by its GUID.
+      operationId: ordersGuidGet
       produces:
         - application/json
       parameters:
@@ -1790,20 +1606,22 @@ paths:
           description: The specified Order was not found.
         '500':
           description: There was a problem serializing the Order entity.
+          
   /ordersBulk:
     get:
-      summary: Get information about multiple orders
+      tags:
+        - Orders
+      summary: Get multiple orders
       description: |
         Returns an array of `Order` objects containing detailed
         information about all orders opened during a period of time.
         You can return the orders for either a specific period of time
         or for one business day.
-
         * Specify both `startDate` and `endDate` to return the orders
           modified during that period of time.
-
         * Specify the `businessDate` to return the orders promised
           during that business day.
+      operationId: ordersBulkGet
       produces:
       - application/json
       parameters:
@@ -1892,254 +1710,21 @@ paths:
            An unexpected internal error occurred. There is a
            `requestId` attached to this error that can be referenced by
            the Toast support team.
-  /orders/{orderGuid}/checks/{checkGuid}/payments:
-    post:
-      summary: Add payments to a check
-      description: |
-        Adds one or more payments to a check in an existing order. Include
-        information about the payments in an array of `Payment` objects in the
-        message body. Specify the Toast POS system GUID of the order
-        and check in REST path parameters.
-
-        For more information, see <a
-        href="http://dev.toasttab.com/Ie5QH/apiAddingPaymentsToACheck.html">Adding
-        Payments to a Check</a> in the _Toast API Developer's Guide_.
-      produces:
-        - application/json
-      parameters:
-        - name: orderGuid
-          description: |
-            The Toast POS system identifier of the order that you are
-            adding payments to.
-          in: path
-          required: true
-          type: string
-        - name: checkGuid
-          description: |
-            The Toast POS system identifier of the check that you are
-            adding payments to.
-          in: path
-          required: true
-          type: string
-        - name: body
-          description: |
-            An array of JSON <a href="#/definitions/Payment">`Payment`</a> objects
-            containing information about the payments you are adding.
-          in: body
-          required: true
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Payment'
-      responses:
-        '200':
-          description: |
-            A JSON <a href="#/definitions/Order">`Order`</a> object
-            that includes the payments that you added.
-          schema:
-            $ref: '#/definitions/Order'
-  /orders/{orderGuid}/checks/{checkGuid}/payments/{paymentGuid}:
-    patch:
-      summary: Update tip amount in a payment
-      description: |
-        Updates the tip amount in an existing payment for a check in an
-        order. Include the new `tipAmount` value in a `Payment` object
-        in the message body. This endpoint does not allow any other
-        `Payment` object value for a `PATCH` request. Specify the Toast
-        POS system GUID of the order, check, and payment in REST path
-        parameters.
-
-        For more information, see <a
-        href="http://dev.toasttab.com/Ie5QH/apiUpdatingTipsInAPayment.html">Updating
-        Tips in a Payment</a> in the _Toast API Developer's Guide_.
-      produces:
-        - application/json
-      parameters:
-        - name: orderGuid
-          description: |
-            The Toast POS system identifier of the order that you are
-            updating a tip in.
-          in: path
-          required: true
-          type: string
-        - name: checkGuid
-          description: |
-            The Toast POS system identifier of the check that you are
-            updating a tip in.
-          in: path
-          required: true
-          type: string
-        - name: paymentGuid
-          description: |
-            The Toast POS system identifier of the payment that you are
-            updating a tip in.
-          in: path
-          required: true
-          type: string
-        - name: body
-          description: |
-            A JSON <a href="#/definitions/Payment">`Payment`</a> object
-            containing the `tipAmount` value that will replace any
-            existing tip amount for the payment. Do not include any
-            value other than `tipAmount`.
-          in: body
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: |
-            A JSON <a href="#/definitions/Order">`Order`</a> object
-            that includes the tip amount that you updated.
-          schema:
-            $ref: '#/definitions/Order'
-  /orders/{orderGuid}/checks/{checkGuid}/appliedDiscounts:
-    post:
-      summary: Add check-level discounts
-      description: |
-        Adds one or more check-level discounts to a check in an
-        existing order. Include an array of <a
-        href="#/definitions/Discount">`Discount`</a> objects in the
-        message body.
-
-        For more information, see <a
-        href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
-        Discounts to Checks</a> in the _Toast API Developer's Guide_.
-      produces:
-        - application/json
-      parameters:
-        - name: orderGuid
-          description: |
-            The Toast POS system identifier of the order that you are
-            adding a discount in.
-          in: path
-          required: true
-          type: string
-        - name: checkGuid
-          description: |
-            The Toast POS system identifier of the check that you are
-            adding a discount in.
-          in: path
-          required: true
-          type: string
-        - name: body
-          description: |
-            A JSON array of <a
-            href="#/definitions/Discount">`Discount`</a> objects that
-            identify the discounts you are adding.
-          in: body
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: |
-            A JSON <a href="#/definitions/Order">`Order`</a> object
-            that includes the discount you added.
-          schema:
-            $ref: '#/definitions/Order'
-  /orders/{orderGuid}/checks/{checkGuid}/selections/{selectionGuid}/appliedDiscounts:
-    post:
-      summary: Add item-level discounts
-      description: |
-        Adds one or more item-level discounts to menu item selections
-        in a check in an existing order. Include an array of <a
-        href="#/definitions/Discount">`Discount`</a> objects in the
-        message body.
-
-        For more information, see <a
-        href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
-        Discounts to Checks</a> in the _Toast API Developer's Guide_.
-      produces:
-        - application/json
-      parameters:
-        - name: orderGuid
-          description: |
-            The Toast POS system identifier of the order that you are
-            adding a discount in.
-          in: path
-          required: true
-          type: string
-        - name: checkGuid
-          description: |
-            The Toast POS system identifier of the check that you are
-            adding a discount in.
-          in: path
-          required: true
-          type: string
-        - name: selectionGuid
-          description: |
-            The Toast POS system identifier of the menu item selection
-            that you are adding a discount in.
-          in: path
-          required: true
-          type: string
-        - name: body
-          description: |
-            A JSON array of <a
-            href="#/definitions/Discount">`Discount`</a> objects that
-            identify the discounts you are adding.
-          in: body
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: |
-            A JSON <a href="#/definitions/Order">`Order`</a> object
-            that includes the discount you added.
-          schema:
-            $ref: '#/definitions/Order'
+ 
   /orders:
-    post:
-      summary: Add an order
-      description: Submits an order to the server. Returns a JSON <a href="#/definitions/Order">Order</a> object if successful.
-      operationId: postOrders
-      produces:
-        - application/json
-      parameters:
-        - name: Toast-Restaurant-External-ID
-          description: The identifier for the restaurant where this order was placed.
-          in: header
-          required: true
-          type: string
-        - name: body
-          description: A JSON object containing information about an order.
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Order'
-            example: {"entityType": "Order",  "diningOption": { "guid": "18855a26-40d4-4a8f-b484-c6af211dd597",    "entityType": "DiningOption"  },  "marketplaceFacilitatorTaxInfo": {    "facilitatorCollectAndRemitTaxOrder": true   },   "checks": [    {      "entityType": "Check",      "displayNumber": "pdesjardins-api-1627646263",      "selections": [        {          "entityType": "MenuItemSelection",          "itemGroup": {             "guid": "881472e6-dd94-48c6-b5c6-25e51a864208",            "entityType": "MenuGroup"          },          "item": {            "entityType": "MenuItem",            "guid": "9c59d4ab-8242-450f-8f36-b16e1b3ab802"           },           "quantity": 1,          "modifiers": []        }      ],      "customer": {          "entityType": "Customer",          "firstName": "Severe",          "lastName": "Thibault",           "phone": "555-555-5555",          "email": "severe@example.com"      },      "payments" :[        {          "otherPayment": {            "guid": "0dc19214-d29e-4ab9-a773-27e5812999c7"           },          "type": "OTHER",          "amount": 8.50,          "tipAmount": "0"        }      ]    }  ],   "deliveryInfo": {     "address1": "401 Park Drive",     "address2": "Suite 801",     "city": "Boston",     "state": "MA",     "zipCode": "02215",     "latitude": 42.3446671,     "longitude": -71.1023575,     "notes": "Please ring the doorbell."   } }
-      responses:
-        '200':
-          description: A JSON <a href="#/definitions/Order">Order</a> object that has been persisted in Toast. The returned Order contains generated property values for the check amounts, taxes, service charges, and GUIDs for persisted entities.
-          schema:
-            $ref: '#/definitions/OrderResponse'
-          examples: {"application/json":{"guid":"89488287-f259-435b-a654-0bc391596af0","entityType":"Order","externalId":null,"revenueCenter":null,"server":{"guid":"c89d1e72-1888-469f-a24b-506c66eafab7","entityType":"RestaurantUser","externalId":null},"lastModifiedDevice":{"id":null},"source":"API","voidDate":null,"duration":null,"businessDate":20210730,"paidDate":null,"restaurantService":null,"voided":false,"estimatedFulfillmentDate":"2021-07-30T12:12:46.235+0000","table":null,"requiredPrepTime":"PT15M","approvalStatus":"NEEDS_APPROVAL","deliveryInfo":{"address1":"401 Park Drive","address2":"Suite 801","city":"Boston","state":"MA","zipCode":"02215","latitude":42.3446671,"longitude":-71.1023575,"notes":"Please ring the doorbell.","deliveredDate":null,"dispatchedDate":null,"deliveryEmployee":null,"deliveryState":null},"serviceArea":null,"curbsidePickupInfo":null,"numberOfGuests":1,"diningOption":{"guid":"18855a26-40d4-4a8f-b484-c6af211dd597","entityType":"DiningOption","externalId":null},"openedDate":"2021-07-30T11:57:46.235+0000","voidBusinessDate":null,"checks":[{"guid":"cbcb6fd5-d973-4e44-9b91-2abcee5ea6cd","entityType":"Check","externalId":null,"displayNumber":"pdesjardins-api-1627646263","payments":[{"guid":"88642b2d-c359-4b96-bb8e-9cb3f5c2ac6a","entityType":"OrderPayment","externalId":null,"originalProcessingFee":null,"server":null,"cashDrawer":null,"lastModifiedDevice":{"id":null},"refundStatus":"NONE","type":"OTHER","voidInfo":null,"checkGuid":"cbcb6fd5-d973-4e44-9b91-2abcee5ea6cd","otherPayment":{"guid":"0dc19214-d29e-4ab9-a773-27e5812999c7","entityType":"AlternatePaymentType","externalId":null},"paidDate":"2021-07-30T11:57:46.237+0000","orderGuid":"89488287-f259-435b-a654-0bc391596af0","cardEntryMode":null,"paymentStatus":"CAPTURED","amount":8.5,"tipAmount":0.0,"amountTendered":null,"cardType":null,"houseAccount":null,"mcaRepaymentAmount":null,"createdDevice":{"id":null},"paidBusinessDate":20210730,"last4Digits":null,"refund":null}],"appliedDiscounts":[],"lastModifiedDevice":{"id":null},"voidDate":null,"paidDate":null,"appliedLoyaltyInfo":null,"voided":false,"paymentStatus":"OPEN","amount":5.0,"tabName":null,"taxExempt":false,"openedDate":"2021-07-30T11:57:46.235+0000","totalAmount":5.0,"selections":[{"guid":"2c8b6ece-c503-4f85-aed7-6a8c6526ba0d","entityType":"MenuItemSelection","externalId":null,"deferred":false,"preDiscountPrice":5.0,"voidReason":null,"optionGroup":null,"displayName":"蟹餅  CRAB CAKES","appliedDiscounts":[],"modifiers":[],"seatNumber":-1,"voidDate":null,"fulfillmentStatus":"NEW","optionGroupPricingMode":null,"salesCategory":{"guid":"c0915e46-341e-4ec0-b46e-cb87fab729fd","entityType":"SalesCategory","externalId":null},"selectionType":"NONE","price":5.0,"voided":false,"appliedTaxes":[],"itemGroup":{"guid":"881472e6-dd94-48c6-b5c6-25e51a864208","entityType":"MenuGroup","externalId":null},"item":{"guid":"9c59d4ab-8242-450f-8f36-b16e1b3ab802","entityType":"MenuItem","externalId":null},"taxInclusion":"NOT_INCLUDED","quantity":1.0,"receiptLinePrice":5.0,"unitOfMeasure":"NONE","refundDetails":null,"tax":0.0,"diningOption":{"guid":"18855a26-40d4-4a8f-b484-c6af211dd597","entityType":"DiningOption","externalId":null},"voidBusinessDate":null,"createdDate":"2021-07-30T11:57:46.269+0000","preModifier":null,"modifiedDate":"2021-07-30T11:57:46.269+0000"}],"voidBusinessDate":null,"createdDate":"2021-07-30T11:57:46.282+0000","deleted":false,"createdDevice":{"id":null},"closedDate":null,"deletedDate":null,"modifiedDate":"2021-07-30T11:57:46.282+0000","taxAmount":0.0,"appliedServiceCharges":[],"customer":{"guid":"970e92e6-33b3-4caa-876b-2c6ef528ef4e","entityType":"Customer","firstName":"Severe","lastName":"Thibault","phone":"5555555555","email":"severe@example.com"}}],"deleted":false,"createdDevice":{"id":null},"createdDate":"2021-07-30T11:57:46.286+0000","closedDate":null,"deletedDate":null,"modifiedDate":"2021-07-30T11:57:46.286+0000","promisedDate":null,"pricingFeatures":["TAXESV2"]}}
-        '400':
-          description: Either the request contains data that is not supported by the current version of the API as described (e.g. specifying credit card as the payment type.), or the order contains an item that is negatively priced.
-        '404':
-          description: An entity referenced in the order does not exist, or belongs to a restaurant the authenticated client is not authorized to access.
-        '413':
-          description: The number of checks in the submitted order exceeds the limit.
-        '415':
-          description: The request did not have "application/json" in the Content-Type header.
-        '500':
-          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
-
     get:
-       summary: Get identifiers of orders processed
+       tags:
+        - Orders
+       summary: Get order identifiers (deprecated)
        description: |
-          Gets a list of the GUIDs of all orders opened during a period of
+          Returns a list of the GUIDs of all orders opened during a period of
           time. You can return the list of orders for either a period of up to
           one hour or for one business day.
-
           * Specify both `startDate` and `endDate` to return the list of orders
             modified during a period of up to one hour.
-
           * Specify the `businessDate` to return the list of orders promised
             for delivery during a business day.
-
+       operationId: ordersGet
        produces:
         - application/json
        parameters:
@@ -2194,13 +1779,259 @@ paths:
            description: The request contains data that is not supported by the current version of the API as described. e.g. specifying credit card as the payment type.
          '500':
            description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+    post:
+      tags:
+        - Orders
+      summary: Post an order
+      description: Submits an order to the server. Returns a JSON `Order` object if successful.
+      operationId: ordersPost
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The identifier for the restaurant where this order was placed.
+          in: header
+          required: true
+          type: string
+        - name: body
+          description: A JSON object containing information about an order.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+            example: {"entityType": "Order",  "diningOption": { "guid": "18855a26-40d4-4a8f-b484-c6af211dd597",    "entityType": "DiningOption"  },  "marketplaceFacilitatorTaxInfo": {    "facilitatorCollectAndRemitTaxOrder": true   },   "checks": [    {      "entityType": "Check",      "displayNumber": "pdesjardins-api-1627646263",      "selections": [        {          "entityType": "MenuItemSelection",          "itemGroup": {             "guid": "881472e6-dd94-48c6-b5c6-25e51a864208",            "entityType": "MenuGroup"          },          "item": {            "entityType": "MenuItem",            "guid": "9c59d4ab-8242-450f-8f36-b16e1b3ab802"           },           "quantity": 1,          "modifiers": []        }      ],      "customer": {          "entityType": "Customer",          "firstName": "Severe",          "lastName": "Thibault",           "phone": "555-555-5555",          "email": "severe@example.com"      },      "payments" :[        {          "otherPayment": {            "guid": "0dc19214-d29e-4ab9-a773-27e5812999c7"           },          "type": "OTHER",          "amount": 8.50,          "tipAmount": "0"        }      ]    }  ],   "deliveryInfo": {     "address1": "401 Park Drive",     "address2": "Suite 801",     "city": "Boston",     "state": "MA",     "zipCode": "02215",     "latitude": 42.3446671,     "longitude": -71.1023575,     "notes": "Please ring the doorbell."   } }
+      responses:
+        '200':
+          description: A JSON `Order` object that has been persisted in Toast. The returned Order contains generated property values for the check amounts, taxes, service charges, and GUIDs for persisted entities.
+          schema:
+            $ref: '#/definitions/OrderResponse'
+          examples: {"application/json":{"guid":"89488287-f259-435b-a654-0bc391596af0","entityType":"Order","externalId":null,"revenueCenter":null,"server":{"guid":"c89d1e72-1888-469f-a24b-506c66eafab7","entityType":"RestaurantUser","externalId":null},"lastModifiedDevice":{"id":null},"source":"API","voidDate":null,"duration":null,"businessDate":20210730,"paidDate":null,"restaurantService":null,"voided":false,"estimatedFulfillmentDate":"2021-07-30T12:12:46.235+0000","table":null,"requiredPrepTime":"PT15M","approvalStatus":"NEEDS_APPROVAL","deliveryInfo":{"address1":"401 Park Drive","address2":"Suite 801","city":"Boston","state":"MA","zipCode":"02215","latitude":42.3446671,"longitude":-71.1023575,"notes":"Please ring the doorbell.","deliveredDate":null,"dispatchedDate":null,"deliveryEmployee":null,"deliveryState":null},"serviceArea":null,"curbsidePickupInfo":null,"numberOfGuests":1,"diningOption":{"guid":"18855a26-40d4-4a8f-b484-c6af211dd597","entityType":"DiningOption","externalId":null},"openedDate":"2021-07-30T11:57:46.235+0000","voidBusinessDate":null,"checks":[{"guid":"cbcb6fd5-d973-4e44-9b91-2abcee5ea6cd","entityType":"Check","externalId":null,"displayNumber":"pdesjardins-api-1627646263","payments":[{"guid":"88642b2d-c359-4b96-bb8e-9cb3f5c2ac6a","entityType":"OrderPayment","externalId":null,"originalProcessingFee":null,"server":null,"cashDrawer":null,"lastModifiedDevice":{"id":null},"refundStatus":"NONE","type":"OTHER","voidInfo":null,"checkGuid":"cbcb6fd5-d973-4e44-9b91-2abcee5ea6cd","otherPayment":{"guid":"0dc19214-d29e-4ab9-a773-27e5812999c7","entityType":"AlternatePaymentType","externalId":null},"paidDate":"2021-07-30T11:57:46.237+0000","orderGuid":"89488287-f259-435b-a654-0bc391596af0","cardEntryMode":null,"paymentStatus":"CAPTURED","amount":8.5,"tipAmount":0.0,"amountTendered":null,"cardType":null,"houseAccount":null,"mcaRepaymentAmount":null,"createdDevice":{"id":null},"paidBusinessDate":20210730,"last4Digits":null,"refund":null}],"appliedDiscounts":[],"lastModifiedDevice":{"id":null},"voidDate":null,"paidDate":null,"appliedLoyaltyInfo":null,"voided":false,"paymentStatus":"OPEN","amount":5.0,"tabName":null,"taxExempt":false,"openedDate":"2021-07-30T11:57:46.235+0000","totalAmount":5.0,"selections":[{"guid":"2c8b6ece-c503-4f85-aed7-6a8c6526ba0d","entityType":"MenuItemSelection","externalId":null,"deferred":false,"preDiscountPrice":5.0,"voidReason":null,"optionGroup":null,"displayName":"蟹餅  CRAB CAKES","appliedDiscounts":[],"modifiers":[],"seatNumber":-1,"voidDate":null,"fulfillmentStatus":"NEW","optionGroupPricingMode":null,"salesCategory":{"guid":"c0915e46-341e-4ec0-b46e-cb87fab729fd","entityType":"SalesCategory","externalId":null},"selectionType":"NONE","price":5.0,"voided":false,"appliedTaxes":[],"itemGroup":{"guid":"881472e6-dd94-48c6-b5c6-25e51a864208","entityType":"MenuGroup","externalId":null},"item":{"guid":"9c59d4ab-8242-450f-8f36-b16e1b3ab802","entityType":"MenuItem","externalId":null},"taxInclusion":"NOT_INCLUDED","quantity":1.0,"receiptLinePrice":5.0,"unitOfMeasure":"NONE","refundDetails":null,"tax":0.0,"diningOption":{"guid":"18855a26-40d4-4a8f-b484-c6af211dd597","entityType":"DiningOption","externalId":null},"voidBusinessDate":null,"createdDate":"2021-07-30T11:57:46.269+0000","preModifier":null,"modifiedDate":"2021-07-30T11:57:46.269+0000"}],"voidBusinessDate":null,"createdDate":"2021-07-30T11:57:46.282+0000","deleted":false,"createdDevice":{"id":null},"closedDate":null,"deletedDate":null,"modifiedDate":"2021-07-30T11:57:46.282+0000","taxAmount":0.0,"appliedServiceCharges":[],"customer":{"guid":"970e92e6-33b3-4caa-876b-2c6ef528ef4e","entityType":"Customer","firstName":"Severe","lastName":"Thibault","phone":"5555555555","email":"severe@example.com"}}],"deleted":false,"createdDevice":{"id":null},"createdDate":"2021-07-30T11:57:46.286+0000","closedDate":null,"deletedDate":null,"modifiedDate":"2021-07-30T11:57:46.286+0000","promisedDate":null,"pricingFeatures":["TAXESV2"]}}
+        '400':
+          description: Either the request contains data that is not supported by the current version of the API as described (e.g. specifying credit card as the payment type.), or the order contains an item that is negatively priced.
+        '404':
+          description: An entity referenced in the order does not exist, or belongs to a restaurant the authenticated client is not authorized to access.
+        '413':
+          description: The number of checks in the submitted order exceeds the limit.
+        '415':
+          description: The request did not have "application/json" in the Content-Type header.
+        '500':
+          description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
 
+  /payments/{guid}:
+    get:
+      tags:
+        - Payments
+      summary: Get a payment
+      description: Returns a JSON `Payment` object containing
+        detailed information about a  single payment, specified by its
+        GUID.
+      operationId: paymentsGuidGet
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The GUID of the restaurant used as the context of the request.
+          in: header
+          required: true
+          type: string
+        - name: guid
+          description: The GUID for the payment you want to return.
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Returns a JSON `Payment` object.
+          schema:
+            $ref: '#/definitions/Payment'
+        '400':
+          description: The GUID was malformed.
+        '404':
+          description: The specified payment was not found.
+  /payments:
+    get:
+      tags:
+        - Payments
+      summary: Get payment identifiers
+      description: Returns a list of the GUIDs for each payment made during
+        one restaurant business day. The specific hours that make up a business
+        day depend on the business day cutoff in the restaurant configuration,
+        which is available from the restaurants API in the `closeoutHour`
+        property.
+        The business day for a restaurant is based on its local time (not UTC
+        or local time for an API client). You must include one of the
+        `paidBusinessDate`, `refundBusinessDate`, or `voidBusinessDate` query
+        parameters.
+      operationId: paymentsGet
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: The GUID of the restaurant used as the context of the request.
+          in: header
+          required: true
+          type: string
+        - name: paidBusinessDate
+          description: Returns a list of the payments that were made during
+            one business day. Specify the business day in the format YYYYMMDD,
+            for example, `20170101`.
+          in: query
+          required: false
+          type: string
+        - name: refundBusinessDate
+          description: Returns a list of the payments that were refunded
+            during one business day. Specify the business day in the format
+            YYYYMMDD, for example, `20170101`.
+          in: query
+          required: false
+          type: string
+        - name: voidBusinessDate
+          description: Returns a list of the payments that were voided during
+            one business day. Specify the business day in the format YYYYMMDD,
+            for example, `20170101`.
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: A JSON array of the GUID identifiers for the payments
+          schema:
+            title: Response
+            type: array
+            items:
+              type: string
+  /prices:
+    post:
+      tags:
+        - Orders
+      summary: Get order prices
+      description: |
+        Calculates the check price amounts, tax amounts, and service
+        charges for an `Order` object you supply as a _required message
+        body parameter_. The `prices` endpoint validates the order you
+        submit to ensure all referenced data exists and that you include
+        item selections in the expected structure with all required modifier
+        options. Some values that would be present in the response data when
+        creating an order are not present in the response data for the `prices`
+        endpoint. For example, the order GUID is not set because the
+        Toast platform does not create persistent data for the order.
+        The calculated price can change between requests to the
+        `prices` endpoint with the same `Order` object if enough time
+        passes between the requests. The difference in price is
+        possible because the restaurant configuration can change and
+        because some pricing configuration is based on time and date
+        schedules.
+      operationId: pricesPost
+      produces:
+        - application/json
+      parameters:
+        - name: Toast-Restaurant-External-ID
+          description: |
+            The identifier of the restaurant to be used for this price
+            calculation.
+          in: header
+          required: true
+          type: string
+        - name: body
+          description: |
+            A _required_ JSON `Order` object containing information about
+            the checks, item selections, modifier options, and other parts
+            of the order.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            Success. The response body contains a JSON `Order` object with
+            values for check amounts, taxes, service charges, and other parts
+            of the order. Because this endpoint only calculates prices,
+            no parts of the order persist in the Toast platform and do
+            not have GUIDs in the response object.
+          schema:
+            $ref: '#/definitions/OrderResponse'
+        '400':
+          description: |
+            Either the request contains data that is not supported by
+            the current version of the API as described or the order
+            contains an item that is negatively priced.
+        '403':
+          description: |
+            The API client does not have access to the restaurant, the
+            API client does not have the `orders:read` scope, or both.
+        '404':
+          description: |
+            An entity referenced in the order does not exist, or
+            belongs to a restaurant the API client is not
+            authorized to access.
+        '413':
+          description: |
+            The number of checks in the submitted order exceeds the limit.
+        '415':
+          description: |
+            The request did not have `application/json` in the
+            `Content-Type` HTTP header field.
+        '500':
+          description: |
+            An unexpected internal error occurred. There is a
+            `requestId` attached to the error that can be referenced by
+            the Toast support team.
+
+
+  /orders/{orderGuid}/checks/{checkGuid}/payments:
+    post:
+      tags:
+        - Payments
+      summary: Post payments
+      description: |
+        Adds one or more payments to a check in an existing order. Include
+        information about the payments in an array of `Payment` objects in the
+        message body. Specify the Toast POS system GUID of the order
+        and check in REST path parameters.
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiAddingPaymentsToACheck.html">Adding
+        Payments to a Check</a> in the _Toast API Developer's Guide_.
+      operationId: ordersChecksPaymentsPost
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            adding payments to.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            adding payments to.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            An array of JSON `Payment` objects containing information about the payments you are adding.
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Payment'
+      responses:
+        '200':
+          description: |
+            A JSON `Order` object that includes the payments that you added.
+          schema:
+            $ref: '#/definitions/Order'
   /applicableDiscounts:
     post:
-      summary: Get the discounts that apply to an order
+      tags:
+        - Discounts
+      summary: Get applicable discounts
       description: |
-        Returns an array of <a
-        href="#/definitions/ApplicableDiscount">`ApplicableDiscount`</a>
+        Returns an array of `ApplicableDiscount`
         objects that contain information about the discounts that apply
         to the checks and menu item selections in an order. Each
         `ApplicableDiscount` object contains information that you can
@@ -2209,6 +2040,7 @@ paths:
         `ApplicableDiscount` object, the `applicableDiscounts` endpoint
         returns the only the discounts that are associated with the
         promotional code that you supply.
+      operationId: applicableDiscountsPost
       produces:
         - application/json
       parameters:
@@ -2219,17 +2051,15 @@ paths:
           type: string
         - name: body
           description: |
-            A JSON <a
-            href="#/definitions/ApplicableDiscountsRequest">ApplicableDiscountsRequest</a>
-            object containing information about an order, and an
-            optional promoCode.
+            A JSON `ApplicableDiscountsRequest` object containing
+            information about an order, and an optional promoCode.
           in: body
           required: true
           schema:
             $ref: '#/definitions/ApplicableDiscountsRequest'
       responses:
         '200':
-          description: A JSON array of <a href="#/definitions/ApplicableDiscount">`ApplicableDiscount`</a> objects.
+          description: A JSON array of `ApplicableDiscount` objects.
           schema:
             title: ApplicableDiscounts
             type: array
@@ -2239,3 +2069,151 @@ paths:
           description: Invalid arguments
         '500':
           description: An unexpected internal error occurred. There is a requestId attached to this error that can be referenced by Toast.
+  /orders/{orderGuid}/checks/{checkGuid}/appliedDiscounts:
+    post:
+      tags:
+        - Discounts
+      summary: Add check-level discounts
+      description: |
+        Adds one or more check-level discounts to a check in an
+        existing order. Include an array of `Discount` objects in the
+        message body.
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
+        Discounts to Checks</a> in the _Toast API Developer's Guide_.
+      operationId: ordersChecksAppliedDiscountsPost
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON array of `Discount` objects that identify the discounts you are adding.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A JSON `Order` object that includes the discount you added.
+          schema:
+            $ref: '#/definitions/Order'
+  /orders/{orderGuid}/checks/{checkGuid}/selections/{selectionGuid}/appliedDiscounts:
+    post:
+      tags:
+        - Discounts
+      summary: Add item-level discounts
+      description: |
+        Adds one or more item-level discounts to menu item selections
+        in a check in an existing order. Include an array of `Discount` objects in the
+        message body.
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiAddingDiscountsToChecks.html">Adding
+        Discounts to Checks</a> in the _Toast API Developer's Guide_.
+      operationId: ordersChecksSelectionsAppliedDiscountsPost
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: selectionGuid
+          description: |
+            The Toast POS system identifier of the menu item selection
+            that you are adding a discount in.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON array of `Discount` objects that identify the discounts you are adding.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A JSON `Order` object that includes the discount you added.
+          schema:
+            $ref: '#/definitions/Order'
+  /orders/{orderGuid}/checks/{checkGuid}/payments/{paymentGuid}:
+    patch:
+      tags:
+        - Discounts
+      summary: Update a tip
+      description: |
+        Updates the tip amount in an existing payment for a check in an
+        order. Include the new `tipAmount` value in a `Payment` object
+        in the message body. This endpoint does not allow any other
+        `Payment` object value for a `PATCH` request. Specify the Toast
+        POS system GUID of the order, check, and payment in REST path
+        parameters.
+        For more information, see <a
+        href="http://dev.toasttab.com/Ie5QH/apiUpdatingTipsInAPayment.html">Updating
+        Tips in a Payment</a> in the _Toast API Developer's Guide_.
+      operationId: ordersChecksPaymentsPatch
+      produces:
+        - application/json
+      parameters:
+        - name: orderGuid
+          description: |
+            The Toast POS system identifier of the order that you are
+            updating a tip in.
+          in: path
+          required: true
+          type: string
+        - name: checkGuid
+          description: |
+            The Toast POS system identifier of the check that you are
+            updating a tip in.
+          in: path
+          required: true
+          type: string
+        - name: paymentGuid
+          description: |
+            The Toast POS system identifier of the payment that you are
+            updating a tip in.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: |
+            A JSON `Payment` object containing the `tipAmount` value
+            that will replace any existing tip amount for the payment.
+            Do not include any value other than `tipAmount`.
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            A JSON `Order` object that includes the tip amount that you updated.
+          schema:
+            $ref: '#/definitions/Order'
