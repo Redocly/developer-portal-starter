@@ -3,9 +3,10 @@ meta:
   description: The best API documentation generator ever.
   siteUrl: https://portal-demo.redoc.ly
   keywords: redocly developer portal, api portal starter, api reference docs
+  lang: en-US
 linkChecker:
   severity: warning
-  options: 
+  options:
     CheckExternal: false
 logo: ./images/logo.png
 enableToc: true

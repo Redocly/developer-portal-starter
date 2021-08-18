@@ -60,7 +60,9 @@ Groups can be nested within each other.
 
 Move the upgrade page to display at the very bottom of the sidebar on the left-most side underneath the Petstore reference section.
 
-<div class="attention">Pay attention to the indentation spacing</div>
+:::attention
+Pay attention to the indentation spacing
+:::
 
 ```yaml
   - group: Petstore reference

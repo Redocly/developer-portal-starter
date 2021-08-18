@@ -100,6 +100,33 @@ Then paste it in the markdown and voila!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NcEHOlnAY6A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+## Content reuse
+
+You can reuse content using the [embed tag](https://redoc.ly/docs/developer-portal/guides/reusing-content/).
+
+## Admonitions
+
+:::warning
+Use various [admonitions](https://redoc.ly/docs/developer-portal/markdown/#admonitions) like this warning.
+:::
+
+:::info INFO
+info
+:::
+
+:::success Yee-haw!
+success
+:::
+
+:::danger
+danger
+:::
+
+:::attention
+attention
+:::
+
+
 ## Review
 
 You made a new file.

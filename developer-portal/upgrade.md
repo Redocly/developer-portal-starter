@@ -8,7 +8,7 @@ It's a good idea to isolate an upgrade to a single commit.
 Find the `@redocly/developer-portal` in the `@dependencies` section of the `package.json` file.
 ```json
   "dependencies": {
-    "@redocly/developer-portal": "^1.0.0-beta.46"
+    "@redocly/developer-portal": "^1.1.0-beta.34"
   }
 ```
 
@@ -18,7 +18,7 @@ Check the [published versions on NPM](https://www.npmjs.com/package/@redocly/dev
 
 ```json
   "dependencies": {
-    "@redocly/developer-portal": "^1.0.0-beta.51"
+    "@redocly/developer-portal": "^1.1.0-beta.35"
   }
 ```
 
@@ -39,7 +39,9 @@ Some dependencies are pinned based on the underlying OS or node version.
 
 ```bash
 rm yarn.lock
+rm -rf node_modules
 yarn install
+yarn clean
 ```
 
 Still stuck? Contact us. We're happy to help.

@@ -11,8 +11,8 @@ This page describes how to organize the files and folders and how to configure t
 ## Overview ##
 
 To start working with **Redocly Portal**, please get familiar with the following:
-* The [Markdown](https://www.markdownguide.org/basic-syntax/) syntax. We recommend using [**Visual Studio Code**](https://code.visualstudio.com/) for writing and maintaining your files.
-* File management basics.
+- The [Markdown](https://www.markdownguide.org/basic-syntax/) syntax. We recommend using [**Visual Studio Code**](https://code.visualstudio.com/) for writing and maintaining your files.
+- File management basics.
 
 ## Organizing content ##
 
@@ -50,10 +50,10 @@ If needed, you can change the contents of these files to configure look and feel
 | `index.mdx`  | The home page of the **Portal**.  |
 | `siteConfig.yaml`  | In this file, you can do the following: <br> <ul><li>Set up persistent navigation and logo.</li><li>Declare API definitions and stylesheets.</li><li>Add custom scripts.</li><li>Set up google analytics.</li></ul>|
 | `theme.ts` | Controls the fonts and colors used throughout the **Portal**. |
-| `sidebars.yaml` | Controls the [sidebar navigation](/developer-portal/sidebar-nav) among contents. |
+| `sidebars.yaml` | Controls the [sidebar navigation](./sidebar-nav.md) among contents. |
 | `favicon.png` | Displays the favicon. |
 
-For more details, see [Customizing Portal](/developer-portal/custom-portal/).
+For more details, see [Customizing Portal](./custom-portal.md).
 
 Also, you can include your OpenAPI .yaml or .json file directly in the **Portal** to be able to generate the API reference pages.
 
