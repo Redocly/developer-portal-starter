@@ -4,31 +4,46 @@ info:
   version: 2.2.0
   title: Toast Configuration API
   description: |
-    ## Overview
+      Returns information about the configuration of a restaurant and 
+      its menus, such as menu items and alternate payment types, as 
+      well as physical configuration such as cash drawers and 
+      restaurant tables.
 
-      You can use the Toast configuration API to retrieve information about
-      the configuration of a restaurant and its menus. This includes
-      menu items, menu groups, and alternate payment types, as well as
-      physical configuration such as cash drawers and restaurant
-      tables.
-
-      The configuration API does not return information about entities
-      that you have removed from your restaurant configuration or
-      archived. For example, if you remove a menu item or archive a
-      discount, the configuration API will not return the menu item or
-      discount in response data.
-
-      For more information about using this and other Toast APIs, see
-      the <cite>Toast API Developer's Guide.</cite>
-
+      It does not return information about entities that you have 
+      removed from your restaurant configuration or archived.
   contact:
-    name: Toast API Support
-    email: developer-support@toasttab.com
+    name: Toast developer support
 schemes:
   - https
+host: toast-api-server
 basePath: /config/v2
 consumes:
   - application/json
+tags: 
+  - name: Alternate Payment Types
+  - name: Break Types
+  - name: Cash Drawers
+  - name: Dining Options
+  - name: Discounts
+  - name: Menu Groups
+  - name: Menu Items
+  - name: Modifier Groups
+  - name: Menus
+  - name: No Sale Reasons
+  - name: Payout Reasons
+  - name: Pre Modifier Groups
+  - name: Pre Modifiers
+  - name: Price Groups
+  - name: Printers
+  - name: Restaurant Services
+  - name: Revenue Centers
+  - name: Sales Categories
+  - name: Service Areas
+  - name: Service Charges
+  - name: Tables
+  - name: Tax Rates
+  - name: Tip Withholding
+  - name: Void Reasons
 produces:
   - application/json
 definitions:
@@ -267,8 +282,7 @@ definitions:
           groups:
             type: array
             description: |
-              An array of the <a
-              href="#/definitions/MenuGroup">`MenuGroup`</a> objects
+              An array of the `MenuGroup` objects
               that are part of this menu.
             minItems: 0
             items:
@@ -352,8 +366,7 @@ definitions:
             type: array
             description: |
               An array of `ExternalReference` objects containing the
-              identifiers of the <a
-              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              identifiers of the `MenuOptionGroup`s
               that contain modifiers applicable to this item. Does not
               include those inherited from the parent `MenuGroup`.
             minItems: 0
@@ -362,14 +375,12 @@ definitions:
           inheritOptionGroups:
             type: boolean
             description: |
-              True if this menu item inherits <a
-              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
-              from its parent <a
-              href="#/definitions/MenuGroup">`MenuGroup`</a>.
+              True if this menu item inherits `MenuOptionGroup`s
+              from its parent `MenuGroup`.
           images:
             type: array
             description: |
-              An array of <a href="#/definitions/Image">`Image`</a>
+              An array of `Image`
               objects that are associated with the `MenuItem`.
             items:
               $ref: '#/definitions/Image'
@@ -389,8 +400,7 @@ definitions:
             type: boolean
             description: |
               True if this menu item inherits its unit of measure
-              from its parent <a
-              href="#/definitions/MenuGroup">`MenuGroup`</a>.
+              from its parent `MenuGroup`.
 
   MenuGroup:
     type: object
@@ -444,8 +454,7 @@ definitions:
             type: array
             description: |
               An array of `ExternalReference` objects containing the
-              identifiers of the <a
-              href="#/definitions/MenuItem">`MenuItem`s</a> in the menu
+              identifiers of the `MenuItem`s in the menu
               group.
             minItems: 0
             items:
@@ -454,8 +463,7 @@ definitions:
             type: array
             description: |
               An array of `ExternalReference` objects containing the
-              identifiers of the child <a
-              href="#/definitions/MenuGroup">`MenuGroup`s</a> in
+              identifiers of the child `MenuGroup`s in
               the menu group. Empty if the menu group does not include any child
               menu groups.
             minItems: 0
@@ -465,8 +473,7 @@ definitions:
             type: array
             description: |
               An array of `ExternalReference` objects containing the
-              identifiers of the child <a
-              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              identifiers of the child `MenuOptionGroup`s
               that contain modifiers applicable to the group, its
               subgroups and its items. Does not include
               `MenuOptionGroup`s inherited from its parent `MenuGroup`.
@@ -476,13 +483,12 @@ definitions:
           inheritOptionGroups:
             type: boolean
             description: |
-              True if this `MenuGroup` inherits <a
-              href="#/definitions/MenuOptionGroup">`MenuOptionGroup`s</a>
+              True if this `MenuGroup` inherits `MenuOptionGroup`s
               from its parent `MenuGroup`.
           images:
             type: array
             description: |
-              An array of <a href="#/definitions/Image">`Image`</a>
+              An array of `Image`
               objects associated with with the `MenuGroup`.
             items:
               $ref: '#/definitions/Image'
@@ -501,10 +507,8 @@ definitions:
             type: boolean
             description: |
               True if this `MenuGroup` inherits its unit of measure
-              from its parent <a
-              href="#/definitions/MenuGroup">`MenuGroup`</a> or (if its parent is null)
-              its parent <a
-              href="#/definitions/Menu">`Menu`</a>.
+              from its parent `MenuGroup` or (if its parent is null)
+              its parent `Menu`.
 
   MenuOptionGroup:
     type: object
@@ -520,8 +524,7 @@ definitions:
             type: array
             description: |
               An array of `ExternalReference` objects containing the
-              identifiers of the <a
-              href="#/definitions/MenuItem">`MenuItem`s</a> in
+              identifiers of the `MenuItem`s in
               the menu group.
             minItems: 0
             items:
@@ -797,8 +800,7 @@ definitions:
           conditionalTaxRates:
             type: array
             description: |
-              An array of <a
-              href="#/definitions/ConditionalTaxRate">`ConditionalTaxRate`</a>
+              An array of `ConditionalTaxRate`
               objects that indicate the conditional rates that override
               the default `rate` for this `TaxRate` in specific
               situations. For example, a conditional rate might
@@ -811,8 +813,7 @@ definitions:
     type: object
     description: |
                    A conditional tax rate that overrides the default `rate`
-                   for a <a
-                   href="#/definitions/TaxRate">`TaxRate`</a> in
+                   for a `TaxRate` in
                    specific situations. For example, a conditional rate
                    might override the default rate when a `TaxRate` is
                    applied for a specific dining option, such as takeout.
@@ -921,12 +922,13 @@ definitions:
 paths:
   /alternatePaymentTypes/{guid}:
     get:
+      tags: 
+        - Alternate Payment Types
+      operationId: alternatePaymentTypesGuidGet
       summary: |
-        Returns information about an alternative form of payment
-        configured for a restaurant.
+        Get an alternative payment type
       description: |
-        Returns an <a
-        href="#/definitions/AlternatePaymentType">`AlternatePaymentType`</a>
+        Returns an `AlternatePaymentType`
         object containing information about an alternative form of payment
         configured for a restaurant. Alternate payment types are forms
         of payment that are not standard in the Toast POS and that are
@@ -955,12 +957,13 @@ paths:
             $ref: '#/definitions/AlternatePaymentType'
   /alternatePaymentTypes:
     get:
+      tags: 
+        - Alternate Payment Types
+      operationId: alternatePaymentTypesGet
       summary: |
-        Returns an array of alternative forms of payment configured for
-        a restaurant.
+        Get alternative payment types
       description: |
-        Returns an array of <a
-        href="#/definitions/AlternatePaymentType">`AlternatePaymentType`</a>
+        Returns an array of `AlternatePaymentType`
         objects containing information about alternative forms of
         payment that are configured for a restaurant. Alternate
         payment types are forms of payment that are not standard in the
@@ -1013,12 +1016,15 @@ paths:
               $ref: '#/definitions/AlternatePaymentType'
   /breakTypes/{guid}:
       get:
+        tags: 
+          - Break Types
+        operationId: breakTypesGuidGet
         summary: |
-          Returns information about a break configured for a restaurant.
+          Get a break type
         description: |
-          Returns a <a href="#/definitions/BreakType">`BreakType`</a>
-          object containing information about a break configured for a
-          restaurant.
+          Returns a `BreakType`
+          object containing information about a break type configured for 
+          a restaurant.
         produces:
           - application/json
         parameters:
@@ -1040,11 +1046,13 @@ paths:
               $ref: '#/definitions/BreakType'
   /breakTypes:
       get:
+        tags: 
+          - Break Types
+        operationId: breakTypesGet
         summary: |
-          Returns an array of breaks configured for a restaurant.
+          Get break types
         description: |
-          Returns an array of <a
-          href="#/definitions/BreakType">`BreakType`</a>
+          Returns an array of `BreakType`
           objects containing information about breaks configured for a
           restaurant. If a `lastModified` date is specified, returns
           all objects that were created or modified after that date.
@@ -1092,10 +1100,13 @@ paths:
                 $ref: '#/definitions/BreakType'
   /cashDrawers/{guid}:
     get:
+      tags: 
+        - Cash Drawers
+      operationId: cashDrawersGuidGet
       summary: |
-        Returns information about a specific cash drawer device.
+        Get a cash drawer
       description: |
-        Returns a <a href="#/definitions/CashDrawer">`CashDrawer`</a>
+        Returns a `CashDrawer`
         object containing information about a specific cash drawer
         device.
       produces:
@@ -1120,12 +1131,13 @@ paths:
             $ref: '#/definitions/CashDrawer'
   /cashDrawers:
     get:
+      tags: 
+        - Cash Drawers
+      operationId: cashDrawersGet
       summary: |
-        Returns an array of information about cash drawers configured
-        for a restaurant.
+        Get cash drawers
       description: |
-        Returns an array of <a
-        href="#/definitions/CashDrawer">`CashDrawer`</a> objects
+        Returns an array of `CashDrawer` objects
         containing information about the cash drawer devices for the
         restaurant. If a `lastModified` date is specified, returns all
         objects that were created or modified after that date.
@@ -1173,12 +1185,13 @@ paths:
               $ref: '#/definitions/CashDrawer'
   /diningOptions/{guid}:
     get:
+      tags: 
+        - Dining Options
+      operationId: diningOptionsGuidGet
       summary: |
-        Returns information about a specific type of service offered by
-        a restaurant.
+        Get a dining option
       description: |
-        Returns a <a
-        href="#/definitions/DiningOption">`DiningOption`</a> object
+        Returns a `DiningOption` object
         containing information about a type of service offered by a
         restaurant. For example, dine in, take out, and delivery might
         be dining options for a restaurant.
@@ -1204,12 +1217,13 @@ paths:
             $ref: '#/definitions/DiningOption'
   /diningOptions:
     get:
+      tags: 
+        - Dining Options
+      operationId: diningOptionsGet
       summary: |
-        Returns an array of information about types of service offered
-        by a restaurant.
+        Get dining options
       description: |
-        Returns an array of <a
-        href="#/definitions/DiningOption">`DiningOption`</a> objects
+        Returns an array of `DiningOption` objects
         containing information about types of service offered by a
         restaurant. For example, dine in, take out, and delivery might
         be dining options for a restaurant. If a `lastModified` date is
@@ -1259,11 +1273,13 @@ paths:
               $ref: '#/definitions/DiningOption'
   /discounts/{guid}:
     get:
+      tags: 
+        - Discounts
+      operationId: discountsGuidGet
       summary: |
-        Returns information about a price deduction configured for a
-        restaurant.
+        Get a discount
       description: |
-        Returns a <a href="#/definitions/Discount">`Discount`</a>
+        Returns a `Discount`
         object containing information about a price deduction
         configured for a restaurant.
       produces:
@@ -1288,12 +1304,13 @@ paths:
             $ref: '#/definitions/Discount'
   /discounts:
     get:
+      tags: 
+        - Discounts
+      operationId: discountsGet
       summary: |
-        Returns an array of information about price deductions
-        configured for a restaurant.
+        Get discounts
       description: |
-        Returns an array of <a
-        href="#/definitions/Discount">`Discount`</a> objects containing
+        Returns an array of `Discount` objects containing
         information about the price deductions configured for a
         restaurant. If a `lastModified` date is specified, returns all
         objects that were created or modified after that date.
@@ -1341,10 +1358,13 @@ paths:
               $ref: '#/definitions/Discount'
   /menuGroups/{guid}:
     get:
+      tags: 
+        - Menu Groups
+      operationId: menuGroupsGuidGet
       summary: |
-        Returns information about a section within a menu.
+        Get a menu group
       description: |
-        Returns a <a href="#/definitions/MenuGroup">`MenuGroup`</a>
+        Returns a `MenuGroup`
         object containing information about a section within a menu.
       produces:
         - application/json
@@ -1368,12 +1388,13 @@ paths:
             $ref: '#/definitions/MenuGroup'
   /menuGroups:
     get:
+      tags: 
+        - Menu Groups
+      operationId: menuGroupsGet
       summary: |
-        Returns an array of information about the sections of menus
-        configured for a restaurant.
+        Get menu groups
       description: |
-        Returns an array of <a
-        href="#/definitions/MenuGroup">`MenuGroup`</a> objects
+        Returns an array of `MenuGroup` objects
         containing information about the subsections of the menus
         configured for a restaurant. If a `lastModified` date is
         specified, returns all objects that were created or modified
@@ -1422,11 +1443,13 @@ paths:
               $ref: '#/definitions/MenuGroup'
   /menuItems/{guid}:
     get:
+      tags: 
+        - Menu Items
+      operationId: menuItemsGuidGet
       summary: |
-        Returns information about an item or modifier available from a
-        restaurant.
+        Get a menu item or modifier
       description: |
-        Returns a <a href="#/definitions/MenuItem">`MenuItem`</a>
+        Returns a `MenuItem`
         object containing information about an item or modifier available from a
         restaurant.
       produces:
@@ -1451,12 +1474,13 @@ paths:
             $ref: '#/definitions/MenuItem'
   /menuItems:
     get:
+      tags: 
+        - Menu Items
+      operationId: menuItemsGet
       summary: |
-        Returns information about the items and modifiers available
-        from a restaurant.
+        Get menu items and modifiers
       description: |
-        Returns an array of <a
-        href="#/definitions/MenuItem">`MenuItem`</a> objects containing
+        Returns an array of `MenuItem` objects containing
         information about the items and modifiers available from a
         restaurant. If a `lastModified` date is specified, returns all
         objects that were created or modified after that date.
@@ -1504,13 +1528,15 @@ paths:
               $ref: '#/definitions/MenuItem'
   /menuOptionGroups/{guid}:
     get:
+      tags: 
+        - Modifier Groups
+      operationId: menuOptionGroupsGuidGet
       summary: |
-        Returns information about a group of modifier menu items.
+        Get a modifier group's
       description: |
-        Returns a <a
-        href="#/definitions/MenuOptionGroup">`MenuOptionGroup`</a>
-        object containing information about a group of modifier menu items. For
-        example, salad dressings might be a menu option group for a
+        Returns a `MenuOptionGroup`
+        object containing information about a modifier group. For
+        example, salad dressings might be a modifier group for a
         salad menu item.
       produces:
         - application/json
@@ -1523,7 +1549,7 @@ paths:
           type: string
           required: true
         - name: guid
-          description: The Toast POS GUID of the menu option group.
+          description: The Toast POS GUID of the modifier group.
           in: path
           type: string
           required: true
@@ -1534,15 +1560,16 @@ paths:
             $ref: '#/definitions/MenuOptionGroup'
   /menuOptionGroups:
     get:
+      tags: 
+        - Modifier Groups
+      operationId: menuOptionGroupsGet
       summary: |
-        Returns information about the groups of modifier menu items
-        configured for a restaurant.
+        Get modifier groups
       description: |
-        Returns an array <a
-        href="#/definitions/MenuOptionGroup">`MenuOptionGroup`</a>
-        objects containing information about groups of modifier menu
-        items. For example, salad dressings might be a menu option
-        group for a salad menu item. If a `lastModified` date is
+        Returns an array of `MenuOptionGroup`
+        objects containing information about modifier groups. 
+        For example, salad dressings might be a modifier group
+        for a salad menu item. If a `lastModified` date is
         specified, returns all objects that were created or modified
         after that date.
       produces:
@@ -1589,10 +1616,13 @@ paths:
               $ref: '#/definitions/MenuOptionGroup'
   /menus/{guid}:
     get:
+      tags: 
+        - Menus
+      operationId: menusGuidGet
       summary: |
-        Returns information about a menu configured for a restaurant.
+        Get a menu
       description: |
-        Returns a <a href="#/definitions/Menu">`Menu`</a> object
+        Returns a `Menu` object
         containing information about a menu configured for a
         restaurant. For example, a restaurant might have drinks,
         dinner, and dessert menus.
@@ -1618,11 +1648,13 @@ paths:
             $ref: '#/definitions/Menu'
   /menus:
     get:
+      tags: 
+        - Menus
+      operationId: menusGet
       summary: |
-        Returns information about the menus configured for a
-        restaurant.
+        Get menus
       description: |
-        Returns an array of <a href="#/definitions/Menu">`Menu`</a>
+        Returns an array of `Menu`
         objects containing information about menus configured for a
         restaurant. For example, a restaurant might have drinks,
         dinner, and dessert menus. If a `lastModified` date is
@@ -1672,12 +1704,13 @@ paths:
               $ref: '#/definitions/Menu'
   /preModifiers/{guid}:
     get:
+      tags: 
+        - Pre Modifiers
+      operationId: preModifiersGuidGet
       summary: |
-        Returns information about a pre modifier configured
-        for a restaurant.
+        Get a pre modifier
       description: |
-        Returns a <a
-        href="#/definitions/PreModifier">`PreModifier`</a> object
+        Returns a `PreModifier` object
         containing information about a pre modifier.
       produces:
         - application/json
@@ -1701,12 +1734,13 @@ paths:
             $ref: '#/definitions/PreModifier'
   /preModifiers:
     get:
+      tags: 
+        - Pre Modifiers
+      operationId: preModifiersGet
       summary: |
-        Returns information about pre modifiers configured
-        for a restaurant.
+        Get pre modifiers
       description: |
-        Returns an array of <a
-        href="#/definitions/PreModifier">`PreModifier`</a> objects
+        Returns an array of `PreModifier` objects
         containing information about PreModifiers configured
         for a restaurant.
       produces:
@@ -1753,12 +1787,13 @@ paths:
               $ref: '#/definitions/PreModifier'
   /preModifierGroups/{guid}:
     get:
+      tags: 
+        - Pre Modifier Groups
+      operationId: preModifierGroupsGuidGet
       summary: |
-        Returns information about a pre modifier group configured
-        for a restaurant.
+        Get a pre modifier group
       description: |
-        Returns a <a
-        href="#/definitions/PreModifierGroup">`PreModifierGroup`</a> object
+        Returns a `PreModifierGroup` object
         containing information about a pre modifier group.
       produces:
         - application/json
@@ -1782,12 +1817,13 @@ paths:
             $ref: '#/definitions/PreModifierGroup'
   /preModifierGroups:
     get:
+      tags: 
+        - Pre Modifier Groups
+      operationId: preModifierGroupsGet
       summary: |
-        Returns information about pre modifier groups configured
-        for a restaurant.
+        Get pre modifier groups
       description: |
-        Returns an array of <a
-        href="#/definitions/PreModifierGroup">`PreModifierGroup`</a> objects
+        Returns an array of `PreModifierGroup` objects
         containing information about PreModifierGroup configured
         for a restaurant.
       produces:
@@ -1834,12 +1870,13 @@ paths:
               $ref: '#/definitions/PreModifierGroup'
   /noSaleReasons/{guid}:
     get:
+      tags: 
+        - No Sale Reasons
+      operationId: noSaleReasonsGuidGet
       summary: |
-        Returns information about a no sale reason configured
-        for a restaurant.
+        Get a no sale reason
       description: |
-        Returns a <a
-        href="#/definitions/NoSaleReason">`NoSaleReason`</a> object
+        Returns a `NoSaleReason` object
         containing information about a no sale reason.
       produces:
         - application/json
@@ -1863,12 +1900,13 @@ paths:
             $ref: '#/definitions/NoSaleReason'
   /noSaleReasons:
     get:
+      tags: 
+        - No Sale Reasons
+      operationId: noSaleReasonsGet
       summary: |
-        Returns information about no sale reasons configured
-        for a restaurant.
+        Get no sale reasons
       description: |
-        Returns an array of <a
-        href="#/definitions/NoSaleReason">`NoSaleReason`</a> objects
+        Returns an array of `NoSaleReason` objects
         containing information about no sale reasons configured
         for a restaurant.
       produces:
@@ -1915,12 +1953,13 @@ paths:
               $ref: '#/definitions/NoSaleReason'
   /payoutReasons/{guid}:
     get:
+      tags: 
+        - Payout Reasons
+      operationId: payoutReasonsGuidGet
       summary: |
-        Returns information about a recurring cash expense configured
-        for a restaurant.
+        Get a payout reason
       description: |
-        Returns a <a
-        href="#/definitions/PayoutReason">`PayoutReason`</a> object
+        Returns a `PayoutReason` object
         containing information about a recurring restaurant expense
         that is paid in cash. Payout reasons are pre-configured for a
         restaurant.
@@ -1946,12 +1985,13 @@ paths:
             $ref: '#/definitions/PayoutReason'
   /payoutReasons:
     get:
+      tags: 
+        - Payout Reasons
+      operationId: payoutReasonsGet
       summary: |
-        Returns information about recurring cash expenses configured
-        for a restaurant.
+        Get payout reasons
       description: |
-        Returns an array of <a
-        href="#/definitions/PayoutReason">`PayoutReason`</a> objects
+        Returns an array of `PayoutReason` objects
         containing information about recurring cash expenses configured
         for a restaurant. For example, payment for services such as
         window washing might be payout reasons. If a `lastModified`
@@ -2001,13 +2041,14 @@ paths:
               $ref: '#/definitions/PayoutReason'
   /priceGroups/{guid}:
     get:
+      tags: 
+        - Price Groups
+      operationId: priceGroupsGuidGet
       summary: |
-        Returns information about a variable price level configured for
-        items at a restaurant.
+        Get a price level for menu items
       description: |
-        Returns a <a
-        href="#/definitions/PriceGroup">`PriceGroup`</a> object
-        containing information about variable price levels configured for
+        Returns a `PriceGroup` object
+        containing information about a variable price level configured for
         items at a restaurant.
       produces:
         - application/json
@@ -2031,12 +2072,13 @@ paths:
             $ref: '#/definitions/PriceGroup'
   /priceGroups:
     get:
+      tags: 
+        - Price Groups
+      operationId: priceGroupsGet
       summary: |
-        Returns information about the variable price levels configured
-        for items at a restaurant.
+        Get price levels for menu items
       description: |
-        Returns an array of <a
-        href="#/definitions/PriceGroup">`PriceGroup`</a> objects
+        Returns an array of `PriceGroup` objects
         containing information about the variable price levels
         configured for items at a restaurant. If a `lastModified` date
         is specified, returns all objects that were created or modified
@@ -2085,11 +2127,13 @@ paths:
               $ref: '#/definitions/PriceGroup'
   /printers/{guid}:
     get:
+      tags: 
+        - Printers
+      operationId: printersGuidGet
       summary: |
-        Returns information about a printer device configured for a
-        restaurant.
+        Get a printer
       description: |
-        Returns a <a href="#/definitions/Printer">`Printer`</a> object
+        Returns a `Printer` object
         containing information about a printer device configured for a
         restaurant.
       produces:
@@ -2114,12 +2158,13 @@ paths:
             $ref: '#/definitions/Printer'
   /printers:
     get:
+      tags: 
+        - Printers
+      operationId: printersGet
       summary: |
-        Returns information about the printer devices configured for a
-        restaurant.
+        Get printers
       description: |
-        Returns an array of <a
-        href="#/definitions/Printer">`Printer`</a> objects containing
+        Returns an array of `Printer` objects containing
         information about the printer devices configured for a
         restaurant. If a `lastModified` date is specified, returns all
         objects that were created or modified after that date.
@@ -2167,12 +2212,13 @@ paths:
               $ref: '#/definitions/Printer'
   /salesCategories/{guid}:
     get:
+      tags: 
+        - Sales Categories
+      operationId: salesCategoriesGuidGet
       summary: |
-        Returns information about a type of menu item used to analyze
-        purchases at a restaurant.
+        Get a menu item sales category
       description: |
-        Returns a <a
-        href="#/definitions/SalesCategory">`SalesCategory`</a> object
+        Returns a `SalesCategory` object
         containing information about a type of menu item used to
         analyze purchases at a restaurant. For example, food and
         alcohol might be sales categories for a restaurant.
@@ -2196,15 +2242,15 @@ paths:
           description: Returns a `SalesCategory` object.
           schema:
             $ref: '#/definitions/SalesCategory'
-
   /salesCategories:
     get:
+      tags: 
+        - Sales Categories
+      operationId: salesCategoriesGet
       summary: |
-        Returns information about types of menu item used to analyze
-        purchases at a restaurant.
+        Get menu item sales categories
       description: |
-        Returns an array of <a
-        href="#/definitions/SalesCategory">`SalesCategory`</a> objects
+        Returns an array of `SalesCategory` objects
         containing information about the types of menu item used to
         analyze purchases at a restaurant. For example, food and
         alcohol might be sales categories for a restaurant. If a
@@ -2254,11 +2300,13 @@ paths:
               $ref: '#/definitions/SalesCategory'
   /serviceAreas/{guid}:
     get:
+      tags: 
+        - Service Areas
+      operationId: serviceAreasGuidGet
       summary: |
-        Returns information about a physical setting that a
-        restaurant serves customers in.
+        Get a service area
       description: |
-        Returns a <a href="#/definitions/ServiceArea">`ServiceArea`</a>
+        Returns a `ServiceArea`
         object containing information about a physical setting that a
         restaurant serves customers in. For example, a restaurant might
         serve customers in dining room and patio service areas.
@@ -2284,12 +2332,13 @@ paths:
             $ref: '#/definitions/ServiceArea'
   /serviceAreas:
     get:
+      tags: 
+        - Service Areas
+      operationId: serviceAreasGet
       summary: |
-        Returns information about the physical settings that a
-        restaurant serves customers in.
+        Get service areas
       description: |
-        Returns an array of <a
-        href="#/definitions/ServiceArea">`ServiceArea`</a> objects
+        Returns an array of `ServiceArea` objects
         containing information about the physical settings that a
         restaurant serves customers in. For example, a restaurant might
         serve customers in dining room and patio service areas. If a
@@ -2339,12 +2388,13 @@ paths:
               $ref: '#/definitions/ServiceArea'
   /serviceCharges/{guid}:
     get:
+      tags: 
+        - Service Charges
+      operationId: serviceChargesGuidGet
       summary: |
-        Returns information about a type of fee applied to restaurant
-        sales.
+        Get a service charge type
       description: |
-        Returns a <a
-        href="#/definitions/ServiceCharge">`ServiceCharge`</a> object
+        Returns a `ServiceCharge` object
         containing information about a type of fee applied to
         restaurant sales. For example, an automatic gratuity applied to
         the check for a large dining party might be a type of service
@@ -2371,12 +2421,13 @@ paths:
             $ref: '#/definitions/ServiceCharge'
   /serviceCharges:
     get:
+      tags: 
+        - Service Charges
+      operationId: serviceChargesGet
       summary: |
-        Returns information about the types of fees applied to
-        restaurant sales.
+        Get service charges
       description: |
-        Returns an array of <a
-        href="#/definitions/ServiceCharge">`ServiceCharge`</a> objects
+        Returns an array of `ServiceCharge` objects
         containing information about the types of fee applied to
         restaurant sales. For example, an automatic gratuity applied to
         the check for a large dining party might be a type of service
@@ -2427,12 +2478,13 @@ paths:
               $ref: '#/definitions/ServiceCharge'
   /revenueCenters/{guid}:
     get:
+      tags: 
+        - Revenue Centers
+      operationId: revenueCentersGuidGet
       summary: |
-        Returns information about a segment of restaurant income, for
-        reporting.
+        Get a revenue center
       description: |
-        Returns a <a
-        href="#/definitions/RevenueCenter">`RevenueCenter`</a> object
+        Returns a `RevenueCenter` object
         containing information about a segment of restaurant income,
         for reporting.
       produces:
@@ -2457,12 +2509,13 @@ paths:
             $ref: '#/definitions/RevenueCenter'
   /revenueCenters:
     get:
+      tags: 
+        - Revenue Centers
+      operationId: revenueCentersGet
       summary: |
-        Returns information about segments of restaurant income, for
-        reporting.
+        Get revenue centers
       description: |
-        Returns an array of <a
-        href="#/definitions/RevenueCenter">`RevenueCenter`</a> objects
+        Returns an array of `RevenueCenter` objects
         containing information about segments of restaurant income, for
         reporting. If a `lastModified` date is specified, returns all
         objects that were created or modified after that date.
@@ -2510,12 +2563,13 @@ paths:
               $ref: '#/definitions/RevenueCenter'
   /restaurantServices/{guid}:
     get:
+      tags: 
+        - Restaurant Services
+      operationId: restaurantServicesGuidGet
       summary: |
-        Returns information about a type of menu and dining offered by
-        a restaurant.
+        Get a restaurant service period
       description: |
-        Returns a <a
-        href="#/definitions/RestaurantService">`RestaurantService`</a>
+        Returns a `RestaurantService`
         object containing information about a type of menu and dining
         offered by a restaurant. For example, a restaurant might offer
         a lunch service at some hours of the day and a dinner service
@@ -2542,12 +2596,13 @@ paths:
             $ref: '#/definitions/RestaurantService'
   /restaurantServices:
     get:
+      tags: 
+        - Restaurant Services
+      operationId: restaurantServicesGet
       summary: |
-        Returns information about the types of menu and dining offered by
-        a restaurant.
+        Get restuarant service periods
       description: |
-        Returns an array of <a
-        href="#/definitions/RestaurantService">`RestaurantService`</a>
+        Returns an array of `RestaurantService`
         objects containing information about the types of menu and dining
         offered by a restaurant. For example, a restaurant might offer
         a lunch service at some hours of the day and a dinner service
@@ -2597,12 +2652,13 @@ paths:
               $ref: '#/definitions/RestaurantService'
   /tables/{guid}:
     get:
+      tags: 
+        - Tables
+      operationId: tablesGuidGet
       summary: |
-        Returns information about a dining table configured for a
-        restaurant.
+        Get a table
       description: |
-        Returns a <a
-        href="#/definitions/Table">`Table`</a>
+        Returns a `Table`
         object containing information about a dining table configured for a
         restaurant.
       produces:
@@ -2627,11 +2683,13 @@ paths:
             $ref: '#/definitions/Table'
   /tables:
     get:
+      tags: 
+        - Tables
+      operationId: tablesGet
       summary: |
-        Returns information about the dining tables configured for a
-        restaurant.
+        Get tables
       description: |
-        Returns an array of <a href="#/definitions/Table">`Table`</a>
+        Returns an array of `Table`
         objects containing information about the dining tables
         configured for a restaurant. If a `lastModified` date is
         specified, returns all objects that were created or modified
@@ -2680,11 +2738,13 @@ paths:
               $ref: '#/definitions/Table'
   /taxRates/{guid}:
     get:
+      tags: 
+        - Tax Rates
+      operationId: taxRatesGuidGet
       summary: |
-        Returns information about a form of taxation applied to sales
-        at a restaurant.
+        Get a tax rate
       description: |
-        Returns a <a href="#/definitions/TaxRate">`TaxRate`</a> object
+        Returns a `TaxRate` object
         containing information about a form of taxation applied to
         sales at a restaurant.
       produces:
@@ -2709,11 +2769,13 @@ paths:
             $ref: '#/definitions/TaxRate'
   /taxRates:
     get:
+      tags: 
+        - Tax Rates
+      operationId: taxRatesGet
       summary: |
-        Returns information about the forms of taxation applied to sales
-        at a restaurant.
+        Get tax rates
       description: |
-        Returns an array of <a href="#/definitions/TaxRate">`TaxRate`</a> objects
+        Returns an array of `TaxRate` objects
         containing information about the forms of taxation applied to
         sales at a restaurant. If a `lastModified` date is
         specified, returns all objects that were created or modified
@@ -2762,12 +2824,14 @@ paths:
               $ref: '#/definitions/TaxRate'
   /tipWithholding:
       get:
+        tags: 
+        - Tip Withholding
+        operationId: tipWithholdingGet
         summary: |
-          Returns information about the percent of employee credit card
-          tips that are kept by a restaurant.
+          Get the percentage withheld for credit card tips
         description: |
-          Returns a <a href="#/definitions/TipWithholding">`TipWithholding`
-          </a> object containing information about the way tip withholding
+          Returns a `TipWithholding`
+          object containing information about the way tip withholding
           is configured for a restaurant. Tip withholding is a percentage
           of employees' credit card tips that is kept by a restaurant to
           cover credit card processing fees.
@@ -2787,11 +2851,13 @@ paths:
               $ref: '#/definitions/TipWithholding'
   /voidReasons/{guid}:
     get:
+      tags: 
+        - Void Reasons
+      operationId: voidReasonsGuidGet
       summary: |
-        Returns information about a cause for making a sale invalid
-        configured for a restaurant.
+        Get a void sale reason
       description: |
-        Returns a <a href="#/definitions/VoidReason">`VoidReason`</a> object
+        Returns a `VoidReason` object
         containing information about a cause for making a sale invalid
         configured for a restaurant.
       produces:
@@ -2816,12 +2882,13 @@ paths:
             $ref: '#/definitions/VoidReason'
   /voidReasons:
     get:
+      tags: 
+        - Void Reasons
+      operationId: voidReasonsGet
       summary: |
-        Returns information about the causes for making a sale invalid
-        configured for a restaurant.
+        Get void sale reasons
       description: |
-        Returns an array of <a
-        href="#/definitions/VoidReason">`VoidReason`</a> objects
+        Returns an array of `VoidReason` objects
         containing information about causes for making a sale invalid
         configured for a restaurant. If a `lastModified` date is
         specified, returns all objects that were created or modified
