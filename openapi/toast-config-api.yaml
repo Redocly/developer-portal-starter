@@ -27,7 +27,7 @@ tags:
   - name: Discounts
   - name: Menu Groups
   - name: Menu Items
-  - name: Menu Option Groups
+  - name: Modifier Groups
   - name: Menus
   - name: No Sale Reasons
   - name: Payout Reasons
@@ -1529,7 +1529,7 @@ paths:
   /menuOptionGroups/{guid}:
     get:
       tags: 
-        - Menu Option Groups
+        - Modifier Groups
       operationId: menuOptionGroupsGuidGet
       summary: |
         Get a modifier group's
@@ -1549,7 +1549,7 @@ paths:
           type: string
           required: true
         - name: guid
-          description: The Toast POS GUID of the menu option group.
+          description: The Toast POS GUID of the modifier group.
           in: path
           type: string
           required: true
@@ -1561,7 +1561,7 @@ paths:
   /menuOptionGroups:
     get:
       tags: 
-        - Menu Option Groups
+        - Modifier Groups
       operationId: menuOptionGroupsGet
       summary: |
         Get modifier groups
