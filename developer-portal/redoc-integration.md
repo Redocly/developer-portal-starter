@@ -7,7 +7,7 @@ title: Integrating API reference docs
 ## Step 1: Declare your API definition(s)
 
 Inside of `siteConfig.yaml`, declare of all of your API definitions.
-The definition may be in a [multi-file format](../../resources/multi-file-definitions.md) or already bundled. It may be in JSON or YAML format.
+The definition may be in a [multi-file format](https://redoc.ly/docs/resources/multi-file-definitions/) or already bundled. It may be in JSON or YAML format.
 
 You'll use the key name for further reference within the developer portal.
 
@@ -33,7 +33,7 @@ oasDefinitions:
 The benefit of using the API registry (if you use your production "latest" snapshot URL) is that the developer portal will rebuild when that API is updated.
 Your docs won't be outdated.
 
-If you use a private registry URL, you will need to use the [openapi login command](../../cli/commands.md#login) to log in for local development.
+If you use a private registry URL, you will need to use the [openapi login command](https://redoc.ly/docs/cli/commands/login/) to log in for local development.
 
 
 ### Declare multiple APIs
@@ -123,10 +123,10 @@ Keep in mind that:
 - Markdown text from the `info.description` field of the API definition always behaves like a section. In `item` mode, it is displayed all on one page, instead of split into separate pages.
 
 
-<div class="warning"><b>Important</b>
+:::warning **Important**
 
 We strongly recommend you rebuild the portal after modifying pagination settings to avoid potential caching issues.
-</div>
+:::
 
 
 ### Show or hide content in integrated Reference docs

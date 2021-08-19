@@ -2,17 +2,20 @@
 
 Whether you utilize Google Analytics, Google Tag Manager, Heap.io or something else, it can be enabled with a few lines of configuration in the `siteConfig.yaml`.
 
-<div class="attention">Analytics is disabled in development server mode. So enabling will have no impact until built and deployed.</div>
+:::attention
+Analytics is disabled in development server mode. So enabling will have no impact until built and deployed.
+:::
 
 ## Google Analytics
 
 Let's say our tracking id is `UA-132456789-1`.
 
 ```yaml
-ga:
+analytics:
+  ga:
   # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
   # note that GA doesn't work in DEV
-  trackingId: UA-132456789-1
+    trackingId: UA-132456789-1
 ```
 
 ## Other JavaScript add-ons

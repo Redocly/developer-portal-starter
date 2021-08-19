@@ -42,7 +42,7 @@ If an error occurs during the installation, delete the `yarn.lock` file, and the
 ```bash Remove yarn.lock
 rm yarn.lock
 ```
-```bash Yarn install
+```bash yarn install
 yarn install
 ```
 If the installation problem persists, please contact the [Redocly support](contact@redoc.ly).

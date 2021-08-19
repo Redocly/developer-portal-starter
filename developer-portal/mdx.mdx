@@ -11,7 +11,7 @@ import {
   WideTile,
   Emphasis,
   SectionHeader,
-  RedocResponse
+  OpenApiResponse
  } from '@redocly/developer-portal/ui';
 
 import icon3 from '../images/icon3.png';
@@ -23,7 +23,7 @@ Use MDX by naming the file extension as `.mdx` and importing the components at t
 
 You can import a single extension:
 ```jsx
-import { RedocResponse } from '@redocly/developer-portal/ui';
+import { OpenApiResponse } from '@redocly/developer-portal/ui';
 ```
 Or multiple extensions at the same time:
 
@@ -49,17 +49,17 @@ We created a library (`@redocly/developer-portal/ui`) with components you can re
 Try and create an MDX file which renders one of your API's response objects.
 
 With Samples Panel:
-```html
-<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" />
+```jsx
+<OpenApiResponse definitionId="petstore" pointer="#/components/responses/PetResponse" />
 ```
-<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" />
+<OpenApiResponse definitionId="petstore" pointer="#/components/responses/PetResponse" />
 
 Without Samples Panel:
 
-```html
-<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" hideSamples={true} />
+```jsx
+<OpenApiResponse definitionId="petstore" pointer="#/components/responses/PetResponse" hideSamples={true} />
 ```
-<RedocResponse definitionId="petstore" pointer="#/components/responses/PetResponse" hideSamples={true} />
+<OpenApiResponse definitionId="petstore" pointer="#/components/responses/PetResponse" hideSamples={true} />
 
 
 ## Other components
