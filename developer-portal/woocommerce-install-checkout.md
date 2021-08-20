@@ -28,8 +28,6 @@ Choose your desired platform. In this case, we're using WooCommerce. This WordPr
 ### Authenticate WooCommerce
 You will need to give Fast permission to connect with your WooCommerce installation of WordPress. Click Authenticate and enter your admin credentials.
 
-[![Authenticate WooCommerce](images/woocommerce/05-authenticate-woocommerce.png)](https://www.fast.co/business/onboarding/fast-checkout/install-woocommerce)
-
 ### Capture your app ID
 Capture your app ID for use in the next section, installing the Fast Checkout for WooCommerce WordPress plugin.
 
