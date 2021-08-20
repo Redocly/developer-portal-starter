@@ -6,7 +6,7 @@ To display your logo in the navbar, overwrite the existing image at `./images/lo
 
 ## Adjust siteConfig
 
-The `siteConfig.yaml` file defines the path to the header icon.
+The `siteConfig.yaml` file defines the path to the logo.
 
 ```yaml
 logo: ./images/logo.png
