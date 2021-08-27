@@ -1420,16 +1420,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.36":
-  version "1.1.0-beta.36"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.36.tgz#198ff72fce4f7b45e348f2e5369ec34c7c567a14"
-  integrity sha512-7X9jdQf/F1PQjy8o6vZs9Nzx6hhSYxETebARi3P+ltMOjYx10CGc5I7qiuS6FrmzTQ6MHnSPSPlU8d8AjylJqA==
+"@redocly/developer-portal@1.1.0-beta.38":
+  version "1.1.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.38.tgz#f569d3446a0875f8d81dd0e0207e6e65dcf71162"
+  integrity sha512-1VN/DSceb9JQXeslSs53Lsp64ReJgb0NKmcapEz0FUZhhm9WRhk2gQ5gGqhEP8ZD1oNGWmd7duxax4St2wdX6A==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "^1.0.0-beta.50"
-    "@redocly/reference-docs" "2.0.15"
+    "@redocly/reference-docs" "2.1.2"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1568,10 +1568,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.0.15":
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.0.15.tgz#c90d1245ecab4f1f0d405d009560e6205bff9bf6"
-  integrity sha512-kEgo5Ai01O6vVoGwQwoDnFPB19qJ2CSe1IVgaC3AhyjBNlP4Lff+my0u/3E4jb5/cLiR8ju29UWjrnFOPzWhSw==
+"@redocly/reference-docs@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.2.tgz#b65308637b079aca58f2ebf31be54b9f45ba05a8"
+  integrity sha512-noblMZhUOq+TN0tNy/8alnRgZ5nhTO2YtwUCi1hIHuLCHjlAzZkvUduT1XBFBkXyRg4I7bEnbzqAUny/hBkJEA==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.50"
     "@redocly/react-dropdown-aria" "2.0.12"
