@@ -56,12 +56,12 @@ Now, load the upgrade screen and see the sidebar.
 ## Sidebar nesting-levels
 
 Sidebar nesting is controlled by the `group` keyword.
-Groups can be nested within each other.
+Groups can be nested within each other up to 7 levels deep.
 
 Move the upgrade page to display at the very bottom of the sidebar on the left-most side underneath the Petstore reference section.
 
 :::attention
-Pay attention to the indentation spacing
+Pay attention to the indentation spacing.
 :::
 
 ```yaml
