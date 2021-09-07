@@ -1054,7 +1054,6 @@ definitions:
   AppliedTaxRate:
     type: object
     description: A tax rate applied to an Item or ServiceCharge.
-    discriminator: entityType
     required:
       - taxRate
     allOf:
@@ -1269,7 +1268,6 @@ definitions:
   ExternalReference:
     type: object
     description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID or a partner's identifier.
-    discriminator: entityType
     allOf:
       - $ref: '#/definitions/ToastReference'
       - type: object
@@ -1280,7 +1278,6 @@ definitions:
   ToastReference:
       type: object
       description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID.
-      discriminator: entityType
       required:
         - guid
         - entityType

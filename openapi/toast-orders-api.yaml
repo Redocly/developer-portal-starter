@@ -1099,7 +1099,6 @@ definitions:
   AppliedTaxRate:
     type: object
     description: A tax rate applied to an Item or ServiceCharge.
-    discriminator: entityType
     required:
       - taxRate
     allOf:
@@ -1352,7 +1351,6 @@ definitions:
   ExternalReference:
     type: object
     description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID or a partner's identifier.
-    discriminator: entityType
     allOf:
       - $ref: '#/definitions/ToastReference'
       - type: object
@@ -1363,7 +1361,6 @@ definitions:
   ToastReference:
       type: object
       description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID.
-      discriminator: entityType
       required:
         - guid
         - entityType
@@ -1414,7 +1411,6 @@ definitions:
       A wrapper object containing information about a discount that you
       can apply to an order, and which checks or menu item selections
       you can apply it to.
-    discriminator: entityType
     required:
       - discount
     properties:
@@ -1457,7 +1453,6 @@ definitions:
     description: |
       Information that the restaurant can use to identify a guest when they arrive
       outside the restaurant to pick up their order. transportDescription is a required field.
-    discriminator: entityType
     allOf:
       - $ref: '#/definitions/ToastReference'
       - type: object
@@ -1483,7 +1478,6 @@ definitions:
     type: object
     description: |
       Reserved for future use.
-    discriminator: entityType
     allOf:
       - $ref: '#/definitions/ToastReference'
       - type: object
@@ -1520,7 +1514,6 @@ definitions:
       selection, modifier option, or service charge. The refund
       information includes separate values for the pre-tax value
       being refunded and the tax amount being refunded.
-    discriminator: entityType
     properties:
       refundAmount:
         description: |

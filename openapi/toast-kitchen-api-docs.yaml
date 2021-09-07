@@ -151,7 +151,6 @@ definitions:
     title: ToastReference
     description: |
       A wrapper object containing a Toast platform GUID.
-    discriminator: entityType
     properties:
       guid:
         type: string

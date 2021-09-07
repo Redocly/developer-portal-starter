@@ -29,7 +29,6 @@ definitions:
       type: object
       description: |
         Identifying information about a Toast POS entity.
-      discriminator: entityType
       required:
         - guid
         - entityType
@@ -43,7 +42,6 @@ definitions:
   ExternalReference:
       type: object
       description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID or a partner's identifier.
-      discriminator: entityType
       allOf:
         - $ref: '#/definitions/ToastReference'
         - type: object

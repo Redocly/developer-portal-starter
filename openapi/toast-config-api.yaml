@@ -904,11 +904,9 @@ definitions:
             type: string
         description: A wrapper object with fields that allow reference
           to a Toast entity by Toast GUID or a partner's identifier.
-        discriminator: entityType
   ToastReference:
     type: object
     description: A wrapper object with fields that allow reference to a Toast entity by Toast GUID.
-    discriminator: entityType
     required:
       - guid
       - entityType
