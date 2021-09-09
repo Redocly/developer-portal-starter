@@ -75,7 +75,7 @@ Before you begin this process, you’ll need an online store hosted by BigCommer
 
 **Note**: Which settlement currency you can use depends on which country your business is registered in. And which bank account details you see depends on what settlement currency you use. See [this article](https://stripe.com/docs/connect/bank-debit-card-payouts#supported-settlement) for more information.
 
-![Stripe](images/signup-images-small/both9.png)
+![Bank-details](images/signup-images-small/both9.png)
 
 15. Click “Continue to Dashboard.”
-![Stripe](images/signup-images-small/both10.png)
+![Finish](images/signup-images-small/both10.png)
