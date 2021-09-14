@@ -1420,16 +1420,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.40":
-  version "1.1.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.40.tgz#77c984a4e59aa8b97000210d88d0c27677783822"
-  integrity sha512-FiFQ7rGzPvvnIkUF8ejo8ahTdyheVzMeZqXLNn8Oe2pes62LCWl1AOmVFdq/JPCQ1xBKWfSxrtf/H1Yli3wjDA==
+"@redocly/developer-portal@1.1.0-beta.45":
+  version "1.1.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.45.tgz#571324dcb4b114facb9ddfc2041955b651612939"
+  integrity sha512-/o0+S8saqA11yUkWaQmf2V1liIdj7A66yvfOlngED70pxI/opzdXP7gNkPx3aRHmW0oy7b8+67Grh+ay5+BvCw==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "^1.0.0-beta.50"
-    "@redocly/reference-docs" "2.1.3"
+    "@redocly/reference-docs" "2.1.10"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1500,6 +1500,7 @@
     styled-components "^5.3.0"
     styled-system "^5.1.5"
     timeago.js "^4.0.2"
+    tty-browserify "^0.0.1"
     typescript "4.2.4"
     unfetch "^4.2.0"
     unist-util-visit "^2.0.3"
@@ -1568,10 +1569,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.3.tgz#26b1d2255e8ef0c2e0a12f0f5e282c81e1c84c72"
-  integrity sha512-wTxqrCP8j3WKL8/WXgRH/qd5DxTq2cKvbJgcZg77L9oo/k2RrqyIbbXoB4AbXpwVvmlWUA9Cc7FW9/knrZOIOA==
+"@redocly/reference-docs@2.1.10":
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.10.tgz#12fdb3559e43c48059ed7daaf03e733056fa7d43"
+  integrity sha512-2pTQfT7EzgvK7KqO+MfUklgZ6WPb8SWiyJ36HW3ayuGDIeI6B2JOFtrKXwCSgdxG/8+x8cjQeQnKkWC4whzE6Q==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.50"
     "@redocly/react-dropdown-aria" "2.0.12"
@@ -14188,6 +14189,11 @@ tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
+
+tty-browserify@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.1.tgz#3f05251ee17904dfd0677546670db9651682b811"
+  integrity sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==
 
 tunnel-agent@^0.6.0:
   version "0.6.0"
