@@ -5,8 +5,8 @@ settings:
   generateCodeSamples:
     languages:
       - lang: curl
-      - lang: JavaScript
-      - lang: Node.js
+      - lang: Java
+      - lang: Python
   showConsole: false
   hideHostname: true
   hideDownloadButton: true
