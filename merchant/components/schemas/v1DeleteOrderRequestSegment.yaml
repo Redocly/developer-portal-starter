@@ -4,4 +4,6 @@ properties:
     type: boolean
   order_id:
     $ref: ./v1UUID.yaml
+  external_order_id:
+    type: string
 title: Delete Section

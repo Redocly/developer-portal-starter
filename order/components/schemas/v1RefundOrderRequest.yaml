@@ -2,7 +2,7 @@ type: object
 properties:
   order_id:
     $ref: ./v1UUID.yaml
-  refund_id:
+  external_refund_id:
     type: string
   reason:
     $ref: ./v1RefundReasonCode.yaml
