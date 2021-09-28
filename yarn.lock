@@ -1427,16 +1427,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.52":
-  version "1.1.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.52.tgz#72abb9d848a43ccbe9296767d2e14f06ab575802"
-  integrity sha512-SXrJiw84rZQL8pQGEbmXsPmksrd1N4CGLrPqWZg8mStuysij8tWjMFFV4GdmL8ZAJQL7BL10x7XyjYOyBBaPJg==
+"@redocly/developer-portal@1.1.0-beta.54":
+  version "1.1.0-beta.54"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.54.tgz#876b64be96cfbb66ce686ed31996911818031156"
+  integrity sha512-I6nJC1z3s+045JuGeJmFs8Z1O6hCuEpY1VoInc9I+3Sj9mNgfzwraMRQmGUZRAS6VB5ppFZvyHkV7ZUqbomPgA==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "^1.0.0-beta.50"
-    "@redocly/reference-docs" "2.1.21"
+    "@redocly/reference-docs" "2.1.22"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1580,10 +1580,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.1.21":
-  version "2.1.21"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.21.tgz#c393d43c8fc54e2df0a1fd4777ac9a1b204281b1"
-  integrity sha512-ryeqCAmYG99ae1JdI+YtqkVjktUCyPiAL161CVrDWASl5ZV2Hncqj/2lXMvq1XEBn/7moMboVm1JOZ5bfNQ+aQ==
+"@redocly/reference-docs@2.1.22":
+  version "2.1.22"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.22.tgz#931a73b3330a597766f8829ba4bc89db1026e476"
+  integrity sha512-u7h2oiaIDbLyy6wYefihO5RJRYk5TGOWrZYJRsSvzj61fl5u9DNHyTwEYLNVqhjcBViyi+sgJuWadSLHW0FB+Q==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.50"
     "@redocly/react-dropdown-aria" "2.0.12"
@@ -2024,13 +2024,6 @@
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
-
-"@types/reach__router@^1.3.7":
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/@types/reach__router/-/reach__router-1.3.7.tgz#de8ab374259ae7f7499fc1373b9697a5f3cd6428"
-  integrity sha512-cyBEb8Ef3SJNH5NYEIDGPoMMmYUxROatuxbICusVRQIqZUB85UCt6R2Ok60tKS/TABJsJYaHyNTW3kqbpxlMjg==
-  dependencies:
-    "@types/react" "*"
 
 "@types/reach__router@^1.3.9":
   version "1.3.9"
@@ -6583,22 +6576,13 @@ gatsby-legacy-polyfills@^1.2.0:
   dependencies:
     core-js-compat "3.9.0"
 
-gatsby-link@^3.13.0:
+gatsby-link@^3.13.0, gatsby-link@^3.2.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-3.14.0.tgz#7269a5cb7f267a326fa30c718330e8e39f8685a6"
   integrity sha512-a7ZC6aQZ+dz6lhkW0nrg33zlFQq9DADvtl/wwk3W3GdTlseDNOC+iry11tLMEthisUQZ2H3SZGJyVeNuQkdFsw==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@types/reach__router" "^1.3.9"
-    prop-types "^15.7.2"
-
-gatsby-link@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-3.2.0.tgz#87d130dfccab915f9fd989611765d220967417f2"
-  integrity sha512-LyANWBIuMnxivSNF7pnHc0S3mDNMaHNGSacnMynpHw9kVZuu03xi+DnzEqkzon/hgl+yRgQOtganGZgHTHzYFw==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@types/reach__router" "^1.3.7"
     prop-types "^15.7.2"
 
 gatsby-page-utils@^1.2.0:
@@ -6756,19 +6740,12 @@ gatsby-plugin-utils@^1.2.0:
   dependencies:
     joi "^17.2.1"
 
-gatsby-react-router-scroll@^4.13.0:
+gatsby-react-router-scroll@^4.13.0, gatsby-react-router-scroll@^4.2.0:
   version "4.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-4.14.0.tgz#8825c437f2ce07144dff2013f405b43af8159069"
   integrity sha512-ahsJqhqSroRsm+BySUUNNrTLWOzjxb8zBP6UNja/VssEYAiGnG3V7ycVqpzMXDnWnZAKTSGIO7B3ZiM5sf6mYw==
   dependencies:
     "@babel/runtime" "^7.15.4"
-
-gatsby-react-router-scroll@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-4.2.0.tgz#bb10753c7ba8934a4b6e9eec359b69b556f310fc"
-  integrity sha512-n3KF1wNkWR6S5ZpFdXCEu4JP9xntyZNW2S/B8kumna7r2zclJBOiQWJWTopb7rEMgC/uY+RQRFHgyweaYSqIqQ==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
 
 gatsby-recipes@^0.16.0:
   version "0.16.0"
