@@ -37,7 +37,7 @@ training:
         pages:
           - page: developer-portal/woocommerce.md
             label: Overview
-          - page: developer-portal/woocommerce-install-checkout.md
+          - page: developer-portal/Sign-Up-With-WooCommerce.md
             label: Install Fast Checkout
           - page: developer-portal/woocommerce-settings.md
             label: Fast Checkout Settings
@@ -66,7 +66,7 @@ training:
           label: Update requests
         - page: developer-portal/fast-api-qs-backend-delete.md
           label: Delete requests
-      - group: Extended order management 
+      - group: Extended order management
         expanded: false
         pages:
           - page: developer-portal/fast-api-qs-backend-extended-oms-intro.md
@@ -77,7 +77,7 @@ training:
             label: Refund Orders
           - page: developer-portal/fast-api-qs-backend-extended-oms-business-event.md
             label: Business Eventing
-      - page: developer-portal/fast-api-dev-tools.md 
+      - page: developer-portal/fast-api-dev-tools.md
         label: Developer Tools
   - separator: Custom Integration API Specifications
   - page: merchant/merchant.page.yaml
@@ -90,7 +90,7 @@ training:
     label: Reference Implementation
   - page: developer-portal/fast-api-test-suite-cli.md
     label: Test Suite CLI
-  - separatorLine: true  
+  - separatorLine: true
   - separator: Custom Integration Guides
   - page: developer-portal/fast-api-guides-batching.md
     label: How batching works
@@ -99,7 +99,7 @@ training:
   - page: developer-portal/fast-api-reference-authentication.md
     label: Authentication
   - page: developer-portal/fast-api-reference-batching.md
-    label: Batching 
+    label: Batching
   - page: developer-portal/fast-api-reference-configuration.md
     label: Configuration
   - page: developer-portal/fast-api-reference-error-codes.md
