@@ -2,6 +2,8 @@ training:
   - separator: Overview
   - page: developer-portal/index.md
     label: Introduction
+  - page: developer-portal/Fast-Overview-and-Prerequisites.md
+    label: Overview & Prerequisites
   - page: developer-portal/fast-checkout-how-it-works.md
     label: Checkout
   - page: developer-portal/fast-login-how-it-works.md
