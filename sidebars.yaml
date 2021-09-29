@@ -71,28 +71,37 @@ alternative:
     label: Alternative sidebar example
 
 ## different sidebars
-# rock:
-#   - page: openapi/rock.page.yaml
-# paper:
-#   - page: openapi/paper.page.yaml
-# scissors:
-#   - page: openapi/scissors.page.yaml/*
+rock:
+  - page: separated/rock-quickstart.md
+  - page: separated/rock.page.yaml/*
+paper:
+  - page: separated/paper.page.yaml
+scissors:
+  - page: separated/scissors.page.yaml/*
 
-# unified-sidebar:
-#   - page: openapi/rock.page.yaml
-#   - page: openapi/paper.page.yaml
-#   - page: openapi/scissors.page.yaml
+combined:
+  - page: combined/index.md
+  - page: combined/rock.page.yaml
+  - page: combined/paper.page.yaml
+  - page: combined/scissors.page.yaml
 
 drilldown-style:
+  - page: drilldown/index.md
   - group: Rock
     menuStyle: drilldown
+    icon: images/rock.png
+    sublabel: Rock API docs
     pages:
-      - page: openapi/rock.page.yaml/*
+      - page: drilldown/rock.page.yaml/*
   - group: Paper
     menuStyle: drilldown
+    icon: images/paper.png
+    sublabel: Paper API docs
     pages:
-      - page: openapi/paper.page.yaml/*
+      - page: drilldown/paper.page.yaml/*
   - group: Scissors
     menuStyle: drilldown
+    icon: images/scissors.png
+    sublabel: Scissors API docs
     pages:
-      - page: openapi/scissors.page.yaml/*
+      - page: drilldown/scissors.page.yaml

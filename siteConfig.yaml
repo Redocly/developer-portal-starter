@@ -34,6 +34,15 @@ nav:
   - label: Training exercises
     page: developer-portal/index.md
 
+  - label: Drilldown sidebars
+    page: drilldown/index.md
+
+  - label: Combined sidebars
+    page: combined/index.md
+
+  - label: Separated sidebars
+    page: separated/index.md
+
   - label: External docs
     icon: ./images/redocly-icon-white.png
     href: https://redoc.ly/docs/developer-portal/introduction/
