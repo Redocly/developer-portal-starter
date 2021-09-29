@@ -2,8 +2,9 @@ type: object
 properties:
   order_id:
     $ref: ./v1UUID.yaml
-  refund_id:
+  external_refund_id:
     type: string
+    description: Id provided by the seller to tie back the refund on their end. Should be unique for each refund.
   reason:
     $ref: ./v1RefundReasonCode.yaml
   note:

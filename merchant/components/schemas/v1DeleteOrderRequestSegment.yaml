@@ -4,4 +4,7 @@ properties:
     type: boolean
   order_id:
     $ref: ./v1UUID.yaml
+  external_order_id:
+    type: string
+    description: External Order Id of order/cart to be deleted. This is only passed in the case of cart checkout where we want to delete an external cart that has no Fast ID associated with it.
 title: Delete Section
