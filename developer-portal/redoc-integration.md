@@ -87,7 +87,7 @@ settings:
 | `definitionId`  | References the key(s) declared in the `siteConfig.yaml`. In this example, `acme` is declared as the key. Do not declare the `definitionId` if you declare `versions`. |
 | `versions`  | If the API has multiple versions and you want a version selector to appear then define `versions` instead of `definitionId`. The `versions` is an array with one node per version. Each node must contain a `definitionId`. It may also contain an `id`, `title`, and `isDefault` value.<br><br>The `id` is used in the URL path segment (if not defined it will default to the `definitionId` value.<br><br>The `title` is used in the select menu to display to the user (if not defined it will default to the `definitionId`.<br><br>The `isDefault` will be the version that is pre-selected (if not defined it will default to the first defined version).<br><br>The select menu will be ordered in the same way as the versions array. |
 | `label` | (optional) Define a custom label to use as the title for the API Overview page in the portal sidebar. If not defined, the value of `info.title` from the API definition is used by default. |
-| `settings` | (optional) Add any of [Redocly's settings](../../api-reference-docs/configuration/index.mdx) to this object. |
+| `settings` | (optional) Add any of [Redocly's settings](https://redoc.ly/docs/api-reference-docs/configuration/) to this object. |
 
 
 ### Set up pagination for integrated Reference docs
