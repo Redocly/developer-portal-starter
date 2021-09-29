@@ -33,11 +33,11 @@ We recommend creating folders based on your content, and then organizing the con
 
 **Markdown files**
 
-A regular markdown file ends with a `.md` file extension. Utilize the regular markdown files when your content doesn't require any special components.
+A regular Markdown file ends with a `.md` file extension. Use regular Markdown files when your content doesn't require any special components.
 
-**Markdown extensions**
+**MDX files**
 
-A markdown extension file ends with a `.mdx` file extension. Learn more about [using markdown extensions here](markdown-extensions.mdx).
+An MDX extension file ends with a `.mdx` file extension. Learn more about [using MDX here](mdx.mdx).
 
 **Special files**
 
@@ -55,7 +55,6 @@ If needed, you can change the contents of these files to configure look and feel
 
 For more details, see [Customizing Portal](./custom-portal.md).
 
-Also, you can include your OpenAPI .yaml or .json file directly in the **Portal** to be able to generate the API reference pages.
+Also, you can include your OpenAPI `.yaml` or `.json` file directly in the **Portal** to be able to generate the API reference pages.
 
-For  more details, see [Integrating API Reference](./redoc-integration.md).
-
+For more details, see [Integrating API Reference](./redoc-integration.md).

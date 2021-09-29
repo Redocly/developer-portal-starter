@@ -73,4 +73,4 @@ And so on.
 
 Files, folders, and navigation paths may be cached.
 If your page isn't loading check if you have the correct path in the browser.
-If it still isn't loading, [try the `yarn clean` fix](/developer-portal/install#clearing-cache).
+If it still isn't loading, stop the server, run `yarn clean`, and then `yarn start` again.

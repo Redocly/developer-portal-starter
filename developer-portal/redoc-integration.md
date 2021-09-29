@@ -234,10 +234,12 @@ When you have declared your API definitions, you can use their `definitionId` wi
 
 The following components work with API reference docs:
 
-- [OpenApiExample](../components/openapi-example.mdx)
-- [OpenApiRequestBody](../components/openapi-request-body.mdx)
-- [OpenApiResponse](../components/openapi-response.mdx)
-- [JsonSchema](../components/json-schema.mdx)
+- [JsonSchema](https://redoc.ly/docs/developer-portal/components/json-schema/)
+- [OpenApiCodeSample](https://redoc.ly/docs/developer-portal/components/openapi-code-sample/)
+- [OpenApiExample](https://redoc.ly/docs/developer-portal/components/openapi-example/)
+- [OpenApiRequestBody](https://redoc.ly/docs/developer-portal/components/openapi-request-body/)
+- [OpenApiResponse](https://redoc.ly/docs/developer-portal/components/openapi-response/)
+- [OpenApiTryIt](https://redoc.ly/docs/developer-portal/components/openapi-tryit/)
 
 
 They are supported by default in the portal. You can also develop your own components.
