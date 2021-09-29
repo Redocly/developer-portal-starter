@@ -45,7 +45,7 @@ rm yarn.lock
 ```bash yarn install
 yarn install
 ```
-If the installation problem persists, please contact the [Redocly support](contact@redoc.ly).
+If the installation problem persists, please contact the [Redocly support](https://redoc.ly/contact-us).
 
 ### Run the **Portal** ###
 

@@ -1,11 +1,11 @@
 # Page table of contents
 
 
-When the `siteConfig.yaml` file has `enableToc: true` then a page table of contents will appear on the right-hand side when there is more than one header.
+When the `siteConfig.yaml` file has `toc: {enable: true}` then a page table of contents will appear on the right-hand side when there is more than one header.
 
 For your training exercise, you will try to disable the page table of contacts by default across the website.
 
-Go into the `siteConfig.yaml` file and change `enableToc: true` to `enableToc: false`. ✅
+Go into the `siteConfig.yaml` file and change `toc: {enable: true}` to `toc: {enable: false}`. ✅
 
 Be sure to save the `siteConfig.yaml`. Did you notice the page table of contents disappear?
 
@@ -19,7 +19,8 @@ We will use it to enable the table of contents.
 Add this snippet to the very top of the page.
 ```md
 ---
-enableToc: true
+toc:
+  enable: true
 ---
 ```
 
@@ -27,7 +28,7 @@ enableToc: true
 
 Now, we'll try the reverse.
 
-In `siteConfig.yaml`, change to `enableToc: true`.
+In `siteConfig.yaml`, change to `toc: {enable: true}`.
 
 Then try and disable the page table of contents on this page.
 
@@ -35,6 +36,13 @@ Could you figure it out?
 
 Great!
 
+You can also control the depth of the toc:
+
+```yaml
+toc:
+  enable: true
+  maxDepth: 2 # will set the max depth for heading level 2
+```
 
 # Rock
 
@@ -47,6 +55,4 @@ I love paper.
 # Scissors
 
 Ugh... I am left-handed.
-
-
 

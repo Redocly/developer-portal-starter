@@ -87,8 +87,11 @@ settings:
 | `definitionId`  | References the key(s) declared in the `siteConfig.yaml`. In this example, `acme` is declared as the key. Do not declare the `definitionId` if you declare `versions`. |
 | `versions`  | If the API has multiple versions and you want a version selector to appear then define `versions` instead of `definitionId`. The `versions` is an array with one node per version. Each node must contain a `definitionId`. It may also contain an `id`, `title`, and `isDefault` value.<br><br>The `id` is used in the URL path segment (if not defined it will default to the `definitionId` value.<br><br>The `title` is used in the select menu to display to the user (if not defined it will default to the `definitionId`.<br><br>The `isDefault` will be the version that is pre-selected (if not defined it will default to the first defined version).<br><br>The select menu will be ordered in the same way as the versions array. |
 | `label` | (optional) Define a custom label to use as the title for the API Overview page in the portal sidebar. If not defined, the value of `info.title` from the API definition is used by default. |
-| `settings` | (optional) Add any of [Redocly's settings](../../api-reference-docs/configuration/index.mdx) to this object. |
+| `settings` | (optional) Add any of [Redocly's settings](https://redoc.ly/docs/api-reference-docs/configuration/) to this object. |
 
+
+The location of the page.yaml file determines the URL path segment(s) for the API reference.
+A file such as `/openapi/foo.page.yaml` will be displayed at `/openapi/foo/`.
 
 ### Set up pagination for integrated Reference docs
 
@@ -234,10 +237,12 @@ When you have declared your API definitions, you can use their `definitionId` wi
 
 The following components work with API reference docs:
 
-- [OpenApiExample](../components/openapi-example.mdx)
-- [OpenApiRequestBody](../components/openapi-request-body.mdx)
-- [OpenApiResponse](../components/openapi-response.mdx)
-- [JsonSchema](../components/json-schema.mdx)
+- [JsonSchema](https://redoc.ly/docs/developer-portal/components/json-schema/)
+- [OpenApiCodeSample](https://redoc.ly/docs/developer-portal/components/openapi-code-sample/)
+- [OpenApiExample](https://redoc.ly/docs/developer-portal/components/openapi-example/)
+- [OpenApiRequestBody](https://redoc.ly/docs/developer-portal/components/openapi-request-body/)
+- [OpenApiResponse](https://redoc.ly/docs/developer-portal/components/openapi-response/)
+- [OpenApiTryIt](https://redoc.ly/docs/developer-portal/components/openapi-tryit/)
 
 
 They are supported by default in the portal. You can also develop your own components.
