@@ -1427,16 +1427,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.52":
-  version "1.1.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.52.tgz#72abb9d848a43ccbe9296767d2e14f06ab575802"
-  integrity sha512-SXrJiw84rZQL8pQGEbmXsPmksrd1N4CGLrPqWZg8mStuysij8tWjMFFV4GdmL8ZAJQL7BL10x7XyjYOyBBaPJg==
+"@redocly/developer-portal@1.1.0-beta.55":
+  version "1.1.0-beta.55"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.55.tgz#a1ed39f28cbb9e4e51fb55dd1027c63c2ee21dc9"
+  integrity sha512-/FenqqfIFuUAtoUOSWOND1ajtddR+skZjUpFGhn1Kd7wPqcZEwLx+xyBKKHwiBCJizUMvjNTdIzkxLZPh11ngw==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "^1.0.0-beta.50"
-    "@redocly/reference-docs" "2.1.21"
+    "@redocly/reference-docs" "2.1.22"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1580,10 +1580,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.1.21":
-  version "2.1.21"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.21.tgz#c393d43c8fc54e2df0a1fd4777ac9a1b204281b1"
-  integrity sha512-ryeqCAmYG99ae1JdI+YtqkVjktUCyPiAL161CVrDWASl5ZV2Hncqj/2lXMvq1XEBn/7moMboVm1JOZ5bfNQ+aQ==
+"@redocly/reference-docs@2.1.22":
+  version "2.1.22"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.1.22.tgz#931a73b3330a597766f8829ba4bc89db1026e476"
+  integrity sha512-u7h2oiaIDbLyy6wYefihO5RJRYk5TGOWrZYJRsSvzj61fl5u9DNHyTwEYLNVqhjcBViyi+sgJuWadSLHW0FB+Q==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.50"
     "@redocly/react-dropdown-aria" "2.0.12"
