@@ -90,6 +90,9 @@ settings:
 | `settings` | (optional) Add any of [Redocly's settings](https://redoc.ly/docs/api-reference-docs/configuration/) to this object. |
 
 
+The location of the page.yaml file determines the URL path segment(s) for the API reference.
+A file such as `/openapi/foo.page.yaml` will be displayed at `/openapi/foo/`.
+
 ### Set up pagination for integrated Reference docs
 
 Your integrated Reference docs can optionally use pagination. The configuration settings and the behavior of this functionality are compatible with standalone Reference docs, ensuring a consistent user experience.

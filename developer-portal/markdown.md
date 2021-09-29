@@ -1,7 +1,8 @@
 ---
 title: Markdown example
 description: GitHub-flavored markdown example
-enableToc: true
+toc:
+  enable: true
 ---
 # GitHub-flavored markdown example
 
