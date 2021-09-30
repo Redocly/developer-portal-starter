@@ -35,22 +35,22 @@ stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
 nav:
 
-  - label: Cookbooks
-    href: https://doc.toasttab.com/internal/product-doc/devcookbook/index.html
+  - label: Cookbook
+    href: https://doc.toasttab.com/doc/cookbook/index.html
 
   - label: Developer guide
-    href: https://doc.toasttab.com/internal/product-doc/devguide/index.html
+    href: https://doc.toasttab.com/doc/devguide/index.html
 
   - label: API reference
     page: openapi/index.md
 
   - label: Platform guide
-    href: https://doc.toasttab.com/internal/product-doc/devplatformguide/index.html
+    href: https://doc.toasttab.com/doc/platformguide/index.html
 
   - label: Release notes
-    href: https://doc.toasttab.com/internal/product-doc/devrelnotes/index.html
+    href: https://doc.toasttab.com/doc/relnotes/index.html
 
-  - search: true
+  - search: false
 
 footer:
   copyrightText: Copyright © Toast Inc. 2015-2021. All right reserved.
