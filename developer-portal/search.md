@@ -20,7 +20,7 @@ The `#` acts as a "comment" token for the rest of the yaml line.
 
 ## Enable the search box
 
-Now, we're remove the `#` comment, or add back the line.
+Now, we remove the `#` comment, or add back the line.
 
 ```yaml
 nav:
