@@ -1427,16 +1427,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.57":
-  version "1.1.0-beta.57"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.57.tgz#ff8d77555c03d149f92d93e8539f84f5b8d05834"
-  integrity sha512-diSPJFfESOMYsQkZpYfPzZzpSGSTJFM2vQdGLbFj2R8hJlzSdV+dwuUK7j3+LdPgW8K87YsLv1E6jBso+U71nQ==
+"@redocly/developer-portal@1.1.0-beta.65":
+  version "1.1.0-beta.65"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.65.tgz#643f64dbafbcf3bcc14d15b899fa6d2138dd3ce6"
+  integrity sha512-xhDc5vQZTb4ZrQBOnfULVYNq2a8sr4EvbdSSPB/WZTKw1YmfFFlwL8xcCubYJEQEU+cfZbVYiUKXjHZu/wQc6Q==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "^1.0.0-beta.50"
-    "@redocly/reference-docs" "2.2.1"
+    "@redocly/openapi-core" "^1.0.0-beta.63"
+    "@redocly/reference-docs" "2.4.0"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1477,7 +1477,6 @@
     is-relative-url "^3.0.0"
     is-text-path "^2.0.0"
     is-url "^1.2.4"
-    js-yaml "^3.14.1"
     lodash "^4.17.21"
     lodash.throttle "^4.1.1"
     marked "^0.7.0"
@@ -1560,16 +1559,16 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-"@redocly/openapi-core@^1.0.0-beta.50":
-  version "1.0.0-beta.54"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.54.tgz#42575a849c4dd54b9d0c6413fb8ca547e087cd11"
-  integrity sha512-uYs0N1Trjkh7u8IMIuCU2VxCXhMyGWSZUkP/WNdTR1OgBUtvNdF9C32zoQV+hyCIH4gVu42ROHkjisy333ZX+w==
+"@redocly/openapi-core@^1.0.0-beta.63":
+  version "1.0.0-beta.64"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.64.tgz#367840ba888c95b82ce4b932b683c3482ee0e4e3"
+  integrity sha512-pNyA3YVulTehGHlYIv/LVXBuV4FfXFtikJavz/JmZs14uCy+Sujr8/iq904Mwc4YdXPYw3lZKxRwl7PW2q/jsg==
   dependencies:
     "@redocly/ajv" "^8.6.2"
     "@types/node" "^14.11.8"
     colorette "^1.2.0"
     js-levenshtein "^1.1.6"
-    js-yaml "^3.14.1"
+    js-yaml "^4.1.0"
     lodash.isequal "^4.5.0"
     minimatch "^3.0.4"
     node-fetch "^2.6.1"
@@ -1580,12 +1579,12 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.2.1.tgz#39fc869fed19576a301d2b559e899c9779546d11"
-  integrity sha512-OwC/PxxMO2COjT8Vg+sFSnACAoeq6yHyVwgki7+yaGJRXh9eA8snYvWT0wNt5K48V8n6TlSOpOBH8PCe6DEL/g==
+"@redocly/reference-docs@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.4.0.tgz#bf96595c58a6357ce0ff95cd1ca36cf4f88dd05f"
+  integrity sha512-lT6HL0oacb0c7caKw4WNfQwP8CPLfNQEeawLsgA6weIoQ8UPZ/BjJqXJNX9dTI683VlVhaaJLI+Il8a1eARXgg==
   dependencies:
-    "@redocly/openapi-core" "^1.0.0-beta.50"
+    "@redocly/openapi-core" "^1.0.0-beta.63"
     "@redocly/react-dropdown-aria" "2.0.12"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
@@ -1599,7 +1598,6 @@
     handlebars "^4.7.6"
     hotkeys-js "^3.7.6"
     informed "3.33.0"
-    js-yaml "^3.13.0"
     json-pointer "^0.6.0"
     kleur "^3.0.3"
     lunr "^2.3.8"
@@ -2588,6 +2586,11 @@ argparse@^1.0.7:
   integrity sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==
   dependencies:
     sprintf-js "~1.0.2"
+
+argparse@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
+  integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
 aria-query@^4.2.2:
   version "4.2.2"
@@ -8915,13 +8918,20 @@ js-sha3@0.8.0:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.14.0, js-yaml@^3.14.1:
+js-yaml@^3.13.1, js-yaml@^3.14.0:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
   integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
+
+js-yaml@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
+  integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  dependencies:
+    argparse "^2.0.1"
 
 jsesc@^2.5.1:
   version "2.5.2"
