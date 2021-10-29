@@ -1427,16 +1427,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.65":
-  version "1.1.0-beta.65"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.65.tgz#643f64dbafbcf3bcc14d15b899fa6d2138dd3ce6"
-  integrity sha512-xhDc5vQZTb4ZrQBOnfULVYNq2a8sr4EvbdSSPB/WZTKw1YmfFFlwL8xcCubYJEQEU+cfZbVYiUKXjHZu/wQc6Q==
+"@redocly/developer-portal@1.1.0-beta.67":
+  version "1.1.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.67.tgz#00f3205bef5ddb7906b4bb37765121a98e6e0f3f"
+  integrity sha512-7qTWah1XEofwzjw/Yz0fsbdpSP0YBoExI1s7lIHXpMrvjIgxzFqpq45gSsMGi9OKdlZ32eKdrJhSTrjrFgZoNg==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "^1.0.0-beta.63"
-    "@redocly/reference-docs" "2.4.0"
+    "@redocly/reference-docs" "2.4.2"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1579,10 +1579,10 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.4.0.tgz#bf96595c58a6357ce0ff95cd1ca36cf4f88dd05f"
-  integrity sha512-lT6HL0oacb0c7caKw4WNfQwP8CPLfNQEeawLsgA6weIoQ8UPZ/BjJqXJNX9dTI683VlVhaaJLI+Il8a1eARXgg==
+"@redocly/reference-docs@2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.4.2.tgz#9a50f3d6eb73e2bdfa77a601c55b5a485be677c9"
+  integrity sha512-E6k6CIKWw3slbtFWo3PbFqTKE2TOQNyMAQVaWI/cTx1kPHqVTCfmAiQjnEUSu0DBNQhbdhHQjxW0sCtEx1fh5Q==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.63"
     "@redocly/react-dropdown-aria" "2.0.12"
