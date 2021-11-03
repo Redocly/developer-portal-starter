@@ -32,10 +32,7 @@ export default function NavBar(props) {
     <NavWrapper hasBackground={isMain}>
       <Flex p="15px 20px 7px" flex={1} justifyContent="space-between" alignItems="center">
         <Flex flexDirection="column">
-          <LinkStyled to="/">
-            <img src={logo} alt="toast logo" height="35" style={{marginBottom: -10}}/>
-            <LogoText>Toast Platform Docs</LogoText>
-          </LinkStyled>
+          <p>Hello</p>
           <NavItems>
             {navItems}
           </NavItems>
