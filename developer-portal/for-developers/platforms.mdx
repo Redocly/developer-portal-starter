@@ -1,0 +1,52 @@
+import {
+  LandingLayout,
+  Button,
+  Box,
+  FlexSection,
+  Flex,
+  Jumbotron,
+  ThinTile,
+  WideTile,
+  Emphasis,
+  H1,
+  H2,
+  SectionHeader,
+  NavBar,
+} from "@redocly/developer-portal/ui";
+import woo from "./images/woocommerce.svg";
+import magento from "./images/magento.svg";
+import bigCommerce from "./images/bigcommerce.svg";
+import salesforce from "./images/salesforce.svg";
+import fastAPIImg from "./images/fastAPI.svg";
+
+# Fast For Developers: Pick a Platform
+
+<Box id="platforms-page">
+  <FlexSection justifyContent="space-around" flexWrap="wrap">
+    <WideTile
+      icon={woo}
+      to="/developer-portal/for-developers/woocommerce"
+      header="WooCommerce"
+    ></WideTile>
+    <WideTile
+      icon={bigCommerce}
+      to="/developer-portal/for-developers/bigcommerce"
+      header="BigCommerce"
+    ></WideTile>
+    <WideTile
+      icon={magento}
+      to="/developer-portal/for-developers/magento"
+      header="Magento (Adobe Commerce)"
+    ></WideTile>
+    <WideTile
+      icon={salesforce}
+      to="/developer-portal/for-developers/salesforce"
+      header="Salesforce Commerce Cloud (SFCC)"
+    ></WideTile>
+    <WideTile
+      icon={fastAPIImg}
+      to="/developer-portal/for-developers/custom-integration"
+      header="Custom Integration with Fast API"
+    ></WideTile>
+  </FlexSection>
+</Box>

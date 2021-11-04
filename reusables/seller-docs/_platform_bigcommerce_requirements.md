@@ -1,0 +1,2 @@
+- Store **Owner** Login Credentials for the Seller’s BigCommerce Account
+  - **Owner** login credentials for the account associated with the Seller’s BigCommerce store are required to authorize Fast's connection to the store during onboarding.

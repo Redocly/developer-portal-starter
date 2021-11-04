@@ -1,121 +1,449 @@
-training:
-  - separator: Overview
-  - page: developer-portal/index.md
-    label: Introduction
-  - page: developer-portal/Fast-Overview-and-Prerequisites.md
-    label: Overview & Prerequisites
-  - page: developer-portal/fast-checkout-how-it-works.md
-    label: Checkout
-  - page: developer-portal/fast-login-how-it-works.md
-    label: Login
-  - page: developer-portal/partners-onboarding-faq.md
-    label: Partner Onboarding FAQs
-  - page: developer-portal/seller-signup.md
-    label: Seller Signup
-    separatorLine: true
-  - separator: Quick Start
-  - group: I am on a platform
+bigcommerce:
+  - page: developer-portal/for-developers/bigcommerce.md
+  - group: Pre-Install (Required!)
     expanded: true
     pages:
-      - group: BigCommerce
-        expanded: false
-        pages:
-        - page: developer-portal/bigcommerce.md
-          label: Overview
-        - page: developer-portal/Sign-Up-With-BigCommerce.md
-          label: Install Checkout
-        - page: developer-portal/bigcommerce-install-checkout-examples.md
-          label: Checkout Button Placement
-        - page: developer-portal/fast-login-bigcommerce.md
-          label: Install Login
-        - page: developer-portal/fast-login-bigcommerce-examples.md
-          label: Login Button Placement
-        - page: developer-portal/bigcommere-checkout-blog-posts.md
-          label: Checkout for Blog Posts
-      - group: WooCommerce
-        expanded: false
-        pages:
-          - page: developer-portal/woocommerce.md
-            label: Overview
-          - page: developer-portal/Sign-Up-With-WooCommerce.md
-            label: Install Fast Checkout
-          - page: developer-portal/woocommerce-settings.md
-            label: Fast Checkout Settings
-          - page: developer-portal/woocommerce-migrate-plugin-directory.md
-            label: Migrate to Plugin Directory
-  - group: I am on a custom system
-    expanded: false
-    separatorLine: true
+      - label: "Step 1: Gather Your Docs"
+        page: developer-portal/for-developers/bigcommerce/pre-install/gather-your-docs.md
+      - label: "Step 2: Requirements"
+        page: developer-portal/for-developers/bigcommerce/pre-install/requirements.md
+      - label: "Step 3: Onboard as a Seller"
+        page: developer-portal/for-developers/bigcommerce/pre-install/sign-up-as-a-seller.md
+  - group: Install
+    expanded: true
     pages:
-      - page: developer-portal/fast-api.md
-        label: Overview
-      - page: developer-portal/fast-api-reference-authentication.md
-        label: Authenticate
-      - page: developer-portal/fast-api-fastjs.md
-        label: Setup Fast.js
-      - page: developer-portal/fast-api-qs-backend.md
-        label: Connect your backend
-      - group: Handle requests
-        expanded: false
-        pages:
-        - page: developer-portal/fast-api-qs-backend-create.md
-          label: Create requests
-        - page: developer-portal/fast-api-qs-backend-read.md
-          label: Read requests
-        - page: developer-portal/fast-api-qs-backend-update.md
-          label: Update requests
-        - page: developer-portal/fast-api-qs-backend-delete.md
-          label: Delete requests
-      - group: Extended order management
-        expanded: false
-        pages:
-          - page: developer-portal/fast-api-qs-backend-extended-oms-intro.md
-            label: Intro
-          - page: developer-portal/fast-api-qs-backend-extended-oms-cancel-order.md
-            label: Cancel Orders
-          - page: developer-portal/fast-api-qs-backend-extended-oms-refund-order.md
-            label: Refund Orders
-          - page: developer-portal/fast-api-qs-backend-extended-oms-business-event.md
-            label: Business Eventing
-      - page: developer-portal/fast-api-dev-tools.md
-        label: Developer Tools
-  - separator: Custom Integration API Specifications
-  - page: merchant/merchant.page.yaml
-    label: Fast -> Seller API
-  - page: order/order.page.yaml
-    label: Seller -> Fast API
-  - separatorLine: true
-  - separator: Custom Integration Developer Tools
-  - page: developer-portal/fast-api-reference-implementation.md
-    label: Reference Implementation
-  - page: developer-portal/fast-api-test-suite-cli.md
-    label: Test Suite CLI
-  - separatorLine: true
-  - separator: Custom Integration Guides
-  - page: developer-portal/fast-api-guides-batching.md
-    label: How batching works
-  - separatorLine: true
-  - separator: Custom Integration Resources
-  - page: developer-portal/fast-api-reference-authentication.md
-    label: Authentication
-  - page: developer-portal/fast-api-reference-batching.md
-    label: Batching
-  - page: developer-portal/fast-api-reference-configuration.md
-    label: Configuration
-  - page: developer-portal/fast-api-reference-error-codes.md
-    label: Error codes
-  - page: developer-portal/fast-api-reference-checkout-origin.md
-    label: Checkout Origin
-  - page: developer-portal/fast-api-reference-fast-js.md
-    label: Fast.js
-  - page: developer-portal/fast-api-reference-financial-values.md
-    label: Financial Values
-  - page: developer-portal/fast-api-reference-order-lifecycle.md
-    label: Order Lifecycle
-  - page: developer-portal/fast-api-reference-order-statuses.md
-    label: Order Statuses
-  - page: developer-portal/fast-api-reference-products.md
-    label: Products
-  - page: developer-portal/fast-api-reference-sequences.md
-    label: Sequence Diagrams
-    separatorLine: true
+      - label: "Step 1: Set up Test Mode"
+        page: developer-portal/for-developers/bigcommerce/install/test-mode.md
+      - label: "Step 2: Set up Theme Files"
+        page: developer-portal/for-developers/bigcommerce/install/theme-files.md
+      - label: "Step 3: Install Checkout Buttons"
+        page: developer-portal/for-developers/bigcommerce/install/install-checkout-buttons.md
+      - label: "Step 4: Install Login Buttons"
+        page: developer-portal/for-developers/bigcommerce/install/install-login-buttons.md
+      - label: "Step 5: Production Mode"
+        page: developer-portal/for-developers/bigcommerce/install/production-mode.md
+  - group: Customization
+    expanded: true
+    pages:
+      - label: Custom Styling
+        page: developer-portal/for-developers/bigcommerce/customization/custom-styling.md
+  - group: BigCommerce Blog Posts
+    expanded: true
+    pages:
+      - label: Adding Fast Buttons
+        page: developer-portal/for-developers/bigcommerce/adding-fast-button-to-blog-posts/adding-code.md
+
+custom-integration:
+  - page: developer-portal/for-developers/custom-integration.md
+  - group: Pre-Setup (Required!)
+    expanded: true
+    pages:
+      - label: "Step 1: Gather Your Docs"
+        page: developer-portal/for-developers/custom-integration/pre-setup/gather-your-docs.md
+      - label: "Step 2: Onboard as a Seller"
+        page: developer-portal/for-developers/custom-integration/pre-setup/sign-up-as-a-seller.md
+  - group: Setup
+    expanded: true
+    pages:
+      - label: Overview
+        page: developer-portal/for-developers/custom-integration/setup/overview.md
+      - label: "Step 1: Authentication"
+        page: developer-portal/for-developers/custom-integration/setup/authenticate.md
+      - label: "Step 2: Add fast.js to Page"
+        page: developer-portal/for-developers/custom-integration/setup/add-fast-js-to-page.md
+      - label: "Step 3: Backend"
+        page: developer-portal/for-developers/custom-integration/setup/backend.md
+      - label: "Step 4: Backend Requests"
+        page: developer-portal/for-developers/custom-integration/setup/requests.md
+  - group: Customization
+    expanded: true
+    pages:
+      - label: Custom Styling
+        page: developer-portal/for-developers/custom-integration/customization/custom-styling.md
+  - group: Fast API
+    expanded: true
+    pages:
+      - label: Overview
+        page: developer-portal/for-developers/custom-integration/fast-api/overview.md
+      - label: High Level API diagrams
+        page: developer-portal/for-developers/custom-integration/fast-api/high-level-diagrams.md
+      - label: Backend Requests
+        page: developer-portal/for-developers/custom-integration/fast-api/requests.md
+      - label: Order Management
+        page: developer-portal/for-developers/custom-integration/fast-api/order-management.md
+      - label: Events
+        page: developer-portal/for-developers/custom-integration/fast-api/events.md
+      - label: Fast -> Seller API
+        page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/docs.page.yaml
+      - label: Seller --> Fast API
+        page: developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/docs.page.yaml
+  - group: Developer Tools
+    expanded: true
+    pages:
+      - label: Reference Implementation
+        page: developer-portal/for-developers/custom-integration/developer-tools/reference-implementation.md
+      - label: Test Suite CLI
+        page: developer-portal/for-developers/custom-integration/developer-tools/test-suite-cli.md
+  - group: Resources
+    expanded: true
+    pages:
+      - label: Authentication
+        page: developer-portal/for-developers/custom-integration/resources/authentication.md
+      - label: Checkout Origins
+        page: developer-portal/for-developers/custom-integration/resources/checkout-origins.md
+      - label: Configurable & Direct Capture
+        page: developer-portal/for-developers/custom-integration/resources/configurable.md
+      - label: Error Codes
+        page: developer-portal/for-developers/custom-integration/resources/error-codes.md
+      - label: Financial Values
+        page: developer-portal/for-developers/custom-integration/resources/financial-values.md
+      - label: Order Batching
+        page: developer-portal/for-developers/custom-integration/resources/order-batching.md
+      - label: Order Lifecycle
+        page: developer-portal/for-developers/custom-integration/resources/order-lifecyle.md
+      - label: Order Statuses
+        page: developer-portal/for-developers/custom-integration/resources/order-statuses.md
+      - label: Product Item Identification
+        page: developer-portal/for-developers/custom-integration/resources/product-item-identification.md
+      - label: Sequence Diagrams
+        page: developer-portal/for-developers/custom-integration/resources/sequence-diagrams.md
+
+magento:
+  - page: developer-portal/for-developers/magento.md
+  - group: Pre-Install (Required!)
+    expanded: true
+    pages:
+      - label: "Step 1: Gather Your Docs"
+        page: developer-portal/for-developers/magento/pre-install/gather-your-docs.md
+      - label: "Step 2: Requirements"
+        page: developer-portal/for-developers/magento/pre-install/requirements.md
+      - label: "Step 3: Onboard as a Seller"
+        page: developer-portal/for-developers/magento/pre-install/sign-up-as-a-seller.md
+  - group: Install
+    expanded: true
+    pages:
+      - label: Overview
+        page: developer-portal/for-developers/magento/install/overview.md
+      - label: "Step 1: Acquire Module"
+        page: developer-portal/for-developers/magento/install/acquire-extension.md
+      - label: "Step 2: Enable Fast Checkout"
+        page: developer-portal/for-developers/magento/install/enable-fast-checkout.md
+      - label: "Step 3: Specify Products"
+        page: developer-portal/for-developers/magento/install/specify-products.md
+      - label: "Step 4: Activate Storefront"
+        page: developer-portal/for-developers/magento/install/activate-storefront.md
+
+  - group: Customization
+    expanded: true
+    pages:
+      - label: Settings
+        page: developer-portal/for-developers/magento/customization/settings.md
+  - group: Resources
+    expanded: true
+    pages:
+      - label: Fulfillments
+        page: developer-portal/for-developers/magento/resources/enable-fulfillment.md
+      - label: External Payments
+        page: developer-portal/for-developers/magento/resources/external-payments.md
+
+salesforce:
+  - page: developer-portal/for-developers/salesforce.md
+  - group: Pre-Install (Required!)
+    expanded: true
+    pages:
+      - label: "Step 1: Gather Your Docs"
+        page: developer-portal/for-developers/salesforce/pre-install/gather-your-docs.md
+      - label: "Step 2: Requirements"
+        page: developer-portal/for-developers/salesforce/pre-install/requirements.md
+      - label: "Step 3: Onboard as a Seller"
+        page: developer-portal/for-developers/salesforce/pre-install/sign-up-as-a-seller.md
+
+  - group: Install
+    expanded: true
+    pages:
+      - label: Overview
+        page: developer-portal/for-developers/salesforce/install/overview.md
+      - label: "Step 1: Acquire Cartridge"
+        page: developer-portal/for-developers/salesforce/install/acquire-extension.md
+      - label: "Step 2: Enable Fast Checkout"
+        page: developer-portal/for-developers/salesforce/install/enable-fast-checkout.md
+      - label: "Step 3: Specify Products"
+        page: developer-portal/for-developers/salesforce/install/specify-products.md
+      - label: "Step 4: Activate Storefront"
+        page: developer-portal/for-developers/salesforce/install/activate-storefront.md
+
+woocommerce:
+  - page: developer-portal/for-developers/woocommerce.md
+  - group: Pre-Install (Required!)
+    expanded: true
+    pages:
+      - label: "Step 1: Gather Your Docs"
+        page: developer-portal/for-developers/woocommerce/pre-install/gather-your-docs.md
+      - label: "Step 2: Requirements"
+        page: developer-portal/for-developers/woocommerce/pre-install/requirements.md
+      - label: "Step 3: Onboard as a Seller"
+        page: developer-portal/for-developers/woocommerce/pre-install/sign-up-as-a-seller.md
+  - group: Install
+    expanded: true
+    pages:
+      - label: "Step 1: Install Fast Plugin"
+        page: developer-portal/for-developers/woocommerce/install/install-plugin.md
+      - label: "Step 2: Test Mode"
+        page: developer-portal/for-developers/woocommerce/install/test-mode.md
+      - label: "Step 3: Options"
+        page: developer-portal/for-developers/woocommerce/install/options.md
+      - label: "Step 4: Verify Setup"
+        page: developer-portal/for-developers/woocommerce/install/verify-setup.md
+  - group: Customization
+    expanded: true
+    pages:
+      - label: Styling
+        page: developer-portal/for-developers/woocommerce/customization/custom-checkout-button-styling.md
+      - label: Settings
+        page: developer-portal/for-developers/woocommerce/customization/custom-settings.md
+  - group: Fast Wordpress Plugin
+    expanded: true
+    pages:
+      - label: How to Find
+        page: developer-portal/for-developers/woocommerce/wordpress-plugin/location.md
+      - label: Migrating to New Plugin Directory Version (for Early Sellers)
+        page: developer-portal/for-developers/woocommerce/wordpress-plugin/migrating.md
+
+forSellersQuickstart:
+  - page: developer-portal/for-sellers/quickstart.md
+  - group: Pre-Install
+    expanded: true
+    pages:
+      - label: Will Fast Work For Me?
+        page: developer-portal/for-sellers/quickstart/preinstall/will-fast-work-for-me.md
+      - label: Gather Your Docs
+        page: developer-portal/for-sellers/quickstart/preinstall/gather-your-docs.md
+  - group: Onboarding
+    expanded: true
+    pages:
+      - label: Options
+        page: developer-portal/for-sellers/quickstart/onboarding/options.md
+  - group: Resources
+    expanded: true
+    pages:
+      - label: Partner Onboarding FAQs
+        page: developer-portal/for-sellers/quickstart/resources/partners-onboarding-faq.md
+      - label: Fast FAQs to Share with Customers
+        page: developer-portal/for-sellers/quickstart/resources/faqs-to-share-with-customers.md
+
+forSellersCurrentSupport:
+  - page: developer-portal/for-sellers/current-support.md
+  - group: Payments
+    expanded: true
+    pages:
+      - label: Currencies Supported
+        page: developer-portal/for-sellers/current-support/payments/currencies-supported.md
+      - label: Credit Cards Supported
+        page: developer-portal/for-sellers/current-support/payments/credit-cards-supported.md
+  - group: International
+    expanded: true
+    pages:
+      - label: Countries Supported
+        page: developer-portal/for-sellers/current-support/international/countries-supported.md
+      - label: Languages Supported
+        page: developer-portal/for-sellers/current-support/international/languages-supported.md
+
+forSellersOrders:
+  - page: developer-portal/for-sellers/orders.md
+  - group: Current Orders
+    expanded: true
+    pages:
+      - label: Viewing Current Orders
+        page: developer-portal/for-sellers/orders/current-orders/viewing-current-orders.md
+      - label: Purchasing multiple items
+        page: developer-portal/for-sellers/orders/current-orders/purchasing-multiple-items.md
+      - label: Promo Codes
+        page: developer-portal/for-sellers/orders/current-orders/promo-codes.md
+      - label: Pending Payments
+        page: developer-portal/for-sellers/orders/current-orders/pending-payments.md
+      - label: Cancelled Orders
+        page: developer-portal/for-sellers/orders/current-orders/cancelled-orders.md
+      - label: Subscriptions Support
+        page: developer-portal/for-sellers/orders/current-orders/subscriptions-support.md
+      - label: Shipping Options
+        page: developer-portal/for-sellers/orders/current-orders/shipping-options.md
+  - group: Payments
+    expanded: true
+    pages:
+      - label: How you get paid
+        page: developer-portal/for-sellers/orders/payments/how-you-get-paid.md
+      - label: Refunds
+        page: developer-portal/for-sellers/orders/payments/refunds.md
+      - label: International Refunds
+        page: developer-portal/for-sellers/orders/payments/international-refunds.md
+      - label: Store Credit
+        page: developer-portal/for-sellers/orders/payments/store-credit.md
+  - group: Order Support
+    expanded: true
+    pages:
+      - label: Chargebacks and Disputes
+        page: developer-portal/for-sellers/orders/order-support/chargebacks-and-disputes.md
+      - label: Returns
+        page: developer-portal/for-sellers/orders/order-support/returns.md
+      - label: Zero Fraud Guarantee
+        page: developer-portal/for-sellers/orders/order-support/zero-fraud-guarantee.md
+
+forSellersAccountManagement:
+  - page: developer-portal/for-sellers/account-management.md
+  - group: Overview
+    expanded: true
+    pages:
+      - label: Seller Dashboard
+        page: developer-portal/for-sellers/account-management/overview/the-seller-dashboard.md
+      - label: Account Permissions
+        page: developer-portal/for-sellers/account-management/overview/account-permissions.md
+  - group: Multi-Account Management
+    expanded: true
+    pages:
+      - label: Toggling Back and Forth
+        page: developer-portal/for-sellers/account-management/multi-account-management/toggling-back-and-forth.md
+      - label: Adding Multiple Accounts
+        page: developer-portal/for-sellers/account-management/multi-account-management/adding-multiple-accounts.md
+  - group: Payouts
+    expanded: true
+    pages:
+      - label: Payouts Process
+        page: developer-portal/for-sellers/account-management/payouts/payouts-process.md
+
+forSellersReporting:
+  - page: developer-portal/for-sellers/reporting.md
+  - group: Exporting Payment Data
+    expanded: true
+    pages:
+      - label: Overview
+        page: developer-portal/for-sellers/reporting/exporting-data/overview.md
+  - group: Weekly Seller Reports
+    expanded: true
+    pages:
+      - label: Overview
+        page: developer-portal/for-sellers/reporting/weekly-seller-reports/overview.md
+      - label: Subscribing
+        page: developer-portal/for-sellers/reporting/weekly-seller-reports/subscribing.md
+      - label: Troubleshooting
+        page: developer-portal/for-sellers/reporting/weekly-seller-reports/troubleshooting.md
+
+forSellersPrivacyAndSecurity:
+  - page: developer-portal/for-sellers/privacy-and-security.md
+  - group: Accounts
+    expanded: true
+    pages:
+      - label: Deleting Accounts
+        page: developer-portal/for-sellers/privacy-and-security/accounts/deleting-accounts.md
+  - group: Compliance
+    expanded: true
+    pages:
+      - label: PCI Compliance
+        page: developer-portal/for-sellers/privacy-and-security/compliance/pci-compliance.md
+
+forShoppersOrders:
+  - page: developer-portal/for-shoppers/orders.md
+  - group: Overview
+    expanded: true
+    pages:
+      - label: What is Fast Checkout?
+        page: developer-portal/for-shoppers/orders/overview/fast-checkout.md
+      - label: What is Fast Login?
+        page: developer-portal/for-shoppers/orders/overview/fast-login.md
+      - label: What Happens when you click Fast Checkout?
+        page: developer-portal/for-shoppers/orders/overview/what-happens.md
+      - label: Login Requirements
+        page: developer-portal/for-shoppers/orders/overview/login-requirements.md
+  - group: Payments
+    expanded: true
+    pages:
+      - label: When Am I Charged?
+        page: developer-portal/for-shoppers/orders/payments/when-am-i-charged.md
+      - label: Promo Codes
+        page: developer-portal/for-shoppers/orders/payments/promo-codes.md
+      - label: Store Credit
+        page: developer-portal/for-shoppers/orders/payments/store-credit.md
+      - label: Gift Cards
+        page: developer-portal/for-shoppers/orders/payments/gift-cards.md
+      - label: Discount Codes
+        page: developer-portal/for-shoppers/orders/payments/discount-codes.md
+      - label: Reorders
+        page: developer-portal/for-shoppers/orders/payments/reorders.md
+      - label: Changing Card information
+        page: developer-portal/for-shoppers/orders/payments/changing-card-information.md
+  - group: Order Process
+    expanded: true
+    pages:
+      - label: Checkout
+        page: developer-portal/for-shoppers/orders/order-process/checkout.md
+      - label: Emails Related To Your Order
+        page: developer-portal/for-shoppers/orders/order-process/emails-related-to-your-order.md
+  - group: Shipping
+    expanded: true
+    pages:
+      - label: Tracking Current Orders
+        page: developer-portal/for-shoppers/orders/shipping/tracking-current-orders.md
+
+  - group: Troubleshooting
+    expanded: true
+    pages:
+      - label: Can't See Checkout Window
+        page: developer-portal/for-shoppers/orders/troubleshooting/cant-see-checkout-window.md
+forShoppersAccount:
+  - page: developer-portal/for-shoppers/account.md
+  - group: Updating Your Account
+    expanded: true
+    pages:
+      - label: Payment Method
+        page: developer-portal/for-shoppers/account/updating-your-account/payment-method.md
+      - label: Shipping Address
+        page: developer-portal/for-shoppers/account/updating-your-account/shipping-address.md
+      - label: Deleting your account
+        page: developer-portal/for-shoppers/account/updating-your-account/deleting-your-account.md
+  - group: Managing Your Account
+    expanded: true
+    pages:
+      - label: Handling an existing Fast account on a new device
+        page: developer-portal/for-shoppers/account/managing-your-account/new-devices.md
+  - group: Order History
+    expanded: true
+    pages:
+      - label: Tracking Current Orders
+        page: developer-portal/for-shoppers/account/order-history/tracking-current-orders.md
+
+forShoppersPrivacyAndSecurity:
+  - page: developer-portal/for-shoppers/privacy-and-security.md
+  - group: Accounts
+    expanded: true
+    pages:
+      - label: Deleting Your Account
+        page: developer-portal/for-shoppers/privacy-and-security/accounts/deleting-your-account.md
+      - label: Hacked Email Accounts
+        page: developer-portal/for-shoppers/privacy-and-security/accounts/hacked-email-accounts.md
+  - group: Data
+    expanded: true
+    pages:
+      - label: How Data is Handled
+        page: developer-portal/for-shoppers/privacy-and-security/data/how-data-is-handled.md
+
+  - group: Compliance
+    expanded: true
+    pages:
+      - label: PCI Compliance
+        page: developer-portal/for-shoppers/privacy-and-security/compliance/pci-compliance.md
+
+forShoppersCurrentSupport:
+  - page: developer-portal/for-shoppers/current-support.md
+  - group: Payments
+    expanded: true
+    pages:
+      - label: Currencies Supported
+        page: developer-portal/for-shoppers/current-support/payments/currencies-supported.md
+      - label: Credit Cards Supported
+        page: developer-portal/for-shoppers/current-support/payments/credit-cards-supported.md
+  - group: International
+    expanded: true
+    pages:
+      - label: Countries Supported
+        page: developer-portal/for-shoppers/current-support/international/countries-supported.md
+      - label: Languages Supported
+        page: developer-portal/for-shoppers/current-support/international/languages-supported.md

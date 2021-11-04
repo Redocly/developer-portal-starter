@@ -1,10 +1,11 @@
 ---
-title: Fast Documentation
+title: Fast Docs
+description: Documentation for all Fast products
+keywords: Fast Docs home, Fast Docs, Fast AF Docs, Fast Button Docs
 ---
 
-import { LandingLayout } from "@redocly/ui";
-
 import {
+  LandingLayout,
   Button,
   Box,
   FlexSection,
@@ -15,53 +16,48 @@ import {
   Emphasis,
   H1,
   H2,
-  SectionHeader
-} from "@redocly/ui";
+  SectionHeader,
+  NavBar,
+} from "@redocly/developer-portal/ui";
 
-import { NavBar } from "@redocly/ui";
-
-import icon1 from "./images/icon1.png";
-import launchFastIcon from "./images/launch-fast.svg";
-import icon3 from "./images/icon3.png";
-import bookManagementIcon from "./images/book-management.svg";
-import foundOrPrivate from "./images/found-or-private.svg";
-import bigcommerce from "./images/bigcommerce.svg";
-import woocommerce from "./images/woocommerce.svg";
-import fastblk from "./images/logo-black.svg";
-import docs from "./images/docs.svg";
-import community from "./images/community.svg";
-import updates from "./images/updates.svg";
-import twitter from "./images/twitter.svg";
-import chat from "./images/chat.svg";
-import help from "./images/help.svg";
+import forSellersImg from "./images/1-1.svg";
+import forShoppersImg from "./images/4.svg";
+import forDevelopersImg from "./images/2.svg";
 
 export default LandingLayout;
 
 <Jumbotron>
   <NavBar location={props.location} standalone={false} />
-  <H1>Developer Portal</H1>
-  <H2>Documentation, resources & support integrating Fast products</H2>
-  <Flex p={20} justifyContent="center">
-    <Button inversed transparent large to="developer-portal/index.md">
-      Visit Our Docs
-    </Button>
-  </Flex>
+  <H1>
+    Get <Emphasis>Fast</Emphasis>. Fast!
+  </H1>
+  <H2>Documentation, resources, and support integrating Fast products</H2>
 </Jumbotron>
-<Box my={25}>
+<Box id="home-page-features" my={25}>
   <SectionHeader>
-    Dive into <Emphasis> Fast </Emphasis> resources
+    Choose <Emphasis>Your</Emphasis> adventure.
   </SectionHeader>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <ThinTile to="developer-portal/index.md" icon={docs} header="Docs & Guides">
-      Dive into our documentation & guides for integrating Fast with your
-      platform.
+    <ThinTile
+      to="developer-portal/for-sellers/features.mdx"
+      icon={forSellersImg}
+      header="For Sellers"
+    >
+      Learn more about selling through Fast
     </ThinTile>
     <ThinTile
-      to="https://help.fast.co/hc/en-us"
-      icon={help}
-      header="Account Help"
+      to="developer-portal/for-shoppers/features.mdx"
+      icon={forShoppersImg}
+      header="For Shoppers"
     >
-      Obtain help from our customer success team with your seller account.
+      Explore how Fast improves the online shopping experience
+    </ThinTile>
+    <ThinTile
+      to="developer-portal/for-developers/platforms.mdx"
+      icon={forDevelopersImg}
+      header="For Developers"
+    >
+      Review installation and integration guides
     </ThinTile>
   </FlexSection>
 </Box>

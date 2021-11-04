@@ -1,15 +1,15 @@
 {
-  "name": "portal-template",
+  "name": "external-docs",
   "private": true,
   "version": "0.0.1",
-  "description": "Redocly portal template repository",
+  "description": "Fast External Docs",
   "license": "MIT",
   "scripts": {
-    "start": "redocly-portal develop -p 3000",
+    "start": "redocly-portal develop -p 3011",
     "build": "redocly-portal build",
     "clean": "redocly-portal clean"
   },
   "dependencies": {
-    "@redocly/developer-portal": "1.0.0-beta.136"
+    "@redocly/developer-portal": "1.1.0-beta.57"
   }
 }

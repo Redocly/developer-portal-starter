@@ -1,31 +1,75 @@
-# Redocly API developer portal
+# Fast External Docs
 
-## Prerequisites
+This is our [redoc.ly](https://redoc.ly/) app that contains all external documentation for:
 
-- [node.js >= 10.15.1](https://nodejs.org/en/)
-- [yarn](https://yarnpkg.com/en/)
-
-## Install
-
-    yarn install
+- "For Shoppers"
+- "For Sellers"
+- "For Developers"
 
 ## Start development server
 
-    yarn start
+```bash
+yarn start
+```
 
 Note: search isn't functional in the development environment.
 
+## Updating redoc.ly
+
+### Update package.json
+
+Find the `@redocly/developer-portal` in the `@dependencies` section of the `package.json` file.
+
+```json
+  "dependencies": {
+    "@redocly/developer-portal": "^1.1.0-beta.34"
+  }
+```
+
+Update the version there (note, this may be the most current version already).
+
+Check the [published versions on NPM](https://www.npmjs.com/package/@redocly/developer-portal).
+
+```json
+  "dependencies": {
+    "@redocly/developer-portal": "^1.1.0-beta.35"
+  }
+```
+
+Save the file.
+
+### Install packages
+
+```bash
+lerna bootstrap
+```
+
+This command will upgrade to the newer version of the developer portal.
+
+### Upgrade Troubleshooting
+
+If you hit a problem with the installation, you may want to try to delete your `yarn.lock` file and then `yarn install` again.
+Some dependencies are pinned based on the underlying OS or node version.
+
+```bash
+rm yarn.lock
+rm -rf node_modules
+yarn install
+yarn clean
+```
+
+Still stuck? Contact us. We're happy to help.
+
 ## Troubleshooting
 
-We heavily rely on caching for performance issues so if some changes are not reflected in the resulting portal try cleaning cache by running:
+### Loading issues
 
-    yarn clean
+redocl.y relies on heavily on caching. If you made any changes that are not showing or broke the build run this:
 
-## Docs
+```bash
+yarn clean
+```
 
-Read the [online documentation](https://redoc.ly/docs/developer-portal/introduction/).
+## Resouces
 
-## Training program
-
-The starter template contains training exercises which will teach you how to build a developer portal.
-After you start the development server, navigate to the app and follow the instructions to get started with your training.
+- [online redoc.ly documentation](https://redoc.ly/docs/developer-portal/introduction/).

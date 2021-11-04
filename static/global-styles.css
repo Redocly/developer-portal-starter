@@ -1,0 +1,66 @@
+/* All the things */
+* {
+  outline-color: #000;
+}
+
+/* All list items  */
+li {
+  margin: 16px 0;
+}
+
+/* Home page icons */
+#home-page-features img {
+  width: 176px !important;
+}
+
+/* Search Results styles */
+ul > a > div > span {
+  font-size: 16px !important;
+}
+
+/* Platforms page icon areas*/
+#platforms-page a {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#platforms-page a > div {
+  width: auto;
+}
+#platforms-page a > div > img {
+  height: 42px;
+  max-width: 174px;
+}
+
+/* All Code */
+code {
+  font-family: Courier, monospace !important;
+}
+
+/* Navigation list items  */
+nav li {
+  margin: 0;
+}
+
+/* Right Side bar section headers */
+ul > div > span {
+  font-weight: 600;
+}
+
+/* Right Side bar TOP section header */
+ul > a > div > span {
+  font-weight: 600;
+  font-size: 30px;
+}
+
+/* Right Side bar nested content */
+ul > ul > a > div > span {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* FIX: top nav content right before mobile breakpoint wrapped wonky */
+nav > ul {
+  display: flex;
+  align-items: center;
+}

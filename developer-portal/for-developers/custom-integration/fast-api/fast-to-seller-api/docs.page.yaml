@@ -1,0 +1,14 @@
+type: reference-docs
+definitionId: merchant
+label: Fast --> Seller API
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
+      - lang: Python
+      - lang: Java
+      - lang: C#
+  pagination: none
+  showConsole: true

@@ -1,0 +1,1 @@
+When a customer purchases a product from your store using Fast Checkout, Fast accepts and processes payments on your behalf and submits an order once the transaction has been approved by the card issuer.

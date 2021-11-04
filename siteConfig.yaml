@@ -1,34 +1,62 @@
 meta:
-  title: Fast Developer Portal
-  description: One click. No passwords. The world's fastest checkout.
-  siteUrl: https://fastaf.redoc.ly
-headerIcon: ./images/logo.svg
-enableToc: true
+  title: Fast Docs
+  description: Documentation, resources & support integrating Fast products.
+  siteUrl: https://fast.co/docs
+  keywords: Fast button, Fast install, Fast login, Fast docs
+  lang: en-US
+linkChecker:
+  severity: warning
+  options:
+    CheckExternal: false
+logo:
+  image: ./images/fastDocsLogo.svg
+  altText: Fast Docs
+toc:
+  enable: true
 oasDefinitions:
-  order: ./order/openapi.yaml
-  merchant: ./merchant/openapi.yaml
+  order: ./developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/openapi.yaml
+  merchant: ./developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/openapi.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap
-ga:
-  # you can use any options here from https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-  # note that GA doesn't work in DEV
-  trackingId: G-RKYNE4TEVK
+  - ./static/global-styles.css
+analytics:
+  ga:
+    trackingId: "G-RKYNE4TEVK"
 #scripts:
 #  - ./static/intercom.js
 nav:
-  - label: Documentation
-    page: developer-portal/index.md
+  - label: For Sellers
+    page: developer-portal/for-sellers/features.mdx
 
-  - label: Fast Account Help
-    href: https://help.fast.co/hc/en-us
-    external: true
+  - label: For Shoppers
+    page: developer-portal/for-shoppers/features.mdx
+
+  - label: For Developers
+    page: developer-portal/for-developers/platforms.mdx
+
+  - label: Fast API
+    page: developer-portal/for-developers/custom-integration/fast-api/overview.md
 
   - search: true
 
 footer:
-  copyrightText: Copyright © Fast AF, Inc 2021. All right reserved.
+  copyrightText: Copyright © Fast 2021. All right reserved.
   columns:
+    - group: Legal
+      items:
+        - label: Terms of Service
+          href: "https://www.fast.co/terms/terms-home"
+        - label: Privacy Notice
+          href: "https://www.fast.co/privacy"
+        - label: Cookie Policy
+          href: "https://www.fast.co/cookie-policy"
+    - group: Company
+      items:
+        - label: Careers
+          href: "https://www.fast.co/careers"
+        - label: Newsroom
+          href: "https://www.fast.co/newsroom/news"
     - group: Product
       items:
         - label: Checkout
@@ -36,23 +64,14 @@ footer:
         - label: Sellers
           href: "https://www.fast.co/sellers"
         - label: Partners
-          href: "https://www.fast.co/partner-program"
+          href: "https://www.fast.co/partners"
         - label: Pricing
           href: "https://www.fast.co/pricing"
         - label: Seller Stories
           href: "https://www.fast.co/stories"
-        - label: Privacy & Security
-          href: "https://www.fast.co/privacy-security"
         - label: Customer Stories
           href: "https://www.fast.co/stories"
-        - label: Help
-          href: "http://help.fast.co/"
-    - group: Company
+    - group: Support
       items:
-        - label: Careers
-          href: "https://www.fast.co/careers"
-        - label: Newsroom
-          href: "https://www.fast.co/newsroom/news"
-        - label: Privacy Policy
-          href: "https://www.fast.co/privacy"
-        - label: Terms of Service
+        - label: Help
+          href: "https://help.fast.co/"
