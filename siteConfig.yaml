@@ -14,8 +14,8 @@ logo:
 toc:
   enable: true
 oasDefinitions:
-  order: ./developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/openapi.yaml
-  merchant: ./developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/openapi.yaml
+  order: ./developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/openapi.yaml
+  merchant: ./developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/openapi.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap

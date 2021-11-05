@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Seller to Fast API
-  version: V1
+  title: Fast to Seller API
+  version: v1
   license:
-    name: TBD
-    url: "https://fast.co/licenses"
+    name: Fast Developer Terms
+    url: "https://www.fast.co/terms/developer-terms"
   contact:
     name: Fast
     url: "https://fast.co"
@@ -14,17 +14,22 @@ info:
 
     <!-- ReDoc-Inject: <security-definitions> -->
 tags:
-  - name: Seller to Fast API
-    description: Seller to Fast API
+  - name: Fast to Seller API
+    description: Fast will communicate with your server application on these endpoints.
 paths:
-  "/v1/external/orders/{order_id.value}":
-    $ref: "paths/v1@external@orders@{order_id.value}.yaml"
-  "/v1/external/orders/{order_id.value}/business_event":
-    $ref: "paths/v1@external@orders@{order_id.value}@business_event.yaml"
-  "/v1/external/orders/{order_id.value}/refund":
-    $ref: "paths/v1@external@orders@{order_id.value}@refund.yaml"
+  /fast/v1/create:
+    $ref: paths/fast@v1@create.yaml
+  /fast/v1/read:
+    $ref: paths/fast@v1@read.yaml
+  /fast/v1/update:
+    $ref: paths/fast@v1@update.yaml
+  /fast/v1/delete:
+    $ref: paths/fast@v1@delete.yaml
 servers:
-  - url: "https://api.fast.co"
+  - url: https://api.fast.co
+    description: Production server (for live site)
+  - url: https://https://api.sandbox.fast.co
+    description: Sandbox server (for testing)
 components:
   securitySchemes:
     ApiKeyAuth:
