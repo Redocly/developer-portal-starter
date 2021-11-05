@@ -41,7 +41,7 @@ Save the file.
 ### Install packages
 
 ```bash
-lerna bootstrap
+yarn install
 ```
 
 This command will upgrade to the newer version of the developer portal.
