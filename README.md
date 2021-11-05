@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [node.js >= 12.22.6](https://nodejs.org/en/)
+- [node.js >= 12.22.6 and <= 16.x](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com/en/)
 
 ## Install
