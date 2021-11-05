@@ -18,4 +18,4 @@ During the 5-minute checkout process you have the ability to update your payment
 
 It's important to mention that updating your credit card information is only reflected on future orders. Payment methods can not be updated on current orders, if you need to update your payment details on a current order please contact the merchant directly.
 
-If you’d like to delete your account, feel free to send deletion requests to privacy@fast.co and we'll promptly honor your request. You can learn more about how we handle personal information by visiting our Privacy Policy at fast.co/privacy.
+<embed src="/reusables/security/_data_privacy_delete_account.md" />

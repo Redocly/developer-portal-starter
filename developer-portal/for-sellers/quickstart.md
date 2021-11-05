@@ -7,10 +7,12 @@ keywords: Fast Seller Quickstart
 # Fast Seller Quickstart
 
 :::info Note
-We’re here to help at any stage of the process, so if you run into any confusion or have any questions, reach out to us at **seller-support@fast.co**
+
+We’re here to help at any stage of the process, so if you run into any confusion or have any questions, reach out to us at [**seller-support@fast.co**](mailto:seller-support@fast.co)
+
 :::
 
-Seller onboarding is incredibly important to us – both in ease of use and enjoying the outcomes from installing Fast Checkout everywhere you can put a button and increase your revenue.
+Seller onboarding is incredibly important to us — the process of enabling Fast Checkout everywhere you can to increase your revenue should should be both easy and enjoyable.
 
 ## Requirements
 

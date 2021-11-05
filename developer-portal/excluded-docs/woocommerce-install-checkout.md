@@ -121,7 +121,7 @@ Test the following pages and functions of your website to ensure Fast is integra
 - Mini cart `varies depending on theme`
 - Login page `https://yourwebsite.com/my-account`
 
-If your site is still in test mode, you can place orders without risk. [See Stripe's basic test cards](https://stripe.com/docs/testing#cards) to find test credit card numbers you can use for orders.
+If your site is still in test mode, you can place orders without risk. [View test cards](https://stripe.com/docs/testing#cards) to find test credit card numbers you can use for orders.
 
 ## Edit the appearance of the button
 

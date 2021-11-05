@@ -75,7 +75,7 @@ custom-integration:
         page: developer-portal/for-developers/custom-integration/fast-api/events.md
       - label: Fast -> Seller API
         page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/docs.page.yaml
-      - label: Seller --> Fast API
+      - label: Seller -> Fast API
         page: developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/docs.page.yaml
   - group: Developer Tools
     expanded: true

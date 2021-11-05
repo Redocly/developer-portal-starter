@@ -32,7 +32,7 @@ Before you begin this process, you’ll need an online store hosted by BigCommer
 3. Click the checkbox and click “Confirm.”
    ![Confirm](images/big3.png)
 
-4. If you want to, you can click “Help Me go Fast.” You don’t have to do this step. If you do this step, then also click the X in the pop-up that appears and continue to step 10. If you choose not to do this step, simply go straight to step 10.
+4. If you want to, you can click “Help Me go Fast.” You don’t have to do this step. If you do this step, then also click the X in the pop-up that appears and continue to the next step. If you choose not to do this step, simply go straight to the next step.
 
    ![Install](images/big4.png)
 
@@ -47,7 +47,7 @@ Before you begin this process, you’ll need an online store hosted by BigCommer
 
    ![Business EIN details](images/both7.png)
 
-8. Wait several seconds while Stripe verifies your business. If this verification is unsuccessful, contact customer success at seller-support@fast.co. Otherwise, move onto step 14.
+8. Wait several seconds for the business verification process to complete. If this verification is unsuccessful, contact customer success at seller-support@fast.co. Otherwise, move on to the next step.
    **Note**: If you operate under a DBA, you will need to click the pencil icon in order to enter your legal name that correlates with your tax ID.
 
    ![Fast partners with Stripe notification](images/both8.png)

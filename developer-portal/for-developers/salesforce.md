@@ -6,7 +6,7 @@ keywords: Fast Salesforce, Fast Salesforce install
 
 <!------import { OpenApiResponse } from "@redocly/developer-portal/ui";---->
 
-# One-click checkout on Salesforce Commerce Cloud
+# One-Click Checkout with Salesforce Commerce Cloud
 
 <img
   alt="Fast Checkout button on a product page"
@@ -37,9 +37,7 @@ When a customer purchases a product from your store using Fast Checkout, Fast ac
 
 ### Refunds
 
-Need to refund a customer? You can leverage the [Seller -> Fast API to Refund an order](/developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/docs/#operation/ExternalOrderManagementService_RefundOrder).
-
-<!----<OpenApiResponse definitionId="order" pointer="/developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/paths/v1@external@orders@{order_id.value}@refund.yaml"/>----->
+<embed src="/reusables/for-developers/_platform_all_refunds_via_api_quick_summary.md" />
 
 ### Order Tracking
 

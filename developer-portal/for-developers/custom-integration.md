@@ -4,7 +4,7 @@ description: Documentation for Fast on Custom Integration
 keywords: Fast Custom Integration, Fast Custom Integration install
 ---
 
-# One-click checkout DIY Custom Integration.
+# One-Click Checkout with DIY Custom Integration.
 
 <img alt="Fast Checkout button on a product page"  width="100%" style="max-height: 100%;" src="images/fast-product-preview.jpg"/>
 
@@ -30,7 +30,7 @@ When a customer purchases a product from your store using Fast Checkout, Fast ac
 
 ### Refunds
 
-Need to refund a customer? Please see [**How do I make refunds with Fast?**](https://help.fast.co/hc/en-us/articles/360055253814-How-do-I-refund-a-customer-)
+<embed src="/reusables/for-developers/_platform_all_refunds_via_api_quick_summary.md" />
 
 ### Order Tracking
 

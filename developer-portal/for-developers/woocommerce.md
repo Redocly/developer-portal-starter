@@ -8,7 +8,7 @@ redirectFrom:
   - /developer-portal/woocommerce/
 ---
 
-# One-click checkout on WooCommerce
+# One-Click Checkout with WooCommerce
 
 ![Fast Checkout button on a product page](images/fast-product-preview.jpg)
 
@@ -34,8 +34,9 @@ When a customer purchases a product from your store using Fast Checkout, Fast ac
 
 ### Refunds
 
-Need to refund a customer? Use your WooCommerce admin to start the refund and Fast will take care of the rest.
-Please see [**How do I make refunds with Fast?**](https://help.fast.co/hc/en-us/articles/360055253814-How-do-I-refund-a-customer-)
+<embed src="/reusables/for-developers/_platform_all_refunds_via_api_quick_summary.md" />
+
+<embed src="/reusables/for-developers/_platform_all_refunds_via_store_admin.md" />
 
 ### Order Tracking
 

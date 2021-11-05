@@ -16,7 +16,7 @@ The Weekly Seller Report is sent out every Tuesday by 7am local time.
 
 ## Who is eligible to receive the report?
 
-All users with a store Owner, Admin or Analyst role on their Fast user account are eligible to receive the Weekly Seller Report.
+All users with a store [Owner, Admin, or Analyst role assigned to their Fast user account](/developer-portal/for-sellers/account-management/overview/account-permissions) are eligible to receive the Weekly Seller Report.
 
 ## How do I understand the metrics in the report?
 

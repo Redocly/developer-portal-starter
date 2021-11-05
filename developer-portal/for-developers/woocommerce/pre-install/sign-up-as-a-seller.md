@@ -51,7 +51,7 @@ Before you begin this process, you’ll need an online store hosted by WooCommer
 
    ![Business details EIN form](images/woocommerce-signup-12.png)
 
-8. Wait several seconds while Stripe verifies your business. If this verification is unsuccessful, contact customer success at seller-support@fast.co. Otherwise, move onto step 14.
+8. Wait several seconds for the business verification process to complete. If this verification is unsuccessful, contact [seller-support@fast.co](mailto:seller-support@fast.co). Otherwise, move on to the next step.
    **Note**: If you operate under a DBA, you will need to click the pencil icon in order to enter your legal name that correlates with your tax ID..
 
    ![review your details form](images/woocommerce-signup-13.png)

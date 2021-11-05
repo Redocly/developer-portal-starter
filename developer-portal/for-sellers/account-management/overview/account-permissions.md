@@ -18,3 +18,7 @@ keywords: fast seller permissions, fast account permissions
 | **View FAQ**                                          |   Y   |   Y   |     Y     |        Y         |    Y    |     Y     |
 | **Initiate Help Chat**                                |   Y   |   Y   |     Y     |        Y         |    Y    |     Y     |
 | **Onboard new stores under an existing Organization** |   Y   |   N   |     N     |        N         |    N    |     N     |
+
+## Brief Description of Fast Account Team Member Roles
+
+<embed src="/reusables/for-sellers/_seller_dashboard_account_permissions_team_member_definitions.md" />

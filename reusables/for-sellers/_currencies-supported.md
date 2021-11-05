@@ -1,1 +1,1 @@
-We support 100+ currencies - https://stripe.com/docs/currencies
+We support [100+ currencies](https://stripe.com/docs/currencies).
