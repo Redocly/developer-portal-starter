@@ -976,7 +976,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.14.8", "@babel/runtime@^7.15.4":
+"@babel/runtime@^7.15.4":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -1417,30 +1417,31 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@redocly/ajv@^8.6.2":
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/@redocly/ajv/-/ajv-8.6.2.tgz#8c4e485e72f7864f91fae40093bed548ec2619b2"
-  integrity sha512-tU8fQs0D76ZKhJ2cWtnfQthWqiZgGBx0gH0+5D8JvaBEBaqA8foPPBt3Nonwr3ygyv5xrw2IzKWgIY86BlGs+w==
+"@redocly/ajv@^8.6.4":
+  version "8.6.4"
+  resolved "https://registry.yarnpkg.com/@redocly/ajv/-/ajv-8.6.4.tgz#94053e7a9d4146d1a4feacd3813892873f229a85"
+  integrity sha512-y9qNj0//tZtWB2jfXNK3BX18BSBp9zNR7KE7lMysVHwbZtY392OJCjm6Rb/h4UHH2r1AqjNEHFD6bRn+DqU9Mw==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.65":
-  version "1.1.0-beta.65"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.65.tgz#643f64dbafbcf3bcc14d15b899fa6d2138dd3ce6"
-  integrity sha512-xhDc5vQZTb4ZrQBOnfULVYNq2a8sr4EvbdSSPB/WZTKw1YmfFFlwL8xcCubYJEQEU+cfZbVYiUKXjHZu/wQc6Q==
+"@redocly/developer-portal@1.1.0-beta.69":
+  version "1.1.0-beta.69"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.69.tgz#2dd915988966b70722e1ce217062161c43cb8c64"
+  integrity sha512-B8y4PXrQ/PonyQ6PIb4pBvWfHiQiDm0VswRKcOlAZBtU9373Z7v4xzqPtdBD2QMENpznzLm5EB3PUcZes9V7TA==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "^1.0.0-beta.63"
-    "@redocly/reference-docs" "2.4.0"
+    "@redocly/openapi-core" "^1.0.0-beta.67"
+    "@redocly/reference-docs" "2.6.1"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
     cheerio "^1.0.0-rc.9"
+    common-tags "^1.8.0"
     core-js "^3.12.0"
     details-polyfill "^1.2.0"
     elasticlunr "0.9.5"
@@ -1460,7 +1461,6 @@
     gatsby-plugin-nprogress "3.2.0"
     gatsby-plugin-react-helmet "4.2.0"
     gatsby-plugin-segment-js "3.6.0"
-    gatsby-plugin-sitemap "4.9.0"
     gatsby-plugin-styled-components "4.2.0"
     gatsby-plugin-typescript "3.2.0"
     gatsby-react-router-scroll "^4.13.0"
@@ -1481,6 +1481,7 @@
     lodash.throttle "^4.1.1"
     marked "^0.7.0"
     mdast-util-to-string "^2.0.0"
+    minimatch "^3.0.4"
     mobx "^6.1.0"
     mobx-react "^7.2.0"
     node-fetch "^2.6.1"
@@ -1500,10 +1501,12 @@
     react-simple-dropdown "^3.2.3"
     react-string-replace "^0.4.4"
     reactjs-popup "^2.0.4"
+    remark "^10.0.1"
     remark-admonitions "^1.2.1"
     scroll-lock "^2.1.5"
     shortid "^2.2.16"
     simple-git "^1.110.0"
+    sitemap "^7.0.0"
     slugify "^1.5.1"
     stickyfilljs "^2.1.0"
     stream-http "^3.2.0"
@@ -1559,12 +1562,12 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-"@redocly/openapi-core@^1.0.0-beta.63":
-  version "1.0.0-beta.64"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.64.tgz#367840ba888c95b82ce4b932b683c3482ee0e4e3"
-  integrity sha512-pNyA3YVulTehGHlYIv/LVXBuV4FfXFtikJavz/JmZs14uCy+Sujr8/iq904Mwc4YdXPYw3lZKxRwl7PW2q/jsg==
+"@redocly/openapi-core@^1.0.0-beta.67":
+  version "1.0.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.67.tgz#d2687319e28754b8908048f9dead5033c6473f64"
+  integrity sha512-xH9Dl4D2VbXh7qMv1x7oQPfE9FpQsSjjJCe8QzRBF6aiTQFcxCB9LG4msa3Ym5KQuGkCDMyQXuA5oPTtzDooRQ==
   dependencies:
-    "@redocly/ajv" "^8.6.2"
+    "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
     colorette "^1.2.0"
     js-levenshtein "^1.1.6"
@@ -1572,6 +1575,7 @@
     lodash.isequal "^4.5.0"
     minimatch "^3.0.4"
     node-fetch "^2.6.1"
+    pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
 "@redocly/react-dropdown-aria@2.0.12":
@@ -1579,12 +1583,12 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.4.0.tgz#bf96595c58a6357ce0ff95cd1ca36cf4f88dd05f"
-  integrity sha512-lT6HL0oacb0c7caKw4WNfQwP8CPLfNQEeawLsgA6weIoQ8UPZ/BjJqXJNX9dTI683VlVhaaJLI+Il8a1eARXgg==
+"@redocly/reference-docs@2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.6.1.tgz#c85aa110ce4c11c5a34508331bedabfa26572f83"
+  integrity sha512-DJSHLYgPA++Y2tGx/0vg0brk7pFFaUN2vNrldsnJ9kGapmk+MjFiKQkdyleKGlHj8Xctb0fMkQAjF2ZrRE1okQ==
   dependencies:
-    "@redocly/openapi-core" "^1.0.0-beta.63"
+    "@redocly/openapi-core" "^1.0.0-beta.67"
     "@redocly/react-dropdown-aria" "2.0.12"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
@@ -6706,16 +6710,6 @@ gatsby-plugin-segment-js@3.6.0:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-3.6.0.tgz#740b2a5e6730119147e0dd1fb2c39acca83e353d"
   integrity sha512-kdpXV5RUGR5dRcSJHsUxP2+FY8XDOAqi3disj0SHdR5mZDAg4QtpiCQZYRB6Ji1/aP87oypoJVyeu6s1+GpHSw==
 
-gatsby-plugin-sitemap@4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-4.9.0.tgz#1e356136452e0b0dfc6cd1e481346c54d3a5d593"
-  integrity sha512-frbbsp8woF7WXY+Np5b3qLHZ2tK/uVF9kOVkTPZS3i4tfT0fRFoOamTqyWxFZbFwFTuZsJBUc7Rp0y41TtoPLw==
-  dependencies:
-    "@babel/runtime" "^7.14.8"
-    common-tags "^1.8.0"
-    minimatch "^3.0.4"
-    sitemap "^7.0.0"
-
 gatsby-plugin-styled-components@4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-4.2.0.tgz#50249500b0b94a68c898f303fc51441b24076c61"
@@ -11267,6 +11261,11 @@ platform@^1.3.6:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.6.tgz#48b4ce983164b209c2d45a107adb31f473a6e7a7"
   integrity sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
+
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 pngquant-bin@^6.0.0:
   version "6.0.0"
