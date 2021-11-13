@@ -10,4 +10,4 @@ redirectFrom:
 
 # Fast Order Lifecycle
 
-![Fast order lifecycle diagram](/images/order-lifecycle.png)
+![Fast order lifecycle diagram](images/order-lifecycle.png)

@@ -201,10 +201,10 @@ woocommerce:
         page: developer-portal/for-developers/woocommerce/customization/custom-checkout-button-styling.md
       - label: Settings
         page: developer-portal/for-developers/woocommerce/customization/custom-settings.md
-  - group: Fast Wordpress Plugin
+  - group: Fast WordPress Plugin
     expanded: true
     pages:
-      - label: How to Find
+      - label: Get the Latest Plugin Version
         page: developer-portal/for-developers/woocommerce/wordpress-plugin/location.md
       - label: Migrating to New Plugin Directory Version (for Early Sellers)
         page: developer-portal/for-developers/woocommerce/wordpress-plugin/migrating.md

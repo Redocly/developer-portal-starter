@@ -13,7 +13,7 @@ redirectFrom:
 
 # One-click checkout with Fast API.
 
-<img alt="Fast Checkout button on a product page"  width="100%" style="max-height: 100%;" src="images/fast-product-preview.jpg"/>
+![Fast Checkout Button on a Product Page](../../../images/all-platforms/fast-product-preview.jpg "#width=100%; max-height: 100%;")
 
 Welcome! You will find useful information regarding the design and specifications of Fast's API.
 

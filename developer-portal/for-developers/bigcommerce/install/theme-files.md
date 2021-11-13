@@ -8,7 +8,7 @@ keywords: Setting up BigCommerce Theme Files for Fast Buttons
 
 1. Go to [https://www.fast.co/business/dash/install](https://www.fast.co/business/dash/install) to **find your Fast App ID** and copy and paste it into a tab or document or digital sticky note. **Keep that Fast App ID accessible throughout the rest of this process.**
 
-   <img alt="fast app id" src="./images/image28.png"/>
+   ![Copy Fast App ID from the Fast Dashboard](../../../images/all-platforms/copy-fast-app-id-from-fast-dashboard.png)
 
 2. **Log into your BigCommerce store** at [https://login.bigcommerce.com/login](https://login.bigcommerce.com/login). 3. On the sidebar, **click “Storefront” → “My Themes”**.
    <img alt="finding my themes in the storefront sidebar" src="./images/image10.png"/> 4. Under “Current Theme,” **click “Advanced” → “Make a copy**.”

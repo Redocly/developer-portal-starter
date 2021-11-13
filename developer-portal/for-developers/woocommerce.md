@@ -10,7 +10,7 @@ redirectFrom:
 
 # One-Click Checkout with WooCommerce
 
-![Fast Checkout button on a product page](images/fast-product-preview.jpg)
+![Fast Checkout Button on a Product Page](../images/all-platforms/fast-product-preview.jpg "#width=100%; max-height: 100%;")
 
 ## One smart move for your business.
 

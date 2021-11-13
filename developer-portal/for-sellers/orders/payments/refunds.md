@@ -60,6 +60,6 @@ To refund a customer, use WooCommerce to refund on a specific order entry. See s
 
 <img alt="confirmation pop-up" src="./images/woocommercerefund3.png" />
 
-## Refunds via the Fast -> Seller API
+## Refunds via the Seller -> Fast API
 
 <embed src="/reusables/for-developers/_platform_all_refunds_via_api_quick_summary.md" />
