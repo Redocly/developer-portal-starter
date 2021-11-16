@@ -38,6 +38,7 @@ oasDefinitions:
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
+  - https://doc.toasttab.com/doc/toast-tailwind.css
 #analytics:
   # ga:
   # note that GA doesn't work in the development environment

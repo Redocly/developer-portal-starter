@@ -1,11 +1,11 @@
 import { lighten, darken, readableColor } from 'polished';
 
 export const theme = {
-  // spacing: {
-  //   unit: 5,
-  //   sectionHorizontal: ({ spacing }) => spacing.unit * 8,
-  //   sectionVertical: ({ spacing }) => spacing.unit * 8,
-  // },
+  spacing: {
+    unit: 5,
+    sectionHorizontal: ({ spacing }) => spacing.unit * 8,
+    sectionVertical: ({ spacing }) => spacing.unit * 14,
+  },
   // breakpoints: {
   //   xs: 0,
   //   small: '550px',
@@ -94,15 +94,15 @@ export const theme = {
 
   sidebar: {
     backgroundColor: '#ffffff',
-    width: '260px',
+    width: '310px',
   },
   // tocPanel: {
   //   width: '240px',
   // },
   components: {
     layoutControls: {
-      top: '110px',
-    },
+      top: '110px'
+    }
   },
   typography: {
     fontSize: '16px',
