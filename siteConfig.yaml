@@ -23,6 +23,7 @@ stylesheets:
 analytics:
   ga:
     trackingId: "G-RKYNE4TEVK"
+disableImagesOptimization: true
 #scripts:
 #  - ./static/intercom.js
 nav:
