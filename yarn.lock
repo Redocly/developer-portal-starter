@@ -976,7 +976,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.14.8", "@babel/runtime@^7.15.4":
+"@babel/runtime@^7.15.4":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -1417,30 +1417,31 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@redocly/ajv@^8.6.2":
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/@redocly/ajv/-/ajv-8.6.2.tgz#8c4e485e72f7864f91fae40093bed548ec2619b2"
-  integrity sha512-tU8fQs0D76ZKhJ2cWtnfQthWqiZgGBx0gH0+5D8JvaBEBaqA8foPPBt3Nonwr3ygyv5xrw2IzKWgIY86BlGs+w==
+"@redocly/ajv@^8.6.4":
+  version "8.6.4"
+  resolved "https://registry.yarnpkg.com/@redocly/ajv/-/ajv-8.6.4.tgz#94053e7a9d4146d1a4feacd3813892873f229a85"
+  integrity sha512-y9qNj0//tZtWB2jfXNK3BX18BSBp9zNR7KE7lMysVHwbZtY392OJCjm6Rb/h4UHH2r1AqjNEHFD6bRn+DqU9Mw==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.65":
-  version "1.1.0-beta.65"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.65.tgz#643f64dbafbcf3bcc14d15b899fa6d2138dd3ce6"
-  integrity sha512-xhDc5vQZTb4ZrQBOnfULVYNq2a8sr4EvbdSSPB/WZTKw1YmfFFlwL8xcCubYJEQEU+cfZbVYiUKXjHZu/wQc6Q==
+"@redocly/developer-portal@1.1.0-beta.71":
+  version "1.1.0-beta.71"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.71.tgz#2e0fef892a0d2123d8c25a217ce6dfc6c4d00a3a"
+  integrity sha512-UH7XxArkHpxbizsn0u5PaBg68qVCBY1tNXeJO8inqkpLvJKYuj7ylYv3Wn/LhFqzZuQ+T8O+tcW2wDvbztFB6Q==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "^1.0.0-beta.63"
-    "@redocly/reference-docs" "2.4.0"
+    "@redocly/openapi-core" "^1.0.0-beta.67"
+    "@redocly/reference-docs" "2.7.0"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
     cheerio "^1.0.0-rc.9"
+    common-tags "^1.8.0"
     core-js "^3.12.0"
     details-polyfill "^1.2.0"
     elasticlunr "0.9.5"
@@ -1448,6 +1449,7 @@
     gatsby "3.2.1"
     gatsby-cli "^3.5.0"
     gatsby-link "^3.13.0"
+    gatsby-plugin-amplitude-analytics "^3.2.0"
     gatsby-plugin-canonical-urls "3.2.0"
     gatsby-plugin-catch-links "3.2.0"
     gatsby-plugin-fullstory "~3.4.0"
@@ -1460,7 +1462,6 @@
     gatsby-plugin-nprogress "3.2.0"
     gatsby-plugin-react-helmet "4.2.0"
     gatsby-plugin-segment-js "3.6.0"
-    gatsby-plugin-sitemap "4.9.0"
     gatsby-plugin-styled-components "4.2.0"
     gatsby-plugin-typescript "3.2.0"
     gatsby-react-router-scroll "^4.13.0"
@@ -1481,12 +1482,14 @@
     lodash.throttle "^4.1.1"
     marked "^0.7.0"
     mdast-util-to-string "^2.0.0"
+    minimatch "^3.0.4"
     mobx "^6.1.0"
     mobx-react "^7.2.0"
     node-fetch "^2.6.1"
     p-map "^4.0.0"
     path-browserify "^1.0.1"
     polished "^4.1.2"
+    postcss "^8.2.12"
     prismjs "^1.23.0"
     process "^0.11.10"
     qs "^6.10.1"
@@ -1500,10 +1503,12 @@
     react-simple-dropdown "^3.2.3"
     react-string-replace "^0.4.4"
     reactjs-popup "^2.0.4"
+    remark "^10.0.1"
     remark-admonitions "^1.2.1"
     scroll-lock "^2.1.5"
     shortid "^2.2.16"
     simple-git "^1.110.0"
+    sitemap "^7.0.0"
     slugify "^1.5.1"
     stickyfilljs "^2.1.0"
     stream-http "^3.2.0"
@@ -1559,12 +1564,12 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-"@redocly/openapi-core@^1.0.0-beta.63":
-  version "1.0.0-beta.64"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.64.tgz#367840ba888c95b82ce4b932b683c3482ee0e4e3"
-  integrity sha512-pNyA3YVulTehGHlYIv/LVXBuV4FfXFtikJavz/JmZs14uCy+Sujr8/iq904Mwc4YdXPYw3lZKxRwl7PW2q/jsg==
+"@redocly/openapi-core@^1.0.0-beta.67":
+  version "1.0.0-beta.69"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.69.tgz#56f6dca9e8825b5d5df5a3057ce6817d3d32bfdd"
+  integrity sha512-A05sPH8U26qQdZgkOQfHrL8dwY3twJ51/PY43WUuRqMdeZEu3SRcIdgLyXaIgR82ZnHC2Y/MnexE5QKtKObYJA==
   dependencies:
-    "@redocly/ajv" "^8.6.2"
+    "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
     colorette "^1.2.0"
     js-levenshtein "^1.1.6"
@@ -1572,6 +1577,7 @@
     lodash.isequal "^4.5.0"
     minimatch "^3.0.4"
     node-fetch "^2.6.1"
+    pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
 "@redocly/react-dropdown-aria@2.0.12":
@@ -1579,12 +1585,12 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.4.0.tgz#bf96595c58a6357ce0ff95cd1ca36cf4f88dd05f"
-  integrity sha512-lT6HL0oacb0c7caKw4WNfQwP8CPLfNQEeawLsgA6weIoQ8UPZ/BjJqXJNX9dTI683VlVhaaJLI+Il8a1eARXgg==
+"@redocly/reference-docs@2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.7.0.tgz#f890ca4f31b71dd93b105f6c2231c30953f23213"
+  integrity sha512-GePg9ImDYoHKhu2XfcyuZ3Of9KABS4BedkiHSEKzSQgNo5HxhT7tt+LI2hBxNQ21yt9s4jQMTsdp9eXYxg5AyQ==
   dependencies:
-    "@redocly/openapi-core" "^1.0.0-beta.63"
+    "@redocly/openapi-core" "^1.0.0-beta.67"
     "@redocly/react-dropdown-aria" "2.0.12"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
@@ -6602,6 +6608,13 @@ gatsby-page-utils@^1.2.0:
     lodash "^4.17.21"
     micromatch "^4.0.2"
 
+gatsby-plugin-amplitude-analytics@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-amplitude-analytics/-/gatsby-plugin-amplitude-analytics-3.2.0.tgz#e43e1ece9a51e559abc3560c205501d10468c8a9"
+  integrity sha512-8221ADi4h67NZwAI+j3StnhOvthN/ETBFoFPWHkRuhQfzOB8FOaQeH31PN6IUYCs7HaGRI50CwNS3CBXq1Qq3A==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-canonical-urls@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-3.2.0.tgz#a463ece7fc9d0aff3a1ec03c587ee7cb0fb22392"
@@ -6705,16 +6718,6 @@ gatsby-plugin-segment-js@3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-3.6.0.tgz#740b2a5e6730119147e0dd1fb2c39acca83e353d"
   integrity sha512-kdpXV5RUGR5dRcSJHsUxP2+FY8XDOAqi3disj0SHdR5mZDAg4QtpiCQZYRB6Ji1/aP87oypoJVyeu6s1+GpHSw==
-
-gatsby-plugin-sitemap@4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-4.9.0.tgz#1e356136452e0b0dfc6cd1e481346c54d3a5d593"
-  integrity sha512-frbbsp8woF7WXY+Np5b3qLHZ2tK/uVF9kOVkTPZS3i4tfT0fRFoOamTqyWxFZbFwFTuZsJBUc7Rp0y41TtoPLw==
-  dependencies:
-    "@babel/runtime" "^7.14.8"
-    common-tags "^1.8.0"
-    minimatch "^3.0.4"
-    sitemap "^7.0.0"
 
 gatsby-plugin-styled-components@4.2.0:
   version "4.2.0"
@@ -10127,10 +10130,15 @@ nanoid@^2.1.0:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
   integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
-nanoid@^3.1.20, nanoid@^3.1.22:
+nanoid@^3.1.20:
   version "3.1.22"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   integrity sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
+
+nanoid@^3.1.30:
+  version "3.1.30"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.30.tgz#63f93cc548d2a113dc5dfbc63bfa09e2b9b64362"
+  integrity sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -11203,6 +11211,11 @@ physical-cpu-count@^2.0.0:
   resolved "https://registry.yarnpkg.com/physical-cpu-count/-/physical-cpu-count-2.0.0.tgz#18de2f97e4bf7a9551ad7511942b5496f7aba660"
   integrity sha1-GN4vl+S/epVRrXURlCtUlverpmA=
 
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
+
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.3.tgz#465547f359ccc206d3c48e46a1bcb89bf7ee619d"
@@ -11267,6 +11280,11 @@ platform@^1.3.6:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.6.tgz#48b4ce983164b209c2d45a107adb31f473a6e7a7"
   integrity sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
+
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 pngquant-bin@^6.0.0:
   version "6.0.0"
@@ -11648,14 +11666,14 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.27:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.2.8:
-  version "8.2.10"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.10.tgz#ca7a042aa8aff494b334d0ff3e9e77079f6f702b"
-  integrity sha512-b/h7CPV7QEdrqIxtAf2j31U5ef05uBDuvoXv6L51Q4rcS1jdlXAVKJv+atCFdUXYl9dyTHGyoMzIepwowRJjFw==
+postcss@^8.2.12, postcss@^8.2.8:
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.1.tgz#73051f825509ad1a716ef500108001bf3d1fa8f7"
+  integrity sha512-WqLs/TTzXdG+/A4ZOOK9WDZiikrRaiA+eoEb/jz2DT9KUhMNHgP7yKPO8vwi62ZCsb703Gwb7BMZwDzI54Y2Ag==
   dependencies:
-    colorette "^1.2.2"
-    nanoid "^3.1.22"
-    source-map "^0.6.1"
+    nanoid "^3.1.30"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.1"
 
 prebuild-install@^6.0.1:
   version "6.1.1"
@@ -13362,6 +13380,11 @@ source-list-map@^2.0.0, source-list-map@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
   integrity sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
+
+source-map-js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.1.tgz#a1741c131e3c77d048252adfa24e23b908670caf"
+  integrity sha512-4+TN2b3tqOCd/kaGRJ/sTYA0tR0mdXx26ipdolxcwtJVqEnqNYvlCAt1q3ypy4QMlYus+Zh34RNtYLoq2oQ4IA==
 
 source-map-resolve@^0.5.0:
   version "0.5.3"
