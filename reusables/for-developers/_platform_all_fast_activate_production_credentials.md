@@ -1,0 +1,1 @@
+**Activating Fast for your production storefront requires production credentials issued by Fast**. Production credentials are granted only after Fast reviews your sandbox installation and confirms a proper sandbox configuration. After activating in production, you’re ready to begin accepting Fast orders through your store.

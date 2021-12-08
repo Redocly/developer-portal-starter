@@ -6,6 +6,8 @@ keywords: Fast SFCC Activate storefront
 
 # Install Step 4: Activate your Storefront
 
-**In order to move to production, you’ll need Fast to issue production credentials**. These are granted once Fast has reviewed your sandbox installation and confirmed that it’s configured properly. After activating in production, you’re ready to begin accepting Fast orders through your store.
-
 When you activate your SFCC store, this will update Fast with information about your store so that customers can checkout.
+
+<embed src="/reusables/for-developers/_platform_all_fast_activate_production_credentials.md" />
+
+<embed src="/reusables/for-developers/_providing-your-logo.md" />

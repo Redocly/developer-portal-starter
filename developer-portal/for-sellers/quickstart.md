@@ -18,7 +18,7 @@ Seller onboarding is incredibly important to us — the process of enabling Fast
 
 For many Sellers, the simplest setup to start using Fast will involve an integration with an online store hosted by a [supported eCommerce platform](/developer-portal/for-developers/platforms).
 
-Alternatively, you can also use Fast via a [custom API integration](/developer-portal/for-developers/custom-integration) with your self-hosted online store. This option is the most technical, but gives you the most control over your store.
+Alternatively, you can also use Fast via a [custom API integration](/developer-portal/for-developers/custom-integration) with your online store. This option is the most technical, but gives you the most control over your store.
 
 The rest of the requirements are covered in our ["Will Fast Work For Me"](/developer-portal/for-sellers/quickstart/preinstall/will-fast-work-for-me/) Section.
 
