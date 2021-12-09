@@ -20,7 +20,7 @@ Authentication will be a part of everything! Before we can get started we need t
 
 This is the base URL we will use for sending API requests for the defined APIs that need to be implemented as part of this integration.
 
-> For example, if you have used `https://api.your-store.com` as your Merchant URL then when we call the defined `v1/fast/createOrder` API we will send the request as `https://api.your-store.com/v1/fast/createOrder`
+> For example, if you have used `https://api.your-store.com` as your Merchant URL then when we call the defined `v1/fast/create` API we will send the request as `https://api.your-store.com/v1/fast/create`
 
 ### API Access Token
 
