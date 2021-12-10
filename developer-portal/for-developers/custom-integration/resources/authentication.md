@@ -20,7 +20,7 @@ Custom Integrations with Fast require some development work in order to properly
 
 We will ask you to provide your "Merchant API URL". This URL should look something like: `https://api.your-store.com`.
 
-This is the base URL we will use for sending API requests for the defined APIs that need to be implemented as part of this integration. For example, if you have used `https://api.your-store.com` as your Merchant URL then when we call the defined `v1/fast/createOrder` API we will send the request as `https://api.your-store.com/v1/fast/createOrder`
+This is the base URL we will use for sending API requests for the defined APIs that need to be implemented as part of this integration. For example, if you have used `https://api.your-store.com` as your Merchant URL then when we call the defined `/fast/v1/create` API we will send the request as `https://api.your-store.com/fast/v1/create`
 
 **API Access Token**
 
