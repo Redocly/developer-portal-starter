@@ -1,0 +1,13 @@
+type: reference-docs
+definitionId: order management configuration
+label: Order management configuration
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: Java
+      - lang: Python
+  showConsole: false
+  hideHostname: true
+  hideDownloadButton: true
+  # downloadDefinitionUrl: https://doc.toasttab.com/api-specifications/toast-ordermgmt-config-api-docs.yaml

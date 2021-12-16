@@ -18,6 +18,8 @@ oasDefinitions:
   #labor: https://doc.toasttab.com/api-specifications/toast-labor-api.yaml
   #menus: https://doc.toasttab.com/api-specifications/toast-menus-api.yaml
   orders: https://doc.toasttab.com/api-specifications/toast-orders-api.yaml
+  #order management configuration: https://doc.toasttab.com/api-specifications/toast-ordermgmt-config-api-docs.yaml
+  #partners: https://doc.toasttab.com/api-specifications/toast-partners-api.yaml
   #partners: https://doc.toasttab.com/api-specifications/toast-partners-api.yaml
   #restaurants: https://doc.toasttab.com/api-specifications/toast-restaurants-api.yaml
   #stock: https://doc.toasttab.com/api-specifications/toast-stock-api.yaml
