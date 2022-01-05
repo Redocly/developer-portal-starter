@@ -84,6 +84,8 @@ custom-integration:
         page: developer-portal/for-developers/custom-integration/developer-tools/reference-implementation.md
       - label: Test Suite CLI
         page: developer-portal/for-developers/custom-integration/developer-tools/test-suite-cli.md
+      - label: Validation Tool
+        page: developer-portal/for-developers/custom-integration/developer-tools/validation-tool.md
   - group: Resources
     expanded: true
     pages:
