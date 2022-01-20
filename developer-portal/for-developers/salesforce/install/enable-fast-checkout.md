@@ -30,7 +30,7 @@ Before proceeding with storefront configuration, ensure you have already [downlo
    - **Navigate to**: <br />
      Administration → Site Development → Import & Export → Manage Import Files
      - Find the `system-objecttype-extensions.xml` under `/metadata/fast-meta-import/meta`
-       > For reference, this is the location of the file in [Fast's SFCC Integration Github repository](https://github.com/fast-af/sfcc-integration/tree/master/sfcc_cartridge/metadata/fast-meta-import/meta).
+       > For reference, this is the location of the file in [Fast's SFCC Integration GitHub repository](https://github.com/fast-af/sfcc-integration/tree/master/sfcc_cartridge/metadata/fast-meta-import/meta).
 
 :::info Proceed in Sandbox
 
