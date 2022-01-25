@@ -1427,16 +1427,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.77":
-  version "1.1.0-beta.77"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.77.tgz#b59b6cb6653995eb558e23af2ecf3505b28dea44"
-  integrity sha512-qp5XsOvymN0GzMA9xYYzFWrn/ltbYyg1eRHyQjCLD3digPSfjG2vTr42CRFml0FEbf7gyNyBorBWupHmejDJGQ==
+"@redocly/developer-portal@1.1.0-beta.78":
+  version "1.1.0-beta.78"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.78.tgz#db6327f9dd386c251d181275212742bf20401633"
+  integrity sha512-UmMUlDYiWAP5iL1c3RBVtdf6Kjp8OC7TCCijIFZs5BFf5dvIQmKclaOI9jCOUNA7Cbx4wjpchJ+R3HvIBcwoww==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "1.0.0-beta.67"
-    "@redocly/reference-docs" "2.9.1"
+    "@redocly/reference-docs" "2.9.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1600,17 +1600,17 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.9.1":
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.9.1.tgz#eeb83f06bc49fdb19a86ef887c3f7df5dedad8ea"
-  integrity sha512-xDe4P/3Ko0uFtg9IaNoa7L3XffluDxNgpwj2Esn2AoGvyjWP3NgO18PvQEOu+9VHgjGZcmxfTuxLjmmeO97yYg==
+"@redocly/reference-docs@2.9.5":
+  version "2.9.5"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.9.5.tgz#a76976a7a5a77555e9db4ce2db0c54fcfd09ffd2"
+  integrity sha512-+FcRTIp7A3DYgYKZ8G+IeYCkU/qFdUAd7rybEROHdJIl+y4Gidr1O25PQgCz5G1V7rP3lomo4zQRUbi0yj1dUA==
   dependencies:
     "@redocly/openapi-core" "^1.0.0-beta.67"
     "@redocly/react-dropdown-aria" "2.0.12"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
     classnames "^2.2.6"
-    codemirror "^5.59.4"
+    codemirror "^5.65.0"
     decko "^1.2.0"
     deepmerge "^4.2.2"
     dompurify "^2.0.12"
@@ -1623,7 +1623,7 @@
     kleur "^3.0.3"
     lunr "^2.3.8"
     mark.js "^8.11.1"
-    marked "^3.0.4"
+    marked "^4.0.10"
     mkdirp "^0.5.1"
     mobx-react "^7.2.0"
     node-libs-browser "^2.2.0"
@@ -1634,7 +1634,7 @@
     prismjs "^1.22.0"
     prop-types "^15.7.2"
     query-string "^6.13.6"
-    react-codemirror2 "^7.1.0"
+    react-codemirror2 "^7.2.1"
     react-tabs "^3.1.1"
     serve-static "^1.14.1"
     slugify "^1.4.4"
@@ -3933,10 +3933,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codemirror@^5.59.4:
-  version "5.60.0"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.60.0.tgz#00a8cfd287d5d8737ceb73987f04aee2fe5860da"
-  integrity sha512-AEL7LhFOlxPlCL8IdTcJDblJm8yrAGib7I+DErJPdZd4l6imx8IMgKK3RblVgBQqz3TZJR4oknQ03bz+uNjBYA==
+codemirror@^5.65.0:
+  version "5.65.1"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.1.tgz#5988a812c974c467f964bcc1a00c944e373de502"
+  integrity sha512-s6aac+DD+4O2u1aBmdxhB7yz2XU7tG3snOyQ05Kxifahz7hoxnfxIRHxiCSEv3TUC38dIVH8G+lZH9UWSfGQxA==
 
 collapse-white-space@^1.0.0, collapse-white-space@^1.0.2:
   version "1.0.6"
@@ -9463,10 +9463,10 @@ marked@^0.7.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
   integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
 
-marked@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-3.0.4.tgz#b8a1539e5e05c6ea9e93f15c0bad1d54ce890406"
-  integrity sha512-jBo8AOayNaEcvBhNobg6/BLhdsK3NvnKWJg33MAAPbvTWiG4QBn9gpW1+7RssrKu4K1dKlN+0goVQwV41xEfOA==
+marked@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.10.tgz#423e295385cc0c3a70fa495e0df68b007b879423"
+  integrity sha512-+QvuFj0nGgO970fySghXGmuw+Fd0gD2x3+MqCWLIPf5oxdv1Ka6b2q+z9RP01P/IaKPMEramy+7cNy/Lw8c3hw==
 
 match-sorter@^6.0.2:
   version "6.3.0"
@@ -11971,7 +11971,7 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-codemirror2@^7.1.0:
+react-codemirror2@^7.2.1:
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-7.2.1.tgz#38dab492fcbe5fb8ebf5630e5bb7922db8d3a10c"
   integrity sha512-t7YFmz1AXdlImgHXA9Ja0T6AWuopilub24jRaQdPVbzUJVNKIYuy3uCFZYa7CE5S3UW6SrSa5nAqVQvtzRF9gw==
