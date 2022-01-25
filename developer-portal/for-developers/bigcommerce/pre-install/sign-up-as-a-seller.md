@@ -15,61 +15,42 @@ Before you begin this process, you’ll need an online store hosted by BigCommer
 
 <embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_banner_sandbox_and_contact_support.md" />
 
-# PIN Validation
+## PIN Validation
 
 <embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_pin_validation.md" />
 
-# Fill Out Your Profile
+## Fill Out Your Profile
 
 <embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_fill_out_your_profile.md" />
 
-3. On the Platform Page, click “BigCommerce.” Then click “Next.”
+## Provide Platform Details
 
-   ![Platform page](images/big1.png)
+1. Select "BigCommerce" for your platform type and click "Continue."
 
-## Connect to BigCommerce
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_platform_details.md" />
 
-1. On the page that says “Connect to BigCommerce,” click “Connect.”
+### Connect to BigCommerce
+
+1. We need to authorize Fast on BigCommerce to install the Fast Checkout button. You’ll need the information below to connect your platform:
+
+   1. Owner account credentials
+   2. BigCommerce account email
+   3. BigCommerce account password
+
+   ![Connect to BigCommerce pop up](images/bc-connectplatform.png)
 
 2. Click “Log in” and log into your BigCommerce account.
    **Note**: You need BigCommerce Store Owner access to do this.
-   **Note**: When you reach this specific step, you’ll need to complete the step immediately, without clicking the back button. Otherwise, you’ll have to restart this process from the beginning. This rule does not apply to other steps.
 
    ![BigCommerce Login](images/big22.png)
 
 3. Click the checkbox and click “Confirm.”
-   ![Confirm](images/big3.png)
+   ![Confirm](images/bc-confirm.png)
 
-4. If you want to, you can click “Help Me go Fast.” You don’t have to do this step. If you do this step, then also click the X in the pop-up that appears and continue to the next step. If you choose not to do this step, simply go straight to the next step.
+## Verification
 
-   ![Install](images/big4.png)
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_business_verification.md" />
 
-   ![Request-Received](images/both5.png)
+## Bank Details
 
-5. Click “Next.”
-6. Click “Continue account setup.”
-
-   ![Business verification](images/both6.png)
-
-7. Enter your tax ID, such as your EIN or the equivalent depending on your region. Then click “Continue.”
-
-   ![Business EIN details](images/both7.png)
-
-8. Wait several seconds for the business verification process to complete. If this verification is unsuccessful, contact customer success at seller-support@fast.co. Otherwise, move on to the next step.
-   **Note**: If you operate under a DBA, you will need to click the pencil icon in order to enter your legal name that correlates with your tax ID.
-
-   ![Fast partners with Stripe notification](images/both8.png)
-
-9. On the Bank Details page, enter the following information and click “Finalize Application:”
-
-   - The legal entity the bank account was registered under
-   - The currency you use, such as dollars or Euros
-   - The country your bank account is in
-   - The applicable bank account details depending on your region
-     **Note**: Which settlement currency you can use depends on which country your business is registered in. And which bank account details you see depends on what settlement currency you use. See [this article](https://stripe.com/docs/connect/bank-debit-card-payouts#supported-settlement) for more information.
-
-     ![Bank details](images/both9.png)
-
-10. Click “Continue to Dashboard.”
-
-    ![continue to dashboard pop up](images/both10.png)
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_bank_details.md" />

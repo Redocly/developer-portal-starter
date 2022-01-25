@@ -1,12 +1,9 @@
-1.  On the Org Details page, **enter the following information and click “Next”**:
+1.  On the Business Details screen, **enter the following information and click “Continue”**:
 
-    - **Your company name**
-    - **Your company address**
-    - **Your company phone number**
-    - **Your referral number** if you were referred to Fast through a partner (This is optional.)
-      ![Org Details Form](/reusables/for-developers/images/fill-profile.png)
+    - **Your company's legal business name**
+    - **Your doing-business-as (DBA) name**
+    - **Your legal parent company name**
+      ![Org Details Form](/reusables/for-developers/images/bcwc01.png)
 
-2.  On the Store Details page, **enter the following information and click “Next”**:
-    - **Your website domain**
-    - **Your company name**
-    - **The country where your business is registered**
+    - **Your business address**
+      ![Org Address](/reusables/for-developers/images/bcwc02.png)
