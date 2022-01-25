@@ -1,0 +1,26 @@
+---
+showPrevButton: false
+showNextButton: false
+---
+
+import GraphiQL from 'graphiql';
+import { buildSchema } from 'graphql';
+import { createGraphiQLFetcher } from '@graphiql/toolkit';
+import '../node_modules/graphiql/graphiql.css';
+
+import {
+  LandingLayout
+} from '@redocly/developer-portal/ui';
+
+import rawSchema from 'raw-loader!./schema.docs.graphql';
+
+export default LandingLayout;
+
+<GraphiQL
+  fetcher={
+    createGraphiQLFetcher({
+      url: window.location.origin + '/graphql',
+    })}
+  editorTheme={'dracula'}
+  schema={buildSchema(rawSchema)}
+/>

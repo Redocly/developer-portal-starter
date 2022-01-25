@@ -38,6 +38,8 @@ training:
         page: developer-portal/mdx.mdx
       - label: Creating React components
         page: developer-portal/custom-component.mdx
+      - label: GraphiQL
+        page: graphiql/graphiql.mdx
   - group: Petstore reference
     expanded: false
     pages:

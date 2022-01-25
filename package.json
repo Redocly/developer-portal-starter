@@ -10,6 +10,8 @@
     "clean": "redocly-portal clean"
   },
   "dependencies": {
-    "@redocly/developer-portal": "1.1.0-beta.78"
+    "@graphiql/toolkit": "^0.4.2",
+    "@redocly/developer-portal": "1.1.0-beta.78",
+    "graphiql": "^1.5.16"
   }
 }
