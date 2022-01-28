@@ -1,4 +1,4 @@
-meta:
+seo:
   title: Redocly Training
   description: The best API documentation generator ever.
   siteUrl: https://developer-portal-starter.redoc.ly
@@ -43,14 +43,13 @@ nav:
   - label: Separated sidebars
     page: separated/index.md
 
-  - label: External docs
-    icon: ./images/redocly-icon-white.png
-    href: https://redoc.ly/docs/developer-portal/introduction/
+  - label: API catalog
+    page: catalog/index.mdx
 
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2021. All right reserved.
+  copyrightText: Copyright © Redocly 2019-2022. All right reserved.
   columns:
     - group: Legal
       items:
