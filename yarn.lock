@@ -1799,16 +1799,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.79":
-  version "1.1.0-beta.79"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.79.tgz#dbc1e94b1be1206a2b670efcf97c3cf8d5f146f8"
-  integrity sha512-n9i/qL4hxdX7zb6Z6HaviwqQO6wz6kIFTDcFYB+eiIY55A/rNkiFvTxuUg43POiWLbPopLnye+CXvbA/XEyYlg==
+"@redocly/developer-portal@1.1.0-beta.80":
+  version "1.1.0-beta.80"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.80.tgz#e28a3a8b555da2bde275849cc23258a939d74202"
+  integrity sha512-OcgZ8oJgXgotQrMtBmoWU5Os5kEz738ohkeflmfEsNMD4/hygttH0qKV2iPZPtHukJ9Kq0YgAElsupkp95RmfQ==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "1.0.0-beta.67"
-    "@redocly/reference-docs" "2.9.5"
+    "@redocly/reference-docs" "2.11.1"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
     chalk "^4.1.1"
@@ -1826,6 +1826,7 @@
     gatsby-plugin-fullstory "~3.4.0"
     gatsby-plugin-google-analytics "3.2.0"
     gatsby-plugin-google-gtag "^3.5.0"
+    gatsby-plugin-google-marketing-platform "^0.1.22"
     gatsby-plugin-google-tagmanager "3.2.0"
     gatsby-plugin-heap "1.1.0"
     gatsby-plugin-layout "2.2.0"
@@ -1951,10 +1952,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/openapi-core@^1.0.0-beta.67":
-  version "1.0.0-beta.69"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.69.tgz#56f6dca9e8825b5d5df5a3057ce6817d3d32bfdd"
-  integrity sha512-A05sPH8U26qQdZgkOQfHrL8dwY3twJ51/PY43WUuRqMdeZEu3SRcIdgLyXaIgR82ZnHC2Y/MnexE5QKtKObYJA==
+"@redocly/openapi-core@^1.0.0-beta.80":
+  version "1.0.0-beta.80"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.80.tgz#099bd036c0c90acf8bd0d7f75529e7f1ee904003"
+  integrity sha512-IAQECLt/fDxjlfNdLGnJszt40BaiA6b78+zB6+7Rk8ums0HHLfwWFJPMTzh1bzJ5f+sZ4zDBi4gaIJ1n4XGCHg==
   dependencies:
     "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
@@ -1972,12 +1973,12 @@
   resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
   integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
 
-"@redocly/reference-docs@2.9.5":
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.9.5.tgz#a76976a7a5a77555e9db4ce2db0c54fcfd09ffd2"
-  integrity sha512-+FcRTIp7A3DYgYKZ8G+IeYCkU/qFdUAd7rybEROHdJIl+y4Gidr1O25PQgCz5G1V7rP3lomo4zQRUbi0yj1dUA==
+"@redocly/reference-docs@2.11.1":
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.11.1.tgz#acbb54de3add312b346b550ed062292b2b459e17"
+  integrity sha512-O/p1wklsjBxo8vL6GD0CF79J652GWooINhx3F64YL9blJRp9uO5ogjG04Y0pkfeashTUYbfhZaWzWCR7FTcGnw==
   dependencies:
-    "@redocly/openapi-core" "^1.0.0-beta.67"
+    "@redocly/openapi-core" "^1.0.0-beta.80"
     "@redocly/react-dropdown-aria" "2.0.12"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
@@ -7129,6 +7130,13 @@ gatsby-plugin-google-gtag@^3.5.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
     minimatch "^3.0.4"
+
+gatsby-plugin-google-marketing-platform@^0.1.22:
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-marketing-platform/-/gatsby-plugin-google-marketing-platform-0.1.22.tgz#661e9b15a8e3c35c85a85887e9c23e24e61d80a7"
+  integrity sha512-Odp9Xhbz5o0B9wwVeSEGSSoAJ//J9VrxD1Pe5EIlU8JHVLCyHVV2zWpcRuEu80sIuhwz8JsfioIf60cTBFg9jA==
+  dependencies:
+    common-tags "^1.8.0"
 
 gatsby-plugin-google-tagmanager@3.2.0:
   version "3.2.0"
