@@ -72,7 +72,7 @@ Navigate [here](https://sdash.sandbox.fast.co/) to begin setup.
 
 2. **Org Details**
 
-   - Enter your relevant Org details including name, address, and phone number
+   - Enter your relevant Org details including name and address
 
 3. **Store Details**
 
