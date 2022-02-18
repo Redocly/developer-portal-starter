@@ -1710,16 +1710,16 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.81":
-  version "1.1.0-beta.81"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.81.tgz#8864c6f583d1fbe8ee9fe0f1134563acb560a05d"
-  integrity sha512-leRfnklYcOpHmMRnXx+eJ4W/xE9zEeET9Joe3zaEHklkpjdfV/fxvLV96HEvZBvCDTfmGeVV3i6kPfBnM0F3Mw==
+"@redocly/developer-portal@1.1.0-beta.82":
+  version "1.1.0-beta.82"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.82.tgz#a2edc71531bcd58f507cd9e2ceb9a752eb0b6590"
+  integrity sha512-xNEYzlXSKFKq8XFjhC87EHMVUFlsRlkfJZT9nS8tB/U96Fi6rNklD6cs8Gh2EirDVmce3YxPzjaKObPo7VLU5Q==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-remark-images" "4.2.0"
     "@redocly/openapi-core" "1.0.0-beta.67"
-    "@redocly/reference-docs" "2.11.6"
+    "@redocly/reference-docs" "2.11.11"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1748,7 +1748,6 @@
     gatsby-plugin-segment-js "3.6.0"
     gatsby-plugin-styled-components "4.2.0"
     gatsby-react-router-scroll "^4.13.0"
-    gatsby-remark-copy-linked-files "3.2.0"
     gatsby-remark-image-attributes "1.0.0-4"
     gatsby-remark-prismjs "4.2.0"
     gatsby-source-filesystem "3.2.0"
@@ -1775,6 +1774,7 @@
     polished "^4.1.2"
     postcss "^8.2.12"
     prismjs "^1.23.0"
+    probe-image-size "^6.0.0"
     process "^0.11.10"
     qs "^6.10.1"
     raw-loader "^4.0.2"
@@ -1865,10 +1865,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/openapi-core@^1.0.0-beta.80":
-  version "1.0.0-beta.80"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.80.tgz#099bd036c0c90acf8bd0d7f75529e7f1ee904003"
-  integrity sha512-IAQECLt/fDxjlfNdLGnJszt40BaiA6b78+zB6+7Rk8ums0HHLfwWFJPMTzh1bzJ5f+sZ4zDBi4gaIJ1n4XGCHg==
+"@redocly/openapi-core@^1.0.0-beta.82":
+  version "1.0.0-beta.82"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.82.tgz#5f232e9c8f82499c2d96d9268b22423c8f859fe2"
+  integrity sha512-bJ0WclpgkFv4aa5QWU83ARCv3VQJy9U94reb1chOTg9s2bsTHbYuUwRv6G370a7lFXX86AyB3dT5IzS6GytLlA==
   dependencies:
     "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
@@ -1881,18 +1881,12 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/react-dropdown-aria@2.0.12":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@redocly/react-dropdown-aria/-/react-dropdown-aria-2.0.12.tgz#2e3af2b1b8e9123487109400d6117f0d4a8445a6"
-  integrity sha512-feQEZlyBvQsbT/fvpJ4jJ5OLGaUPpnskHYDsY8DGpPymN+HUeDQrqkBEbbKRwMKidFTI2cxk2kJNNTnvdS9jyw==
-
-"@redocly/reference-docs@2.11.6":
-  version "2.11.6"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.11.6.tgz#b0688e596aafdfd066009bb804ba94762abb9e4a"
-  integrity sha512-r2lbbOJoOHwcKWSOLGys9HPS21sv3Va/vHBmK4eTEQOzm22Y4hmjsihxqKmeuIbKWw9jkCHu+F8zpHPvcpJDSA==
+"@redocly/reference-docs@2.11.11":
+  version "2.11.11"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.11.11.tgz#5b8307260f8bb2d3fee5ab8abf0cdfae9493ee15"
+  integrity sha512-Yu4CUgeU/Z7LTpfIeoWsiij5+tVp1waQnNvkPJepnHWNe2I1wk1m6AYM/Q5zsg/52Xiyj7VmykamYrIHJq6Epw==
   dependencies:
-    "@redocly/openapi-core" "^1.0.0-beta.80"
-    "@redocly/react-dropdown-aria" "2.0.12"
+    "@redocly/openapi-core" "^1.0.0-beta.82"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
     classnames "^2.2.6"
@@ -7226,20 +7220,6 @@ gatsby-recipes@^0.25.0:
     ws "^7.3.0"
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
-
-gatsby-remark-copy-linked-files@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-3.2.0.tgz#aedfb7c05c0833fcb9e807127a08be101654503b"
-  integrity sha512-pNKYR9Q3QuIZ3u5msW9dtqszOgKzRqDRtg3kXnqagCC8JbT2IVYI4IG3tP2tTG3CwEOjBtBI0YhUM2KGgzdJ5g==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    cheerio "^1.0.0-rc.3"
-    fs-extra "^8.1.0"
-    is-relative-url "^3.0.0"
-    lodash "^4.17.21"
-    path-is-inside "^1.0.2"
-    probe-image-size "^6.0.0"
-    unist-util-visit "^1.4.1"
 
 gatsby-remark-image-attributes@1.0.0-4:
   version "1.0.0-4"
