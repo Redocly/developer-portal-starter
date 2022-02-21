@@ -18,9 +18,14 @@ export default LandingLayout;
 
 <GraphiQL
   fetcher={
-    createGraphiQLFetcher({
-      url: window.location.origin + '/graphql',
-    })}
-  editorTheme={'dracula'}
+    typeof window !== "undefined"
+      ? createGraphiQLFetcher({
+          url: "http://swapi.apis.guru/graphql",
+        })
+      : function () {
+          /* nope */
+        }
+  }
+  editorTheme={"dracula"}
   schema={buildSchema(rawSchema)}
 />
