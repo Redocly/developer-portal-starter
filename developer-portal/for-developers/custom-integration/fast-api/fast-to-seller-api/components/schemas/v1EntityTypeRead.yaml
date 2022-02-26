@@ -1,6 +1,5 @@
 type: string
 enum:
-  - ENTITY_TYPE_UNSPECIFIED
   - ENTITY_TYPE_ORDER
   - ENTITY_TYPE_SHIPPING_ZONES
-default: ENTITY_TYPE_UNSPECIFIED
+description: The type of entity being read.

@@ -54,7 +54,7 @@ custom-integration:
       - label: "Step 3: Backend"
         page: developer-portal/for-developers/custom-integration/setup/backend.md
       - label: "Step 4: Backend Requests"
-        page: developer-portal/for-developers/custom-integration/setup/requests.md
+        page: developer-portal/for-developers/custom-integration/setup/requests.mdx
   - group: Customization
     expanded: true
     pages:
@@ -67,15 +67,26 @@ custom-integration:
         page: developer-portal/for-developers/custom-integration/fast-api/overview.md
       - label: High Level API diagrams
         page: developer-portal/for-developers/custom-integration/fast-api/high-level-diagrams.md
-      - label: Backend Requests
-        page: developer-portal/for-developers/custom-integration/fast-api/requests.md
+      - group: Fast -> Seller API
+        expanded: true
+        pages:
+          - page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/pages/use-fast-to-seller-api.mdx
+            label: "Use Fast -> Seller API"
+          - page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/pages/create.mdx
+            label: Create
+          - page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/pages/read.mdx
+            label: Read
+          - page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/pages/update.mdx
+            label: Update
+          - page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/pages/delete.mdx
+            label: Delete
+          - page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/docs.page.yaml
+            label: "API Ref: Fast -> Seller"
       - label: Order Management
         page: developer-portal/for-developers/custom-integration/fast-api/order-management.md
       - label: Events
         page: developer-portal/for-developers/custom-integration/fast-api/events.md
-      - label: Fast -> Seller API
-        page: developer-portal/for-developers/custom-integration/fast-api/fast-to-seller-api/docs.page.yaml
-      - label: Seller -> Fast API
+      - label: "API Ref: Seller -> Fast"
         page: developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/docs.page.yaml
   - group: Developer Tools
     expanded: true

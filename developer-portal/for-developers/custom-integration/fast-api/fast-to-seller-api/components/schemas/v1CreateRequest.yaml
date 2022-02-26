@@ -2,9 +2,13 @@ type: object
 properties:
   type:
     $ref: ./v1EntityType.yaml
+    description: The type of entity being created.
   app_id:
     type: string
+    description: Store identifier within Fast.
   order:
     $ref: ./v1CreateRequestSegment.yaml
+    description: Object containing the order information.
   request_id:
     $ref: ./v1UUID.yaml
+    description: The idempotency key of request. Ensure that your operations are idempotent against this field

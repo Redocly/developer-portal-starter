@@ -2,11 +2,15 @@ type: object
 properties:
   request_id:
     $ref: ./v1UUID.yaml
+    description: The idempotency key of request.
   type:
     $ref: ./v1EntityTypeRead.yaml
+    description: The type of entity being created.
   order:
     $ref: ./v1ReadOrderResponseSegment.yaml
+    description: Fast order data entity.
   shipping_zones:
     type: array
     items:
       $ref: ./v1ReadShippingZonesResponseSegment.yaml
+    description: Shipping zones information.

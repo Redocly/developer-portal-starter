@@ -1,8 +1,6 @@
 type: string
 enum:
-  - DISCOUNT_ORIGIN_UNSPECIFIED
   - DISCOUNT_ORIGIN_USER
   - DISCOUNT_ORIGIN_FAST
   - DISCOUNT_ORIGIN_VENDOR
-default: DISCOUNT_ORIGIN_UNSPECIFIED
-title: '- DISCOUNT_ORIGIN_UNSPECIFIED: Discounts can be originated from many sources'
+title: 'Discounts can be originated from many sources'

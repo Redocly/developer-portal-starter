@@ -2,11 +2,17 @@ type: object
 properties:
   app_id:
     type: string
+    description: The store identifier within Fast.
   request_id:
     $ref: ./v1UUID.yaml
+    description: The idempotency key of request. Ensure that your operations are idempotent against this field
   type:
     $ref: ./v1EntityTypeRead.yaml
+    example: ENUM
+    descrption: The type of entity being read.
   order:
     $ref: ./v1ReadOrderRequestSegment.yaml
+    description: Object containing the order information.
   shipping_zones:
     $ref: ./v1ReadShippingZonesRequestSegment.yaml
+    description: ???

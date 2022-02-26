@@ -1,0 +1,342 @@
+import {
+  H1,
+  OpenApiRequestBody,
+  OpenApiResponse,
+  OpenApiExample,
+} from "@redocly/developer-portal/ui";
+
+# Update Operation
+
+The Update operation is made in response to shopper updates of the Order object. Shoppers can update orders in any sequence (i.e. billing first, shipping first, etc). Each action will make a call to update the eCommerce platform. Fast requires an updated cart from the platform based on changes submitted.
+
+**The update API is able to update several different top level components of the order.** In the request we send to your server, we will supply _only_ the incremental data. If we send you data, you should check that the item being updated/added is not being duplicated accidentally. We provide unique ids on each item.
+
+We also use the update endpoint to update the status of an order (i.e from a cart to an order, from pending to pending fulfillment, etc.).
+
+## Update Request
+
+<span>
+  <p
+    style={{
+      fontFamily: "Courier,monospace",
+      display: "flex",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "cadetblue",
+        color: "white",
+        padding: "3px 5px",
+      }}
+    >
+      POST
+    </div>
+    /fast/v1/update
+  </p>
+</span>
+
+<OpenApiRequestBody
+  definitionId="merchant"
+  pointer="#/components/requestBodies/UpdateRequest"
+/>
+
+## Update Response
+
+### Success (200)
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/UpdateResponse"
+/>
+
+### Error
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/DefaultResponse"
+/>
+
+## Use Cases
+
+Below are business cases that will trigger Fast to call the Update operation to the Seller.
+
+<details><summary><h3>Add an Item to the Cart</h3></summary>
+<p>
+
+### Add an Item to the Cart
+
+If shoppers “Return to Store” to add an item to the cart in their Fast Checkout session, the entire Order object will need to be updated. This needs to check if inventory is available. The response should include changes to eligible shipping methods, coupons, etc. based on the new cart contents.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Cart_Add_Item"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Cart_Add_Item"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Remove an Item from the Cart</h3></summary>
+<p>
+
+### Remove an Item from the Cart
+
+If a shopper removes a line item from the cart within the Fast Checkout modal or decreases the quantity to 0, the entire Order object will need to be updated. The response should include changes to eligible shipping methods, coupons, etc. based on new cart contents. To remove a cart item, the update request is sent with the item id and a quantity of zero (the quantity attribute can be omitted entirely, as it's default value is zero).
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Cart_Remove_Item"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Cart_Remove_Item"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Update shipping address associated with an order</h3></summary>
+<p>
+
+### Update a Shipping Address Associated with an Order
+
+If a shopper updates their shipping address on the Fast order modal, the Order object is updated.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Change_Shipping_Address"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Change_Shipping_Address"
+/>
+</p>
+</details>
+
+<details><summary><h3>Update Billing Address Associated with an Order</h3></summary>
+<p>
+
+### Update Billing Address Associated with an Order
+
+If a shopper updates the billing address associated with a cart, the Order object will need to be updated.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Change_Billing_Address"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Change_Billing_Address"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Update Shipping Option Associated with an Order</h3></summary>
+<p>
+
+### Update Shipping Option Associated with an Order
+
+If a shopper updates the shipping option (i.e. ground, next day, etc), the Order object will need to be updated.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Change_Shipping_Option"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Change_Shipping_Option"
+/>
+</p>
+</details>
+
+<details><summary><h3>Update Item Quantity</h3></summary>
+<p>
+
+### Update Item Quantity
+
+If shoppers “Return to Store” to change the quantity of items (add/remove) in their Fast checkout session, the entire Order object will need to be updated. This needs to check if inventory is available. The response should include changes to eligible shipping methods, coupons, etc. based on the new cart contents.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Change_Item_Quantity"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Change_Item_Quantity"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Add a Coupon to the Cart</h3></summary>
+<p>
+
+### Add a Coupon to the Cart
+
+If a shopper adds a coupon to the cart, the Order object will need to be returned in full including the coupon attribute.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Cart_Add_Coupon"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Cart_Add_Coupon"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Remove a Coupon from the Cart</h3></summary>
+<p>
+
+### Remove a Coupon from the Cart
+
+If a shopper removes a coupon, the coupon will need to be removed from the coupon attribute in the Order object, and the accurate total reflected.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Cart_Remove_Coupon"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Cart_Remove_Coupon"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Convert a Cart to an Order</h3></summary>
+<p>
+
+### Convert a Cart to an Order
+
+Once the checkout timer expires, you will receive an update request to convert the Order object from cart status to order status to reserve inventory (should not be exportable).
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Cart_Convert_to_Order"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Cart_Convert_to_Order"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Update Order Status</h3></summary>
+<p>
+
+### Update Order Status
+
+An order status can be updated to [one of the listed order statues](../../../../resources/order-statuses).
+
+After a cart has been converted to an order, the following status updates will occur:
+
+#### Payment authorization
+
+Once payment has been successfully authorized, you will receive an update request to `ORDER_STATUS_BOOKED`.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Update_Order_Status_Payment_Authorized"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Update_Order_Status_Payment_Authorized"
+/>
+
+#### Fraud Approved (Safe to export)
+
+Once the fraud check has passed successfully, you will receive an update request to `ORDER_STATUS_PENDING_FULFILLMENT`.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Update_Order_Status_Fraud_Check_Passed_Pending_Fulfillment"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Update_Order_Status_Fraud_Check_Passed_Pending_Fulfillment"
+/>
+
+#### Auth/Fraud Rejection
+
+If there is a failure in either payment authorization or fraud check, you will receive an update request to `ORDER_STATUS_CANCELED`. If this occurs after Booked status, it can be assumed to be for fraud reasons.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateRequest_Order_Update_Order_Status_Fraud_Check_Rejected_Order_Canceled"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/UpdateResponse_Order_Update_Order_Status_Fraud_Check_Rejected_Order_Canceled"
+/>
+
+</p>
+</details>

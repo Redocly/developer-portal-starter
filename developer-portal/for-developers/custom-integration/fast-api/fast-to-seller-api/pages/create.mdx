@@ -1,0 +1,85 @@
+import {
+  OpenApiRequestBody,
+  OpenApiResponse,
+  Box,
+  OpenApiExample,
+} from "@redocly/developer-portal/ui";
+
+import "./pages.css";
+
+# Create Operation
+
+The Create operation is made in response to the creation of a Fast order by a shopper. A Fast order is created when a shopper clicks the Fast Checkout button on any page (e.g. PDP, mini-cart, checkout page, etc).
+
+## Create Request
+
+<span>
+  <p
+    style={{
+      fontFamily: "Courier,monospace",
+      display: "flex",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "cadetblue",
+        color: "white",
+        padding: "3px 5px",
+      }}
+    >
+      POST
+    </div>
+    /fast/v1/create
+  </p>
+</span>
+<OpenApiRequestBody
+  definitionId="merchant"
+  pointer="#/components/requestBodies/CreateRequest"
+/>
+
+## Create Response
+
+### Success (200)
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/CreateResponse"
+/>
+
+### Error
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/DefaultResponse"
+/>
+
+## Use Cases
+
+Below are business cases that will trigger Fast to call the Create operation to the Seller.
+
+<details><summary><h3>Create a Cart</h3></summary>
+<p>
+
+### Create a Cart
+
+A request to create a cart is fired when a shopper clicks the Fast checkout button anywhere (PDP, Cart, Affiliate page). In Fast, a "cart" is an Order entity with a "status" equal to `ORDER_STATUS_CART`.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/CreateRequest_Order_Cart"
+/>
+
+CreateRequest_Order_Cart
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/CreateResponse_Order_Cart"
+/>
+
+</p>
+</details>

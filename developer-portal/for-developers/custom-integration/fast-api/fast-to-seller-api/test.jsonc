@@ -1,0 +1,22 @@
+{
+  "app_id": "31d7ff3a-0128-440e-a5a2-c1e10d4c2d83",
+  "type": "ENTITY_TYPE_ORDER",
+  "order": {
+    "order_id": {
+      "value": "863e151e-703e-4da3-b044-a1c874afeda3"
+    },
+    "is_cart": true,
+    "items": [
+      {
+        "item_id": {
+          "value": "e0400168-958b-4a46-bf23-08cb6ee00630"
+          // default `quantity` attribute is 0
+        },
+        "external_product_id": "canon-powershot-a580M",
+        "external_variant_id": "canon-powershot-a580M",
+        "external_item_id": "6f396ac44ded0ef59626a2a3f5"
+      }
+    ],
+    "external_id": "b097a63a4f829c6ecc192c3057"
+  }
+}

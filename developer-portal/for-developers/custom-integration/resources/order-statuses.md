@@ -12,7 +12,6 @@ redirectFrom:
 
 | Status Name                        | Description                                                                                                                               | Notes                                                       |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| `ORDER_STATUS_UNSPECIFIED`         | The status of the order is unspecified.                                                                                                   | Likely something has gone wrong.                            |
 | `ORDER_STATUS_CART`                | Order and Cart share the same data model, this status means that Order is in Cart status this status will be populated on all Fast Carts. |
 | `ORDER_STATUS_PENDING`             | The timer has expired and the cart has been converted to an order, it is pending payment.                                                 |
 | `ORDER_STATUS_HOLD`                | The order is on hold before it will be processed.                                                                                         |

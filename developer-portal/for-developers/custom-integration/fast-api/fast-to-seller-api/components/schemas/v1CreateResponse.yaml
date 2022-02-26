@@ -2,7 +2,10 @@ type: object
 properties:
   type:
     $ref: ./v1EntityType.yaml
+    description: The type of entity being created.
   order:
     $ref: ./v1CreateResponseSegment.yaml
+    description: Fast order data entity.
   request_id:
     $ref: ./v1UUID.yaml
+    description: The idempotency key of request.

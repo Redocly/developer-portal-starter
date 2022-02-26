@@ -4,10 +4,10 @@ info:
   version: v1
   license:
     name: Fast Developer Terms
-    url: "https://www.fast.co/terms/developer-terms"
+    url: https://www.fast.co/terms/developer-terms
   contact:
     name: Fast
-    url: "https://fast.co"
+    url: https://fast.co
     email: api@fast.co
   description: |-
     # Authentication
@@ -18,21 +18,2302 @@ tags:
     description: Fast will communicate with your server application on these endpoints.
 paths:
   /fast/v1/create:
-    $ref: paths/fast@v1@create.yaml
-  /fast/v1/read:
-    $ref: paths/fast@v1@read.yaml
-  /fast/v1/update:
-    $ref: paths/fast@v1@update.yaml
+    post:
+      summary: Create a specified type of an object/entity
+      description: Generic create interface
+      operationId: MerchantService_Create
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1CreateResponse"
+              examples:
+                Create Cart Response:
+                  $ref: "#/components/examples/CreateResponse_Order_Cart"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1CreateRequest"
+            examples:
+              value:
+                $ref: "#/components/examples/CreateRequest_Order_Cart"
+        required: true
+      tags:
+        - MerchantService
   /fast/v1/delete:
-    $ref: paths/fast@v1@delete.yaml
+    post:
+      summary: Delete the specified object/entity
+      description: Generic delete interface
+      operationId: MerchantService_Delete
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1DeleteResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1DeleteRequest"
+            examples:
+              Delete Fast Order Request:
+                $ref: "#/components/examples/DeleteRequest_Order_Fast_Cart"
+        required: true
+      tags:
+        - MerchantService
+  /fast/v1/read:
+    post:
+      summary: Read a specified type of an object/entity by provided id
+      description: >-
+        This is a generic interface to read a specific type of an entity (e.g. order cart etc.).
+      operationId: MerchantService_Read
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ReadResponse"
+              examples:
+                Read Order Response:
+                  $ref: "#/components/examples/ReadResponse_Order"
+                Read Cart Response:
+                  $ref: "#/components/examples/ReadResponse_Order_Cart"
+                Read Shipping Zone Response:
+                  $ref: "#/components/examples/ReadResponse_ShippingZone"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1ReadRequest"
+            examples:
+              Read Order Response:
+                $ref: "#/components/examples/ReadRequest_Order"
+              Read Cart Response:
+                $ref: "#/components/examples/ReadRequest_Order_Cart"
+              Read Shipping Zone Response:
+                $ref: "#/components/examples/ReadRequest_ShippingZone"
+        required: true
+      tags:
+        - MerchantService
+  /fast/v1/update:
+    post:
+      summary: Update identified object/entity
+      description: Generic update interface
+      operationId: MerchantService_Update
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1UpdateResponse"
+              examples:
+                Add Item to Cart Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Cart_Add_Item"
+                Remove Item From Cart Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Cart_Remove_Item"
+                Change Shipping Address Response:
+                  $ref: "#/components/examples/UpdateResponse_Change_Shipping_Address"
+                Change_Billing_Address Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Change_Billing_Address"
+                Change Shipping Option Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Change_Shipping_Option"
+                Change Item Quantity Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Change_Item_Quantity"
+                Add Coupon to Cart Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Cart_Add_Coupon"
+                Remove Coupon from Cart Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Cart_Remove_Coupon"
+                Convert Cart to Order Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Cart_Convert_to_Order"
+                Order Status (Payment_Authorized) Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Update_Order_Status_Payment_Authorized"
+                Order Status (Fraud Check Passed) Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Update_Order_Status_Fraud_Check_Passed_Pending_Fulfillment"
+                Order Status (Fraud Check Rejected) Response:
+                  $ref: "#/components/examples/UpdateResponse_Order_Update_Order_Status_Fraud_Check_Rejected_Order_Canceled"
+
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1UpdateRequest"
+            examples:
+              Add Item to Cart Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Cart_Add_Item"
+              Remove Item from Cart Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Cart_Remove_Item"
+              Change Shipping Address Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Change_Shipping_Address"
+              Change Billing Address Request:
+                $ref: "#/components/examples/UpdateRequest_Change_Billing_Address"
+              Change Shipping Option Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Change_Shipping_Option"
+              Change Item Quantity Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Change_Item_Quantity"
+              Add Coupon to Cart Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Cart_Add_Coupon"
+              Remove Coupon from Cart Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Cart_Remove_Coupon"
+              Convert Cart to Order Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Cart_Convert_to_Order"
+              Order Status (Payment_Authorized) Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Update_Order_Status_Payment_Authorized"
+              Order Status (Fraud Check Passed) Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Update_Order_Status_Fraud_Check_Passed_Pending_Fulfillment"
+              Order Status (Fraud Check Rejected) Request:
+                $ref: "#/components/examples/UpdateRequest_Order_Update_Order_Status_Fraud_Check_Rejected_Order_Canceled"
+        required: true
+      tags:
+        - MerchantService
 servers:
   - url: https://api.fast.co
     description: Production server (for live site)
-  - url: https://https://api.sandbox.fast.co
+  - url: https://api.sandbox.fast.co
     description: Sandbox server (for testing)
 components:
+  requestBodies:
+    CreateRequest:
+      description: A create request.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1CreateRequest"
+    ReadRequest:
+      description: A read request.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ReadRequest"
+    UpdateRequest:
+      description: An update request.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1UpdateRequest"
+    DeleteRequest:
+      description: A delete request.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1DeleteRequest"
+  responses:
+    CreateResponse:
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1CreateResponse"
+    ReadResponse:
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ReadResponse"
+    UpdateResponse:
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1UpdateResponse"
+    DeleteResponse:
+      description: A successful response.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1DeleteResponse"
+    DefaultResponse:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/rpcStatus"
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       name: FASTSESSION
       in: header
+  schemas:
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: "#/components/schemas/protobufAny"
+    v1AddressUpdate:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        first_name:
+          type: string
+        last_name:
+          type: string
+        middle_name:
+          type: string
+        company:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        address_1:
+          type: string
+        address_2:
+          type: string
+        city_locality:
+          type: string
+        state_province:
+          type: string
+        state_province_code:
+          type: string
+        country:
+          type: string
+        country_code:
+          type: string
+        postal_code:
+          type: string
+    v1CartToOrderConvert:
+      type: string
+      enum:
+        - CART_TO_ORDER_CONVERT_ONLY
+        - CART_TO_ORDER_CONVERT_UPDATE_AND_CONVERT
+    v1CouponUpdate:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Coupon code (e.g. 10OFF).
+        remove:
+          type: boolean
+    v1CreateRequest:
+      type: object
+      properties:
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+          description: The type of entity being created.
+        app_id:
+          type: string
+          description: The application ID for your store registered with Fast.
+        order:
+          $ref: "#/components/schemas/v1CreateRequestSegment"
+          description: Object containing the order information.
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+    v1CreateRequestSegment:
+      type: object
+      properties:
+        is_cart:
+          type: boolean
+        order:
+          $ref: "#/components/schemas/v1FastOrder"
+          description: >-
+            The idempotency key of request. Ensure that your operations are
+            idempotent against this field
+    v1CreateResponse:
+      type: object
+      properties:
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+          description: The type of entity being created.
+        order:
+          $ref: "#/components/schemas/v1CreateResponseSegment"
+          description: Fast order data entity.
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+          description: The idempotency key of request.
+          user:
+            $ref: "#/components/schemas/v1CreateUserResponseSegment"
+
+    v1CreateResponseSegment:
+      type: object
+      properties:
+        order:
+          $ref: "#/components/schemas/v1FastOrder"
+
+    v1DeleteOrderRequestSegment:
+      type: object
+      properties:
+        is_cart:
+          type: boolean
+        order_id:
+          $ref: "#/components/schemas/v1UUID"
+        external_order_id:
+          type: string
+          description: >-
+            External Order ID of order/cart to be deleted. This is only passed
+            when deleting a cart checkout for an external cart with no associated Fast ID.
+      title: Delete Section
+    v1DeleteOrderResponseSegment:
+      type: object
+    v1DeleteRequest:
+      type: object
+      properties:
+        app_id:
+          type: string
+          description: The application ID for your store registered with Fast.
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+        order:
+          $ref: "#/components/schemas/v1DeleteOrderRequestSegment"
+    v1DeleteResponse:
+      type: object
+      properties:
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+        order:
+          $ref: "#/components/schemas/v1DeleteOrderResponseSegment"
+    v1DiscountOrigin:
+      type: string
+      enum:
+        - DISCOUNT_ORIGIN_USER
+        - DISCOUNT_ORIGIN_FAST
+        - DISCOUNT_ORIGIN_VENDOR
+      title: Discounts can be originated from many sources
+    v1DiscountType:
+      type: string
+      enum:
+        - DISCOUNT_TYPE_MISC
+        - DISCOUNT_TYPE_REGULAR
+        - DISCOUNT_TYPE_SHIPPING
+        - DISCOUNT_TYPE_HANDLING
+        - DISCOUNT_TYPE_WRAPPING
+    v1EntityType:
+      type: string
+      enum:
+        - ENTITY_TYPE_UNSPECIFIED
+        - ENTITY_TYPE_ORDER
+        - ENTITY_TYPE_SHIPPING_OPTION
+        - ENTITY_TYPE_USER
+        - ENTITY_TYPE_SHIPPING_ZONES
+      default: ENTITY_TYPE_UNSPECIFIED
+    v1FastIntegrationUser:
+      type: object
+      properties:
+        external_user_id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+    v1FastOrder:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        external_id:
+          type: string
+        user_id:
+          type: string
+        order_type:
+          $ref: "#/components/schemas/v1OrderType"
+        currency_code:
+          type: string
+        status:
+          $ref: "#/components/schemas/v1OrderStatus"
+        bill_to:
+          $ref: "#/components/schemas/v1OrderAddress"
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderLine"
+        shipment_plans:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderShipmentPlan"
+        coupons:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderDiscount"
+        total_amount:
+          type: string
+        sub_total:
+          type: string
+        total_discounts:
+          type: string
+        total_tax:
+          type: string
+        total_shipping:
+          type: string
+        refunds:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderRefund"
+        custom_values:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderCustomValue"
+        user_note:
+          type: string
+        store_note:
+          type: string
+        fast_note:
+          type: string
+    v1ItemFulfillmentModel:
+      type: string
+      enum:
+        - ITEM_FULFILLMENT_MODEL_PHYSICAL
+        - ITEM_FULFILLMENT_MODEL_DIGITAL
+        - ITEM_FULFILLMENT_MODEL_SERVICE
+    v1OrderAddress:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        first_name:
+          type: string
+        last_name:
+          type: string
+        middle_name:
+          type: string
+        company:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        address_1:
+          type: string
+        address_2:
+          type: string
+        city_locality:
+          type: string
+        state_province:
+          type: string
+        state_province_code:
+          type: string
+        country:
+          type: string
+        country_code:
+          type: string
+        postal_code:
+          type: string
+    v1OrderCustomValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    v1OrderDiscount:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        origin:
+          $ref: "#/components/schemas/v1DiscountOrigin"
+        type:
+          $ref: "#/components/schemas/v1DiscountType"
+        applied:
+          type: boolean
+        total_amount:
+          type: string
+    v1OrderItemUpdate:
+      type: object
+      properties:
+        item_id:
+          $ref: "#/components/schemas/v1UUID"
+        quantity:
+          type: integer
+          format: int64
+          description: New total quantity of the item.
+        external_product_id:
+          type: string
+          description: External product identifier for the item.
+        external_variant_id:
+          type: string
+          description: External variant identifier for the item.
+        external_options:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderCustomValue"
+            description: >-
+              List of optional key - value pairs that signify additional options
+              not covered by variants.
+        customizations:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderCustomValue"
+          description: >-
+            List of optional key - value pairs that signify additional
+            customizations not covered by variants + options.
+    v1OrderLine:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        external_id:
+          type: string
+        external_product_id:
+          type: string
+        external_variant_id:
+          type: string
+        external_options:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderCustomValue"
+        customizations:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderCustomValue"
+        quantity:
+          type: integer
+          format: int64
+        quantity_fulfilled:
+          type: integer
+          format: int64
+        unit_price:
+          type: string
+        discounted_unit_price:
+          type: string
+        line_discount_amount:
+          type: string
+        subtotal_amount:
+          type: string
+        tax_amount:
+          type: string
+        total_amount:
+          type: string
+        discounts:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderDiscount"
+        name:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        fulfillment_mode:
+          $ref: "#/components/schemas/v1ItemFulfillmentModel"
+    v1OrderLineReference:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        quantity:
+          type: integer
+          format: int64
+
+    v1OrderRefund:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        external_id:
+          type: string
+        reason:
+          type: string
+        use_original_method:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderLineReference"
+        refund_date:
+          type: string
+          format: uint64
+        amount:
+          type: string
+        tax:
+          type: string
+        shipping:
+          type: string
+    v1OrderShipmentPlan:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        external_id:
+          type: string
+        ship_to:
+          $ref: "#/components/schemas/v1OrderAddress"
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderLineReference"
+        selected_option:
+          $ref: "#/components/schemas/v1ShippingOption"
+        available_options:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1ShippingOption"
+        shipments:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1Shipment"
+    v1OrderStatus:
+      type: string
+      enum:
+        - ORDER_STATUS_CART
+        - ORDER_STATUS_PENDING
+        - ORDER_STATUS_HOLD
+        - ORDER_STATUS_BOOKED
+        - ORDER_STATUS_PENDING_FULFILLMENT
+        - ORDER_STATUS_FULFILLED
+        - ORDER_STATUS_COMPLETE
+        - ORDER_STATUS_CANCELED
+        - ORDER_STATUS_DELETED
+      title: >-
+        Order and Cart share the same data model this status means that Order
+        is in Cart status
+
+        this status will be populated on all Fast Carts
+    v1OrderType:
+      type: string
+      enum:
+        - ORDER_TYPE_CART
+        - ORDER_TYPE_ORDER
+        - ORDER_TYPE_RETURN
+        - ORDER_TYPE_EXCHANGE
+        - ORDER_TYPE_CREDIT
+        - ORDER_TYPE_REFUND
+    v1ReadOrderRequestSegment:
+      type: object
+      properties:
+        is_cart:
+          type: boolean
+          description: Boolean indicating if the order is in cart phase.
+        order_id:
+          $ref: "#/components/schemas/v1UUID"
+          description: Fast's unique ID for the order.
+        external_order_id:
+          type: string
+          description: The seller's order ID.
+    v1ReadOrderResponseSegment:
+      type: object
+      properties:
+        order:
+          $ref: "#/components/schemas/v1FastOrder"
+    v1ReadRequest:
+      type: object
+      properties:
+        app_id:
+          type: string
+          description: The application ID for your store registered with Fast.
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+          description: >-
+            The idempotency key of request. Ensure that your operations are
+            idempotent against this field
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+          example: ENUM
+          descrption: The type of entity being read.
+        order:
+          $ref: "#/components/schemas/v1ReadOrderRequestSegment"
+          description: Object containing the order information.
+        shipping_zones:
+          $ref: "#/components/schemas/v1ReadShippingZonesRequestSegment"
+          description: The geographical area (e.g. region ZIP code etc.) that physical goods will ship to.
+    v1ReadResponse:
+      type: object
+      properties:
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+          description: The idempotency key of request.
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+          description: The type of entity being created.
+        order:
+          $ref: "#/components/schemas/v1ReadOrderResponseSegment"
+          description: Fast order data entity.
+          shipping_option:
+            $ref: "#/components/schemas/v1ReadShippingOptionResponseSegment"
+        user:
+          $ref: "#/components/schemas/v1ReadUserResponseSegment"
+        shipping_zones:
+          $ref: "#/components/schemas/v1ReadShippingZonesResponseSegment"
+          description: The geographical area (e.g. region ZIP code etc.) that physical goods will ship to.
+    v1ReadShippingZonesRequestSegment:
+      type: object
+    v1ReadShippingZonesResponseSegment:
+      type: object
+      properties:
+        shipping_zones:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1ShippingZone"
+          description: Valid Shipping Zones that a seller supports
+    v1Shipment:
+      type: object
+      properties:
+        carrier:
+          type: string
+        tracking_number:
+          type: string
+        estimated_delivery_date:
+          type: string
+          format: uint64
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderLineReference"
+    v1ShipmentPlanUpdate:
+      type: object
+      properties:
+        plan_id:
+          $ref: "#/components/schemas/v1UUID"
+        ship_to:
+          $ref: "#/components/schemas/v1OrderAddress"
+        line_refs:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderLineReference"
+    v1ShippingOption:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/v1UUID"
+        external_id:
+          type: string
+        name:
+          type: string
+        shipment_type:
+          $ref: "#/components/schemas/v1ShippingOptionType"
+        cost:
+          type: string
+        tax:
+          type: string
+        total:
+          type: string
+        carrier:
+          type: string
+        service_level:
+          type: string
+    v1ShippingOptionType:
+      type: string
+      enum:
+        - SHIPPING_OPTION_TYPE_IN_STORE_PICKUP
+        - SHIPPING_OPTION_TYPE_OTHER
+    v1ShippingOptionUpdate:
+      type: object
+      properties:
+        plan_id:
+          $ref: "#/components/schemas/v1UUID"
+        option_id:
+          $ref: "#/components/schemas/v1UUID"
+        external_option_id:
+          type: string
+    v1ShippingZone:
+      type: object
+      properties:
+        country_iso2:
+          type: string
+        subdivision_iso2:
+          type: string
+    v1UUID:
+      type: object
+      properties:
+        value:
+          type: string
+          title: UUID value
+      title: Typed UUID
+      required:
+        - value
+    v1UpdateOrderRequestSegment:
+      type: object
+      properties:
+        order_id:
+          $ref: "#/components/schemas/v1UUID"
+        is_cart:
+          type: boolean
+        convert_mode:
+          $ref: "#/components/schemas/v1CartToOrderConvert"
+        convert_cart_to_order:
+          type: boolean
+        status:
+          $ref: "#/components/schemas/v1OrderStatus"
+        bill_to:
+          $ref: "#/components/schemas/v1AddressUpdate"
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1OrderItemUpdate"
+        coupon:
+          $ref: "#/components/schemas/v1CouponUpdate"
+        shipping_option:
+          $ref: "#/components/schemas/v1ShippingOptionUpdate"
+        shipments:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1ShipmentPlanUpdate"
+    v1UpdateOrderResponseSegment:
+      type: object
+      properties:
+        order:
+          $ref: "#/components/schemas/v1FastOrder"
+        status:
+          type: array
+          items:
+            $ref: "#/components/schemas/v1UpdateOrderSegmentStatus"
+    v1UpdateOrderSegmentStatus:
+      type: object
+      properties:
+        updated:
+          $ref: "#/components/schemas/v1UpdateOrderSegmentType"
+        status:
+          type: boolean
+        reason_code:
+          type: string
+        message:
+          type: string
+    v1UpdateOrderSegmentType:
+      type: string
+      enum:
+        - UPDATE_ORDER_SEGMENT_TYPE_COUPON
+        - UPDATE_ORDER_SEGMENT_TYPE_SHIPPING_ADDRESS
+        - UPDATE_ORDER_SEGMENT_TYPE_BILLING_ADDRESS
+        - UPDATE_ORDER_SEGMENT_TYPE_LINE_ITEM
+        - UPDATE_ORDER_SEGMENT_TYPE_SHIPPING_OPTION
+        - UPDATE_ORDER_SEGMENT_TYPE_CONVERT_CART_TO_ORDER
+        - UPDATE_ORDER_SEGMENT_TYPE_ORDER_STATUS
+    v1UpdateRequest:
+      type: object
+      properties:
+        app_id:
+          type: string
+          description: The application ID for your store registered with Fast.
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+        order:
+          $ref: "#/components/schemas/v1UpdateOrderRequestSegment"
+    v1UpdateResponse:
+      type: object
+      properties:
+        request_id:
+          $ref: "#/components/schemas/v1UUID"
+        type:
+          $ref: "#/components/schemas/v1EntityType"
+        order:
+          $ref: "#/components/schemas/v1UpdateOrderResponseSegment"
+    v1ReadUserRequestSegment:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email of the user being requested.
+        external_user_id:
+          type: string
+          description: External ID of the user being requested. Cast to a string if integer value.
+    v1ReadUserResponseSegment:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/v1FastIntegrationUser"
+  examples:
+    ReadResponse_Order:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            external_id: 585
+            order_type: ORDER_TYPE_ORDER
+            currency_code: USD
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: +18005551212
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province: New York
+              state_province_code: NY
+              country: US
+              postal_code: 10017
+            lines:
+              - external_product_id: 1556
+                external_variant_id: 6418
+                quantity: 1
+                quantity_fulfilled: 0
+                unit_price: 22
+                discounted_unit_price: 0
+                line_discount_amount: 0
+                subtotal_amount: 22
+                tax_amount: 0
+                total_amount: 22
+                discounts: [applied: false]
+                name: Radiant Tee
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+              - external_product_id: 1542
+                external_variant_id: 6419
+                quantity: 1
+                quantity_fulfilled: 0
+                unit_price: 0
+                discounted_unit_price: 0
+                line_discount_amount: 0
+                subtotal_amount: 0
+                tax_amount: 0
+                total_amount: 0
+                discounts:
+                  - applied: false
+                name: Radiant Tee-XS-Orange
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+              - external_product_id: 1556
+                external_variant_id: 6420
+                quantity: 1
+                quantity_fulfilled: 0
+                unit_price: 22
+                discounted_unit_price: 0
+                line_discount_amount: 0
+                subtotal_amount: 22
+                tax_amount: 0
+                total_amount: 22
+                discounts:
+                  - applied: false
+                name: Radiant Tee
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+              - external_product_id: 1548
+                external_variant_id: 6421
+                quantity: 1
+                quantity_fulfilled: 0
+                unit_price: 0
+                discounted_unit_price: 0
+                line_discount_amount: 0
+                subtotal_amount: 0
+                tax_amount: 0
+                total_amount: 0
+                discounts:
+                  - applied: false
+                name: Radiant Tee-M-Orange
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: +18005551212
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province: New York
+                  state_province_code: NY
+                  country: US
+                  postal_code: 10017
+                lines:
+                  - quantity: 1
+                    external_id: 998
+                  - quantity: 1
+                    external_id: 999
+                  - quantity: 1
+                    external_id: 1000
+                  - quantity: 1
+                    external_id: 1001
+                selected_option:
+                  external_id: flatrate_flatrate
+                  name: Flat Rate - Fixed
+                  cost: 10
+                  tax: 0
+                  total: 10
+                available_options:
+            total_amount: 54
+            sub_total: 44
+            total_discounts: 0
+            total_tax: 0
+            total_shipping: 10
+            short_order_id: 585
+        user:
+          user:
+            email: solutions@fast.co
+            first_name: Solutions
+            last_name: Team
+            phone: +18005551212
+    ReadRequest_Order_Cart:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          is_cart: true
+          external_order_id: OPnjkIN3mBgF2k6WhbADkTfyOlK8FEbh
+    ReadRequest_Order:
+      value:
+        app_id: 088fdade-8809-471c-89c2-f429fa844af2
+        type: ENTITY_TYPE_ORDER
+        order:
+          external_order_id: 585
+    ReadResponse_Order_Cart:
+      value:
+        order:
+          order:
+            id:
+              value: as5920783-453d-6ee4-ac3c-f23af36ff819
+            external_id: OPnjkIN3mBgF2k6WhbADkTfyOlK8FEbh
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            lines:
+              - id:
+                  value: 5c5e373a-c675-447c-8e1c-fda798c5f31c
+
+                external_id: 6297
+                external_product_id: 1797
+                external_variant_id: 1797-BK-M
+                quantity: 1
+                subtotal_amount: 50.00
+                total_amount: 37.50
+                name: Black M
+                image_url:
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            total_amount: 37.50
+            sub_total: 37.50
+            total_discounts: 0.00
+            total_tax: 0.00
+            total_shipping: 0.00
+    ReadRequest_ShippingZone:
+      value:
+        app_id: 088fdade-8809-471c-89c2-f429fa844af2
+        type: ENTITY_TYPE_SHIPPING_ZONES
+    ReadResponse_ShippingZone:
+      value:
+        type: ENTITY_TYPE_SHIPPING_ZONES
+        shipping_zones:
+          shipping_zones:
+            - country_iso2: US
+            - country_iso2: GB
+    DeleteRequest_Order_Fast_Cart:
+      value:
+        app_id: 088fdade-8809-471c-89c2-f429fa844af2
+        type: ENTITY_TYPE_ORDER
+        order:
+          is_cart: true
+          external_id: c8XyP8tIPIOluGmOgOv1D6bABUScTyvh
+    CreateRequest_Order_Cart:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          is_cart: true
+          order:
+            id:
+              value: eb3b8e18-930d-4213-92a0-4993f9e536a8
+            order_type: ORDER_TYPE_CART
+            status: ORDER_STATUS_CART
+            bill_to:
+            lines:
+              - id: value:32dc17ee-ebff-40f8-87c5-b83f838d79d1
+                external_product_id: 112
+                quantity: 1
+                subtotal_amount: 0.00
+                tax_amount: 0.00
+                total_amount: 0.00
+    CreateResponse_Order_Cart:
+      value:
+        order:
+          order:
+            id:
+              value: eb3b8e18-930d-4213-92a0-4993f9e536a8
+            external_id: a98a387e-02ec-41a8-a38e-e3ca5fb0548d
+            order_type: 1
+            currency_code: USD
+            bill_to:
+            lines:
+              - id:
+                  value: 32dc17ee-ebff-40f8-87c5-b83f838d79d1
+                external_id: d3d6eca1-1697-4ad2-6f369364f75b
+            total_amount: 29.99
+            sub_total: 29.99
+            total_discounts: 0.00
+    UpdateRequest_Order_Cart_Add_Item:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: 863e151e-703e-4da3-b044-a1c874afeda3
+          is_cart: true
+          items:
+            - item_id:
+                value: e0400168-958b-4a46-bf23-08cb6ee00630
+              external_product_id: canon-powershot-a580M
+              external_variant_id: canon-powershot-a580M
+              external_item_id: 6f396ac44ded0ef59626a2a3f5
+          external_id: b097a63a4f829c6ecc192c3057
+    UpdateResponse_Order_Cart_Add_Item:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: 863e151e-703e-4da3-b044-a1c874afeda3
+            external_id: b097a63a4f829c6ecc192c3057
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: +18005551212
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: 10017
+            lines:
+              - id:
+                  value: 2f914efb-0926-46af-86b4-6f7012d3d9bd
+                external_id: dc8a000b11e0ac1bd81ed6427a
+                external_product_id: canon-eos-50d-bodyM
+                external_variant_id: canon-eos-50d-bodyM
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: 979.99
+                discounted_unit_price: 979.99
+                line_discount_amount: 0
+                subtotal_amount: 979.99
+                tax_amount: 49
+                total_amount: 979.99
+                name: Canon EOS 50D Digital SLR Camera (body only)
+                description: Canon EOS 50D Digital SLR Camera (body only)
+                image_url: https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-electronics-m-catalog/default/dwc16ea6c4/images/medium/canon-eos-50d-body.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+              - id:
+                  value: e0400168-958b-4a46-bf23-08cb6ee00630
+                external_id: 6f396ac44ded0ef59626a2a3f5
+                external_product_id: canon-powershot-a580M
+                external_variant_id: canon-powershot-a580M
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: 149.99
+                discounted_unit_price: 149.99
+                line_discount_amount: 0
+                subtotal_amount: 149.99
+                tax_amount: 7.5
+                total_amount: 149.99
+                name: Canon PowerShot A580 Digital Point and Shoot Camera
+                description: Canon PowerShot A580 Digital Point and Shoot Camera
+                image_url: https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-electronics-m-catalog/default/dwc1815b35/images/medium/canon-powershot-a580.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: +18005551212
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: 10017
+                lines:
+                  - id:
+                      value: 2f914efb-0926-46af-86b4-6f7012d3d9bd
+                    quantity: 1
+                    external_id: dc8a000b11e0ac1bd81ed6427a
+                  - id:
+                      value: e0400168-958b-4a46-bf23-08cb6ee00630
+                    quantity: 1
+                    external_id: 6f396ac44ded0ef59626a2a3f5
+                selected_option:
+                  external_id: 001
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: 15.19
+                  tax: 0.8
+                  total: 15.99
+                available_options:
+                  - external_id: 001
+                    name: Ground
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: 15.99
+                    tax: 0
+                    total: 15.99
+                    service_level: Order received within 7-10 business days
+                  - external_id: 002
+                    name: 2-Day Express
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: 20.99
+                    tax: 0
+                    total: 20.99
+                    service_level: Order received in 2 business days
+                  - external_id: 003
+                    name: Overnight
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: 29.99
+                    tax: 0
+                    total: 29.99
+                    service_level: Order received the next business day
+            total_amount: 1203.27
+            sub_total: 1129.98
+            total_discounts: 0
+            total_tax: 57.3
+            total_shipping: 15.99
+    UpdateRequest_Order_Cart_Remove_Item:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: 863e151e-703e-4da3-b044-a1c874afeda3
+          is_cart: true
+          items:
+            - item_id:
+                value: e0400168-958b-4a46-bf23-08cb6ee00630
+              external_product_id: canon-powershot-a580M
+              external_variant_id: canon-powershot-a580M
+              external_item_id: 6f396ac44ded0ef59626a2a3f5
+          external_id: b097a63a4f829c6ecc192c3057
+    UpdateResponse_Order_Cart_Remove_Item:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: 863e151e-703e-4da3-b044-a1c874afeda3
+            external_id: b097a63a4f829c6ecc192c3057
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 2f914efb-0926-46af-86b4-6f7012d3d9bd
+                external_id: dc8a000b11e0ac1bd81ed6427a
+                external_product_id: canon-eos-50d-bodyM
+                external_variant_id: canon-eos-50d-bodyM
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: "979.99"
+                discounted_unit_price: "979.99"
+                line_discount_amount: "0"
+                subtotal_amount: "979.99"
+                tax_amount: "49"
+                total_amount: "979.99"
+                name: Canon EOS 50D Digital SLR Camera (body only)
+                description: Canon EOS 50D Digital SLR Camera (body only)
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-electronics-m-catalog/default/dwc16ea6c4/images/medium/canon-eos-50d-body.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 2f914efb-0926-46af-86b4-6f7012d3d9bd
+                    quantity: 1
+                    external_id: dc8a000b11e0ac1bd81ed6427a
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "15.19"
+                  tax: "0.8"
+                  total: "15.99"
+                available_options:
+                  - external_id: "001"
+                    name: Ground
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "15.99"
+                    tax: "0"
+                    total: "15.99"
+                    service_level: Order received within 7-10 business days
+                  - external_id: "002"
+                    name: 2-Day Express
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "20.99"
+                    tax: "0"
+                    total: "20.99"
+                    service_level: Order received in 2 business days
+                  - external_id: "003"
+                    name: Overnight
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "29.99"
+                    tax: "0"
+                    total: "29.99"
+                    service_level: Order received the next business day
+            total_amount: "1045.78"
+            sub_total: "979.99"
+            total_discounts: "0"
+            total_tax: "49.8"
+            total_shipping: "15.99"
+
+    UpdateRequest_Order_Change_Shipping_Address:
+      value:
+        app_id: 088fdade-8809-471c-89c2-f429fa844af2
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: d922708c-0e46-4bbf-a435-d479dd7a63b6
+          is_cart: true
+          shipments:
+            - plan_id:
+                value: OnzoaAyj1Wn8Ej-um5W8JfJLnqk=
+              ship_to:
+                first_name: Solutions
+                last_name: Team
+                email: solutions@fast.co
+                address_1: 10 Southampton Street
+                city_locality: London
+                state_province_code: England
+                country: GB
+                country_code: GB
+                postal_code: WC2E 7HA
+              line_refs:
+                - id:
+                    value: e3b7f30c-dd08-4a4a-9546-835754eac41d
+                  quantity: 1
+          external_id: c8XyP8tIPIOluGmOgOv1D6bABUScTyvh
+
+    UpdateResponse_Change_Shipping_Address:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: d922708c-0e46-4bbf-a435-d479dd7a63b6
+            external_id: c8XyP8tIPIOluGmOgOv1D6bABUScTyvh
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province: New York
+              state_province_code: NY
+              country: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: e3b7f30c-dd08-4a4a-9546-835754eac41d
+                external_id: "6434"
+                external_product_id: "419"
+                quantity: 1
+                unit_price: "45"
+                discounted_unit_price: "45"
+                line_discount_amount: "0"
+                subtotal_amount: "45"
+                total_amount: "45"
+                name: Proteus Fitness Jackshirt
+                image_url: ""
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: 555-555-5555
+                  address_1: 10 Southampton Street
+                  city_locality: London
+                  state_province: New York
+                  country: GB
+                  postal_code: WC2E 7HA
+                lines:
+                  - id:
+                      value: e3b7f30c-dd08-4a4a-9546-835754eac41d
+                    quantity: 1
+                    external_id: "6434"
+                selected_option:
+                  external_id: flatrate_flatrate
+                  name: Fixed
+                  cost: "5"
+                  tax: "0"
+                  total: "5"
+                  service_level: Flat Rate Fixed
+                available_options:
+                  - external_id: flatrate_flatrate
+                    name: Fixed
+                    cost: "5"
+                    tax: "0"
+                    total: "5"
+                    service_level: Flat Rate Fixed
+            total_amount: "50"
+            sub_total: "45"
+            total_shipping: "5"
+
+    UpdateRequest_Change_Billing_Address:
+      value:
+        app_id: 088fdade-8809-471c-89c2-f429fa844af2
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: 14973858-264a-4126-b3f0-4191e00a462f
+          is_cart: true
+          bill_to:
+            first_name: Solutions
+            last_name: Team
+            email: solutions@fast.co
+            phone: "+18005551212"
+            address_1: 100 Park Avenue
+            city_locality: New York
+            state_province_code: NY
+            country: US
+            country_code: US
+            postal_code: "10017"
+          external_id: CKAPYRemQ7eEV9PewUZeQX2ZnAQIG0Za
+
+    UpdateResponse_Order_Change_Billing_Address:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: 14973858-264a-4126-b3f0-4191e00a462f
+            external_id: CKAPYRemQ7eEV9PewUZeQX2ZnAQIG0Za
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province: New York
+              state_province_code: NY
+              country: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: fc8cc4ab-aba9-4539-bbb0-59b0a0a5e872
+                external_id: "6432"
+                external_product_id: "690"
+                quantity: 1
+                unit_price: "22"
+                discounted_unit_price: "22"
+                line_discount_amount: "0"
+                subtotal_amount: "22"
+                total_amount: "22"
+                name: Argus All-Weather Tank
+                image_url: ""
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            total_amount: "22"
+            sub_total: "22"
+
+    UpdateRequest_Order_Change_Shipping_Option:
+      value:
+        app_id: 088fdade-8809-471c-89c2-f429fa844af2
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: d922708c-0e46-4bbf-a435-d479dd7a63b6
+          is_cart: true
+          shipping_option:
+            plan_id:
+              value: FGRqQlj4HVs-OSN1mCRLGAec7K8=
+            option_id:
+              value: flatrate_flatrate
+            external_option_id: flatrate_flatrate
+          external_id: c8XyP8tIPIOluGmOgOv1D6bABUScTyvh
+
+    UpdateResponse_Order_Change_Shipping_Option:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: d922708c-0e46-4bbf-a435-d479dd7a63b6
+            external_id: c8XyP8tIPIOluGmOgOv1D6bABUScTyvh
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province: New York
+              state_province_code: NY
+              country: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: e3b7f30c-dd08-4a4a-9546-835754eac41d
+                external_id: "6434"
+                external_product_id: "419"
+                quantity: 1
+                unit_price: "45"
+                discounted_unit_price: "45"
+                line_discount_amount: "0"
+                subtotal_amount: "45"
+                total_amount: "45"
+                name: Proteus Fitness Jackshirt
+                image_url: ""
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: 555-555-5555
+                  address_1: 10 Southampton Street
+                  city_locality: London
+                  state_province: New York
+                  country: GB
+                  postal_code: WC2E 7HA
+                lines:
+                  - id:
+                      value: e3b7f30c-dd08-4a4a-9546-835754eac41d
+                    quantity: 1
+                    external_id: "6434"
+                selected_option:
+                  external_id: flatrate_flatrate
+                  name: Fixed
+                  cost: "5"
+                  tax: "0"
+                  total: "5"
+                  service_level: Flat Rate Fixed
+                available_options:
+                  - external_id: flatrate_flatrate
+                    name: Fixed
+                    cost: "5"
+                    tax: "0"
+                    total: "5"
+                    service_level: Flat Rate Fixed
+            total_amount: "50"
+            sub_total: "45"
+            total_shipping: "5"
+
+    UpdateRequest_Order_Change_Item_Quantity:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: 7009c125-a487-4fd8-8d0c-2aad0c7e8f37
+          is_cart: true
+          items:
+            - item_id:
+                value: 619eb41a-9174-486c-80e1-f9fcd0a33030
+              quantity: 5
+              external_product_id: 73910532M
+              external_variant_id: 883858858265M
+              external_item_id: 5134a3aadd6d1f1b87172ad195
+          external_id: ffcf4af7d4b5bc208bca719bed
+
+    UpdateResponse_Order_Change_Item_Quantity:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: 7009c125-a487-4fd8-8d0c-2aad0c7e8f37
+            external_id: ffcf4af7d4b5bc208bca719bed
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 619eb41a-9174-486c-80e1-f9fcd0a33030
+                external_id: 5134a3aadd6d1f1b87172ad195
+                external_product_id: 73910532M
+                external_variant_id: 883858858265M
+                quantity: 5
+                quantity_fulfilled: 5
+                unit_price: "195"
+                discounted_unit_price: "195"
+                line_discount_amount: "0"
+                subtotal_amount: "975"
+                tax_amount: "48.75"
+                total_amount: "975"
+                name: Basic Leg Trousers
+                description: Basic Leg Trousers
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dw64bef723/images/medium/90011212_001_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 619eb41a-9174-486c-80e1-f9fcd0a33030
+                    quantity: 5
+                    external_id: 5134a3aadd6d1f1b87172ad195
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "15.19"
+                  tax: "0.8"
+                  total: "15.99"
+                available_options:
+                  - external_id: "001"
+                    name: Ground
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "15.99"
+                    tax: "0"
+                    total: "15.99"
+                    service_level: Order received within 7-10 business days
+                  - external_id: "002"
+                    name: 2-Day Express
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "20.99"
+                    tax: "0"
+                    total: "20.99"
+                    service_level: Order received in 2 business days
+                  - external_id: "003"
+                    name: Overnight
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "29.99"
+                    tax: "0"
+                    total: "29.99"
+                    service_level: Order received the next business day
+            total_amount: "1040.54"
+            sub_total: "975"
+            total_discounts: "0"
+            total_tax: "49.55"
+            total_shipping: "15.99"
+
+    UpdateRequest_Order_Cart_Add_Coupon:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: b17848cc-8e39-4514-8490-e6f30f03fafd
+          is_cart: true
+          coupon:
+            code: orderLevel
+          external_id: 8ff441c3a891743ec60b183207
+
+    UpdateResponse_Order_Cart_Add_Coupon:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: b17848cc-8e39-4514-8490-e6f30f03fafd
+            external_id: 8ff441c3a891743ec60b183207
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 078a22fa-4815-4afe-a95e-28108e1cd0de
+                external_id: fc84506f4e3fdb2c5f18781584
+                external_product_id: 73910532M
+                external_variant_id: 883360352336M
+                quantity: 6
+                quantity_fulfilled: 6
+                unit_price: "195"
+                discounted_unit_price: "195"
+                line_discount_amount: "585"
+                subtotal_amount: "1170"
+                tax_amount: "58.5"
+                total_amount: "1170"
+                name: Basic Leg Trousers
+                description: Basic Leg Trousers
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dw9daaeb69/images/medium/90011212_A00_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 078a22fa-4815-4afe-a95e-28108e1cd0de
+                    quantity: 6
+                    external_id: fc84506f4e3fdb2c5f18781584
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "15.19"
+                  tax: "0.8"
+                  total: "15.99"
+                available_options:
+                  - external_id: "001"
+                    name: Ground
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "15.99"
+                    tax: "0"
+                    total: "15.99"
+                    service_level: Order received within 7-10 business days
+                  - external_id: "002"
+                    name: 2-Day Express
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "20.99"
+                    tax: "0"
+                    total: "20.99"
+                    service_level: Order received in 2 business days
+                  - external_id: "003"
+                    name: Overnight
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "29.99"
+                    tax: "0"
+                    total: "29.99"
+                    service_level: Order received the next business day
+            coupons:
+              - code: orderLevel
+                description: >-
+                  a8e76739d5fdd760827b0c3015 - Order Level Coupon Test -
+                  https://zybw-002.sandbox.us01.dx.commercecloud.salesforce.com/s/RefArch/dw/shop/v21_9/promotions/ref-arch-order-coupon-promotion-1
+                origin: DISCOUNT_ORIGIN_USER
+                type: DISCOUNT_TYPE_REGULAR
+                applied: true
+                total_amount: "585"
+            total_amount: "631.04"
+            sub_total: "1170"
+            total_discounts: "585"
+            total_tax: "30.05"
+            total_shipping: "15.99"
+
+    UpdateRequest_Order_Cart_Remove_Coupon:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          order_id:
+            value: b17848cc-8e39-4514-8490-e6f30f03fafd
+          is_cart: true
+          coupon:
+            code: orderLevel
+            remove: true
+          external_id: 8ff441c3a891743ec60b183207
+
+    UpdateResponse_Order_Cart_Remove_Coupon:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: b17848cc-8e39-4514-8490-e6f30f03fafd
+            external_id: 8ff441c3a891743ec60b183207
+            order_type: ORDER_TYPE_CART
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 078a22fa-4815-4afe-a95e-28108e1cd0de
+                external_id: fc84506f4e3fdb2c5f18781584
+                external_product_id: 73910532M
+                external_variant_id: 883360352336M
+                quantity: 6
+                quantity_fulfilled: 6
+                unit_price: "195"
+                discounted_unit_price: "195"
+                line_discount_amount: "0"
+                subtotal_amount: "1170"
+                tax_amount: "58.5"
+                total_amount: "1170"
+                name: Basic Leg Trousers
+                description: Basic Leg Trousers
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dw9daaeb69/images/medium/90011212_A00_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 078a22fa-4815-4afe-a95e-28108e1cd0de
+                    quantity: 6
+                    external_id: fc84506f4e3fdb2c5f18781584
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "15.19"
+                  tax: "0.8"
+                  total: "15.99"
+                available_options:
+                  - external_id: "001"
+                    name: Ground
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "15.99"
+                    tax: "0"
+                    total: "15.99"
+                    service_level: Order received within 7-10 business days
+                  - external_id: "002"
+                    name: 2-Day Express
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "20.99"
+                    tax: "0"
+                    total: "20.99"
+                    service_level: Order received in 2 business days
+                  - external_id: "003"
+                    name: Overnight
+                    shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                    cost: "29.99"
+                    tax: "0"
+                    total: "29.99"
+                    service_level: Order received the next business day
+            total_amount: "1245.29"
+            sub_total: "1170"
+            total_discounts: "0"
+            total_tax: "59.3"
+            total_shipping: "15.99"
+
+    UpdateRequest_Order_Cart_Convert_to_Order:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          is_cart: true
+          convert_mode: CART_TO_ORDER_CONVERT_UPDATE_AND_CONVERT
+          convert_cart_to_order: true
+          external_id: 9a7d809060065e7239daecc0d5
+          device_info:
+            ip_address: 24.168.83.213
+          payment:
+            token: d5afb4a7-9510-4fc2-8f3e-d94e184659ed
+            expire_on: "1646063411"
+
+    UpdateResponse_Order_Cart_Convert_to_Order:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: d5afb4a7-9510-4fc2-8f3e-d94e184659ed
+            external_id: "00000401"
+            user_id: bdRiXVbTfwxYEusFJYQmYcxPaL
+            order_type: ORDER_TYPE_ORDER
+            currency_code: USD
+            status: ORDER_STATUS_CART
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 6adb8659-8c65-4376-84be-d8d0bce9e82b
+                external_id: 1526cc76cee6079c04d3074206
+                external_product_id: 883360525433M
+                external_variant_id: 883360525433M
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: "175"
+                discounted_unit_price: "0"
+                line_discount_amount: "0"
+                subtotal_amount: "175"
+                tax_amount: "8.75"
+                total_amount: "175"
+                name: Slim Fit Pants
+                description: Slim Fit Pants
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dwb9691140/images/medium/B0374208_B7H_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 6adb8659-8c65-4376-84be-d8d0bce9e82b
+                    quantity: 1
+                    external_id: 1526cc76cee6079c04d3074206
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "7.59"
+                  tax: "0.4"
+                  total: "7.99"
+            total_amount: "192.14"
+            sub_total: "175"
+            total_discounts: "0"
+            total_tax: "9.15"
+            total_shipping: "7.99"
+
+    UpdateRequest_Order_Update_Order_Status_Payment_Authorized:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          convert_cart_to_order: true
+          status: ORDER_STATUS_BOOKED
+          external_id: "00000401"
+
+    UpdateResponse_Order_Update_Order_Status_Payment_Authorized:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: d5afb4a7-9510-4fc2-8f3e-d94e184659ed
+            external_id: "00000401"
+            user_id: bdRiXVbTfwxYEusFJYQmYcxPaL
+            order_type: ORDER_TYPE_ORDER
+            currency_code: USD
+            status: ORDER_STATUS_BOOKED
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 6adb8659-8c65-4376-84be-d8d0bce9e82b
+                external_id: 1526cc76cee6079c04d3074206
+                external_product_id: 91736743M
+                external_variant_id: 883360525433M
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: "175"
+                discounted_unit_price: "175"
+                line_discount_amount: "0"
+                subtotal_amount: "175"
+                tax_amount: "8.75"
+                total_amount: "175"
+                name: Slim Fit Pants
+                description: Slim Fit Pants
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dwb9691140/images/medium/B0374208_B7H_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 6adb8659-8c65-4376-84be-d8d0bce9e82b
+                    quantity: 1
+                    external_id: 1526cc76cee6079c04d3074206
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "7.59"
+                  tax: "0.4"
+                  total: "7.99"
+            total_amount: "192.14"
+            sub_total: "175"
+            total_discounts: "0"
+            total_tax: "9.15"
+            total_shipping: "7.99"
+
+    UpdateRequest_Order_Update_Order_Status_Fraud_Check_Passed_Pending_Fulfillment:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          convert_cart_to_order: true
+          status: ORDER_STATUS_PENDING_FULFILLMENT
+          external_id: "00000401"
+
+    UpdateResponse_Order_Update_Order_Status_Fraud_Check_Passed_Pending_Fulfillment:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: d5afb4a7-9510-4fc2-8f3e-d94e184659ed
+            external_id: "00000401"
+            user_id: bdRiXVbTfwxYEusFJYQmYcxPaL
+            order_type: ORDER_TYPE_ORDER
+            currency_code: USD
+            status: ORDER_STATUS_PENDING_FULFILLMENT
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 6adb8659-8c65-4376-84be-d8d0bce9e82b
+                external_id: 1526cc76cee6079c04d3074206
+                external_product_id: 91736743M
+                external_variant_id: 883360525433M
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: "175"
+                discounted_unit_price: "175"
+                line_discount_amount: "0"
+                subtotal_amount: "175"
+                tax_amount: "8.75"
+                total_amount: "175"
+                name: Slim Fit Pants
+                description: Slim Fit Pants
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dwb9691140/images/medium/B0374208_B7H_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 6adb8659-8c65-4376-84be-d8d0bce9e82b
+                    quantity: 1
+                    external_id: 1526cc76cee6079c04d3074206
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "7.59"
+                  tax: "0.4"
+                  total: "7.99"
+            total_amount: "192.14"
+            sub_total: "175"
+            total_discounts: "0"
+            total_tax: "9.15"
+            total_shipping: "7.99"
+
+    UpdateRequest_Order_Update_Order_Status_Fraud_Check_Rejected_Order_Canceled:
+      value:
+        app_id: 31d7ff3a-0128-440e-a5a2-c1e10d4c2d83
+        type: ENTITY_TYPE_ORDER
+        order:
+          convert_cart_to_order: true
+          status: ORDER_STATUS_CANCELED
+          external_id: "00000402"
+
+    UpdateResponse_Order_Update_Order_Status_Fraud_Check_Rejected_Order_Canceled:
+      value:
+        type: ENTITY_TYPE_ORDER
+        order:
+          order:
+            id:
+              value: 9dcb228f-b98c-468c-866d-1feecec70e6f
+            external_id: "00000402"
+            user_id: abT7T7S8HxTRxB1JVf9zndB1k4
+            order_type: ORDER_TYPE_ORDER
+            currency_code: USD
+            status: ORDER_STATUS_CANCELED
+            bill_to:
+              first_name: Solutions
+              last_name: Team
+              email: solutions@fast.co
+              phone: "+18005551212"
+              address_1: 100 Park Avenue
+              city_locality: New York
+              state_province_code: NY
+              country_code: US
+              postal_code: "10017"
+            lines:
+              - id:
+                  value: 9734f22a-1720-47c3-9201-75d260f6835f
+                external_id: 0090abe9faf6d2e919ed5927f0
+                external_product_id: 91736743M
+                external_variant_id: 883360525433M
+                quantity: 1
+                quantity_fulfilled: 1
+                unit_price: "175"
+                discounted_unit_price: "175"
+                line_discount_amount: "0"
+                subtotal_amount: "175"
+                tax_amount: "8.75"
+                total_amount: "175"
+                name: Slim Fit Pants
+                description: Slim Fit Pants
+                image_url: >-
+                  https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZYBW_002/on/demandware.static/-/Sites-apparel-m-catalog/default/dwb9691140/images/medium/B0374208_B7H_0.jpg
+                fulfillment_mode: ITEM_FULFILLMENT_MODEL_PHYSICAL
+            shipment_plans:
+              - id:
+                  value: me
+                external_id: me
+                ship_to:
+                  first_name: Solutions
+                  last_name: Team
+                  email: solutions@fast.co
+                  phone: "+18005551212"
+                  address_1: 100 Park Avenue
+                  city_locality: New York
+                  state_province_code: NY
+                  country_code: US
+                  postal_code: "10017"
+                lines:
+                  - id:
+                      value: 9734f22a-1720-47c3-9201-75d260f6835f
+                    quantity: 1
+                    external_id: 0090abe9faf6d2e919ed5927f0
+                selected_option:
+                  external_id: "001"
+                  name: Ground
+                  shipment_type: SHIPPING_OPTION_TYPE_OTHER
+                  cost: "7.59"
+                  tax: "0.4"
+                  total: "7.99"
+            total_amount: "192.14"
+            sub_total: "175"
+            total_discounts: "0"
+            total_tax: "9.15"
+            total_shipping: "7.99"

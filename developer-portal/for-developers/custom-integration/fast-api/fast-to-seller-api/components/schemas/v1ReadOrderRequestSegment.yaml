@@ -2,7 +2,11 @@ type: object
 properties:
   is_cart:
     type: boolean
+    description: Boolean indicating if the order is in cart phase.
   order_id:
     $ref: ./v1UUID.yaml
+    description: Fast's unique ID for the order.
   external_order_id:
     type: string
+    description: The seller's order ID.
+

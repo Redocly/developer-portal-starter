@@ -1,0 +1,130 @@
+import {
+  OpenApiRequestBody,
+  OpenApiResponse,
+  OpenApiExample,
+} from "@redocly/developer-portal/ui";
+
+# Read Operation
+
+The Read operation is used by Fast to return information on a Fast order.
+
+## Read Request
+
+<span>
+  <p
+    style={{
+      fontFamily: "Courier,monospace",
+      display: "flex",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "cadetblue",
+        color: "white",
+        padding: "3px 5px",
+      }}
+    >
+      POST
+    </div>
+    /fast/v1/read
+  </p>
+</span>
+<OpenApiRequestBody
+  definitionId="merchant"
+  pointer="#/components/requestBodies/ReadRequest"
+/>
+
+## Read Response
+
+### Success (200)
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/ReadResponse"
+/>
+
+### Error
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/DefaultResponse"
+/>
+
+## Use Cases
+
+Below are business use cases that will trigger Fast to call the Read operation to the Seller.
+
+<details><summary><h3>Read a Cart</h3></summary>
+<p>
+
+### Read a Cart
+
+Fast makes a read request to the existing platform cart so that it can get the item information to create a Fast order. This call is triggered when a user clicks the Fast Checkout button from the mini-cart or cart page.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/ReadRequest_Order_Cart"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/ReadResponse_Order_Cart"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Read an Order</h3></summary>
+<p>
+
+### Read an Order
+
+Fast makes a read request to an existing order to retrieve the order information. Seller->Fast API communication within the Order Management Service triggers a request to read an order.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/ReadRequest_Order"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/ReadResponse_Order"
+/>
+
+</p>
+</details>
+
+<details><summary><h3>Read a Shipping Zone</h3></summary>
+<p>
+
+### Read a Shipping Zone
+
+Fast makes this call to check for any restricted countries so that error messaging can show immediately when a shopper tries to ship somewhere invalid. That way, restricted countries or states/provinces are sent to Fast early in the process.
+
+This is triggered when a shopper enters or changes a shipping address on their Fast order.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/ReadRequest_ShippingZone"
+/>
+
+**Response**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/ReadResponse_ShippingZone"
+/>
+
+</p>
+</details>

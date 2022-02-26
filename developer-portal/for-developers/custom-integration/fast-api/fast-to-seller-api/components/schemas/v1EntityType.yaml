@@ -1,5 +1,3 @@
 type: string
 enum:
-  - ENTITY_TYPE_UNSPECIFIED
   - ENTITY_TYPE_ORDER
-default: ENTITY_TYPE_UNSPECIFIED

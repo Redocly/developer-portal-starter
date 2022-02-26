@@ -1,0 +1,85 @@
+import {
+  H1,
+  OpenApiRequestBody,
+  OpenApiResponse,
+  OpenApiExample,
+} from "@redocly/developer-portal/ui";
+
+# Delete Operation
+
+The Delete operation is called to clear carts from either Fast or the eCommerce platform in cases such as order cancellation prior to placement, cart abandonment, or initiating a Fast checkout from a platform cart page.
+
+## Delete Request
+
+<span>
+  <p
+    style={{
+      fontFamily: "Courier,monospace",
+      display: "flex",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "cadetblue",
+        color: "white",
+        padding: "3px 5px",
+      }}
+    >
+      POST
+    </div>
+    /fast/v1/delete
+  </p>
+</span>
+<OpenApiRequestBody
+  definitionId="merchant"
+  pointer="#/components/requestBodies/CreateRequest"
+/>
+
+## Delete Response
+
+**The response to delete should be empty if no issues occurred**, or return [one of the listed error codes](../../../../resources/error-codes) in the case something went wrong.
+
+### Success (200)
+
+```json
+{}
+```
+
+### Error
+
+<OpenApiResponse
+  definitionId="merchant"
+  pointer="#/components/responses/DefaultResponse"
+/>
+
+## Use Cases
+
+Below are business cases that will trigger Fast to call the Delete operation to the Seller.
+
+<details><summary><h3>Delete a Fast Cart</h3></summary>
+<p>
+
+### Delete a Fast Cart
+
+If a buyer chooses to cancel their order, the pending cart will be deleted.
+
+For anonymous / first-time Fast buyers that don't complete their profile or make order updates for an hour, Fast will consider it an abandoned cart and send a request to clear the cart from the eCommerce platform
+
+If a buyer initiates Fast checkout from the platform cart page, we make a call to delete the platform cart upon successful Fast order creation (but not timing window complete) to avoid duplicate orders. This will include the platform cart id in the external_order_id field to distinguish between a request to delete the Fast Checkout cart.
+
+**Request**
+
+<OpenApiExample
+  definitionId="merchant"
+  pointer="#/components/examples/DeleteRequest_Order_Fast_Cart"
+/>
+
+**Response**
+
+```json
+{}
+```
+
+</p>
+</details>
