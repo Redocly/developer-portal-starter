@@ -1,0 +1,120 @@
+---
+title: "Fast Android SDK Docs: Configure Your Android App"
+description: App Configuration for the Fast Android SDK
+keywords: Fast Mobile SDK, Fast Android SDK, Set Up Fast Android SDK
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+import { Alert } from "@redocly/developer-portal/ui";
+
+# App Configuration for the Fast Android SDK
+
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_banner_sandbox_and_contact_support.md" />
+
+:::info App Startup library dependency
+
+The Fast SDK initializes at app start automatically via the AndroidX [App Startup](https://developer.android.com/topic/libraries/app-startup) library. It is not required to initialize the SDK from your Application class.
+
+:::
+
+## Add your **Fast App ID** to `AndroidManifest.xml`:
+
+```kotlin
+<application ...>
+
+  <!-- Configure the Fast SDK -->
+	<meta-data android:name="co.fast.app_id" android:value="YOUR_APP_ID" />
+
+</application>
+```
+
+## Initialize `FastCheckout` from your Activity or Fragment
+
+Create an instance of `FastCheckout` from your `Activity` or `Fragment`'s `onCreate()` method.
+
+```kotlin
+private lateinit var fastCheckout: FastCheckout
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    fastCheckout = FastCheckout(this, ::onFastCheckoutEvent)
+}
+
+// Optionally, handle any FastCheckoutEvents that are useful to your app.
+// This is called once for each event emitted by the SDK, and provides your app info about the checkout.
+private fun onFastCheckoutEvent(event: FastCheckoutEvent) {
+    when (event) {
+        is FastCheckoutEvent.OrderCanceled -> {
+            // handle event, if desired
+        }
+        is FastCheckoutEvent.OrderCompleted -> {
+            // handle event, if desired
+        }
+        is FastCheckoutEvent.OrderCreated -> {
+            // handle event, if desired
+        }
+        is FastCheckoutEvent.OrderFailed -> {
+            // handle event, if desired
+        }
+        is FastCheckoutEvent.OrderUpdated -> {
+            // handle event, if desired
+        }
+        FastCheckoutEvent.SDKClosed -> {
+            // handle event, if desired
+        }
+
+        // Please keep this else clause. Fast may add more events in the future without updating the SDK's major version.
+        else -> Log.i(LOG_TAG, "Event: Unhandled event: $event")
+    }
+```
+
+:::info Callbacks
+You can find more details about `::onFastCheckoutEvent` in the [callbacks section of the Handle Fast Events page](../handle-fast-events#callbacks)
+:::
+
+## Add the Fast Checkout Button
+
+On pages where you want the `FastCheckoutButton` to appear, add it to your layout.
+
+```xml
+    <!-- Fast recommends 56dp or 48dp for the height -->
+    <co.fast.android.sdk.checkout.FastCheckoutButton
+      android:id="@+id/fast_checkout"
+      android:layout_width="match_parent"
+      android:layout_height="56dp" />
+```
+
+Apps using Jetpack Compose can use the [Compose Interoperability APIs](https://developer.android.com/jetpack/compose/interop/interop-apis) to add `FastCheckoutButton`.
+
+## Start Fast Checkout when the button is clicked
+
+```kotlin
+    findViewById<FastCheckoutButton>(R.id.fast_checkout).setOnClickListener {
+
+        // Checkout with products
+        fastCheckout.checkoutWithProducts { options ->
+          options.addProduct(...)
+          options.addProduct(...)
+        }
+
+        // Or, checkout with cart id
+        fastCheckout.checkoutWithCartId { options ->
+          options.cartId = ...
+        }
+    }
+```
+
+More details about invoking Fast Checkout can be found [here](../use-fast-checkout)
+
+## Allow Users to Sign Out
+
+<MobileSignout sdkFullName="Fast Android SDK" signoutMethod="Fast.reset()" />
+
+```kotlin
+Fast.reset()
+```

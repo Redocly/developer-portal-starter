@@ -1,0 +1,60 @@
+---
+title: "Fast iOS SDK Docs: Configure Your iOS App"
+description: App Configuration for the Fast iOS SDK
+keywords: Fast Mobile SDK, Fast iOS SDK, Set Up Fast iOS SDK
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+import { Alert } from "@redocly/developer-portal/ui";
+
+# App Configuration for the Fast iOS SDK
+
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_banner_sandbox_and_contact_support.md" />
+
+In your AppDelegate's _didFinishLaunchingWithOptions_(...) method, configure the FastCheckout iOS SDK with your **Fast App ID**:
+
+```swift
+Fast.shared.configure(appId: "YOUR_FAST_APP_ID")
+```
+
+## Add the Fast Checkout Button
+
+On pages where you want the **FastCheckoutButton** to appear, generate the button and add it to your view hierarchy.
+
+```swift
+// Create and add the Fast Checkout Button
+let button = Fast.shared.createFastCheckoutButton()
+view.addSubview(button)
+
+// Note: Don't forget to handle the tap action!
+button.addTarget(self, action: #selector(invokeFastCheckout), for: .touchUpInside)
+
+...
+// define invokeFastCheckout
+@objc func invokeFastCheckout() {
+  // Call into one of the overloads for the checkout function.
+  Fast.shared.checkout(...)
+}
+```
+
+<Alert variant="attention" header="Define invokeFastCheckout">
+  The Fast Checkout button will not have an action installed by default. Instead
+  you should define your own `invokeFastCheckout` function for the action that
+  calls one of Fast's checkout functions.
+</Alert>
+
+More details about invoking Fast Checkout can be found [here](../use-fast-checkout)
+
+## Allow Users to Sign Out
+
+<MobileSignout sdkFullName="Fast iOS SDK" signoutMethod="Fast.shared.reset()" />
+
+```swift
+// Sign out current user and clear cached credentials.
+Fast.shared.reset()
+```

@@ -18,12 +18,12 @@ The examples below show the Fast logo uploaded as a square, and how it will be d
 
 **Uploaded**
 
-![Fast Logo](/reusables/for-developers/images/fast-sq-200.png)
+![Fast Logo](images/fast-sq-200.png)
 
 **Automatically Rounded**
 
-![Fast Logo Round](/reusables/for-developers/images/fast-rd-200.png)
+![Fast Logo Round](images/fast-rd-200.png)
 
 **Buyer Dashboard Preview**
 
-![Fast Buyer Dashboard](/reusables/for-developers/images/Fast-rounded-dashboard.png)
+![Fast Buyer Dashboard](images/Fast-rounded-dashboard.png)

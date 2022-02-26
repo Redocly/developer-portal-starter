@@ -1,0 +1,42 @@
+---
+title: "Fast Android SDK Docs: Install the Fast Android SDK"
+description: Install the Fast Android SDK
+keywords: Fast Mobile SDK, Fast Android SDK, Install Fast Android SDK
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+## Install the SDK
+
+To install the Android SDK, configure your `build.gradle` file:
+
+```groovy
+// Make sure both Maven Central and Jitpack are added
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+android {
+    // Make sure data binding is enabled
+    buildFeatures {
+      dataBinding true
+    }
+
+    // Make sure Java 1.8 source compatibility is enabled
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+// Add the dependency for the Fast checkout following this pattern:
+// implementation 'co.fast.android.sdk:${sdkVersion}'
+dependencies {
+    implementation 'co.fast.android.sdk:sdk:0.2.0-beta01'
+}
+```

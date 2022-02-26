@@ -50,7 +50,7 @@ export const theme = {
       main: "#d4ad03",
       light: ({ colors }) => lighten(colors.tonalOffset, colors.warning.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.warning.main),
-      contrastText: "#ffffff",
+      contrastText: ({ colors }) => lighten(colors.primary.main),
     },
     brand: {
       success: "#e6eef8",

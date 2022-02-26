@@ -1,0 +1,156 @@
+---
+title: "Fast iOS SDK Docs: iOS SDK Events"
+description: Breakdown of Fast iOS SDK Events
+keywords: Fast Mobile SDK, Fast iOS SDK, iOS SDK Events
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileInvokeCheckout,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+# Handle Fast iOS SDK Events
+
+The Fast SDK will send events that convey information about the user's shopping journey through the Fast checkout flow. The SDK will communicate with the seller app via callbacks as the user performs actions within the checkout flow.
+
+### Callbacks
+
+Each callback will include a `FastEvent` parameter. No action is required by your app when these events are fired--they are purely for transparency within the checkout flow.
+
+### FastEvent
+
+A `FastEvent` is emitted by the SDK at key stages during the checkout flow. Your app can handle these via the checkout `callback` parameter.
+
+| Name                  | Type                      | Description                                   |
+| --------------------- | ------------------------- | --------------------------------------------- |
+| `FastEvent`           | NSObject                  | An enum describing the event.                 |
+| `FastEvent.eventType` | `FastEventType`           | An enum describing the event.                 |
+| `FastEvent.info`      | [`FastEventInfoKey`: Any] | Additional relevant data regarding the event. |
+
+### FastEventType
+
+Each `FastEvent` will have an associated `FastEventType` and associated data payload. A breakdown of event types can be found below.
+
+| Event            | Description                                                                                                                                                                                                                                    | Associated Data |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `orderCreated`   | Emitted when the order has been successfully submitted through Fast Checkout.                                                                                                                                                                  | PurchaseInfo    |
+| `orderUpdated`   | Emitted when buyer updates the order (e.g. changes item quantity, removes an item, or adds a coupon).                                                                                                                                          | PurchaseInfo    |
+| `orderCompleted` | Emitted when order is finalized. This means that the batching window has ended and the user cannot update the order. If the user closes the SDK before batching window has ended, you won't get this event and instead get the `closed` event. | PurchaseInfo    |
+| `orderCancelled` | Emitted when user cancels the order.                                                                                                                                                                                                           | PurchaseInfo    |
+| `orderFailed`    | Emitted when checkout fails with an error                                                                                                                                                                                                      | Error           |
+| `closed`         | Buyer has exited the Fast iOS SDK                                                                                                                                                                                                              | None            |
+
+:::info Associated Data Returned by Non-Order Events
+
+Please note that non-order events will have different associated data.
+
+- `orderFailed` (indicating a checkout failure) emits an `Error`.
+- `closed` should emit no additional data at this time.
+
+:::
+
+```swift
+/// The outcome of the Fast checkout flow.
+public enum FastEventType: Int {
+  /// Emitted when the order has been submitted through Fast Checkout.
+  case orderCreated = 0
+  /// Emitted when the order has changed while inside the Fast Checkout.
+  case orderUpdated = 1
+  /// Emitted when the order has been finalized from inside Fast Checkout,
+  /// either when the post-purchase order batching window times out or
+  /// when Fast Checkout is manually dismissed.
+  case orderCompleted = 2
+  /// Emitted when the order has been cancelled from inside Fast Checkout
+  case orderCancelled = 3
+  /// Emitted when checkout has failed with an error.
+  case orderFailed = 4
+  /// Emitted at SDK exit
+  case closed = 5
+}
+```
+
+### FastEventInfoKey
+
+An enum describing a parameter from within the `FastEvent` payload, which currently describes either `purchaseInfo` or `error`.
+
+```swift
+public enum FastEventInfoKey: String {
+  case error
+  case purchaseInfo
+}
+```
+
+#### PurchaseInfo Data Class Breakdown
+
+`PurchaseInfo` is an object that contains information about the current order:
+
+| Name                        | Type                   | Description                                                           |
+| --------------------------- | ---------------------- | --------------------------------------------------------------------- |
+| `PurchaseInfo`              | NSObject               | The object that contains information about the current order.         |
+| `PurchaseInfo.platformId`   | String                 | The ID of a purchase as represented in the seller's backend platform. |
+| `PurchaseInfo.revenue`      | String                 | The purchase total, including tax, shipping, and discounts.           |
+| `PurchaseInfo.tax`          | String                 | Total taxes for this purchase.                                        |
+| `PurchaseInfo.shipping`     | String                 | Cost of shipping for this purchase.                                   |
+| `PurchaseInfo.countryCode`  | String                 | The currency code for the puchase.                                    |
+| `PurchaseInfo.coupon`       | String                 | (Optional) Coupon, if any, included with this purchase.               |
+| `PurchaseInfo.checkoutTime` | Date                   | An enum describing the event.                                         |
+| `PurchaseInfo.items`        | [`PurchaseItem`] array | Additional relevant data regarding the event.                         |
+
+```swift
+// Purchase details for an order.
+@objc public class PurchaseInfo: NSObject {
+  // The ID of a purchase as represented in the seller's backend platform.
+  @objc public let platformId: String
+  // The purchase total, including tax, shipping, and discounts.
+  @objc public let revenue: String
+  // Total taxes for this purchase.
+  @objc public let tax: String
+  // Cost of shipping for this purchase.
+  @objc public let shipping: String
+  // The 3-character ISO 4217 currency code for the purchase.
+  @objc public let countryCode: String
+  // Coupon, if any, included in this purchase.
+  @objc public let coupon: String?
+  // Time of checkout.
+  @objc public let checkoutTime: Date?
+  // The items included in this purchase.
+  @objc public let items: [PurchaseItem]
+}
+```
+
+#### PurchaseItem Data Class Breakdown
+
+`PurchaseItem` describes individual products in the current order:
+
+| Name                             | Type     | Description                                                                  |
+| -------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| `PurchaseItem`                   | NSObject | Object describing a product that is part of a purchase.                      |
+| `PurchaseItem.platformId`        | String   | The ID of a product as represented in the seller's backend platform.         |
+| `PurchaseItem.platformVariantId` | String   | The ID of a product variant as represented in the seller's backend platform. |
+| `PurchaseItem.price`             | String   | The price of a product (excluding discounts, tax, etc.).                     |
+| `PurchaseItem.name`              | String   | The name of a product as displayed to the user.                              |
+| `PurchaseItem.countryCode`       | String   | The currency code for the puchase.                                           |
+| `PurchaseItem.quantity`          | Int      | The number / count for the specified item in a purchase.                     |
+| `PurchaseItem.coupon`            | String   | (Optional) Coupon, if any, included with this purchase.                      |
+
+```swift
+/// Object describing a product that is part of a purchase.
+@objc public class PurchaseItem: NSObject {
+  /// The ID of a product as represented in the seller's backend platform.
+  @objc public let platformId: String
+  /// The ID of a product variant as represented in the seller's backend platform.
+  @objc public let platformVariantId: String?
+  /// The price of a product (not including discounts, tax, etc.).
+  @objc public let price: String
+  /// The name of a product as displayed to the user.
+  @objc public let name: String
+  /// The 3-character ISO 4217 currency code for the item.
+  @objc public let countryCode: String
+  /// The number of this item that was included in a purchase.
+  @objc public let quantity: Int
+  /// Any coupon applied to this product.
+  @objc public let coupon: String?
+}
+```

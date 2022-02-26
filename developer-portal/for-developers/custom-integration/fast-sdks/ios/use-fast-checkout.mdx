@@ -1,0 +1,120 @@
+---
+title: "Fast iOS SDK Docs: Use Fast Checkout"
+description: Use Fast Checkout with Your iOS App
+keywords: Fast Mobile SDK, Fast iOS SDK, Use Fast Checkout with iOS
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileInvokeCheckout,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+import { H1, H2, H3 } from "@redocly/developer-portal/ui";
+
+# Use Fast Checkout with Your iOS App
+
+<MobileInvokeCheckout
+  sdkModuleName="FastCheckout"
+  actionType="handler"
+  actionName="FastCheckoutButton"
+/>
+
+The SDK provides 2 main routes for invoking checkout:
+
+1. [Checkout with a List of Products](#checkout-with-a-list-of-products)
+2. [Checkout with a Cart ID](#checkout-with-a-cart-id)
+
+It is possible to use Fast Checkout either by passing the `checkout()` function an array of products, or by passing the `checkout()` function a cart ID.
+
+## Checkout with a List of Products
+
+### Products Checkout Function Breakdown
+
+```swift
+/// Present the Fast Checkout flow.
+/// - presentedBy: The presenting view controller for the Fast Checkout flow.
+/// - products: The list of products the user is ordering,
+/// - couponCode: A discount code that the user might have entered.
+/// - callback: A callback to listen for events during checkout.
+public func checkout(
+	presentedBy: UIViewController,
+	products: [Product],
+	couponCode: String,
+	callback: @escaping (FastEvent) -> Void
+)
+```
+
+| Name          | Type              | Description                                                                                                                             |
+| ------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `presentedBy` | UIViewController  | Content view controller associated with the checkout flow.                                                                              |
+| `products`    | [`Product`] array | The `Product` array associated with the Fast Checkout. Refer to [Product Object Breakdown](#product-object-breakdown) for more details. |
+| `couponCode`  | String            | (Optional) Coupon, if any, included during checkout.                                                                                    |
+| `callback`    | Closure           | Callback to notify your app about important events (e.g. when an order is created, updated, or completed).                              |
+
+#### Product Object Breakdown
+
+The `Product` object describes any product that can be ingested by the Fast backend and thus purchased via the SDK.
+
+| Name                        | Type                    | Description                                                                                                                                                    |
+| --------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Product`                   | NSObject                | The product.                                                                                                                                                   |
+| `Product.platformProductId` | String                  | The product identifier.                                                                                                                                        |
+| `Product.platformVariantId` | String?                 | A unique sub-identifier for this product.                                                                                                                      |
+| `Product.productOptions`    | [`ProductOption`] array | Configurable properties of this Product (e.g. color, size, etc.). Refer to [ProductOption Object Breakdown](#productoption-object-breakdown) for more details. |
+| `Product.quantity`          | Int                     | The number of this item that should be purchased.                                                                                                              |
+
+#### ProductOption Object Breakdown
+
+<MobileProductOptionsWarning sdkFullName="Fast iOS SDK" />
+
+A `ProductOption` is a configuration that further describes the product being ordered (e.g. _ProductOption(id: "color", value: "blue")_).
+
+| Name                 | Type   | Description                                            |
+| -------------------- | ------ | ------------------------------------------------------ |
+| `ProductOption.id`   | String | The identifier of the product option or configuration. |
+| `ProductOptionvalue` | String | The value of the specified option.                     |
+
+## Checkout with a Cart ID
+
+Pass in a `cartId` that the Fast backend can break into a list of products and, if applicable, any discount code.
+
+### Cart Checkout Function Breakdown
+
+```swift
+/// Present the Fast Checkout flow.
+/// - cartId: Unique identifier for a user's cart.
+/// - callback: A callback to listen for events during checkout.
+public func checkout(
+	presentedBy: UIViewController,
+	cartId: String,
+	callback: @escaping (FastEvent) -> Void
+)
+```
+
+| Name          | Type             | Description                                                                                                |
+| ------------- | ---------------- | ---------------------------------------------------------------------------------------------------------- |
+| `presentedBy` | UIViewController | Content view controller associated with the checkout flow.                                                 |
+| `cartId`      | String           | The ID of the cart associated with the Fast Checkout.                                                      |
+| `callback`    | Closure          | Callback to notify your app about important events (e.g. when an order is created, updated, or completed). |
+
+## Initialize Theme
+
+You also have the option of changing the theme used by the SDK. The theme of the SDK is by default set to the current device theme (`auto`), but can be overridden to use `dark` or `light` theme (e.g. if your app provides a setting to override the system's current theme).
+
+```swift setTheme()
+/// Override the theme setting for Fast Checkout
+/// - theme: The theme value to set (auto, light, dark)
+public func setTheme(theme: FastTheme) -> Void
+```
+
+```swift set light theme
+// can be set to .light or .dark (default )
+Fast.shared.setTheme(to: .light)
+```
+
+```swift set dark theme
+// can be set to .light or .dark (default )
+Fast.shared.setTheme(to: .dark)
+```

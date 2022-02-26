@@ -1,0 +1,157 @@
+---
+title: "Fast Android SDK Docs: Android SDK Events"
+description: Breakdown of Fast Android SDK Events
+keywords: Fast Mobile SDK, Fast Android SDK, Android SDK Events
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+# Handle Fast Android SDK Events
+
+The Fast SDK will send events that convey information about the user's shopping journey through the Fast checkout flow. The SDK will communicate with the seller app via callbacks as the user performs actions within the checkout flow.
+
+## Callbacks
+
+As the user progresses through the Fast checkout experience, callbacks will notify your app about significant events. You can listen for these events by passing in a callback object. You will need to define the method in your activity / fragment to listen to callbacks.
+
+```kotlin
+private fun onFastCheckoutEvent(event: FastCheckoutEvent) {
+    when (event) {
+        is FastCheckoutEvent.OrderCanceled -> {
+            Log.i(LOG_TAG, "Event: OrderCanceled: ${event.purchaseInfo}")
+        }
+        is FastCheckoutEvent.OrderCompleted -> {
+            Log.i(LOG_TAG, "Event: OrderCompleted: ${event.purchaseInfo}")
+        }
+        is FastCheckoutEvent.OrderCreated -> {
+            Log.i(LOG_TAG, "Event: OrderCreated: ${event.purchaseInfo}")
+        }
+        is FastCheckoutEvent.OrderFailed -> {
+            Log.i(LOG_TAG, "Event: OrderFailed: ${event.throwable}")
+        }
+        is FastCheckoutEvent.OrderUpdated -> {
+            Log.i(LOG_TAG, "Event: OrderUpdated: ${event.purchaseInfo}")
+        }
+        FastCheckoutEvent.SDKClosed -> {
+            Log.i(LOG_TAG, "Event: SDKClosed: ${event.purchaseInfo}")
+        }
+        // Please keep this else clause. Fast may add more events in the future without updating the SDK's major version.
+        else -> Log.i(LOG_TAG, "Event: Unhandled event: $event")
+    }
+}
+```
+
+### FastCheckoutEvent
+
+A `FastCheckoutEvent` is emitted by the SDK at key stages during the checkout flow. Your app can handle these via the `onFastCheckoutEvent()` function.
+
+| Name                             | Type                | Description                                                                                                                                      |
+| -------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `FastCheckoutEvent`              | `Parcelable` object | Additional relevant data regarding the event.                                                                                                    |
+| `FastCheckoutEvent.purchaseInfo` | `PurchaseInfo`      | Additional relevant data regarding the event. Refer to [PurchaseInfo Data Class Breakdown](#purchaseinfo-data-class-breakdown) for more details. |
+
+### FastCheckoutEvent Types
+
+The `FastCheckoutEvent` contains these events and associated data payloads.
+
+| Event            | Description                                                                                                                                                                                                                                     | Associated Data |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `OrderCreated`   | Emitted when the order has been successfully submitted through Fast Checkout.                                                                                                                                                                   | `PurchaseInfo`  |
+| `OrderUpdated`   | Emitted when buyer updates order information like item quantity, removes an item, or adds a coupon.                                                                                                                                             | `PurchaseInfo`  |
+| `OrderCompleted` | Emitted when order is finalized. This means that the batching window has ended and the user cannot update the order. If the user closes the SDK before batching window has ended, you won't get this event and instead get the SDKClosed event. | `PurchaseInfo`  |
+| `OrderCanceled`  | Emitted when user cancels the order.                                                                                                                                                                                                            | `PurchaseInfo`  |
+| `OrderFailed`    | Emitted when checkout fails with an error                                                                                                                                                                                                       | Throwable?      |
+| `SDKClosed`      | Buyer has exited the Fast Android SDK. If buyer exits post-purchase, `PurchaseInfo` will be sent with the event. If buyer exits before clicking on CompletePurchase, `null` will be sent with the event.                                        | `PurchaseInfo`  |
+
+:::info Associated Data Returned by Non-Order Events
+
+Please note that non-order events will have different associated data.
+
+- `OrderFailed` (indicating a checkout failure) emits a `Throwable?`, which is a nullable `kotlin.Throwable` object that wraps an error.
+- `SDKClosed` will usually emit no additional data, but can emit `PurchaseInfo` data if the SDK is closed following a successful order (similar to the `OrderCompleted` event).
+
+:::
+
+#### PurchaseInfo Data Class Breakdown
+
+`PurchaseInfo` is a data class that contains information about the buyer's order.
+
+| Name                        | Type                | Description                                                              |
+| --------------------------- | ------------------- | ------------------------------------------------------------------------ |
+| `PurchaseInfo`              | data class          | A representation of a buyer's purchase in the seller's backend platform. |
+| `PurchaseInfo.platformId`   | String              | The ID of a purchase as represented in the seller's backend platform.    |
+| `PurchaseInfo.revenue`      | String              | The purchase total, including tax, shipping, and discounts.              |
+| `PurchaseInfo.tax`          | String              | Total taxes for this purchase.                                           |
+| `PurchaseInfo.shipping`     | String              | Cost of shipping for this purchase.                                      |
+| `PurchaseInfo.currencyCode` | String              | 3-character ISO 4217 currency code.                                      |
+| `PurchaseInfo.coupon`       | String              | (Optional) Coupon, if any, included with this purchase.                  |
+| `PurchaseInfo.checkoutTime` | Date                | An enum describing the event.                                            |
+| `PurchaseInfo.items`        | `PurchaseItem` List | Additional relevant data regarding the event.                            |
+
+```kotlin
+  data class PurchaseInfo(
+
+    //The ID of a purchase as represented in the seller's backend platform.
+    val platformId: String,
+
+    // The purchase total, including tax, shipping, and discounts.
+    val revenue: String,
+
+    // Total taxes for this purchase.
+    val tax: String,
+
+    // Cost of shipping for this purchase.
+    val shipping: String,
+
+    // The 3-letter ISO 4217 currency code.
+    val currencyCode: String?,
+
+    // Coupon, if any, included in this purchase.
+    val coupon: String?,
+
+    // Time of checkout.
+    val checkoutTime: Date?,
+
+    // The products included in this purchase.
+    val items: List<PurchaseItem>
+)
+```
+
+#### PurchaseItem Data Class Breakdown
+
+| Name                             | Type       | Description                                                                  |
+| -------------------------------- | ---------- | ---------------------------------------------------------------------------- |
+| `PurchaseItem`                   | data class | Object describing a product that is part of a purchase.                      |
+| `PurchaseItem.platformId`        | String     | The ID of a product as represented in the seller's backend platform.         |
+| `PurchaseItem.platformVariantId` | String     | The ID of a product variant as represented in the seller's backend platform. |
+| `PurchaseItem.price`             | String     | The price of a product (excluding discounts, tax, etc.).                     |
+| `PurchaseItem.name`              | String     | The name of a product as displayed to the user.                              |
+| `PurchaseItem.countryCode`       | String     | The 3-character ISO 4217 currency code for the purchase.                     |
+| `PurchaseItem.quantity`          | Int        | The number / count for the specified item in a purchase.                     |
+| `PurchaseItem.coupon`            | String     | (Optional) Coupon, if any, included with this purchase.                      |
+
+```kotlin
+data class PurchaseItem(
+        // The ID of a product as represented in the seller's backend platform.
+        val platformId: String,
+
+        // The ID of a product variant as represented in the seller's backend platform.
+        val platformVariantId: String?,
+
+        //The name of a product as displayed to the user.
+        val name: String,
+
+        //The price of a product (not including discounts, tax, etc.).
+        val price: String,
+
+        // The number of this item that was included in a purchase.
+        val quantity: Int,
+
+        // Any discount applied to this product's price.
+        val coupon: String?,
+    )
+```

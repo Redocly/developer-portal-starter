@@ -1,0 +1,133 @@
+---
+title: "Fast Android SDK Docs: Use Fast Checkout"
+description: Use Fast Checkout with Your Android App
+keywords: Fast Mobile SDK, Fast Android SDK, Use Fast Checkout with Android
+---
+
+import {
+  MobileIntroAndPrereqs,
+  MobileInvokeCheckout,
+  MobileProductOptionsWarning,
+  MobileSignout,
+} from "../../../../../components/MobileMDXMacros.tsx";
+
+# Use Fast Checkout with Your Android App
+
+<MobileInvokeCheckout
+  sdkModuleName="fast-android"
+  actionType="listener"
+  actionName="fastCheckoutButton"
+/>
+
+The SDK provides 2 main routes for invoking checkout:
+
+1. [Checkout with a List of Products](#checkout-with-a-list-of-products)
+2. [Checkout with a Cart ID](#checkout-with-a-cart-id)
+
+All required fields are explained below:
+
+```kotlin
+fastCheckoutButton.setOnClickListener {
+
+  // Checkout with products
+	fastCheckout.checkoutWithProducts { options ->
+    options.products = ...
+  }
+
+  // Or, checkout with cart id
+  fastCheckout.checkoutWithCartId { options ->
+    options.cartId = "..."
+  }
+}
+```
+
+| Name                 | Type                                                                                              | Description                                                                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`            | FastCheckoutOptions <br /> (`FastCheckoutWithProductsOptions` or `FastCheckoutWithCartIdOptions`) | Fast checkout options enable you checkout with either a list of products or a cart ID. As well as set the theme.                                                                     |
+| `options.products`   | `Product` list                                                                                    | Use a list of products to checkout. Use `options.addProduct()` to add to the list. Refer to [Product Breakdown](#product-breakdown) for more details.                                |
+| `options.cartId`     | String                                                                                            | Use a cart ID to checkout.                                                                                                                                                           |
+| `options.theme`      | enum                                                                                              | (Optional) Pass theme to the SDK. By default, we'll use the system theme (`FastTheme.AUTO`). You can pass in light or dark theme by [setting the theme property](#initialize-theme). |
+| `options.couponCode` | String                                                                                            | (Optional) Coupon, if any, included during checkout. Defaults to `null`.                                                                                                             |
+
+## Checkout with a List of Products
+
+You can instantiate the `options` object by passing each new `Product` to its `.addProduct()` method. Passing in `couponCode` is optional (the coupon code defaults to `null` so you can skip it if the buyer hasn't provided a coupon).
+
+```kotlin
+fastCheckoutButton.setOnClickListener {
+	fastCheckout.checkoutWithProducts { options ->
+
+    // use .addProduct() to start building list of products
+    options.addProduct(
+      Product(
+        // An identifier for the product being ordered.
+        id = "FAST_PLATFORM_PRODUCT_ID",
+
+        // A unique sub-identifier for this product. These are sometimes used to denote size / color, etc.
+        variantId = "FAST_PLATFORM_VARIANT_ID"
+
+        // Configurable properties of this product (e.g. color, size, etc.)
+        options = listOf(
+          ProductOption(id: "color", value: "blue"),
+          ProductOption(id: "size", value: "large"),
+          ProductOption(...)
+        ),
+
+        // The number of this item that should be purchased.
+        quantity = 1
+      )
+    )
+
+    // add another product
+    options.addProduct(...)
+
+    // Optionally, add other configuration, like adding a coupon:
+    options.couponCode = "10OFF"
+  }
+}
+```
+
+---
+
+### Product Breakdown
+
+Each `Product` has a product ID (`id`), a variant ID (`variantId`), and a set of optional product configurations (or product `options`) that are used to describe the exact product being ordered.
+
+Describe your products in a manner that can be processed by your backend, as this data will be structured as outlined below.
+
+| Name                | Type              | Description                                                                                                                                                                                  |
+| ------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Product.id`        | String            | An identifier for the product being ordered.                                                                                                                                                 |
+| `Product.variantId` | String?           | Represents a unique sub-identifier for this product. These are often used to denote size, color, style, etc. Refer to [Product Option Breakdown](#productoption-breakdown) for more details. |
+| `Product.options`   | [`ProductOption`] | Configurable properties of this product (i.e. color, size, etc.).                                                                                                                            |
+| `Product.quantity`  | Int               | The number of this item that should be purchased.                                                                                                                                            |
+
+### ProductOption Breakdown
+
+<MobileProductOptionsWarning sdkFullName="Fast Android SDK" />
+
+A `ProductOption` is a configuration that further describes the product being ordered (e.g. _ProductOption(id: "color", value: "blue"))._
+
+| Name                  | Type   | Description                                            |
+| --------------------- | ------ | ------------------------------------------------------ |
+| `ProductOption`       | String | A product option or configuration.                     |
+| `ProductOption.id`    | String | The identifier of the product option or configuration. |
+| `ProductOption.value` | String | The value of the specified option.                     |
+
+---
+
+## Checkout with a Cart ID
+
+You can also start checkout by by instantiating the `options` object with a `cartId`. In this case, Fast's APIs will reach out to your store to fetch products, coupons, etc., from the cart.
+
+```kotlin
+fastCheckoutButton.setOnClickListener {
+	fastCheckout.checkoutWithCartId { options ->
+    options.cartId = "123"
+  }
+}
+```
+
+## Initialize Theme
+
+The `options` objects for both `checkoutWithProducts` and `checkoutWithCartId` accept an optional `theme` value. This is set to `FastTheme.AUTO` by default, which will match the system's current light/dark theme setting. You can manually set it to `FastTheme.LIGHT` or `FastTheme.DARK` if you need to override this (e.g. if your app provides a setting to override the system's current theme).

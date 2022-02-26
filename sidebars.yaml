@@ -88,6 +88,35 @@ custom-integration:
         page: developer-portal/for-developers/custom-integration/fast-api/events.md
       - label: "API Ref: Seller -> Fast"
         page: developer-portal/for-developers/custom-integration/fast-api/seller-to-fast-api/docs.page.yaml
+  - group: Mobile SDKs
+    expanded: true
+    pages:
+      - group: Fast iOS SDK
+        expanded: false
+        pages:
+          - label: "Overview"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/ios/overview.mdx
+          - label: "Step 1: Install the SDK"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/ios/install-the-sdk.mdx
+          - label: "Step 2: Configure Your App"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/ios/configure-app.mdx
+          - label: "Step 3: Use Fast Checkout"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/ios/use-fast-checkout.mdx
+          - label: "Step 4: Handle Events"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/ios/handle-fast-events.mdx
+      - group: Fast Android SDK
+        expanded: false
+        pages:
+          - label: "Overview"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/android/overview.mdx
+          - label: "Step 1: Install the SDK"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/android/install-the-sdk.mdx
+          - label: "Step 2: Configure Your App"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/android/configure-app.mdx
+          - label: "Step 3: Use Fast Checkout"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/android/use-fast-checkout.mdx
+          - label: "Step 4: Handle Events"
+            page: developer-portal/for-developers/custom-integration/fast-sdks/android/handle-fast-events.mdx
   - group: Developer Tools
     expanded: true
     pages:

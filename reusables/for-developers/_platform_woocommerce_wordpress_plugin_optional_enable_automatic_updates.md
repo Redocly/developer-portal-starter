@@ -6,7 +6,7 @@ After plugin installation from the plugin directory is complete, you have the op
    > The url for this is usually `https://yourwebsite.com/wp-admin`
 2. **Click Plugins -> Installed Plugins** in the left sidebar of your WordPress admin dashboard.
 
-   ![Enable Automatic Fast for WooCommerce Plugin Updates](/developer-portal/images/woocommerce/wp-plugin-enable-automatic-updates.png "#width=90%;")
+   ![Enable Automatic Fast for WooCommerce Plugin Updates](../../developer-portal/images/woocommerce/wp-plugin-enable-automatic-updates.png "#width=90%;")
 
 3. Scroll down to the **Fast Checkout for WooCommerce** plugin on the Installed Plugins page.
 4. Click **Enable auto-updates.**

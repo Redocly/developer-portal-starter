@@ -13,8 +13,8 @@
    See [this article](https://stripe.com/docs/connect/bank-debit-card-payouts#supported-settlement) for more information.
    :::
 
-   ![Bank details](/reusables/for-developers/images/bcwc08.png)
+   ![Bank details](images/bcwc08.png)
 
 2. Click “Continue”
 
-   ![continue to dashboard pop up](/reusables/for-developers/images/bcwc09.png)
+   ![continue to dashboard pop up](images/bcwc09.png)

@@ -1,6 +1,6 @@
-:::info Pro tip
+:::info Create Sandbox Account
 
-We recommend that you first sign up on https://sdash.sandbox.fast.co/ to create a sandbox account so that you can test your integration with test cards before going live.
+We recommend that you first sign up for a Fast Sandbox account at [sandbox.fast.co/business](https://sandbox.fast.co/business) so that you can test your integration with test cards before going live.
 
 :::
 
