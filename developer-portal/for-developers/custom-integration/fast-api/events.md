@@ -13,12 +13,18 @@ Throughout the login/checkout flow, fast.js dispatches events to the host page t
 
 Today, all events have a `name` field that denotes the type of event that fired (e.g. “Checkout - Order Created”), and some events have a `properties` field that contains special data relevant to the event that fired. For example, “Checkout - Order Created” events have the `order_id`, `order_items`, and `total` fields inside of their `properties` map.
 
+:::attention additional checks for events
+All event properties have the potential to be undefined. You will need to check for undefined properties and values.
+:::
+
 ## Event List
 
-- `Buy Now - Button Clicked` is emitted when the "Fast Checkout" button is clicked on the product page.
-- `Checkout Cart - Button Clicked` is emitted when the "Fast Checkout" button is clicked on the cart page.
+| Event                            | Description                                                             |
+| -------------------------------- | ----------------------------------------------------------------------- |
+| `Buy Now - Button Clicked`       | Emitted when the "Fast Checkout" button is clicked on the product page. |
+| `Checkout Cart - Button Clicked` | Emitted when the "Fast Checkout" button is clicked on the cart page.    |
 
-Both these events emit:
+The above events emit:
 
 ```json
 {
@@ -42,12 +48,18 @@ Both these events emit:
 }
 ```
 
-- `Checkout - Order Created` is emitted when the order has been submitted through Fast Checkout.
-- `Checkout - Order Updated` is emitted when the order has changed while inside the Fast Checkout window.
-- `Checkout - Order Completed` is emitted when the order has finalized while inside the Fast Checkout window. This occurs when the timer window reaches zero naturally or is ended manually.
-- `Checkout - Order Cancelled` is emitted when the order has been canceled from inside the Fast Checkout window.
+---
 
-These events emit:
+| Event                        | Description                                                                                                                                                |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Checkout - Order Created`   | Emitted when the order has been submitted through Fast Checkout.                                                                                           |
+| `Checkout - Order Updated`   | Emitted when the order has changed while inside the Fast Checkout window.                                                                                  |
+| `Checkout - Order Completed` | Emitted when the order has finalized while inside the Fast Checkout window. This occurs when the timer window reaches zero naturally or is ended manually. |
+| `Checkout - Order Cancelled` | Emitted when the order has been canceled from inside the Fast Checkout window.                                                                             |
+| `Checkout - Existing User`   | Emitted when an order is created by a buyer who is already signed up to Fast or has an active order.                                                       |
+| `Checkout - Item Cancelled`  | Emitted when a buyer selects to re-buy something but then decides not to after we ask if they are sure.                                                    |
+
+The above events emit:
 
 ```json
 {
@@ -81,11 +93,18 @@ These events emit:
 }
 ```
 
-**Note**: All event properties have the potential to be undefined. You will need to check for undefined properties and values
+---
 
-These events are useful if you wish to forward data to your analytics provider, or if you want to do things like redirect to an order complete page after the user has finished their order and closed the Fast window.
+| Event                      | Description                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Checkout - Existing User` | Emitted when an order is created by a buyer who is already signed up to Fast or has an active order. |
+| `Popup window closed`      | Emitted when the Fast Checkout window is closed.                                                     |
 
-🚨 In some environments, such as the embedded browsers inside of mobile apps, the Fast Checkout window will open in a separate browser and not be able to communicate these events back to your page. You should not rely on these events for mission-critical analytics and should always provide another way for buyers to see that their purchase is complete.
+The above events emit no extra information.
+
+:::attention 🚨 events usage
+These events are useful if you wish to forward data to your analytics provider, or if you want to do things like redirect to an order complete page after the user has finished their order and closed the Fast window. However, in some environments (e.g. embedded browsers inside of mobile apps), the Fast Checkout window may open in a separate browser and not be able to communicate these events back to your page. You should not rely on these events for mission-critical analytics and should always provide another way for buyers to see that their purchase is complete.
+:::
 
 ## Sample Event Watching Code
 
