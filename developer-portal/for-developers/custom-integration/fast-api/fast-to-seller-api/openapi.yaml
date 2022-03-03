@@ -1140,9 +1140,10 @@ components:
               value: eb3b8e18-930d-4213-92a0-4993f9e536a8
             order_type: ORDER_TYPE_CART
             status: ORDER_STATUS_CART
-            bill_to:
+            bill_to: {}
             lines:
-              - id: value:32dc17ee-ebff-40f8-87c5-b83f838d79d1
+              - id: 
+                  value: 32dc17ee-ebff-40f8-87c5-b83f838d79d1
                 external_product_id: 112
                 quantity: 1
                 subtotal_amount: 0.00
@@ -1157,7 +1158,7 @@ components:
             external_id: a98a387e-02ec-41a8-a38e-e3ca5fb0548d
             order_type: 1
             currency_code: USD
-            bill_to:
+            bill_to: {}
             lines:
               - id:
                   value: 32dc17ee-ebff-40f8-87c5-b83f838d79d1
@@ -1176,6 +1177,7 @@ components:
           items:
             - item_id:
                 value: e0400168-958b-4a46-bf23-08cb6ee00630
+                quanity: 1
               external_product_id: canon-powershot-a580M
               external_variant_id: canon-powershot-a580M
               external_item_id: 6f396ac44ded0ef59626a2a3f5
