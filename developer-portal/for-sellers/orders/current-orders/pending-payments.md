@@ -8,7 +8,7 @@ keywords: Fast Seller pending payments information
 
 :::info heads up
 
-You can view pending payments in your store's dashboard provided by your eCommerce platform (i.e. not in your Fast Seller Dashboard).
+You can view pending payments in your store's dashboard provided by your eCommerce platform (i.e. not in the Fast Seller Dashboard).
 
 :::
 

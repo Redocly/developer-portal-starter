@@ -17,6 +17,6 @@ redirectFrom:
    - A checkout that occurs from an eCommerce cart
    - Can be batched with other Cart checkouts or PDP checkouts
 3. **Re:order**
-   - A checkout that occurs on a historical order from the Fast buyer dashboard (bDash).
+   - A checkout that occurs on a historical order from the [Fast Shopper Dashboard](https://fast.co).
    - Creates a new order with the source as `"re:order_checkout"`
    - Can be batched with other cart checkouts or pdp checkouts.

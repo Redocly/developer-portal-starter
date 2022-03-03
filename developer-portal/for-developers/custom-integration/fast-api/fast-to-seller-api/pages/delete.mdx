@@ -62,11 +62,11 @@ Below are business cases that will trigger Fast to call the Delete operation to 
 
 ### Delete a Fast Cart
 
-If a buyer chooses to cancel their order, the pending cart will be deleted.
+If a Shopper chooses to cancel their order, the pending cart will be deleted.
 
-For anonymous / first-time Fast buyers that don't complete their profile or make order updates for an hour, Fast will consider it an abandoned cart and send a request to clear the cart from the eCommerce platform
+For anonymous / first-time Fast Shoppers that don't complete their profile or make order updates for an hour, Fast will consider it an abandoned cart and send a request to clear the cart from the eCommerce platform
 
-If a buyer initiates Fast checkout from the platform cart page, we make a call to delete the platform cart upon successful Fast order creation (but not timing window complete) to avoid duplicate orders. This will include the platform cart id in the external_order_id field to distinguish between a request to delete the Fast Checkout cart.
+If a Shopper initiates Fast checkout from the platform cart page, we make a call to delete the platform cart upon successful Fast order creation (but not timing window complete) to avoid duplicate orders. This will include the platform cart id in the external_order_id field to distinguish between a request to delete the Fast Checkout cart.
 
 **Request**
 

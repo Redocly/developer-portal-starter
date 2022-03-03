@@ -26,7 +26,7 @@ paths:
 servers:
   - url: https://api.fast.co
     description: Production server (for live site)
-  - url: https://https://api.sandbox.fast.co
+  - url: https://api.sandbox.fast.co
     description: Sandbox server (for testing)
 components:
   securitySchemes:

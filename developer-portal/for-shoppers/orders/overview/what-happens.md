@@ -20,7 +20,7 @@ Existing account holders will be sent to payment confirmation page (5-min window
 
 ### New Devices
 
-If an existing user is on a new device or if they previously signed out of Fast, they will be prompted to authenticate their email with a PIN code. They will also be able to update their shipping address and payment details before the order is confirmed during the batching window
+If an existing user is on a new device or if they previously signed out of Fast, they will be prompted to authenticate their email with a PIN code. They will also be able to update their shipping address and payment details before the order is confirmed during the 5-minute checkout window.
 
 <img alt="new fast account form" src="./images/what-happens.png"/>
 

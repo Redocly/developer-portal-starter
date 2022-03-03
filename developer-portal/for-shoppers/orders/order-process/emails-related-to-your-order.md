@@ -38,14 +38,14 @@ Thanks for using Fast to place an order! Depending on the status of your order (
 If you add a discount code after clicking “Checkout”, you:
 
 - **Won’t** see the updated (discounted) price in the first Order Processing email.
-- **Will** see this updated (discounded) price refelected in the second Order Processing email.
+- **Will** see this updated (discounted) price reflected in the second Order Processing email.
 
 We apologize for any inconvenience.
 
 Additionally, you will:
 
 - not receive a second Order Processing email to confirm an address update
-- see the updated address reflected in your order details in your Buyer Dashboard.
+- see the updated address reflected in your order details in the [Fast Shopper Dashboard](https://fast.co).
 
 ### Order is cancelled
 
@@ -53,4 +53,4 @@ If your order is cancelled for any other reason, Fast Customer Support will reac
 
 ### You don't recieve any confirmation emails
 
-If you do not receive confirmation emails, please check that you saved the correct email address in your Buyer Dashboard (fast.co/profile). If your email is incorrect in your Buyer Dashboard, please update it and reach out to Fast Customer Support at hi@fast.co to confirm whether we processed any payments.
+If you do not receive confirmation emails, please check that you saved the correct email address in the ["Address" tab of the Fast Shopper Dashboard](https://fast.co/profile/address). If your email is incorrect in the dashboard, please update it and reach out to Fast Customer Support at [hi@fast.co](mailto:hi@fast.co) to confirm your payments were processed.

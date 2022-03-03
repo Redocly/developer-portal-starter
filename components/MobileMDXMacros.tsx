@@ -27,7 +27,7 @@ export const MobileIntroAndPrereqs = (props) => {
       <Typography>
         {" "}
         Fast powers instant, 1-click checkout with fraud protection on the web
-        by leveraging authentication, shipping, and payment data for shoppers
+        by leveraging authentication, shipping, and payment data for Shoppers
         across our network of merchants.
       </Typography>
 
@@ -63,7 +63,7 @@ export const MobileIntroAndPrereqs = (props) => {
 
         <li>
           Prior to installing the SDK, ensure you've gone through our{" "}
-          <Link to="https://www.fast.co/business" external>
+          <Link to="https://www.fast.co/business-sign-up" external>
             merchant direct integration program
           </Link>
           .

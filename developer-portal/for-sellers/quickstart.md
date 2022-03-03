@@ -24,13 +24,9 @@ The rest of the requirements are covered in our ["Will Fast Work For Me"](/devel
 
 ## Becoming a Seller with Fast
 
-The first step to integrating Fast Checkout with your store is to [**become a Seller on Fast.co →**](https://www.fast.co/business).
+The first step to integrating Fast Checkout with your store is to [**become a Seller on Fast.co →**](https://www.fast.co/business-sign-up).
 
-:::info Pro tip
-
-We recommend that you first sign up on https://sdash.sandbox.fast.co/ to create a sandbox account.
-
-:::
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_banner_sandbox_and_contact_support.md" />
 
 ### Onboarding Summary
 
@@ -45,7 +41,7 @@ The Seller Onboarding process will require you to:
 
 ## Looking Ahead
 
-**Fast is constantly working to integrate with additional eCommerce platforms**. If your store runs on an eCommerce platform not listed among our [supported platforms](/developer-portal/for-developers/platforms/), talk to one of our representatives using this [form](https://v2.fast.co/contact-sales). We may still be able to help you.
+**Fast is constantly working to integrate with additional eCommerce platforms**. If your store runs on an eCommerce platform not listed among our [supported platforms](/developer-portal/for-developers/platforms/), talk to one of our representatives using this [form](https://fast.co/contact-sales). We may still be able to help you.
 
 And **stay tuned as we add more eCommerce platform integrations**. Check out the [Fast Newsroom](https://www.fast.co/newsroom/news) and [Fast’s Twitter](https://twitter.com/fast) for updates.
 

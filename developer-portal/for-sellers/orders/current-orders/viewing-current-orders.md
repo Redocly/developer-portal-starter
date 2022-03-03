@@ -8,7 +8,7 @@ keywords: Fast Seller current orders
 
 ## On your Fast Seller Dashboard
 
-You can go to your Fast Seller Dashboard and see payments to your accounts by logging in to [fast.co/business](https://fast.co/business).
+[Log in to the Fast Seller Dashboard](https://fast.co/business/dash/home) to see payments to your accounts.
 
 ## On your platform
 

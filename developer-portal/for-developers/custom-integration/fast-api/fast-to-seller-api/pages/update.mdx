@@ -7,7 +7,7 @@ import {
 
 # Update Operation
 
-The Update operation is made in response to shopper updates of the Order object. Shoppers can update orders in any sequence (i.e. billing first, shipping first, etc). Each action will make a call to update the eCommerce platform. Fast requires an updated cart from the platform based on changes submitted.
+The Update operation is made in response to Shopper updates of the Order object. Shoppers can update orders in any sequence (i.e. billing first, shipping first, etc). Each action will make a call to update the eCommerce platform. Fast requires an updated cart from the platform based on changes submitted.
 
 **The update API is able to update several different top level components of the order.** In the request we send to your server, we will supply _only_ the incremental data. If we send you data, you should check that the item being updated/added is not being duplicated accidentally. We provide unique ids on each item.
 
@@ -66,7 +66,7 @@ Below are business cases that will trigger Fast to call the Update operation to 
 
 ### Add an Item to the Cart
 
-If shoppers “Return to Store” to add an item to the cart in their Fast Checkout session, the entire Order object will need to be updated. This needs to check if inventory is available. The response should include changes to eligible shipping methods, coupons, etc. based on the new cart contents.
+If Shoppers “Return to Store” to add an item to the cart in their Fast Checkout session, the entire Order object will need to be updated. This needs to check if inventory is available. The response should include changes to eligible shipping methods, coupons, etc. based on the new cart contents.
 
 **Request**
 
@@ -90,7 +90,7 @@ If shoppers “Return to Store” to add an item to the cart in their Fast Check
 
 ### Remove an Item from the Cart
 
-If a shopper removes a line item from the cart within the Fast Checkout modal or decreases the quantity to 0, the entire Order object will need to be updated. The response should include changes to eligible shipping methods, coupons, etc. based on new cart contents. To remove a cart item, the update request is sent with the item id and a quantity of zero (the quantity attribute can be omitted entirely, as it's default value is zero).
+If a Shopper removes a line item from the cart within the Fast Checkout modal or decreases the quantity to 0, the entire Order object will need to be updated. The response should include changes to eligible shipping methods, coupons, etc. based on new cart contents. To remove a cart item, the update request is sent with the item id and a quantity of zero (the quantity attribute can be omitted entirely, as it's default value is zero).
 
 **Request**
 
@@ -114,7 +114,7 @@ If a shopper removes a line item from the cart within the Fast Checkout modal or
 
 ### Update a Shipping Address Associated with an Order
 
-If a shopper updates their shipping address on the Fast order modal, the Order object is updated.
+If a Shopper updates their shipping address on the Fast order modal, the Order object is updated.
 
 **Request**
 
@@ -137,7 +137,7 @@ If a shopper updates their shipping address on the Fast order modal, the Order o
 
 ### Update Billing Address Associated with an Order
 
-If a shopper updates the billing address associated with a cart, the Order object will need to be updated.
+If a Shopper updates the billing address associated with a cart, the Order object will need to be updated.
 
 **Request**
 
@@ -161,7 +161,7 @@ If a shopper updates the billing address associated with a cart, the Order objec
 
 ### Update Shipping Option Associated with an Order
 
-If a shopper updates the shipping option (i.e. ground, next day, etc), the Order object will need to be updated.
+If a Shopper updates the shipping option (i.e. ground, next day, etc), the Order object will need to be updated.
 
 **Request**
 
@@ -184,7 +184,7 @@ If a shopper updates the shipping option (i.e. ground, next day, etc), the Order
 
 ### Update Item Quantity
 
-If shoppers “Return to Store” to change the quantity of items (add/remove) in their Fast checkout session, the entire Order object will need to be updated. This needs to check if inventory is available. The response should include changes to eligible shipping methods, coupons, etc. based on the new cart contents.
+If Shoppers “Return to Store” to change the quantity of items (add/remove) in their Fast checkout session, the entire Order object will need to be updated. This needs to check if inventory is available. The response should include changes to eligible shipping methods, coupons, etc. based on the new cart contents.
 
 **Request**
 
@@ -208,7 +208,7 @@ If shoppers “Return to Store” to change the quantity of items (add/remove) i
 
 ### Add a Coupon to the Cart
 
-If a shopper adds a coupon to the cart, the Order object will need to be returned in full including the coupon attribute.
+If a Shopper adds a coupon to the cart, the Order object will need to be returned in full including the coupon attribute.
 
 **Request**
 
@@ -232,7 +232,7 @@ If a shopper adds a coupon to the cart, the Order object will need to be returne
 
 ### Remove a Coupon from the Cart
 
-If a shopper removes a coupon, the coupon will need to be removed from the coupon attribute in the Order object, and the accurate total reflected.
+If a Shopper removes a coupon, the coupon will need to be removed from the coupon attribute in the Order object, and the accurate total reflected.
 
 **Request**
 

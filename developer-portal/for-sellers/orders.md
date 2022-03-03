@@ -16,4 +16,4 @@ We promise it’s easy to understand, but if you have any questions, we’re her
 
 <embed src="/reusables/for-developers/_platform_all_payments_order_quick_summary.md" />
 
-Once a shopper completes a Fast Checkout, the order with Fast should become visible both in the [Seller Dashboard](https://fast.co/business) and within the Orders section of your e-commerce platform.
+Once a Shopper completes a Fast Checkout, the order with Fast should become visible both in [the "Payments" tab of the Fast Seller Dashboard](https://fast.co/business/dash/payments) and within the Orders section of your e-commerce platform.

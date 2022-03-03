@@ -56,8 +56,8 @@ The above events emit:
 | `Checkout - Order Updated`   | Emitted when the order has changed while inside the Fast Checkout window.                                                                                  |
 | `Checkout - Order Completed` | Emitted when the order has finalized while inside the Fast Checkout window. This occurs when the timer window reaches zero naturally or is ended manually. |
 | `Checkout - Order Cancelled` | Emitted when the order has been canceled from inside the Fast Checkout window.                                                                             |
-| `Checkout - Existing User`   | Emitted when an order is created by a buyer who is already signed up to Fast or has an active order.                                                       |
-| `Checkout - Item Cancelled`  | Emitted when a buyer selects to re-buy something but then decides not to after we ask if they are sure.                                                    |
+| `Checkout - Existing User`   | Emitted when an order is created by a Shopper who is already signed up to Fast or has an active order.                                                     |
+| `Checkout - Item Cancelled`  | Emitted when a Shopper selects to re-buy something but then decides not to after we ask if they are sure.                                                  |
 
 The above events emit:
 
@@ -95,15 +95,15 @@ The above events emit:
 
 ---
 
-| Event                      | Description                                                                                          |
-| -------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `Checkout - Existing User` | Emitted when an order is created by a buyer who is already signed up to Fast or has an active order. |
-| `Popup window closed`      | Emitted when the Fast Checkout window is closed.                                                     |
+| Event                      | Description                                                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `Checkout - Existing User` | Emitted when an order is created by a Shopper who is already signed up to Fast or has an active order. |
+| `Popup window closed`      | Emitted when the Fast Checkout window is closed.                                                       |
 
 The above events emit no extra information.
 
 :::attention 🚨 events usage
-These events are useful if you wish to forward data to your analytics provider, or if you want to do things like redirect to an order complete page after the user has finished their order and closed the Fast window. However, in some environments (e.g. embedded browsers inside of mobile apps), the Fast Checkout window may open in a separate browser and not be able to communicate these events back to your page. You should not rely on these events for mission-critical analytics and should always provide another way for buyers to see that their purchase is complete.
+These events are useful if you wish to forward data to your analytics provider, or if you want to do things like redirect to an order complete page after the user has finished their order and closed the Fast window. However, in some environments (e.g. embedded browsers inside of mobile apps), the Fast Checkout window may open in a separate browser and not be able to communicate these events back to your page. You should not rely on these events for mission-critical analytics and should always provide another way for Shoppers to see that their purchase is complete.
 :::
 
 ## Sample Event Watching Code

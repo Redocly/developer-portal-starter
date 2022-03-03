@@ -64,7 +64,8 @@ When localtunnel runs it will take the value in `LOCALTUNNEL_SUBDOMAIN` and crea
 ### 3. Setup Seller App in Sandbox
 
 Next you will setup your sandbox application.
-Navigate [here](https://sdash.sandbox.fast.co/) to begin setup.
+
+<embed src="/reusables/for-developers/_platform_all_sign_up_as_a_seller_banner_sandbox_and_contact_support.md" />
 
 1. **Homepage**
 

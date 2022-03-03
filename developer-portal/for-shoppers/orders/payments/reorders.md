@@ -6,6 +6,6 @@ keywords: fast orders reorders
 
 ## Reorders
 
-Within your Fast Dashboard if you click on a previously purchased item there will be a 'Buy Again' option. This feature allows you to reorder items directly from the Buyer Dashboard! Simply select the item and click 'Buy Again'!
+You can reorder items directly from the [Fast Shopper Dashboard](https://fast.co) by selecting a previously purchased item and clicking the "Buy Again" option!
 
-It's important to mention the item will be re-purchased at the current price listed on the sellers website. You will have a 5 minute grace period to view the total amount, cancel your order, or make an update to your order details.
+It's important to mention the item will be re-purchased at the current price listed on the Seller's website. You will have the standard 5-minute grace period to view the total amount, cancel your order, or make an update to your order details.

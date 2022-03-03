@@ -61,11 +61,11 @@ The `FastCheckoutEvent` contains these events and associated data payloads.
 | Event            | Description                                                                                                                                                                                                                                     | Associated Data |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `OrderCreated`   | Emitted when the order has been successfully submitted through Fast Checkout.                                                                                                                                                                   | `PurchaseInfo`  |
-| `OrderUpdated`   | Emitted when buyer updates order information like item quantity, removes an item, or adds a coupon.                                                                                                                                             | `PurchaseInfo`  |
+| `OrderUpdated`   | Emitted when Shopper updates order information like item quantity, removes an item, or adds a coupon.                                                                                                                                           | `PurchaseInfo`  |
 | `OrderCompleted` | Emitted when order is finalized. This means that the batching window has ended and the user cannot update the order. If the user closes the SDK before batching window has ended, you won't get this event and instead get the SDKClosed event. | `PurchaseInfo`  |
 | `OrderCanceled`  | Emitted when user cancels the order.                                                                                                                                                                                                            | `PurchaseInfo`  |
 | `OrderFailed`    | Emitted when checkout fails with an error                                                                                                                                                                                                       | Throwable?      |
-| `SDKClosed`      | Buyer has exited the Fast Android SDK. If buyer exits post-purchase, `PurchaseInfo` will be sent with the event. If buyer exits before clicking on CompletePurchase, `null` will be sent with the event.                                        | `PurchaseInfo`  |
+| `SDKClosed`      | Shopper has exited the Fast Android SDK. If Shopper exits post-purchase, `PurchaseInfo` will be sent with the event. If Shopper exits before clicking on CompletePurchase, `null` will be sent with the event.                                  | `PurchaseInfo`  |
 
 :::info Associated Data Returned by Non-Order Events
 
@@ -78,19 +78,19 @@ Please note that non-order events will have different associated data.
 
 #### PurchaseInfo Data Class Breakdown
 
-`PurchaseInfo` is a data class that contains information about the buyer's order.
+`PurchaseInfo` is a data class that contains information about the Shopper's order.
 
-| Name                        | Type                | Description                                                              |
-| --------------------------- | ------------------- | ------------------------------------------------------------------------ |
-| `PurchaseInfo`              | data class          | A representation of a buyer's purchase in the seller's backend platform. |
-| `PurchaseInfo.platformId`   | String              | The ID of a purchase as represented in the seller's backend platform.    |
-| `PurchaseInfo.revenue`      | String              | The purchase total, including tax, shipping, and discounts.              |
-| `PurchaseInfo.tax`          | String              | Total taxes for this purchase.                                           |
-| `PurchaseInfo.shipping`     | String              | Cost of shipping for this purchase.                                      |
-| `PurchaseInfo.currencyCode` | String              | 3-character ISO 4217 currency code.                                      |
-| `PurchaseInfo.coupon`       | String              | (Optional) Coupon, if any, included with this purchase.                  |
-| `PurchaseInfo.checkoutTime` | Date                | An enum describing the event.                                            |
-| `PurchaseInfo.items`        | `PurchaseItem` List | Additional relevant data regarding the event.                            |
+| Name                        | Type                | Description                                                                |
+| --------------------------- | ------------------- | -------------------------------------------------------------------------- |
+| `PurchaseInfo`              | data class          | A representation of a Shopper's purchase in the seller's backend platform. |
+| `PurchaseInfo.platformId`   | String              | The ID of a purchase as represented in the seller's backend platform.      |
+| `PurchaseInfo.revenue`      | String              | The purchase total, including tax, shipping, and discounts.                |
+| `PurchaseInfo.tax`          | String              | Total taxes for this purchase.                                             |
+| `PurchaseInfo.shipping`     | String              | Cost of shipping for this purchase.                                        |
+| `PurchaseInfo.currencyCode` | String              | 3-character ISO 4217 currency code.                                        |
+| `PurchaseInfo.coupon`       | String              | (Optional) Coupon, if any, included with this purchase.                    |
+| `PurchaseInfo.checkoutTime` | Date                | An enum describing the event.                                              |
+| `PurchaseInfo.items`        | `PurchaseItem` List | Additional relevant data regarding the event.                              |
 
 ```kotlin
   data class PurchaseInfo(

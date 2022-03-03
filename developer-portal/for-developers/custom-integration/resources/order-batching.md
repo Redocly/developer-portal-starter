@@ -15,20 +15,20 @@ redirectFrom:
 
 > Order Batching: When 2 or more customer shopping carts are merged into one order
 
-In the Fast Checkout customer experience, users have 5 minutes to make changes to their order. During the time window, they are able to update items in the cart, cancel order, and other checkout related interactions. If the user closes the window and purchases another item on the same store during the 5 minute timer, their new purchase will be "batched" with the previous one.
+In the Fast Checkout customer experience, users have 5 minutes to make changes to their order. During 5-minute checkout window, Shoppers can update items in the cart, cancel the order, and perform other checkout-related interactions. If the user closes the window and purchases another item from the same store during the 5-minute window, their new purchase will be "batched" with the previous one.
 
-Fast piggybacks the new item into the user's active order. Most of this is handled invisibly to the seller. What it will look like in the server API calls is when an order is batched with a new purchase, the original order will get an update call with a new item.
+When Fast batches the new item into the user's active order, most of the process is handled invisibly to the Seller. When an order is batched with a new purchase, the original order will get an update call with a new item (in the server API calls).
 
 ## What it looks like within Fast
 
-When the user batches multiple orders together one can think about this as **"order piggybacking"**.
+When the user batches multiple orders together (can be thought of conceptually as _"order piggybacking"_):
 
-1. Buyer purchases item A on order #1.
-2. Buyer exits the checkout experience.
-3. Buyer finds another item B that they would like to also order.
-4. Buyer purchases item B before order #1 is fully processed.
-5. Fast system attaches (or piggy backs) item B onto order #1.
-6. Buyer exits the checkout experience for the final time.
+1. Shopper purchases item A on order #1.
+2. Shopper exits the checkout experience.
+3. Shopper finds another item B that they would like to also order.
+4. Shopper purchases item B before order #1 is fully processed.
+5. Fast system attaches (or "piggybacks") item B onto order #1.
+6. Shopper exits the checkout experience for the final time.
 7. Fast system processes order #1 and processes payment for both item A and B simultaneously.
 8. Seller receives the order with both item A and B.
 

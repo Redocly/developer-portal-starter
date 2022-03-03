@@ -8,7 +8,7 @@ keywords: fast order tracking
 
 <img alt="current order on your dashboard"  src="./images/tracking-order.png"/>
 
-You can find your tracking information in your Buyer Dashboard.
+You can find your tracking information in the [Fast Shopper Dashboard](https://fast.co).
 
 We automatically pull in tracking information from the seller, with a link to carrier tracking if available. You can find additional information on your order tracking at the carrier tracking link or by reaching out to the seller.
 

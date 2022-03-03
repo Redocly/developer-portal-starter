@@ -12,7 +12,7 @@ redirectFrom:
 
 ## Overview
 
-This **test mode** process is for testing the buttons on your website. In test mode, only you can see the Fast buttons on your website. They are not yet visible to shoppers or the general public. We advise doing test mode first so you can see for yourself how the buttons look and function.
+This **test mode** process is for testing the buttons on your website. In test mode, only you can see the Fast buttons on your website. They are not yet visible to Shoppers or the general public. We advise doing test mode first so you can see for yourself how the buttons look and function.
 
 ## Steps to set up test mode
 

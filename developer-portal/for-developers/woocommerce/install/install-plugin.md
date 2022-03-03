@@ -26,7 +26,7 @@ If you currently have a manually-installed version of the plugin (e.g. a pre-rel
 
    > The url for this is usually `https://yourwebsite.com/wp-admin`
 
-2. In a new window (i.e. keep the WordPress admin dashboard open in a separate window) go to the Fast Dashboard at https://www.fast.co/business/dash/install and copy the App ID (`app_id`) you see there to your clipboard.
+2. In a new window (i.e. keep the WordPress admin dashboard open in a separate window) go to the [the "Install" tab of the Fast Seller Dashboard](https://www.fast.co/business/dash/install) and copy the App ID (`app_id`) you see there to your clipboard.
 
    ![App ID](images/woocommerce-install2.png)
 

@@ -10,8 +10,8 @@ You can view your payout history and download a file for each payout containing 
 
 ## Steps
 
-1. Log in to your [Seller Dashboard](https://fast.co/business)
-2. Click the "Payouts" tab on the left side of the screen
+1. Log in to your [Seller Dashboard](https://fast.co/business/dash/home)
+2. Click the ["Payouts" tab](https://fast.co/business/dash/payouts) on the left side of the screen
 3. In the top-right corner of the page, click "Download report"
 4. Specify the date range for the CSV report file
    - You will have the option to select a Day, Month, or Year date range

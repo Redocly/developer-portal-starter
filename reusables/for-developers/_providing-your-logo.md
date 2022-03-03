@@ -1,5 +1,5 @@
 :::info Heads up
-Fast displays your logo in the Fast Checkout modal and Buyer Dashboard to confirm for shoppers that they're in the right place. This logo is generated automatically based on assets associated with your online store. In some cases, the logo generated is rectangular and doesn't display as expected in Fast windows.
+Fast displays your logo in the Fast Checkout modal and the Fast Shopper Dashboard to help Shoppers confirm that they're in the right place. This logo is generated automatically based on assets associated with your online store. In some cases, the logo generated is rectangular and doesn't display as expected in Fast windows.
 :::
 
 Fast recommends the following logo specifications:
@@ -14,7 +14,7 @@ To use this alternate logo, inform the Fast team during your installation and pr
 
 ## Example Images
 
-The examples below show the Fast logo uploaded as a square, and how it will be displayed in the buyer dashboard.
+The examples below show the Fast logo uploaded as a square, and how it will be displayed in the Fast Shopper Dashboard.
 
 **Uploaded**
 
@@ -24,6 +24,6 @@ The examples below show the Fast logo uploaded as a square, and how it will be d
 
 ![Fast Logo Round](images/fast-rd-200.png)
 
-**Buyer Dashboard Preview**
+**Shopper Dashboard Preview**
 
-![Fast Buyer Dashboard](images/Fast-rounded-dashboard.png)
+![Fast Shopper Dashboard](images/Fast-rounded-dashboard.png)

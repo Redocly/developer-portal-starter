@@ -1,7 +1,7 @@
 ---
 title: "Fast Shopper Docs: Orders"
-description: Getting Started with Fast as a Buyer! Quickstart
-keywords: Fast For Buyers Quickstart
+description: Getting Started with Fast as a Shopper! Quickstart
+keywords: Fast For Buyers Quickstart, Fast for Shoppers Quickstart
 ---
 
 # Orders
@@ -16,9 +16,9 @@ When you use Fast products and services, we use alternative authentication metho
 
 Explore this section to learn more about how Fast works, how we protect your information, process orders, and make it easy – and FAST – to buy your favorite products across the internet without filling out long, tiresome forms.
 
-As a shopper, once you have completed your first checkout, you can view order details from your [Fast Dashboard](https://fast.co) or by clicking the order link provided in the confirmation email you received when you made your purchase.
+As a Shopper, once you have completed your first checkout, you can view order details from your [Fast Dashboard](https://fast.co) or by clicking the order link provided in the confirmation email you received when you made your purchase.
 
-It is important to note that a the Fast Checkout process creates an order once completed (either with a confirmed purchase after the 5-minute batching window, or upon order cancellation).
+It is important to note that the Fast Checkout process creates an order once completed (either with a confirmed purchase after the 5-minute checkout window concludes, or upon order cancellation).
 
 ## Order Details
 

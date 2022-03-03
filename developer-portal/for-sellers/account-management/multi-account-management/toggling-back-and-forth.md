@@ -14,6 +14,6 @@ You can toggle between your stores on the **upper left hand corner menu**.
 
 ## Toggle Between Store and Shopper View
 
-You can toggle between your store and your shopper view on the **upper right hand corner menu**.
+You can toggle between your store and your Shopper view on the **upper right hand corner menu**.
 
 !["Change to Shopper View menu"](/images/to-seller-view.png)

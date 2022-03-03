@@ -1,22 +1,22 @@
 # High Level fast.js API Diagrams
 
-## New Buyer Clicks Fast Checkout
+## New Shopper Clicks Fast Checkout
 
-This diagram covers the high level flow for when a new buyer clicks the Fast checkout button.
+This diagram covers the high level flow for when a new Shopper clicks the Fast checkout button.
 
 ![New buyer clicks Fast Checkout](images/new-buyer-clicks.png)
 
-## Buyer Interacts With Fast Checkout
+## Shopper Interacts With Fast Checkout
 
-This diagram covers the high level flow for when a buyer interacts with Fast Checkout.
+This diagram covers the high level flow for when a Shopper interacts with Fast Checkout.
 
-![Buyer interacts with Fast Checkout](images/buyer-interacts.png)
+![Shopper interacts with Fast Checkout](images/buyer-interacts.png)
 
-## Buyer Canceled Order
+## Shopper Canceled Order
 
 This diagram covers the specific case when a user cancels an order in Fast Checkout.
 
-![Buyer canceled order](images/buyer-canceled.png)
+![Shopper canceled order](images/buyer-canceled.png)
 
 ## Checkout Timer Ended & Fraud Check
 

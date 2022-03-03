@@ -12,8 +12,8 @@ Fast is proud to offer sellers a **Zero Fraud Guarantee**. We know that fraud is
 
 If you are an existing seller and you are on a standard pricing plan, Zero Fraud Guarantee is included in your plan and there is no action required on your part.
 
-If you want to add Zero Fraud Guarantee, please reach out to your account manager or email us at **seller-support@fast.co** for assistance.
+If you want to add Zero Fraud Guarantee, please reach out to your account manager or email us at [**seller-support@fast.co**](mailto:seller-support@fast.co) for assistance.
 
 ## Confirm your Zero Fraud Guarantee status
 
-If you want us to confirm your Zero Fraud Guarantee status, send us an email at seller-support@fast.co to check your status.
+If you want us to confirm your Zero Fraud Guarantee status, send us an email at [**seller-support@fast.co**](mailto:seller-support@fast.co) to check your status.

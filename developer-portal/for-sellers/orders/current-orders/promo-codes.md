@@ -22,4 +22,4 @@ You can use promo codes in the pop-up Order Confirmation page:
 
 ## Promo Code Confirmation
 
-You will receive confirmation of the discounted price you paid in your 2nd "Order Processing" email, to accommodate any edits made during the 5 minute batching window.
+You will receive confirmation of the discounted price you paid in your 2nd "Order Processing" email, to accommodate any edits made during the 5-minute checkout window.

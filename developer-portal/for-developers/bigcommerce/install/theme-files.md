@@ -6,7 +6,9 @@ keywords: Setting up BigCommerce Theme Files for Fast Buttons
 
 # Install Step 2: Setting Up Theme Files
 
-1. Go to [https://www.fast.co/business/dash/install](https://www.fast.co/business/dash/install) to **find your Fast App ID** and copy and paste it into a tab or document or digital sticky note. **Keep that Fast App ID accessible throughout the rest of this process.**
+1. Go to [the "Install" tab of the Fast Seller Dashboard](https://www.fast.co/business/dash/install) to **find your Fast App ID.**.
+
+   - **You will need to keep the Fast App ID accessible throughout the rest of this process.**
 
    ![Copy Fast App ID from the Fast Dashboard](../../../images/all-platforms/copy-fast-app-id-from-fast-dashboard.png)
 

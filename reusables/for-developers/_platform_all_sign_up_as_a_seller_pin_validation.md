@@ -1,4 +1,4 @@
-1.  On [fast.co/business](https://www.fast.co/business), **enter the following information and click "Next"**:
+1.  On [fast.co/business-sign-up](https://www.fast.co/business-sign-up), **enter the following information and click "Next"**:
     - **Your company email address**
       > If you enter in a personal email address or another type of non-company email address, you can change this later.
       > You can add additional email addresses for access later.

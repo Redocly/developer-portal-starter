@@ -52,7 +52,7 @@ The initial access token provided during onboarding does not have an expiration,
 
 Rotating your token sets a **48 hour expiry for your current token**, and generates a new token. During the expiry window both the old and new API Tokens will be considered valid by Fast. Once the expiry window is over, the old API Token will cease to be valid and Fast will reject all calls using that token as Unauthorized.
 
-You can rotate your token via the Fast dashboard, or programmatically via the `/v1/apps/<app_id>/token/rotate` API.
+You can rotate your token via the ["Install" tab in the Fast Seller Dashboard](https://fast.co/business/dash/install), or programmatically via the `/v1/apps/<app_id>/token/rotate` API.
 
 ```json
 POST /v1/apps/<app_id>/token/rotate
