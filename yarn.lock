@@ -1710,16 +1710,17 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.84":
-  version "1.1.0-beta.84"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.84.tgz#785e4ccadac16456364ce30fb8ce1fd11e0e76d8"
-  integrity sha512-AGCm2XlrhLgpbH75Ou2JsgA/nqTQGkrElFkI0Wu5L6Db2kKeQUazxmW9/+wllhIZ28VozgSXc+cG7TM/3MtkmQ==
+"@redocly/developer-portal@1.1.0-beta.89":
+  version "1.1.0-beta.89"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.89.tgz#32a2d36796c58d4b4d0e5d1dac29b45f9d99c51e"
+  integrity sha512-6pYwXPJSCxDl+eOZeV0nmm2nUg/hhcj5EYYDN50Zlc99Ks9Seb5EV4E/Oa1KIk+f5sxcootzh38k2/acLBtweQ==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
+    "@redocly/gatsby-plugin-manifest" "3.3.2"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "1.0.0-beta.87"
-    "@redocly/reference-docs" "2.12.3"
+    "@redocly/openapi-core" "1.0.0-beta.93"
+    "@redocly/reference-docs" "2.13.4"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1730,6 +1731,7 @@
     details-polyfill "^1.2.0"
     elasticlunr "0.9.5"
     enzyme-adapter-react-16 "^1.15.6"
+    follow-redirects "^1.14.6"
     gatsby "3.10.2"
     gatsby-cli "^3.5.0"
     gatsby-link "^3.13.0"
@@ -1742,7 +1744,6 @@
     gatsby-plugin-google-tagmanager "3.2.0"
     gatsby-plugin-heap "1.1.0"
     gatsby-plugin-layout "2.2.0"
-    gatsby-plugin-manifest "3.2.0"
     gatsby-plugin-nprogress "3.2.0"
     gatsby-plugin-react-helmet "4.2.0"
     gatsby-plugin-segment-js "3.6.0"
@@ -1753,6 +1754,7 @@
     gatsby-source-filesystem "3.2.0"
     gatsby-transformer-remark "3.2.0"
     github-slugger "1.3.0"
+    glob "^7.2.0"
     globby "11.0.0"
     graphql "^15.5.1"
     gray-matter "^4.0.3"
@@ -1779,7 +1781,7 @@
     process "^0.11.10"
     qs "^6.10.1"
     raw-loader "^4.0.2"
-    react "^16.14.0"
+    react "^16.14.0 || ^17.0.0"
     react-copy-to-clipboard "^5.0.3"
     react-dom "^16.14.0"
     react-helmet "6.1.0"
@@ -1808,6 +1810,18 @@
     yargs "^16.2.0"
   optionalDependencies:
     "@redocly/gatsby-plugin-sharp" "^3.2.0"
+
+"@redocly/gatsby-plugin-manifest@3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@redocly/gatsby-plugin-manifest/-/gatsby-plugin-manifest-3.3.2.tgz#2756dd652104ec1f2eaeb36090f81b306f655800"
+  integrity sha512-9fQ6sRqj16jgPmyClS5I8iBVu6+dPvM+ZIez1J2nLlJSF2MTSiBBk00Cxd9wdF6LtzPq1v5lRdF0kV0ChCCuQw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    gatsby-core-utils "^2.3.0"
+    gatsby-plugin-utils "^1.3.0"
+    semver "^7.3.2"
+  optionalDependencies:
+    sharp "^0.27.2"
 
 "@redocly/gatsby-plugin-sharp@^3.2.0":
   version "3.2.2"
@@ -1849,10 +1863,10 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-"@redocly/openapi-core@1.0.0-beta.87", "@redocly/openapi-core@^1.0.0-beta.82":
-  version "1.0.0-beta.87"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.87.tgz#f2732cf321340aa8dc2ff89c1695c62d4806c0ac"
-  integrity sha512-bGvINYT8jpcYEbibhd4AO0M5WPE1IQLNLS4LCNZbD7jkoSQB1EHWBZJDhfPd1kxKPPcQ7UJNUCJwtIIrRs5gTQ==
+"@redocly/openapi-core@1.0.0-beta.88":
+  version "1.0.0-beta.88"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.88.tgz#acce3d58451fea3964b448b169c0ef7fbe56f72a"
+  integrity sha512-E9vkLvumIkzII0ydDFGr6uYbZgI9rHMxBveefzM51OUvobvifryXb6VcnQ1T0P8VoHRiYwpgiWlmZeDsNAdZdg==
   dependencies:
     "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
@@ -1865,12 +1879,28 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/reference-docs@2.12.3":
-  version "2.12.3"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.12.3.tgz#ba29e2d480c856c9aef28fd05c083d2c437059f2"
-  integrity sha512-/35IX9Pf2uX5vIr04N+14H07v6w+U3VBkbUaB/dcxfOBb8GRTsIFYLH1lYg+146F3muq3vJiUBp6pFkGgPZohQ==
+"@redocly/openapi-core@1.0.0-beta.93":
+  version "1.0.0-beta.93"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.93.tgz#882db8684598217f621adc7349288229253a0038"
+  integrity sha512-xQj7UnjPj3mKtkyRrm+bjzEoyo0CVNjGP4pV6BzQ0vgKf0Jqq7apFC703psyBH+JscYr7NKK1hPQU76ylhFDdg==
   dependencies:
-    "@redocly/openapi-core" "^1.0.0-beta.82"
+    "@redocly/ajv" "^8.6.4"
+    "@types/node" "^14.11.8"
+    colorette "^1.2.0"
+    js-levenshtein "^1.1.6"
+    js-yaml "^4.1.0"
+    lodash.isequal "^4.5.0"
+    minimatch "^3.0.4"
+    node-fetch "^2.6.1"
+    pluralize "^8.0.0"
+    yaml-ast-parser "0.0.43"
+
+"@redocly/reference-docs@2.13.4":
+  version "2.13.4"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.13.4.tgz#b91fe958596382f6f23cd602a864b12c02fe191b"
+  integrity sha512-0+E8sK1v9RL+7UP1kxYmnFuNKy5zXOsroQrw4hMTtUA2FYUe5wjVOKRb0DxLWiwhuR17e3mUtaqNZPDBx4BrXA==
+  dependencies:
+    "@redocly/openapi-core" "1.0.0-beta.88"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
     classnames "^2.2.6"
@@ -6669,10 +6699,10 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.1.tgz#c4b489e80096d9df1dfc97c79871aea7c617c469"
   integrity sha512-zAoAQiudy+r5SvnSw3KJy5os/oRJYHzrzja/tBDqrZtNhUw8bt6y8OBzMWcjWr+8liV8Eb6yOhw8WZ7VFZ5ZzA==
 
-follow-redirects@^1.0.0, follow-redirects@^1.10.0:
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
-  integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
+follow-redirects@^1.0.0, follow-redirects@^1.10.0, follow-redirects@^1.14.6:
+  version "1.14.9"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.9.tgz#dd4ea157de7bfaf9ea9b3fbd85aa16951f78d8d7"
+  integrity sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -6902,7 +6932,7 @@ gatsby-cli@^3.10.0, gatsby-cli@^3.5.0:
     yoga-layout-prebuilt "^1.9.6"
     yurnalist "^2.1.0"
 
-gatsby-core-utils@^2.10.0, gatsby-core-utils@^2.14.0:
+gatsby-core-utils@^2.10.0, gatsby-core-utils@^2.14.0, gatsby-core-utils@^2.3.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-2.14.0.tgz#ad0030d11776073cdc6a119f4b81e150f3921aef"
   integrity sha512-HDMb1XMqysup9raLYWB0wIQU568R9qPounF7iAwjf2esFUVV5mdBTvxEpune/7yG0RmwhNPhgrEZo2rBHeJf7A==
@@ -7050,17 +7080,6 @@ gatsby-plugin-layout@2.2.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-gatsby-plugin-manifest@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-3.2.0.tgz#512938442542f95ffc8e0cbe5df19db719e935d9"
-  integrity sha512-oU5pvAHZ+qIhCbmTP5Eti73i6pgAnxF/nfwXCSQ7zUjFWzKkjW8tHYK3XmhEYX2ooUX2WeP9e3vp2QdnlmA59Q==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    gatsby-core-utils "^2.2.0"
-    gatsby-plugin-utils "^1.2.0"
-    semver "^7.3.2"
-    sharp "^0.27.0"
-
 gatsby-plugin-nprogress@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-nprogress/-/gatsby-plugin-nprogress-3.2.0.tgz#c2e72f23ff9d1a45a1c542de0db245f939f26f81"
@@ -7118,20 +7137,13 @@ gatsby-plugin-typescript@^3.10.0:
     "@babel/runtime" "^7.15.4"
     babel-plugin-remove-graphql-queries "^3.14.0"
 
-gatsby-plugin-utils@^1.10.0, gatsby-plugin-utils@^1.14.0:
+gatsby-plugin-utils@^1.10.0, gatsby-plugin-utils@^1.14.0, gatsby-plugin-utils@^1.3.0:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-1.14.0.tgz#7813ce967a0bc2fd89560706db879fbf5b894795"
   integrity sha512-lYzr9R9yTH/PzgRTWB878yB1xBlJULvyosEoF8LnE62+UyuPXxv+e/frfwZCeCoqsqstuciR0yaMELIPYMna+Q==
   dependencies:
     "@babel/runtime" "^7.15.4"
     joi "^17.4.2"
-
-gatsby-plugin-utils@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-1.2.0.tgz#4751d952c9c99f15d4a68497cd1841a90aec6c33"
-  integrity sha512-9+kKeyQdXJtQ/9pthfP4LTiem7coOdBt+8wRTwa+DF331qfzunjekl0uWlZSZBnQpG1uS7GX4R/4tei72cVVmw==
-  dependencies:
-    joi "^17.2.1"
 
 gatsby-react-router-scroll@^4.10.0, gatsby-react-router-scroll@^4.13.0:
   version "4.14.0"
@@ -7619,19 +7631,7 @@ glob-to-regexp@^0.4.1:
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
   integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
-glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.6:
-  version "7.1.6"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
-  integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
-  dependencies:
-    fs.realpath "^1.0.0"
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "^3.0.4"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
-glob@^7.1.7:
+glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
   integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
@@ -12510,14 +12510,13 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.14.0:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+"react@^16.14.0 || ^17.0.0":
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 reactjs-popup@^2.0.4:
   version "2.0.4"
@@ -13391,7 +13390,7 @@ shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@^0.27.0, sharp@^0.27.2:
+sharp@^0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.27.2.tgz#a939775e630e88600c0b5e68f20593aea722252f"
   integrity sha512-w3FVoONPG/x5MXCc3wsjOS+b9h3CI60qkus6EPQU4dkT0BDm0PyGhDCK6KhtfT3/vbeOMOXAKFNSw+I3QGWkMA==
