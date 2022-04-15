@@ -6,7 +6,18 @@ title: Mermaid diagrams
 
 You can insert [mermaid](https://mermaidjs.github.io/) charts and diagrams directly into markdown. This allows you to adhere to the docs-as-code philosophy.  To insert a diagram, create a code block and specify the  `mermaid` language.
 
+A [live mermaid diagram editor](https://mermaid.live/) can be helpful when writing diagrams.
+
+:::attention Dependencies
+
+Mermaid requires heavy dependencies to render, so we offload that to a microservice we host in AWS.
+If you do not want to send data to our microservice, do not use Mermaid diagrams.
+
+:::
+
 ## An example of a flowchart
+
+To see the flowchart, you can paste this onto the Markdown page.
 
 ````md
 ```mermaid
@@ -14,12 +25,6 @@ graph LR
     Install --> Markdown --> Paths --> Mermaid --> ?
 ```
 ````
-
-
-```mermaid
-graph LR
-    Install --> Markdown --> Paths --> Mermaid --> ?
-```
 
 ## Edit the flowchart
 
@@ -52,15 +57,8 @@ graph LR
 ```
 ````
 
-
-
-```mermaid
-graph LR
-    Install --> Markdown --> Paths --> Mermaid --> TOC[Table of contents]
-```
-
 ## Extra credit
 
 You could spend a day trying all of the different kinds of mermaid diagrams.
 
-Or styling them.
+You could try to reproduce the diagram on Redocly's [docs homepage](https://redocly.com/docs/).
