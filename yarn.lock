@@ -1710,17 +1710,17 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.90":
-  version "1.1.0-beta.90"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.90.tgz#92ebbd4be76b21596d38f1e036812d5339982f01"
-  integrity sha512-JVQM8b9/UHEQVzSZADx2SEavWP4O590zvFSKhrV/CtETXM9+084gS/BztrHp5Dp1XZ51FT+/n/gBNkkApfYixg==
+"@redocly/developer-portal@1.1.0-beta.93":
+  version "1.1.0-beta.93"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.93.tgz#f0943517d1d22ec8a36cfe23d5432883388097cd"
+  integrity sha512-GXhXkd+y8lX3EeZ4xMr4raxbvYmtWVzZX3s6I5DrvYFT9yYt0Vbzk1MCrbzPf+iS7q+xT1/QZ5U6vP5q3bL9+w==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-plugin-manifest" "3.3.2"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "1.0.0-beta.93"
-    "@redocly/reference-docs" "2.13.5"
+    "@redocly/openapi-core" "1.0.0-beta.95"
+    "@redocly/reference-docs" "2.14.0"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1879,10 +1879,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/openapi-core@1.0.0-beta.93":
-  version "1.0.0-beta.93"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.93.tgz#882db8684598217f621adc7349288229253a0038"
-  integrity sha512-xQj7UnjPj3mKtkyRrm+bjzEoyo0CVNjGP4pV6BzQ0vgKf0Jqq7apFC703psyBH+JscYr7NKK1hPQU76ylhFDdg==
+"@redocly/openapi-core@1.0.0-beta.95":
+  version "1.0.0-beta.95"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.95.tgz#23f92f524080c080060204f9103380de28ecae50"
+  integrity sha512-7Nnc4Obp/1lbrjNjD33oOnZCuoJa8awhBCEyyayPWGQFp1SkhjpZJnfnKkFuYbQzMjTIAvEeSp9DOQK/E0fgEA==
   dependencies:
     "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
@@ -1895,10 +1895,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/reference-docs@2.13.5":
-  version "2.13.5"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.13.5.tgz#880798c8529623395e0b4415b54bb00523fc6b97"
-  integrity sha512-qJS+GbjdoKnwvH503FtLXPWNwM++LbTFUzvG20Y4yntOOQdx+HZg6nvt6J/vYXWs8l6pZyYiir9LNNNArYQd0g==
+"@redocly/reference-docs@2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.14.0.tgz#e7f87c21012afd123241d73b1ea3b13668dfc330"
+  integrity sha512-nfz0JkdLO/U/5bWMI8ImNlGzo4JBsbk/4I7otTypGeyrqz3QMj3Z9x1dM/QEQrSZDBBbKUdXDNzs5AtkMXxODg==
   dependencies:
     "@redocly/openapi-core" "1.0.0-beta.88"
     "@redocly/vscode-json-languageservice" "3.4.9"
@@ -1921,9 +1921,9 @@
     mkdirp "^0.5.1"
     mobx-react "^7.2.0"
     node-libs-browser "^2.2.0"
-    openapi-sampler "^1.2.1"
+    openapi-sampler "^1.2.3"
     path-browserify "^1.0.1"
-    perfect-scrollbar "^1.4.0"
+    perfect-scrollbar "^1.5.5"
     polished "^3.6.5"
     prismjs "^1.22.0"
     prop-types "^15.7.2"
@@ -11000,10 +11000,10 @@ open@^7.0.2, open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openapi-sampler@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/openapi-sampler/-/openapi-sampler-1.2.1.tgz#2ca9eea527f8f2ddb32c3ae1dda31afd8bf0833f"
-  integrity sha512-mHrYmyvcLD0qrfqPkPRBAL2z16hGT2rW0d0B7nklfoTcc3pmkJLkSZlKSeFgerUM41E5c7jlxf0Y19xrM7mWQQ==
+openapi-sampler@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/openapi-sampler/-/openapi-sampler-1.2.3.tgz#753b69c4f45b54682469f2343399a10bc60ec993"
+  integrity sha512-dH2QYXqakorV5dxkP/f1BV3Ku4yNn21YmBsqJunnyrHLw7mnCNZZldftgrEpv/66b1m5oaUAmiJoJN+FqBEkJg==
   dependencies:
     "@types/json-schema" "^7.0.7"
     json-pointer "0.6.2"
@@ -11557,10 +11557,10 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
-perfect-scrollbar@^1.4.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.0.tgz#821d224ed8ff61990c23f26db63048cdc75b6b83"
-  integrity sha512-NrNHJn5mUGupSiheBTy6x+6SXCFbLlm8fVZh9moIzw/LgqElN5q4ncR4pbCBCYuCJ8Kcl9mYM0NgDxvW+b4LxA==
+perfect-scrollbar@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.5.tgz#41a211a2fb52a7191eff301432134ea47052b27f"
+  integrity sha512-dzalfutyP3e/FOpdlhVryN4AJ5XDVauVWxybSkLZmakFE2sS3y3pc4JnSprw8tGmHvkaG5Edr5T7LBTZ+WWU2g==
 
 physical-cpu-count@^2.0.0:
   version "2.0.0"
