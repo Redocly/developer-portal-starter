@@ -1710,17 +1710,17 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.90":
-  version "1.1.0-beta.90"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.90.tgz#92ebbd4be76b21596d38f1e036812d5339982f01"
-  integrity sha512-JVQM8b9/UHEQVzSZADx2SEavWP4O590zvFSKhrV/CtETXM9+084gS/BztrHp5Dp1XZ51FT+/n/gBNkkApfYixg==
+"@redocly/developer-portal@1.1.0-beta.94":
+  version "1.1.0-beta.94"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.94.tgz#8fb30f72898591165cf681472076896c4de31f12"
+  integrity sha512-OD+B5qUTpH69ZzQa/MK2WbTK1YIFJCwBjrnpRB1x3e/CUE6DrHXDrqW1IGBsfE5TOFN8F/93/+bswKHBC5OsCg==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-plugin-manifest" "3.3.2"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "1.0.0-beta.93"
-    "@redocly/reference-docs" "2.13.5"
+    "@redocly/openapi-core" "1.0.0-beta.97"
+    "@redocly/reference-docs" "2.15.0"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1879,10 +1879,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/openapi-core@1.0.0-beta.93":
-  version "1.0.0-beta.93"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.93.tgz#882db8684598217f621adc7349288229253a0038"
-  integrity sha512-xQj7UnjPj3mKtkyRrm+bjzEoyo0CVNjGP4pV6BzQ0vgKf0Jqq7apFC703psyBH+JscYr7NKK1hPQU76ylhFDdg==
+"@redocly/openapi-core@1.0.0-beta.97":
+  version "1.0.0-beta.97"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.97.tgz#324ed46e9a9aee4c615be22ee348c53f7bb5f180"
+  integrity sha512-3WW9/6flosJuRtU3GI0Vw39OYFZqqXMDCp5TLa3EjXOb7Nm6AZTWRb3Y+I/+UdNJ/NTszVJkQczoa1t476ekiQ==
   dependencies:
     "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
@@ -1890,15 +1890,15 @@
     js-levenshtein "^1.1.6"
     js-yaml "^4.1.0"
     lodash.isequal "^4.5.0"
-    minimatch "^3.0.4"
+    minimatch "^5.0.1"
     node-fetch "^2.6.1"
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/reference-docs@2.13.5":
-  version "2.13.5"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.13.5.tgz#880798c8529623395e0b4415b54bb00523fc6b97"
-  integrity sha512-qJS+GbjdoKnwvH503FtLXPWNwM++LbTFUzvG20Y4yntOOQdx+HZg6nvt6J/vYXWs8l6pZyYiir9LNNNArYQd0g==
+"@redocly/reference-docs@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.15.0.tgz#b7237f4902b0ade6311db1fbdd186066d528146e"
+  integrity sha512-0iVQnXy/JykUG1K3jcvDAQVcaefZ+R0IR5tHlRQvu9gcMZnUJWj20iNRvCSKvEUnpgq0vqbLeV8FAb0FTAf7lQ==
   dependencies:
     "@redocly/openapi-core" "1.0.0-beta.88"
     "@redocly/vscode-json-languageservice" "3.4.9"
@@ -1921,9 +1921,9 @@
     mkdirp "^0.5.1"
     mobx-react "^7.2.0"
     node-libs-browser "^2.2.0"
-    openapi-sampler "^1.2.1"
+    openapi-sampler "^1.2.3"
     path-browserify "^1.0.1"
-    perfect-scrollbar "^1.4.0"
+    perfect-scrollbar "^1.5.5"
     polished "^3.6.5"
     prismjs "^1.22.0"
     prop-types "^15.7.2"
@@ -3564,6 +3564,13 @@ brace-expansion@^1.1.7:
   dependencies:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
+
+brace-expansion@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.0.1.tgz#1edc459e0f0c548486ecf9fc99f2221364b9a0ae"
+  integrity sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==
+  dependencies:
+    balanced-match "^1.0.0"
 
 braces@^2.3.1, braces@^2.3.2:
   version "2.3.2"
@@ -10338,6 +10345,13 @@ minimatch@3.0.4, minimatch@^3.0.3, minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
+minimatch@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.0.1.tgz#fb9022f7528125187c92bd9e9b6366be1cf3415b"
+  integrity sha512-nLDxIFRyhDblz3qMuq+SoRZED4+miJ/G+tdDrjkkkRnjAsBexeGpgjLEQ0blJy7rHhR2b93rhQY4SvyWu9v03g==
+  dependencies:
+    brace-expansion "^2.0.1"
+
 minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
@@ -11000,10 +11014,10 @@ open@^7.0.2, open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openapi-sampler@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/openapi-sampler/-/openapi-sampler-1.2.1.tgz#2ca9eea527f8f2ddb32c3ae1dda31afd8bf0833f"
-  integrity sha512-mHrYmyvcLD0qrfqPkPRBAL2z16hGT2rW0d0B7nklfoTcc3pmkJLkSZlKSeFgerUM41E5c7jlxf0Y19xrM7mWQQ==
+openapi-sampler@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/openapi-sampler/-/openapi-sampler-1.2.3.tgz#753b69c4f45b54682469f2343399a10bc60ec993"
+  integrity sha512-dH2QYXqakorV5dxkP/f1BV3Ku4yNn21YmBsqJunnyrHLw7mnCNZZldftgrEpv/66b1m5oaUAmiJoJN+FqBEkJg==
   dependencies:
     "@types/json-schema" "^7.0.7"
     json-pointer "0.6.2"
@@ -11557,10 +11571,10 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
-perfect-scrollbar@^1.4.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.0.tgz#821d224ed8ff61990c23f26db63048cdc75b6b83"
-  integrity sha512-NrNHJn5mUGupSiheBTy6x+6SXCFbLlm8fVZh9moIzw/LgqElN5q4ncR4pbCBCYuCJ8Kcl9mYM0NgDxvW+b4LxA==
+perfect-scrollbar@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.5.tgz#41a211a2fb52a7191eff301432134ea47052b27f"
+  integrity sha512-dzalfutyP3e/FOpdlhVryN4AJ5XDVauVWxybSkLZmakFE2sS3y3pc4JnSprw8tGmHvkaG5Edr5T7LBTZ+WWU2g==
 
 physical-cpu-count@^2.0.0:
   version "2.0.0"
