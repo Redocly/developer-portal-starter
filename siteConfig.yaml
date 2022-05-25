@@ -19,16 +19,20 @@ oasDefinitions:
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
+  - ./assets/css/devportal2022-v4.css
+
 #analytics:
   # ga:
   # note that GA doesn't work in the development environment
   #  trackingId: UA-45997213-1
-#scripts:
-#  - ./static/intercom.js
+scripts:
+ - ./static/js/jquery-3.6.0.min.js
 nav:
 
   - label: Training exercises
     page: developer-portal/index.md
+
+  - page: ./xrp-ledger-overview.mdx
 
   - label: External docs
     icon: ./images/redocly-icon-white.png
