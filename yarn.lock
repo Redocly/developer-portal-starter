@@ -1710,17 +1710,17 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.96":
-  version "1.1.0-beta.96"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.96.tgz#5e2d2621aec558a67ea5c0bce6147c93660e88b4"
-  integrity sha512-BX9SjsVIGEJMtaXEf8FqyXh4V2LSq5JWCOkhK5mrFBVWMwGubAz99M7o6ad4p5B/c0laLk1Jh7RHjqEju6Cqjw==
+"@redocly/developer-portal@1.1.0-beta.97":
+  version "1.1.0-beta.97"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.97.tgz#15d55240284afd11d8776608a945a965a61dc8c7"
+  integrity sha512-BBhms1qbkbsTTuwZjOy1VmCRrezLSHec03oO8UsuqgbpWLZrKQUIJ4GbdyLL7rgiTIkuUTzZm21qCRmL2PKsAw==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-plugin-manifest" "3.3.2"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "1.0.0-beta.98"
-    "@redocly/reference-docs" "2.19.1"
+    "@redocly/openapi-core" "1.0.0-beta.100"
+    "@redocly/reference-docs" "2.22.0"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1863,6 +1863,22 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
+"@redocly/openapi-core@1.0.0-beta.100":
+  version "1.0.0-beta.100"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.100.tgz#f81a0ff44ce08ea08a8c51525c71f3c3ce818ca5"
+  integrity sha512-jf0UKP1nmuAwqe3I2D1FPZYDhcOrnnAQM36wYkPWZSYzO2OQv2Gcfms2g7vSQeq8+yK+8SZk+vP35lNR+IF70g==
+  dependencies:
+    "@redocly/ajv" "^8.6.4"
+    "@types/node" "^14.11.8"
+    colorette "^1.2.0"
+    js-levenshtein "^1.1.6"
+    js-yaml "^4.1.0"
+    lodash.isequal "^4.5.0"
+    minimatch "^5.0.1"
+    node-fetch "^2.6.1"
+    pluralize "^8.0.0"
+    yaml-ast-parser "0.0.43"
+
 "@redocly/openapi-core@1.0.0-beta.97":
   version "1.0.0-beta.97"
   resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.97.tgz#324ed46e9a9aee4c615be22ee348c53f7bb5f180"
@@ -1879,26 +1895,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/openapi-core@1.0.0-beta.98":
-  version "1.0.0-beta.98"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.98.tgz#3dfdd9b84e16b4c2c686914dd1ec53ef9135b1bd"
-  integrity sha512-lrWCpyaxMYaw0x4F6zP2FosGJGAogrFBz3VNDD3OsaSlC3iQZYIOBI2UNBqVtdnDZSzfTLIdiQtEoXfKzlD2qw==
-  dependencies:
-    "@redocly/ajv" "^8.6.4"
-    "@types/node" "^14.11.8"
-    colorette "^1.2.0"
-    js-levenshtein "^1.1.6"
-    js-yaml "^4.1.0"
-    lodash.isequal "^4.5.0"
-    minimatch "^5.0.1"
-    node-fetch "^2.6.1"
-    pluralize "^8.0.0"
-    yaml-ast-parser "0.0.43"
-
-"@redocly/reference-docs@2.19.1":
-  version "2.19.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.19.1.tgz#761d49895c95ac1ef86f358be367b1da63b91350"
-  integrity sha512-MA5I2Jx6UkjNzhjqNRCmSyPkobs5S0UMMrJOu4AS44nVobWbeqjqFbRehvrvNgX4nk9qPX7mmWx8Dat3EGtz2Q==
+"@redocly/reference-docs@2.22.0":
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.22.0.tgz#6adfcc54ae969fa60ad1d73d159e7d38d4733415"
+  integrity sha512-JrvN0MifNPqOBtxiJstAERMuCtDR0DUQ60kq7dGbP8YwKSBRA+CJez3Oi+ybiEGm7TULmfRhjihIr96ZkLDmmQ==
   dependencies:
     "@redocly/openapi-core" "1.0.0-beta.97"
     "@redocly/vscode-json-languageservice" "3.4.9"
@@ -1921,7 +1921,7 @@
     mkdirp "^0.5.1"
     mobx-react "^7.2.0"
     node-libs-browser "^2.2.0"
-    openapi-sampler "^1.2.3"
+    openapi-sampler "^1.3.0"
     path-browserify "^1.0.1"
     perfect-scrollbar "^1.5.5"
     polished "^3.6.5"
@@ -11014,10 +11014,10 @@ open@^7.0.2, open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openapi-sampler@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/openapi-sampler/-/openapi-sampler-1.2.3.tgz#753b69c4f45b54682469f2343399a10bc60ec993"
-  integrity sha512-dH2QYXqakorV5dxkP/f1BV3Ku4yNn21YmBsqJunnyrHLw7mnCNZZldftgrEpv/66b1m5oaUAmiJoJN+FqBEkJg==
+openapi-sampler@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/openapi-sampler/-/openapi-sampler-1.3.0.tgz#5b99ceb4156b00d2aa3f860e52ccb768a5695793"
+  integrity sha512-2QfjK1oM9Sv0q82Ae1RrUe3yfFmAyjF548+6eAeb+h/cL1Uj51TW4UezraBEvwEdzoBgfo4AaTLVFGTKj+yYDw==
   dependencies:
     "@types/json-schema" "^7.0.7"
     json-pointer "0.6.2"
