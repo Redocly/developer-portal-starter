@@ -1,0 +1,17 @@
+table.wait-step tr {
+  color: white;
+  background-color: transparent !important;
+  border-bottom: 1px solid white;
+}
+
+table.wait-step td {
+  color: white;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+table.wait-step th {
+  color: white !important;
+  background-color: transparent !important;
+  border: 0 !important;
+}

@@ -38,7 +38,7 @@ LOCALES = {
  * @return {String} The translated string, if one is available, or the provided
  *                  key value if no translation is available.
  */
-const current_locale = $("html").prop("lang")
+const current_locale = $("html").prop("lang")?.split('-')[0] || 'en';
 function tl(key) {
   let mesg = LOCALES[current_locale][key]
   if (typeof mesg === "undefined") {
@@ -395,7 +395,7 @@ function setup_wait_steps() {
         } else {
           status_box.html(
             `<th>${tl("Final Result:")}</th>
-            <td><img class="throbber" src="assets/img/xrp-loader-96.png">
+            <td><img class="throbber" src="/assets/img/xrp-loader-96.png">
             ${tl("(Still pending...)")}</td>`)
         }
 
@@ -595,7 +595,9 @@ async function do_submit(block, submit_opts, wait_step_name) {
   }
 }
 
+debugger;
 $(document).ready(() => {
+  debugger;
   disable_followup_steps()
   setup_generate_step()
   setup_connect_step()

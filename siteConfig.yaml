@@ -20,13 +20,17 @@ stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
   - ./assets/css/devportal2022-v4.css
+  - ./assets/vendor/fontawesome/css/font-awesome.min.css
+  - ./fixes.css
 
 #analytics:
   # ga:
   # note that GA doesn't work in the development environment
   #  trackingId: UA-45997213-1
-scripts:
- - ./static/js/jquery-3.6.0.min.js
+
+postBodyScripts:
+  - ./assets/js/xrpl-2.2.0.min.js
+  - ./static/js/jquery-3.6.0.min.js
 nav:
 
   - label: Training exercises

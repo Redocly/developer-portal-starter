@@ -15,7 +15,7 @@ export const theme = {
   colors: {
     // tonalOffset: 0.2,
     primary: {
-      main: '#227a88',
+      main: '#9A52FF',
       // light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
@@ -45,7 +45,7 @@ export const theme = {
     //   contrastText: ({ colors }) => readableColor(colors.info.main),
     // },
     text: {
-      primary: '#424242',
+      primary: 'white',
       // secondary: '#4e566d',
     },
     // border: {
@@ -93,8 +93,11 @@ export const theme = {
   },
 
   sidebar: {
-    backgroundColor: '#fafafa',
+    backgroundColor: '#111112',
     width: '260px',
+    textColor: '#ffffff',
+    activeTextColor: '#9A52FF',
+    activeBgColor: 'transparent',
   },
   // tocPanel: {
   //   width: '240px',
