@@ -1,0 +1,3214 @@
+openapi: 3.0.3
+info:
+  title: 'Retail Documentation'
+  description: 'Retail is a cool application that totally works, not really.'
+  contact:
+    email: mrabjohn@spoton.com
+  version: 'v1'
+tags:
+  - name: Orders
+    description: Endpoints for Order
+  - name: Customer (Coming Soon)
+    description: Data about customers
+security:
+  - ApiKeyAuth: []
+paths:
+  /api/v3/orders/:
+    get:
+      operationId: listOrders
+      description: Retrieve Orders from Retail
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: A page number within the paginated result set.
+          schema:
+            type: integer
+        - name: page_size
+          required: false
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+        - name: startTime
+          required: false
+          in: query
+          description: iso-8601 format. This is modified date of an order.
+          schema:
+            type: string
+        - name: endTime
+          required: false
+          in: query
+          description: iso-8601 format. This is modified date of an order.
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: null
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+          description: ''
+      tags:
+        - Orders
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+  schemas:
+    Fee:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source_fee:
+          type: integer
+          nullable: true
+        name:
+          type: string
+          maxLength: 100
+        value_type:
+          enum:
+            - PERCENT
+          type: string
+          nullable: true
+        value:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: 0
+        apply_to:
+          enum:
+            - PRODUCTS_AND_SERVICES
+            - PRODUCT
+            - SERVICE
+            - SHIPPING
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        order:
+          type: integer
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+        tenders_estimation:
+          type: array
+          items:
+            type: object
+            properties:
+              tender_class:
+                enum:
+                  - CASH
+                  - CREDIT
+                type: string
+                readOnly: true
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+          readOnly: true
+        manually_added:
+          type: boolean
+          readOnly: true
+        is_disabled:
+          type: boolean
+    Discount:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source_discount:
+          type: integer
+          nullable: true
+        name:
+          type: string
+          maxLength: 100
+        value_type:
+          enum:
+            - FIXED
+            - PERCENT
+          type: string
+          nullable: true
+        value:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          nullable: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        display_credit_value:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        tenders_estimation:
+          type: array
+          items:
+            type: object
+            properties:
+              tender_class:
+                enum:
+                  - CASH
+                  - CREDIT
+                type: string
+                readOnly: true
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              display_credit_value:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+          readOnly: true
+        manually_added:
+          type: boolean
+          readOnly: true
+        order:
+          type: integer
+    Tax:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        value_type:
+          enum:
+            - PERCENT
+          type: string
+          nullable: true
+        value:
+          type: string
+          format: decimal
+          multipleOf: 0.001
+          maximum: 1000000000
+          minimum: -1000000000
+          nullable: true
+        is_exempt:
+          type: boolean
+        exemption_reason:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        source_tax:
+          type: integer
+          nullable: true
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        tenders_estimation:
+          type: array
+          items:
+            type: object
+            properties:
+              tender_class:
+                enum:
+                  - CASH
+                  - CREDIT
+                type: string
+                readOnly: true
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+          readOnly: true
+        manually_added:
+          type: boolean
+          readOnly: true
+        order:
+          type: integer
+      required:
+        - order
+    Tip:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        message:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        transaction:
+          type: integer
+          nullable: true
+        order:
+          type: integer
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+    Transaction:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            source_type:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  readOnly: true
+                name:
+                  type: string
+                  maxLength: 128
+                code:
+                  type: string
+                  description: This is used within forms to identify this source type
+                  maxLength: 128
+                tender_class:
+                  type: string
+                  readOnly: true
+              required:
+                - name
+                - code
+              readOnly: true
+            last_four:
+              type: string
+              pattern: ^\d{4}$
+            order:
+              type: integer
+            currency:
+              type: string
+              maxLength: 12
+            amount_paid:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            amount_refunded:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            reference:
+              type: string
+              maxLength: 255
+            label:
+              type: string
+              maxLength: 128
+            cardholder_name:
+              type: string
+              maxLength: 255
+            card_provider:
+              enum:
+                - AMERICAN_EXPRESS
+                - VISA
+                - MASTER_CARD
+                - DISCOVER
+                - MAESTRO
+                - OTHER
+              type: string
+            gift_card_id:
+              type: string
+          required:
+            - last_four
+            - order
+          readOnly: true
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        tip_amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        reference:
+          type: string
+          readOnly: true
+        status:
+          enum:
+            - AUTHORIZED
+            - VOIDED
+            - COMPLETED
+            - DECLINED
+          type: string
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        txn_type:
+          enum:
+            - REFUND
+            - SALE
+          type: string
+          readOnly: true
+        related_transaction:
+          type: integer
+        channel:
+          type: integer
+        lines_covered:
+          type: array
+          items:
+            type: object
+            properties:
+              line:
+                type: integer
+              quantity:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.001
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+              transaction:
+                type: string
+                readOnly: true
+            required:
+              - line
+              - quantity
+        is_disputed:
+          type: string
+          readOnly: true
+        mobile_payment:
+          enum:
+            - APPLE_PAY
+            - GOOGLE_PAY
+          type: string
+          readOnly: true
+        is_deposit:
+          type: boolean
+          readOnly: true
+        origin:
+          type: string
+          readOnly: true
+            
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: UUID of Order.
+        number:
+          type: string
+          readOnly: true
+          description: Unique 16 character order number.
+        created:
+          type: string
+          format: date-time
+          description: iso-8601 formatted date/time that timestamps when an order was created (not to be confused with placement_datetime)
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+          description: iso-8601 formatted date/time that timestamps when a change was made to the order.
+        customer:
+          type: string
+          description: UUID of customer.
+        order_status:
+          enum:
+            - DRAFT
+            - NEW
+            - COMPLETED
+            - IN_PROGRESS
+            - CANCELLED
+          type: string
+          readOnly: true
+          description: Order Status
+        order_type:
+          enum:
+            - SALE
+            - CANCELLATION_FEE
+            - QUICK_SALE
+          type: string
+          readOnly: true
+          description: Type of Order. If QUICK_SALE, order has no items in lines
+        cancelled_order:
+          type: string
+          readOnly: true
+          description: Unknown
+        channel:
+          type: string
+          enum:
+           - POS
+           - ECOM
+          description: Where the order was placed.
+        merchant_location_id:
+          type: string
+          description: ID of Merchant Location
+        payment_details:
+          type: object
+          description: Holds payment info for the order
+          properties:
+            transaction_type:
+              enum:
+                - CREDIT
+                - DEBIT
+                - CASH
+                - GIFT_CARD
+                - PAYPAL
+                - VENMO
+                - MIXED
+                - KLARNA
+              type: string
+              readOnly: true
+              nullable: true
+            last_four_digits:
+              type: string
+              readOnly: true
+              nullable: true
+            card_provider:
+              enum:
+                - AMERICAN_EXPRESS
+                - VISA
+                - MASTER_CARD
+                - DISCOVER
+                - MAESTRO
+                - OTHER
+              type: string
+              readOnly: true
+              nullable: true
+            payment_status:
+              enum:
+                - UNDEFINED
+                - SALE
+                - REFUND
+                - PARTIAL_REFUND
+                - CANCELLATION_FEE
+                - PREPAYMENT
+              type: string
+              readOnly: true
+              nullable: true
+            payment_status_v2:
+              enum:
+                - UNDEFINED
+                - SALE
+                - REFUND
+                - PARTIAL_REFUND
+                - CANCELLATION_FEE
+                - PREPAYMENT
+              type: string
+              readOnly: true
+              nullable: true
+            amount_paid:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            amount_refunded:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+          readOnly: true
+        placement_datetime:
+          type: string
+          format: date-time
+          nullable: true
+          description: iso-8601 formatted date/time that timestamps when an order was placed. An Order is considered placed when order is fully paid.
+        total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          description: Order grand total, includes everything. total_without_tips + total_tips.
+        created_or_placement_datetime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Returns placement_datetime if not null otherwise returns created.
+        was_fully_paid:
+          type: boolean
+          readOnly: true
+          description: Whether the order is fully paid for.
+        created_by:
+          type: string
+          readOnly: true
+          description: ID of the employee who created this order.
+        origin:
+          enum:
+            - APPOINTMENTS
+            - E_COMMERCE
+            - POINT_OF_SALE
+          type: string
+          readOnly: true
+          description: Application that created the order
+        total_taxes:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total taxes collected from the whole order. total_items_taxes + total_fees_taxes. Decimal.
+        total_fees:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total fees amount. Decimal.
+        total_discounts:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total sum of all discounts applied to the order - line level + order level + loyalty reward. Cash discount is NOT included here.
+        total_tips:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Summed amount of order tips. Decimal.
+        total_shipping:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total amount for shipping. Decimal.
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Line'
+          description: Array of physical items/services/others that incur costs.
+        fees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fee'
+          description: Array of fees applied to order.
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Discount'
+          description: A list of discounts applied to the whole order. Order level discounts will be applied only after all line level discounts. We don’t need to return “propagated” discounts, they should be filtered out during response building.
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tax'
+          description: A list of taxes applied to the whole order (order level taxes). We don’t need to return “propagated” taxes, they should be filtered out during response building.
+        tips:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tip'
+          description: Array of tips applied to order.
+        display_credit_amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Display credit amount of Quick Sale order. Always equals to amount, besides "cash discount with cash retail prices" set. In that case it equals to amount / (100% - cash_discount_value).
+        gross_sale:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total credit price before all discounts.
+        sub_total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total credit price after line level discounts.
+        cash_discount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total cash discount amount.
+        convenience_fee:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          description: Total convenience fee amount.
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+          description: Array of payment transactions
+        shipping:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            order:
+              type: integer
+            shipping_method:
+              enum:
+                - LOCAL_DELIVERY
+                - CONTACTLESS_CURBSIDE_PICKUP
+                - CURBSIDE_PICKUP
+                - IN_STORE_PICKUP
+                - SHIPPO_RATE_SHIPPING
+                - SHIPPING
+              type: string
+            shipping_object_id:
+              type: integer
+            shipping_code:
+              type: string
+              maxLength: 128
+            title:
+              type: string
+              readOnly: true
+            price:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            metadata:
+              type: object
+              readOnly: true
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            is_available:
+              type: boolean
+              readOnly: true
+            rate_metadata:
+              type: object
+            shipping_from_address:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  readOnly: true
+                title:
+                  enum:
+                    - Mr
+                    - Miss
+                    - Mrs
+                    - Ms
+                    - Dr
+                  type: string
+                name:
+                  type: string
+                  maxLength: 255
+                line1:
+                  type: string
+                  maxLength: 255
+                line2:
+                  type: string
+                  maxLength: 255
+                line3:
+                  type: string
+                  maxLength: 255
+                line4:
+                  type: string
+                  maxLength: 255
+                state:
+                  type: string
+                  maxLength: 255
+                postcode:
+                  type: string
+                  maxLength: 64
+                country:
+                  type: string
+              required:
+                - line1
+                - country
+            tracking_url:
+              type: string
+              format: uri
+              pattern: "^(?:[a-z0-9.+-]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:.]+\\]|([a-z¡-\uFFFF0-9](?:[a-z¡-\uFFFF0-9-]{0,61}[a-z¡-\uFFFF0-9])?(?:\\.(?!-)[a-z¡-\uFFFF0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uFFFF-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\.?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\z"
+            amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            convenience_fee:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            tenders_estimation:
+              type: array
+              items:
+                type: object
+                properties:
+                  tender_class:
+                    enum:
+                      - CASH
+                      - CREDIT
+                    type: string
+                    readOnly: true
+                  amount:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+                  convenience_fee:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+              readOnly: true
+            fees_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            fees_convenience_fee_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            fee_taxes_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            fee_taxes_exempt_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+          required:
+            - order
+            - shipping_method
+          readOnly: true
+        
+        
+    
+    Line:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        quantity:
+          type: object
+          properties:
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.001
+              maximum: 1000000000
+              minimum: -1000000000
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+        allocated:
+          type: object
+          properties:
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.001
+              maximum: 1000000000
+              minimum: -1000000000
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+          readOnly: true
+        price_currency:
+          type: string
+          readOnly: true
+          maxLength: 12
+        channel_product:
+          type: integer
+          nullable: true
+        note:
+          type: string
+        modifier:
+          type: integer
+          writeOnly: true
+          nullable: true
+        price:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: 0
+        price_unit:
+          type: string
+          readOnly: true
+        order:
+          type: string
+          readOnly: true
+          nullable: true
+        fulfillment_location_sku:
+          type: string
+          readOnly: true
+        quantity_in_stock:
+          type: object
+          properties:
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.001
+              maximum: 1000000000
+              minimum: -1000000000
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+          readOnly: true
+        appointment_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        product:
+          type: integer
+          nullable: true
+        parent_product:
+          type: string
+          readOnly: true
+        product_type:
+          enum:
+            - PRODUCT
+            - SERVICE
+          type: string
+        title:
+          type: string
+        upc:
+          type: string
+          maxLength: 14
+        product_image:
+          type: string
+          format: uri
+          readOnly: true
+          pattern: "^(?:[a-z0-9.+-]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:.]+\\]|([a-z¡-\uFFFF0-9](?:[a-z¡-\uFFFF0-9-]{0,61}[a-z¡-\uFFFF0-9])?(?:\\.(?!-)[a-z¡-\uFFFF0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uFFFF-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\.?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\z"
+        structure:
+          type: string
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+          pattern: ^[-a-zA-Z0-9_]+$
+        attributes_summary:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+            required:
+              - name
+              - value
+          readOnly: true
+        team_member:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            name:
+              type: string
+            phone_number:
+              type: string
+            email:
+              type: string
+              format: email
+              maxLength: 254
+            is_active:
+              type: boolean
+              description: Show this team member in catalogue listings.
+            image:
+              type: string
+              format: binary
+            image_url:
+              type: string
+              format: uri
+              writeOnly: true
+              maxLength: 200
+              pattern: "^(?:[a-z0-9.+-]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:.]+\\]|([a-z¡-\uFFFF0-9](?:[a-z¡-\uFFFF0-9-]{0,61}[a-z¡-\uFFFF0-9])?(?:\\.(?!-)[a-z¡-\uFFFF0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uFFFF-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\.?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\z"
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            appointments_id:
+              type: integer
+              maximum: 2147483647
+              minimum: -2147483648
+              nullable: true
+            spoton_user_id:
+              type: string
+              maxLength: 64
+          required:
+            - name
+            - email
+          readOnly: true
+        role:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            name:
+              type: string
+              readOnly: true
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+          readOnly: true
+        duration:
+          type: object
+          properties:
+            value:
+              type: integer
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+        cost_price:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          nullable: true
+        allow_online_booking:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        vendor:
+          type: integer
+          nullable: true
+        gross_sale:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        sub_total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        discounts_amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        price_including_discounts:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        tip_base:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        apply_taxes:
+          type: boolean
+        apply_discounts:
+          type: boolean
+        tax_exempt_reason:
+          type: string
+        is_available:
+          type: boolean
+          readOnly: true
+        unavailability_reason:
+          type: array
+          items:
+            enum:
+              - ITEM_DELETED
+              - CHANNEL_PRODUCT_INACTIVE
+              - CHANNEL_PRODUCT_DELETED
+              - STOCK_ITEMS_HEAP_DELETED
+              - OUT_OF_STOCK
+              - NOT_ENOUGH_STOCK
+            type: string
+          readOnly: true
+        can_earn_reward:
+          type: boolean
+          readOnly: true
+        can_redeem_reward:
+          type: boolean
+          readOnly: true
+        is_custom_price:
+          type: boolean
+          default: false
+        modifiers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              line:
+                type: integer
+              source_modifier:
+                type: integer
+              name:
+                type: string
+                readOnly: true
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+            required:
+              - line
+              - source_modifier
+          readOnly: true
+        tenders_estimation:
+          type: array
+          items:
+            type: object
+            properties:
+              tender_class:
+                enum:
+                  - CASH
+                  - CREDIT
+                type: string
+                readOnly: true
+              gross_sale:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              sub_total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              discounts_amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              price_including_discounts:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              tip_base:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+          readOnly: true
+        weight:
+          type: object
+          properties:
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+          readOnly: true
+        total_weight:
+          type: object
+          properties:
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+          readOnly: true
+          nullable: true
+    OrderDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: string
+          readOnly: true
+        idempotency_id:
+          type: string
+          readOnly: true
+        customer:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            customer_id:
+              type: integer
+            name:
+              type: string
+              maxLength: 255
+            email:
+              type: string
+              format: email
+              writeOnly: true
+            emails:
+              type: array
+              items:
+                type: string
+                format: email
+              readOnly: true
+            phone_number:
+              type: string
+              writeOnly: true
+            phone_numbers:
+              type: array
+              items:
+                type: string
+              readOnly: true
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            customer_service_data:
+              type: string
+              readOnly: true
+              nullable: true
+          nullable: true
+        billing_address:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            title:
+              enum:
+                - Mr
+                - Miss
+                - Mrs
+                - Ms
+                - Dr
+              type: string
+            name:
+              type: string
+              maxLength: 255
+            line1:
+              type: string
+              maxLength: 255
+            line2:
+              type: string
+              maxLength: 255
+            line3:
+              type: string
+              maxLength: 255
+            line4:
+              type: string
+              maxLength: 255
+            state:
+              type: string
+              maxLength: 255
+            postcode:
+              type: string
+              maxLength: 64
+            country:
+              type: string
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            order:
+              type: integer
+          required:
+            - line1
+            - country
+            - order
+          readOnly: true
+        shipping_address:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            title:
+              enum:
+                - Mr
+                - Miss
+                - Mrs
+                - Ms
+                - Dr
+              type: string
+            name:
+              type: string
+              maxLength: 255
+            line1:
+              type: string
+              maxLength: 255
+            line2:
+              type: string
+              maxLength: 255
+            line3:
+              type: string
+              maxLength: 255
+            line4:
+              type: string
+              maxLength: 255
+            state:
+              type: string
+              maxLength: 255
+            postcode:
+              type: string
+              maxLength: 64
+            country:
+              type: string
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            order:
+              type: integer
+            phone_number:
+              type: string
+              description: In case we need to call you about your order
+              maxLength: 128
+            notes:
+              type: string
+              description: Tell us anything we should know when delivering your order.
+          required:
+            - line1
+            - country
+            - order
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        is_quick_sale:
+          type: boolean
+        order_type:
+          enum:
+            - SALE
+            - QUICK_SALE
+          type: string
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+        channel:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            active:
+              type: boolean
+              readOnly: true
+            merchant_location:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  readOnly: true
+                nickname:
+                  type: string
+                  readOnly: true
+                dba_name:
+                  type: string
+                  readOnly: true
+                legal_business_name:
+                  type: string
+                  readOnly: true
+                mid:
+                  type: string
+                  readOnly: true
+                payments_mid:
+                  type: string
+                  readOnly: true
+              readOnly: true
+            channel_type:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                display_name:
+                  type: string
+                created:
+                  type: string
+                  format: date-time
+                  readOnly: true
+                modified:
+                  type: string
+                  format: date-time
+                  readOnly: true
+              required:
+                - id
+                - name
+                - display_name
+              readOnly: true
+            name:
+              type: string
+              readOnly: true
+            display_name:
+              type: string
+              readOnly: true
+          readOnly: true
+        apply_taxes:
+          type: boolean
+        tax_exempt_reason:
+          type: string
+        lines:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              quantity:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.001
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+              allocated:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.001
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+                readOnly: true
+              price_currency:
+                type: string
+                readOnly: true
+                maxLength: 12
+              channel_product:
+                type: integer
+                nullable: true
+              note:
+                type: string
+              modifier:
+                type: integer
+                writeOnly: true
+                nullable: true
+              price:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 100000000
+                minimum: 0
+              price_unit:
+                type: string
+                readOnly: true
+              order:
+                type: string
+                readOnly: true
+                nullable: true
+              fulfillment_location_sku:
+                type: string
+                readOnly: true
+              quantity_in_stock:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.001
+                    maximum: 1000000000
+                    minimum: -1000000000
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+                readOnly: true
+              appointment_id:
+                type: integer
+                maximum: 2147483647
+                minimum: -2147483648
+                nullable: true
+              product:
+                type: integer
+                nullable: true
+              parent_product:
+                type: string
+                readOnly: true
+              product_type:
+                enum:
+                  - PRODUCT
+                  - SERVICE
+                type: string
+              title:
+                type: string
+              upc:
+                type: string
+                maxLength: 14
+              product_image:
+                type: string
+                format: uri
+                readOnly: true
+                pattern: "^(?:[a-z0-9.+-]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:.]+\\]|([a-z¡-\uFFFF0-9](?:[a-z¡-\uFFFF0-9-]{0,61}[a-z¡-\uFFFF0-9])?(?:\\.(?!-)[a-z¡-\uFFFF0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uFFFF-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\.?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\z"
+              structure:
+                type: string
+                readOnly: true
+              slug:
+                type: string
+                readOnly: true
+                pattern: ^[-a-zA-Z0-9_]+$
+              attributes_summary:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    value:
+                      type: string
+                  required:
+                    - name
+                    - value
+                readOnly: true
+              team_member:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                  phone_number:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                    maxLength: 254
+                  is_active:
+                    type: boolean
+                    description: Show this team member in catalogue listings.
+                  image:
+                    type: string
+                    format: binary
+                  image_url:
+                    type: string
+                    format: uri
+                    writeOnly: true
+                    maxLength: 200
+                    pattern: "^(?:[a-z0-9.+-]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:.]+\\]|([a-z¡-\uFFFF0-9](?:[a-z¡-\uFFFF0-9-]{0,61}[a-z¡-\uFFFF0-9])?(?:\\.(?!-)[a-z¡-\uFFFF0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uFFFF-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\.?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\z"
+                  created:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  modified:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  appointments_id:
+                    type: integer
+                    maximum: 2147483647
+                    minimum: -2147483648
+                    nullable: true
+                  spoton_user_id:
+                    type: string
+                    maxLength: 64
+                required:
+                  - name
+                  - email
+                readOnly: true
+              role:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  name:
+                    type: string
+                    readOnly: true
+                  created:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                  modified:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                readOnly: true
+              duration:
+                type: object
+                properties:
+                  value:
+                    type: integer
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+              cost_price:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 100000000
+                minimum: -100000000
+                nullable: true
+              allow_online_booking:
+                type: boolean
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              vendor:
+                type: integer
+                nullable: true
+              gross_sale:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              sub_total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              discounts_amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              price_including_discounts:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              tip_base:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              apply_taxes:
+                type: boolean
+              apply_discounts:
+                type: boolean
+              tax_exempt_reason:
+                type: string
+              is_available:
+                type: boolean
+                readOnly: true
+              unavailability_reason:
+                type: array
+                items:
+                  enum:
+                    - ITEM_DELETED
+                    - CHANNEL_PRODUCT_INACTIVE
+                    - CHANNEL_PRODUCT_DELETED
+                    - STOCK_ITEMS_HEAP_DELETED
+                    - OUT_OF_STOCK
+                    - NOT_ENOUGH_STOCK
+                  type: string
+                readOnly: true
+              can_earn_reward:
+                type: boolean
+                readOnly: true
+              can_redeem_reward:
+                type: boolean
+                readOnly: true
+              is_custom_price:
+                type: boolean
+                default: false
+              modifiers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    line:
+                      type: integer
+                    source_modifier:
+                      type: integer
+                    name:
+                      type: string
+                      readOnly: true
+                    created:
+                      type: string
+                      format: date-time
+                      readOnly: true
+                    modified:
+                      type: string
+                      format: date-time
+                      readOnly: true
+                  required:
+                    - line
+                    - source_modifier
+                readOnly: true
+              tenders_estimation:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tender_class:
+                      enum:
+                        - CASH
+                        - CREDIT
+                      type: string
+                      readOnly: true
+                    gross_sale:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                    sub_total:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                    discounts_amount:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                    price_including_discounts:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                    tip_base:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                    total:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                readOnly: true
+              weight:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+                readOnly: true
+              total_weight:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                  unit:
+                    type: string
+                required:
+                  - value
+                  - unit
+                readOnly: true
+                nullable: true
+            required:
+              - quantity
+          readOnly: true
+        fees:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              source_fee:
+                type: integer
+                nullable: true
+              name:
+                type: string
+                maxLength: 100
+              value_type:
+                enum:
+                  - PERCENT
+                type: string
+                nullable: true
+              value:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 100000000
+                minimum: 0
+              apply_to:
+                enum:
+                  - PRODUCTS_AND_SERVICES
+                  - PRODUCT
+                  - SERVICE
+                  - SHIPPING
+                type: string
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              order:
+                type: integer
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+              tenders_estimation:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tender_class:
+                      enum:
+                        - CASH
+                        - CREDIT
+                      type: string
+                      readOnly: true
+                    amount:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                readOnly: true
+              manually_added:
+                type: boolean
+                readOnly: true
+              is_disabled:
+                type: boolean
+            required:
+              - order
+          readOnly: true
+        discounts:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              source_discount:
+                type: integer
+                nullable: true
+              name:
+                type: string
+                maxLength: 100
+              value_type:
+                enum:
+                  - FIXED
+                  - PERCENT
+                type: string
+                nullable: true
+              value:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 100000000
+                minimum: -100000000
+                nullable: true
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              display_credit_value:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              tenders_estimation:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tender_class:
+                      enum:
+                        - CASH
+                        - CREDIT
+                      type: string
+                      readOnly: true
+                    amount:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                    display_credit_value:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                readOnly: true
+              manually_added:
+                type: boolean
+                readOnly: true
+              order:
+                type: integer
+            required:
+              - order
+          readOnly: true
+        taxes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              name:
+                type: string
+                maxLength: 100
+              value_type:
+                enum:
+                  - PERCENT
+                type: string
+                nullable: true
+              value:
+                type: string
+                format: decimal
+                multipleOf: 0.001
+                maximum: 1000000000
+                minimum: -1000000000
+                nullable: true
+              is_exempt:
+                type: boolean
+              exemption_reason:
+                type: string
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              source_tax:
+                type: integer
+                nullable: true
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              tenders_estimation:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tender_class:
+                      enum:
+                        - CASH
+                        - CREDIT
+                      type: string
+                      readOnly: true
+                    amount:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                readOnly: true
+              manually_added:
+                type: boolean
+                readOnly: true
+              order:
+                type: integer
+            required:
+              - order
+          readOnly: true
+        tender_price_effect:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            order:
+              type: integer
+            price_effect_type:
+              enum:
+                - CASH_DISCOUNT
+                - CONVENIENCE_FEE
+              type: string
+            price_effect_value:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            cash_discount_prices_set:
+              enum:
+                - CREDIT_RETAIL_PRICES
+                - CASH_RETAIL_PRICES
+              type: string
+            convenience_fee_charge_stage:
+              enum:
+                - BEFORE_TAX
+                - AFTER_TAX
+              type: string
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            tenders_estimation:
+              type: array
+              items:
+                type: object
+                properties:
+                  tender_class:
+                    enum:
+                      - CASH
+                      - CREDIT
+                    type: string
+                    readOnly: true
+                  amount:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+              readOnly: true
+          required:
+            - order
+            - price_effect_type
+            - price_effect_value
+          readOnly: true
+        loyalty_reward:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            order:
+              type: integer
+            promotion_id:
+              type: integer
+              maximum: 2147483647
+              minimum: -2147483648
+            promotion_type:
+              type: integer
+              readOnly: true
+            name:
+              type: string
+              readOnly: true
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 100000000
+              minimum: -100000000
+              readOnly: true
+            value_type:
+              enum:
+                - FIXED
+                - PERCENT
+              type: string
+              readOnly: true
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            is_available:
+              type: boolean
+              readOnly: true
+            unavailability_reason:
+              enum:
+                - CUSTOMER_NOT_CHECKED_IN
+                - CUSTOMER_NOT_EXIST
+                - PROMOTION_NOT_AVAILABLE
+                - DISCOUNT_TYPE_NOT_SUPPORTED
+              type: string
+              readOnly: true
+            has_effect:
+              type: string
+              readOnly: true
+            display_credit_value:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            tenders_estimation:
+              type: array
+              items:
+                type: object
+                properties:
+                  tender_class:
+                    enum:
+                      - CASH
+                      - CREDIT
+                    type: string
+                    readOnly: true
+                  amount:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+                  display_credit_value:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+              readOnly: true
+            spots_redeemed:
+              type: string
+              format: decimal
+              multipleOf: 0.0001
+              maximum: 10000000000000000
+              minimum: -10000000000000000
+              nullable: true
+          required:
+            - order
+            - promotion_id
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        payment_details:
+          type: object
+          properties:
+            transaction_type:
+              enum:
+                - CREDIT
+                - DEBIT
+                - CASH
+                - GIFT_CARD
+                - PAYPAL
+                - VENMO
+                - MIXED
+                - KLARNA
+              type: string
+              readOnly: true
+              nullable: true
+            last_four_digits:
+              type: string
+              readOnly: true
+              nullable: true
+            card_provider:
+              enum:
+                - AMERICAN_EXPRESS
+                - VISA
+                - MASTER_CARD
+                - DISCOVER
+                - MAESTRO
+                - OTHER
+              type: string
+              readOnly: true
+              nullable: true
+            payment_status:
+              enum:
+                - UNDEFINED
+                - SALE
+                - REFUND
+                - PARTIAL_REFUND
+                - CANCELLATION_FEE
+                - PREPAYMENT
+              type: string
+              readOnly: true
+              nullable: true
+            payment_status_v2:
+              enum:
+                - UNDEFINED
+                - SALE
+                - REFUND
+                - PARTIAL_REFUND
+                - CANCELLATION_FEE
+                - PREPAYMENT
+              type: string
+              readOnly: true
+              nullable: true
+            amount_paid:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            amount_refunded:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+          readOnly: true
+        placement_datetime:
+          type: string
+          format: date-time
+          nullable: true
+        created_or_placement_datetime:
+          type: string
+          format: date-time
+          readOnly: true
+        is_new_customer:
+          type: boolean
+        gift_cards:
+          type: array
+          items:
+            type: object
+            properties:
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+              order:
+                type: integer
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              id:
+                type: integer
+                readOnly: true
+              gift_card_id:
+                type: string
+                maxLength: 255
+              gift_card_activate_transaction_id:
+                type: string
+                maxLength: 255
+              convenience_fee:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+              tenders_estimation:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tender_class:
+                      enum:
+                        - CASH
+                        - CREDIT
+                      type: string
+                      readOnly: true
+                    convenience_fee:
+                      type: string
+                      format: decimal
+                      multipleOf: 0.01
+                      maximum: 10000000000
+                      minimum: -10000000000
+                      readOnly: true
+                readOnly: true
+            required:
+              - amount
+              - order
+          readOnly: true
+          nullable: true
+        origin:
+          enum:
+            - APPOINTMENTS
+            - E_COMMERCE
+            - POINT_OF_SALE
+          type: string
+          readOnly: true
+        notes:
+          type: string
+        calculator_version:
+          enum:
+            - V1
+            - V2
+          type: string
+        display_credit_amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        gross_sale:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        sub_total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total_discounts:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        cash_discount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        convenience_fee:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        tip_base:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total_fees:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total_shipping:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total_taxes:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total_tips:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        total:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+        tips:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              message:
+                type: string
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              transaction:
+                type: integer
+                nullable: true
+              order:
+                type: integer
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+            required:
+              - order
+          readOnly: true
+        transactions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              source:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  source_type:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        readOnly: true
+                      name:
+                        type: string
+                        maxLength: 128
+                      code:
+                        type: string
+                        description: This is used within forms to identify this source type
+                        maxLength: 128
+                      tender_class:
+                        type: string
+                        readOnly: true
+                    required:
+                      - name
+                      - code
+                    readOnly: true
+                  last_four:
+                    type: string
+                    pattern: ^\d{4}$
+                  order:
+                    type: integer
+                  currency:
+                    type: string
+                    maxLength: 12
+                  amount_paid:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                  amount_refunded:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                  reference:
+                    type: string
+                    maxLength: 255
+                  label:
+                    type: string
+                    maxLength: 128
+                  cardholder_name:
+                    type: string
+                    maxLength: 255
+                  card_provider:
+                    enum:
+                      - AMERICAN_EXPRESS
+                      - VISA
+                      - MASTER_CARD
+                      - DISCOVER
+                      - MAESTRO
+                      - OTHER
+                    type: string
+                  gift_card_id:
+                    type: string
+                required:
+                  - last_four
+                  - order
+                readOnly: true
+              amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              tip_amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              reference:
+                type: string
+                readOnly: true
+              status:
+                enum:
+                  - AUTHORIZED
+                  - VOIDED
+                  - COMPLETED
+                  - DECLINED
+                type: string
+                readOnly: true
+              created:
+                type: string
+                format: date-time
+                readOnly: true
+              modified:
+                type: string
+                format: date-time
+                readOnly: true
+              txn_type:
+                enum:
+                  - REFUND
+                  - SALE
+                type: string
+                readOnly: true
+              related_transaction:
+                type: integer
+              channel:
+                type: integer
+              lines_covered:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line:
+                      type: integer
+                    quantity:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                          format: decimal
+                          multipleOf: 0.001
+                          maximum: 1000000000
+                          minimum: -1000000000
+                        unit:
+                          type: string
+                      required:
+                        - value
+                        - unit
+                    transaction:
+                      type: string
+                      readOnly: true
+                  required:
+                    - line
+                    - quantity
+              is_disputed:
+                type: string
+                readOnly: true
+              mobile_payment:
+                enum:
+                  - APPLE_PAY
+                  - GOOGLE_PAY
+                type: string
+                readOnly: true
+              is_deposit:
+                type: boolean
+                readOnly: true
+              origin:
+                type: string
+                readOnly: true
+            required:
+              - related_transaction
+              - channel
+          readOnly: true
+        shipping:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            order:
+              type: integer
+            shipping_method:
+              enum:
+                - LOCAL_DELIVERY
+                - CONTACTLESS_CURBSIDE_PICKUP
+                - CURBSIDE_PICKUP
+                - IN_STORE_PICKUP
+                - SHIPPO_RATE_SHIPPING
+                - SHIPPING
+              type: string
+            shipping_object_id:
+              type: integer
+            shipping_code:
+              type: string
+              maxLength: 128
+            title:
+              type: string
+              readOnly: true
+            price:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            metadata:
+              type: object
+              readOnly: true
+            created:
+              type: string
+              format: date-time
+              readOnly: true
+            modified:
+              type: string
+              format: date-time
+              readOnly: true
+            is_available:
+              type: boolean
+              readOnly: true
+            rate_metadata:
+              type: object
+            shipping_from_address:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  readOnly: true
+                title:
+                  enum:
+                    - Mr
+                    - Miss
+                    - Mrs
+                    - Ms
+                    - Dr
+                  type: string
+                name:
+                  type: string
+                  maxLength: 255
+                line1:
+                  type: string
+                  maxLength: 255
+                line2:
+                  type: string
+                  maxLength: 255
+                line3:
+                  type: string
+                  maxLength: 255
+                line4:
+                  type: string
+                  maxLength: 255
+                state:
+                  type: string
+                  maxLength: 255
+                postcode:
+                  type: string
+                  maxLength: 64
+                country:
+                  type: string
+              required:
+                - line1
+                - country
+            tracking_url:
+              type: string
+              format: uri
+              pattern: "^(?:[a-z0-9.+-]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:.]+\\]|([a-z¡-\uFFFF0-9](?:[a-z¡-\uFFFF0-9-]{0,61}[a-z¡-\uFFFF0-9])?(?:\\.(?!-)[a-z¡-\uFFFF0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uFFFF-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\.?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\z"
+            amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            convenience_fee:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            tenders_estimation:
+              type: array
+              items:
+                type: object
+                properties:
+                  tender_class:
+                    enum:
+                      - CASH
+                      - CREDIT
+                    type: string
+                    readOnly: true
+                  amount:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+                  convenience_fee:
+                    type: string
+                    format: decimal
+                    multipleOf: 0.01
+                    maximum: 10000000000
+                    minimum: -10000000000
+                    readOnly: true
+              readOnly: true
+            fees_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            fees_convenience_fee_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            fee_taxes_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+            fee_taxes_exempt_amount:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+              readOnly: true
+          required:
+            - order
+            - shipping_method
+          readOnly: true
+        available_payment_types:
+          type: string
+          readOnly: true
+        tender_class:
+          enum:
+            - CASH
+            - CREDIT
+            - PARTIAL
+          type: string
+          readOnly: true
+        tenders_estimation:
+          type: array
+          items:
+            type: object
+            properties:
+              tender_class:
+                enum:
+                  - CASH
+                  - CREDIT
+                type: string
+                readOnly: true
+              display_credit_amount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              gross_sale:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              sub_total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total_discounts:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              cash_discount:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              convenience_fee:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total_fees:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total_shipping:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total_taxes:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total_tips:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              tip_base:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+              total:
+                type: string
+                format: decimal
+                multipleOf: 0.01
+                maximum: 10000000000
+                minimum: -10000000000
+                readOnly: true
+          readOnly: true
+        loyalty_transaction_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        loyalty_spots_earned:
+          type: string
+          format: decimal
+          multipleOf: 0.0001
+          maximum: 10000000000000000
+          minimum: -10000000000000000
+          readOnly: true
+        loyalty_spots_balance:
+          type: string
+          format: decimal
+          multipleOf: 0.0001
+          maximum: 10000000000000000
+          minimum: -10000000000000000
+          readOnly: true
+        total_weight:
+          type: object
+          properties:
+            value:
+              type: string
+              format: decimal
+              multipleOf: 0.01
+              maximum: 10000000000
+              minimum: -10000000000
+            unit:
+              type: string
+          required:
+            - value
+            - unit
+          readOnly: true
+        was_fully_paid:
+          type: boolean
+          readOnly: true
+        has_disputes:
+          type: boolean
+          readOnly: true
+        created_by:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            username:
+              type: string
+              readOnly: true
+            first_name:
+              type: string
+              maxLength: 150
+            last_name:
+              type: string
+              maxLength: 150
+            spoton_user_id:
+              type: string
+              readOnly: true
+            email:
+              type: string
+              format: email
+              maxLength: 254
+          readOnly: true
+        customer_contact_info:
+          type: object
+          properties:
+            name:
+              type: string
+              nullable: true
+            email:
+              type: string
+              format: email
+              nullable: true
+              maxLength: 254
+            phone_number:
+              type: string
+              nullable: true
+              maxLength: 128
+        can_redeem_reward:
+          type: boolean
+          readOnly: true
+        can_earn_reward:
+          type: boolean
+          readOnly: true
+        cancelled_order:
+          type: string
+          readOnly: true
+        joined_to:
+          type: string
+          readOnly: true
+          nullable: true
+        gift_card_sale:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 100000000000000
+          minimum: -100000000000000
+          readOnly: true
+          nullable: true
+        total_deposits:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          nullable: true
+        total_cancellation_fees:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 10000000000
+          minimum: -10000000000
+          readOnly: true
+          nullable: true
+    

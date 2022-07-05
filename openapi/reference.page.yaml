@@ -6,3 +6,11 @@ settings:
       - lang: curl
       - lang: JavaScript
       - lang: Node.js
+type: reference-docs
+definitionId: orders
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
