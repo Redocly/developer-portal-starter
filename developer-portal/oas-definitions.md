@@ -52,3 +52,14 @@ Be sure to add reference to your page in the `sidebars.yaml`.
 Do you see your API reference docs?
 If not, it may require a [`yarn clean` cache clearing action](/developer-portal/setup/#clearing-cache).
 
+
+### Linking to an OpenAPI operation
+
+Construct the link like `[link text](path-to-page.yaml#operation/{operationId})`.
+
+Here is a link to [update a pet](../openapi/reference.page.yaml#operation/updatePet).
+
+
+```md
+Here is a link to [update a pet](../openapi/reference.page.yaml#operation/updatePet).
+```
