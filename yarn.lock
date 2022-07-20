@@ -1710,17 +1710,17 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.101":
-  version "1.1.0-beta.101"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.101.tgz#db84d816bc9e1aab59968019719acebcdd554079"
-  integrity sha512-GMTy4L97kHpN+APU7zqrLOMf12Lqt+CtUPvrmtaXWqr0iLT35heH/k/miu4Bmeb9Vp9lRBB6dP2Xk2xhsKnGlA==
+"@redocly/developer-portal@1.1.0-beta.106":
+  version "1.1.0-beta.106"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.106.tgz#2525a69359b1f64f14ada9f61bd30ae479b4748a"
+  integrity sha512-sfoe6h/HvaX14Ts/ptroHGgrfkCiGU4dXt3O3I39j+l3WF51amf6v9CqPz12w0g9zoUJGhzxUpcarDGwtLaIgQ==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-plugin-manifest" "3.3.2"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "1.0.0-beta.102"
-    "@redocly/reference-docs" "2.25.1"
+    "@redocly/openapi-core" "1.0.0-beta.104"
+    "@redocly/reference-docs" "2.27.1"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1863,10 +1863,10 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-"@redocly/openapi-core@1.0.0-beta.102":
-  version "1.0.0-beta.102"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.102.tgz#e1cd049979f05812c594063fec71e618201319c4"
-  integrity sha512-3Fr3fg+9VEF4+4uoyvOOk+9ipmX2GYhlb18uZbpC4v3cUgGpkTRGZM2Qetfah7Tgx2LgqLuw8A1icDD6Zed2Gw==
+"@redocly/openapi-core@1.0.0-beta.104":
+  version "1.0.0-beta.104"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.104.tgz#1773d62e42cd62578d3281979f08ba6488925c98"
+  integrity sha512-9/b33gpW0BLpTZ0Ll6z5dN03CRvLUeyNOyeEUHrygRLeZgbAWfubqr0Z40boV7d9o1W4Uo/epKPrJenHbVqioQ==
   dependencies:
     "@redocly/ajv" "^8.6.4"
     "@types/node" "^14.11.8"
@@ -1895,15 +1895,14 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/reference-docs@2.25.1":
-  version "2.25.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.25.1.tgz#ca27a501c05bb217acc889c05d361a09faa96ccd"
-  integrity sha512-D0DB7zj/O0LKYKVmqwZYVc5p7Q+wehaD4nWX2A45U75W85cQiUuKal5Mp+Wk0COk+suMvyLnd3NeYK13RWd6DQ==
+"@redocly/reference-docs@2.27.1":
+  version "2.27.1"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.27.1.tgz#c33565d86eae2f44e82866f640ea2b44afa9ce77"
+  integrity sha512-p4wR5xd/D3jJqccHdWY9cglC4g1M51Yt1/P8oQNkqciE9zzJw9wq59ArKvTsXbzAzc4wYgl+zQ6b+6Zf5FerNg==
   dependencies:
     "@redocly/openapi-core" "1.0.0-beta.97"
     "@redocly/vscode-json-languageservice" "3.4.9"
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.2"
-    classnames "^2.2.6"
     codemirror "^5.65.0"
     decko "^1.2.0"
     deepmerge "^4.2.2"
@@ -1926,7 +1925,6 @@
     perfect-scrollbar "^1.5.5"
     polished "^3.6.5"
     prismjs "^1.22.0"
-    prop-types "^15.7.2"
     query-string "^6.13.6"
     react-codemirror2-react-17 "1.0.0"
     react-tabs "^3.1.1"
@@ -4189,7 +4187,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.1.2, classnames@^2.2.6:
+classnames@^2.1.2:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
