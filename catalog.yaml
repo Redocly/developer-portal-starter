@@ -1,0 +1,15 @@
+# List of APIs from the registry to integrate into the portal.
+#apiCatalog:
+  #- title: Thingspace Connectivity Management # Optional custom title to use for the API. If omitted, the API name from the registry is used by default.
+    #defaultVersion: v1 # Optional indicator specifying which of the listed 'versions' to treat as the default. If omitted, the last listed version is treated as the default.
+    #disableAutoSidebar: # Optional parameter that prevents automatically creating the default 'sidebars.yaml' file. When set, users must manually add files to their existing 'sidebars.yaml' file or include a 'sidebars.yaml' file alongside their registry files.
+    #pathPrefix: # Optional parameter to specify where to download files. When set, it replaces the automatically created 'api-name' folder. The 'api-version' subfolder(s) will still be created for non-default versions in the specified path prefix.
+    #versions: v1 # One or more versions of the API to integrate.
+      #- link: https://api.redocly.com/registry/raw/thingspace-iot/Thingspace%20Connectivity%20Management/v1/Connectivity_Management.json?branch=main
+      
+      
+apiCatalog:
+  - title: Thingspace Connectivity Management
+    disableAutoSidebar: true
+    versions:
+      - link: https://api.redocly.com/registry/raw/thingspace-iot/Thingspace%20Connectivity%20Management/v1
