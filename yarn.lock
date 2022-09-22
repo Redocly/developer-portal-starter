@@ -1640,6 +1640,18 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@kwsites/file-exists@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kwsites/file-exists/-/file-exists-1.1.1.tgz#ad1efcac13e1987d8dbaf235ef3be5b0d96faa99"
+  integrity sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==
+  dependencies:
+    debug "^4.1.1"
+
+"@kwsites/promise-deferred@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
+  integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
+
 "@mdx-js/mdx@0.19.0":
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.19.0.tgz#54c161d6e2f8f904a12a8fca36660925e1cbc1fd"
@@ -1700,6 +1712,16 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@redocly/ajv@^8.11.0":
+  version "8.11.0"
+  resolved "https://registry.yarnpkg.com/@redocly/ajv/-/ajv-8.11.0.tgz#2fad322888dc0113af026e08fceb3e71aae495ae"
+  integrity sha512-9GWx27t7xWhDIR02PA18nzBdLcKQRgc46xNQvjFkrYk4UOmvKhJ/dawwiX0cCOeetN5LcaaiqQbVOWYK62SGHw==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
+
 "@redocly/ajv@^8.6.4":
   version "8.6.4"
   resolved "https://registry.yarnpkg.com/@redocly/ajv/-/ajv-8.6.4.tgz#94053e7a9d4146d1a4feacd3813892873f229a85"
@@ -1710,17 +1732,17 @@
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@1.1.0-beta.106":
-  version "1.1.0-beta.106"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.106.tgz#2525a69359b1f64f14ada9f61bd30ae479b4748a"
-  integrity sha512-sfoe6h/HvaX14Ts/ptroHGgrfkCiGU4dXt3O3I39j+l3WF51amf6v9CqPz12w0g9zoUJGhzxUpcarDGwtLaIgQ==
+"@redocly/developer-portal@1.1.0-beta.117":
+  version "1.1.0-beta.117"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.1.0-beta.117.tgz#28ceee3011d3841d370358a1269a0c6441ecd56a"
+  integrity sha512-mvvFxe7JzkupTic9d4+QD1X9fv7rjyUv9CREzPfPwjYCv3BVc1WCVUg7FBXxSyj4pCBj0J15lBOdefexRHueIw==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
     "@redocly/gatsby-plugin-manifest" "3.3.2"
     "@redocly/gatsby-remark-images" "4.2.0"
-    "@redocly/openapi-core" "1.0.0-beta.104"
-    "@redocly/reference-docs" "2.27.1"
+    "@redocly/openapi-core" "1.0.0-beta.110"
+    "@redocly/reference-docs" "2.37.1"
     babel-plugin-react-html-attrs "^3.0.5"
     babel-plugin-styled-components "^1.12.0"
     buffer "^6.0.3"
@@ -1746,10 +1768,10 @@
     gatsby-plugin-layout "2.2.0"
     gatsby-plugin-nprogress "3.2.0"
     gatsby-plugin-react-helmet "4.2.0"
+    gatsby-plugin-rudderstack "^1.1.2"
     gatsby-plugin-segment-js "3.6.0"
     gatsby-plugin-styled-components "4.2.0"
     gatsby-react-router-scroll "^4.13.0"
-    gatsby-remark-image-attributes "1.0.0-4"
     gatsby-remark-prismjs "4.2.0"
     gatsby-source-filesystem "3.2.0"
     gatsby-transformer-remark "3.2.0"
@@ -1793,7 +1815,7 @@
     remark "^10.0.1"
     remark-admonitions "^1.2.1"
     scroll-lock "^2.1.5"
-    simple-git "^1.110.0"
+    simple-git "^3.14.0"
     sitemap "^7.0.0"
     slugify "^1.5.1"
     stickyfilljs "^2.1.0"
@@ -1806,6 +1828,7 @@
     typescript "4.2.4"
     unfetch "^4.2.0"
     unist-util-visit "^2.0.3"
+    use-onclickoutside "^0.4.1"
     uuid "^8.3.2"
     yargs "^16.2.0"
   optionalDependencies:
@@ -1863,12 +1886,12 @@
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-"@redocly/openapi-core@1.0.0-beta.104":
-  version "1.0.0-beta.104"
-  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.104.tgz#1773d62e42cd62578d3281979f08ba6488925c98"
-  integrity sha512-9/b33gpW0BLpTZ0Ll6z5dN03CRvLUeyNOyeEUHrygRLeZgbAWfubqr0Z40boV7d9o1W4Uo/epKPrJenHbVqioQ==
+"@redocly/openapi-core@1.0.0-beta.110":
+  version "1.0.0-beta.110"
+  resolved "https://registry.yarnpkg.com/@redocly/openapi-core/-/openapi-core-1.0.0-beta.110.tgz#8c822e188c30e274f8f2e1078b92c19843777581"
+  integrity sha512-i+7NkKB7I4eEjkAXH02FHxAIcn08S2rUFA9PND4EQHMYw6kxkXQ+hPnBVwaXCzonauqO1CTwVqb8ZcTeKcvtgw==
   dependencies:
-    "@redocly/ajv" "^8.6.4"
+    "@redocly/ajv" "^8.11.0"
     "@types/node" "^14.11.8"
     colorette "^1.2.0"
     js-levenshtein "^1.1.6"
@@ -1895,10 +1918,10 @@
     pluralize "^8.0.0"
     yaml-ast-parser "0.0.43"
 
-"@redocly/reference-docs@2.27.1":
-  version "2.27.1"
-  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.27.1.tgz#c33565d86eae2f44e82866f640ea2b44afa9ce77"
-  integrity sha512-p4wR5xd/D3jJqccHdWY9cglC4g1M51Yt1/P8oQNkqciE9zzJw9wq59ArKvTsXbzAzc4wYgl+zQ6b+6Zf5FerNg==
+"@redocly/reference-docs@2.37.1":
+  version "2.37.1"
+  resolved "https://registry.yarnpkg.com/@redocly/reference-docs/-/reference-docs-2.37.1.tgz#5eb10704b3322e1e9cf1fc91f1bd19cad2b9da03"
+  integrity sha512-aIwGB5yqNqHYBRhEmN+L8miD3hU6QzSk6dTAW5xxEKjiQVfNE4V/Zg7mWkfBar65pWLEr81A8kfwKPGHasJHJA==
   dependencies:
     "@redocly/openapi-core" "1.0.0-beta.97"
     "@redocly/vscode-json-languageservice" "3.4.9"
@@ -2914,6 +2937,11 @@ archive-type@^4.0.0:
   integrity sha1-+S5yIzBW38aWlHJ0nCZ72wRrHXA=
   dependencies:
     file-type "^4.2.0"
+
+are-passive-events-supported@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/are-passive-events-supported/-/are-passive-events-supported-1.1.1.tgz#3db180a1753a2186a2de50a32cded3ac0979f5dc"
+  integrity sha512-5wnvlvB/dTbfrCvJ027Y4L4gW/6Mwoy1uFSavney0YO++GU+0e/flnjiBBwH+1kh7xNCgCOGvmJC3s32joYbww==
 
 are-we-there-yet@~1.1.2:
   version "1.1.5"
@@ -5023,6 +5051,13 @@ debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@~4.3
   dependencies:
     ms "2.1.2"
 
+debug@^4.3.4:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
+  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
+  dependencies:
+    ms "2.1.2"
+
 decamelize@^1.1.2, decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
@@ -7117,6 +7152,11 @@ gatsby-plugin-react-helmet@4.2.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
+gatsby-plugin-rudderstack@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-rudderstack/-/gatsby-plugin-rudderstack-1.1.2.tgz#7363b9b1a3d0555428400a1600e111c6e666ffd2"
+  integrity sha512-mYKhxYgjwgdr54BIOzdRrW9V8OSrAATR6nUYFhQW4C+Xi5CkbXnmuTfFycCdXVLSpp35wovpreNm2TAbY24v9w==
+
 gatsby-plugin-segment-js@3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-3.6.0.tgz#740b2a5e6730119147e0dd1fb2c39acca83e353d"
@@ -7221,13 +7261,6 @@ gatsby-recipes@^0.25.0:
     ws "^7.3.0"
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
-
-gatsby-remark-image-attributes@1.0.0-4:
-  version "1.0.0-4"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-image-attributes/-/gatsby-remark-image-attributes-1.0.0-4.tgz#46c3c9a4db8472f561410ea75b15d0000f6dd84e"
-  integrity sha512-k5xJoqabmsRxiN0yDcl6YSnjykOP6QTS+ZnnEnReutsh6fRl/0uWscjpjKGNrZSJ7kckZ5pooNZoo3bIHqPmrw==
-  dependencies:
-    unist-util-visit "^2.0.3"
 
 gatsby-remark-prismjs@4.2.0:
   version "4.2.0"
@@ -13528,12 +13561,14 @@ simple-get@^4.0.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
-simple-git@^1.110.0:
-  version "1.132.0"
-  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-1.132.0.tgz#53ac4c5ec9e74e37c2fd461e23309f22fcdf09b1"
-  integrity sha512-xauHm1YqCTom1sC9eOjfq3/9RKiUA9iPnxBbrY2DdL8l4ADMu0jjM5l5lphQP5YWNqAL2aXC/OeuQ76vHtW5fg==
+simple-git@^3.14.0:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.14.1.tgz#68018a5f168f8a568862e30b692004b37c3b5ced"
+  integrity sha512-1ThF4PamK9wBORVGMK9HK5si4zoGS2GpRO7tkAFObA4FZv6dKaCVHLQT+8zlgiBm6K2h+wEU9yOaFCu/SR3OyA==
   dependencies:
-    debug "^4.0.1"
+    "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
+    debug "^4.3.4"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
@@ -15291,6 +15326,26 @@ url@^0.11.0, url@~0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-isomorphic-layout-effect@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.2.tgz#497cefb13d863d687b08477d9e5a164ad8c1a6fb"
+  integrity sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==
+
+use-latest@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/use-latest/-/use-latest-1.2.1.tgz#d13dfb4b08c28e3e33991546a2cee53e14038cf2"
+  integrity sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==
+  dependencies:
+    use-isomorphic-layout-effect "^1.1.1"
+
+use-onclickoutside@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/use-onclickoutside/-/use-onclickoutside-0.4.1.tgz#81485ba438c7f8fba5b4656e82773bcfce9ea7a9"
+  integrity sha512-hAo1viJ9D2mPffUig4EWCwE4as7fq84HANk3MCkY3rhXk5oMl0mjLCLF/OhzWIhTaITcAcDDcnaxRdMHPq+sww==
+  dependencies:
+    are-passive-events-supported "^1.1.1"
+    use-latest "^1.2.1"
 
 use@^3.1.0:
   version "3.1.1"
