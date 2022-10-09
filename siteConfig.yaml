@@ -15,6 +15,10 @@ toc:
   enable: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
+  demo-parameters: https://api.redoc.ly/registry/redocly/Demo%20Adam/adam-demo/bundle/examples-parameters/openapi.yaml
+  demo: https://api.redoc.ly/registry/redocly/Demo%20Adam/adam-demo/bundle/master/openapi.yaml
+  starter: https://api.redoc.ly/registry/redocly/Adam's%20Demo/openapi-starter/bundle/main/openapi.yaml
+
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
