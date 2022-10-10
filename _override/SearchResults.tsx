@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import useOnClickOutside from 'use-onclickoutside';
 
 import { SearchResultItem, SearchResultsWrap, SearchResultsProps } from '@redocly/developer-portal/ui';
 
@@ -11,7 +12,11 @@ const MAX_ITEMS_PER_GROUP = 5;
  */
 
 export default function CustomSearchResults(props: SearchResultsProps) {
-  const { show, results, indexError, activeItemIdx, loading, query } = props;
+  const { show, results, indexError, activeItemIdx, loading, query, onSearchResultsItemClick, onToggleSearchResults } = props;
+
+  const ref = React.useRef(null);
+
+  useOnClickOutside(ref, () => onToggleSearchResults(false));
 
   function isApiResult(item) {
     return !!item.httpVerb && item.link.startsWith('/openapi'); // this is example
@@ -34,7 +39,7 @@ export default function CustomSearchResults(props: SearchResultsProps) {
     currentPathname && currentPathname.startsWith('/openapi') ? [apiResults, otherResults] : [otherResults, apiResults];
 
   return (
-    <SearchResultsWrap show={show}>
+    <SearchResultsWrap show={show} ref={ref}>
       {indexError && process.env.NODE_ENV === 'development' && (
         <Message>
           Failed to load search index. Search index is not working in develop. <br />
@@ -67,6 +72,7 @@ export default function CustomSearchResults(props: SearchResultsProps) {
                   item={item}
                   query={query}
                   active={countIndex(index, idx, searchGroups) === activeItemIdx}
+                  onSearchResultsItemClick={onSearchResultsItemClick}
                 />
               </div>
             ))}
