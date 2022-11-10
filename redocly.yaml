@@ -1,0 +1,11 @@
+apis:
+  sample@v1:
+    root: openapi/petstore.yaml
+rules: 
+  plugin/operation-id-not-test:
+    severity: error
+  operation-4xx-response:
+    severity: off
+
+plugins:
+  - "./plugins/plugin.js"

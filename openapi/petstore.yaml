@@ -1,4 +1,5 @@
 openapi: 3.0.3
+security: []
 servers:
   - url: '//petstore.swagger.io/v2'
 info:
@@ -35,7 +36,7 @@ paths:
         - pet
       summary: Add a new pet to the store
       description: ''
-      operationId: addPet
+      operationId: test
       responses:
         '200':
           description: OK
