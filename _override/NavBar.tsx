@@ -9,7 +9,7 @@ import { Flex, Link, NavBarProps, SearchBox } from '@redocly/developer-portal/ui
 export default function CustomNavBar(props: NavBarProps) {
   // you can use items values from props, it comes from siteConfig.yaml
   // but you can also import it from a separate yaml or json file
-  const { items, logo, href, altText } = props;
+  const { items, logo, href, altText, location } = props;
 
   const [isMobileMenuOpened, setMobileMenuOpened] = React.useState(false);
   const toggleMobileMenu = () => setMobileMenuOpened(!isMobileMenuOpened);
@@ -20,7 +20,7 @@ export default function CustomNavBar(props: NavBarProps) {
     .filter(item => item.type !== 'search')
     .map((item, index) => {
       return (
-        <NavItem key={index} onClick={hideMobileMenu}>
+        <NavItem key={index} onClick={hideMobileMenu} isActive={item.link === location.pathname} >
           <Link to={item.link}>{item.label}</Link>
         </NavItem>
       );
