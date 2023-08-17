@@ -1,5 +1,11 @@
 # Redocly API developer portal
 
+> **Warning**
+> This version of the beta portal is closed to new registrations. Existing
+> customers can continue to use the product, but new projects should not adopt
+> this stack. The best way to find out about our next generation of products is
+> to [sign up to our product newsletter](https://redocly.com/product-updates/).
+
 ## Prerequisites
 
 - [node.js >= 12.22.6 and <= 16.x](https://nodejs.org/en/)
