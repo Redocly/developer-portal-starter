@@ -1,4 +1,4 @@
-meta:
+seo:
   title: Redocly Training
   description: The best API documentation generator ever.
   siteUrl: https://developer-portal-starter.redoc.ly
@@ -15,6 +15,10 @@ toc:
   enable: true
 oasDefinitions:
   petstore: ./openapi/petstore.yaml
+  rock: https://api.redoc.ly/registry/redocly/Demo%20Rock/1.0.0/bundle/rock-paper-scissors/openapi.yaml
+  paper: https://api.redoc.ly/registry/redocly/Demo%20Paper/1.0.0/bundle/rock-paper-scissors/openapi.yaml
+  scissors: https://api.redoc.ly/registry/redocly/Demo%20Scissors/1.0.0/bundle/rock-paper-scissors/openapi.yaml
+
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
@@ -30,14 +34,22 @@ nav:
   - label: Training exercises
     page: developer-portal/index.md
 
-  - label: External docs
-    icon: ./images/redocly-icon-white.png
-    href: https://redoc.ly/docs/developer-portal/introduction/
+  - label: Drilldown sidebars
+    page: drilldown/index.md
+
+  - label: Combined sidebars
+    page: combined/index.md
+
+  - label: Separated sidebars
+    page: separated/index.md
+
+  - label: API catalog
+    page: catalog/index.mdx
 
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2021. All right reserved.
+  copyrightText: Copyright © Redocly 2019-2022. All right reserved.
   columns:
     - group: Legal
       items:

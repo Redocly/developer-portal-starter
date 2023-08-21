@@ -1,0 +1,32 @@
+---
+title: API catalog
+description: Our API catalog is composed of dozens of microservices organized into categories.
+---
+
+import { WideTile, Flex } from '@redocly/developer-portal/ui';
+
+# API catalog
+
+Welcome to a sample API catalog.
+
+There are many ways to organize information in Redocly.
+
+This pull request demonstrates:
+- separated sidebars
+- combined sidebars
+- drilldown sidebars
+
+This catalog view is a combination of combined sidebars and separate sidebars.
+
+Select a category such as games, and then select an API.
+
+<div>
+  <Flex justifyContent="space-between" flexWrap="wrap">
+    <WideTile to="./games.mdx" header="Games">
+      Entertainment
+    </WideTile>
+    <WideTile to="./meals.mdx" header="Meals">
+      Nutrition and energy
+    </WideTile>
+  </Flex>
+</div>

@@ -1,0 +1,10 @@
+type: reference-docs
+definitionId: rock
+settings:
+  pagination: none
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: Go
+      - lang: PHP
+      - lang: Ruby

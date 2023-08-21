@@ -1,0 +1,12 @@
+type: reference-docs
+definitionId: paper
+settings:
+  pagination: section
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
+      - lang: Python
+      - lang: C#
+      - lang: Java

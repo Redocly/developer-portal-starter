@@ -1,0 +1,12 @@
+type: reference-docs
+definitionId: scissors
+settings:
+  pagination: item
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
+      - lang: Python
+      - lang: C#
+      - lang: Java
