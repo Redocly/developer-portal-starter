@@ -36,6 +36,21 @@ nav:
 
   - search: true
 
+login:
+  label: Sign in/Sign up
+  userAvatar: # can be false
+    claim: picture
+    fallbackLettersClaim: name
+  userLabel: # can be false, but one of those must be not false
+    claim: name
+    fallback: <unknown user>
+  menu:
+    - label: Apps
+      page: apps.mdx
+    - separatorLine: true
+    - label: Sign out
+      logout: true
+
 footer:
   copyrightText: Copyright © Redocly 2019-2021. All right reserved.
   columns:
