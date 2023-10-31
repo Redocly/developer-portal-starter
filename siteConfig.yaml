@@ -25,6 +25,21 @@ stylesheets:
   #  trackingId: UA-45997213-1
 #scripts:
 #  - ./static/intercom.js
+
+login:
+  label: Sign in
+  userAvatar: # can be false
+    claim: picture
+    fallbackLettersClaim: name
+  userLabel: # can be false, but one of those must be not false
+    claim: name
+    fallback: <unknown user>
+  menu:
+    - label: Profile
+      page: profile.mdx
+    - separatorLine: true
+    - label: Sign out
+      logout: true
 nav:
 
   - label: Training exercises
